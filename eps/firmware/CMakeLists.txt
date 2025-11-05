@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.15)
 project(eps_firmware C ASM)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_C_STANDARD 11)
 
 set(MCU_FLAGS "-mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16")
@@ -14,7 +15,7 @@ option(BUILD_HITL "Build with simulated hardware mocks" OFF)
 
 add_subdirectory(./lib/messaging ${CMAKE_CURRENT_BINARY_DIR}/osusat-build)
 
-include_directories(app services hal config)
+include_directories(app services hal config lib/messaging/c/include)
 
 file(GLOB APP_SRC app/*.c)
 file(GLOB SERVICES_SRC services/*.c)
