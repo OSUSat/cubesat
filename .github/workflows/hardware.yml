@@ -11,6 +11,14 @@ on:
       - 'eps/hardware/**.kicad_sch'
       - 'eps/hardware/**.kicad_pcb'
       - 'eps/hardware/**.kicad_pro'
+      - '.github/workflows/hardware.yml'
+
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: 'PR Number to test (e.g. 15)'
+        required: true
+        type: string
 
 permissions:
   contents: write
@@ -45,5 +53,5 @@ jobs:
               owner,
               repo,
               issue_number: prNumber,
-              body: `⚡ **Hardware Interactive Diff:** [View Schematics & PCB](${pageUrl})`
+              body: `**Hardware Interactive Diff:** [View Schematics & PCB](${pageUrl})`
             });
