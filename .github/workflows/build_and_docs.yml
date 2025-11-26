@@ -26,14 +26,13 @@ jobs:
     - name: Generate documentation
       run: cmake --build eps/firmware/build --target docs
 
-    - name: Upload Doxygen documentation
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: doxygen-documentation
         path: documentation/doxygen_output/
 
     - name: Upload Sphinx documentation
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: sphinx-documentation
         path: firmware/build/documentation/sphinx/
