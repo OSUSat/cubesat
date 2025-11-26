@@ -34,18 +34,94 @@
             
   <section id="watchdog-service">
 <h1>Watchdog Service<a class="headerlink" href="#watchdog-service" title="Link to this heading">¶</a></h1>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>doxygengroup: Cannot find file: /home/runner/work/cubesat/cubesat/eps/documentation/doxygen_output/xml/index.xml</p>
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group__watchdog"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">Watchdog</span> <span class="pre">Service</span></span></dt>
+<dd><p>Safety mechanism to recover from software freezes. </p>
+<p>The Watchdog service is a high-priority driver that interfaces directly with the MCU’s hardware timer. </p>
+</dd></dl>
+
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group__watchdog__types"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">Types</span></span></dt>
+<dd><p>State containers for the watchdog. </p>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv410watchdog_t">
+<span id="_CPPv310watchdog_t"></span><span id="_CPPv210watchdog_t"></span><span id="watchdog_t"></span><span class="target" id="structwatchdog__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">watchdog_t</span></span></span><a class="headerlink" href="#_CPPv410watchdog_t" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;watchdog.h&gt;</em></div>
+<p>Watchdog Service State Object. </p>
+<p>Holds the runtime state of the watchdog driver. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N10watchdog_t10timeout_msE">
+<span id="_CPPv3N10watchdog_t10timeout_msE"></span><span id="_CPPv2N10watchdog_t10timeout_msE"></span><span id="watchdog_t::timeout_ms__uint32_t"></span><span class="target" id="structwatchdog__t_1a289656ba2813aa4c7592c9037d93400f"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">timeout_ms</span></span></span><a class="headerlink" href="#_CPPv4N10watchdog_t10timeout_msE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>The configured timeout period in milliseconds. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N10watchdog_t13last_pet_tickE">
+<span id="_CPPv3N10watchdog_t13last_pet_tickE"></span><span id="_CPPv2N10watchdog_t13last_pet_tickE"></span><span id="watchdog_t::last_pet_tick__uint32_t"></span><span class="target" id="structwatchdog__t_1a42b206e511eb9c1e7bce8d3babf07727"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">last_pet_tick</span></span></span><a class="headerlink" href="#_CPPv4N10watchdog_t13last_pet_tickE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Timestamp of the last kick. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N10watchdog_t7enabledE">
+<span id="_CPPv3N10watchdog_t7enabledE"></span><span id="_CPPv2N10watchdog_t7enabledE"></span><span id="watchdog_t::enabled__b"></span><span class="target" id="structwatchdog__t_1acfc1a715a7b689c0d802dc45a9897470"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">enabled</span></span></span><a class="headerlink" href="#_CPPv4N10watchdog_t7enabledE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Hardware enablement status. </p>
+</dd></dl>
+
 </div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>doxygengroup: Cannot find file: /home/runner/work/cubesat/cubesat/eps/documentation/doxygen_output/xml/index.xml</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group__watchdog__api"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">Public</span> <span class="pre">API</span></span></dt>
+<dd><p>Functions for managing system safety. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv413watchdog_initP10watchdog_t">
+<span id="_CPPv313watchdog_initP10watchdog_t"></span><span id="_CPPv213watchdog_initP10watchdog_t"></span><span id="watchdog_init__watchdog_tP"></span><span class="target" id="group__watchdog__api_1gab3855c9896bbd7be2a19dc5e7b515bdc"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">watchdog_init</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv410watchdog_t" title="watchdog_t"><span class="n"><span class="pre">watchdog_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">watchdog</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv413watchdog_initP10watchdog_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Initialize the Hardware Watchdog. </p>
+<p>Configures the hardware timer with the timeout specified in the configuration. Once initialized, the watchdog typically cannot be disabled until a reset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>wd</strong> – <strong>[out]</strong> Pointer to the watchdog service instance. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv412watchdog_petP10watchdog_t">
+<span id="_CPPv312watchdog_petP10watchdog_t"></span><span id="_CPPv212watchdog_petP10watchdog_t"></span><span id="watchdog_pet__watchdog_tP"></span><span class="target" id="group__watchdog__api_1ga98d1081b076ba58b41c102cfb296cb9e"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">watchdog_pet</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv410watchdog_t" title="watchdog_t"><span class="n"><span class="pre">watchdog_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">watchdog</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv412watchdog_petP10watchdog_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Reset the watchdog timer (kicking/petting). </p>
+<p>Refreshes the hardware counter to prevent a system reset. Updates the <code class="docutils literal notranslate"><span class="pre">last_pet_tick</span></code> in the software struct for debugging.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>watchdog</strong> – <strong>[inout]</strong> Pointer to the watchdog service instance. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv420watchdog_force_resetP10watchdog_t">
+<span id="_CPPv320watchdog_force_resetP10watchdog_t"></span><span id="_CPPv220watchdog_force_resetP10watchdog_t"></span><span id="watchdog_force_reset__watchdog_tP"></span><span class="target" id="group__watchdog__api_1ga6c17c5d5849e0fcca77e95c67b97ba30"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">watchdog_force_reset</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv410watchdog_t" title="watchdog_t"><span class="n"><span class="pre">watchdog_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">watchdog</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv420watchdog_force_resetP10watchdog_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Intentionally trigger a system reset. </p>
+<p>Useful for “safe mode” transitions or recovering from unrecoverable errors. This function will block until the hardware resets the device.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>watchdog</strong> – <strong>[in]</strong> Pointer to the watchdog service instance. </p>
+</dd>
+</dl>
+</dd></dl>
+
 </div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>doxygengroup: Cannot find file: /home/runner/work/cubesat/cubesat/eps/documentation/doxygen_output/xml/index.xml</p>
-</div>
+</dd></dl>
+
 </section>
 
 
@@ -83,7 +159,13 @@
 <li class="toctree-l1"><a class="reference internal" href="redundancy_manager.html">Redundancy Manager Service</a></li>
 <li class="toctree-l1"><a class="reference internal" href="telemetry.html">Telemetry Service</a></li>
 <li class="toctree-l1"><a class="reference internal" href="uart_events.html">UART Events Service</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Watchdog Service</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Watchdog Service</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv410watchdog_t"><code class="docutils literal notranslate"><span class="pre">watchdog_t</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv413watchdog_initP10watchdog_t"><code class="docutils literal notranslate"><span class="pre">watchdog_init()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv412watchdog_petP10watchdog_t"><code class="docutils literal notranslate"><span class="pre">watchdog_pet()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv420watchdog_force_resetP10watchdog_t"><code class="docutils literal notranslate"><span class="pre">watchdog_force_reset()</span></code></a></li>
+</ul>
+</li>
 </ul>
 
 <div class="relations">
