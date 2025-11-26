@@ -17,11 +17,11 @@ jobs:
     - name: Install dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y gcc-arm-none-eabi doxygen python3-pip cmake
+        sudo apt-get install -y gcc-arm-none-eabi doxygen python3-pip cmake make
         pip3 install -r eps/documentation/sphinx/requirements.txt
 
     - name: Configure CMake
-      run: cmake -B eps/firmware/build -S eps/firmware -DCMAKE_TOOLCHAIN_FILE=eps/firmware/arm-none-eabi-toolchain.cmake
+      run: cmake -B eps/firmware/build -S eps/firmware -DCMAKE_TOOLCHAIN_FILE=${{ github.workspace }}/eps/firmware/arm-none-eabi-toolchain.cmake
 
     - name: Build firmware
       run: cmake --build eps/firmware/build
