@@ -1,0 +1,73 @@
+name: EPS Build and Generate Documentation
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        submodules: recursive
+        fetch-depth: 0
+
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y gcc-arm-none-eabi doxygen python3-pip cmake make
+        pip3 install -r eps/documentation/sphinx/requirements.txt
+
+    - name: Configure CMake
+      run: cmake -B eps/firmware/build -S eps/firmware -DCMAKE_TOOLCHAIN_FILE=${{ github.workspace }}/eps/firmware/arm-none-eabi-toolchain.cmake
+
+    - name: Build firmware
+      run: cmake --build eps/firmware/build
+
+    - name: Generate documentation
+      run: cmake --build eps/firmware/build --target docs
+
+    - name: Upload Doxygen documentation
+      uses: actions/upload-artifact@v4
+      with:
+        name: doxygen-documentation
+        path: eps/documentation/doxygen_output/
+
+    - name: Upload Sphinx documentation
+      uses: actions/upload-artifact@v4
+      with:
+        name: sphinx-documentation
+        path: eps/firmware/build/documentation/sphinx/
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v4
+      if: github.ref == 'refs/heads/main' || github.event_name == 'pull_request'
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: eps/firmware/build/documentation/sphinx/
+        destination_dir: ${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.number) || '.' }}
+        keep_files: true
+
+    - name: Post Preview Link
+      if: github.event_name == 'pull_request'
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const prNumber = context.issue.number;
+          const repo = context.repo.repo;
+          const owner = context.repo.owner;
+
+          const pageUrl = `https://${owner}.github.io/${repo}/pr-${prNumber}/`;
+
+          github.rest.issues.createComment({
+            owner,
+            repo,
+            issue_number: prNumber,
+            body: `**Documentation Preview:** [View Here](${pageUrl})`
+          });

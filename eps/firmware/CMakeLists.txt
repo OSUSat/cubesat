@@ -81,6 +81,8 @@ if (DOXYGEN_FOUND)
             COMMENT "Generating Sphinx documentation"
             VERBATIM)
 
+        add_dependencies(sphinx doxygen)
+
         add_custom_target(docs
             DEPENDS doxygen sphinx)
     endif()
