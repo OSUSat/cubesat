@@ -1,6 +1,8 @@
 #ifndef EPS_CONFIG_H
 #define EPS_CONFIG_H
 
+#define NUM_MPPT_CHANNELS 1 // the number of MPPT channels per device
+
 typedef enum { // these rails correspond to the hardware rails
     RAIL_OBC,
     RAIL_RADIO,

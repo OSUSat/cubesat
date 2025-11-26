@@ -1,7 +1,12 @@
 #include "power_profiles.h"
+#include "../config/eps_power_profiles.h"
 #include "rail_controller.h"
 
-power_profile_status_t power_profiles_enable(power_profile_t profile) {
+static power_profile_status_t _select_power_rails(power_profile_t profile,
+                                                  power_profile_info_t *info);
+
+power_profile_status_t power_profiles_enable(rail_controller_t *controller,
+                                             power_profile_t profile) {
     power_profile_info_t info;
     power_profile_status_t status = _select_power_rails(profile, &info);
 
@@ -10,13 +15,14 @@ power_profile_status_t power_profiles_enable(power_profile_t profile) {
     }
 
     for (int i = 0; i < info.count; i++) {
-        rail_controller_enable(info.rails[i]);
+        rail_controller_enable(controller, info.rails[i]);
     }
 
     return POWER_PROFILE_SUCCESS;
 }
 
-power_profile_status_t power_profiles_disable(power_profile_t profile) {
+power_profile_status_t power_profiles_disable(rail_controller_t *controller,
+                                              power_profile_t profile) {
     power_profile_info_t info;
     power_profile_status_t status = _select_power_rails(profile, &info);
 
@@ -25,7 +31,7 @@ power_profile_status_t power_profiles_disable(power_profile_t profile) {
     }
 
     for (int i = 0; i < info.count; i++) {
-        rail_controller_disable(info.rails[i]);
+        rail_controller_disable(controller, info.rails[i]);
     }
 
     return POWER_PROFILE_SUCCESS;
