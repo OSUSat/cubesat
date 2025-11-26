@@ -13,6 +13,13 @@ on:
       - 'eps/hardware/**.kicad_pro'
       - '.github/workflows/hardware.yml'
 
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: 'PR Number to test (e.g. 15)'
+        required: true
+        type: string
+
 permissions:
   contents: write
   pull-requests: write
