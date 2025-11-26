@@ -1,4 +1,4 @@
-name: Build and Generate Documentation
+name: EPS Build and Generate Documentation
 
 on:
   push:
@@ -18,7 +18,7 @@ jobs:
         pip3 install -r eps/documentation/sphinx/requirements.txt
 
     - name: Configure CMake
-      run: cmake -B eps/firmware/build -S firmware
+      run: cmake -B eps/firmware/build -S eps/firmware
 
     - name: Build firmware
       run: cmake --build eps/firmware/build
@@ -30,10 +30,10 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: doxygen-documentation
-        path: documentation/doxygen_output/
+        path: eps/documentation/doxygen_output/
 
     - name: Upload Sphinx documentation
       uses: actions/upload-artifact@v4
       with:
         name: sphinx-documentation
-        path: firmware/build/documentation/sphinx/
+        path: eps/firmware/build/documentation/sphinx/
