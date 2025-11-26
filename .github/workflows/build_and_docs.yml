@@ -40,3 +40,30 @@ jobs:
       with:
         name: sphinx-documentation
         path: eps/firmware/build/documentation/sphinx/
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v4
+      if: github.ref == 'refs/heads/main' || github.event_name == 'pull_request'
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: eps/firmware/build/documentation/sphinx/
+        destination_dir: ${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.number) || '.' }}
+        keep_files: true
+
+    - name: Post Preview Link
+      if: github.event_name == 'pull_request'
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const prNumber = context.issue.number;
+          const repo = context.repo.repo;
+          const owner = context.repo.owner;
+
+          const pageUrl = `https://${owner}.github.io/${repo}/pr-${prNumber}/`;
+
+          github.rest.issues.createComment({
+            owner,
+            repo,
+            issue_number: prNumber,
+            body: `**Documentation Preview:** [View Here](${pageUrl})`
+          });
