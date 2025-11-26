@@ -59,3 +59,31 @@ add_custom_command(TARGET eps_firmware POST_BUILD
     COMMAND ${CMAKE_SIZE} $<TARGET_FILE:eps_firmware>
     COMMENT "Building ${PROJECT_NAME}.hex and ${PROJECT_NAME}.bin"
 )
+
+find_package(Doxygen REQUIRED COMPONENTS doxygen)
+find_program(SPHINX_BUILD sphinx-build)
+
+if (DOXYGEN_FOUND)
+    set(DOXYFILE ${CMAKE_CURRENT_SOURCE_DIR}/../documentation/doxygen/Doxyfile)
+
+    add_custom_target(doxygen
+        COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYFILE}
+        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/../documentation/doxygen
+        COMMENT "Generating Doxygen XML API documentation"
+        VERBATIM)
+
+    if (SPHINX_BUILD)
+        add_custom_target(sphinx
+            COMMAND ${SPHINX_BUILD}
+                    -b html
+                    ${CMAKE_CURRENT_SOURCE_DIR}/../documentation/sphinx/source
+                    ${CMAKE_CURRENT_BINARY_DIR}/documentation/sphinx
+            COMMENT "Generating Sphinx documentation"
+            VERBATIM)
+
+        add_dependencies(sphinx doxygen)
+
+        add_custom_target(docs
+            DEPENDS doxygen sphinx)
+    endif()
+endif()
