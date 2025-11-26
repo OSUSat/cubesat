@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Rail Controller Service &#8212; OSUSat EPS Firmware  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Redundancy Manager Service" href="redundancy_manager.html" />
+    <link rel="prev" title="Power Profiles Service" href="power_profiles.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="rail-controller-service">
+<h1>Rail Controller Service<a class="headerlink" href="#rail-controller-service" title="Link to this heading">¶</a></h1>
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group__rail__controller"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">Rail</span> <span class="pre">Controller</span> <span class="pre">Service</span></span></dt>
+<dd><p>Driver for controlling power rails and monitoring consumption. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This service should be polled periodically via <a class="reference internal" href="#group__rail__controller__api_1gaf9d7244307b57391df6db5950c8f8c82"><span class="std std-ref">rail_controller_update</span></a> to ensure faults (like overcurrent events) are caught quickly. </p>
+</div>
+</dd></dl>
+
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group__rail__controller__types"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">Types</span></span></dt>
+<dd><p>Structures and Enums for rail status monitoring. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-enums">Enums</p>
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv413rail_status_t">
+<span id="_CPPv313rail_status_t"></span><span id="_CPPv213rail_status_t"></span><span class="target" id="group__rail__controller__types_1ga8bef9b2b3691523113963038a1a05ff7"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rail_status_t</span></span></span><a class="headerlink" href="#_CPPv413rail_status_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Operational health status of a power rail. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13rail_status_t14RAIL_STATUS_OKE">
+<span id="_CPPv3N13rail_status_t14RAIL_STATUS_OKE"></span><span id="_CPPv2N13rail_status_t14RAIL_STATUS_OKE"></span><span class="target" id="group__rail__controller__types_1gga8bef9b2b3691523113963038a1a05ff7a5764657dda26390311134e6de1fd4c19"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RAIL_STATUS_OK</span></span></span><a class="headerlink" href="#_CPPv4N13rail_status_t14RAIL_STATUS_OKE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Rail is operating nominally. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13rail_status_t20RAIL_STATUS_DISABLEDE">
+<span id="_CPPv3N13rail_status_t20RAIL_STATUS_DISABLEDE"></span><span id="_CPPv2N13rail_status_t20RAIL_STATUS_DISABLEDE"></span><span class="target" id="group__rail__controller__types_1gga8bef9b2b3691523113963038a1a05ff7a5c188d956abbed3faf043df14cbfdc6d"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RAIL_STATUS_DISABLED</span></span></span><a class="headerlink" href="#_CPPv4N13rail_status_t20RAIL_STATUS_DISABLEDE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Rail is intentionally disabled. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13rail_status_t23RAIL_STATUS_OVERCURRENTE">
+<span id="_CPPv3N13rail_status_t23RAIL_STATUS_OVERCURRENTE"></span><span id="_CPPv2N13rail_status_t23RAIL_STATUS_OVERCURRENTE"></span><span class="target" id="group__rail__controller__types_1gga8bef9b2b3691523113963038a1a05ff7af1ce86835d5b72a7bf7ba539a6206ef8"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RAIL_STATUS_OVERCURRENT</span></span></span><a class="headerlink" href="#_CPPv4N13rail_status_t23RAIL_STATUS_OVERCURRENTE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Rail was shut down due to current limit violation. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13rail_status_t24RAIL_STATUS_UNDERVOLTAGEE">
+<span id="_CPPv3N13rail_status_t24RAIL_STATUS_UNDERVOLTAGEE"></span><span id="_CPPv2N13rail_status_t24RAIL_STATUS_UNDERVOLTAGEE"></span><span class="target" id="group__rail__controller__types_1gga8bef9b2b3691523113963038a1a05ff7a8f2a6ac7d8afa255b8e5dccbcccb24db"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RAIL_STATUS_UNDERVOLTAGE</span></span></span><a class="headerlink" href="#_CPPv4N13rail_status_t24RAIL_STATUS_UNDERVOLTAGEE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Rail voltage is below expected threshold </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13rail_status_t17RAIL_STATUS_FAULTE">
+<span id="_CPPv3N13rail_status_t17RAIL_STATUS_FAULTE"></span><span id="_CPPv2N13rail_status_t17RAIL_STATUS_FAULTE"></span><span class="target" id="group__rail__controller__types_1gga8bef9b2b3691523113963038a1a05ff7a8d75dc53a366a3594e62be5c04551deb"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RAIL_STATUS_FAULT</span></span></span><a class="headerlink" href="#_CPPv4N13rail_status_t17RAIL_STATUS_FAULTE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Generic fault or hardware failure </p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv46rail_t">
+<span id="_CPPv36rail_t"></span><span id="_CPPv26rail_t"></span><span id="rail_t"></span><span class="target" id="structrail__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rail_t</span></span></span><a class="headerlink" href="#_CPPv46rail_t" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;rail_controller.h&gt;</em></div>
+<p>Snapshot for a specific power rail. </p>
+<p>Returned by <a class="reference internal" href="#group__rail__controller__api_1ga0484a0ae6d6c085c7b91da02a46b99e0"><span class="std std-ref">rail_controller_get_rail</span></a> for system monitoring. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N6rail_t7voltageE">
+<span id="_CPPv3N6rail_t7voltageE"></span><span id="_CPPv2N6rail_t7voltageE"></span><span id="rail_t::voltage__float"></span><span class="target" id="structrail__t_1a50d46f991e4770f65af4f0abb23bf53f"></span><span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">voltage</span></span></span><a class="headerlink" href="#_CPPv4N6rail_t7voltageE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Output voltage in volts </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N6rail_t7currentE">
+<span id="_CPPv3N6rail_t7currentE"></span><span id="_CPPv2N6rail_t7currentE"></span><span id="rail_t::current__float"></span><span class="target" id="structrail__t_1a153b73aee776b3b90a3ad63a1b60c671"></span><span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">current</span></span></span><a class="headerlink" href="#_CPPv4N6rail_t7currentE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Current in amps </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N6rail_t6statusE">
+<span id="_CPPv3N6rail_t6statusE"></span><span id="_CPPv2N6rail_t6statusE"></span><span id="rail_t::status__rail_status_t"></span><span class="target" id="structrail__t_1ab8fd4f7534bb1adc0067f1743e13a9ab"></span><a class="reference internal" href="#_CPPv413rail_status_t" title="rail_status_t"><span class="n"><span class="pre">rail_status_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">status</span></span></span><a class="headerlink" href="#_CPPv4N6rail_t6statusE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Current rail status </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N6rail_t7enabledE">
+<span id="_CPPv3N6rail_t7enabledE"></span><span id="_CPPv2N6rail_t7enabledE"></span><span id="rail_t::enabled__b"></span><span class="target" id="structrail__t_1a3a20afa7b492570000362c73769e060f"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">enabled</span></span></span><a class="headerlink" href="#_CPPv4N6rail_t7enabledE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>True if the switch is currently turned on </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv417rail_controller_t">
+<span id="_CPPv317rail_controller_t"></span><span id="_CPPv217rail_controller_t"></span><span id="rail_controller_t"></span><span class="target" id="structrail__controller__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rail_controller_t</span></span></span><a class="headerlink" href="#_CPPv417rail_controller_t" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;rail_controller.h&gt;</em></div>
+<p>Container for all power rail state. </p>
+<p>Holds snapshots for all rails and initialization status. Must be initialized with <a class="reference internal" href="#group__rail__controller__api_1ga9f47baff1650891c588add077c4e2b3d"><span class="std std-ref">rail_controller_init</span></a> before use. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N17rail_controller_t5railsE">
+<span id="_CPPv3N17rail_controller_t5railsE"></span><span id="_CPPv2N17rail_controller_t5railsE"></span><span id="rail_controller_t::rails__rail_tP"></span><span class="target" id="structrail__controller__t_1ace34e2d6273d2831b9cbf22e6e5aa0d5"></span><a class="reference internal" href="#_CPPv46rail_t" title="rail_t"><span class="n"><span class="pre">rail_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">rails</span></span></span><a class="headerlink" href="#_CPPv4N17rail_controller_t5railsE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Array of rail snapshots (length = NUM_POWER_RAILS) </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N17rail_controller_t11initializedE">
+<span id="_CPPv3N17rail_controller_t11initializedE"></span><span id="_CPPv2N17rail_controller_t11initializedE"></span><span id="rail_controller_t::initialized__b"></span><span class="target" id="structrail__controller__t_1a90ceb77ba83b26df87afb35b584f00b8"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">initialized</span></span></span><a class="headerlink" href="#_CPPv4N17rail_controller_t11initializedE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>True if controller has been initialized </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group__rail__controller__api"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">Public</span> <span class="pre">API</span></span></dt>
+<dd><p>External interface for interacting with the Rail Controller Service. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv420rail_controller_initP17rail_controller_t">
+<span id="_CPPv320rail_controller_initP17rail_controller_t"></span><span id="_CPPv220rail_controller_initP17rail_controller_t"></span><span id="rail_controller_init__rail_controller_tP"></span><span class="target" id="group__rail__controller__api_1ga9f47baff1650891c588add077c4e2b3d"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rail_controller_init</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv417rail_controller_t" title="rail_controller_t"><span class="n"><span class="pre">rail_controller_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">controller</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv420rail_controller_initP17rail_controller_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Initialize the Rail Controller hardware. </p>
+<p>Configures GPIO pins for load switches as outputs (defaulting to OFF) and initializes any I2C/ADC interfaces required for current monitoring.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This function is idempotent. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>[controller]</strong> – The rail controller</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv422rail_controller_enableP17rail_controller_t12power_rail_t">
+<span id="_CPPv322rail_controller_enableP17rail_controller_t12power_rail_t"></span><span id="_CPPv222rail_controller_enableP17rail_controller_t12power_rail_t"></span><span id="rail_controller_enable__rail_controller_tP.power_rail_t"></span><span class="target" id="group__rail__controller__api_1ga48a368d2102d8a7d9bdf2fd7e985da46"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rail_controller_enable</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv417rail_controller_t" title="rail_controller_t"><span class="n"><span class="pre">rail_controller_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">controller</span></span>, <span class="n"><span class="pre">power_rail_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">rail</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv422rail_controller_enableP17rail_controller_t12power_rail_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Turn ON a specific power rail. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This function returns immediately. The rail voltage may take some time to stabilize. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rail</strong> – <strong>[in]</strong> The unique ID of the rail to enable (defined in eps_config.h). </p></li>
+<li><p><strong>controller</strong> – <strong>[in]</strong> The rail controller</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv423rail_controller_disableP17rail_controller_t12power_rail_t">
+<span id="_CPPv323rail_controller_disableP17rail_controller_t12power_rail_t"></span><span id="_CPPv223rail_controller_disableP17rail_controller_t12power_rail_t"></span><span id="rail_controller_disable__rail_controller_tP.power_rail_t"></span><span class="target" id="group__rail__controller__api_1ga6be02de661ca55d5a05ba5c2d0bcb882"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rail_controller_disable</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv417rail_controller_t" title="rail_controller_t"><span class="n"><span class="pre">rail_controller_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">controller</span></span>, <span class="n"><span class="pre">power_rail_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">rail</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv423rail_controller_disableP17rail_controller_t12power_rail_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Turn OFF a specific power rail. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rail</strong> – <strong>[in]</strong> The unique ID of the rail to disable. </p></li>
+<li><p><strong>controller</strong> – <strong>[in]</strong> The rail controller </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv422rail_controller_updateP17rail_controller_t">
+<span id="_CPPv322rail_controller_updateP17rail_controller_t"></span><span id="_CPPv222rail_controller_updateP17rail_controller_t"></span><span id="rail_controller_update__rail_controller_tP"></span><span class="target" id="group__rail__controller__api_1gaf9d7244307b57391df6db5950c8f8c82"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rail_controller_update</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv417rail_controller_t" title="rail_controller_t"><span class="n"><span class="pre">rail_controller_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">controller</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv422rail_controller_updateP17rail_controller_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Periodic update task. </p>
+<p>Should be called in the main system loop.</p>
+<p>This function:<ol class="loweralpha simple">
+<li><p>Reads the latest voltage/current data from sensors.</p></li>
+<li><p>Checks against safety thresholds.</p></li>
+<li><p>If an overcurrent is detected, it will automatically call</p></li>
+</ol>
+</p>
+<p><a class="reference internal" href="#group__rail__controller__api_1ga6be02de661ca55d5a05ba5c2d0bcb882"><span class="std std-ref">rail_controller_disable</span></a> for the affected rail and set the status to <a class="reference internal" href="#group__rail__controller__types_1gga8bef9b2b3691523113963038a1a05ff7af1ce86835d5b72a7bf7ba539a6206ef8"><span class="std std-ref">RAIL_STATUS_OVERCURRENT</span></a>.</p>
+<p>Additionally, this function is used to update the current snapshot for all rails.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>controller</strong> – <strong>[in]</strong> The rail controller </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv424rail_controller_get_railP17rail_controller_t12power_rail_t">
+<span id="_CPPv324rail_controller_get_railP17rail_controller_t12power_rail_t"></span><span id="_CPPv224rail_controller_get_railP17rail_controller_t12power_rail_t"></span><span id="rail_controller_get_rail__rail_controller_tP.power_rail_t"></span><span class="target" id="group__rail__controller__api_1ga0484a0ae6d6c085c7b91da02a46b99e0"></span><a class="reference internal" href="#_CPPv46rail_t" title="rail_t"><span class="n"><span class="pre">rail_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rail_controller_get_rail</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv417rail_controller_t" title="rail_controller_t"><span class="n"><span class="pre">rail_controller_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">controller</span></span>, <span class="n"><span class="pre">power_rail_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">rail</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv424rail_controller_get_railP17rail_controller_t12power_rail_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Retrieve the latest telemetry for a specific rail. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rail</strong> – <strong>[in]</strong> The rail ID to query. </p></li>
+<li><p><strong>controller</strong> – <strong>[in]</strong> The rail controller</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#structrail__t"><span class="std std-ref">rail_t</span></a> A copy of the latest rail status structure. </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">OSUSat EPS Firmware</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Services:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="battery_management.html">Battery Management Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mppt_controller.html">MPPT Controller Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="power_profiles.html">Power Profiles Service</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Rail Controller Service</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv413rail_status_t"><code class="docutils literal notranslate"><span class="pre">rail_status_t</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv46rail_t"><code class="docutils literal notranslate"><span class="pre">rail_t</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv417rail_controller_t"><code class="docutils literal notranslate"><span class="pre">rail_controller_t</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv420rail_controller_initP17rail_controller_t"><code class="docutils literal notranslate"><span class="pre">rail_controller_init()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv422rail_controller_enableP17rail_controller_t12power_rail_t"><code class="docutils literal notranslate"><span class="pre">rail_controller_enable()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv423rail_controller_disableP17rail_controller_t12power_rail_t"><code class="docutils literal notranslate"><span class="pre">rail_controller_disable()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv422rail_controller_updateP17rail_controller_t"><code class="docutils literal notranslate"><span class="pre">rail_controller_update()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv424rail_controller_get_railP17rail_controller_t12power_rail_t"><code class="docutils literal notranslate"><span class="pre">rail_controller_get_rail()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="redundancy_manager.html">Redundancy Manager Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telemetry.html">Telemetry Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="uart_events.html">UART Events Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="watchdog.html">Watchdog Service</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="power_profiles.html" title="previous chapter">Power Profiles Service</a></li>
+      <li>Next: <a href="redundancy_manager.html" title="next chapter">Redundancy Manager Service</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2025, FerretCode.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/services/rail_controller.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
