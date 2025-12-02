@@ -34,6 +34,7 @@
  * @defgroup rail_controller_types Types
  * @ingroup rail_controller
  * @brief Structures and Enums for rail status monitoring.
+ *
  * @{
  */
 

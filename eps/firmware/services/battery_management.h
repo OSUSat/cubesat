@@ -33,6 +33,7 @@
  *  - protection and failsafe behavior
  *  - telemetry collection for upstream consumption
  *  - error state management by notifying redundancy manager
+ *
  * @{
  */
 
@@ -40,8 +41,75 @@
  * @defgroup battery_management_types Structures
  * @ingroup battery_management
  * @brief Structures used by the Battery Management Service.
+ *
  * @{
  */
+
+/**
+ * @brief Service Unique Identifier (16-bit).
+ * Used to construct unique Event IDs.
+ * "BA77" = BATT
+ */
+#define BATTERY_SERVICE_UID 0xBA77
+
+typedef enum {
+    /**
+     * @brief Published when a critical fault is detected.
+     * Payload: battery_status_t (Snapshot at time of failure)
+     */
+    BATTERY_FAULT_DETECTED = 0x10,
+
+    /**
+     * @brief Published when the battery management service passes its
+     * self-check. Payload: NULL
+     */
+    BATTERY_SELF_CHECK_PASSED,
+
+    /**
+     * @brief Published when the battery management service fails its
+     * self-check. Payload: failure mode
+     */
+    BATTERY_SELF_CHECK_FAILED,
+
+    /**
+     * @brief Published when voltage drops below critical threshold.
+     * Payload: float (Current Voltage)
+     */
+    BATTERY_CRITICAL_LOW,
+
+    /**
+     * @brief Published when charging starts or stops.
+     * Payload: bool (true = charging started, false = stopped)
+     */
+    BATTERY_CHARGING_CHANGE,
+
+    /**
+     * @brief Published when battery reaches 100% SoC.
+     * Payload: NULL
+     */
+    BATTERY_FULLY_CHARGED,
+
+    /**
+     * @brief Periodic telemetry broadcast (e.g., every 10s or 1 min).
+     * Payload: battery_status_t
+     */
+    BATTERY_TELEMETRY
+} battery_event_id_t;
+
+#define BATTERY_EVENT_FAULT_DETECTED                                           \
+    OSUSAT_BUILD_EVENT_ID(BATTERY_SERVICE_UID, BATTERY_FAULT_DETECTED)
+#define BATTERY_EVENT_SELF_CHECK_PASSED                                        \
+    OSUSAT_BUILD_EVENT_ID(BATTERY_SERVICE_UID, BATTERY_SELF_CHECK_PASSED)
+#define BATTERY_EVENT_SELF_CHECK_FAILED                                        \
+    OSUSAT_BUILD_EVENT_ID(BATTERY_SERVICE_UID, BATTERY_SELF_CHECK_FAILED)
+#define BATTERY_EVENT_CRITICAL_LOW                                             \
+    OSUSAT_BUILD_EVENT_ID(BATTERY_SERVICE_UID, BATTERY_CRITICAL_LOW)
+#define BATTERY_EVENT_CHARGING_CHANGE                                          \
+    OSUSAT_BUILD_EVENT_ID(BATTERY_SERVICE_UID, BATTERY_CHARGING_CHANGE)
+#define BATTERY_EVENT_FULLY_CHARGED                                            \
+    OSUSAT_BUILD_EVENT_ID(BATTERY_SERVICE_UID, BATTERY_FULLY_CHARGED)
+#define BATTERY_EVENT_TELEMETRY                                                \
+    OSUSAT_BUILD_EVENT_ID(BATTERY_SERVICE_UID, BATTERY_TELEMETRY)
 
 /**
  * @struct battery_status_t
@@ -58,6 +126,8 @@ typedef struct {
     float soh;         /**< State of health estimate (0-100%) */
     bool charging;     /**< True if charging is currently active */
     bool balancing;    /**< True if balancing circuits are enabled */
+    bool protection; /**< True if in battery protection mode (could be due to a
+                        fault, etc.) */
 } battery_status_t;
 
 /**
@@ -66,7 +136,7 @@ typedef struct {
  */
 typedef struct {
     battery_status_t battery_status; /**< The battery status */
-    bool intiialized;                /**< True if the BMS is initialized */
+    bool initialized;                /**< True if the BMS is initialized */
 } battery_management_t;
 
 /** @} */ // end battery_management_types
@@ -92,84 +162,24 @@ typedef struct {
 void battery_init(battery_management_t *manager);
 
 /**
- * @brief Perform a periodic update of battery status.
- *
- * This should be called once each main loop tick.
- * Reads sensors, updates SoC/SoH estimates, and runs charge/protection
- * algorithms.
- *
- * @param[in] manager The battery manager
- */
-void battery_update(battery_management_t *manager);
-
-/**
- * @brief Returns whether the battery system passed its self-check.
- *
- * @param[out] manager The battery manager
- *
- * @retval true  Battery is healthy and operational.
- * @retval false Battery failed diagnostics; EPS may require safe mode.
- */
-bool battery_self_check_ok(battery_management_t *manager);
-
-/**
- * @brief Determine if the battery requires charging.
- *
- * Uses SoC, voltage thresholds, and EPS policy rules.
- *
- * @retval true  Battery is below charging threshold.
- * @retval false Sufficient charge level or charging not allowed.
- */
-bool battery_needs_charge(void);
-
-/**
- * @brief Determine whether the battery is considered full.
- *
- * Typically derived from voltage or SoC limit.
- *
- * @retval true  Battery is full or very near full.
- * @retval false Battery still has capacity to charge.
- */
-bool battery_full(void);
-
-/**
  * @brief Apply charge-control policy.
  *
  * Enables or disables charging circuits based on SoC, temperature,
  * EPS power budget, and safety limits.
+ *
+ * @param[in] manager The battery manager
  */
-void battery_charge_control(void);
+void battery_charge_control(battery_management_t *manager, bool enable);
 
 /**
  * @brief Enter battery protection mode.
  *
  * Used during overvoltage, deep discharge, or
  * other critical conditions. May disable EPS rails or charging.
- */
-void battery_protect_mode(void);
-
-/**
- * @brief Get the full status snapshot of the battery system.
  *
- * @return ::battery_status_t struct with all telemetry fields populated.
+ * @param[in] manager The battery manager
  */
-battery_status_t battery_get_status(void);
-
-/**
- * @brief Get battery pack voltage.
- *
- * @return Measured voltage in volts.
- */
-float battery_get_voltage(void);
-
-/**
- * @brief Get battery pack current.
- *
- * Positive = charging, negative = discharging.
- *
- * @return Current in amps.
- */
-float battery_get_current(void);
+void battery_protect_mode(battery_management_t *manager);
 
 /** @} */ // end battery_management_api
 

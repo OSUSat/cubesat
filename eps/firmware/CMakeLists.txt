@@ -13,7 +13,8 @@ set(CMAKE_EXE_LINKER_FLAGS "${MCU_FLAGS} -specs=nosys.specs -specs=nano.specs -T
 
 option(BUILD_HITL "Build with simulated hardware mocks" OFF)
 
-add_subdirectory(./lib/messaging ${CMAKE_CURRENT_BINARY_DIR}/osusat-build)
+add_subdirectory(./lib/messaging ${CMAKE_CURRENT_BINARY_DIR}/osusat-messaging-build)
+add_subdirectory(./lib/core ${CMAKE_CURRENT_BINARY_DIR}/osusat-core-build)
 
 include_directories(app services hal config lib/messaging/c/include)
 
@@ -46,8 +47,9 @@ endif()
 enable_testing()
 add_subdirectory(tests)
 
-target_include_directories(eps_firmware PRIVATE
+target_link_libraries(eps_firmware PRIVATE
     OSUSat::C
+    OSUSat::Core
 )
 
 set(CMAKE_OBJCOPY arm-none-eabi-objcopy)
