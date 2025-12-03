@@ -137,6 +137,8 @@ typedef struct {
 typedef struct {
     battery_status_t battery_status; /**< The battery status */
     bool initialized;                /**< True if the BMS is initialized */
+    uint32_t tick_counter;           /**< Internal counter for update loop */
+    uint32_t telemetry_tick_counter; /**< Internal counter for telemetry */
 } battery_management_t;
 
 /** @} */ // end battery_management_types

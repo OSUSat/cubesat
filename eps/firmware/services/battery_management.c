@@ -91,12 +91,10 @@ static void battery_handle_tick(const osusat_event_t *e, void *ctx) {
         return;
     }
 
-    static uint32_t tick_counter =
-        0; // prescaler for running logic at 10Hz instead of system tick rate
-    tick_counter++;
+    manager->tick_counter++;
 
-    if (tick_counter >= BATTERY_UPDATE_INTERVAL_TICKS) {
-        tick_counter = 0;
+    if (manager->tick_counter >= BATTERY_UPDATE_INTERVAL_TICKS) {
+        manager->tick_counter = 0;
         battery_perform_update(manager);
     }
 }
@@ -115,11 +113,10 @@ static void battery_perform_update(battery_management_t *manager) {
                                  sizeof(float));
     }
 
-    static uint32_t tick_counter = 0;
-    tick_counter++;
+    manager->telemetry_tick_counter++;
 
-    if (tick_counter >= TELEMETRY_INTERVAL_CYCLES) {
-        tick_counter = 0;
+    if (manager->telemetry_tick_counter >= TELEMETRY_INTERVAL_CYCLES) {
+        manager->telemetry_tick_counter = 0;
 
         osusat_event_bus_publish(BATTERY_EVENT_TELEMETRY,
                                  &manager->battery_status,

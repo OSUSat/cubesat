@@ -21,17 +21,29 @@ jobs:
     - name: Install dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y gcc-arm-none-eabi doxygen python3-pip cmake make
+        sudo apt-get install -y gcc-arm-none-eabi doxygen python3-pip cmake make g++
         pip3 install -r eps/documentation/sphinx/requirements.txt
 
-    - name: Configure CMake
-      run: cmake -B eps/firmware/build -S eps/firmware -DCMAKE_TOOLCHAIN_FILE=${{ github.workspace }}/eps/firmware/arm-none-eabi-toolchain.cmake
+    - name: Configure CMake for ARM
+      run: cmake -B eps/firmware/build_arm -S eps/firmware -DCMAKE_TOOLCHAIN_FILE=${{ github.workspace }}/eps/firmware/arm-none-eabi-toolchain.cmake
 
-    - name: Build firmware
-      run: cmake --build eps/firmware/build
+    - name: Build firmware for ARM
+      run: cmake --build eps/firmware/build_arm
+
+    - name: Configure CMake for Host/HITL
+      run: cmake -B eps/firmware/build_hitl -S eps/firmware -DTARGET_ARCH=HOST -DBUILD_HITL=ON
+
+    - name: Build Host/HITL Tests
+      run: cmake --build eps/firmware/build_hitl
+
+    - name: Run CTest
+      run: |
+        cd eps/firmware/build_hitl
+        ctest --output-on-failure
 
     - name: Generate documentation
-      run: cmake --build eps/firmware/build --target docs
+      # documentation is generated from the main firmware build (ARM in this case)
+      run: cmake --build eps/firmware/build_arm --target docs
 
     - name: Upload Doxygen documentation
       uses: actions/upload-artifact@v4
@@ -43,14 +55,14 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: sphinx-documentation
-        path: eps/firmware/build/documentation/sphinx/
+        path: eps/firmware/build_arm/documentation/sphinx/
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v4
       if: github.ref == 'refs/heads/main' || github.event_name == 'pull_request'
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: eps/firmware/build/documentation/sphinx/
+        publish_dir: eps/firmware/build_arm/documentation/sphinx/
         destination_dir: ${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.number) || '.' }}
         keep_files: true
 
