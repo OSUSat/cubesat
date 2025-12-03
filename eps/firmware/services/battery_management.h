@@ -146,6 +146,7 @@ typedef struct {
  * @ingroup battery_management
  * @brief External interface for interacting with the Battery Management
  * Service.
+ *
  * @{
  */
 
@@ -155,7 +156,7 @@ typedef struct {
  * This must be called once at startup before any other BMS functions.
  * Initializes internal state, and performs a startup self-check.
  *
- * @note This function is idempotent.
+ * @note If called more than once, the internal battery state will be reset.
  *
  * @param[out] manager The battery manager
  */

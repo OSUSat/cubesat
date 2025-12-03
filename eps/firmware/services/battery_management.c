@@ -71,6 +71,8 @@ void battery_protect_mode(battery_management_t *manager) {
     if (!manager)
         return;
 
+    // TODO: figure out functionality
+
     battery_charge_control(manager, false);
 
     manager->battery_status.protection = true;

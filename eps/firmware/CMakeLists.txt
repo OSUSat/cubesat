@@ -16,31 +16,37 @@ option(BUILD_HITL "Build with simulated hardware mocks" OFF)
 add_subdirectory(./lib/messaging ${CMAKE_CURRENT_BINARY_DIR}/osusat-messaging-build)
 add_subdirectory(./lib/core ${CMAKE_CURRENT_BINARY_DIR}/osusat-core-build)
 
-include_directories(app services hal config lib/messaging/c/include)
+include_directories(app services config lib/messaging/c/include)
 
 file(GLOB APP_SRC app/*.c)
 file(GLOB SERVICES_SRC services/*.c)
-file(GLOB HAL_SRC hal/*.c)
-file(GLOB MOCKS_SRC mocks/*.c)
 
 if(BUILD_HITL)
     message(STATUS "Building for HITL testing...")
     add_definitions(-DHITL)
+
+    include_directories(hal mocks)
+    file(GLOB HAL_IMPL_SRC mocks/*.c)
+
     add_executable(eps_firmware 
         main.c 
         ${APP_SRC} 
         ${SERVICES_SRC} 
-        ${MOCKS_SRC}
+        ${HAL_IMPL_SRC}
     )
 else()
     message(STATUS "Building for hardware target...")
+
+    include_directories(hal)
+    file(GLOB HAL_IMPL_SRC hal/*.c)
+
     add_executable(eps_firmware 
         main.c 
         startup_stm32l496xx.s
         system_stm32l4xx.c
         ${APP_SRC} 
         ${SERVICES_SRC} 
-        ${HAL_SRC}
+        ${HAL_IMPL_SRC}
     )
 endif()
 
