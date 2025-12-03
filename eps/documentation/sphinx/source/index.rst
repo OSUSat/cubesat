@@ -3,6 +3,14 @@ OSUSat EPS Firmware documentation
 
 .. toctree::
    :maxdepth: 2
+   :caption: Applications:
+
+    applications/power_policies
+    applications/command_handler
+    applications/events
+
+.. toctree::
+   :maxdepth: 2
    :caption: Services:
 
    services/battery_management

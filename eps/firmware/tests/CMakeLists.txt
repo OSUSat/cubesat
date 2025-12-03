@@ -4,7 +4,9 @@ add_executable(test_power_profiles
     test_power_profiles.c
     mocks/rail_controller_mock.c
     ../services/power_profiles.c
+    mocks/event_bus_mock.c
 )
+target_link_libraries(test_power_profiles PRIVATE OSUSat::Core)
 
 add_test(
     NAME test_power_profiles

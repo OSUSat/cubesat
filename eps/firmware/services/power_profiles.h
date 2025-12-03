@@ -12,8 +12,8 @@
 #ifndef POWER_PROFILES_H
 #define POWER_PROFILES_H
 
-#include "../config/eps_config.h"
 #include "rail_controller.h"
+#include <stdbool.h> // For bool type
 #include <stddef.h>
 
 /**
@@ -35,6 +35,7 @@
  * @defgroup power_profiles_types Types
  * @ingroup power_profiles
  * @brief Enumerations and structures used by the Power Profiles service.
+ *
  * @{
  */
 
@@ -71,6 +72,17 @@ typedef enum {
                                            not exist */
 } power_profile_status_t;
 
+/**
+ * @struct power_profiles_t
+ * @brief Container for the Power Profiles Service state.
+ */
+typedef struct {
+    rail_controller_t
+        *rail_controller; /**< Pointer to the rail controller instance. */
+    power_profile_t current_profile; /**< The currently active power profile. */
+    bool initialized; /**< True if the service has been initialized. */
+} power_profiles_t;
+
 /** @} */ // end power_profiles_types
 
 /**
@@ -81,12 +93,24 @@ typedef enum {
  */
 
 /**
+ * @brief Initialize the Power Profiles Service.
+ *
+ * This must be called once at startup. It subscribes to profile change
+ * request events from the application layer.
+ *
+ * @param[in] profiles The power profiles service instance.
+ * @param[in] controller The rail controller instance.
+ */
+void power_profiles_init(power_profiles_t *profiles,
+                         rail_controller_t *controller);
+
+/**
  * @brief Enable all power rails associated with a specific profile.
  *
  * Iterates through the list of rails defined for the given profile
  * and instructs the Rail Controller to turn them ON.
  *
- * @param[in] controller The rail controller used to update rail state.
+ * @param[in] profiles The power profiles service instance.
  * @param[in] profile The target profile to enable (e.g.,
  * POWER_PROFILE_NOMINAL).
  *
@@ -94,7 +118,7 @@ typedef enum {
  * @retval POWER_PROFILE_ERROR_INVALID_PROFILE The provided profile ID does not
  * exist.
  */
-power_profile_status_t power_profiles_enable(rail_controller_t *controller,
+power_profile_status_t power_profiles_enable(power_profiles_t *profiles,
                                              power_profile_t profile);
 
 /**
@@ -106,14 +130,14 @@ power_profile_status_t power_profiles_enable(rail_controller_t *controller,
  * @note This is typically used when transitioning out of a state,
  * or to shut down specific subsystems associated with a mode.
  *
- * @param[in] controller The rail controller used to update rail state.
+ * @param[in] profiles The power profiles service instance.
  * @param[in] profile The target profile to disable.
  *
  * @retval POWER_PROFILE_SUCCESS Operation successful.
  * @retval POWER_PROFILE_ERROR_INVALID_PROFILE The provided profile ID does not
  * exist.
  */
-power_profile_status_t power_profiles_disable(rail_controller_t *controller,
+power_profile_status_t power_profiles_disable(power_profiles_t *profiles,
                                               power_profile_t profile);
 
 /** @} */ // end power_profiles_api
