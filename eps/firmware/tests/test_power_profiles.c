@@ -2,6 +2,7 @@
 #include "config/eps_power_profiles.h"
 #include "osusat/event_bus.h"
 #include "services/power_profiles.h"
+#include "tests/mocks/event_bus_mock.h"
 #include "tests/mocks/rail_controller_mock.h"
 #include <assert.h>
 #include <stdio.h>
@@ -9,16 +10,16 @@
 
 void test_enable_nominal_profile(void) {
     printf("Running test: %s\n", __func__);
+    osusat_event_bus_init(NULL, 0);
 
     mock_reset_rail_controller();
     rail_controller_t controller;
     power_profiles_t profiles;
     power_profiles_init(&profiles, &controller);
+    mock_reset_rail_controller(); // reset after init to ignore SAFE mode enable
 
     // manually trigger the event that would be sent by the power_policies app
-    osusat_event_bus_publish(APP_EVENT_REQUEST_POWER_PROFILE_NOMINAL, NULL, 0);
-    // in the test environment, we need to manually process the event
-    osusat_event_bus_process();
+    mock_event_bus_trigger(APP_EVENT_REQUEST_POWER_PROFILE_NOMINAL, NULL, 0);
 
     int expected_count =
         sizeof(nominal_mode_rails) / sizeof(nominal_mode_rails[0]);
@@ -34,6 +35,7 @@ void test_enable_nominal_profile(void) {
 
 void test_disable_safe_profile(void) {
     printf("Running test: %s\n", __func__);
+    osusat_event_bus_init(NULL, 0);
 
     mock_reset_rail_controller();
     rail_controller_t controller;
@@ -41,13 +43,11 @@ void test_disable_safe_profile(void) {
     power_profiles_init(&profiles, &controller);
 
     // the service starts in SAFE mode, so switch to NOMINAL first
-    osusat_event_bus_publish(APP_EVENT_REQUEST_POWER_PROFILE_NOMINAL, NULL, 0);
-    osusat_event_bus_process();
+    mock_event_bus_trigger(APP_EVENT_REQUEST_POWER_PROFILE_NOMINAL, NULL, 0);
     mock_reset_rail_controller(); // reset mock counts after the switch
 
     // now request SAFE mode, which should trigger the disable of NOMINAL rails
-    osusat_event_bus_publish(APP_EVENT_REQUEST_POWER_PROFILE_SAFE, NULL, 0);
-    osusat_event_bus_process();
+    mock_event_bus_trigger(APP_EVENT_REQUEST_POWER_PROFILE_SAFE, NULL, 0);
 
     int expected_count =
         sizeof(nominal_mode_rails) / sizeof(nominal_mode_rails[0]);
@@ -63,11 +63,13 @@ void test_disable_safe_profile(void) {
 
 void test_invalid_profile(void) {
     printf("Running test: %s\n", __func__);
+    osusat_event_bus_init(NULL, 0);
 
     mock_reset_rail_controller();
     rail_controller_t controller;
     power_profiles_t profiles;
     power_profiles_init(&profiles, &controller);
+    mock_reset_rail_controller();
 
     // try to enable an invalid profile
     power_profile_status_t status =
@@ -86,7 +88,6 @@ void test_invalid_profile(void) {
 }
 
 int main(void) {
-    osusat_event_bus_init(NULL, 0);
     test_enable_nominal_profile();
     test_disable_safe_profile();
     test_invalid_profile();
