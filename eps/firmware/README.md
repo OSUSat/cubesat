@@ -21,6 +21,7 @@ mkdir build
 cd build
 cmake -DCMAKE_TOOLCHAIN_FILE=../arm-none-eabi-toolchain.cmake ..
 # or: cmake -DCMAKE_TOOLCHAIN_FILE=../arm-none-eabi-toolchain.cmake -DBUILD_HITL=ON ..
+# or: cmake -DTARGET_ARCH=HOST
 make
 ```
 
