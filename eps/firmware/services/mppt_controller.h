@@ -14,6 +14,7 @@
 #define MPPT_CONTROLLER_H
 
 #include <stdbool.h>
+#include <stddef.h>
 #include <stdint.h>
 
 /**
@@ -34,8 +35,45 @@
  * @defgroup mppt_controller_types Structures & Enums
  * @ingroup mppt_controller
  * @brief Types used by the MPPT Controller Service.
+ *
  * @{
  */
+#define MPPT_CONTROLLER_SERVICE_ID 0xAB77
+
+typedef enum {
+    /**
+     * @brief Published when a critical fault is detected.
+     * Payload: mppt_channel_t (Snapshot at time of fault)
+     */
+    MPPT_FAULT_DETECTED = 0x10,
+
+    /**
+     * @brief The state of the MPPT controller's PGOOD pin has changed
+     * Payload: new state (bool)
+     */
+    MPPT_PGOOD_CHANGED,
+
+    /**
+     * @brief The MPPT input voltage level has lowered below the threshold
+     * Payload: new voltage (float)
+     */
+    MPPT_VOLTAGE_LOW,
+
+    /**
+     * @brief Periodic telemetry broadcast
+     * Payload: mppt_channel_t
+     */
+    MPPT_TELEMETRY
+} mppt_controller_event_id_t;
+
+#define MPPT_EVENT_FAULT_DETECTED                                              \
+    OSUSAT_BUILD_EVENT_ID(MPPT_CONTROLLER_SERVICE_ID, MPPT_FAULT_DETECTED)
+#define MPPT_EVENT_PGOOD_CHANGED                                               \
+    OSUSAT_BUILD_EVENT_ID(MPPT_CONTROLLER_SERVICE_ID, MPPT_PGOOD_CHANGED)
+#define MPPT_EVENT_VOLTAGE_LOW                                                 \
+    OSUSAT_BUILD_EVENT_ID(MPPT_CONTROLLER_SERVICE_ID, MPPT_VOLTAGE_LOW)
+#define MPPT_EVENT_TELEMETRY                                                   \
+    OSUSAT_BUILD_EVENT_ID(MPPT_CONTROLLER_SERVICE_ID, MPPT_TELEMETRY)
 
 /**
  * @enum mppt_status_t
@@ -44,9 +82,10 @@
  * Represents the operating or fault condition of a solar MPPT channel.
  */
 typedef enum {
-    MPPT_STATUS_OK,       /**< Channel operating nominally */
-    MPPT_STATUS_DISABLED, /**< Channel disabled by software or hardware */
-    MPPT_STATUS_FAULT,    /**< General hardware fault or unexpected condition */
+    MPPT_STATUS_OK,        /**< Channel operating nominally */
+    MPPT_STATUS_DISABLED,  /**< Channel disabled by software or hardware */
+    MPPT_STATUS_FAULT,     /**< General hardware fault or unexpected condition
+                            */
     MPPT_STATUS_UNDERVOLT, /**< Input voltage too low for MPPT to operate */
     MPPT_STATUS_OVERTEMP   /**< Channel is thermally throttled or shut down */
 } mppt_status_t;
@@ -77,7 +116,11 @@ typedef struct {
  */
 typedef struct {
     mppt_channel_t *channels; /**< List of MPPT channels for this device */
-    bool initialized;         /**< True if this device has been initialized */
+    size_t num_channels;      /**< Number of MPPT channels */
+    uint32_t tick_counter;    /**< Internal counter for update loop */
+    uint32_t telemetry_tick_counter; /**< Internal counter for telemetry publish
+                                        timing */
+    bool initialized; /**< True if this device has been initialized */
 } mppt_t;
 
 /** @} */ // end mppt_controller_types
@@ -86,6 +129,7 @@ typedef struct {
  * @defgroup mppt_controller_api Public API
  * @ingroup mppt_controller
  * @brief External interface for interacting with the MPPT Controller Service.
+ *
  * @{
  */
 
@@ -98,7 +142,10 @@ typedef struct {
  * This must be called once at startup per MPPT device before any other
  * MPPT functions are called.
  *
- * @note This function is idempotent.
+ * @note If called more than once, the internal MPPT controller state will be
+ * reset.
+ *
+ * @param[out] mppt The MPPT controller
  */
 void mppt_init(mppt_t *mppt);
 
@@ -121,36 +168,6 @@ void mppt_enable(uint8_t ch);
  * or thermal protection events.
  */
 void mppt_disable(uint8_t ch);
-
-/**
- * @brief Update readings for all MPPT channels.
- *
- * Clears and refreshes telemetry for each MPPT IC:
- *   - input/output voltage/current
- *   - computed power
- *   - PGOOD & fault state
- *   - thermal/undervoltage status
- *
- * Should be called once per main loop cycle.
- */
-void mppt_update(void);
-
-/**
- * @brief Get the current telemetry for a given MPPT channel.
- *
- * @param ch Channel index (0 to NUM_MPPT_CHANNELS-1)
- * @return ::mppt_channel_t snapshot of the channel state.
- */
-mppt_channel_t mppt_get_channel(uint8_t ch);
-
-/**
- * @brief Get total power generated across all MPPT channels.
- *
- * Aggregates the `power` field from all enabled channels.
- *
- * @return Total power in watts.
- */
-float mppt_get_total_power(void);
 
 /** @} */ // end mppt_controller_api
 /** @} */ // end mppt_controller

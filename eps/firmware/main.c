@@ -1,4 +1,5 @@
 #include "app/command_handler.h"
+#include "mppt_controller.h"
 #include "osusat/event_bus.h"
 #include "power_policies.h"
 #include "rail_controller.h"
@@ -15,6 +16,7 @@ static power_policies_t power_policies;
 // services
 static rail_controller_t rail_controller;
 static power_profiles_t power_profiles_service;
+static mppt_t mppt_controller_service;
 
 int main() {
     osusat_event_bus_init(event_queue, EVENT_QUEUE_SIZE);
@@ -22,6 +24,7 @@ int main() {
     // initialize services
     rail_controller_init(&rail_controller);
     power_profiles_init(&power_profiles_service, &rail_controller);
+    mppt_init(&mppt_controller_service);
 
     command_handler_init(&command_handler);
     power_policies_init(&power_policies);
