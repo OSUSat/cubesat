@@ -6,12 +6,15 @@
 #include "power_policies.h"
 #include "battery_management.h"
 #include "events.h"
+#include "mppt_controller.h"
 #include "osusat/event_bus.h"
 #include "redundancy_manager.h"
+#include <stdint.h>
 #include <string.h>
 
 static void handle_battery_event(const osusat_event_t *e, void *ctx);
 static void handle_redundancy_event(const osusat_event_t *e, void *ctx);
+static void handle_mppt_event(const osusat_event_t *e, void *ctx);
 
 void power_policies_init(power_policies_t *app) {
     if (app == NULL) {
@@ -21,13 +24,22 @@ void power_policies_init(power_policies_t *app) {
     memset(app, 0, sizeof(power_policies_t));
     app->initialized = true;
 
-    // subscribe to events from other services
+    // battery management events
     osusat_event_bus_subscribe(BATTERY_EVENT_CRITICAL_LOW, handle_battery_event,
                                app);
     osusat_event_bus_subscribe(BATTERY_EVENT_FULLY_CHARGED,
                                handle_battery_event, app);
+
     // osusat_event_bus_subscribe(REDUNDANCY_EVENT_SYSTEM_HEALTH_CHANGED,
     // handle_redundancy_event, app);
+
+    // mppt controller events
+    osusat_event_bus_subscribe(MPPT_EVENT_FAULT_DETECTED, handle_mppt_event,
+                               app);
+    osusat_event_bus_subscribe(MPPT_EVENT_PGOOD_CHANGED, handle_mppt_event,
+                               app);
+    osusat_event_bus_subscribe(MPPT_EVENT_PGOOD_CHANGED, handle_mppt_event,
+                               app);
 }
 
 static void handle_battery_event(const osusat_event_t *e, void *ctx) {
@@ -53,6 +65,27 @@ static void handle_battery_event(const osusat_event_t *e, void *ctx) {
 
     default:
         break;
+    }
+}
+
+static void handle_mppt_event(const osusat_event_t *e, void *ctx) {
+    power_policies_t *app __attribute__((unused)) = (power_policies_t *)ctx;
+
+    switch (e->id) {
+    case MPPT_EVENT_FAULT_DETECTED:
+        // TODO: faults sent from mppt controller should contain the channel
+        // where the failure occurred
+
+        if (e->payload_len >= sizeof(uint8_t)) {
+            uint8_t failed_channel = e->payload[0];
+
+            osusat_event_bus_publish(APP_EVENT_REQUEST_MPPT_DISABLE_CHANNEL,
+                                     &failed_channel, sizeof(uint8_t));
+
+            // TODO: schedule re-enable after some time
+        }
+
+        // TODO: handle other cases
     }
 }
 

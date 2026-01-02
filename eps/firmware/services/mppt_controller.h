@@ -38,6 +38,7 @@
  *
  * @{
  */
+
 #define MPPT_CONTROLLER_SERVICE_ID 0xAB77
 
 typedef enum {

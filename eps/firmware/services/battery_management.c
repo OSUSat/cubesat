@@ -4,6 +4,7 @@
  */
 
 #include "battery_management.h"
+#include "eps_config.h"
 #include "osusat/event_bus.h"
 #include <stddef.h>
 #include <stdint.h>
@@ -104,9 +105,8 @@ static void battery_perform_update(battery_management_t *manager) {
 
     manager->battery_status.voltage = voltage;
 
-    const float CRITICAL_THRESHOLD = 3.3f;
-
-    if (voltage < CRITICAL_THRESHOLD && !manager->battery_status.protection) {
+    if (voltage < CRITICAL_BATTERY_VOLTAGE_THRESHOLD &&
+        !manager->battery_status.protection) {
         battery_protect_mode(manager);
 
         osusat_event_bus_publish(BATTERY_EVENT_CRITICAL_LOW, &voltage,
