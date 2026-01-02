@@ -5,6 +5,7 @@
 
 #include "mppt_controller.h"
 #include "eps_config.h"
+#include "events.h"
 #include "osusat/event_bus.h"
 #include <stddef.h>
 #include <stdint.h>
@@ -18,9 +19,18 @@
  * Called automatically by the Event Bus.
  *
  * @param e   The event (SYSTICK).
- * @param ctx The context pointer (points to battery_management_t).
+ * @param ctx The context pointer (points to mppt_t).
  */
 static void mppt_handle_tick(const osusat_event_t *e, void *ctx);
+
+/**
+ * @brief Enable Channel Request Handler.
+ * Called when the application wants a channel enabled.
+ *
+ * @param e   The event (SYSTICK).
+ * @param ctx The context pointer (points to mppt_t).
+ */
+static void mppt_handle_request(const osusat_event_t *e, void *ctx);
 
 /**
  * @brief Internal update logic (reads sensors).
@@ -37,10 +47,29 @@ void mppt_init(mppt_t *mppt) {
     mppt->initialized = true;
 
     osusat_event_bus_subscribe(EVENT_SYSTICK, mppt_handle_tick, mppt);
+    osusat_event_bus_subscribe(APP_EVENT_REQUEST_MPPT_ENABLE_CHANNEL,
+                               mppt_handle_request, mppt);
+    osusat_event_bus_subscribe(APP_EVENT_REQUEST_MPPT_DISABLE_CHANNEL,
+                               mppt_handle_request, mppt);
+}
+
+static void mppt_handle_request(const osusat_event_t *e, void *ctx) {
+    if (e->payload_len != 1) {
+        return;
+    }
+
+    if (e->id == APP_EVENT_REQUEST_MPPT_ENABLE_CHANNEL) {
+        mppt_enable(e->payload[0]);
+    } else {
+        mppt_disable(e->payload[0]);
+    }
+
+    // manually perform update to process new change
+    mppt_perform_update((mppt_t *)ctx);
 }
 
 void mppt_enable(uint8_t ch) {
-    if (ch < 0 || ch > NUM_MPPT_CHANNELS) {
+    if (ch >= NUM_MPPT_CHANNELS) {
         return;
     }
 
@@ -48,7 +77,7 @@ void mppt_enable(uint8_t ch) {
 }
 
 void mppt_disable(uint8_t ch) {
-    if (ch < 0 || ch > NUM_MPPT_CHANNELS) {
+    if (ch >= NUM_MPPT_CHANNELS) {
         return;
     }
 
