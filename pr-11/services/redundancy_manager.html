@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Redundancy Manager Service &#8212; OSUSat EPS Firmware  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Telemetry Service" href="telemetry.html" />
+    <link rel="prev" title="Rail Controller Service" href="rail_controller.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="redundancy-manager-service">
+<h1>Redundancy Manager Service<a class="headerlink" href="#redundancy-manager-service" title="Link to this heading">¶</a></h1>
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group__redundancy__manager"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">Redundancy</span> <span class="pre">Manager</span></span></dt>
+<dd><p>Aggregates component faults to determine system-wide health. </p>
+<p>This module simplifies complex failure scenarios. Instead of the main state machine checking many different variables to see if the system is safe, it only needs to check <a class="reference internal" href="#group__redundancy__manager__api_1gaa312d0a87e30394732ca095a40a6b492"><span class="std std-ref">redundancy_manager_get_system_health</span></a>. </p>
+</dd></dl>
+
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group__redundancy__manager__types"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">Types</span></span></dt>
+<dd><p>Enumerations for fault sources and system states. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-typedefs">Typedefs</p>
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv412fault_code_t">
+<span id="_CPPv312fault_code_t"></span><span id="_CPPv212fault_code_t"></span><span id="fault_code_t"></span><span class="target" id="group__redundancy__manager__types_1gae3f1b00192fdb0e53f5e0058986de5e8"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fault_code_t</span></span></span><a class="headerlink" href="#_CPPv412fault_code_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Generic container for specific error codes. </p>
+<p>Specific codes are defined in the header files of the reporting modules. For example, a <a class="reference internal" href="#group__redundancy__manager__types_1gga4f4a3b75aaca29d932cb4e0c4153f78aac5b6371520a80a1c00485d3c8a72e190"><span class="std std-ref">FAULT_SOURCE_RAIL</span></a> might report a code corresponding to <code class="docutils literal notranslate"><span class="pre">RAIL_STATUS_OVERCURRENT</span></code>. </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-enums">Enums</p>
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv414fault_source_t">
+<span id="_CPPv314fault_source_t"></span><span id="_CPPv214fault_source_t"></span><span class="target" id="group__redundancy__manager__types_1ga4f4a3b75aaca29d932cb4e0c4153f78a"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fault_source_t</span></span></span><a class="headerlink" href="#_CPPv414fault_source_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Identifies the subsystem reporting a failure. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N14fault_source_t20FAULT_SOURCE_BATTERYE">
+<span id="_CPPv3N14fault_source_t20FAULT_SOURCE_BATTERYE"></span><span id="_CPPv2N14fault_source_t20FAULT_SOURCE_BATTERYE"></span><span class="target" id="group__redundancy__manager__types_1gga4f4a3b75aaca29d932cb4e0c4153f78aa14152b8c6d5aef9e1e6ec3bbdabb89ed"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FAULT_SOURCE_BATTERY</span></span></span><a class="headerlink" href="#_CPPv4N14fault_source_t20FAULT_SOURCE_BATTERYE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>BMS issues (Over/Under voltage, Temp, etc.) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N14fault_source_t17FAULT_SOURCE_MPPTE">
+<span id="_CPPv3N14fault_source_t17FAULT_SOURCE_MPPTE"></span><span id="_CPPv2N14fault_source_t17FAULT_SOURCE_MPPTE"></span><span class="target" id="group__redundancy__manager__types_1gga4f4a3b75aaca29d932cb4e0c4153f78aa027341fd026034b1fd35adf0bef2a936"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FAULT_SOURCE_MPPT</span></span></span><a class="headerlink" href="#_CPPv4N14fault_source_t17FAULT_SOURCE_MPPTE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Solar charging failures </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N14fault_source_t17FAULT_SOURCE_RAILE">
+<span id="_CPPv3N14fault_source_t17FAULT_SOURCE_RAILE"></span><span id="_CPPv2N14fault_source_t17FAULT_SOURCE_RAILE"></span><span class="target" id="group__redundancy__manager__types_1gga4f4a3b75aaca29d932cb4e0c4153f78aac5b6371520a80a1c00485d3c8a72e190"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FAULT_SOURCE_RAIL</span></span></span><a class="headerlink" href="#_CPPv4N14fault_source_t17FAULT_SOURCE_RAILE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Rail Controller events (Overcurrents) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N14fault_source_t19FAULT_SOURCE_SENSORE">
+<span id="_CPPv3N14fault_source_t19FAULT_SOURCE_SENSORE"></span><span id="_CPPv2N14fault_source_t19FAULT_SOURCE_SENSORE"></span><span class="target" id="group__redundancy__manager__types_1gga4f4a3b75aaca29d932cb4e0c4153f78aa459a409859262ba490b7cdf6de3241e9"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FAULT_SOURCE_SENSOR</span></span></span><a class="headerlink" href="#_CPPv4N14fault_source_t19FAULT_SOURCE_SENSORE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>I2C/SPI sensor timeouts or bad data </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv415system_health_t">
+<span id="_CPPv315system_health_t"></span><span id="_CPPv215system_health_t"></span><span class="target" id="group__redundancy__manager__types_1ga0e80690e3278646a3c63a266cbd9269d"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">system_health_t</span></span></span><a class="headerlink" href="#_CPPv415system_health_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>High-level classification of EPS health. </p>
+<p>Used by the Power Policy application to drive state transitions. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N15system_health_t16SYSTEM_HEALTH_OKE">
+<span id="_CPPv3N15system_health_t16SYSTEM_HEALTH_OKE"></span><span id="_CPPv2N15system_health_t16SYSTEM_HEALTH_OKE"></span><span class="target" id="group__redundancy__manager__types_1gga0e80690e3278646a3c63a266cbd9269da360de3d607746c5dd7896c63bf872782"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SYSTEM_HEALTH_OK</span></span></span><a class="headerlink" href="#_CPPv4N15system_health_t16SYSTEM_HEALTH_OKE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>All systems nominal. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N15system_health_t22SYSTEM_HEALTH_DEGRADEDE">
+<span id="_CPPv3N15system_health_t22SYSTEM_HEALTH_DEGRADEDE"></span><span id="_CPPv2N15system_health_t22SYSTEM_HEALTH_DEGRADEDE"></span><span class="target" id="group__redundancy__manager__types_1gga0e80690e3278646a3c63a266cbd9269daf77b2e1057865c8995d84a139d27feae"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SYSTEM_HEALTH_DEGRADED</span></span></span><a class="headerlink" href="#_CPPv4N15system_health_t22SYSTEM_HEALTH_DEGRADEDE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Non-critical faults (e.g., one sensor failed), mission continues. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N15system_health_t19SYSTEM_HEALTH_FAULTE">
+<span id="_CPPv3N15system_health_t19SYSTEM_HEALTH_FAULTE"></span><span id="_CPPv2N15system_health_t19SYSTEM_HEALTH_FAULTE"></span><span class="target" id="group__redundancy__manager__types_1gga0e80690e3278646a3c63a266cbd9269da53eff3058895568141e582b9034798d8"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SYSTEM_HEALTH_FAULT</span></span></span><a class="headerlink" href="#_CPPv4N15system_health_t19SYSTEM_HEALTH_FAULTE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Critical failure (e.g., Battery critical), requires Safe Mode. </p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv420redundancy_manager_t">
+<span id="_CPPv320redundancy_manager_t"></span><span id="_CPPv220redundancy_manager_t"></span><span id="redundancy_manager_t"></span><span class="target" id="structredundancy__manager__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">redundancy_manager_t</span></span></span><a class="headerlink" href="#_CPPv420redundancy_manager_t" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;redundancy_manager.h&gt;</em></div>
+<p>The redundancy manager state. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20redundancy_manager_t11initializedE">
+<span id="_CPPv3N20redundancy_manager_t11initializedE"></span><span id="_CPPv2N20redundancy_manager_t11initializedE"></span><span id="redundancy_manager_t::initialized__b"></span><span class="target" id="structredundancy__manager__t_1a7b00f05e448e0923730c43cf08fbe0f7"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">initialized</span></span></span><a class="headerlink" href="#_CPPv4N20redundancy_manager_t11initializedE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>The current system health snapshot True if the redundancy manager is initialized. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group__redundancy__manager__api"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">Public</span> <span class="pre">API</span></span></dt>
+<dd><p>Functions for reporting faults and querying health. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv423redundancy_manager_initP20redundancy_manager_t">
+<span id="_CPPv323redundancy_manager_initP20redundancy_manager_t"></span><span id="_CPPv223redundancy_manager_initP20redundancy_manager_t"></span><span id="redundancy_manager_init__redundancy_manager_tP"></span><span class="target" id="group__redundancy__manager__api_1gadd9a3bd1c1926239b7616532cc18b449"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">redundancy_manager_init</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv420redundancy_manager_t" title="redundancy_manager_t"><span class="n"><span class="pre">redundancy_manager_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">manager</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv423redundancy_manager_initP20redundancy_manager_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Initialize the Redundancy Manager. </p>
+<p>
+Clears all fault registries and sets system health to <a class="reference internal" href="#group__redundancy__manager__types_1gga0e80690e3278646a3c63a266cbd9269da360de3d607746c5dd7896c63bf872782"><span class="std std-ref">SYSTEM_HEALTH_OK</span></a>. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>manager</strong> – <strong>[in]</strong> The redundancy manager to initialize</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv431redundancy_manager_report_faultP20redundancy_manager_t14fault_source_t12fault_code_t">
+<span id="_CPPv331redundancy_manager_report_faultP20redundancy_manager_t14fault_source_t12fault_code_t"></span><span id="_CPPv231redundancy_manager_report_faultP20redundancy_manager_t14fault_source_t12fault_code_t"></span><span id="redundancy_manager_report_fault__redundancy_manager_tP.fault_source_t.fault_code_t"></span><span class="target" id="group__redundancy__manager__api_1gaa83253bdc63833cf0665d5137e2879a5"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">redundancy_manager_report_fault</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv420redundancy_manager_t" title="redundancy_manager_t"><span class="n"><span class="pre">redundancy_manager_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">manager</span></span>, <a class="reference internal" href="#_CPPv414fault_source_t" title="fault_source_t"><span class="n"><span class="pre">fault_source_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">source</span></span>, <a class="reference internal" href="#_CPPv412fault_code_t" title="fault_code_t"><span class="n"><span class="pre">fault_code_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">code</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv431redundancy_manager_report_faultP20redundancy_manager_t14fault_source_t12fault_code_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Report a fault from a subsystem. </p>
+<p>Called by other services when they detect an issue. The Redundancy Manager will log this fault and potentially downgrade the system health.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>manager</strong> – <strong>[in]</strong> The redundancy manager </p></li>
+<li><p><strong>source</strong> – <strong>[in]</strong> The subsystem reporting the error. </p></li>
+<li><p><strong>code</strong> – <strong>[in]</strong> The specific error code (module specific). </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv430redundancy_manager_clear_faultP20redundancy_manager_t14fault_source_t12fault_code_t">
+<span id="_CPPv330redundancy_manager_clear_faultP20redundancy_manager_t14fault_source_t12fault_code_t"></span><span id="_CPPv230redundancy_manager_clear_faultP20redundancy_manager_t14fault_source_t12fault_code_t"></span><span id="redundancy_manager_clear_fault__redundancy_manager_tP.fault_source_t.fault_code_t"></span><span class="target" id="group__redundancy__manager__api_1ga543ad52c331084154d569a3997ffbc7d"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">redundancy_manager_clear_fault</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv420redundancy_manager_t" title="redundancy_manager_t"><span class="n"><span class="pre">redundancy_manager_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">manager</span></span>, <a class="reference internal" href="#_CPPv414fault_source_t" title="fault_source_t"><span class="n"><span class="pre">fault_source_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">source</span></span>, <a class="reference internal" href="#_CPPv412fault_code_t" title="fault_code_t"><span class="n"><span class="pre">fault_code_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">code</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv430redundancy_manager_clear_faultP20redundancy_manager_t14fault_source_t12fault_code_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Clear a previously reported fault. </p>
+<p>Used when a subsystem recovers or when a fault is manually acknowledged. If all critical faults are cleared, system health may return to <a class="reference internal" href="#group__redundancy__manager__types_1gga0e80690e3278646a3c63a266cbd9269da360de3d607746c5dd7896c63bf872782"><span class="std std-ref">SYSTEM_HEALTH_OK</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>manager</strong> – <strong>[in]</strong> The redundancy manager </p></li>
+<li><p><strong>source</strong> – <strong>[in]</strong> The subsystem clearing the error. </p></li>
+<li><p><strong>code</strong> – <strong>[in]</strong> The specific error code to clear. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv436redundancy_manager_get_system_healthP20redundancy_manager_t">
+<span id="_CPPv336redundancy_manager_get_system_healthP20redundancy_manager_t"></span><span id="_CPPv236redundancy_manager_get_system_healthP20redundancy_manager_t"></span><span id="redundancy_manager_get_system_health__redundancy_manager_tP"></span><span class="target" id="group__redundancy__manager__api_1gaa312d0a87e30394732ca095a40a6b492"></span><a class="reference internal" href="#_CPPv415system_health_t" title="system_health_t"><span class="n"><span class="pre">system_health_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">redundancy_manager_get_system_health</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv420redundancy_manager_t" title="redundancy_manager_t"><span class="n"><span class="pre">redundancy_manager_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">manager</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv436redundancy_manager_get_system_healthP20redundancy_manager_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get the current aggregated system health. </p>
+<p>This is the primary interface for the application layer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>manager</strong> – <strong>[in]</strong> The redundancy manager</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#group__redundancy__manager__types_1ga0e80690e3278646a3c63a266cbd9269d"><span class="std std-ref">system_health_t</span></a> The worst-case health status currently active. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv425redundancy_manager_updateP20redundancy_manager_t">
+<span id="_CPPv325redundancy_manager_updateP20redundancy_manager_t"></span><span id="_CPPv225redundancy_manager_updateP20redundancy_manager_t"></span><span id="redundancy_manager_update__redundancy_manager_tP"></span><span class="target" id="group__redundancy__manager__api_1ga61296fb1f61de75d76e36f9a8fd11d58"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">redundancy_manager_update</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv420redundancy_manager_t" title="redundancy_manager_t"><span class="n"><span class="pre">redundancy_manager_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">manager</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv425redundancy_manager_updateP20redundancy_manager_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Periodic update task. </p>
+<p><p>Processes counters and timeouts. Use this to implement logic such as “Only trigger a system fault if</p>
+<p>the sensor error persists for 5 consecutive updates.”</p>
+</p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">OSUSat EPS Firmware</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Services:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="battery_management.html">Battery Management Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mppt_controller.html">MPPT Controller Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="power_profiles.html">Power Profiles Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rail_controller.html">Rail Controller Service</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Redundancy Manager Service</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv412fault_code_t"><code class="docutils literal notranslate"><span class="pre">fault_code_t</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv414fault_source_t"><code class="docutils literal notranslate"><span class="pre">fault_source_t</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv415system_health_t"><code class="docutils literal notranslate"><span class="pre">system_health_t</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv420redundancy_manager_t"><code class="docutils literal notranslate"><span class="pre">redundancy_manager_t</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv423redundancy_manager_initP20redundancy_manager_t"><code class="docutils literal notranslate"><span class="pre">redundancy_manager_init()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv431redundancy_manager_report_faultP20redundancy_manager_t14fault_source_t12fault_code_t"><code class="docutils literal notranslate"><span class="pre">redundancy_manager_report_fault()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv430redundancy_manager_clear_faultP20redundancy_manager_t14fault_source_t12fault_code_t"><code class="docutils literal notranslate"><span class="pre">redundancy_manager_clear_fault()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv436redundancy_manager_get_system_healthP20redundancy_manager_t"><code class="docutils literal notranslate"><span class="pre">redundancy_manager_get_system_health()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv425redundancy_manager_updateP20redundancy_manager_t"><code class="docutils literal notranslate"><span class="pre">redundancy_manager_update()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="telemetry.html">Telemetry Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="uart_events.html">UART Events Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="watchdog.html">Watchdog Service</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="rail_controller.html" title="previous chapter">Rail Controller Service</a></li>
+      <li>Next: <a href="telemetry.html" title="next chapter">Telemetry Service</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2025, FerretCode.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.1.0</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/services/redundancy_manager.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
