@@ -13,7 +13,7 @@
 #define POWER_PROFILES_H
 
 #include "rail_controller.h"
-#include <stdbool.h> // For bool type
+#include <stdbool.h>
 #include <stddef.h>
 
 /**
