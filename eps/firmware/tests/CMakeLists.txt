@@ -33,7 +33,7 @@ add_test(
 
 add_executable(test_adc_mock
     test_adc_mock.c
-    ../mocks/adc_mock.c
+    ../mocks/hal_adc_mock.c
 )
 
 target_link_libraries(test_adc_mock PRIVATE
@@ -49,7 +49,7 @@ add_test(
 
 add_executable(test_gpio_mock
     test_gpio_mock.c
-    ../mocks/gpio_mock.c
+    ../mocks/hal_gpio_mock.c
 )
 
 target_link_libraries(test_gpio_mock PRIVATE
@@ -65,7 +65,7 @@ add_test(
 
 add_executable(test_uart_mock
     test_uart_mock.c
-    ../mocks/uart_mock.c
+    ../mocks/hal_uart_mock.c
 )
 
 target_link_libraries(test_uart_mock PRIVATE

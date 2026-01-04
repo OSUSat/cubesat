@@ -41,7 +41,8 @@ file(GLOB APP_SRC app/*.c)
 file(GLOB SERVICES_SRC services/*.c)
 
 if(TARGET_ARCH STREQUAL "ARM")
-    file(GLOB_RECURSE BSP_SRC
+     file(GLOB HAL_SRC
+        hal/*.c
         bsp/hal_driver/Src/*.c
         bsp/mcu/Src/*.c
         bsp/system/*.c
@@ -53,7 +54,7 @@ if(TARGET_ARCH STREQUAL "ARM")
         main.c
         ${APP_SRC}
         ${SERVICES_SRC}
-        ${BSP_SRC}
+        ${HAL_SRC}
     )
 
     target_include_directories(eps_firmware PRIVATE
@@ -62,6 +63,7 @@ if(TARGET_ARCH STREQUAL "ARM")
         bsp/hal_driver/Inc
         bsp/mcu/Inc
         bsp/system
+        hal
         app
         services
         config
@@ -75,13 +77,30 @@ if(TARGET_ARCH STREQUAL "ARM")
 elseif(BUILD_HITL)
     message(STATUS "Building for HITL testing...")
     add_definitions(-DHITL)
-    include_directories(hal mocks)
-    file(GLOB HAL_IMPL_SRC mocks/*.c)
+
+    set(HITL_HAL_MOCKS
+        mocks/bsp/hal_stubs.c
+        mocks/hal_adc_mock.c
+        mocks/hal_gpio_mock.c
+        mocks/hal_uart_mock.c
+        mocks/hal_i2c_mock.c
+        mocks/bsp/clock_mock.c
+    )
+
     add_executable(eps_firmware
         main.c
         ${APP_SRC}
         ${SERVICES_SRC}
-        ${HAL_IMPL_SRC}
+        ${HITL_HAL_MOCKS}
+    )
+
+    include_directories(
+        mocks/bsp
+        hal
+        mocks
+        app
+        services
+        config
     )
 endif()
 

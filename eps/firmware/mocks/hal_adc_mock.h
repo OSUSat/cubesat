@@ -9,7 +9,7 @@
 #ifndef ADC_MOCK_H
 #define ADC_MOCK_H
 
-#include "adc.h"
+#include "hal_adc.h"
 
 /**
  * @defgroup adc_mock ADC Mock

@@ -6,6 +6,8 @@
 
 #define CRITICAL_BATTERY_VOLTAGE_THRESHOLD 3.3f
 
+#define SERVICE_COUNT 8
+
 typedef enum { // these rails correspond to the hardware rails
     RAIL_OBC,
     RAIL_RADIO,

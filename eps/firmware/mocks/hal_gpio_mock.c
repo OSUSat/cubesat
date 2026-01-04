@@ -1,5 +1,4 @@
-#include "gpio_mock.h"
-#include "gpio.h"
+#include "hal_gpio_mock.h"
 #include <stdio.h>
 
 #define MAX_MOCK_PINS 32
@@ -51,7 +50,7 @@ static void check_and_fire_interrupt(uint8_t pin, gpio_state_t old_state,
     }
 }
 
-void gpio_init(void) {
+void hal_gpio_init(void) {
     printf("MOCK: GPIO initialized\n");
 
     for (int i = 0; i < MAX_MOCK_PINS; i++) {
@@ -60,7 +59,7 @@ void gpio_init(void) {
     }
 }
 
-void gpio_set_mode(uint8_t pin, gpio_mode_t mode) {
+void hal_gpio_set_mode(uint8_t pin, gpio_mode_t mode) {
     if (pin >= MAX_MOCK_PINS) {
         printf("MOCK ERROR: Pin %d out of bounds\n", pin);
         return;
@@ -70,7 +69,8 @@ void gpio_set_mode(uint8_t pin, gpio_mode_t mode) {
     mock_pin_modes[pin] = mode;
 }
 
-void gpio_register_callback(uint8_t pin, gpio_callback_t callback, void *ctx) {
+void hal_gpio_register_callback(uint8_t pin, gpio_callback_t callback,
+                                void *ctx) {
     if (pin >= MAX_MOCK_PINS) {
         printf("MOCK ERROR: Pin %d out of bounds\n", pin);
         return;
@@ -81,7 +81,7 @@ void gpio_register_callback(uint8_t pin, gpio_callback_t callback, void *ctx) {
     mock_callbacks[pin].ctx = ctx;
 }
 
-void gpio_write(uint8_t pin, gpio_state_t state) {
+void hal_gpio_write(uint8_t pin, gpio_state_t state) {
     if (pin >= MAX_MOCK_PINS) {
         printf("MOCK ERROR: Pin %d out of bounds\n", pin);
         return;
@@ -102,7 +102,7 @@ void gpio_write(uint8_t pin, gpio_state_t state) {
     }
 }
 
-gpio_state_t gpio_read(uint8_t pin) {
+gpio_state_t hal_gpio_read(uint8_t pin) {
     if (pin >= MAX_MOCK_PINS) {
         printf("MOCK ERROR: Pin %d out of bounds\n", pin);
         return GPIO_STATE_LOW;
@@ -111,7 +111,7 @@ gpio_state_t gpio_read(uint8_t pin) {
     return mock_pin_states[pin];
 }
 
-void gpio_toggle(uint8_t pin) {
+void hal_gpio_toggle(uint8_t pin) {
     if (pin >= MAX_MOCK_PINS)
         return;
 
@@ -120,7 +120,7 @@ void gpio_toggle(uint8_t pin) {
                                      ? GPIO_STATE_HIGH
                                      : GPIO_STATE_LOW;
 
-        gpio_write(pin, new_state);
+        hal_gpio_write(pin, new_state);
     }
 }
 

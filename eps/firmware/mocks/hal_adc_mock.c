@@ -6,8 +6,7 @@
  * development without actual hardware.
  */
 
-#include "adc_mock.h"
-#include "adc.h"
+#include "hal_adc_mock.h"
 #include <stdint.h>
 #include <stdio.h>
 
@@ -15,7 +14,7 @@
 
 static uint16_t mock_adc_values[MAX_ADC_CHANNELS];
 
-void adc_init(void) {
+void hal_adc_init(void) {
     printf("MOCK: ADC initialized\n");
 
     for (int i = 0; i < MAX_ADC_CHANNELS; i++) {
@@ -23,7 +22,7 @@ void adc_init(void) {
     }
 }
 
-uint16_t adc_read(adc_channel_t channel) {
+uint16_t hal_adc_read(adc_channel_t channel) {
     if (channel >= MAX_ADC_CHANNELS) {
         printf("MOCK ERROR: ADC channel %d out of bounds\n", channel);
         return 0;

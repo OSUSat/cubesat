@@ -71,7 +71,7 @@ typedef void (*gpio_callback_t)(uint8_t pin, void *ctx);
  *
  * This should be called before using any other GPIO functions.
  */
-void gpio_init(void);
+void hal_gpio_init(void);
 
 /**
  * @brief Set the mode of a GPIO pin.
@@ -83,7 +83,7 @@ void gpio_init(void);
  * @param[in] pin The GPIO pin
  * @param[in] mode The GPIO mode
  */
-void gpio_set_mode(uint8_t pin, gpio_mode_t mode);
+void hal_gpio_set_mode(uint8_t pin, gpio_mode_t mode);
 
 /**
  * @brief Register a software callback for a GPIO interrupt.
@@ -96,7 +96,8 @@ void gpio_set_mode(uint8_t pin, gpio_mode_t mode);
  * @param[in] ctx      Optional context pointer (e.g., Service struct or Event
  * Bus).
  */
-void gpio_register_callback(uint8_t pin, gpio_callback_t callback, void *ctx);
+void hal_gpio_register_callback(uint8_t pin, gpio_callback_t callback,
+                                void *ctx);
 
 /**
  * @brief Drive a GPIO pin
@@ -104,7 +105,7 @@ void gpio_register_callback(uint8_t pin, gpio_callback_t callback, void *ctx);
  * @param[in] pin The pin to drive
  * @param[in] state The state to drive the pin to
  */
-void gpio_write(uint8_t pin, gpio_state_t state);
+void hal_gpio_write(uint8_t pin, gpio_state_t state);
 
 /**
  * @brief Read the state of a GPIO pin
@@ -114,14 +115,14 @@ void gpio_write(uint8_t pin, gpio_state_t state);
  * @retval GPIO_STATE_LOW the GPIO pin is currently low
  * @retval GPIO_STATE_HIGH the GPIO pin is currently high
  */
-gpio_state_t gpio_read(uint8_t pin);
+gpio_state_t hal_gpio_read(uint8_t pin);
 
 /**
  * @brief Toggle a GPIO pin from its current state
  *
  * @param[in] pin The pin to toggle
  */
-void gpio_toggle(uint8_t pin);
+void hal_gpio_toggle(uint8_t pin);
 
 /** @} */ // end gpio_api
 

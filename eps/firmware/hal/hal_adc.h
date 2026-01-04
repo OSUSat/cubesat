@@ -20,8 +20,7 @@
 
 /**
  * @defgroup adc_types Types
- * @ingroup adc
- * @brief Types used by the ADC driver.
+ * @ingroup adc @brief Types used by the ADC driver.
  *
  * @{
  */
@@ -53,7 +52,7 @@ typedef enum {
  *
  * This must be called before sampling any channels.
  */
-void adc_init(void);
+void hal_adc_init(void);
 
 /**
  * @brief Read a raw ADC value from the specified channel.
@@ -62,7 +61,7 @@ void adc_init(void);
  *
  * @return Raw ADC conversion value (resolution hardware-dependent)
  */
-uint16_t adc_read(adc_channel_t channel);
+uint16_t hal_adc_read(adc_channel_t channel);
 
 /** @} */ // end adc_api
 

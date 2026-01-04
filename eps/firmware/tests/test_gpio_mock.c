@@ -1,5 +1,5 @@
-#include "hal/gpio.h"
-#include "mocks/gpio_mock.h"
+#include "hal_gpio.h"
+#include "hal_gpio_mock.h"
 #include <assert.h>
 #include <stdbool.h>
 #include <stdio.h>
@@ -20,41 +20,41 @@ void reset_callback_state(void) {
 
 void test_gpio_write_read(void) {
     printf("Running test: %s\n", __func__);
-    gpio_init();
+    hal_gpio_init();
 
-    gpio_set_mode(5, GPIO_MODE_OUTPUT);
-    gpio_write(5, GPIO_STATE_HIGH);
-    assert(gpio_read(5) == GPIO_STATE_HIGH);
+    hal_gpio_set_mode(5, GPIO_MODE_OUTPUT);
+    hal_gpio_write(5, GPIO_STATE_HIGH);
+    assert(hal_gpio_read(5) == GPIO_STATE_HIGH);
 
-    gpio_write(5, GPIO_STATE_LOW);
-    assert(gpio_read(5) == GPIO_STATE_LOW);
+    hal_gpio_write(5, GPIO_STATE_LOW);
+    assert(hal_gpio_read(5) == GPIO_STATE_LOW);
     printf("Test passed.\n");
 }
 
 void test_gpio_toggle(void) {
     printf("Running test: %s\n", __func__);
-    gpio_init();
+    hal_gpio_init();
 
-    gpio_set_mode(3, GPIO_MODE_OUTPUT);
-    gpio_write(3, GPIO_STATE_LOW);
-    assert(gpio_read(3) == GPIO_STATE_LOW);
+    hal_gpio_set_mode(3, GPIO_MODE_OUTPUT);
+    hal_gpio_write(3, GPIO_STATE_LOW);
+    assert(hal_gpio_read(3) == GPIO_STATE_LOW);
 
-    gpio_toggle(3);
-    assert(gpio_read(3) == GPIO_STATE_HIGH);
+    hal_gpio_toggle(3);
+    assert(hal_gpio_read(3) == GPIO_STATE_HIGH);
 
-    gpio_toggle(3);
-    assert(gpio_read(3) == GPIO_STATE_LOW);
+    hal_gpio_toggle(3);
+    assert(hal_gpio_read(3) == GPIO_STATE_LOW);
     printf("Test passed.\n");
 }
 
 void test_gpio_interrupts(void) {
     printf("Running test: %s\n", __func__);
-    gpio_init();
+    hal_gpio_init();
     reset_callback_state();
 
     // test rising edge interrupt
-    gpio_set_mode(8, GPIO_MODE_IT_RISING);
-    gpio_register_callback(8, test_callback, NULL);
+    hal_gpio_set_mode(8, GPIO_MODE_IT_RISING);
+    hal_gpio_register_callback(8, test_callback, NULL);
 
     // force a low-to-high transition
     mock_gpio_set_pin_state(8, GPIO_STATE_LOW);
@@ -66,8 +66,8 @@ void test_gpio_interrupts(void) {
     reset_callback_state();
 
     // test falling edge interrupt
-    gpio_set_mode(9, GPIO_MODE_IT_FALLING);
-    gpio_register_callback(9, test_callback, NULL);
+    hal_gpio_set_mode(9, GPIO_MODE_IT_FALLING);
+    hal_gpio_register_callback(9, test_callback, NULL);
     mock_gpio_set_pin_state(9, GPIO_STATE_HIGH);
     mock_gpio_set_pin_state(9, GPIO_STATE_LOW); // falling edge
 
@@ -77,8 +77,8 @@ void test_gpio_interrupts(void) {
     reset_callback_state();
 
     // test no interrupt when mode doesn't match
-    gpio_set_mode(10, GPIO_MODE_IT_RISING);
-    gpio_register_callback(10, test_callback, NULL);
+    hal_gpio_set_mode(10, GPIO_MODE_IT_RISING);
+    hal_gpio_register_callback(10, test_callback, NULL);
     mock_gpio_set_pin_state(10, GPIO_STATE_HIGH);
     reset_callback_state();
     mock_gpio_set_pin_state(10, GPIO_STATE_LOW); // falling edge

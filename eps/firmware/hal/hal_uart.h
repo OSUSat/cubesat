@@ -78,7 +78,7 @@ typedef void (*uart_rx_callback_t)(uart_port_t port, void *ctx);
  * @param[in] port   UART port index
  * @param[in] config Pointer to the UART configuration
  */
-void uart_init(uart_port_t port, const uart_config_t *config);
+void hal_uart_init(uart_port_t port, const uart_config_t *config);
 
 /**
  * @brief Register a callback that fires whenever new bytes are received.
@@ -87,8 +87,8 @@ void uart_init(uart_port_t port, const uart_config_t *config);
  * @param[in] cb   The callback handler
  * @param[in] ctx  Any additional context to pass to the RX callback
  */
-void uart_register_rx_callback(uart_port_t port, uart_rx_callback_t cb,
-                               void *ctx);
+void hal_uart_register_rx_callback(uart_port_t port, uart_rx_callback_t cb,
+                                   void *ctx);
 
 /**
  * @brief Send raw bytes (blocking or DMA depending on implementation)
@@ -97,7 +97,7 @@ void uart_register_rx_callback(uart_port_t port, uart_rx_callback_t cb,
  * @param[in] data The UART data to write
  * @param[in] len  The length of the payload
  */
-void uart_write(uart_port_t port, const uint8_t *data, uint16_t len);
+void hal_uart_write(uart_port_t port, const uint8_t *data, uint16_t len);
 
 /**
  * @brief Non-blocking read of up to `len` bytes from the RX ring buffer.
@@ -106,7 +106,7 @@ void uart_write(uart_port_t port, const uint8_t *data, uint16_t len);
  * @param[out] out The output buffer for any read UART bytes
  * @param[in]  len The length to read
  */
-uint16_t uart_read(uart_port_t port, uint8_t *out, uint16_t len);
+uint16_t hal_uart_read(uart_port_t port, uint8_t *out, uint16_t len);
 
 /**
  * @brief ISR entry point for real hardware.
@@ -114,7 +114,7 @@ uint16_t uart_read(uart_port_t port, uint8_t *out, uint16_t len);
  *
  * @param[in] port The UART port
  */
-void uart_isr_handler(uart_port_t port);
+void hal_uart_isr_handler(uart_port_t port);
 
 /** @} */ // end uart_api
 

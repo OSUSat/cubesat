@@ -1,6 +1,5 @@
-#include "uart_mock.h"
+#include "hal_uart_mock.h"
 #include "osusat/ring_buffer.h"
-#include "uart.h"
 #include <stdint.h>
 #include <stdio.h>
 #include <string.h>
@@ -22,7 +21,7 @@ typedef struct {
 
 static uart_mock_port_t uart_ports[UART_PORT_MAX];
 
-void uart_init(uart_port_t port, const uart_config_t *config) {
+void hal_uart_init(uart_port_t port, const uart_config_t *config) {
     if (port >= UART_PORT_MAX || !config)
         return;
 
@@ -38,8 +37,8 @@ void uart_init(uart_port_t port, const uart_config_t *config) {
     printf("MOCK UART%u initialized\n", port + 1);
 }
 
-void uart_register_rx_callback(uart_port_t port, uart_rx_callback_t cb,
-                               void *ctx) {
+void hal_uart_register_rx_callback(uart_port_t port, uart_rx_callback_t cb,
+                                   void *ctx) {
     if (port >= UART_PORT_MAX)
         return;
 
@@ -49,7 +48,7 @@ void uart_register_rx_callback(uart_port_t port, uart_rx_callback_t cb,
     p->rx_cb_ctx = ctx;
 }
 
-void uart_write(uart_port_t port, const uint8_t *data, uint16_t len) {
+void hal_uart_write(uart_port_t port, const uint8_t *data, uint16_t len) {
     if (port >= UART_PORT_MAX)
         return;
 
@@ -65,7 +64,7 @@ void uart_write(uart_port_t port, const uint8_t *data, uint16_t len) {
     printf("MOCK UART%u wrote %u bytes\n", port + 1, len);
 }
 
-uint16_t uart_read(uart_port_t port, uint8_t *out, uint16_t len) {
+uint16_t hal_uart_read(uart_port_t port, uint8_t *out, uint16_t len) {
     if (port >= UART_PORT_MAX || !out)
         return 0;
 

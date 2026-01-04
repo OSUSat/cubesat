@@ -10,7 +10,7 @@
 #ifndef UART_MOCK_H
 #define UART_MOCK_H
 
-#include "uart.h"
+#include "hal_uart.h"
 #include <stddef.h>
 #include <stdint.h>
 
@@ -18,6 +18,7 @@
  * @defgroup uart_mock UART Mock
  * @ingroup uart
  * @brief Testing utilities for the UART module.
+ *
  * @{
  */
 
