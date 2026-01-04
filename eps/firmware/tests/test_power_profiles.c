@@ -1,9 +1,9 @@
-#include "app/events.h"
-#include "config/eps_power_profiles.h"
+#include "eps_power_profiles.h"
+#include "event_bus_mock.h"
+#include "events.h"
 #include "osusat/event_bus.h"
-#include "services/power_profiles.h"
-#include "tests/mocks/event_bus_mock.h"
-#include "tests/mocks/rail_controller_mock.h"
+#include "power_profiles.h"
+#include "rail_controller_mock.h"
 #include <assert.h>
 #include <stdio.h>
 #include <string.h>

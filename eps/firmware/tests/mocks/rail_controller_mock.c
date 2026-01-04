@@ -1,5 +1,5 @@
-#include "tests/mocks/rail_controller_mock.h"
-#include "services/rail_controller.h"
+#include "rail_controller_mock.h"
+#include "rail_controller.h"
 #include <stdbool.h>
 #include <stdio.h>
 #include <string.h>

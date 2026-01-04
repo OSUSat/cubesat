@@ -1,5 +1,5 @@
-#include "hal/adc.h"
-#include "mocks/adc_mock.h"
+#include "adc.h"
+#include "adc_mock.h"
 #include <assert.h>
 #include <stdio.h>
 

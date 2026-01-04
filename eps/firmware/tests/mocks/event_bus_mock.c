@@ -1,4 +1,4 @@
-#include "tests/mocks/event_bus_mock.h"
+#include "event_bus_mock.h"
 #include <stdio.h>
 #include <string.h>
 

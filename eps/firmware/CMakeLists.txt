@@ -3,17 +3,26 @@ project(eps_firmware C ASM)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_C_STANDARD 11)
 
+add_library(eps_headers INTERFACE)
+
+target_include_directories(eps_headers INTERFACE
+    ${CMAKE_CURRENT_SOURCE_DIR}/app
+    ${CMAKE_CURRENT_SOURCE_DIR}/services
+    ${CMAKE_CURRENT_SOURCE_DIR}/hal
+    ${CMAKE_CURRENT_SOURCE_DIR}/config
+    ${CMAKE_CURRENT_SOURCE_DIR}/mocks
+)
+
 set(TARGET_ARCH "ARM" CACHE STRING "Target architecture (ARM or HOST)")
 message(STATUS "Target architecture: ${TARGET_ARCH}")
 
 if(TARGET_ARCH STREQUAL "ARM")
     message(STATUS "Building for ARM target")
     set(MCU_FLAGS "-mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16")
-
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${MCU_FLAGS} -fdata-sections -ffunction-sections -Wall")
     set(CMAKE_ASM_FLAGS "${CMAKE_ASM_FLAGS} ${MCU_FLAGS}")
 
-    set(LINKER_SCRIPT "${CMAKE_SOURCE_DIR}/STM32L496ZGTx_FLASH.ld")
+    set(LINKER_SCRIPT "${CMAKE_SOURCE_DIR}/bsp/startup/STM32L496XX_FLASH.ld")
     set(CMAKE_EXE_LINKER_FLAGS "${MCU_FLAGS} -specs=nosys.specs -specs=nano.specs -T${LINKER_SCRIPT} -Wl,-Map=${PROJECT_BINARY_DIR}/${PROJECT_NAME}.map,--cref -Wl,--gc-sections")
 else()
     message(STATUS "Building for HOST target")
@@ -28,36 +37,50 @@ endif()
 add_subdirectory(./lib/messaging ${CMAKE_CURRENT_BINARY_DIR}/osusat-messaging-build)
 add_subdirectory(./lib/core ${CMAKE_CURRENT_BINARY_DIR}/osusat-core-build)
 
-include_directories(app services config lib/messaging/c/include)
-
 file(GLOB APP_SRC app/*.c)
 file(GLOB SERVICES_SRC services/*.c)
 
-if(BUILD_HITL)
+if(TARGET_ARCH STREQUAL "ARM")
+    file(GLOB_RECURSE BSP_SRC
+        bsp/hal_driver/Src/*.c
+        bsp/mcu/Src/*.c
+        bsp/system/*.c
+        bsp/startup/*.c
+        bsp/startup/*.s
+    )
+
+    add_executable(eps_firmware
+        main.c
+        ${APP_SRC}
+        ${SERVICES_SRC}
+        ${BSP_SRC}
+    )
+
+    target_include_directories(eps_firmware PRIVATE
+        bsp/cmsis/Include
+        bsp/cmsis/Device/ST/STM32L4xx/Include
+        bsp/hal_driver/Inc
+        bsp/mcu/Inc
+        bsp/system
+        app
+        services
+        config
+    )
+
+    target_compile_definitions(eps_firmware PRIVATE
+        STM32L496xx
+        USE_HAL_DRIVER
+    )
+
+elseif(BUILD_HITL)
     message(STATUS "Building for HITL testing...")
     add_definitions(-DHITL)
-
     include_directories(hal mocks)
     file(GLOB HAL_IMPL_SRC mocks/*.c)
-
-    add_executable(eps_firmware 
-        main.c 
-        ${APP_SRC} 
-        ${SERVICES_SRC} 
-        ${HAL_IMPL_SRC}
-    )
-elseif(TARGET_ARCH STREQUAL "ARM")
-    message(STATUS "Building for hardware target...")
-
-    include_directories(hal)
-    file(GLOB HAL_IMPL_SRC hal/*.c)
-
-    add_executable(eps_firmware 
-        main.c 
-        startup_stm32l496xx.s
-        system_stm32l4xx.c
-        ${APP_SRC} 
-        ${SERVICES_SRC} 
+    add_executable(eps_firmware
+        main.c
+        ${APP_SRC}
+        ${SERVICES_SRC}
         ${HAL_IMPL_SRC}
     )
 endif()
@@ -66,6 +89,7 @@ enable_testing()
 add_subdirectory(tests)
 
 target_link_libraries(eps_firmware PRIVATE
+    eps_headers
     OSUSat::C
     OSUSat::Core
 )
@@ -92,7 +116,8 @@ if (DOXYGEN_FOUND)
         COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYFILE}
         WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/../documentation/doxygen
         COMMENT "Generating Doxygen XML API documentation"
-        VERBATIM)
+        VERBATIM
+    )
 
     if (SPHINX_BUILD)
         add_custom_target(sphinx
@@ -101,11 +126,13 @@ if (DOXYGEN_FOUND)
                     ${CMAKE_CURRENT_SOURCE_DIR}/../documentation/sphinx/source
                     ${CMAKE_CURRENT_BINARY_DIR}/documentation/sphinx
             COMMENT "Generating Sphinx documentation"
-            VERBATIM)
+            VERBATIM
+        )
 
         add_dependencies(sphinx doxygen)
 
         add_custom_target(docs
-            DEPENDS doxygen sphinx)
+            DEPENDS doxygen sphinx
+        )
     endif()
 endif()

@@ -1,7 +1,7 @@
 #ifndef RAIL_CONTROLLER_MOCK_H
 #define RAIL_CONTROLLER_MOCK_H
 
-#include "services/rail_controller.h"
+#include "rail_controller.h"
 
 int mock_get_enabled_count();
 power_rail_t mock_get_enabled_rail(int index);
