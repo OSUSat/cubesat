@@ -5,13 +5,13 @@
 
 #include "logging.h"
 #include "events.h"
+#include "hal_time.h"
 #include "hal_uart.h"
 #include "messages.h"
 #include "osusat/event_bus.h"
 #include "osusat/ring_buffer.h"
 #include "osusat/slog.h"
 #include "packet.h"
-#include "stm32l4xx_hal.h"
 #include <stddef.h>
 #include <stdint.h>
 #include <string.h>
@@ -119,7 +119,7 @@ void logging_init(osusat_slog_level_t min_level) {
     osusat_ring_buffer_init(&log_ring_buffer, log_storage, sizeof(log_storage),
                             true);
 
-    osusat_slog_init(&log_ring_buffer, HAL_GetTick, min_level);
+    osusat_slog_init(&log_ring_buffer, hal_time_get_ms, min_level);
 
     osusat_event_bus_subscribe(EVENT_SYSTICK, logging_handle_tick, NULL);
     osusat_event_bus_subscribe(APP_EVENT_REQUEST_LOGGING_FLUSH_LOGS,

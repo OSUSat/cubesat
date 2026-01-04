@@ -2,6 +2,7 @@
 #include "app/command_handler.h"
 #include "clock.h"
 #include "gpio.h"
+#include "hal_time.h"
 #include "hal_uart.h"
 #include "i2c.h"
 #include "iwdg.h"
@@ -52,6 +53,8 @@ int main() {
     osusat_event_bus_init(event_queue, EVENT_QUEUE_SIZE);
 
     // initialize HAL
+    hal_time_init();
+
     uart_config_t uart_config = {.baudrate = 115200};
 
     hal_uart_init(UART_PORT_1, &uart_config);
@@ -66,6 +69,8 @@ int main() {
     // initialize applications
     command_handler_init(&command_handler);
     power_policies_init(&power_policies);
+
+    LOG_INFO(EPS_COMPONENT_MAIN, "Initialization complete");
 
     while (1) {
         osusat_event_bus_process();
