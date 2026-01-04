@@ -1,5 +1,5 @@
 /**
- * @file uart.h
+ * @file hal_uart.h
  * @brief UART hardware abstraction public API.
  *
  * This driver provides a simple interface for configuring and using UART

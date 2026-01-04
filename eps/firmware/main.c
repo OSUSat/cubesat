@@ -2,10 +2,13 @@
 #include "app/command_handler.h"
 #include "clock.h"
 #include "gpio.h"
+#include "hal_uart.h"
 #include "i2c.h"
 #include "iwdg.h"
+#include "logging.h"
 #include "mppt_controller.h"
 #include "osusat/event_bus.h"
+#include "osusat/slog.h"
 #include "power_policies.h"
 #include "rail_controller.h"
 #include "services/power_profiles.h"
@@ -28,6 +31,7 @@ static power_profiles_t power_profiles_service;
 static mppt_t mppt_controller_service;
 
 int main() {
+    // initialize BSP HAL
     HAL_Init();
     bsp_clock_init();
 
@@ -44,13 +48,22 @@ int main() {
 
     MX_IWDG_Init();
 
+    // initialize event bus
     osusat_event_bus_init(event_queue, EVENT_QUEUE_SIZE);
 
+    // initialize HAL
+    uart_config_t uart_config = {.baudrate = 115200};
+
+    hal_uart_init(UART_PORT_1, &uart_config);
+    hal_uart_init(UART_PORT_3, &uart_config);
+
     // initialize services
+    logging_init(OSUSAT_SLOG_INFO);
     rail_controller_init(&rail_controller);
     power_profiles_init(&power_profiles_service, &rail_controller);
     mppt_init(&mppt_controller_service);
 
+    // initialize applications
     command_handler_init(&command_handler);
     power_policies_init(&power_policies);
 

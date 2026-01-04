@@ -1,5 +1,5 @@
 /**
- * @file i2c.h
+ * @file hal_i2c.h
  * @brief I2C hardware abstraction public API.
  *
  * This driver provides a high-level interface for I2C communication.

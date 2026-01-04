@@ -1,5 +1,5 @@
 /**
- * @file adc.h
+ * @file hal_adc.h
  * @brief ADC hardware abstraction public API.
  *
  * This driver provides an interface for reading analog values from the ADC

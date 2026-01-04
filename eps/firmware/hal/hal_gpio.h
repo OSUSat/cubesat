@@ -1,5 +1,5 @@
 /**
- * @file gpio.h
+ * @file hal_gpio.h
  * @brief GPIO hardware abstraction public API.
  *
  * This driver provides a simple interface for managing GPIO pins. It is used by
