@@ -21,3 +21,4 @@ OSUSat EPS Firmware documentation
    services/telemetry
    services/uart_events
    services/watchdog
+   services/logging
