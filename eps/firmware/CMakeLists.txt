@@ -84,6 +84,7 @@ elseif(BUILD_HITL)
         mocks/hal_gpio_mock.c
         mocks/hal_uart_mock.c
         mocks/hal_i2c_mock.c
+        mocks/hal_time_mock.c
         mocks/bsp/clock_mock.c
     )
 
