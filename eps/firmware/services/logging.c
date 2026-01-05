@@ -6,12 +6,13 @@
 #include "logging.h"
 #include "events.h"
 #include "hal_time.h"
-#include "hal_uart.h"
 #include "messages.h"
 #include "osusat/event_bus.h"
 #include "osusat/ring_buffer.h"
 #include "osusat/slog.h"
 #include "packet.h"
+#include "redundancy_manager.h"
+#include "uart_events.h"
 #include <stddef.h>
 #include <stdint.h>
 #include <string.h>
@@ -23,42 +24,54 @@ static uint8_t log_storage[LOG_STORAGE_SIZE];
 static osusat_ring_buffer_t log_ring_buffer;
 static uint32_t tick_counter;
 
+// pointer to the UART service instance we use for flushing
+static uart_events_t *g_primary_uart = NULL;
+static uart_events_t *g_aux_uart = NULL;
+static uart_events_t *g_active_uart = NULL;
+
 #define LOG_PACKET_MAX_PAYLOAD 200
 
 typedef struct {
     uint16_t sequence;
     uint8_t payload_buffer[LOG_PACKET_MAX_PAYLOAD];
-    size_t payload_offset; // write position in the payload buffer
+    size_t payload_offset;
 } log_flush_context_t;
 
-/**
- * @brief System Tick Handler.
- * Called automatically by the Event Bus.
- *
- * @param e   The event (SYSTICK).
- * @param ctx The context pointer.
- */
 static void logging_handle_tick(const osusat_event_t *e, void *ctx);
-
-/**
- * @brief Event Handler.
- * Called by the Event Bus.
- *
- * @param e   The event (SYSTICK).
- * @param ctx The context pointer.
- */
 static void logging_handle_request(const osusat_event_t *e, void *ctx);
-
-/**
- * @brief Helper to send OSUSatPacket objects over UART to the OBC.
- *
- * @param log_flush_context_t   The log flush context.
- * @param is_last Whether this is the last packet in the sequence.
- */
+static void logging_handle_redundancy(const osusat_event_t *e, void *ctx);
 static void send_log_packet(log_flush_context_t *ctx, bool is_last);
 
+void logging_init(osusat_slog_level_t min_level, uart_events_t *primary_uart,
+                  uart_events_t *aux_uart) {
+    g_primary_uart = primary_uart;
+    g_aux_uart = aux_uart;
+
+    g_active_uart = g_primary_uart;
+
+    osusat_ring_buffer_init(&log_ring_buffer, log_storage, sizeof(log_storage),
+                            true);
+
+    osusat_slog_init(&log_ring_buffer, hal_time_get_ms, min_level);
+
+    osusat_event_bus_subscribe(EVENT_SYSTICK, logging_handle_tick, NULL);
+    osusat_event_bus_subscribe(APP_EVENT_REQUEST_LOGGING_FLUSH_LOGS,
+                               logging_handle_request, NULL);
+
+    osusat_event_bus_subscribe(REDUNDANCY_EVENT_COMPONENT_DEGRADED,
+                               logging_handle_redundancy, NULL);
+    osusat_event_bus_subscribe(REDUNDANCY_EVENT_COMPONENT_RECOVERED,
+                               logging_handle_redundancy, NULL);
+
+    LOG_INFO(EPS_COMPONENT_MAIN,
+             "Logging service initialized (Primary: UART%d, Aux: UART%d)",
+             primary_uart->port, aux_uart->port);
+}
+
 static void send_log_packet(log_flush_context_t *ctx, bool is_last) {
-    if (ctx->payload_offset == 0) {
+    // don't flush if we have no UART service connected
+    if (ctx->payload_offset == 0 || g_active_uart == NULL ||
+        !g_active_uart->initialized) {
         return;
     }
 
@@ -72,36 +85,18 @@ static void send_log_packet(log_flush_context_t *ctx, bool is_last) {
                            .payload_len = (uint8_t)ctx->payload_offset,
                            .payload = ctx->payload_buffer};
 
-    uint8_t tx_buffer[256];
-    int16_t packed_size =
-        osusat_packet_pack(&packet, tx_buffer, sizeof(tx_buffer));
+    // TODO: consider having this as a request over the event bus instead
+    uart_events_send_packet(g_active_uart, &packet);
 
-    if (packed_size > 0) {
-        // TODO: handle service degredations from redundancy manager
-        // it should alert all affected services to use AUX UART port
-        // for now just use main
-        hal_uart_write(UART_PORT_1, tx_buffer, (uint16_t)packed_size);
-    }
-
-    ctx->payload_offset = 0; // reset cursor for next packet
+    ctx->payload_offset = 0;
 }
 
-/**
- * @brief Flush callback - packs log entries into packets
- *
- * Multiple log entries may be batched into a single packet.
- * When a log entry won't fit, the current packet is sent and a new one is
- * started.
- */
 static void log_flush_callback(const osusat_slog_entry_t *entry,
                                const char *message, void *user_ctx) {
     log_flush_context_t *ctx = (log_flush_context_t *)user_ctx;
 
-    // calculate size of this complete log entry (header + message + null
-    // terminator)
     size_t entry_size = sizeof(*entry) + entry->message_len + 1;
 
-    // send current packet first if entry is too big
     if (ctx->payload_offset + entry_size > LOG_PACKET_MAX_PAYLOAD) {
         send_log_packet(ctx, false);
         ctx->sequence++;
@@ -113,19 +108,6 @@ static void log_flush_callback(const osusat_slog_entry_t *entry,
     memcpy(ctx->payload_buffer + ctx->payload_offset, message,
            entry->message_len + 1);
     ctx->payload_offset += entry->message_len + 1;
-}
-
-void logging_init(osusat_slog_level_t min_level) {
-    osusat_ring_buffer_init(&log_ring_buffer, log_storage, sizeof(log_storage),
-                            true);
-
-    osusat_slog_init(&log_ring_buffer, hal_time_get_ms, min_level);
-
-    osusat_event_bus_subscribe(EVENT_SYSTICK, logging_handle_tick, NULL);
-    osusat_event_bus_subscribe(APP_EVENT_REQUEST_LOGGING_FLUSH_LOGS,
-                               logging_handle_request, NULL);
-
-    LOG_INFO(EPS_COMPONENT_MAIN, "Logging service initialized");
 }
 
 static void logging_handle_tick(const osusat_event_t *e, void *ctx) {
@@ -143,13 +125,21 @@ static void logging_handle_tick(const osusat_event_t *e, void *ctx) {
 static void logging_handle_request(const osusat_event_t *e, void *ctx) {
     (void)ctx;
     (void)e;
-
     logging_flush();
 }
 
 size_t logging_flush(void) {
+    if (g_active_uart == NULL) {
+        return 0;
+    }
+
     log_flush_context_t ctx = {.sequence = 0, .payload_offset = 0};
 
+    // WARNING: this loop runs until the ring buffer is empty.
+    // if we have 4KB of logs, this will call uart_events_send_packet ~20
+    // times. Since HAL UART TX is blocking, this could freeze the system for
+    // ~350ms. We could consider adding a "max_packets" limit
+    // here to prevent starvation.
     size_t count = osusat_slog_flush(log_flush_callback, &ctx);
 
     if (ctx.payload_offset > 0) {
@@ -165,3 +155,30 @@ void logging_set_level(osusat_slog_level_t level) {
 }
 
 size_t logging_pending_count(void) { return osusat_slog_pending_count(); }
+
+/**
+ * @brief Handles failover events from the Redundancy Manager
+ */
+static void logging_handle_redundancy(const osusat_event_t *e, void *ctx) {
+    (void)ctx;
+
+    if (e->id == REDUNDANCY_EVENT_COMPONENT_DEGRADED) {
+        component_degradation_t *payload =
+            (component_degradation_t *)e->payload;
+
+        // if primary UART failed, switch to AUX
+        if (payload->component == COMPONENT_UART_PRIMARY) {
+            if (g_aux_uart && g_aux_uart->initialized) {
+                g_active_uart = g_aux_uart;
+            }
+        }
+    } else if (e->id == REDUNDANCY_EVENT_COMPONENT_RECOVERED) {
+        if (e->payload_len >= sizeof(component_id_t)) {
+            component_id_t comp = *(component_id_t *)e->payload;
+
+            if (comp == COMPONENT_UART_PRIMARY) {
+                g_active_uart = g_primary_uart;
+            }
+        }
+    }
+}

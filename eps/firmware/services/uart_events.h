@@ -2,132 +2,122 @@
  * @file uart_events.h
  * @brief UART Communication Service.
  *
- * This module manages the physical communication link with other subsystems
- * (primarily the OBC). It wraps the low-level UART drivers
- * and provides a packet-level interface for the application layer.
- *
- * It is responsible for:
- * - buffering incoming bytes.
- * - decoding raw streams into valid ::OSUSatPacket structures.
- * - encoding and transmitting outgoing packets.
+ * Integrates the OSUSat Packet Library with the HAL UART driver.
  */
 
 #ifndef UART_EVENTS_H
 #define UART_EVENTS_H
 
+#include "hal_uart.h"
+#include "osusat/event_bus.h"
 #include "packet.h"
 #include <stdbool.h>
 
 /**
  * @defgroup uart_events UART Events Service
- * @brief Manages external communication via OSUSat Messaging.
- *
- * This service abstracts the byte-level UART peripheral into a
- * message-level interface. The command handler polls this service
- * to receive instructions, and the telemetry service uses it to
- * ship data out.
  *
  * @{
  */
 
 /**
  * @defgroup uart_events_types Structures
- * @ingroup uart_events
- *
- * @brief Data containers for UART state.
  *
  * @{
  */
+
+#define UART_SERVICE_UID 0xC044
+
+typedef enum {
+    /**
+     * @brief Published when a valid OSUSatPacket is decoded.
+     * Payload: OSUSatPacket
+     */
+    UART_PACKET_RECEIVED = 0x10,
+
+    /**
+     * @brief Published on hardware errors (Overrun, Noise) or CRC failures.
+     * Payload: uart_error_t (or generic error code)
+     */
+    UART_ERROR_DETECTED,
+
+    /**
+     * @brief Published when a packet is successfully transmitted.
+     * Payload: NULL
+     */
+    UART_TX_COMPLETE
+} uart_event_id_t;
+
+#define UART_EVENT_PACKET_RECEIVED                                             \
+    OSUSAT_BUILD_EVENT_ID(UART_SERVICE_UID, UART_PACKET_RECEIVED)
+#define UART_EVENT_ERROR_DETECTED                                              \
+    OSUSAT_BUILD_EVENT_ID(UART_SERVICE_UID, UART_ERROR_DETECTED)
+#define UART_EVENT_TX_COMPLETE                                                 \
+    OSUSAT_BUILD_EVENT_ID(UART_SERVICE_UID, UART_TX_COMPLETE)
+
+typedef enum {
+    RX_STATE_WAIT_START_BYTE, /**< Waiting until a start byte is received */
+    RX_STATE_READ_HEADER,     /**< Currently reading the packet header */
+    RX_STATE_READ_PAYLOAD     /**< Currently reading the packet payload */
+} rx_state_t;
+
+// max packet size: Start(1) + Header(8) + Payload(255) + CRC(2) = 266
+// we round up to 300 for safety.
+#define UART_RX_MAX_PACKET_SIZE 300
+
+// number of buffers in the pool.
+// 4 buffers gives subscribers 4 full packet intervals to read data.
+#define UART_PACKET_POOL_SIZE 4
 
 /**
  * @struct uart_events_t
  * @brief UART Service State Object.
- *
- * Contains the runtime state of the UART wrapper, including:
- *  - RX/TX Ring Buffers
- *  - Parsing state machine variables
- *  - Error counters
- *  - Initialization flags
  */
 typedef struct {
-    // TODO: Add internal state here, e.g.:
-    // RingBuffer rx_buffer;
-    // RingBuffer tx_buffer;
-    // uint32_t rx_errors;
+    bool initialized; /**< Whether the UART events service is initialized */
+    uart_port_t port; /**< The UART port the service is acting on */
 
-    bool initialized;
+    uint32_t rx_byte_count;      /**< Telemetry: total received bytes */
+    uint32_t rx_packet_count;    /**< Telemetry: total packets decoded */
+    uint32_t rx_crc_error_count; /**< Telemetry: total errors counted */
+
+    // we collect bytes here until we have a full frame to pass to
+    // osusat_packet_unpack
+    uint8_t packet_pool[UART_PACKET_POOL_SIZE][UART_RX_MAX_PACKET_SIZE];
+    uint8_t pool_index;    /**< Index of the buffer currently being filled */
+    uint16_t decode_index; /**< Write position within the current buffer */
+
+    rx_state_t rx_state;          /**< Current Rx state */
+    uint16_t expected_packet_len; /**< The expected packet length */
+
 } uart_events_t;
 
-/** @} */ // end uart_events_types
+/** @} */
 
 /**
  * @defgroup uart_events_api Public API
- * @ingroup uart_events
- *
- * @brief Functions for sending and receiving messaging packets.
  *
  * @{
  */
 
 /**
- * @brief Initialize the UART hardware and internal buffers.
+ * @brief Initialize the UART service.
  *
- * Configures the UART peripheral and
- * initializes the Ring Buffers within the provided context.
- *
- * @param[out] uart Pointer to the UART service instance to initialize.
+ * @param[out] uart Service instance
+ * @param[in] port  Physical HAL port to use
  */
-void uart_events_init(uart_events_t *uart);
-
-/**
- * @brief Periodic update task.
- *
- * This function handles the low-level driver tasks:
- *  - Processing interrupt flags.
- *  - Parsing the raw RX byte buffer inside the context to identify valid
- * packets.
- *  - Flushing the TX buffer to the hardware.
- *
- * @param[in,out] uart Pointer to the UART service instance.
- */
-void uart_events_update(uart_events_t *uart);
-
-/**
- * @brief Check if a valid packet has been received and decoded.
- *
- * @param[in] uart Pointer to the UART service instance.
- *
- * @retval true  A complete ::OSUSatPacket is waiting in the RX queue.
- * @retval false No packets available.
- */
-bool uart_events_is_packet_available(uart_events_t *uart);
-
-/**
- * @brief Retrieve the next available packet from the RX queue.
- *
- * Pops the oldest packet from the internal FIFO.
- *
- * @pre Call ::uart_events_is_packet_available to ensure data exists.
- *
- * @param[in,out] uart Pointer to the UART service instance.
- * @param[out] packet Pointer to the destination structure where the data will
- * be copied.
- */
-void uart_events_get_packet(uart_events_t *uart, OSUSatPacket *packet);
+void uart_events_init(uart_events_t *uart, uart_port_t port);
 
 /**
  * @brief Queue a packet for transmission.
  *
- * Serializes the given ::OSUSatPacket into a byte stream and adds it
- * to the internal TX buffer.
+ * Uses osusat_packet_pack() to serialize before sending.
  *
- * @param[in,out] uart Pointer to the UART service instance.
- * @param[in] packet Pointer to the packet to send.
+ * @param[in,out] uart Service instance
+ * @param[in] packet Pointer to the packet to send
  */
 void uart_events_send_packet(uart_events_t *uart, const OSUSatPacket *packet);
 
-/** @} */ // end uart_events_api
-
-/** @} */ // end uart_events
+/** @} */
+/** @} */
 
 #endif // UART_EVENTS_H
