@@ -9,6 +9,7 @@
 #define LOGGING_H
 
 #include "osusat/slog.h"
+#include "uart_events.h"
 #include <stdint.h>
 
 #ifdef __cplusplus
@@ -56,7 +57,8 @@ extern "C" {
  *
  * @param[in] min_level Minimum log level to record.
  */
-void logging_init(osusat_slog_level_t min_level);
+void logging_init(osusat_slog_level_t min_level, uart_events_t *primary_uart,
+                  uart_events_t *aux_uart);
 
 /**
  * @brief Flush pending logs to OBC via UART.

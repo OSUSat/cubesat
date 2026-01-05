@@ -19,6 +19,7 @@
 /**
  * @defgroup uart UART
  * @brief Handles UART communication.
+ *
  * @{
  */
 
@@ -41,6 +42,28 @@ typedef enum {
     UART_PORT_4,     /**< UART port 4 */
     UART_PORT_MAX    /**< Number of available UART ports */
 } uart_port_t;
+
+/**
+ * @enum uart_error_t
+ * @brief Errors that could occur during UART HAL use
+ */
+
+typedef enum {
+    UART_HAL_ERR_OVERRUN,
+    UART_HAL_ERR_NOISE,
+    UART_HAL_ERR_FRAMING,
+    UART_HAL_ERR_PARITY,
+    UART_HAL_ERR_UNKNOWN,
+} uart_error_t;
+
+/**
+ * @brief Callback function type upon UART errors.
+ *
+ * @param[in] port   UART port index
+ * @param[in] err    The UART error that occurred
+ */
+typedef void (*uart_hal_error_cb_t)(uart_port_t port, uart_error_t err,
+                                    void *ctx);
 
 /**
  * @struct uart_config_t
@@ -89,6 +112,16 @@ void hal_uart_init(uart_port_t port, const uart_config_t *config);
  */
 void hal_uart_register_rx_callback(uart_port_t port, uart_rx_callback_t cb,
                                    void *ctx);
+
+/**
+ * @brief Register a callback function upon a UART error.
+ *
+ * @param[in] port The UART port
+ * @param[in] cb   The callback handler
+ * @param[in] ctx  Any additional context to pass to the error callback
+ */
+void hal_uart_register_error_callback(uart_port_t port, uart_hal_error_cb_t cb,
+                                      void *ctx);
 
 /**
  * @brief Send raw bytes (blocking or DMA depending on implementation)

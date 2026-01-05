@@ -4,6 +4,7 @@
  */
 
 #include "hal_uart.h"
+#include "osusat/event_bus.h"
 #include "osusat/ring_buffer.h"
 #include "stm32l4xx_hal.h"
 #include "stm32l4xx_hal_def.h"
@@ -11,17 +12,29 @@
 #include <stdint.h>
 #include <string.h>
 
+// size of the raw DMA buffer
+// ideally 2x the max expected packet size to prevent overwrites
+#define DMA_BUFFER_SIZE 256
+
 /**
  * @brief Internal UART port state
  */
 typedef struct {
-    UART_HandleTypeDef *huart;            /**< STM32 HAL UART handle */
+    UART_HandleTypeDef *huart; /**< STM32 HAL UART handle */
+
     osusat_ring_buffer_t rx_ring;         /**< RX ring buffer */
     uint8_t rx_storage[UART_RX_CAPACITY]; /**< RX buffer storage */
-    uart_rx_callback_t rx_callback;       /**< User RX callback */
-    void *rx_callback_ctx;                /**< User callback context */
-    uint8_t rx_byte;                      /**< Single byte for DMA/IT RX */
-    bool initialized;                     /**< Init flag */
+
+    uint8_t dma_buffer[DMA_BUFFER_SIZE];
+    uint32_t last_dma_pos; /**< Tracks where we last read from the DMA buffer */
+
+    uart_rx_callback_t rx_callback; /**< User RX callback */
+    void *rx_callback_ctx;          /**< User callback context */
+
+    uart_hal_error_cb_t error_callback; /**< User error callback hook */
+    void *error_callback_ctx;           /**< Error context */
+
+    bool initialized; /**< Init flag */
 } uart_port_state_t;
 
 static uart_port_state_t g_uart_state[UART_PORT_MAX] = {0};
@@ -47,13 +60,52 @@ static UART_HandleTypeDef *get_hal_handle(uart_port_t port) {
 }
 
 /**
- * @brief Start reception for a single byte (used by interrupt-driven RX)
+ * @brief Process new bytes from DMA buffer into User Ring Buffer
+ *
+ * This calculates how many bytes the DMA has written since we last checked,
+ * copies them to the ring buffer, and fires the user callback.
  */
-static void start_rx_interrupt(uart_port_t port) {
+static void process_dma_input(uart_port_t port) {
     uart_port_state_t *state = &g_uart_state[port];
 
-    // start receiving single byte in interrupt mode
-    HAL_UART_Receive_IT(state->huart, &state->rx_byte, 1);
+    // calculate current DMA Write Position
+    // CNDTR counts down from buffer size.
+    // so, pos = size - remaining
+    uint32_t current_pos =
+        DMA_BUFFER_SIZE - __HAL_DMA_GET_COUNTER(state->huart->hdmarx);
+
+    if (current_pos == state->last_dma_pos) {
+        return;
+    }
+
+    // copy data from DMA buffer to Ring Buffer
+    // we must handle the case where the DMA wrapped around the end of the
+    // buffer
+    uint32_t start = state->last_dma_pos;
+
+    if (current_pos > start) {
+        // standard case
+        for (uint32_t i = start; i < current_pos; i++) {
+            osusat_ring_buffer_push(&state->rx_ring, state->dma_buffer[i]);
+        }
+    } else {
+        // wrap-around case, end of buffer...
+        for (uint32_t i = start; i < DMA_BUFFER_SIZE; i++) {
+            osusat_ring_buffer_push(&state->rx_ring, state->dma_buffer[i]);
+        }
+
+        // ...then from beginning to current
+        for (uint32_t i = 0; i < current_pos; i++) {
+            osusat_ring_buffer_push(&state->rx_ring, state->dma_buffer[i]);
+        }
+    }
+
+    // 4. update position tracker
+    state->last_dma_pos = current_pos;
+
+    if (state->rx_callback != NULL) {
+        state->rx_callback(port, state->rx_callback_ctx);
+    }
 }
 
 void hal_uart_init(uart_port_t port, const uart_config_t *config) {
@@ -83,7 +135,13 @@ void hal_uart_init(uart_port_t port, const uart_config_t *config) {
         return;
     }
 
-    start_rx_interrupt(port);
+    state->last_dma_pos = 0;
+
+    // start circular dma
+    HAL_UART_Receive_DMA(state->huart, state->dma_buffer, DMA_BUFFER_SIZE);
+
+    // enable "idle line" interrupt
+    __HAL_UART_ENABLE_IT(state->huart, UART_IT_IDLE);
 
     state->initialized = true;
 }
@@ -98,6 +156,16 @@ void hal_uart_register_rx_callback(uart_port_t port, uart_rx_callback_t cb,
 
     state->rx_callback = cb;
     state->rx_callback_ctx = ctx;
+}
+
+void hal_uart_register_error_callback(uart_port_t port, uart_hal_error_cb_t cb,
+                                      void *ctx) {
+    if (port >= UART_PORT_MAX) {
+        return;
+    }
+
+    g_uart_state[port].error_callback = cb;
+    g_uart_state[port].error_callback_ctx = ctx;
 }
 
 void hal_uart_write(uart_port_t port, const uint8_t *data, uint16_t len) {
@@ -147,36 +215,38 @@ void hal_uart_isr_handler(uart_port_t port) {
         return;
     }
 
-    // let STM32 HAL handle the interrupt
+    if (__HAL_UART_GET_FLAG(state->huart, UART_FLAG_IDLE)) {
+        __HAL_UART_CLEAR_IDLEFLAG(state->huart);
+
+        process_dma_input(port);
+    }
+
     HAL_UART_IRQHandler(state->huart);
 }
 
 /**
- * @brief HAL callback for RX complete (called from interrupt context)
- *
- * This is called by STM32 HAL when a byte is received.
+ * @brief DMA Half Transfer Complete (Called by HAL)
  */
-void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
-    uart_port_t port;
-    for (port = 0; port < UART_PORT_MAX; port++) {
-        if (g_uart_state[port].huart == huart) {
-            break;
+void HAL_UART_RxHalfCpltCallback(UART_HandleTypeDef *huart) {
+    for (int i = 0; i < UART_PORT_MAX; i++) {
+        if (g_uart_state[i].huart == huart) {
+            process_dma_input(i);
+            return;
         }
     }
+}
 
-    if (port >= UART_PORT_MAX) {
-        return;
+/**
+ * @brief DMA Transfer Complete (Called by HAL)
+ * This fires when the buffer wraps around to the beginning.
+ */
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
+    for (int i = 0; i < UART_PORT_MAX; i++) {
+        if (g_uart_state[i].huart == huart) {
+            process_dma_input(i);
+            return;
+        }
     }
-
-    uart_port_state_t *state = &g_uart_state[port];
-
-    osusat_ring_buffer_push(&state->rx_ring, state->rx_byte);
-
-    if (state->rx_callback != NULL) {
-        state->rx_callback(port, state->rx_callback_ctx);
-    }
-
-    start_rx_interrupt(port);
 }
 
 /**
@@ -191,24 +261,55 @@ void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart) {
  * @brief HAL callback for UART error
  */
 void HAL_UART_ErrorCallback(UART_HandleTypeDef *huart) {
-    uart_port_t port;
-    for (port = 0; port < UART_PORT_MAX; port++) {
-        if (g_uart_state[port].huart == huart) {
+    uart_port_t port = UART_PORT_MAX;
+    for (int i = 0; i < UART_PORT_MAX; i++) {
+        if (g_uart_state[i].huart == huart) {
+            port = i;
             break;
         }
     }
 
-    if (port >= UART_PORT_MAX) {
+    if (port == UART_PORT_MAX) {
         return;
     }
 
     uart_port_state_t *state = &g_uart_state[port];
 
-    // TODO: alert redundancy manager or service or something
+    uart_error_t err = UART_HAL_ERR_UNKNOWN;
+    uint32_t hal_err = huart->ErrorCode;
 
-    // clear error flags and restart reception
-    __HAL_UART_CLEAR_FLAG(huart, UART_CLEAR_OREF | UART_CLEAR_NEF |
-                                     UART_CLEAR_PEF | UART_CLEAR_FEF);
+    if (hal_err & HAL_UART_ERROR_ORE) {
+        err = UART_HAL_ERR_OVERRUN;
+    } else if (hal_err & HAL_UART_ERROR_NE) {
+        err = UART_HAL_ERR_NOISE;
+    } else if (hal_err & HAL_UART_ERROR_FE) {
+        err = UART_HAL_ERR_FRAMING;
+    } else if (hal_err & HAL_UART_ERROR_PE) {
+        err = UART_HAL_ERR_PARITY;
+    }
 
-    start_rx_interrupt(port);
+    // notify the error hook
+    // we do this before restarting, so the service knows we might drop a
+    // packet
+    if (state->error_callback != NULL) {
+        state->error_callback(port, err, state->error_callback_ctx);
+    }
+
+    // restart DMA if it stopped
+    // the HAL ISR usually disables DMA on severe errors (like ORE).
+    // we check if the state is "READY" (which means "Not Busy" / Stopped).
+    if (huart->RxState == HAL_UART_STATE_READY) {
+
+        // clear error flags
+        __HAL_UART_CLEAR_FLAG(huart, UART_CLEAR_OREF | UART_CLEAR_NEF |
+                                         UART_CLEAR_PEF | UART_CLEAR_FEF);
+
+        state->last_dma_pos = 0;
+
+        // restart the circular DMA
+        HAL_UART_Receive_DMA(huart, state->dma_buffer, DMA_BUFFER_SIZE);
+
+        // re-enable the Idle Line Interrupt (often disabled by HAL on error)
+        __HAL_UART_ENABLE_IT(huart, UART_IT_IDLE);
+    }
 }
