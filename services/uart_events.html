@@ -38,27 +38,158 @@
 <dl>
 <dt class="sig sig-object cpp">
 <span class="target" id="group__uart__events"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">UART</span> <span class="pre">Events</span> <span class="pre">Service</span></span></dt>
-<dd><p>Manages external communication via OSUSat Messaging. </p>
-<p>This service abstracts the byte-level UART peripheral into a message-level interface. The command handler polls this service to receive instructions, and the telemetry service uses it to ship data out. </p>
-</dd></dl>
+<dd></dd></dl>
 
 <dl>
 <dt class="sig sig-object cpp">
 <span class="target" id="group__uart__events__types"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">Structures</span></span></dt>
-<dd><p>Data containers for UART state. </p>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.UART_SERVICE_UID">
+<span class="target" id="group__uart__events__types_1ga0319158435eee3e9ed018667858f93fc"></span><span class="sig-name descname"><span class="n"><span class="pre">UART_SERVICE_UID</span></span></span><a class="headerlink" href="#c.UART_SERVICE_UID" title="Link to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.UART_EVENT_PACKET_RECEIVED">
+<span class="target" id="group__uart__events__types_1ga09a5fb4024645a4042df5c85d6ecb8a6"></span><span class="sig-name descname"><span class="n"><span class="pre">UART_EVENT_PACKET_RECEIVED</span></span></span><a class="headerlink" href="#c.UART_EVENT_PACKET_RECEIVED" title="Link to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.UART_EVENT_ERROR_DETECTED">
+<span class="target" id="group__uart__events__types_1ga9aff7da89cbac87342e5d952eb250318"></span><span class="sig-name descname"><span class="n"><span class="pre">UART_EVENT_ERROR_DETECTED</span></span></span><a class="headerlink" href="#c.UART_EVENT_ERROR_DETECTED" title="Link to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.UART_EVENT_TX_COMPLETE">
+<span class="target" id="group__uart__events__types_1ga6bd09ceb54a8e2e8e323de3508e36e82"></span><span class="sig-name descname"><span class="n"><span class="pre">UART_EVENT_TX_COMPLETE</span></span></span><a class="headerlink" href="#c.UART_EVENT_TX_COMPLETE" title="Link to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.UART_RX_MAX_PACKET_SIZE">
+<span class="target" id="group__uart__events__types_1gaed578dfde00c8d7335f60947a7352835"></span><span class="sig-name descname"><span class="n"><span class="pre">UART_RX_MAX_PACKET_SIZE</span></span></span><a class="headerlink" href="#c.UART_RX_MAX_PACKET_SIZE" title="Link to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.UART_PACKET_POOL_SIZE">
+<span class="target" id="group__uart__events__types_1gaef7200bd5b3732fe7c7c69df0b5e7caf"></span><span class="sig-name descname"><span class="n"><span class="pre">UART_PACKET_POOL_SIZE</span></span></span><a class="headerlink" href="#c.UART_PACKET_POOL_SIZE" title="Link to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-enums">Enums</p>
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv415uart_event_id_t">
+<span id="_CPPv315uart_event_id_t"></span><span id="_CPPv215uart_event_id_t"></span><span class="target" id="group__uart__events__types_1ga832a34af945169115e69b8a9b46d0f6d"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uart_event_id_t</span></span></span><a class="headerlink" href="#_CPPv415uart_event_id_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N15uart_event_id_t20UART_PACKET_RECEIVEDE">
+<span id="_CPPv3N15uart_event_id_t20UART_PACKET_RECEIVEDE"></span><span id="_CPPv2N15uart_event_id_t20UART_PACKET_RECEIVEDE"></span><span class="target" id="group__uart__events__types_1gga832a34af945169115e69b8a9b46d0f6da9f2f73b1eecfbd3ececddea1704e1ee5"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UART_PACKET_RECEIVED</span></span></span><a class="headerlink" href="#_CPPv4N15uart_event_id_t20UART_PACKET_RECEIVEDE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Published when a valid OSUSatPacket is decoded. Payload: OSUSatPacket. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N15uart_event_id_t19UART_ERROR_DETECTEDE">
+<span id="_CPPv3N15uart_event_id_t19UART_ERROR_DETECTEDE"></span><span id="_CPPv2N15uart_event_id_t19UART_ERROR_DETECTEDE"></span><span class="target" id="group__uart__events__types_1gga832a34af945169115e69b8a9b46d0f6da35efeb7f8ddf6e15f796de99a4f66a71"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UART_ERROR_DETECTED</span></span></span><a class="headerlink" href="#_CPPv4N15uart_event_id_t19UART_ERROR_DETECTEDE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Published on hardware errors (Overrun, Noise) or CRC failures. Payload: uart_error_t (or generic error code) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N15uart_event_id_t16UART_TX_COMPLETEE">
+<span id="_CPPv3N15uart_event_id_t16UART_TX_COMPLETEE"></span><span id="_CPPv2N15uart_event_id_t16UART_TX_COMPLETEE"></span><span class="target" id="group__uart__events__types_1gga832a34af945169115e69b8a9b46d0f6dad0138ae2b7d3814fa3462f28e8489591"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UART_TX_COMPLETE</span></span></span><a class="headerlink" href="#_CPPv4N15uart_event_id_t16UART_TX_COMPLETEE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Published when a packet is successfully transmitted. Payload: NULL. </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv410rx_state_t">
+<span id="_CPPv310rx_state_t"></span><span id="_CPPv210rx_state_t"></span><span class="target" id="group__uart__events__types_1gaf0d6ead56ef385028dc0138bc816c2a3"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rx_state_t</span></span></span><a class="headerlink" href="#_CPPv410rx_state_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N10rx_state_t24RX_STATE_WAIT_START_BYTEE">
+<span id="_CPPv3N10rx_state_t24RX_STATE_WAIT_START_BYTEE"></span><span id="_CPPv2N10rx_state_t24RX_STATE_WAIT_START_BYTEE"></span><span class="target" id="group__uart__events__types_1ggaf0d6ead56ef385028dc0138bc816c2a3a587888300c36514d75196c26fd8c0f8a"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RX_STATE_WAIT_START_BYTE</span></span></span><a class="headerlink" href="#_CPPv4N10rx_state_t24RX_STATE_WAIT_START_BYTEE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Waiting until a start byte is received </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N10rx_state_t20RX_STATE_READ_HEADERE">
+<span id="_CPPv3N10rx_state_t20RX_STATE_READ_HEADERE"></span><span id="_CPPv2N10rx_state_t20RX_STATE_READ_HEADERE"></span><span class="target" id="group__uart__events__types_1ggaf0d6ead56ef385028dc0138bc816c2a3ad034637fb737ee5493fedb195cba9f42"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RX_STATE_READ_HEADER</span></span></span><a class="headerlink" href="#_CPPv4N10rx_state_t20RX_STATE_READ_HEADERE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Currently reading the packet header </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N10rx_state_t21RX_STATE_READ_PAYLOADE">
+<span id="_CPPv3N10rx_state_t21RX_STATE_READ_PAYLOADE"></span><span id="_CPPv2N10rx_state_t21RX_STATE_READ_PAYLOADE"></span><span class="target" id="group__uart__events__types_1ggaf0d6ead56ef385028dc0138bc816c2a3a585ff0920506b11196b6984fe3225885"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RX_STATE_READ_PAYLOAD</span></span></span><a class="headerlink" href="#_CPPv4N10rx_state_t21RX_STATE_READ_PAYLOADE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Currently reading the packet payload </p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
 <dl class="cpp struct">
 <dt class="sig sig-object cpp" id="_CPPv413uart_events_t">
 <span id="_CPPv313uart_events_t"></span><span id="_CPPv213uart_events_t"></span><span id="uart_events_t"></span><span class="target" id="structuart__events__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uart_events_t</span></span></span><a class="headerlink" href="#_CPPv413uart_events_t" title="Link to this definition">¶</a><br /></dt>
 <dd><div class="docutils container">
 <em>#include &lt;uart_events.h&gt;</em></div>
 <p>UART Service State Object. </p>
-<p>Contains the runtime state of the UART wrapper, including:<ul class="simple">
-<li><p>RX/TX Ring Buffers</p></li>
-<li><p>Parsing state machine variables</p></li>
-<li><p>Error counters</p></li>
-<li><p>Initialization flags </p></li>
-</ul>
-</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N13uart_events_t11initializedE">
+<span id="_CPPv3N13uart_events_t11initializedE"></span><span id="_CPPv2N13uart_events_t11initializedE"></span><span id="uart_events_t::initialized__b"></span><span class="target" id="structuart__events__t_1ad2ef4561678dc8b153a6fa8780fe1b5c"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">initialized</span></span></span><a class="headerlink" href="#_CPPv4N13uart_events_t11initializedE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Whether the UART events service is initialized </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N13uart_events_t4portE">
+<span id="_CPPv3N13uart_events_t4portE"></span><span id="_CPPv2N13uart_events_t4portE"></span><span id="uart_events_t::port__uart_port_t"></span><span class="target" id="structuart__events__t_1a2066c955824ebc8e9f813a543a32d1bb"></span><span class="n"><span class="pre">uart_port_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">port</span></span></span><a class="headerlink" href="#_CPPv4N13uart_events_t4portE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>The UART port the service is acting on </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N13uart_events_t13rx_byte_countE">
+<span id="_CPPv3N13uart_events_t13rx_byte_countE"></span><span id="_CPPv2N13uart_events_t13rx_byte_countE"></span><span id="uart_events_t::rx_byte_count__uint32_t"></span><span class="target" id="structuart__events__t_1ab877b7f7ac7e7315b124361d60c2fecb"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rx_byte_count</span></span></span><a class="headerlink" href="#_CPPv4N13uart_events_t13rx_byte_countE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Telemetry: total received bytes </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N13uart_events_t15rx_packet_countE">
+<span id="_CPPv3N13uart_events_t15rx_packet_countE"></span><span id="_CPPv2N13uart_events_t15rx_packet_countE"></span><span id="uart_events_t::rx_packet_count__uint32_t"></span><span class="target" id="structuart__events__t_1a2892e07fc57573a1805eb56494e047bd"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rx_packet_count</span></span></span><a class="headerlink" href="#_CPPv4N13uart_events_t15rx_packet_countE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Telemetry: total packets decoded </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N13uart_events_t18rx_crc_error_countE">
+<span id="_CPPv3N13uart_events_t18rx_crc_error_countE"></span><span id="_CPPv2N13uart_events_t18rx_crc_error_countE"></span><span id="uart_events_t::rx_crc_error_count__uint32_t"></span><span class="target" id="structuart__events__t_1a1ab03b2687a2bcfbe5a5441e5a745666"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rx_crc_error_count</span></span></span><a class="headerlink" href="#_CPPv4N13uart_events_t18rx_crc_error_countE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Telemetry: total errors counted </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N13uart_events_t10pool_indexE">
+<span id="_CPPv3N13uart_events_t10pool_indexE"></span><span id="_CPPv2N13uart_events_t10pool_indexE"></span><span id="uart_events_t::pool_index__uint8_t"></span><span class="target" id="structuart__events__t_1a8231eb5b060c0afcc1b69e57ccc75bee"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pool_index</span></span></span><a class="headerlink" href="#_CPPv4N13uart_events_t10pool_indexE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Index of the buffer currently being filled </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N13uart_events_t12decode_indexE">
+<span id="_CPPv3N13uart_events_t12decode_indexE"></span><span id="_CPPv2N13uart_events_t12decode_indexE"></span><span id="uart_events_t::decode_index__uint16_t"></span><span class="target" id="structuart__events__t_1a965a8f0f5c4b72d3b97d1a4ced013772"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">decode_index</span></span></span><a class="headerlink" href="#_CPPv4N13uart_events_t12decode_indexE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Write position within the current buffer </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N13uart_events_t8rx_stateE">
+<span id="_CPPv3N13uart_events_t8rx_stateE"></span><span id="_CPPv2N13uart_events_t8rx_stateE"></span><span id="uart_events_t::rx_state__rx_state_t"></span><span class="target" id="structuart__events__t_1abcb0a923e55c6a1f8cae85038bf96eb6"></span><a class="reference internal" href="#_CPPv410rx_state_t" title="rx_state_t"><span class="n"><span class="pre">rx_state_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rx_state</span></span></span><a class="headerlink" href="#_CPPv4N13uart_events_t8rx_stateE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Current Rx state </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N13uart_events_t19expected_packet_lenE">
+<span id="_CPPv3N13uart_events_t19expected_packet_lenE"></span><span id="_CPPv2N13uart_events_t19expected_packet_lenE"></span><span id="uart_events_t::expected_packet_len__uint16_t"></span><span class="target" id="structuart__events__t_1ab7cc7737b55472ff31e8fa38f14b0b55"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">expected_packet_len</span></span></span><a class="headerlink" href="#_CPPv4N13uart_events_t19expected_packet_lenE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>The expected packet length </p>
+</dd></dl>
+
+</div>
 </dd></dl>
 
 </dd></dl>
@@ -66,69 +197,18 @@
 <dl>
 <dt class="sig sig-object cpp">
 <span class="target" id="group__uart__events__api"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">Public</span> <span class="pre">API</span></span></dt>
-<dd><p>Functions for sending and receiving messaging packets. </p>
-<div class="breathe-sectiondef docutils container">
+<dd><div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv416uart_events_initP13uart_events_t">
-<span id="_CPPv316uart_events_initP13uart_events_t"></span><span id="_CPPv216uart_events_initP13uart_events_t"></span><span id="uart_events_init__uart_events_tP"></span><span class="target" id="group__uart__events__api_1ga8876b506bad6e7180ca211dc7318eab0"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uart_events_init</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv413uart_events_t" title="uart_events_t"><span class="n"><span class="pre">uart_events_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">uart</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv416uart_events_initP13uart_events_t" title="Link to this definition">¶</a><br /></dt>
-<dd><p>Initialize the UART hardware and internal buffers. </p>
-<p>Configures the UART peripheral and initializes the Ring Buffers within the provided context.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>uart</strong> – <strong>[out]</strong> Pointer to the UART service instance to initialize. </p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv418uart_events_updateP13uart_events_t">
-<span id="_CPPv318uart_events_updateP13uart_events_t"></span><span id="_CPPv218uart_events_updateP13uart_events_t"></span><span id="uart_events_update__uart_events_tP"></span><span class="target" id="group__uart__events__api_1gad2c9db288e131f2f5b5687af87aabfae"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uart_events_update</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv413uart_events_t" title="uart_events_t"><span class="n"><span class="pre">uart_events_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">uart</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv418uart_events_updateP13uart_events_t" title="Link to this definition">¶</a><br /></dt>
-<dd><p>Periodic update task. </p>
-<p>This function handles the low-level driver tasks:<ul class="simple">
-<li><p>Processing interrupt flags.</p></li>
-<li><p>Parsing the raw RX byte buffer inside the context to identify valid packets.</p></li>
-<li><p>Flushing the TX buffer to the hardware.</p></li>
-</ul>
-</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>uart</strong> – <strong>[inout]</strong> Pointer to the UART service instance. </p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv431uart_events_is_packet_availableP13uart_events_t">
-<span id="_CPPv331uart_events_is_packet_availableP13uart_events_t"></span><span id="_CPPv231uart_events_is_packet_availableP13uart_events_t"></span><span id="uart_events_is_packet_available__uart_events_tP"></span><span class="target" id="group__uart__events__api_1ga4c8e6335dcbdefcf3e0b3264514f99f0"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uart_events_is_packet_available</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv413uart_events_t" title="uart_events_t"><span class="n"><span class="pre">uart_events_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">uart</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv431uart_events_is_packet_availableP13uart_events_t" title="Link to this definition">¶</a><br /></dt>
-<dd><p>Check if a valid packet has been received and decoded. </p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>uart</strong> – <strong>[in]</strong> Pointer to the UART service instance.</p>
-</dd>
-<dt class="field-even">Return values<span class="colon">:</span></dt>
-<dd class="field-even"><ul class="simple">
-<li><p><strong>true</strong> – A complete OSUSatPacket is waiting in the RX queue. </p></li>
-<li><p><strong>false</strong> – No packets available. </p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv422uart_events_get_packetP13uart_events_tP12OSUSatPacket">
-<span id="_CPPv322uart_events_get_packetP13uart_events_tP12OSUSatPacket"></span><span id="_CPPv222uart_events_get_packetP13uart_events_tP12OSUSatPacket"></span><span id="uart_events_get_packet__uart_events_tP.OSUSatPacketP"></span><span class="target" id="group__uart__events__api_1ga284e7deadd5ae6c399536fc7936f7684"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uart_events_get_packet</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv413uart_events_t" title="uart_events_t"><span class="n"><span class="pre">uart_events_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">uart</span></span>, <span class="n"><span class="pre">OSUSatPacket</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">packet</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv422uart_events_get_packetP13uart_events_tP12OSUSatPacket" title="Link to this definition">¶</a><br /></dt>
-<dd><p>Retrieve the next available packet from the RX queue. </p>
-<p>Pops the oldest packet from the internal FIFO.</p>
+<dt class="sig sig-object cpp" id="_CPPv416uart_events_initP13uart_events_t11uart_port_t">
+<span id="_CPPv316uart_events_initP13uart_events_t11uart_port_t"></span><span id="_CPPv216uart_events_initP13uart_events_t11uart_port_t"></span><span id="uart_events_init__uart_events_tP.uart_port_t"></span><span class="target" id="group__uart__events__api_1gac49317802c3a26a65adc994980d2b38e"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uart_events_init</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv413uart_events_t" title="uart_events_t"><span class="n"><span class="pre">uart_events_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">uart</span></span>, <span class="n"><span class="pre">uart_port_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">port</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv416uart_events_initP13uart_events_t11uart_port_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Initialize the UART service. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>uart</strong> – <strong>[inout]</strong> Pointer to the UART service instance. </p></li>
-<li><p><strong>packet</strong> – <strong>[out]</strong> Pointer to the destination structure where the data will be copied. </p></li>
+<li><p><strong>uart</strong> – <strong>[out]</strong> Service instance </p></li>
+<li><p><strong>port</strong> – <strong>[in]</strong> Physical HAL port to use </p></li>
 </ul>
-</dd>
-<dt class="field-even">Pre<span class="colon">:</span></dt>
-<dd class="field-even"><p>Call <a class="reference internal" href="#group__uart__events__api_1ga4c8e6335dcbdefcf3e0b3264514f99f0"><span class="std std-ref">uart_events_is_packet_available</span></a> to ensure data exists.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -137,12 +217,12 @@
 <dt class="sig sig-object cpp" id="_CPPv423uart_events_send_packetP13uart_events_tPK12OSUSatPacket">
 <span id="_CPPv323uart_events_send_packetP13uart_events_tPK12OSUSatPacket"></span><span id="_CPPv223uart_events_send_packetP13uart_events_tPK12OSUSatPacket"></span><span id="uart_events_send_packet__uart_events_tP.OSUSatPacketCP"></span><span class="target" id="group__uart__events__api_1ga4757f4c4b537d90f1f4ef303cd2a61db"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uart_events_send_packet</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv413uart_events_t" title="uart_events_t"><span class="n"><span class="pre">uart_events_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">uart</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">OSUSatPacket</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">packet</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv423uart_events_send_packetP13uart_events_tPK12OSUSatPacket" title="Link to this definition">¶</a><br /></dt>
 <dd><p>Queue a packet for transmission. </p>
-<p>Serializes the given OSUSatPacket into a byte stream and adds it to the internal TX buffer.</p>
+<p>Uses osusat_packet_pack() to serialize before sending.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>uart</strong> – <strong>[inout]</strong> Pointer to the UART service instance. </p></li>
-<li><p><strong>packet</strong> – <strong>[in]</strong> Pointer to the packet to send. </p></li>
+<li><p><strong>uart</strong> – <strong>[inout]</strong> Service instance </p></li>
+<li><p><strong>packet</strong> – <strong>[in]</strong> Pointer to the packet to send </p></li>
 </ul>
 </dd>
 </dl>
@@ -188,11 +268,16 @@
 <li class="toctree-l1"><a class="reference internal" href="redundancy_manager.html">Redundancy Manager Service</a></li>
 <li class="toctree-l1"><a class="reference internal" href="telemetry.html">Telemetry Service</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">UART Events Service</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#c.UART_SERVICE_UID"><code class="docutils literal notranslate"><span class="pre">UART_SERVICE_UID</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.UART_EVENT_PACKET_RECEIVED"><code class="docutils literal notranslate"><span class="pre">UART_EVENT_PACKET_RECEIVED</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.UART_EVENT_ERROR_DETECTED"><code class="docutils literal notranslate"><span class="pre">UART_EVENT_ERROR_DETECTED</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.UART_EVENT_TX_COMPLETE"><code class="docutils literal notranslate"><span class="pre">UART_EVENT_TX_COMPLETE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.UART_RX_MAX_PACKET_SIZE"><code class="docutils literal notranslate"><span class="pre">UART_RX_MAX_PACKET_SIZE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.UART_PACKET_POOL_SIZE"><code class="docutils literal notranslate"><span class="pre">UART_PACKET_POOL_SIZE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv415uart_event_id_t"><code class="docutils literal notranslate"><span class="pre">uart_event_id_t</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv410rx_state_t"><code class="docutils literal notranslate"><span class="pre">rx_state_t</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#_CPPv413uart_events_t"><code class="docutils literal notranslate"><span class="pre">uart_events_t</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#_CPPv416uart_events_initP13uart_events_t"><code class="docutils literal notranslate"><span class="pre">uart_events_init()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#_CPPv418uart_events_updateP13uart_events_t"><code class="docutils literal notranslate"><span class="pre">uart_events_update()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#_CPPv431uart_events_is_packet_availableP13uart_events_t"><code class="docutils literal notranslate"><span class="pre">uart_events_is_packet_available()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#_CPPv422uart_events_get_packetP13uart_events_tP12OSUSatPacket"><code class="docutils literal notranslate"><span class="pre">uart_events_get_packet()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv416uart_events_initP13uart_events_t11uart_port_t"><code class="docutils literal notranslate"><span class="pre">uart_events_init()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#_CPPv423uart_events_send_packetP13uart_events_tPK12OSUSatPacket"><code class="docutils literal notranslate"><span class="pre">uart_events_send_packet()</span></code></a></li>
 </ul>
 </li>
