@@ -47,7 +47,6 @@ typedef enum {
  * @enum uart_error_t
  * @brief Errors that could occur during UART HAL use
  */
-
 typedef enum {
     UART_HAL_ERR_OVERRUN,
     UART_HAL_ERR_NOISE,

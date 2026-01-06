@@ -22,8 +22,23 @@
  * @defgroup i2c_types Types
  * @ingroup i2c
  * @brief Types used by the I2C driver.
+ *
  * @{
  */
+
+#define I2C_RX_CAPACITY 128
+
+/**
+ * @enum i2c_bus_t
+ * @brief Identifiers for the available I2C busses
+ */
+typedef enum {
+    I2C_BUS_1 = 1,
+    I2C_BUS_2,
+    I2C_BUS_3,
+    I2C_BUS_4,
+    I2C_BUS_COUNT
+} i2c_bus_t;
 
 /**
  * @enum i2c_status_t
@@ -37,10 +52,31 @@ typedef enum {
 } i2c_status_t;
 
 /**
- * @enum i2c_bus_t
- * @brief Identifiers for the available I2C busses
+ * @enum i2c_error_t
+ * @brief Errors that could occur during I2C HAL use
  */
-typedef enum { I2C_BUS_1 = 1, I2C_BUS_2, I2C_BUS_3, I2C_BUS_4 } i2c_bus_t;
+typedef enum {
+    I2C_HAL_ERR_UNKNOWN,
+} i2c_error_t;
+
+/**
+ * @brief Callback for UART RX events.
+ *
+ * Executed outside the ISR by the UART service or event bus.
+ *
+ * @param port   The UART that received data.
+ * @param ctx    Caller-specified context pointer.
+ */
+typedef void (*i2c_rx_callback_t)(i2c_bus_t bus, void *ctx);
+
+/**
+ * @brief Callback function type upon UART errors.
+ *
+ * @param[in] port   UART port index
+ * @param[in] err    The UART error that occurred
+ * @param[in] ctx    The error context
+ */
+typedef void (*i2c_error_cb_t)(i2c_bus_t bus, i2c_error_t err, void *ctx);
 
 /** @} */ // end i2c_types
 
@@ -51,6 +87,8 @@ typedef enum { I2C_BUS_1 = 1, I2C_BUS_2, I2C_BUS_3, I2C_BUS_4 } i2c_bus_t;
  *
  * @{
  */
+
+void hal_i2c_init(i2c_bus_t bus);
 
 /**
  * @brief Write data to an I2C device.
@@ -91,6 +129,14 @@ i2c_status_t hal_i2c_read(i2c_bus_t bus, uint8_t addr, uint8_t *data,
  */
 i2c_status_t hal_i2c_mem_read(i2c_bus_t bus, uint8_t addr, uint8_t reg,
                               uint8_t *data, uint16_t len);
+
+/**
+ * @brief ISR entry point for I2C interrupts
+ * Should be called from MCU's I2C_IRQHandler()
+ *
+ * @param[in] The I2C bus
+ */
+void hal_i2c_isr_handler(i2c_bus_t bus);
 
 /** @} */ // end i2c_api
 /** @} */ // end i2c
