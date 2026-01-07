@@ -8,6 +8,8 @@
 
 #define SERVICE_COUNT 8
 
+#define I2C_TIMING_BITFIELD 0x10D19CE4
+
 typedef enum { // these rails correspond to the hardware rails
     RAIL_OBC,
     RAIL_RADIO,
