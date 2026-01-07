@@ -17,12 +17,15 @@ void mock_i2c_set_next_read_data(const uint8_t *data, uint16_t len);
  * @brief Gets the last data written to the mock bus via i2c_write().
  *
  * @param[out] addr_out  Pointer to store the address that was written to.
+ * @param[out] reg_out   Contents written to the lsat register
+ * @param[out] bool      Whether the last write wsa to peripheral memory
  * @param[out] buffer    Pointer to copy the written data into.
  * @param[in]  max_len   Max bytes to copy.
  *
  * @return uint16_t      Number of bytes actually written in the last op.
  */
-uint16_t mock_i2c_get_last_write(uint8_t *addr_out, uint8_t *buffer,
+uint16_t mock_i2c_get_last_write(uint8_t *addr_out, uint8_t *reg_out,
+                                 bool *was_mem, uint8_t *buffer,
                                  uint16_t max_len);
 
 #endif // HAL_I2C_MOCK_H
