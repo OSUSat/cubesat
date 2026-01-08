@@ -5,6 +5,7 @@
 
 #include "hal_gpio.h"
 #include "eps_config.h"
+#include "hal_gpio_types.h"
 #include "stm32l496xx.h"
 #include "stm32l4xx_hal.h"
 #include "stm32l4xx_hal_cortex.h"
@@ -33,6 +34,22 @@ static exti_irq_state_t exti_irqs[] = {
     {EXTI4_IRQn, 0}, {EXTI9_5_IRQn, 0}, {EXTI15_10_IRQn, 0},
 };
 
+static GPIO_PinState hal_gpio_state_to_stm32_state(gpio_state_t state) {
+    if (state == HAL_GPIO_STATE_HIGH) {
+        return GPIO_PIN_SET;
+    } else {
+        return GPIO_PIN_RESET;
+    }
+}
+
+static gpio_state_t hal_stm32_state_to_gpio_state(GPIO_PinState state) {
+    if (state == GPIO_PIN_SET) {
+        return HAL_GPIO_STATE_HIGH;
+    } else {
+        return HAL_GPIO_STATE_LOW;
+    }
+}
+
 static GPIO_TypeDef *hal_port_id_to_port(uint8_t port_id) {
     switch (port_id) {
     case 0:
@@ -41,6 +58,18 @@ static GPIO_TypeDef *hal_port_id_to_port(uint8_t port_id) {
         return GPIOB;
     case 2:
         return GPIOC;
+    case 3:
+        return GPIOD;
+    case 4:
+        return GPIOE;
+    case 5:
+        return GPIOF;
+    case 6:
+        return GPIOG;
+    case 7:
+        return GPIOH;
+    case 8:
+        return GPIOI;
     default:
         return NULL;
     }
@@ -82,8 +111,10 @@ static IRQn_Type hal_gpio_pin_to_irq(uint16_t pin_mask) {
 static uint16_t hal_gpio_pull_to_stm32_pull(gpio_pull_t pull) {
     if (pull == HAL_GPIO_PULL_UP) {
         return GPIO_PULLUP;
+    } else if (pull == HAL_GPIO_PULL_DOWN) {
+        return HAL_GPIO_PULL_DOWN;
     } else {
-        return GPIO_PULLDOWN;
+        return GPIO_NOPULL;
     }
 }
 
@@ -190,6 +221,39 @@ void hal_gpio_set_mode(uint8_t pin, gpio_mode_t mode) {
     }
 
     HAL_GPIO_Init(ctx->port, &init);
+}
+
+void hal_gpio_write(uint8_t pin, gpio_state_t state) {
+    if (pin >= NUM_GPIO_PINS) {
+        return;
+    }
+
+    gpio_pin_context_t *ctx = &pins[pin];
+
+    HAL_GPIO_WritePin(ctx->port, ctx->pin_mask,
+                      hal_gpio_state_to_stm32_state(state));
+}
+
+void hal_gpio_toggle(uint8_t pin) {
+    if (pin >= NUM_GPIO_PINS) {
+        return;
+    }
+
+    gpio_pin_context_t *ctx = &pins[pin];
+
+    HAL_GPIO_TogglePin(ctx->port, ctx->pin_mask);
+}
+
+gpio_state_t hal_gpio_read(uint8_t pin) {
+    if (pin >= NUM_GPIO_PINS) {
+        return HAL_GPIO_STATE_UNKNOWN;
+    }
+
+    gpio_pin_context_t *ctx = &pins[pin];
+
+    GPIO_PinState state = HAL_GPIO_ReadPin(ctx->port, ctx->pin_mask);
+
+    return hal_stm32_state_to_gpio_state(state);
 }
 
 void hal_gpio_register_callback(uint8_t pin, gpio_callback_t callback,

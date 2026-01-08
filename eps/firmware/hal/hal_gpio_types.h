@@ -25,8 +25,9 @@ typedef enum {
  * @brief Possible GPIO states
  */
 typedef enum {
-    HAL_GPIO_STATE_LOW,  /**< The GPIO pin is currently low */
-    HAL_GPIO_STATE_HIGH, /**< The GPIO pin is currently high */
+    HAL_GPIO_STATE_LOW,    /**< The GPIO pin is currently low */
+    HAL_GPIO_STATE_HIGH,   /**< The GPIO pin is currently high */
+    HAL_GPIO_STATE_UNKNOWN /**< GPIO pin error state */
 } gpio_state_t;
 
 /**
@@ -36,6 +37,7 @@ typedef enum {
 typedef enum {
     HAL_GPIO_PULL_UP,   /**< The GPIO pin will be internally pulled up */
     HAL_GPIO_PULL_DOWN, /**< The GPIO pin will be internally pulled down */
+    HAL_GPIO_NO_PULL    /**< The GPIO pin will not be pulled */
 } gpio_pull_t;
 
 #endif // HAL_GPIO_TYPES_H
