@@ -376,4 +376,30 @@ void I2C4_ER_IRQHandler(void) {
     /* USER CODE END I2C4_ER_IRQn 1 */
 }
 
+void EXTI0_IRQHandler(void) { HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_0); }
+
+void EXTI1_IRQHandler(void) { HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_1); }
+
+void EXTI2_IRQHandler(void) { HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_2); }
+
+void EXTI3_IRQHandler(void) { HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_3); }
+
+void EXTI4_IRQHandler(void) { HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_4); }
+
+void EXTI9_5_IRQHandler(void) {
+    for (uint16_t pin = GPIO_PIN_5; pin <= GPIO_PIN_9; pin <<= 1) {
+        if (__HAL_GPIO_EXTI_GET_IT(pin)) {
+            HAL_GPIO_EXTI_IRQHandler(pin);
+        }
+    }
+}
+
+void EXTI15_10_IRQHandler(void) {
+    for (uint16_t pin = GPIO_PIN_10; pin <= GPIO_PIN_15; pin <<= 1) {
+        if (__HAL_GPIO_EXTI_GET_IT(pin)) {
+            HAL_GPIO_EXTI_IRQHandler(pin);
+        }
+    }
+}
+
 /* USER CODE END 1 */
