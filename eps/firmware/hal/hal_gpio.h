@@ -9,12 +9,14 @@
 #ifndef GPIO_H
 #define GPIO_H
 
+#include "hal_gpio_types.h"
 #include <stdbool.h>
 #include <stdint.h>
 
 /**
  * @defgroup gpio GPIO
  * @brief Handles GPIO control.
+ *
  * @{
  */
 
@@ -27,27 +29,6 @@
  */
 
 /**
- * @enum gpio_mode_t
- * @brief Possible GPIO input modes
- */
-typedef enum {
-    GPIO_MODE_INPUT,            /**< GPIO input mode (reading) */
-    GPIO_MODE_OUTPUT,           /**< GPIO output mode (driving) */
-    GPIO_MODE_IT_RISING,        /**< Interrupt on rising edge */
-    GPIO_MODE_IT_FALLING,       /**< Interrupt on falling edge */
-    GPIO_MODE_IT_RISING_FALLING /**< Interrupt on both edges */
-} gpio_mode_t;
-
-/**
- * @enum gpio_state_t
- * @brief Possible GPIO states
- */
-typedef enum {
-    GPIO_STATE_LOW,  /**< The GPIO pin is currently low */
-    GPIO_STATE_HIGH, /**< The GPIO pin is currently high */
-} gpio_state_t;
-
-/**
  * @typedef gpio_callback_t
  * @brief Function signature for GPIO interrupt handlers.
  *
@@ -55,6 +36,20 @@ typedef enum {
  * @param[in] ctx User context pointer provided at registration.
  */
 typedef void (*gpio_callback_t)(uint8_t pin, void *ctx);
+
+/**
+ * @enum gpio_pin_t
+ * @brief GPIO pin descriptor
+ */
+typedef struct {
+    gpio_mode_t mode;   /**< GPIO pin mode */
+    gpio_state_t state; /**< GPIO state mode */
+    gpio_pull_t pull;   /**< GPIO pull */
+    bool irq_enabled;   /**< Whether the IRQ is enabled on this pin */
+
+    gpio_callback_t cb; /**< Callback that fires when pin state changes */
+    void *ctx;          /**< Context passed to the callback when fired */
+} gpio_pin_t;
 
 /** @} */ // end gpio_types
 

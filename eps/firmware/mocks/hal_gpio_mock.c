@@ -27,18 +27,19 @@ static void check_and_fire_interrupt(uint8_t pin, gpio_state_t old_state,
     gpio_mode_t mode = mock_pin_modes[pin];
 
     // check rising edge (low -> high)
-    if (old_state == GPIO_STATE_LOW && new_state == GPIO_STATE_HIGH) {
-        if (mode == GPIO_MODE_IT_RISING ||
-            mode == GPIO_MODE_IT_RISING_FALLING) {
+    if (old_state == HAL_GPIO_STATE_LOW && new_state == HAL_GPIO_STATE_HIGH) {
+        if (mode == HAL_GPIO_MODE_IT_RISING ||
+            mode == HAL_GPIO_MODE_IT_RISING_FALLING) {
             printf("MOCK IRQ: Rising Edge detected on Pin %d\n", pin);
             fire = true;
         }
     }
 
     // check falling edge (high -> low)
-    else if (old_state == GPIO_STATE_HIGH && new_state == GPIO_STATE_LOW) {
-        if (mode == GPIO_MODE_IT_FALLING ||
-            mode == GPIO_MODE_IT_RISING_FALLING) {
+    else if (old_state == HAL_GPIO_STATE_HIGH &&
+             new_state == HAL_GPIO_STATE_LOW) {
+        if (mode == HAL_GPIO_MODE_IT_FALLING ||
+            mode == HAL_GPIO_MODE_IT_RISING_FALLING) {
             printf("MOCK IRQ: Falling Edge detected on Pin %d\n", pin);
             fire = true;
         }
@@ -54,8 +55,8 @@ void hal_gpio_init(void) {
     printf("MOCK: GPIO initialized\n");
 
     for (int i = 0; i < MAX_MOCK_PINS; i++) {
-        mock_pin_states[i] = GPIO_STATE_LOW;
-        mock_pin_modes[i] = GPIO_MODE_INPUT;
+        mock_pin_states[i] = HAL_GPIO_STATE_LOW;
+        mock_pin_modes[i] = HAL_GPIO_MODE_INPUT;
     }
 }
 
@@ -87,7 +88,7 @@ void hal_gpio_write(uint8_t pin, gpio_state_t state) {
         return;
     }
 
-    if (mock_pin_modes[pin] == GPIO_MODE_OUTPUT) {
+    if (mock_pin_modes[pin] == HAL_GPIO_MODE_OUTPUT) {
         printf("MOCK: Writing %d to pin %d\n", state, pin);
 
         gpio_state_t old_state = mock_pin_states[pin];
@@ -105,7 +106,7 @@ void hal_gpio_write(uint8_t pin, gpio_state_t state) {
 gpio_state_t hal_gpio_read(uint8_t pin) {
     if (pin >= MAX_MOCK_PINS) {
         printf("MOCK ERROR: Pin %d out of bounds\n", pin);
-        return GPIO_STATE_LOW;
+        return HAL_GPIO_STATE_LOW;
     }
 
     return mock_pin_states[pin];
@@ -115,10 +116,10 @@ void hal_gpio_toggle(uint8_t pin) {
     if (pin >= MAX_MOCK_PINS)
         return;
 
-    if (mock_pin_modes[pin] == GPIO_MODE_OUTPUT) {
-        gpio_state_t new_state = (mock_pin_states[pin] == GPIO_STATE_LOW)
-                                     ? GPIO_STATE_HIGH
-                                     : GPIO_STATE_LOW;
+    if (mock_pin_modes[pin] == HAL_GPIO_MODE_OUTPUT) {
+        gpio_state_t new_state = (mock_pin_states[pin] == HAL_GPIO_STATE_LOW)
+                                     ? HAL_GPIO_STATE_HIGH
+                                     : HAL_GPIO_STATE_LOW;
 
         hal_gpio_write(pin, new_state);
     }
