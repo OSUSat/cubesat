@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Redundancy Manager Service &#8212; OSUSat EPS Firmware  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Telemetry Service" href="telemetry.html" />
+    <link rel="prev" title="Rail Controller Service" href="rail_controller.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="redundancy-manager-service">
+<h1>Redundancy Manager Service<a class="headerlink" href="#redundancy-manager-service" title="Link to this heading">¶</a></h1>
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group__redundancy__manager"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">Redundancy</span> <span class="pre">Manager</span></span></dt>
+<dd><p>Aggregates component faults to determine system-wide health. </p>
+</dd></dl>
+
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group__redundancy__manager__types"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">Types</span></span></dt>
+<dd><p>Enumerations for fault sources and system states. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.REDUNDANCY_MANAGER_MAX_FAULTS">
+<span class="target" id="group__redundancy__manager__types_1gaf614f70344df01b701e0f3e20e5eac72"></span><span class="sig-name descname"><span class="n"><span class="pre">REDUNDANCY_MANAGER_MAX_FAULTS</span></span></span><a class="headerlink" href="#c.REDUNDANCY_MANAGER_MAX_FAULTS" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Maximum number of active faults to track simultaneously. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.REDUNDANCY_MANAGER_SERVICE_UID">
+<span class="target" id="group__redundancy__manager__types_1ga35fa18a9fe2fed2607e28574ccba5e94"></span><span class="sig-name descname"><span class="n"><span class="pre">REDUNDANCY_MANAGER_SERVICE_UID</span></span></span><a class="headerlink" href="#c.REDUNDANCY_MANAGER_SERVICE_UID" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Service Unique Identifier (16-bit). Used to construct unique Event IDs. 0x5366 = “Sf” (SafeMode/System Fault) </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.REDUNDANCY_EVENT_CRITICAL_HEALTH">
+<span class="target" id="group__redundancy__manager__types_1gad1cf7a8c70f1567a5639c1b6b5657e1b"></span><span class="sig-name descname"><span class="n"><span class="pre">REDUNDANCY_EVENT_CRITICAL_HEALTH</span></span></span><a class="headerlink" href="#c.REDUNDANCY_EVENT_CRITICAL_HEALTH" title="Link to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.REDUNDANCY_EVENT_HEALTH_DEGRADED">
+<span class="target" id="group__redundancy__manager__types_1ga8ee8d7a92214b4ad2fca804a49f0828e"></span><span class="sig-name descname"><span class="n"><span class="pre">REDUNDANCY_EVENT_HEALTH_DEGRADED</span></span></span><a class="headerlink" href="#c.REDUNDANCY_EVENT_HEALTH_DEGRADED" title="Link to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.REDUNDANCY_EVENT_HEALTH_RECOVERED">
+<span class="target" id="group__redundancy__manager__types_1ga7d31ffd6c8f4bb9281cc976808212d38"></span><span class="sig-name descname"><span class="n"><span class="pre">REDUNDANCY_EVENT_HEALTH_RECOVERED</span></span></span><a class="headerlink" href="#c.REDUNDANCY_EVENT_HEALTH_RECOVERED" title="Link to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.REDUNDANCY_EVENT_COMPONENT_DEGRADED">
+<span class="target" id="group__redundancy__manager__types_1ga0703a5d8b01d91c047750772fa7b4f7e"></span><span class="sig-name descname"><span class="n"><span class="pre">REDUNDANCY_EVENT_COMPONENT_DEGRADED</span></span></span><a class="headerlink" href="#c.REDUNDANCY_EVENT_COMPONENT_DEGRADED" title="Link to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.REDUNDANCY_EVENT_COMPONENT_RECOVERED">
+<span class="target" id="group__redundancy__manager__types_1ga6fd0a894e1c636d95d6b39883dd032bc"></span><span class="sig-name descname"><span class="n"><span class="pre">REDUNDANCY_EVENT_COMPONENT_RECOVERED</span></span></span><a class="headerlink" href="#c.REDUNDANCY_EVENT_COMPONENT_RECOVERED" title="Link to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.REDUNDANCY_EVENT_HEALTH_RESPONSE">
+<span class="target" id="group__redundancy__manager__types_1ga8ae6a65ed084c4202f77f0c32c23d37f"></span><span class="sig-name descname"><span class="n"><span class="pre">REDUNDANCY_EVENT_HEALTH_RESPONSE</span></span></span><a class="headerlink" href="#c.REDUNDANCY_EVENT_HEALTH_RESPONSE" title="Link to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.REDUNDANCY_EVENT_COMPONENT_STATUS_RESPONSE">
+<span class="target" id="group__redundancy__manager__types_1ga9ab400321dc14e375139c72c0e29e765"></span><span class="sig-name descname"><span class="n"><span class="pre">REDUNDANCY_EVENT_COMPONENT_STATUS_RESPONSE</span></span></span><a class="headerlink" href="#c.REDUNDANCY_EVENT_COMPONENT_STATUS_RESPONSE" title="Link to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.REDUNDANCY_EVENT_FAULT_LIST_RESPONSE">
+<span class="target" id="group__redundancy__manager__types_1ga9fba97d6fffe96ad05c926d9b9a4c884"></span><span class="sig-name descname"><span class="n"><span class="pre">REDUNDANCY_EVENT_FAULT_LIST_RESPONSE</span></span></span><a class="headerlink" href="#c.REDUNDANCY_EVENT_FAULT_LIST_RESPONSE" title="Link to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.REDUNDANCY_EVENT_TELEMETRY">
+<span class="target" id="group__redundancy__manager__types_1gacd49e06c78402e31c5c5615522682d45"></span><span class="sig-name descname"><span class="n"><span class="pre">REDUNDANCY_EVENT_TELEMETRY</span></span></span><a class="headerlink" href="#c.REDUNDANCY_EVENT_TELEMETRY" title="Link to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-typedefs">Typedefs</p>
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv412fault_code_t">
+<span id="_CPPv312fault_code_t"></span><span id="_CPPv212fault_code_t"></span><span id="fault_code_t"></span><span class="target" id="group__redundancy__manager__types_1gae3f1b00192fdb0e53f5e0058986de5e8"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fault_code_t</span></span></span><a class="headerlink" href="#_CPPv412fault_code_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Service-specific error code. </p>
+<p>Specific codes are defined in the reporting service’s header. Example: A FAULT_SOURCE_RAIL might report RAIL_FAULT_OVERCURRENT. </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-enums">Enums</p>
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv429redundancy_manager_event_id_t">
+<span id="_CPPv329redundancy_manager_event_id_t"></span><span id="_CPPv229redundancy_manager_event_id_t"></span><span class="target" id="group__redundancy__manager__types_1ga88dbce3650b91fe162147fa11d03c50d"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">redundancy_manager_event_id_t</span></span></span><a class="headerlink" href="#_CPPv429redundancy_manager_event_id_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Events published by the Redundancy Manager. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N29redundancy_manager_event_id_t32REDUNDANCY_EVENT_CRITICAL_HEALTHE">
+<span id="_CPPv3N29redundancy_manager_event_id_t32REDUNDANCY_EVENT_CRITICAL_HEALTHE"></span><span id="_CPPv2N29redundancy_manager_event_id_t32REDUNDANCY_EVENT_CRITICAL_HEALTHE"></span><span class="target" id="group__redundancy__manager__types_1gga88dbce3650b91fe162147fa11d03c50da1f6b5397fa23ebba81aa4ff7c9e41733"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">REDUNDANCY_EVENT_CRITICAL_HEALTH</span></span></span><a class="headerlink" href="#_CPPv4N29redundancy_manager_event_id_t32REDUNDANCY_EVENT_CRITICAL_HEALTHE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Published when system enters critical health state. </p>
+<p>Applications should initiate Safe Mode transition.</p>
+<p>Payload: system_health_t (always SYSTEM_HEALTH_FAULT) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N29redundancy_manager_event_id_t32REDUNDANCY_EVENT_HEALTH_DEGRADEDE">
+<span id="_CPPv3N29redundancy_manager_event_id_t32REDUNDANCY_EVENT_HEALTH_DEGRADEDE"></span><span id="_CPPv2N29redundancy_manager_event_id_t32REDUNDANCY_EVENT_HEALTH_DEGRADEDE"></span><span class="target" id="group__redundancy__manager__types_1gga88dbce3650b91fe162147fa11d03c50da8e12e4458b810b4fa6c4f7b1a4f23dca"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">REDUNDANCY_EVENT_HEALTH_DEGRADED</span></span></span><a class="headerlink" href="#_CPPv4N29redundancy_manager_event_id_t32REDUNDANCY_EVENT_HEALTH_DEGRADEDE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Published when system health becomes degraded. </p>
+<p>Mission can continue with reduced capability. Services may need to adapt (e.g., reduce power consumption, disable non-critical features).</p>
+<p>Payload: system_health_t (always SYSTEM_HEALTH_DEGRADED) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N29redundancy_manager_event_id_t33REDUNDANCY_EVENT_HEALTH_RECOVEREDE">
+<span id="_CPPv3N29redundancy_manager_event_id_t33REDUNDANCY_EVENT_HEALTH_RECOVEREDE"></span><span id="_CPPv2N29redundancy_manager_event_id_t33REDUNDANCY_EVENT_HEALTH_RECOVEREDE"></span><span class="target" id="group__redundancy__manager__types_1gga88dbce3650b91fe162147fa11d03c50da8a44504bc25e771803f2ccc78222f6a5"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">REDUNDANCY_EVENT_HEALTH_RECOVERED</span></span></span><a class="headerlink" href="#_CPPv4N29redundancy_manager_event_id_t33REDUNDANCY_EVENT_HEALTH_RECOVEREDE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Published when system recovers to nominal health. </p>
+<p>All critical and degraded faults have been cleared.</p>
+<p>Payload: system_health_t (always SYSTEM_HEALTH_OK) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N29redundancy_manager_event_id_t35REDUNDANCY_EVENT_COMPONENT_DEGRADEDE">
+<span id="_CPPv3N29redundancy_manager_event_id_t35REDUNDANCY_EVENT_COMPONENT_DEGRADEDE"></span><span id="_CPPv2N29redundancy_manager_event_id_t35REDUNDANCY_EVENT_COMPONENT_DEGRADEDE"></span><span class="target" id="group__redundancy__manager__types_1gga88dbce3650b91fe162147fa11d03c50da38cc2206b60033af1cbec7efa14142cc"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">REDUNDANCY_EVENT_COMPONENT_DEGRADED</span></span></span><a class="headerlink" href="#_CPPv4N29redundancy_manager_event_id_t35REDUNDANCY_EVENT_COMPONENT_DEGRADEDE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Published when a specific component becomes degraded. </p>
+<p>Indicates a component failure with fallback available. Affected services should switch to backup/redundant hardware.</p>
+<p>Example: Primary UART fails → switch to auxiliary UART</p>
+<p>Payload: <a class="reference internal" href="#structcomponent__degradation__t"><span class="std std-ref">component_degradation_t</span></a></p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N29redundancy_manager_event_id_t36REDUNDANCY_EVENT_COMPONENT_RECOVEREDE">
+<span id="_CPPv3N29redundancy_manager_event_id_t36REDUNDANCY_EVENT_COMPONENT_RECOVEREDE"></span><span id="_CPPv2N29redundancy_manager_event_id_t36REDUNDANCY_EVENT_COMPONENT_RECOVEREDE"></span><span class="target" id="group__redundancy__manager__types_1gga88dbce3650b91fe162147fa11d03c50da0c7a31bad4666871ab004f94b96e3f9c"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">REDUNDANCY_EVENT_COMPONENT_RECOVERED</span></span></span><a class="headerlink" href="#_CPPv4N29redundancy_manager_event_id_t36REDUNDANCY_EVENT_COMPONENT_RECOVEREDE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Published when a degraded component recovers. </p>
+<p>Services may optionally switch back to primary hardware.</p>
+<p>Payload: component_id_t </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N29redundancy_manager_event_id_t32REDUNDANCY_EVENT_HEALTH_RESPONSEE">
+<span id="_CPPv3N29redundancy_manager_event_id_t32REDUNDANCY_EVENT_HEALTH_RESPONSEE"></span><span id="_CPPv2N29redundancy_manager_event_id_t32REDUNDANCY_EVENT_HEALTH_RESPONSEE"></span><span class="target" id="group__redundancy__manager__types_1gga88dbce3650b91fe162147fa11d03c50da8ac58c81eb6c8e3e5b1fa7969fa63938"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">REDUNDANCY_EVENT_HEALTH_RESPONSE</span></span></span><a class="headerlink" href="#_CPPv4N29redundancy_manager_event_id_t32REDUNDANCY_EVENT_HEALTH_RESPONSEE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Published in response to REQUEST_REDUNDANCY_HEALTH query. </p>
+<p>Payload: <a class="reference internal" href="#structhealth__response__t"><span class="std std-ref">health_response_t</span></a></p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N29redundancy_manager_event_id_t42REDUNDANCY_EVENT_COMPONENT_STATUS_RESPONSEE">
+<span id="_CPPv3N29redundancy_manager_event_id_t42REDUNDANCY_EVENT_COMPONENT_STATUS_RESPONSEE"></span><span id="_CPPv2N29redundancy_manager_event_id_t42REDUNDANCY_EVENT_COMPONENT_STATUS_RESPONSEE"></span><span class="target" id="group__redundancy__manager__types_1gga88dbce3650b91fe162147fa11d03c50da192670d611aff778affe0632a42fbac1"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">REDUNDANCY_EVENT_COMPONENT_STATUS_RESPONSE</span></span></span><a class="headerlink" href="#_CPPv4N29redundancy_manager_event_id_t42REDUNDANCY_EVENT_COMPONENT_STATUS_RESPONSEE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Published in response to REQUEST_REDUNDANCY_COMPONENT_STATUS query. </p>
+<p>Payload: <a class="reference internal" href="#structcomponent__status__response__t"><span class="std std-ref">component_status_response_t</span></a></p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N29redundancy_manager_event_id_t36REDUNDANCY_EVENT_FAULT_LIST_RESPONSEE">
+<span id="_CPPv3N29redundancy_manager_event_id_t36REDUNDANCY_EVENT_FAULT_LIST_RESPONSEE"></span><span id="_CPPv2N29redundancy_manager_event_id_t36REDUNDANCY_EVENT_FAULT_LIST_RESPONSEE"></span><span class="target" id="group__redundancy__manager__types_1gga88dbce3650b91fe162147fa11d03c50da3e6db82d4e45f7aa21b52f7d98dc7807"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">REDUNDANCY_EVENT_FAULT_LIST_RESPONSE</span></span></span><a class="headerlink" href="#_CPPv4N29redundancy_manager_event_id_t36REDUNDANCY_EVENT_FAULT_LIST_RESPONSEE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Published in response to REQUEST_REDUNDANCY_FAULT_LIST query. </p>
+<p>May require multiple events if fault list is large (chunked response).</p>
+<p>Payload: <a class="reference internal" href="#structfault__list__response__t"><span class="std std-ref">fault_list_response_t</span></a></p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N29redundancy_manager_event_id_t26REDUNDANCY_EVENT_TELEMETRYE">
+<span id="_CPPv3N29redundancy_manager_event_id_t26REDUNDANCY_EVENT_TELEMETRYE"></span><span id="_CPPv2N29redundancy_manager_event_id_t26REDUNDANCY_EVENT_TELEMETRYE"></span><span class="target" id="group__redundancy__manager__types_1gga88dbce3650b91fe162147fa11d03c50da136fa9c2702bcefcd52faa5b5af29063"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">REDUNDANCY_EVENT_TELEMETRY</span></span></span><a class="headerlink" href="#_CPPv4N29redundancy_manager_event_id_t26REDUNDANCY_EVENT_TELEMETRYE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Periodic telemetry broadcast (e.g., every 30 seconds). </p>
+<p>Contains summary of system health and fault counts.</p>
+<p>Payload: <a class="reference internal" href="#structredundancy__telemetry__t"><span class="std std-ref">redundancy_telemetry_t</span></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv414fault_source_t">
+<span id="_CPPv314fault_source_t"></span><span id="_CPPv214fault_source_t"></span><span class="target" id="group__redundancy__manager__types_1ga4f4a3b75aaca29d932cb4e0c4153f78a"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fault_source_t</span></span></span><a class="headerlink" href="#_CPPv414fault_source_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Identifies the subsystem reporting a failure. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N14fault_source_t20FAULT_SOURCE_BATTERYE">
+<span id="_CPPv3N14fault_source_t20FAULT_SOURCE_BATTERYE"></span><span id="_CPPv2N14fault_source_t20FAULT_SOURCE_BATTERYE"></span><span class="target" id="group__redundancy__manager__types_1gga4f4a3b75aaca29d932cb4e0c4153f78aa14152b8c6d5aef9e1e6ec3bbdabb89ed"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FAULT_SOURCE_BATTERY</span></span></span><a class="headerlink" href="#_CPPv4N14fault_source_t20FAULT_SOURCE_BATTERYE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>BMS issues (voltage, temperature, etc.) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N14fault_source_t17FAULT_SOURCE_MPPTE">
+<span id="_CPPv3N14fault_source_t17FAULT_SOURCE_MPPTE"></span><span id="_CPPv2N14fault_source_t17FAULT_SOURCE_MPPTE"></span><span class="target" id="group__redundancy__manager__types_1gga4f4a3b75aaca29d932cb4e0c4153f78aa027341fd026034b1fd35adf0bef2a936"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FAULT_SOURCE_MPPT</span></span></span><a class="headerlink" href="#_CPPv4N14fault_source_t17FAULT_SOURCE_MPPTE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Solar charging failures </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N14fault_source_t17FAULT_SOURCE_RAILE">
+<span id="_CPPv3N14fault_source_t17FAULT_SOURCE_RAILE"></span><span id="_CPPv2N14fault_source_t17FAULT_SOURCE_RAILE"></span><span class="target" id="group__redundancy__manager__types_1gga4f4a3b75aaca29d932cb4e0c4153f78aac5b6371520a80a1c00485d3c8a72e190"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FAULT_SOURCE_RAIL</span></span></span><a class="headerlink" href="#_CPPv4N14fault_source_t17FAULT_SOURCE_RAILE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Rail controller (overcurrent, enable failures) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N14fault_source_t19FAULT_SOURCE_SENSORE">
+<span id="_CPPv3N14fault_source_t19FAULT_SOURCE_SENSORE"></span><span id="_CPPv2N14fault_source_t19FAULT_SOURCE_SENSORE"></span><span class="target" id="group__redundancy__manager__types_1gga4f4a3b75aaca29d932cb4e0c4153f78aa459a409859262ba490b7cdf6de3241e9"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FAULT_SOURCE_SENSOR</span></span></span><a class="headerlink" href="#_CPPv4N14fault_source_t19FAULT_SOURCE_SENSORE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>I2C/SPI sensor timeouts or bad data </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N14fault_source_t17FAULT_SOURCE_UARTE">
+<span id="_CPPv3N14fault_source_t17FAULT_SOURCE_UARTE"></span><span id="_CPPv2N14fault_source_t17FAULT_SOURCE_UARTE"></span><span class="target" id="group__redundancy__manager__types_1gga4f4a3b75aaca29d932cb4e0c4153f78aa5701f743715c4bdbd4771346ba7aea9a"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FAULT_SOURCE_UART</span></span></span><a class="headerlink" href="#_CPPv4N14fault_source_t17FAULT_SOURCE_UARTE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>UART communication errors </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N14fault_source_t21FAULT_SOURCE_WATCHDOGE">
+<span id="_CPPv3N14fault_source_t21FAULT_SOURCE_WATCHDOGE"></span><span id="_CPPv2N14fault_source_t21FAULT_SOURCE_WATCHDOGE"></span><span class="target" id="group__redundancy__manager__types_1gga4f4a3b75aaca29d932cb4e0c4153f78aa8dfcd9f77f6f4a2652c2b158edd00675"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FAULT_SOURCE_WATCHDOG</span></span></span><a class="headerlink" href="#_CPPv4N14fault_source_t21FAULT_SOURCE_WATCHDOGE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Watchdog timeout or service hang </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N14fault_source_t19FAULT_SOURCE_MEMORYE">
+<span id="_CPPv3N14fault_source_t19FAULT_SOURCE_MEMORYE"></span><span id="_CPPv2N14fault_source_t19FAULT_SOURCE_MEMORYE"></span><span class="target" id="group__redundancy__manager__types_1gga4f4a3b75aaca29d932cb4e0c4153f78aa36420a9c23ade08c294e4ec9628811d9"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FAULT_SOURCE_MEMORY</span></span></span><a class="headerlink" href="#_CPPv4N14fault_source_t19FAULT_SOURCE_MEMORYE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Flash/EEPROM errors </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N14fault_source_t18FAULT_SOURCE_COUNTE">
+<span id="_CPPv3N14fault_source_t18FAULT_SOURCE_COUNTE"></span><span id="_CPPv2N14fault_source_t18FAULT_SOURCE_COUNTE"></span><span class="target" id="group__redundancy__manager__types_1gga4f4a3b75aaca29d932cb4e0c4153f78aa7eb91ab07ab9b46ccaed2da541909ce5"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FAULT_SOURCE_COUNT</span></span></span><a class="headerlink" href="#_CPPv4N14fault_source_t18FAULT_SOURCE_COUNTE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Number of fault sources </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv416fault_severity_t">
+<span id="_CPPv316fault_severity_t"></span><span id="_CPPv216fault_severity_t"></span><span class="target" id="group__redundancy__manager__types_1ga6b28c58c34989f0b268f274421ecd0fb"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fault_severity_t</span></span></span><a class="headerlink" href="#_CPPv416fault_severity_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Severity classification for individual faults. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16fault_severity_t19FAULT_SEVERITY_INFOE">
+<span id="_CPPv3N16fault_severity_t19FAULT_SEVERITY_INFOE"></span><span id="_CPPv2N16fault_severity_t19FAULT_SEVERITY_INFOE"></span><span class="target" id="group__redundancy__manager__types_1gga6b28c58c34989f0b268f274421ecd0fbaddaf53e458153663592f6f3a912497fd"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FAULT_SEVERITY_INFO</span></span></span><a class="headerlink" href="#_CPPv4N16fault_severity_t19FAULT_SEVERITY_INFOE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Informational, no action required </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16fault_severity_t22FAULT_SEVERITY_WARNINGE">
+<span id="_CPPv3N16fault_severity_t22FAULT_SEVERITY_WARNINGE"></span><span id="_CPPv2N16fault_severity_t22FAULT_SEVERITY_WARNINGE"></span><span class="target" id="group__redundancy__manager__types_1gga6b28c58c34989f0b268f274421ecd0fbaab84fc586f34534c5305214192ff7826"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FAULT_SEVERITY_WARNING</span></span></span><a class="headerlink" href="#_CPPv4N16fault_severity_t22FAULT_SEVERITY_WARNINGE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Potential issue, monitor closely </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16fault_severity_t23FAULT_SEVERITY_DEGRADEDE">
+<span id="_CPPv3N16fault_severity_t23FAULT_SEVERITY_DEGRADEDE"></span><span id="_CPPv2N16fault_severity_t23FAULT_SEVERITY_DEGRADEDE"></span><span class="target" id="group__redundancy__manager__types_1gga6b28c58c34989f0b268f274421ecd0fba74c24ab20c9b59d0420832a0c3919c14"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FAULT_SEVERITY_DEGRADED</span></span></span><a class="headerlink" href="#_CPPv4N16fault_severity_t23FAULT_SEVERITY_DEGRADEDE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Component degraded, fallback available </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16fault_severity_t23FAULT_SEVERITY_CRITICALE">
+<span id="_CPPv3N16fault_severity_t23FAULT_SEVERITY_CRITICALE"></span><span id="_CPPv2N16fault_severity_t23FAULT_SEVERITY_CRITICALE"></span><span class="target" id="group__redundancy__manager__types_1gga6b28c58c34989f0b268f274421ecd0fbaade5d77e601d06be284fac305c3787b4"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FAULT_SEVERITY_CRITICAL</span></span></span><a class="headerlink" href="#_CPPv4N16fault_severity_t23FAULT_SEVERITY_CRITICALE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Critical failure, Safe Mode required </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv415system_health_t">
+<span id="_CPPv315system_health_t"></span><span id="_CPPv215system_health_t"></span><span class="target" id="group__redundancy__manager__types_1ga0e80690e3278646a3c63a266cbd9269d"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">system_health_t</span></span></span><a class="headerlink" href="#_CPPv415system_health_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>High-level classification of EPS health. </p>
+<p>Used by applications to drive state transitions. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N15system_health_t16SYSTEM_HEALTH_OKE">
+<span id="_CPPv3N15system_health_t16SYSTEM_HEALTH_OKE"></span><span id="_CPPv2N15system_health_t16SYSTEM_HEALTH_OKE"></span><span class="target" id="group__redundancy__manager__types_1gga0e80690e3278646a3c63a266cbd9269da360de3d607746c5dd7896c63bf872782"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SYSTEM_HEALTH_OK</span></span></span><a class="headerlink" href="#_CPPv4N15system_health_t16SYSTEM_HEALTH_OKE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>All systems nominal </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N15system_health_t22SYSTEM_HEALTH_DEGRADEDE">
+<span id="_CPPv3N15system_health_t22SYSTEM_HEALTH_DEGRADEDE"></span><span id="_CPPv2N15system_health_t22SYSTEM_HEALTH_DEGRADEDE"></span><span class="target" id="group__redundancy__manager__types_1gga0e80690e3278646a3c63a266cbd9269daf77b2e1057865c8995d84a139d27feae"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SYSTEM_HEALTH_DEGRADED</span></span></span><a class="headerlink" href="#_CPPv4N15system_health_t22SYSTEM_HEALTH_DEGRADEDE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Non-critical faults, mission continues </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N15system_health_t19SYSTEM_HEALTH_FAULTE">
+<span id="_CPPv3N15system_health_t19SYSTEM_HEALTH_FAULTE"></span><span id="_CPPv2N15system_health_t19SYSTEM_HEALTH_FAULTE"></span><span class="target" id="group__redundancy__manager__types_1gga0e80690e3278646a3c63a266cbd9269da53eff3058895568141e582b9034798d8"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SYSTEM_HEALTH_FAULT</span></span></span><a class="headerlink" href="#_CPPv4N15system_health_t19SYSTEM_HEALTH_FAULTE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Critical failure, requires Safe Mode </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv414component_id_t">
+<span id="_CPPv314component_id_t"></span><span id="_CPPv214component_id_t"></span><span class="target" id="group__redundancy__manager__types_1ga7c14751f737d5413dc48d18c920c8053"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">component_id_t</span></span></span><a class="headerlink" href="#_CPPv414component_id_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Identifiers for components with redundancy/fallback options. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N14component_id_t22COMPONENT_UART_PRIMARYE">
+<span id="_CPPv3N14component_id_t22COMPONENT_UART_PRIMARYE"></span><span id="_CPPv2N14component_id_t22COMPONENT_UART_PRIMARYE"></span><span class="target" id="group__redundancy__manager__types_1gga7c14751f737d5413dc48d18c920c8053a086fb8e4b7319cdb4596ba9294fd72a9"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">COMPONENT_UART_PRIMARY</span></span></span><a class="headerlink" href="#_CPPv4N14component_id_t22COMPONENT_UART_PRIMARYE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Primary UART (port 1) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N14component_id_t24COMPONENT_UART_SECONDARYE">
+<span id="_CPPv3N14component_id_t24COMPONENT_UART_SECONDARYE"></span><span id="_CPPv2N14component_id_t24COMPONENT_UART_SECONDARYE"></span><span class="target" id="group__redundancy__manager__types_1gga7c14751f737d5413dc48d18c920c8053abfaa7c036c8099afcc7f7c733f390b95"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">COMPONENT_UART_SECONDARY</span></span></span><a class="headerlink" href="#_CPPv4N14component_id_t24COMPONENT_UART_SECONDARYE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Secondary UART (port 3) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N14component_id_t19COMPONENT_I2C_BUS_1E">
+<span id="_CPPv3N14component_id_t19COMPONENT_I2C_BUS_1E"></span><span id="_CPPv2N14component_id_t19COMPONENT_I2C_BUS_1E"></span><span class="target" id="group__redundancy__manager__types_1gga7c14751f737d5413dc48d18c920c8053a81d8a8f2cd5c302bdffda6db95e72957"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">COMPONENT_I2C_BUS_1</span></span></span><a class="headerlink" href="#_CPPv4N14component_id_t19COMPONENT_I2C_BUS_1E" title="Link to this definition">¶</a><br /></dt>
+<dd><p>I2C bus 1 </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N14component_id_t19COMPONENT_I2C_BUS_2E">
+<span id="_CPPv3N14component_id_t19COMPONENT_I2C_BUS_2E"></span><span id="_CPPv2N14component_id_t19COMPONENT_I2C_BUS_2E"></span><span class="target" id="group__redundancy__manager__types_1gga7c14751f737d5413dc48d18c920c8053aca0ca1dec3e7172aba83d1f4e85bcff0"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">COMPONENT_I2C_BUS_2</span></span></span><a class="headerlink" href="#_CPPv4N14component_id_t19COMPONENT_I2C_BUS_2E" title="Link to this definition">¶</a><br /></dt>
+<dd><p>I2C bus 2 </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N14component_id_t19COMPONENT_I2C_BUS_3E">
+<span id="_CPPv3N14component_id_t19COMPONENT_I2C_BUS_3E"></span><span id="_CPPv2N14component_id_t19COMPONENT_I2C_BUS_3E"></span><span class="target" id="group__redundancy__manager__types_1gga7c14751f737d5413dc48d18c920c8053ab56dcd20835ac7a08cbab422f064027e"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">COMPONENT_I2C_BUS_3</span></span></span><a class="headerlink" href="#_CPPv4N14component_id_t19COMPONENT_I2C_BUS_3E" title="Link to this definition">¶</a><br /></dt>
+<dd><p>I2C bus 3 </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N14component_id_t19COMPONENT_I2C_BUS_4E">
+<span id="_CPPv3N14component_id_t19COMPONENT_I2C_BUS_4E"></span><span id="_CPPv2N14component_id_t19COMPONENT_I2C_BUS_4E"></span><span class="target" id="group__redundancy__manager__types_1gga7c14751f737d5413dc48d18c920c8053a27bd853d2263651006d16e74e7e4cde9"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">COMPONENT_I2C_BUS_4</span></span></span><a class="headerlink" href="#_CPPv4N14component_id_t19COMPONENT_I2C_BUS_4E" title="Link to this definition">¶</a><br /></dt>
+<dd><p>I2C bus 4 </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N14component_id_t24COMPONENT_SOLAR_STRING_1E">
+<span id="_CPPv3N14component_id_t24COMPONENT_SOLAR_STRING_1E"></span><span id="_CPPv2N14component_id_t24COMPONENT_SOLAR_STRING_1E"></span><span class="target" id="group__redundancy__manager__types_1gga7c14751f737d5413dc48d18c920c8053aa2f7f5642d9fc84c6952d43ac1944ffd"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">COMPONENT_SOLAR_STRING_1</span></span></span><a class="headerlink" href="#_CPPv4N14component_id_t24COMPONENT_SOLAR_STRING_1E" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Solar panel string 1 </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N14component_id_t24COMPONENT_SOLAR_STRING_2E">
+<span id="_CPPv3N14component_id_t24COMPONENT_SOLAR_STRING_2E"></span><span id="_CPPv2N14component_id_t24COMPONENT_SOLAR_STRING_2E"></span><span class="target" id="group__redundancy__manager__types_1gga7c14751f737d5413dc48d18c920c8053a967c6ef5003243ba11d45b13a380c680"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">COMPONENT_SOLAR_STRING_2</span></span></span><a class="headerlink" href="#_CPPv4N14component_id_t24COMPONENT_SOLAR_STRING_2E" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Solar panel string 2 </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N14component_id_t24COMPONENT_SOLAR_STRING_3E">
+<span id="_CPPv3N14component_id_t24COMPONENT_SOLAR_STRING_3E"></span><span id="_CPPv2N14component_id_t24COMPONENT_SOLAR_STRING_3E"></span><span class="target" id="group__redundancy__manager__types_1gga7c14751f737d5413dc48d18c920c8053a2ebd1d5067621539fbb34af449f73d89"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">COMPONENT_SOLAR_STRING_3</span></span></span><a class="headerlink" href="#_CPPv4N14component_id_t24COMPONENT_SOLAR_STRING_3E" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Solar panel string 3 </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N14component_id_t24COMPONENT_SOLAR_STRING_4E">
+<span id="_CPPv3N14component_id_t24COMPONENT_SOLAR_STRING_4E"></span><span id="_CPPv2N14component_id_t24COMPONENT_SOLAR_STRING_4E"></span><span class="target" id="group__redundancy__manager__types_1gga7c14751f737d5413dc48d18c920c8053a219c6a85901372d1e438fe91c8a10282"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">COMPONENT_SOLAR_STRING_4</span></span></span><a class="headerlink" href="#_CPPv4N14component_id_t24COMPONENT_SOLAR_STRING_4E" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Solar panel string 4 </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N14component_id_t24COMPONENT_SOLAR_STRING_5E">
+<span id="_CPPv3N14component_id_t24COMPONENT_SOLAR_STRING_5E"></span><span id="_CPPv2N14component_id_t24COMPONENT_SOLAR_STRING_5E"></span><span class="target" id="group__redundancy__manager__types_1gga7c14751f737d5413dc48d18c920c8053ac1ba1e68de086845c6616800c13f2711"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">COMPONENT_SOLAR_STRING_5</span></span></span><a class="headerlink" href="#_CPPv4N14component_id_t24COMPONENT_SOLAR_STRING_5E" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Solar panel string 5 </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N14component_id_t24COMPONENT_SOLAR_STRING_6E">
+<span id="_CPPv3N14component_id_t24COMPONENT_SOLAR_STRING_6E"></span><span id="_CPPv2N14component_id_t24COMPONENT_SOLAR_STRING_6E"></span><span class="target" id="group__redundancy__manager__types_1gga7c14751f737d5413dc48d18c920c8053a9910333463cb228616e2e2bf251685a2"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">COMPONENT_SOLAR_STRING_6</span></span></span><a class="headerlink" href="#_CPPv4N14component_id_t24COMPONENT_SOLAR_STRING_6E" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Solar panel string 6 </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N14component_id_t15COMPONENT_COUNTE">
+<span id="_CPPv3N14component_id_t15COMPONENT_COUNTE"></span><span id="_CPPv2N14component_id_t15COMPONENT_COUNTE"></span><span class="target" id="group__redundancy__manager__types_1gga7c14751f737d5413dc48d18c920c8053afeab75e995867b121186c2050ac7c442"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">COMPONENT_COUNT</span></span></span><a class="headerlink" href="#_CPPv4N14component_id_t15COMPONENT_COUNTE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Number of tracked components </p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv47fault_t">
+<span id="_CPPv37fault_t"></span><span id="_CPPv27fault_t"></span><span id="fault_t"></span><span class="target" id="structfault__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fault_t</span></span></span><a class="headerlink" href="#_CPPv47fault_t" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;redundancy_manager.h&gt;</em></div>
+<p>Represents a single active fault in the system. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N7fault_t6sourceE">
+<span id="_CPPv3N7fault_t6sourceE"></span><span id="_CPPv2N7fault_t6sourceE"></span><span id="fault_t::source__fault_source_t"></span><span class="target" id="structfault__t_1a8628271dd7037e2bac9ea675c257f698"></span><a class="reference internal" href="#_CPPv414fault_source_t" title="fault_source_t"><span class="n"><span class="pre">fault_source_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">source</span></span></span><a class="headerlink" href="#_CPPv4N7fault_t6sourceE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Subsystem that reported the fault </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N7fault_t4codeE">
+<span id="_CPPv3N7fault_t4codeE"></span><span id="_CPPv2N7fault_t4codeE"></span><span id="fault_t::code__fault_code_t"></span><span class="target" id="structfault__t_1a5d3a64986ec90ff23216938bab952456"></span><a class="reference internal" href="#_CPPv412fault_code_t" title="fault_code_t"><span class="n"><span class="pre">fault_code_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">code</span></span></span><a class="headerlink" href="#_CPPv4N7fault_t4codeE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Service-specific error code </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N7fault_t8severityE">
+<span id="_CPPv3N7fault_t8severityE"></span><span id="_CPPv2N7fault_t8severityE"></span><span id="fault_t::severity__fault_severity_t"></span><span class="target" id="structfault__t_1a4de7f3a13e81b14558e904573b667402"></span><a class="reference internal" href="#_CPPv416fault_severity_t" title="fault_severity_t"><span class="n"><span class="pre">fault_severity_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">severity</span></span></span><a class="headerlink" href="#_CPPv4N7fault_t8severityE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Severity classification </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N7fault_t12timestamp_msE">
+<span id="_CPPv3N7fault_t12timestamp_msE"></span><span id="_CPPv2N7fault_t12timestamp_msE"></span><span id="fault_t::timestamp_ms__uint32_t"></span><span class="target" id="structfault__t_1a163b5be7f4baaf5fe7f69367b86b45c8"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">timestamp_ms</span></span></span><a class="headerlink" href="#_CPPv4N7fault_t12timestamp_msE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>When the fault was first detected </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N7fault_t5countE">
+<span id="_CPPv3N7fault_t5countE"></span><span id="_CPPv2N7fault_t5countE"></span><span id="fault_t::count__uint32_t"></span><span class="target" id="structfault__t_1a74538049f552beb9a4c71f060b4907aa"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">count</span></span></span><a class="headerlink" href="#_CPPv4N7fault_t5countE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Number of times this fault has occurred </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N7fault_t6activeE">
+<span id="_CPPv3N7fault_t6activeE"></span><span id="_CPPv2N7fault_t6activeE"></span><span id="fault_t::active__b"></span><span class="target" id="structfault__t_1ace7c7dd1182cdb4c5e962954c3d62aad"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">active</span></span></span><a class="headerlink" href="#_CPPv4N7fault_t6activeE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>True if fault is currently active </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv423component_degradation_t">
+<span id="_CPPv323component_degradation_t"></span><span id="_CPPv223component_degradation_t"></span><span id="component_degradation_t"></span><span class="target" id="structcomponent__degradation__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">component_degradation_t</span></span></span><a class="headerlink" href="#_CPPv423component_degradation_t" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;redundancy_manager.h&gt;</em></div>
+<p>Payload for component degradation events. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23component_degradation_t9componentE">
+<span id="_CPPv3N23component_degradation_t9componentE"></span><span id="_CPPv2N23component_degradation_t9componentE"></span><span id="component_degradation_t::component__component_id_t"></span><span class="target" id="structcomponent__degradation__t_1a87a8add73efa83c6504eb00950fb2b3f"></span><a class="reference internal" href="#_CPPv414component_id_t" title="component_id_t"><span class="n"><span class="pre">component_id_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">component</span></span></span><a class="headerlink" href="#_CPPv4N23component_degradation_t9componentE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Which component is degraded </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23component_degradation_t12fault_sourceE">
+<span id="_CPPv3N23component_degradation_t12fault_sourceE"></span><span id="_CPPv2N23component_degradation_t12fault_sourceE"></span><span id="component_degradation_t::fault_source__fault_source_t"></span><span class="target" id="structcomponent__degradation__t_1aa79067edc7c7fb4d0406795c4689f9fb"></span><a class="reference internal" href="#_CPPv414fault_source_t" title="fault_source_t"><span class="n"><span class="pre">fault_source_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fault_source</span></span></span><a class="headerlink" href="#_CPPv4N23component_degradation_t12fault_sourceE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>What caused the degradation </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23component_degradation_t18fallback_availableE">
+<span id="_CPPv3N23component_degradation_t18fallback_availableE"></span><span id="_CPPv2N23component_degradation_t18fallback_availableE"></span><span id="component_degradation_t::fallback_available__b"></span><span class="target" id="structcomponent__degradation__t_1aa97b1fc17242d56ed0148ca4a94a1b40"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fallback_available</span></span></span><a class="headerlink" href="#_CPPv4N23component_degradation_t18fallback_availableE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>True if fallback/redundant option exists </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv417health_response_t">
+<span id="_CPPv317health_response_t"></span><span id="_CPPv217health_response_t"></span><span id="health_response_t"></span><span class="target" id="structhealth__response__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">health_response_t</span></span></span><a class="headerlink" href="#_CPPv417health_response_t" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;redundancy_manager.h&gt;</em></div>
+<p>Response payload for health queries. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N17health_response_t6healthE">
+<span id="_CPPv3N17health_response_t6healthE"></span><span id="_CPPv2N17health_response_t6healthE"></span><span id="health_response_t::health__system_health_t"></span><span class="target" id="structhealth__response__t_1a66a141ceb041c331e0cdfd81de721c6f"></span><a class="reference internal" href="#_CPPv415system_health_t" title="system_health_t"><span class="n"><span class="pre">system_health_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">health</span></span></span><a class="headerlink" href="#_CPPv4N17health_response_t6healthE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Current system health </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N17health_response_t18active_fault_countE">
+<span id="_CPPv3N17health_response_t18active_fault_countE"></span><span id="_CPPv2N17health_response_t18active_fault_countE"></span><span id="health_response_t::active_fault_count__uint32_t"></span><span class="target" id="structhealth__response__t_1ab36254499b20aac8af905c92bed4b8c7"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">active_fault_count</span></span></span><a class="headerlink" href="#_CPPv4N17health_response_t18active_fault_countE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Number of active faults </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N17health_response_t12timestamp_msE">
+<span id="_CPPv3N17health_response_t12timestamp_msE"></span><span id="_CPPv2N17health_response_t12timestamp_msE"></span><span id="health_response_t::timestamp_ms__uint32_t"></span><span class="target" id="structhealth__response__t_1a6cc6a9270695e66f62222999c820c055"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">timestamp_ms</span></span></span><a class="headerlink" href="#_CPPv4N17health_response_t12timestamp_msE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>When health was sampled </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv426component_status_request_t">
+<span id="_CPPv326component_status_request_t"></span><span id="_CPPv226component_status_request_t"></span><span id="component_status_request_t"></span><span class="target" id="structcomponent__status__request__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">component_status_request_t</span></span></span><a class="headerlink" href="#_CPPv426component_status_request_t" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;redundancy_manager.h&gt;</em></div>
+<p>Request payload to query specific component status. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N26component_status_request_t9componentE">
+<span id="_CPPv3N26component_status_request_t9componentE"></span><span id="_CPPv2N26component_status_request_t9componentE"></span><span id="component_status_request_t::component__component_id_t"></span><span class="target" id="structcomponent__status__request__t_1a252843693d35caaa6286e9f016bb1218"></span><a class="reference internal" href="#_CPPv414component_id_t" title="component_id_t"><span class="n"><span class="pre">component_id_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">component</span></span></span><a class="headerlink" href="#_CPPv4N26component_status_request_t9componentE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Which component to query </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv427component_status_response_t">
+<span id="_CPPv327component_status_response_t"></span><span id="_CPPv227component_status_response_t"></span><span id="component_status_response_t"></span><span class="target" id="structcomponent__status__response__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">component_status_response_t</span></span></span><a class="headerlink" href="#_CPPv427component_status_response_t" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;redundancy_manager.h&gt;</em></div>
+<p>Response payload for component status queries. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N27component_status_response_t9componentE">
+<span id="_CPPv3N27component_status_response_t9componentE"></span><span id="_CPPv2N27component_status_response_t9componentE"></span><span id="component_status_response_t::component__component_id_t"></span><span class="target" id="structcomponent__status__response__t_1a43929438649c808d635f30eb2727c57a"></span><a class="reference internal" href="#_CPPv414component_id_t" title="component_id_t"><span class="n"><span class="pre">component_id_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">component</span></span></span><a class="headerlink" href="#_CPPv4N27component_status_response_t9componentE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Requested component </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N27component_status_response_t5is_okE">
+<span id="_CPPv3N27component_status_response_t5is_okE"></span><span id="_CPPv2N27component_status_response_t5is_okE"></span><span id="component_status_response_t::is_ok__b"></span><span class="target" id="structcomponent__status__response__t_1ac0d1107e5844295f62bf0ea3531c18b0"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">is_ok</span></span></span><a class="headerlink" href="#_CPPv4N27component_status_response_t5is_okE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>True if operational, false if degraded </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N27component_status_response_t12fault_sourceE">
+<span id="_CPPv3N27component_status_response_t12fault_sourceE"></span><span id="_CPPv2N27component_status_response_t12fault_sourceE"></span><span id="component_status_response_t::fault_source__fault_source_t"></span><span class="target" id="structcomponent__status__response__t_1a7df33d26b37660d6a9a8c12bdbc2d857"></span><a class="reference internal" href="#_CPPv414fault_source_t" title="fault_source_t"><span class="n"><span class="pre">fault_source_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fault_source</span></span></span><a class="headerlink" href="#_CPPv4N27component_status_response_t12fault_sourceE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>What caused degradation (if degraded) </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N27component_status_response_t12timestamp_msE">
+<span id="_CPPv3N27component_status_response_t12timestamp_msE"></span><span id="_CPPv2N27component_status_response_t12timestamp_msE"></span><span id="component_status_response_t::timestamp_ms__uint32_t"></span><span class="target" id="structcomponent__status__response__t_1abb2db5249d3b6af9f2a58b2c6c597b6e"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">timestamp_ms</span></span></span><a class="headerlink" href="#_CPPv4N27component_status_response_t12timestamp_msE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>When status was sampled </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv421fault_list_response_t">
+<span id="_CPPv321fault_list_response_t"></span><span id="_CPPv221fault_list_response_t"></span><span id="fault_list_response_t"></span><span class="target" id="structfault__list__response__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fault_list_response_t</span></span></span><a class="headerlink" href="#_CPPv421fault_list_response_t" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;redundancy_manager.h&gt;</em></div>
+<p>Response payload for fault list queries. </p>
+<p>Contains a subset of active faults. May require multiple events for complete fault list. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21fault_list_response_t12total_faultsE">
+<span id="_CPPv3N21fault_list_response_t12total_faultsE"></span><span id="_CPPv2N21fault_list_response_t12total_faultsE"></span><span id="fault_list_response_t::total_faults__uint32_t"></span><span class="target" id="structfault__list__response__t_1a260b01639e4de9779a8bb8fc9ca1ea6c"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">total_faults</span></span></span><a class="headerlink" href="#_CPPv4N21fault_list_response_t12total_faultsE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Total number of active faults </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21fault_list_response_t11chunk_indexE">
+<span id="_CPPv3N21fault_list_response_t11chunk_indexE"></span><span id="_CPPv2N21fault_list_response_t11chunk_indexE"></span><span id="fault_list_response_t::chunk_index__uint32_t"></span><span class="target" id="structfault__list__response__t_1a46d40627c96d16453db7b4fd66310d35"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">chunk_index</span></span></span><a class="headerlink" href="#_CPPv4N21fault_list_response_t11chunk_indexE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Which chunk this is (0-based) </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21fault_list_response_t15faults_in_chunkE">
+<span id="_CPPv3N21fault_list_response_t15faults_in_chunkE"></span><span id="_CPPv2N21fault_list_response_t15faults_in_chunkE"></span><span id="fault_list_response_t::faults_in_chunk__uint32_t"></span><span class="target" id="structfault__list__response__t_1a8162f6ba3904cf2a7950bb51c4ccc527"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">faults_in_chunk</span></span></span><a class="headerlink" href="#_CPPv4N21fault_list_response_t15faults_in_chunkE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Number of faults in this response </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21fault_list_response_t6faultsE">
+<span id="_CPPv3N21fault_list_response_t6faultsE"></span><span id="_CPPv2N21fault_list_response_t6faultsE"></span><span id="fault_list_response_t::faults__fault_tA"></span><span class="target" id="structfault__list__response__t_1a88481254312f7c82ce7960bb7038d2a4"></span><a class="reference internal" href="#_CPPv47fault_t" title="fault_t"><span class="n"><span class="pre">fault_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">faults</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">4</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N21fault_list_response_t6faultsE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Up to 4 faults per response </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv422redundancy_telemetry_t">
+<span id="_CPPv322redundancy_telemetry_t"></span><span id="_CPPv222redundancy_telemetry_t"></span><span id="redundancy_telemetry_t"></span><span class="target" id="structredundancy__telemetry__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">redundancy_telemetry_t</span></span></span><a class="headerlink" href="#_CPPv422redundancy_telemetry_t" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;redundancy_manager.h&gt;</em></div>
+<p>Periodic telemetry payload. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22redundancy_telemetry_t6healthE">
+<span id="_CPPv3N22redundancy_telemetry_t6healthE"></span><span id="_CPPv2N22redundancy_telemetry_t6healthE"></span><span id="redundancy_telemetry_t::health__system_health_t"></span><span class="target" id="structredundancy__telemetry__t_1a7cdeefb9e0a772bd8b5902ee83352150"></span><a class="reference internal" href="#_CPPv415system_health_t" title="system_health_t"><span class="n"><span class="pre">system_health_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">health</span></span></span><a class="headerlink" href="#_CPPv4N22redundancy_telemetry_t6healthE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Current health </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22redundancy_telemetry_t18active_fault_countE">
+<span id="_CPPv3N22redundancy_telemetry_t18active_fault_countE"></span><span id="_CPPv2N22redundancy_telemetry_t18active_fault_countE"></span><span id="redundancy_telemetry_t::active_fault_count__uint32_t"></span><span class="target" id="structredundancy__telemetry__t_1a5f1bcfd1cf71d545d29360e8a5ff2f25"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">active_fault_count</span></span></span><a class="headerlink" href="#_CPPv4N22redundancy_telemetry_t18active_fault_countE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Active faults </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22redundancy_telemetry_t23total_faults_since_bootE">
+<span id="_CPPv3N22redundancy_telemetry_t23total_faults_since_bootE"></span><span id="_CPPv2N22redundancy_telemetry_t23total_faults_since_bootE"></span><span id="redundancy_telemetry_t::total_faults_since_boot__uint32_t"></span><span class="target" id="structredundancy__telemetry__t_1ab157e7b8d360169e546f9550e579b0b4"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">total_faults_since_boot</span></span></span><a class="headerlink" href="#_CPPv4N22redundancy_telemetry_t23total_faults_since_bootE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Lifetime fault counter </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22redundancy_telemetry_t19degraded_componentsE">
+<span id="_CPPv3N22redundancy_telemetry_t19degraded_componentsE"></span><span id="_CPPv2N22redundancy_telemetry_t19degraded_componentsE"></span><span id="redundancy_telemetry_t::degraded_components__uint32_t"></span><span class="target" id="structredundancy__telemetry__t_1ad06c232ce4ecb5b262bbee0e7713d585"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">degraded_components</span></span></span><a class="headerlink" href="#_CPPv4N22redundancy_telemetry_t19degraded_componentsE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Bitmask of degraded components </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22redundancy_telemetry_t12timestamp_msE">
+<span id="_CPPv3N22redundancy_telemetry_t12timestamp_msE"></span><span id="_CPPv2N22redundancy_telemetry_t12timestamp_msE"></span><span id="redundancy_telemetry_t::timestamp_ms__uint32_t"></span><span class="target" id="structredundancy__telemetry__t_1ab22c6bef5cf89f4920ce3a4a81ada10a"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">timestamp_ms</span></span></span><a class="headerlink" href="#_CPPv4N22redundancy_telemetry_t12timestamp_msE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Telemetry timestamp </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv420redundancy_manager_t">
+<span id="_CPPv320redundancy_manager_t"></span><span id="_CPPv220redundancy_manager_t"></span><span id="redundancy_manager_t"></span><span class="target" id="structredundancy__manager__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">redundancy_manager_t</span></span></span><a class="headerlink" href="#_CPPv420redundancy_manager_t" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;redundancy_manager.h&gt;</em></div>
+<p>The redundancy manager state. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20redundancy_manager_t6faultsE">
+<span id="_CPPv3N20redundancy_manager_t6faultsE"></span><span id="_CPPv2N20redundancy_manager_t6faultsE"></span><span id="redundancy_manager_t::faults__fault_tA"></span><span class="target" id="structredundancy__manager__t_1a589af13f7ecec44c2f6d4db51b9ed17a"></span><a class="reference internal" href="#_CPPv47fault_t" title="fault_t"><span class="n"><span class="pre">fault_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">faults</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">REDUNDANCY_MANAGER_MAX_FAULTS</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N20redundancy_manager_t6faultsE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Active fault list </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20redundancy_manager_t6healthE">
+<span id="_CPPv3N20redundancy_manager_t6healthE"></span><span id="_CPPv2N20redundancy_manager_t6healthE"></span><span id="redundancy_manager_t::health__system_health_t"></span><span class="target" id="structredundancy__manager__t_1a6cf5da91c447225d5371f7505df99c96"></span><a class="reference internal" href="#_CPPv415system_health_t" title="system_health_t"><span class="n"><span class="pre">system_health_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">health</span></span></span><a class="headerlink" href="#_CPPv4N20redundancy_manager_t6healthE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Current aggregated system health </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20redundancy_manager_t16component_statusE">
+<span id="_CPPv3N20redundancy_manager_t16component_statusE"></span><span id="_CPPv2N20redundancy_manager_t16component_statusE"></span><span id="redundancy_manager_t::component_status__bA"></span><span class="target" id="structredundancy__manager__t_1a4d78e19f4df32319a1617403b65dfba6"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">component_status</span></span></span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#_CPPv4N14component_id_t15COMPONENT_COUNTE" title="COMPONENT_COUNT"><span class="n"><span class="pre">COMPONENT_COUNT</span></span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N20redundancy_manager_t16component_statusE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>True = OK, False = Degraded </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20redundancy_manager_t17total_fault_countE">
+<span id="_CPPv3N20redundancy_manager_t17total_fault_countE"></span><span id="_CPPv2N20redundancy_manager_t17total_fault_countE"></span><span id="redundancy_manager_t::total_fault_count__uint32_t"></span><span class="target" id="structredundancy__manager__t_1aca83c71976df88fa779d9d732f53bcb1"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">total_fault_count</span></span></span><a class="headerlink" href="#_CPPv4N20redundancy_manager_t17total_fault_countE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Total faults since boot (for telemetry) </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20redundancy_manager_t11initializedE">
+<span id="_CPPv3N20redundancy_manager_t11initializedE"></span><span id="_CPPv2N20redundancy_manager_t11initializedE"></span><span id="redundancy_manager_t::initialized__b"></span><span class="target" id="structredundancy__manager__t_1a7b00f05e448e0923730c43cf08fbe0f7"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">initialized</span></span></span><a class="headerlink" href="#_CPPv4N20redundancy_manager_t11initializedE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>True if initialized </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group__redundancy__manager__api"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">Public</span> <span class="pre">API</span></span></dt>
+<dd><p>Functions for initializing the redundancy manager. </p>
+<p>All interaction with the redundancy manager occurs through events. The manager publishes health updates and responds to query requests via the event bus. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv423redundancy_manager_initP20redundancy_manager_t">
+<span id="_CPPv323redundancy_manager_initP20redundancy_manager_t"></span><span id="_CPPv223redundancy_manager_initP20redundancy_manager_t"></span><span id="redundancy_manager_init__redundancy_manager_tP"></span><span class="target" id="group__redundancy__manager__api_1gadd9a3bd1c1926239b7616532cc18b449"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">redundancy_manager_init</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv420redundancy_manager_t" title="redundancy_manager_t"><span class="n"><span class="pre">redundancy_manager_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">manager</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv423redundancy_manager_initP20redundancy_manager_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Initialize the Redundancy Manager. </p>
+<p>Clears all faults, sets system health to SYSTEM_HEALTH_OK, and subscribes to:<ul class="simple">
+<li><p>Fault events from all services (e.g., BATTERY_EVENT_FAULT_DETECTED)</p></li>
+<li><p>Query request events from applications</p></li>
+<li><p>Recovery events from services</p></li>
+</ul>
+</p>
+<p>Publishes initial REDUNDANCY_EVENT_HEALTH_RECOVERED event after init.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>manager</strong> – <strong>[inout]</strong> The redundancy manager to initialize. </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">OSUSat EPS Firmware</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Services:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="battery_management.html">Battery Management Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mppt_controller.html">MPPT Controller Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="power_profiles.html">Power Profiles Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rail_controller.html">Rail Controller Service</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Redundancy Manager Service</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#c.REDUNDANCY_MANAGER_MAX_FAULTS"><code class="docutils literal notranslate"><span class="pre">REDUNDANCY_MANAGER_MAX_FAULTS</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.REDUNDANCY_MANAGER_SERVICE_UID"><code class="docutils literal notranslate"><span class="pre">REDUNDANCY_MANAGER_SERVICE_UID</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.REDUNDANCY_EVENT_CRITICAL_HEALTH"><code class="docutils literal notranslate"><span class="pre">REDUNDANCY_EVENT_CRITICAL_HEALTH</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.REDUNDANCY_EVENT_HEALTH_DEGRADED"><code class="docutils literal notranslate"><span class="pre">REDUNDANCY_EVENT_HEALTH_DEGRADED</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.REDUNDANCY_EVENT_HEALTH_RECOVERED"><code class="docutils literal notranslate"><span class="pre">REDUNDANCY_EVENT_HEALTH_RECOVERED</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.REDUNDANCY_EVENT_COMPONENT_DEGRADED"><code class="docutils literal notranslate"><span class="pre">REDUNDANCY_EVENT_COMPONENT_DEGRADED</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.REDUNDANCY_EVENT_COMPONENT_RECOVERED"><code class="docutils literal notranslate"><span class="pre">REDUNDANCY_EVENT_COMPONENT_RECOVERED</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.REDUNDANCY_EVENT_HEALTH_RESPONSE"><code class="docutils literal notranslate"><span class="pre">REDUNDANCY_EVENT_HEALTH_RESPONSE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.REDUNDANCY_EVENT_COMPONENT_STATUS_RESPONSE"><code class="docutils literal notranslate"><span class="pre">REDUNDANCY_EVENT_COMPONENT_STATUS_RESPONSE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.REDUNDANCY_EVENT_FAULT_LIST_RESPONSE"><code class="docutils literal notranslate"><span class="pre">REDUNDANCY_EVENT_FAULT_LIST_RESPONSE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.REDUNDANCY_EVENT_TELEMETRY"><code class="docutils literal notranslate"><span class="pre">REDUNDANCY_EVENT_TELEMETRY</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv412fault_code_t"><code class="docutils literal notranslate"><span class="pre">fault_code_t</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv429redundancy_manager_event_id_t"><code class="docutils literal notranslate"><span class="pre">redundancy_manager_event_id_t</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv414fault_source_t"><code class="docutils literal notranslate"><span class="pre">fault_source_t</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv416fault_severity_t"><code class="docutils literal notranslate"><span class="pre">fault_severity_t</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv415system_health_t"><code class="docutils literal notranslate"><span class="pre">system_health_t</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv414component_id_t"><code class="docutils literal notranslate"><span class="pre">component_id_t</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv47fault_t"><code class="docutils literal notranslate"><span class="pre">fault_t</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv423component_degradation_t"><code class="docutils literal notranslate"><span class="pre">component_degradation_t</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv417health_response_t"><code class="docutils literal notranslate"><span class="pre">health_response_t</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv426component_status_request_t"><code class="docutils literal notranslate"><span class="pre">component_status_request_t</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv427component_status_response_t"><code class="docutils literal notranslate"><span class="pre">component_status_response_t</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv421fault_list_response_t"><code class="docutils literal notranslate"><span class="pre">fault_list_response_t</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv422redundancy_telemetry_t"><code class="docutils literal notranslate"><span class="pre">redundancy_telemetry_t</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv420redundancy_manager_t"><code class="docutils literal notranslate"><span class="pre">redundancy_manager_t</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv423redundancy_manager_initP20redundancy_manager_t"><code class="docutils literal notranslate"><span class="pre">redundancy_manager_init()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="telemetry.html">Telemetry Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="uart_events.html">UART Events Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="watchdog.html">Watchdog Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">Logging Service</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="rail_controller.html" title="previous chapter">Rail Controller Service</a></li>
+      <li>Next: <a href="telemetry.html" title="next chapter">Telemetry Service</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2025, FerretCode.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.1.0</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/services/redundancy_manager.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
