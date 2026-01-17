@@ -60,6 +60,8 @@
 /* External variables --------------------------------------------------------*/
 extern DMA_HandleTypeDef hdma_usart1_rx;
 extern DMA_HandleTypeDef hdma_usart3_rx;
+extern DMA_HandleTypeDef hdma_adc2;
+extern ADC_HandleTypeDef hadc2;
 /* USER CODE BEGIN EV */
 
 /* USER CODE END EV */
@@ -400,6 +402,16 @@ void EXTI15_10_IRQHandler(void) {
             HAL_GPIO_EXTI_IRQHandler(pin);
         }
     }
+}
+
+void ADC1_2_IRQHandler(void) {
+    /* USER CODE BEGIN ADC1_2_IRQn 0 */
+
+    /* USER CODE END ADC1_2_IRQn 0 */
+    HAL_ADC_IRQHandler(&hadc2);
+    /* USER CODE BEGIN ADC1_2_IRQn 1 */
+
+    /* USER CODE END ADC1_2_IRQn 1 */
 }
 
 /* USER CODE END 1 */
