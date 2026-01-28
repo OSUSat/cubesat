@@ -488,7 +488,7 @@
 						)
 					)
 				)
-				(pin open_collector line
+				(pin output line
 					(at 11.43 0 180)
 					(length 5.08)
 					(name ""
@@ -692,7 +692,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "EPS:NCS211RSQT2G"
+		(symbol "EPS:NCS214RSQT2G"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -739,7 +739,7 @@
 					(hide yes)
 				)
 			)
-			(symbol "NCS211RSQT2G_0_1"
+			(symbol "NCS214RSQT2G_0_1"
 				(rectangle
 					(start -15.24 6.604)
 					(end 15.24 -11.43)
@@ -752,7 +752,7 @@
 					)
 				)
 			)
-			(symbol "NCS211RSQT2G_1_1"
+			(symbol "NCS214RSQT2G_1_1"
 				(pin input line
 					(at -20.32 3.81 0)
 					(length 5.08)
@@ -1078,6 +1078,7 @@
 		)
 		(symbol "Transistor_FET:IRLML0030"
 			(pin_names
+				(offset 0)
 				(hide yes)
 			)
 			(exclude_from_sim no)
@@ -1293,7 +1294,7 @@
 				)
 				(polyline
 					(pts
-						(xy 2.794 0.508) (xy 2.921 0.381) (xy 3.683 0.381) (xy 3.81 0.254)
+						(xy 2.921 0.381) (xy 3.683 0.381)
 					)
 					(stroke
 						(width 0)
@@ -1533,6 +1534,16 @@
 			)
 		)
 		(uuid "a6ef9dab-a104-4dbe-b535-fe23aef487e8")
+	)
+	(text "For this application,\nwe likely want the 1.2V\npackage for the current\nmonitor IC."
+		(exclude_from_sim no)
+		(at 71.12 134.874 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "b99f889b-f394-4b61-9643-6252d7a474b4")
 	)
 	(text "Credit to https://github.com/rgw3d/1KCubeSat_Hardware"
 		(exclude_from_sim no)
@@ -1825,12 +1836,6 @@
 		(uuid "f669c28a-2e21-4f08-8205-0d3bd2e6e706")
 	)
 	(junction
-		(at 48.26 92.71)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "f716f373-ba41-4411-9ce9-308e2c90e38a")
-	)
-	(junction
 		(at 250.19 78.74)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -1904,16 +1909,6 @@
 	)
 	(wire
 		(pts
-			(xy 48.26 92.71) (xy 48.26 114.3)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "11ebf067-b83e-45e1-bcac-bf19aff79c86")
-	)
-	(wire
-		(pts
 			(xy 254 92.71) (xy 271.78 92.71)
 		)
 		(stroke
@@ -1931,6 +1926,16 @@
 			(type default)
 		)
 		(uuid "16baf565-e34a-4baa-844f-9b8a2e2a9ff7")
+	)
+	(wire
+		(pts
+			(xy 27.94 114.3) (xy 50.8 114.3)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "196bcc7f-2969-459e-b914-57cd2da495ad")
 	)
 	(wire
 		(pts
@@ -2601,16 +2606,6 @@
 			(type default)
 		)
 		(uuid "cae448bd-3a36-4cfa-ad30-7f9219701a98")
-	)
-	(wire
-		(pts
-			(xy 50.8 114.3) (xy 48.26 114.3)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "cedebd78-90b5-4494-a3f7-b50a014634a4")
 	)
 	(wire
 		(pts
@@ -4134,6 +4129,17 @@
 		)
 		(uuid "8d593619-848a-46b5-a1c2-2ba3ab8409e1")
 	)
+	(hierarchical_label "VIO"
+		(shape input)
+		(at 27.94 114.3 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "9697aedb-3693-43b2-b187-d497eab28c1a")
+	)
 	(hierarchical_label "RREF+"
 		(shape input)
 		(at 114.3 104.14 180)
@@ -5194,7 +5200,7 @@
 		)
 	)
 	(symbol
-		(lib_id "EPS:NCS211RSQT2G")
+		(lib_id "EPS:NCS214RSQT2G")
 		(at 71.12 118.11 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -5204,15 +5210,15 @@
 		(fields_autoplaced yes)
 		(uuid "65dada80-e88f-454b-8db7-71211253a5b2")
 		(property "Reference" "U5"
-			(at 71.12 107.95 0)
+			(at 71.12 106.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "~"
-			(at 71.12 110.49 0)
+		(property "Value" "NCS214RSQT2G"
+			(at 71.12 109.22 0)
 			(effects
 				(font
 					(size 1.27 1.27)

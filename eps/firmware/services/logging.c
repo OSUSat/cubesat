@@ -85,7 +85,6 @@ static void send_log_packet(log_flush_context_t *ctx, bool is_last) {
                            .payload_len = (uint8_t)ctx->payload_offset,
                            .payload = ctx->payload_buffer};
 
-    // TODO: consider having this as a request over the event bus instead
     uart_events_send_packet(g_active_uart, &packet);
 
     ctx->payload_offset = 0;
