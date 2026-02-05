@@ -145,6 +145,132 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Device:NetTie_2"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom no)
+			(on_board yes)
+			(property "Reference" "NT"
+				(at 0 1.27 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "NetTie_2"
+				(at 0 -1.27 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Net tie, 2 pins"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "net tie short"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "Net*Tie*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "NetTie_2_0_1"
+				(polyline
+					(pts
+						(xy -1.27 0) (xy 1.27 0)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "NetTie_2_1_1"
+				(pin passive line
+					(at -2.54 0 0)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 0 180)
+					(length 2.54)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Device:R_US"
 			(pin_numbers
 				(hide yes)
@@ -1525,9 +1651,9 @@
 		)
 		(uuid "3e0e430a-f7d8-4520-a8c7-dfdcb80f7a16")
 	)
-	(text "Shunt resistor placed \nbetween these two pins.\n"
+	(text "Shunt resistor placed \nbetween these two pins.\n\nAlso, use a copper pour\nbetween the load."
 		(exclude_from_sim no)
-		(at 78.486 35.56 0)
+		(at 78.74 33.02 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1677,7 +1803,7 @@
 		(at 48.26 41.91)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "23e1f087-e9b8-4a5e-92ce-3dc960b86e95")
+		(uuid "1f2188ff-33f2-47c3-a69c-3ba985722ba0")
 	)
 	(junction
 		(at 157.48 116.84)
@@ -1896,6 +2022,16 @@
 			(type default)
 		)
 		(uuid "08548261-4646-4c2e-985d-fd8cf0b201ee")
+	)
+	(wire
+		(pts
+			(xy 59.69 41.91) (xy 66.04 41.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0f2d0bf9-a597-4590-bbeb-59727c46c3fb")
 	)
 	(wire
 		(pts
@@ -2369,16 +2505,6 @@
 	)
 	(wire
 		(pts
-			(xy 48.26 41.91) (xy 66.04 41.91)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "94050ac9-98b2-492f-8624-26793a77e0de")
-	)
-	(wire
-		(pts
 			(xy 162.56 116.84) (xy 167.64 116.84)
 		)
 		(stroke
@@ -2616,6 +2742,16 @@
 			(type default)
 		)
 		(uuid "ca49cb06-87bb-474f-97f2-7ac92cfade7e")
+	)
+	(wire
+		(pts
+			(xy 48.26 41.91) (xy 54.61 41.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ca8e5e64-6cca-4cd6-bbad-b127b487318c")
 	)
 	(wire
 		(pts
@@ -4028,6 +4164,17 @@
 			"AAAAAAAAAADXKjqVAHkFgAAAAAAAAAAAAwAAAAAAAACQ3zqwbgEAAAEAAAAAAAAAAAAAAA=="
 		)
 	)
+	(hierarchical_label "Shunt+"
+		(shape input)
+		(at 66.04 41.91 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "07cfe277-ef65-4319-b554-04e265388917")
+	)
 	(hierarchical_label "Shunt-"
 		(shape input)
 		(at 90.17 41.91 180)
@@ -4137,17 +4284,6 @@
 			(justify right)
 		)
 		(uuid "854c02d1-84d2-4870-8409-f7f5ce106d41")
-	)
-	(hierarchical_label "Shunt+"
-		(shape input)
-		(at 66.04 41.91 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "867627fb-0fc9-4bd3-9f28-2229cb3c71b4")
 	)
 	(hierarchical_label "GND"
 		(shape input)
@@ -6224,6 +6360,102 @@
 				)
 				(path "/9e0ae2e7-d4be-41b4-8312-0d2aceea2180/373e68a1-9d85-40af-a211-fd16b724d579/fe512522-4dcc-4302-acc3-dfd05772ec49"
 					(reference "C67")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:NetTie_2")
+		(at 57.15 41.91 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "bfc2b4e6-d0d1-4326-b0a3-75b5005f9f12")
+		(property "Reference" "NT1"
+			(at 57.15 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "NetTie_2"
+			(at 57.15 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 57.15 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 57.15 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Net tie, 2 pins"
+			(at 57.15 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e36104a7-656d-430b-97d5-64bacaeb90b3")
+		)
+		(pin "2"
+			(uuid "61821f82-2564-472c-bcae-83478a3ab80e")
+		)
+		(instances
+			(project ""
+				(path "/9e0ae2e7-d4be-41b4-8312-0d2aceea2180/373e68a1-9d85-40af-a211-fd16b724d579/147083ce-7ff1-4330-8f9d-90a49a4fc524"
+					(reference "NT1")
+					(unit 1)
+				)
+				(path "/9e0ae2e7-d4be-41b4-8312-0d2aceea2180/373e68a1-9d85-40af-a211-fd16b724d579/2d75be79-5fbf-443b-b5d5-5d4b69bafd44"
+					(reference "NT6")
+					(unit 1)
+				)
+				(path "/9e0ae2e7-d4be-41b4-8312-0d2aceea2180/373e68a1-9d85-40af-a211-fd16b724d579/5cad98b7-3bab-409d-b3cc-44c7c987247d"
+					(reference "NT8")
+					(unit 1)
+				)
+				(path "/9e0ae2e7-d4be-41b4-8312-0d2aceea2180/373e68a1-9d85-40af-a211-fd16b724d579/6395c9e8-c5c2-425c-900f-887032a0fcd5"
+					(reference "NT7")
+					(unit 1)
+				)
+				(path "/9e0ae2e7-d4be-41b4-8312-0d2aceea2180/373e68a1-9d85-40af-a211-fd16b724d579/872f2c00-0abb-4b4b-8247-47a38a86d037"
+					(reference "NT4")
+					(unit 1)
+				)
+				(path "/9e0ae2e7-d4be-41b4-8312-0d2aceea2180/373e68a1-9d85-40af-a211-fd16b724d579/8d850b09-e8c3-4e43-ac4b-0b319f56a96e"
+					(reference "NT2")
+					(unit 1)
+				)
+				(path "/9e0ae2e7-d4be-41b4-8312-0d2aceea2180/373e68a1-9d85-40af-a211-fd16b724d579/d546f4db-215e-434b-a7ba-86417010bf75"
+					(reference "NT5")
+					(unit 1)
+				)
+				(path "/9e0ae2e7-d4be-41b4-8312-0d2aceea2180/373e68a1-9d85-40af-a211-fd16b724d579/fe512522-4dcc-4302-acc3-dfd05772ec49"
+					(reference "NT3")
 					(unit 1)
 				)
 			)
