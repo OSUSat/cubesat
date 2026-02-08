@@ -17,6 +17,7 @@
 #include <stdint.h>
 #include <string.h>
 
+#define MAX_LOG_ENTRIES_PER_FLUSH 5
 #define LOG_FLUSH_INTERVAL_CYCLES 600
 
 #define LOG_STORAGE_SIZE 4096
@@ -35,6 +36,7 @@ typedef struct {
     uint16_t sequence;
     uint8_t payload_buffer[LOG_PACKET_MAX_PAYLOAD];
     size_t payload_offset;
+    int entries_processed;
 } log_flush_context_t;
 
 static void logging_handle_tick(const osusat_event_t *e, void *ctx);
@@ -92,6 +94,11 @@ static void send_log_packet(log_flush_context_t *ctx, bool is_last) {
 
 static void log_flush_callback(const osusat_slog_entry_t *entry,
                                const char *message, void *user_ctx) {
+    if (((log_flush_context_t *)user_ctx)->entries_processed >=
+        MAX_LOG_ENTRIES_PER_FLUSH) {
+        return;
+    }
+
     log_flush_context_t *ctx = (log_flush_context_t *)user_ctx;
 
     size_t entry_size = sizeof(*entry) + entry->message_len + 1;
@@ -107,6 +114,8 @@ static void log_flush_callback(const osusat_slog_entry_t *entry,
     memcpy(ctx->payload_buffer + ctx->payload_offset, message,
            entry->message_len + 1);
     ctx->payload_offset += entry->message_len + 1;
+
+    ctx->entries_processed++;
 }
 
 static void logging_handle_tick(const osusat_event_t *e, void *ctx) {
@@ -128,21 +137,21 @@ static void logging_handle_request(const osusat_event_t *e, void *ctx) {
 }
 
 size_t logging_flush(void) {
-    if (g_active_uart == NULL) {
+    if (g_active_uart == NULL || !g_active_uart->initialized) {
         return 0;
     }
 
     log_flush_context_t ctx = {.sequence = 0, .payload_offset = 0};
 
-    // WARNING: this loop runs until the ring buffer is empty.
-    // if we have 4KB of logs, this will call uart_events_send_packet ~20
-    // times. Since HAL UART TX is blocking, this could freeze the system for
-    // ~350ms. We could consider adding a "max_packets" limit
-    // here to prevent starvation.
+    if (osusat_slog_pending_count() == 0) {
+        return 0;
+    }
+
     size_t count = osusat_slog_flush(log_flush_callback, &ctx);
 
     if (ctx.payload_offset > 0) {
-        send_log_packet(&ctx, true);
+        bool is_last = (osusat_slog_pending_count() == 0);
+        send_log_packet(&ctx, is_last);
     }
 
     return count;
