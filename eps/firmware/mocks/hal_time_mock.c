@@ -36,5 +36,3 @@ uint64_t hal_time_get_us(void) {
 
     return get_time_us() - g_start_time_us;
 }
-
-void hal_time_delay_ms(uint32_t ms) { usleep(ms * 1000); }

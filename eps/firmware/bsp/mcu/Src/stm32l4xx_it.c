@@ -173,13 +173,20 @@ void PendSV_Handler(void) {
 /**
  * @brief This function handles System tick timer.
  */
+volatile uint8_t g_main_tick_flag = 0;
+static uint32_t tick_divider = 0;
+
 void SysTick_Handler(void) {
     /* USER CODE BEGIN SysTick_IRQn 0 */
 
     /* USER CODE END SysTick_IRQn 0 */
     HAL_IncTick();
     /* USER CODE BEGIN SysTick_IRQn 1 */
-
+    tick_divider++;
+    if (tick_divider >= 10) {
+        tick_divider = 0;
+        g_main_tick_flag = 1;
+    }
     /* USER CODE END SysTick_IRQn 1 */
 }
 

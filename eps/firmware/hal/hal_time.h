@@ -53,13 +53,6 @@ uint32_t hal_time_get_ms(void);
  */
 uint64_t hal_time_get_us(void);
 
-/**
- * @brief Blocking delay in milliseconds.
- *
- * @param[in] ms Number of milliseconds to delay.
- */
-void hal_time_delay_ms(uint32_t ms);
-
 /** @} */ // end hal_time_api
 
 /** @} */ // end hal_time

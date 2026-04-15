@@ -15,6 +15,7 @@
 // size of the raw DMA buffer
 // ideally 2x the max expected packet size to prevent overwrites
 #define DMA_BUFFER_SIZE 256
+#define UART_TX_CAPACITY 512
 
 /**
  * @brief Internal UART port state
@@ -25,8 +26,13 @@ typedef struct {
     osusat_ring_buffer_t rx_ring;         /**< RX ring buffer */
     uint8_t rx_storage[UART_RX_CAPACITY]; /**< RX buffer storage */
 
+    osusat_ring_buffer_t tx_ring;         /**< TX ring buffer */
+    uint8_t tx_storage[UART_TX_CAPACITY]; /**< TX buffer storage */
+
     uint8_t dma_buffer[DMA_BUFFER_SIZE];
     uint32_t last_dma_pos; /**< Tracks where we last read from the DMA buffer */
+
+    uint8_t current_tx_byte; /**< Single byte buffer for HAL_UART_Transmit_IT */
 
     uart_rx_callback_t rx_callback; /**< User RX callback */
     void *rx_callback_ctx;          /**< User callback context */
@@ -43,6 +49,21 @@ extern UART_HandleTypeDef huart1;
 // extern UART_HandleTypeDef huart2;
 extern UART_HandleTypeDef huart3;
 // extern UART_HandleTypeDef huart4;
+
+/**
+ * @brief Helper to kick-start a TX if none is in progress.
+ */
+static void uart_start_tx(uart_port_t port) {
+    uart_port_state_t *state = &g_uart_state[port];
+
+    if (state->huart->gState != HAL_UART_STATE_READY) {
+        return;
+    }
+
+    if (osusat_ring_buffer_pop(&state->tx_ring, &state->current_tx_byte)) {
+        HAL_UART_Transmit_IT(state->huart, &state->current_tx_byte, 1);
+    }
+}
 
 /**
  * @brief Map uart_port_t to STM32 HAL handle
@@ -122,6 +143,8 @@ void hal_uart_init(uart_port_t port, const uart_config_t *config) {
 
     osusat_ring_buffer_init(&state->rx_ring, state->rx_storage,
                             UART_RX_CAPACITY, true);
+    osusat_ring_buffer_init(&state->tx_ring, state->tx_storage,
+                            UART_TX_CAPACITY, true);
 
     state->huart->Init.BaudRate = config->baudrate;
     state->huart->Init.WordLength = UART_WORDLENGTH_8B;
@@ -178,8 +201,14 @@ void hal_uart_write(uart_port_t port, const uint8_t *data, uint16_t len) {
         return;
     }
 
-    // NOTE: blocking
-    HAL_UART_Transmit(state->huart, (uint8_t *)data, len, HAL_MAX_DELAY);
+    // non-blocking push to tx_ring
+    for (uint16_t i = 0; i < len; i++) {
+        if (!osusat_ring_buffer_push(&state->tx_ring, data[i])) {
+            break; // buffer full
+        }
+    }
+
+    uart_start_tx(port);
 }
 
 uint16_t hal_uart_read(uart_port_t port, uint8_t *out, uint16_t len) {
@@ -250,11 +279,16 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
 }
 
 /**
- * @brief HAL callback for TX complete (optional)
+ * @brief HAL callback for TX complete
+ * This continues the TX chain if more data is in the tx_ring
  */
 void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart) {
-    // could add TX complete callback here if needed
-    (void)huart;
+    for (int i = 0; i < UART_PORT_MAX; i++) {
+        if (g_uart_state[i].huart == huart) {
+            uart_start_tx(i);
+            return;
+        }
+    }
 }
 
 /**
