@@ -85,8 +85,15 @@ int main() {
 
     LOG_INFO(EPS_COMPONENT_MAIN, "Initialization complete");
 
+    extern volatile uint8_t g_main_tick_flag;
+
     while (1) {
-        osusat_event_bus_process();
+        if (g_main_tick_flag) {
+            g_main_tick_flag = 0;
+            osusat_event_bus_process();
+        } else {
+            __WFI();
+        }
     }
 
     return 0;

@@ -16,5 +16,3 @@ uint64_t hal_time_get_us(void) {
     // approximate microseconds from millisecond tick
     return (uint64_t)HAL_GetTick() * 1000ULL;
 }
-
-void hal_time_delay_ms(uint32_t ms) { HAL_Delay(ms); }
