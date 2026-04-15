@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>MPPT Controller Service &#8212; OSUSat EPS Firmware  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Power Profiles Service" href="power_profiles.html" />
+    <link rel="prev" title="Battery Management Service" href="battery_management.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="mppt-controller-service">
+<h1>MPPT Controller Service<a class="headerlink" href="#mppt-controller-service" title="Link to this heading">¶</a></h1>
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group__mppt__controller"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">MPPT</span> <span class="pre">Controller</span> <span class="pre">Service</span></span></dt>
+<dd><p>Manages solar MPPT channels and associated telemetry. </p>
+<p>The MPPT controller handles all solar power input channels. Responsibilities:<ul class="simple">
+<li><p>initialize MPPT ICs and configure GPIO/HAL interfaces</p></li>
+<li><p>read per-channel voltage/current measurements</p></li>
+<li><p>monitor MPPT status (faults, overtemp, undervoltage)</p></li>
+<li><p>compute per-channel and total solar input power</p></li>
+<li><p>provide interfaces to higher-level services (battery, power policy) </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group__mppt__controller__types"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">Structures</span> <span class="pre">&amp;</span> <span class="pre">Enums</span></span></dt>
+<dd><p>Types used by the MPPT Controller Service. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.MPPT_CONTROLLER_SERVICE_ID">
+<span class="target" id="group__mppt__controller__types_1gab2ed61e93c092e857b1b7d9174444a71"></span><span class="sig-name descname"><span class="n"><span class="pre">MPPT_CONTROLLER_SERVICE_ID</span></span></span><a class="headerlink" href="#c.MPPT_CONTROLLER_SERVICE_ID" title="Link to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.MPPT_EVENT_FAULT_DETECTED">
+<span class="target" id="group__mppt__controller__types_1ga18168abb54bd661b779cecac6fcb9f74"></span><span class="sig-name descname"><span class="n"><span class="pre">MPPT_EVENT_FAULT_DETECTED</span></span></span><a class="headerlink" href="#c.MPPT_EVENT_FAULT_DETECTED" title="Link to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.MPPT_EVENT_PGOOD_CHANGED">
+<span class="target" id="group__mppt__controller__types_1gab6007c741e8345fb7dc0ab8bb0ca0b26"></span><span class="sig-name descname"><span class="n"><span class="pre">MPPT_EVENT_PGOOD_CHANGED</span></span></span><a class="headerlink" href="#c.MPPT_EVENT_PGOOD_CHANGED" title="Link to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.MPPT_EVENT_VOLTAGE_LOW">
+<span class="target" id="group__mppt__controller__types_1gaac8caf6bc45710b591b66ca29911e81d"></span><span class="sig-name descname"><span class="n"><span class="pre">MPPT_EVENT_VOLTAGE_LOW</span></span></span><a class="headerlink" href="#c.MPPT_EVENT_VOLTAGE_LOW" title="Link to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.MPPT_EVENT_TELEMETRY">
+<span class="target" id="group__mppt__controller__types_1gaaee46403596602e660b9cd831bd73286"></span><span class="sig-name descname"><span class="n"><span class="pre">MPPT_EVENT_TELEMETRY</span></span></span><a class="headerlink" href="#c.MPPT_EVENT_TELEMETRY" title="Link to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-enums">Enums</p>
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv426mppt_controller_event_id_t">
+<span id="_CPPv326mppt_controller_event_id_t"></span><span id="_CPPv226mppt_controller_event_id_t"></span><span class="target" id="group__mppt__controller__types_1gabb987ebc21a22104b2d0d9b1f068ee75"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">mppt_controller_event_id_t</span></span></span><a class="headerlink" href="#_CPPv426mppt_controller_event_id_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N26mppt_controller_event_id_t19MPPT_FAULT_DETECTEDE">
+<span id="_CPPv3N26mppt_controller_event_id_t19MPPT_FAULT_DETECTEDE"></span><span id="_CPPv2N26mppt_controller_event_id_t19MPPT_FAULT_DETECTEDE"></span><span class="target" id="group__mppt__controller__types_1ggabb987ebc21a22104b2d0d9b1f068ee75aa8956bcfda80fca2d175b4f75b145fbc"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">MPPT_FAULT_DETECTED</span></span></span><a class="headerlink" href="#_CPPv4N26mppt_controller_event_id_t19MPPT_FAULT_DETECTEDE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Published when a critical fault is detected. Payload: <a class="reference internal" href="#structmppt__channel__t"><span class="std std-ref">mppt_channel_t</span></a> (Snapshot at time of fault) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N26mppt_controller_event_id_t18MPPT_PGOOD_CHANGEDE">
+<span id="_CPPv3N26mppt_controller_event_id_t18MPPT_PGOOD_CHANGEDE"></span><span id="_CPPv2N26mppt_controller_event_id_t18MPPT_PGOOD_CHANGEDE"></span><span class="target" id="group__mppt__controller__types_1ggabb987ebc21a22104b2d0d9b1f068ee75ac5924f642273066196267dcd96522dc9"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">MPPT_PGOOD_CHANGED</span></span></span><a class="headerlink" href="#_CPPv4N26mppt_controller_event_id_t18MPPT_PGOOD_CHANGEDE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>The state of the MPPT controller’s PGOOD pin has changed Payload: new state (bool) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N26mppt_controller_event_id_t16MPPT_VOLTAGE_LOWE">
+<span id="_CPPv3N26mppt_controller_event_id_t16MPPT_VOLTAGE_LOWE"></span><span id="_CPPv2N26mppt_controller_event_id_t16MPPT_VOLTAGE_LOWE"></span><span class="target" id="group__mppt__controller__types_1ggabb987ebc21a22104b2d0d9b1f068ee75a5687f682f717c966ba119200e35f0883"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">MPPT_VOLTAGE_LOW</span></span></span><a class="headerlink" href="#_CPPv4N26mppt_controller_event_id_t16MPPT_VOLTAGE_LOWE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>The MPPT input voltage level has lowered below the threshold Payload: new voltage (float) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N26mppt_controller_event_id_t14MPPT_TELEMETRYE">
+<span id="_CPPv3N26mppt_controller_event_id_t14MPPT_TELEMETRYE"></span><span id="_CPPv2N26mppt_controller_event_id_t14MPPT_TELEMETRYE"></span><span class="target" id="group__mppt__controller__types_1ggabb987ebc21a22104b2d0d9b1f068ee75ac8eb75be469462ebeb9ff88ed8df3f44"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">MPPT_TELEMETRY</span></span></span><a class="headerlink" href="#_CPPv4N26mppt_controller_event_id_t14MPPT_TELEMETRYE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Periodic telemetry broadcast Payload: <a class="reference internal" href="#structmppt__channel__t"><span class="std std-ref">mppt_channel_t</span></a>. </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv413mppt_status_t">
+<span id="_CPPv313mppt_status_t"></span><span id="_CPPv213mppt_status_t"></span><span class="target" id="group__mppt__controller__types_1ga99b58e9542c40c7a631454d1e599ac91"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">mppt_status_t</span></span></span><a class="headerlink" href="#_CPPv413mppt_status_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>MPPT channel health state. </p>
+<p>Represents the operating or fault condition of a solar MPPT channel. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13mppt_status_t14MPPT_STATUS_OKE">
+<span id="_CPPv3N13mppt_status_t14MPPT_STATUS_OKE"></span><span id="_CPPv2N13mppt_status_t14MPPT_STATUS_OKE"></span><span class="target" id="group__mppt__controller__types_1gga99b58e9542c40c7a631454d1e599ac91a24136ee2ca90631ce947dc77fdd4df67"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">MPPT_STATUS_OK</span></span></span><a class="headerlink" href="#_CPPv4N13mppt_status_t14MPPT_STATUS_OKE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Channel operating nominally </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13mppt_status_t20MPPT_STATUS_DISABLEDE">
+<span id="_CPPv3N13mppt_status_t20MPPT_STATUS_DISABLEDE"></span><span id="_CPPv2N13mppt_status_t20MPPT_STATUS_DISABLEDE"></span><span class="target" id="group__mppt__controller__types_1gga99b58e9542c40c7a631454d1e599ac91a3af3ae8a1d778aa6de275aa9173467f5"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">MPPT_STATUS_DISABLED</span></span></span><a class="headerlink" href="#_CPPv4N13mppt_status_t20MPPT_STATUS_DISABLEDE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Channel disabled by software or hardware </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13mppt_status_t17MPPT_STATUS_FAULTE">
+<span id="_CPPv3N13mppt_status_t17MPPT_STATUS_FAULTE"></span><span id="_CPPv2N13mppt_status_t17MPPT_STATUS_FAULTE"></span><span class="target" id="group__mppt__controller__types_1gga99b58e9542c40c7a631454d1e599ac91a9f375738fcb2d66bf259417d9c09bea2"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">MPPT_STATUS_FAULT</span></span></span><a class="headerlink" href="#_CPPv4N13mppt_status_t17MPPT_STATUS_FAULTE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>General hardware fault or unexpected condition </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13mppt_status_t21MPPT_STATUS_UNDERVOLTE">
+<span id="_CPPv3N13mppt_status_t21MPPT_STATUS_UNDERVOLTE"></span><span id="_CPPv2N13mppt_status_t21MPPT_STATUS_UNDERVOLTE"></span><span class="target" id="group__mppt__controller__types_1gga99b58e9542c40c7a631454d1e599ac91af206cac4e8e62c9a96b8d8b4459216ca"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">MPPT_STATUS_UNDERVOLT</span></span></span><a class="headerlink" href="#_CPPv4N13mppt_status_t21MPPT_STATUS_UNDERVOLTE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Input voltage too low for MPPT to operate </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13mppt_status_t20MPPT_STATUS_OVERTEMPE">
+<span id="_CPPv3N13mppt_status_t20MPPT_STATUS_OVERTEMPE"></span><span id="_CPPv2N13mppt_status_t20MPPT_STATUS_OVERTEMPE"></span><span class="target" id="group__mppt__controller__types_1gga99b58e9542c40c7a631454d1e599ac91ad2ca1a383351f51d24ce0a98fb243b8b"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">MPPT_STATUS_OVERTEMP</span></span></span><a class="headerlink" href="#_CPPv4N13mppt_status_t20MPPT_STATUS_OVERTEMPE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Channel is thermally throttled or shut down </p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv414mppt_channel_t">
+<span id="_CPPv314mppt_channel_t"></span><span id="_CPPv214mppt_channel_t"></span><span id="mppt_channel_t"></span><span class="target" id="structmppt__channel__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">mppt_channel_t</span></span></span><a class="headerlink" href="#_CPPv414mppt_channel_t" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;mppt_controller.h&gt;</em></div>
+<p>Snapshot of an individual MPPT channel. </p>
+<p>Each channel includes voltage/current on both input and output sides, power computation, and MPPT chip status. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N14mppt_channel_t13input_voltageE">
+<span id="_CPPv3N14mppt_channel_t13input_voltageE"></span><span id="_CPPv2N14mppt_channel_t13input_voltageE"></span><span id="mppt_channel_t::input_voltage__float"></span><span class="target" id="structmppt__channel__t_1aa5d965f34cf98f07d6f7997af7422f2a"></span><span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">input_voltage</span></span></span><a class="headerlink" href="#_CPPv4N14mppt_channel_t13input_voltageE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Input voltage (solar panel side), in volts </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N14mppt_channel_t13input_currentE">
+<span id="_CPPv3N14mppt_channel_t13input_currentE"></span><span id="_CPPv2N14mppt_channel_t13input_currentE"></span><span id="mppt_channel_t::input_current__float"></span><span class="target" id="structmppt__channel__t_1aa1215de0e22e70112545ad739e02f248"></span><span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">input_current</span></span></span><a class="headerlink" href="#_CPPv4N14mppt_channel_t13input_currentE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Input current, in amps </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N14mppt_channel_t14output_voltageE">
+<span id="_CPPv3N14mppt_channel_t14output_voltageE"></span><span id="_CPPv2N14mppt_channel_t14output_voltageE"></span><span id="mppt_channel_t::output_voltage__float"></span><span class="target" id="structmppt__channel__t_1a9290c9f6a0beac3e6f24b2c16ae2f3a8"></span><span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">output_voltage</span></span></span><a class="headerlink" href="#_CPPv4N14mppt_channel_t14output_voltageE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Regulated output voltage, in volts </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N14mppt_channel_t14output_currentE">
+<span id="_CPPv3N14mppt_channel_t14output_currentE"></span><span id="_CPPv2N14mppt_channel_t14output_currentE"></span><span id="mppt_channel_t::output_current__float"></span><span class="target" id="structmppt__channel__t_1a401d1be3c0838fb881d21abd0d2d692f"></span><span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">output_current</span></span></span><a class="headerlink" href="#_CPPv4N14mppt_channel_t14output_currentE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Output current, in amps </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N14mppt_channel_t5powerE">
+<span id="_CPPv3N14mppt_channel_t5powerE"></span><span id="_CPPv2N14mppt_channel_t5powerE"></span><span id="mppt_channel_t::power__float"></span><span class="target" id="structmppt__channel__t_1a05c8048317847e492d2908ba69239c1e"></span><span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">power</span></span></span><a class="headerlink" href="#_CPPv4N14mppt_channel_t5powerE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Computed output power, in watts </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N14mppt_channel_t6statusE">
+<span id="_CPPv3N14mppt_channel_t6statusE"></span><span id="_CPPv2N14mppt_channel_t6statusE"></span><span id="mppt_channel_t::status__mppt_status_t"></span><span class="target" id="structmppt__channel__t_1acdadb6b85c4231429e2791d85ba83478"></span><a class="reference internal" href="#_CPPv413mppt_status_t" title="mppt_status_t"><span class="n"><span class="pre">mppt_status_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">status</span></span></span><a class="headerlink" href="#_CPPv4N14mppt_channel_t6statusE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Operational status </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N14mppt_channel_t7enabledE">
+<span id="_CPPv3N14mppt_channel_t7enabledE"></span><span id="_CPPv2N14mppt_channel_t7enabledE"></span><span id="mppt_channel_t::enabled__b"></span><span class="target" id="structmppt__channel__t_1a226e40f87b09369e51bf56d2e536dc5b"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">enabled</span></span></span><a class="headerlink" href="#_CPPv4N14mppt_channel_t7enabledE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>True if channel is enabled </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N14mppt_channel_t5pgoodE">
+<span id="_CPPv3N14mppt_channel_t5pgoodE"></span><span id="_CPPv2N14mppt_channel_t5pgoodE"></span><span id="mppt_channel_t::pgood__b"></span><span class="target" id="structmppt__channel__t_1af4cc11d65b0b553614242a74cf6f3245"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pgood</span></span></span><a class="headerlink" href="#_CPPv4N14mppt_channel_t5pgoodE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>True if MPPT chip reports power-good </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv46mppt_t">
+<span id="_CPPv36mppt_t"></span><span id="_CPPv26mppt_t"></span><span id="mppt_t"></span><span class="target" id="structmppt__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">mppt_t</span></span></span><a class="headerlink" href="#_CPPv46mppt_t" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;mppt_controller.h&gt;</em></div>
+<p>Individual MPPT device. </p>
+<p>Each MPPT device must be initialized with <a class="reference internal" href="#group__mppt__controller__api_1ga3fbe17e67243b9cfd0faf034a2a38762"><span class="std std-ref">mppt_init</span></a></p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N6mppt_t8channelsE">
+<span id="_CPPv3N6mppt_t8channelsE"></span><span id="_CPPv2N6mppt_t8channelsE"></span><span id="mppt_t::channels__mppt_channel_tP"></span><span class="target" id="structmppt__t_1a90a260fa3d0df80dca794292f899eec2"></span><a class="reference internal" href="#_CPPv414mppt_channel_t" title="mppt_channel_t"><span class="n"><span class="pre">mppt_channel_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">channels</span></span></span><a class="headerlink" href="#_CPPv4N6mppt_t8channelsE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>List of MPPT channels for this device </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N6mppt_t12num_channelsE">
+<span id="_CPPv3N6mppt_t12num_channelsE"></span><span id="_CPPv2N6mppt_t12num_channelsE"></span><span id="mppt_t::num_channels__s"></span><span class="target" id="structmppt__t_1aaa1713fead4afca1d758b8ebc7decd3a"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">num_channels</span></span></span><a class="headerlink" href="#_CPPv4N6mppt_t12num_channelsE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Number of MPPT channels </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N6mppt_t12tick_counterE">
+<span id="_CPPv3N6mppt_t12tick_counterE"></span><span id="_CPPv2N6mppt_t12tick_counterE"></span><span id="mppt_t::tick_counter__uint32_t"></span><span class="target" id="structmppt__t_1a9d418ef32740cd08f52e1a15e627d879"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">tick_counter</span></span></span><a class="headerlink" href="#_CPPv4N6mppt_t12tick_counterE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Internal counter for update loop </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N6mppt_t22telemetry_tick_counterE">
+<span id="_CPPv3N6mppt_t22telemetry_tick_counterE"></span><span id="_CPPv2N6mppt_t22telemetry_tick_counterE"></span><span id="mppt_t::telemetry_tick_counter__uint32_t"></span><span class="target" id="structmppt__t_1ac37a0b483eb82b8c47bc71a3ddd6904a"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">telemetry_tick_counter</span></span></span><a class="headerlink" href="#_CPPv4N6mppt_t22telemetry_tick_counterE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Internal counter for telemetry publish timing </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N6mppt_t11initializedE">
+<span id="_CPPv3N6mppt_t11initializedE"></span><span id="_CPPv2N6mppt_t11initializedE"></span><span id="mppt_t::initialized__b"></span><span class="target" id="structmppt__t_1a70ba2ca72ad6deb5901e586732782ec9"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">initialized</span></span></span><a class="headerlink" href="#_CPPv4N6mppt_t11initializedE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>True if this device has been initialized </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group__mppt__controller__api"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">Public</span> <span class="pre">API</span></span></dt>
+<dd><p>External interface for interacting with the MPPT Controller Service. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv49mppt_initP6mppt_t">
+<span id="_CPPv39mppt_initP6mppt_t"></span><span id="_CPPv29mppt_initP6mppt_t"></span><span id="mppt_init__mppt_tP"></span><span class="target" id="group__mppt__controller__api_1ga3fbe17e67243b9cfd0faf034a2a38762"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">mppt_init</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv46mppt_t" title="mppt_t"><span class="n"><span class="pre">mppt_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">mppt</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv49mppt_initP6mppt_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Initialize all MPPT channels. </p>
+<p>Configures MPPT hardware interfaces &amp; chips, sets default states, and prepares for voltage/current sensing.</p>
+<p>This must be called once at startup per MPPT device before any other MPPT functions are called.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If called more than once, the internal MPPT controller state will be reset.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mppt</strong> – <strong>[out]</strong> The MPPT controller </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv411mppt_enable7uint8_t">
+<span id="_CPPv311mppt_enable7uint8_t"></span><span id="_CPPv211mppt_enable7uint8_t"></span><span id="mppt_enable__uint8_t"></span><span class="target" id="group__mppt__controller__api_1gaab7bbb346aa580d340f9f9999be6d4df"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">mppt_enable</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">ch</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv411mppt_enable7uint8_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Enable a specific MPPT channel. </p>
+<p>
+Enables the MPPT chip via GPIO, clears stale faults, and marks the channel active for telemetry updates. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ch</strong> – Channel index (0 to NUM_MPPT_CHANNELS-1)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv412mppt_disable7uint8_t">
+<span id="_CPPv312mppt_disable7uint8_t"></span><span id="_CPPv212mppt_disable7uint8_t"></span><span id="mppt_disable__uint8_t"></span><span class="target" id="group__mppt__controller__api_1ga11f801595b19fe93a5894ee6e37acf3f"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">mppt_disable</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">ch</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv412mppt_disable7uint8_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Disable a specific MPPT channel. </p>
+<p>
+Used during power-budget constraints, safe-mode transitions, or thermal protection events. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ch</strong> – Channel index (0 to NUM_MPPT_CHANNELS-1)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">OSUSat EPS Firmware</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Services:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="battery_management.html">Battery Management Service</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">MPPT Controller Service</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#c.MPPT_CONTROLLER_SERVICE_ID"><code class="docutils literal notranslate"><span class="pre">MPPT_CONTROLLER_SERVICE_ID</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.MPPT_EVENT_FAULT_DETECTED"><code class="docutils literal notranslate"><span class="pre">MPPT_EVENT_FAULT_DETECTED</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.MPPT_EVENT_PGOOD_CHANGED"><code class="docutils literal notranslate"><span class="pre">MPPT_EVENT_PGOOD_CHANGED</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.MPPT_EVENT_VOLTAGE_LOW"><code class="docutils literal notranslate"><span class="pre">MPPT_EVENT_VOLTAGE_LOW</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.MPPT_EVENT_TELEMETRY"><code class="docutils literal notranslate"><span class="pre">MPPT_EVENT_TELEMETRY</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv426mppt_controller_event_id_t"><code class="docutils literal notranslate"><span class="pre">mppt_controller_event_id_t</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv413mppt_status_t"><code class="docutils literal notranslate"><span class="pre">mppt_status_t</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv414mppt_channel_t"><code class="docutils literal notranslate"><span class="pre">mppt_channel_t</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv46mppt_t"><code class="docutils literal notranslate"><span class="pre">mppt_t</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv49mppt_initP6mppt_t"><code class="docutils literal notranslate"><span class="pre">mppt_init()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv411mppt_enable7uint8_t"><code class="docutils literal notranslate"><span class="pre">mppt_enable()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv412mppt_disable7uint8_t"><code class="docutils literal notranslate"><span class="pre">mppt_disable()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="power_profiles.html">Power Profiles Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rail_controller.html">Rail Controller Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="redundancy_manager.html">Redundancy Manager Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telemetry.html">Telemetry Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="uart_events.html">UART Events Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="watchdog.html">Watchdog Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">Logging Service</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="battery_management.html" title="previous chapter">Battery Management Service</a></li>
+      <li>Next: <a href="power_profiles.html" title="next chapter">Power Profiles Service</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2025, FerretCode.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.1.0</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/services/mppt_controller.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
