@@ -85,6 +85,7 @@ int main() {
 
     LOG_INFO(EPS_COMPONENT_MAIN, "Initialization complete");
 
+#if defined(__arm__)
     extern volatile uint8_t g_main_tick_flag;
 
     while (1) {
@@ -95,6 +96,11 @@ int main() {
             __WFI();
         }
     }
+#else
+    while (1) {
+        osusat_event_bus_process();
+    }
+#endif
 
     return 0;
 }
