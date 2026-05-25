@@ -140,7 +140,7 @@
       },
       "rules": {
         "max_error": 0.005,
-        "min_clearance": 0.0,
+        "min_clearance": 0.1,
         "min_connection": 0.0,
         "min_copper_edge_clearance": 0.5,
         "min_groove_width": 0.0,
@@ -153,7 +153,7 @@
         "min_text_height": 0.8,
         "min_text_thickness": 0.08,
         "min_through_hole_diameter": 0.3,
-        "min_track_width": 0.2,
+        "min_track_width": 0.1,
         "min_via_annular_width": 0.1,
         "min_via_diameter": 0.5,
         "solder_mask_to_copper_clearance": 0.0,
@@ -514,6 +514,36 @@
         "via_diameter": 0.6,
         "via_drill": 0.3,
         "wire_width": 6
+      },
+      {
+        "clearance": 0.2,
+        "name": "50",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": 1,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 0.2941,
+        "tuning_profile": ""
+      },
+      {
+        "clearance": 0.1,
+        "diff_pair_gap": 0.2,
+        "diff_pair_width": 0.1148,
+        "name": "CAN",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": 2,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 0.1,
+        "tuning_profile": ""
+      },
+      {
+        "clearance": 0.2,
+        "diff_pair_gap": 0.2,
+        "diff_pair_width": 0.2644,
+        "name": "USB",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": 0,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "tuning_profile": ""
       }
     ],
     "meta": {
@@ -521,7 +551,20 @@
     },
     "net_colors": null,
     "netclass_assignments": null,
-    "netclass_patterns": []
+    "netclass_patterns": [
+      {
+        "netclass": "CAN",
+        "pattern": "/Inter-Board-Connector/CAN*"
+      },
+      {
+        "netclass": "50",
+        "pattern": "**ANT"
+      },
+      {
+        "netclass": "USB",
+        "pattern": "**/USB_D*"
+      }
+    ]
   },
   "pcbnew": {
     "last_paths": {
@@ -693,7 +736,7 @@
         "uuid": "ba4f88ff-24aa-49a3-8871-8c7e48b371c5"
       }
     ],
-    "used_designators": "L1,U2-6,J2-5,BT1,JP1,R1,R3-14,Y1-2,FB1,#PWR2-4,#PWR6-7,#PWR9-38,#PWR45-50,C1-23",
+    "used_designators": "L1,U2-11,J2-5,BT1,JP1,R1,R3-19,Y1-2,FB1,#PWR1-4,#PWR6-7,#PWR9-38,#PWR45-67,D1,C1-29",
     "variants": []
   },
   "sheets": [
