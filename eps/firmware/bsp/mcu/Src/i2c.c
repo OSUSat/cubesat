@@ -19,6 +19,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "i2c.h"
+#include "stm32l496xx.h"
 
 /* USER CODE BEGIN 0 */
 
@@ -277,15 +278,15 @@ void HAL_I2C_MspInit(I2C_HandleTypeDef *i2cHandle) {
 
         __HAL_RCC_GPIOC_CLK_ENABLE();
         /**I2C3 GPIO Configuration
-        PC0     ------> I2C3_SCL
-        PC1     ------> I2C3_SDA
+        PG7     ------> I2C3_SCL
+        PC8     ------> I2C3_SDA
         */
-        GPIO_InitStruct.Pin = GPIO_PIN_0 | GPIO_PIN_1;
+        GPIO_InitStruct.Pin = GPIO_PIN_7 | GPIO_PIN_8;
         GPIO_InitStruct.Mode = GPIO_MODE_AF_OD;
         GPIO_InitStruct.Pull = GPIO_NOPULL;
         GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
         GPIO_InitStruct.Alternate = GPIO_AF4_I2C3;
-        HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+        HAL_GPIO_Init(GPIOG, &GPIO_InitStruct);
 
         /* I2C3 clock enable */
         __HAL_RCC_I2C3_CLK_ENABLE();
