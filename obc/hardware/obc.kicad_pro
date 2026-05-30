@@ -60,16 +60,22 @@
           "hatch_smoothing_level": 0,
           "hatch_smoothing_value": 0.1,
           "hatch_thickness": 1.0,
-          "min_clearance": 0.25,
+          "min_clearance": 0.2,
           "min_island_area": 10.0,
-          "min_thickness": 0.25,
-          "pad_connection": 3,
+          "min_thickness": 0.2,
+          "pad_connection": 2,
           "remove_islands": 0,
           "thermal_relief_gap": 0.5,
           "thermal_relief_spoke_width": 0.5
         }
       },
-      "diff_pair_dimensions": [],
+      "diff_pair_dimensions": [
+        {
+          "gap": 0.0,
+          "via_gap": 0.0,
+          "width": 0.0
+        }
+      ],
       "drc_exclusions": [],
       "meta": {
         "version": 2
@@ -203,7 +209,12 @@
           "td_width_to_size_filter_ratio": 0.9
         }
       ],
-      "track_widths": [],
+      "track_widths": [
+        0.0,
+        0.2,
+        0.5,
+        1.0
+      ],
       "tuning_pattern_settings": {
         "diff_pair_defaults": {
           "corner_radius_percentage": 80,
@@ -230,7 +241,12 @@
           "spacing": 0.6
         }
       },
-      "via_dimensions": [],
+      "via_dimensions": [
+        {
+          "diameter": 0.0,
+          "drill": 0.0
+        }
+      ],
       "zones_allow_external_fillets": false
     },
     "ipc2581": {
@@ -488,7 +504,9 @@
     "pinned_footprint_libs": [
       "obc-footprints"
     ],
-    "pinned_symbol_libs": []
+    "pinned_symbol_libs": [
+      "obc-symbols"
+    ]
   },
   "meta": {
     "filename": "obc.kicad_pro",
@@ -700,6 +718,12 @@
           "label": "KLC_S4.1",
           "name": "KLC_S4.1",
           "show": false
+        },
+        {
+          "group_by": false,
+          "label": "LCSC PN",
+          "name": "LCSC PN",
+          "show": false
         }
       ],
       "filter_string": "",
@@ -758,7 +782,7 @@
         "uuid": "ba4f88ff-24aa-49a3-8871-8c7e48b371c5"
       }
     ],
-    "used_designators": "",
+    "used_designators": "R26-33,D5,D10-13,D18-21,#PWR113-127,J9,J11",
     "variants": []
   },
   "sheets": [
@@ -793,6 +817,10 @@
     [
       "c7a9a496-6f94-4edb-afd4-b8fc6f129dae",
       "CAN"
+    ],
+    [
+      "76b49e78-dec3-4db8-80be-7d93a848591c",
+      "Backup Supply"
     ]
   ],
   "text_variables": {},
