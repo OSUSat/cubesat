@@ -6,6 +6,10 @@ set(TEST_COMMON_LIBS
     OSUSat::C
 )
 
+include_directories(BEFORE
+    ${CMAKE_CURRENT_SOURCE_DIR}/../mocks/bsp
+)
+
 include_directories(
     ../
     ${CMAKE_CURRENT_SOURCE_DIR}/mocks
@@ -93,3 +97,27 @@ add_test(
     NAME test_battery_management
     COMMAND test_battery_management
 )
+
+# test_i2c_timeout
+
+if(NOT TARGET_ARCH STREQUAL "ARM")
+    add_executable(test_i2c_timeout
+        test_i2c_timeout.c
+        ../hal/hal_i2c.c
+        ../mocks/hal_time_mock.c
+        ../mocks/bsp/hal_stubs.c
+    )
+
+    target_include_directories(test_i2c_timeout PRIVATE
+        ../mocks/bsp
+    )
+
+    target_link_libraries(test_i2c_timeout PRIVATE
+        ${TEST_COMMON_LIBS}
+    )
+
+    add_test(
+        NAME test_i2c_timeout
+        COMMAND test_i2c_timeout
+    )
+endif()

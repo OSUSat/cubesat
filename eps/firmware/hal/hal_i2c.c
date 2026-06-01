@@ -7,8 +7,10 @@
 
 #include "hal_i2c.h"
 #include "eps_config.h"
+#include "hal_time.h"
 #include "stm32l4xx_hal.h"
 #include "stm32l4xx_hal_i2c.h"
+#include <stddef.h>
 #include <stdint.h>
 
 /**
@@ -31,8 +33,9 @@ typedef struct {
     i2c_error_cb_t error_callback; /**< Curretn user error callback hook */
     void *error_callback_ctx;      /**< Error context */
 
-    bool busy;        /**< Whether the line is busy */
-    bool initialized; /**< Init flag */
+    volatile bool busy;  /**< Whether the line is busy */
+    bool initialized;    /**< Init flag */
+    uint32_t start_tick; /**< Start tick of the current transaction */
 } i2c_bus_state_t;
 
 static i2c_bus_state_t g_bus_state[I2C_BUS_COUNT];
@@ -169,6 +172,22 @@ void hal_i2c_init(i2c_bus_t bus) {
     state->initialized = true;
 }
 
+#define I2C_TIMEOUT_MS 100
+
+static void check_and_apply_timeout(i2c_bus_t bus) {
+    i2c_bus_state_t *state = &g_bus_state[bus];
+    if (state->busy) {
+        uint32_t current_tick = hal_time_get_ms();
+        if (current_tick - state->start_tick > I2C_TIMEOUT_MS) {
+            state->busy = false;
+            if (state->error_callback) {
+                state->error_callback(bus, I2C_HAL_ERR_TIMEOUT,
+                                      state->error_callback_ctx);
+            }
+        }
+    }
+}
+
 i2c_error_t hal_i2c_read(i2c_bus_t bus, uint8_t addr, uint8_t *data,
                          uint16_t len, i2c_rx_callback_t cb,
                          i2c_error_cb_t err_cb, void *ctx) {
@@ -181,6 +200,8 @@ i2c_error_t hal_i2c_read(i2c_bus_t bus, uint8_t addr, uint8_t *data,
     if (!state->initialized) {
         return I2C_HAL_ERR_UNKNOWN;
     }
+
+    check_and_apply_timeout(bus);
 
     if (state->busy) {
         return I2C_HAL_ERR_BUSY;
@@ -199,6 +220,8 @@ i2c_error_t hal_i2c_read(i2c_bus_t bus, uint8_t addr, uint8_t *data,
     for (uint16_t i = 0; i < len; i++) {
         state->rx_buffer[i] = 0;
     }
+
+    state->start_tick = hal_time_get_ms();
 
     i2c_status_t status = start_rx_interrupt(bus, addr, len);
     if (status != I2C_OK) {
@@ -221,6 +244,8 @@ i2c_error_t hal_i2c_mem_read(i2c_bus_t bus, uint8_t addr, uint8_t reg,
         return I2C_HAL_ERR_UNKNOWN;
     }
 
+    check_and_apply_timeout(bus);
+
     if (state->busy) {
         return I2C_HAL_ERR_BUSY;
     }
@@ -238,6 +263,8 @@ i2c_error_t hal_i2c_mem_read(i2c_bus_t bus, uint8_t addr, uint8_t reg,
     for (uint16_t i = 0; i < len; i++) {
         state->rx_buffer[i] = 0;
     }
+
+    state->start_tick = hal_time_get_ms();
 
     i2c_status_t status = start_rx_mem_interrupt(bus, addr, reg, len);
     if (status != I2C_OK) {
@@ -260,6 +287,8 @@ i2c_error_t hal_i2c_write(i2c_bus_t bus, uint8_t addr, const uint8_t *data,
         return I2C_HAL_ERR_UNKNOWN;
     }
 
+    check_and_apply_timeout(bus);
+
     if (state->busy) {
         return I2C_HAL_ERR_BUSY;
     }
@@ -268,6 +297,8 @@ i2c_error_t hal_i2c_write(i2c_bus_t bus, uint8_t addr, const uint8_t *data,
     state->tx_callback_ctx = ctx;
     state->error_callback = err_cb;
     state->error_callback_ctx = ctx;
+
+    state->start_tick = hal_time_get_ms();
 
     i2c_status_t status = start_tx_interrupt(bus, addr, data, len);
     if (status != I2C_OK) {
@@ -290,6 +321,8 @@ i2c_error_t hal_i2c_mem_write(i2c_bus_t bus, uint8_t addr, uint8_t reg,
         return I2C_HAL_ERR_UNKNOWN;
     }
 
+    check_and_apply_timeout(bus);
+
     if (state->busy) {
         return I2C_HAL_ERR_BUSY;
     }
@@ -298,6 +331,8 @@ i2c_error_t hal_i2c_mem_write(i2c_bus_t bus, uint8_t addr, uint8_t reg,
     state->tx_callback_ctx = ctx;
     state->error_callback = err_cb;
     state->error_callback_ctx = ctx;
+
+    state->start_tick = hal_time_get_ms();
 
     i2c_status_t status = start_tx_mem_interrupt(bus, addr, reg, data, len);
     if (status != I2C_OK) {
