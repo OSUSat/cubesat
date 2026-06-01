@@ -93,3 +93,23 @@ add_test(
     NAME test_battery_management
     COMMAND test_battery_management
 )
+
+# test_mppt_controller
+
+add_executable(test_mppt_controller
+    test_mppt_controller.c
+    ../services/mppt_controller.c
+    mocks/event_bus_mock.c
+    ../mocks/hal_adc_mock.c
+    ../mocks/hal_gpio_mock.c
+    ../mocks/hal_i2c_mock.c
+)
+
+target_link_libraries(test_mppt_controller PRIVATE
+    ${TEST_COMMON_LIBS}
+)
+
+add_test(
+    NAME test_mppt_controller
+    COMMAND test_mppt_controller
+)
