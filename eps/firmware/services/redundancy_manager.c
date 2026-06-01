@@ -8,7 +8,10 @@
 #include "events.h"
 #include "hal_time.h"
 #include "logging.h"
+#include "mppt_controller.h"
 #include "osusat/event_bus.h"
+#include "rail_controller.h"
+#include "uart_events.h"
 #include <stdbool.h>
 #include <stddef.h>
 #include <string.h>
@@ -137,6 +140,23 @@ static void redundancy_manager_publish_component_degradation(
 static void
 redundancy_manager_publish_telemetry(const redundancy_manager_t *manager);
 
+/**
+ * @brief Map component to its expected fault source.
+ *
+ * @param component Component ID.
+ * @return Fault source.
+ */
+static fault_source_t
+redundancy_manager_map_component_to_fault_source(component_id_t component);
+
+/**
+ * @brief Update all component statuses based on active faults.
+ *
+ * @param manager The redundancy manager.
+ */
+static void
+redundancy_manager_update_component_statuses(redundancy_manager_t *manager);
+
 void redundancy_manager_init(redundancy_manager_t *manager) {
     if (manager == NULL) {
         return;
@@ -172,18 +192,14 @@ void redundancy_manager_init(redundancy_manager_t *manager) {
                                redundancy_manager_handle_battery_fault,
                                manager);
 
-    // TODO: Subscribe to MPPT fault events when defined
-    // osusat_event_bus_subscribe(MPPT_EVENT_FAULT,
-    //                            redundancy_manager_handle_mppt_fault,
-    //                            manager);
-    // TODO: Subscribe to Rail Controller fault events when defined
-    // osusat_event_bus_subscribe(RAIL_EVENT_OVERCURRENT,
-    //                            redundancy_manager_handle_rail_fault,
-    //                            manager);
-    // TODO: Subscribe to UART fault events when defined
-    // osusat_event_bus_subscribe(UART_EVENT_TRANSMISSION_FAILED,
-    //                            redundancy_manager_handle_uart_fault,
-    //                            manager);
+    osusat_event_bus_subscribe(MPPT_EVENT_FAULT_DETECTED,
+                               redundancy_manager_handle_mppt_fault, manager);
+    osusat_event_bus_subscribe(RAIL_CONTROLLER_EVENT_OVERCURRENT_DETECTED,
+                               redundancy_manager_handle_rail_fault, manager);
+    osusat_event_bus_subscribe(RAIL_CONTROLLER_EVENT_UNDERVOLTAGE_DETECTED,
+                               redundancy_manager_handle_rail_fault, manager);
+    osusat_event_bus_subscribe(UART_EVENT_ERROR_DETECTED,
+                               redundancy_manager_handle_uart_fault, manager);
 
     LOG_INFO(EPS_COMPONENT_MAIN, "Redundancy manager initialized");
 
@@ -254,10 +270,14 @@ static void redundancy_manager_handle_request(const osusat_event_t *e,
             .timestamp_ms = hal_time_get_ms()};
 
         if (!response.is_ok) {
+            fault_source_t expected_source =
+                redundancy_manager_map_component_to_fault_source(
+                    req->component);
             for (size_t i = 0; i < REDUNDANCY_MANAGER_MAX_FAULTS; i++) {
-                if (manager->faults[i].active) {
-                    // TODO: map fault to component
+                if (manager->faults[i].active &&
+                    manager->faults[i].source == expected_source) {
                     response.fault_source = manager->faults[i].source;
+                    break;
                 }
             }
         }
@@ -334,6 +354,7 @@ static void redundancy_manager_handle_request(const osusat_event_t *e,
         for (size_t i = 0; i < REDUNDANCY_MANAGER_MAX_FAULTS; i++) {
             manager->faults[i].active = false;
         }
+        redundancy_manager_update_component_statuses(manager);
 
         LOG_WARN(EPS_COMPONENT_MAIN, "All faults cleared (manual)");
 
@@ -384,9 +405,36 @@ static void redundancy_manager_handle_mppt_fault(const osusat_event_t *e,
                                                  void *ctx) {
     redundancy_manager_t *manager = (redundancy_manager_t *)ctx;
 
-    fault_code_t code = OSUSAT_GET_LOCAL_CODE(e->id);
+    if (manager == NULL || !manager->initialized) {
+        return;
+    }
+
+    // extract channel index from payload (first byte)
+    uint8_t ch = 0;
+    if (e->payload_len >= sizeof(uint8_t)) {
+        ch = e->payload[0];
+    }
+
+    // store channel index in the high byte of the fault code for tracking
+    fault_code_t code = ((uint32_t)ch << 8) | OSUSAT_GET_LOCAL_CODE(e->id);
     redundancy_manager_add_fault(manager, FAULT_SOURCE_MPPT, code,
                                  FAULT_SEVERITY_DEGRADED);
+
+    // map to solar string component
+    component_id_t component = COMPONENT_SOLAR_STRING_1;
+    if (ch < 6) {
+        component = (component_id_t)(COMPONENT_SOLAR_STRING_1 + ch);
+    }
+
+    // mark component as degraded
+    manager->component_status[component] = false;
+
+    // publish component degradation
+    redundancy_manager_publish_component_degradation(component,
+                                                     FAULT_SOURCE_MPPT, true);
+
+    LOG_WARN(EPS_COMPONENT_MAIN, "MPPT channel %d fault detected: code=0x%08X",
+             (int)ch, code);
 
     system_health_t new_health = redundancy_manager_evaluate_health(manager);
 
@@ -399,9 +447,22 @@ static void redundancy_manager_handle_rail_fault(const osusat_event_t *e,
                                                  void *ctx) {
     redundancy_manager_t *manager = (redundancy_manager_t *)ctx;
 
-    fault_code_t code = OSUSAT_GET_LOCAL_CODE(e->id);
+    if (manager == NULL || !manager->initialized) {
+        return;
+    }
+
+    size_t rail = 0;
+    if (e->payload_len >= sizeof(size_t)) {
+        memcpy(&rail, e->payload, sizeof(size_t));
+    }
+
+    // store rail index in the high byte of the fault code for tracking
+    fault_code_t code = ((uint32_t)rail << 8) | OSUSAT_GET_LOCAL_CODE(e->id);
     redundancy_manager_add_fault(manager, FAULT_SOURCE_RAIL, code,
                                  FAULT_SEVERITY_DEGRADED);
+
+    LOG_WARN(EPS_COMPONENT_MAIN, "Rail %d fault detected: code=0x%08X",
+             (int)rail, code);
 
     system_health_t new_health = redundancy_manager_evaluate_health(manager);
 
@@ -453,7 +514,7 @@ static void redundancy_manager_add_fault(redundancy_manager_t *manager,
             manager->faults[i].code == code) {
             // increment occurrence count
             manager->faults[i].count++;
-
+            redundancy_manager_update_component_statuses(manager);
             return;
         }
     }
@@ -468,7 +529,7 @@ static void redundancy_manager_add_fault(redundancy_manager_t *manager,
             manager->faults[i].count = 1;
             manager->faults[i].active = true;
             manager->total_fault_count++;
-
+            redundancy_manager_update_component_statuses(manager);
             return;
         }
     }
@@ -488,6 +549,7 @@ static bool redundancy_manager_remove_fault(redundancy_manager_t *manager,
         if (manager->faults[i].active && manager->faults[i].source == source &&
             manager->faults[i].code == code) {
             manager->faults[i].active = false;
+            redundancy_manager_update_component_statuses(manager);
             return true;
         }
     }
@@ -596,4 +658,63 @@ redundancy_manager_publish_telemetry(const redundancy_manager_t *manager) {
 
     osusat_event_bus_publish(REDUNDANCY_EVENT_TELEMETRY, &telemetry,
                              sizeof(telemetry));
+}
+
+static fault_source_t
+redundancy_manager_map_component_to_fault_source(component_id_t component) {
+    switch (component) {
+    case COMPONENT_UART_PRIMARY:
+    case COMPONENT_UART_SECONDARY:
+        return FAULT_SOURCE_UART;
+
+    case COMPONENT_I2C_BUS_1:
+    case COMPONENT_I2C_BUS_2:
+    case COMPONENT_I2C_BUS_3:
+    case COMPONENT_I2C_BUS_4:
+        return FAULT_SOURCE_SENSOR;
+
+    case COMPONENT_SOLAR_STRING_1:
+    case COMPONENT_SOLAR_STRING_2:
+    case COMPONENT_SOLAR_STRING_3:
+    case COMPONENT_SOLAR_STRING_4:
+    case COMPONENT_SOLAR_STRING_5:
+    case COMPONENT_SOLAR_STRING_6:
+        return FAULT_SOURCE_MPPT;
+
+    default:
+        return FAULT_SOURCE_COUNT;
+    }
+}
+
+static void
+redundancy_manager_update_component_statuses(redundancy_manager_t *manager) {
+    if (manager == NULL) {
+        return;
+    }
+
+    for (size_t c = 0; c < COMPONENT_COUNT; c++) {
+        manager->component_status[c] = true;
+    }
+
+    for (size_t i = 0; i < REDUNDANCY_MANAGER_MAX_FAULTS; i++) {
+        if (manager->faults[i].active) {
+            fault_source_t src = manager->faults[i].source;
+            fault_code_t code = manager->faults[i].code;
+
+            if (src == FAULT_SOURCE_UART) {
+                uint8_t port = (code >> 8) & 0xFF;
+                component_id_t component = (port == 1)
+                                               ? COMPONENT_UART_PRIMARY
+                                               : COMPONENT_UART_SECONDARY;
+                manager->component_status[component] = false;
+            } else if (src == FAULT_SOURCE_MPPT) {
+                uint8_t ch = (code >> 8) & 0xFF;
+                if (ch < 6) {
+                    component_id_t component =
+                        (component_id_t)(COMPONENT_SOLAR_STRING_1 + ch);
+                    manager->component_status[component] = false;
+                }
+            }
+        }
+    }
 }

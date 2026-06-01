@@ -167,8 +167,10 @@ static void uart_process_byte(uart_events_t *uart, uint8_t byte) {
             } else {
                 uart->rx_crc_error_count++;
 
-                osusat_event_bus_publish(UART_EVENT_ERROR_DETECTED, &res,
-                                         sizeof(int));
+                uint8_t port_num = (uart->port == UART_PORT_1) ? 1 : 3;
+                uint8_t payload[2] = {port_num, (uint8_t)res};
+                osusat_event_bus_publish(UART_EVENT_ERROR_DETECTED, payload,
+                                         sizeof(payload));
 
                 LOG_ERROR(COMPONENT_UART_PRIMARY,
                           "Failed to decode a packet of expected length %d",
@@ -187,6 +189,9 @@ static void on_hal_rx_notify(uart_port_t port, void *ctx) {
 }
 
 static void on_hal_error_notify(uart_port_t port, uart_error_t err, void *ctx) {
-    osusat_event_bus_publish(UART_EVENT_ERROR_DETECTED, &err,
-                             sizeof(uart_error_t));
+    (void)ctx;
+    uint8_t port_num = (port == UART_PORT_1) ? 1 : 3;
+    uint8_t payload[2] = {port_num, (uint8_t)err};
+    osusat_event_bus_publish(UART_EVENT_ERROR_DETECTED, payload,
+                             sizeof(payload));
 }

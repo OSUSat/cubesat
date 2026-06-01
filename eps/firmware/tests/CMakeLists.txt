@@ -93,3 +93,21 @@ add_test(
     NAME test_battery_management
     COMMAND test_battery_management
 )
+
+# test_redundancy_manager
+
+add_executable(test_redundancy_manager
+    test_redundancy_manager.c
+    ../services/redundancy_manager.c
+    mocks/event_bus_mock.c
+    ../mocks/hal_time_mock.c
+)
+
+target_link_libraries(test_redundancy_manager PRIVATE
+    ${TEST_COMMON_LIBS}
+)
+
+add_test(
+    NAME test_redundancy_manager
+    COMMAND test_redundancy_manager
+)
