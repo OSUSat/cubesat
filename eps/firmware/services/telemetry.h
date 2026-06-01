@@ -14,7 +14,13 @@
 #ifndef TELEMETRY_H
 #define TELEMETRY_H
 
+#include <stdbool.h>
 #include <stdint.h>
+#include "battery_management.h"
+#include "mppt_controller.h"
+#include "rail_controller.h"
+#include "redundancy_manager.h"
+#include "uart_events.h"
 
 /**
  * @defgroup telemetry Telemetry Service
@@ -36,6 +42,17 @@
  */
 
 /**
+ * @struct uart_telemetry_t
+ * @brief Telemetry snapshot for a single UART port.
+ */
+typedef struct {
+    uint32_t rx_byte_count;      /**< Total received bytes */
+    uint32_t rx_packet_count;    /**< Total packets decoded */
+    uint32_t rx_crc_error_count; /**< Total errors counted */
+    bool initialized;            /**< True if initialized */
+} uart_telemetry_t;
+
+/**
  * @struct eps_telemetry_t
  * @brief The Master Telemetry Packet.
  *
@@ -43,7 +60,12 @@
  * It may include nested structures from other services.
  */
 typedef struct {
-    // TODO: this will be a larger struct containing all service telemetry data
+    battery_status_t battery;                        /**< BMS status telemetry */
+    mppt_channel_t mppt_channels[NUM_MPPT_CHANNELS]; /**< Solar/MPPT channels telemetry */
+    rail_t rails[NUM_POWER_RAILS];                   /**< Power rails telemetry */
+    redundancy_telemetry_t redundancy;               /**< Redundancy manager telemetry */
+    uart_telemetry_t uart1;                          /**< USART1 telemetry */
+    uart_telemetry_t uart3;                          /**< USART3 telemetry */
 } eps_telemetry_t;
 
 /**
@@ -55,6 +77,12 @@ typedef struct {
  */
 typedef struct {
     eps_telemetry_t telemetry; /**< The current aggregated data snapshot. */
+    const battery_management_t *battery_manager;
+    const mppt_t *mppt_controller;
+    const rail_controller_t *rail_controller;
+    const redundancy_manager_t *redundancy_manager;
+    const uart_events_t *usart1_events;
+    const uart_events_t *usart3_events;
 } telemetry_t;
 
 /** @} */ // end telemetry_types
