@@ -169,8 +169,8 @@ static const gpio_config_t gpio_board_config[NUM_GPIO_PINS] = {
     {3, 13, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_OUTPUT},
     {3, 14, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_OUTPUT},
     {3, 15, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_OUTPUT},
-    // MAX6369 external hardware watchdog WDI pin (Port B Pin 0)
-    {1, 0, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_OUTPUT},
+    // MAX6369 external hardware watchdog WDI pin (Port E Pin 5)
+    {4, 5, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_OUTPUT},
 };
 
 #define WATCHDOG_WDI_PIN 24
