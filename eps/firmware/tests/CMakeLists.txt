@@ -93,3 +93,21 @@ add_test(
     NAME test_battery_management
     COMMAND test_battery_management
 )
+
+# test_rail_controller
+
+add_executable(test_rail_controller
+    test_rail_controller.c
+    ../services/rail_controller.c
+    mocks/event_bus_mock.c
+    ../mocks/hal_gpio_mock.c
+)
+
+target_link_libraries(test_rail_controller PRIVATE
+    ${TEST_COMMON_LIBS}
+)
+
+add_test(
+    NAME test_rail_controller
+    COMMAND test_rail_controller
+)

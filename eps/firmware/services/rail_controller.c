@@ -1,9 +1,12 @@
 #include "rail_controller.h"
 #include "eps_config.h"
 #include "events.h"
+#include "hal_gpio.h"
 #include "osusat/event_bus.h"
 #include <stdio.h>
 #include <string.h>
+
+#define RAIL_CONTROL_GPIO_PIN_START 8
 
 #define RAIL_CONTROLLER_UPDATE_INTERVAL_TICKS 10
 #define TELEMETRY_INTERVAL_CYCLES 600
@@ -40,7 +43,12 @@ void rail_controller_init(rail_controller_t *manager) {
         manager->rails[rail].enabled = false;
     }
 
-    // TODO: bringup?
+    // configure gpio pins for load switches as outputs (defaulting to off)
+    for (size_t rail = 0; rail < NUM_POWER_RAILS; rail++) {
+        hal_gpio_set_mode(RAIL_CONTROL_GPIO_PIN_START + rail,
+                          HAL_GPIO_MODE_OUTPUT);
+        hal_gpio_write(RAIL_CONTROL_GPIO_PIN_START + rail, HAL_GPIO_STATE_LOW);
+    }
 
     manager->initialized = true;
     osusat_event_bus_subscribe(EVENT_SYSTICK, rail_controller_handle_tick,
@@ -74,15 +82,31 @@ static void handle_profile_request_event(const osusat_event_t *e, void *ctx) {
 }
 
 void rail_controller_enable(rail_controller_t *controller, power_rail_t rail) {
-    (void)controller;
-    (void)rail;
-    printf("STUB: rail_controller_enable for rail %d\n", rail);
+    if (controller == NULL || rail >= NUM_POWER_RAILS) {
+        return;
+    }
+
+    controller->rails[rail].enabled = true;
+    controller->rails[rail].status = RAIL_STATUS_OK;
+
+    // drive the load switch gpio pin high/on
+    hal_gpio_write(RAIL_CONTROL_GPIO_PIN_START + rail, HAL_GPIO_STATE_HIGH);
+
+    printf("INFO: rail_controller_enable for rail %d\n", rail);
 }
 
 void rail_controller_disable(rail_controller_t *controller, power_rail_t rail) {
-    (void)controller;
-    (void)rail;
-    printf("STUB: rail_controller_disable for rail %d\n", rail);
+    if (controller == NULL || rail >= NUM_POWER_RAILS) {
+        return;
+    }
+
+    controller->rails[rail].enabled = false;
+    controller->rails[rail].status = RAIL_STATUS_DISABLED;
+
+    // drive the load switch gpio pin low/off
+    hal_gpio_write(RAIL_CONTROL_GPIO_PIN_START + rail, HAL_GPIO_STATE_LOW);
+
+    printf("INFO: rail_controller_disable for rail %d\n", rail);
 }
 
 static void rail_controller_handle_tick(const osusat_event_t *e, void *ctx) {
@@ -112,15 +136,33 @@ static void rail_controller_handle_tick(const osusat_event_t *e, void *ctx) {
 }
 
 void rail_controller_handle_update(rail_controller_t *manager) {
+    if (manager == NULL) {
+        return;
+    }
+
     for (size_t rail = 0; rail < NUM_POWER_RAILS; rail++) {
-        // TODO: read real sensors per rail
-        float voltage = 0.0f;
-        float current = 0.0f;
-
-        manager->rails[rail].current = voltage;
-        manager->rails[rail].voltage = current;
-
         const rail_config_t *config = &RAIL_CONFIGS[rail];
+
+        // check if this is an unconfigured rail
+        if (config->name == NULL) {
+            continue;
+        }
+
+        // sensible default stubs
+        float voltage = manager->rails[rail].voltage;
+        float current = manager->rails[rail].current;
+
+        if (!manager->rails[rail].enabled) {
+            voltage = 0.0f;
+            current = 0.0f;
+        } else if (voltage == 0.0f) {
+            voltage = config->nominal_voltage;
+            current = 0.1f;
+        }
+
+        // correct swapped assignment bug
+        manager->rails[rail].voltage = voltage;
+        manager->rails[rail].current = current;
 
         if (!manager->rails[rail].enabled) {
             continue;
@@ -156,6 +198,10 @@ void rail_controller_handle_update(rail_controller_t *manager) {
                 osusat_event_bus_publish(event_id, &rail, sizeof(size_t));
 
                 manager->rails[rail].enabled = false;
+
+                // disable physical switch on fault
+                hal_gpio_write(RAIL_CONTROL_GPIO_PIN_START + rail,
+                               HAL_GPIO_STATE_LOW);
             }
         }
     }
