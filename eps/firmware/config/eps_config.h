@@ -8,8 +8,6 @@
 #define NUM_POWER_RAILS 8   // the number of power rails available on the EPS
 #define NUM_GPIO_PINS 36    // number of GPIO pins in use
 
-// stm32cubemx bootstrapping peripheral pinout mapping
-
 // i2c peripheral pins
 // i2c1: scl -> pg14, sda -> pg13
 #define I2C1_SCL_PORT      6
