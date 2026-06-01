@@ -15,6 +15,7 @@
 static void handle_battery_event(const osusat_event_t *e, void *ctx);
 static void handle_redundancy_event(const osusat_event_t *e, void *ctx);
 static void handle_mppt_event(const osusat_event_t *e, void *ctx);
+static void handle_systick_event(const osusat_event_t *e, void *ctx);
 
 void power_policies_init(power_policies_t *app) {
     if (app == NULL) {
@@ -30,16 +31,18 @@ void power_policies_init(power_policies_t *app) {
     osusat_event_bus_subscribe(BATTERY_EVENT_FULLY_CHARGED,
                                handle_battery_event, app);
 
-    // osusat_event_bus_subscribe(REDUNDANCY_EVENT_SYSTEM_HEALTH_CHANGED,
-    // handle_redundancy_event, app);
+    // redundancy health events
+    osusat_event_bus_subscribe(REDUNDANCY_EVENT_SYSTEM_HEALTH_CHANGED,
+                               handle_redundancy_event, app);
 
     // mppt controller events
     osusat_event_bus_subscribe(MPPT_EVENT_FAULT_DETECTED, handle_mppt_event,
                                app);
     osusat_event_bus_subscribe(MPPT_EVENT_PGOOD_CHANGED, handle_mppt_event,
                                app);
-    osusat_event_bus_subscribe(MPPT_EVENT_PGOOD_CHANGED, handle_mppt_event,
-                               app);
+
+    // system tick events
+    osusat_event_bus_subscribe(EVENT_SYSTICK, handle_systick_event, app);
 }
 
 static void handle_battery_event(const osusat_event_t *e, void *ctx) {
@@ -69,45 +72,77 @@ static void handle_battery_event(const osusat_event_t *e, void *ctx) {
 }
 
 static void handle_mppt_event(const osusat_event_t *e, void *ctx) {
-    power_policies_t *app __attribute__((unused)) = (power_policies_t *)ctx;
+    power_policies_t *app = (power_policies_t *)ctx;
+
+    if (app == NULL || !app->initialized) {
+        return;
+    }
 
     switch (e->id) {
     case MPPT_EVENT_FAULT_DETECTED:
-        // TODO: faults sent from mppt controller should contain the channel
-        // where the failure occurred
-
         if (e->payload_len >= sizeof(uint8_t)) {
             uint8_t failed_channel = e->payload[0];
 
-            osusat_event_bus_publish(APP_EVENT_REQUEST_MPPT_DISABLE_CHANNEL,
-                                     &failed_channel, sizeof(uint8_t));
+            if (failed_channel < 6) {
+                osusat_event_bus_publish(APP_EVENT_REQUEST_MPPT_DISABLE_CHANNEL,
+                                         &failed_channel, sizeof(uint8_t));
 
-            // TODO: schedule re-enable after some time
+                // start cooldown timer for the channel
+                app->mppt_cooldown[failed_channel] = 500;
+            }
         }
+        break;
 
-        // TODO: handle other cases
+    case MPPT_EVENT_PGOOD_CHANGED:
+        // handle power good state changes
+        break;
+
+    default:
+        break;
     }
 }
 
 static void handle_redundancy_event(const osusat_event_t *e, void *ctx) {
     power_policies_t *app = (power_policies_t *)ctx;
 
-    // TODO: define system health event from redundancy manager.
-    //
-    // if (e->id == REDUNDANCY_EVENT_SYSTEM_HEALTH_CHANGED) {
-    //     system_health_t *health = (system_health_t *)e->payload;
-    //
-    //     if (*health == SYSTEM_HEALTH_FAULT) {
-    //
-    //         // on system fault, switch to safe mode
-    //         osusat_event_bus_publish(APP_EVENT_REQUEST_POWER_PROFILE_SAFE,
-    //         NULL, 0);
-    //
-    //     } else if (*health == SYSTEM_HEALTH_OK) {
-    //
-    //         // if system is healthy, go back to nominal mode
-    //         osusat_event_bus_publish(APP_EVENT_REQUEST_POWER_PROFILE_NOMINAL,
-    //         NULL, 0);
-    //     }
-    // }
+    if (app == NULL || !app->initialized) {
+        return;
+    }
+
+    if (e->id == REDUNDANCY_EVENT_SYSTEM_HEALTH_CHANGED) {
+        if (e->payload_len >= sizeof(system_health_t)) {
+            system_health_t health;
+            memcpy(&health, e->payload, sizeof(system_health_t));
+
+            if (health == SYSTEM_HEALTH_FAULT) {
+                // request transition to safe mode
+                osusat_event_bus_publish(APP_EVENT_REQUEST_POWER_PROFILE_SAFE,
+                                         NULL, 0);
+            } else if (health == SYSTEM_HEALTH_OK) {
+                // request transition back to nominal mode
+                osusat_event_bus_publish(
+                    APP_EVENT_REQUEST_POWER_PROFILE_NOMINAL, NULL, 0);
+            }
+        }
+    }
+}
+
+static void handle_systick_event(const osusat_event_t *e, void *ctx) {
+    (void)e;
+    power_policies_t *app = (power_policies_t *)ctx;
+
+    if (app == NULL || !app->initialized) {
+        return;
+    }
+
+    for (uint8_t i = 0; i < 6; i++) {
+        if (app->mppt_cooldown[i] > 0) {
+            app->mppt_cooldown[i]--;
+            if (app->mppt_cooldown[i] == 0) {
+                // publish enable channel event
+                osusat_event_bus_publish(APP_EVENT_REQUEST_MPPT_ENABLE_CHANNEL,
+                                         &i, sizeof(uint8_t));
+            }
+        }
+    }
 }

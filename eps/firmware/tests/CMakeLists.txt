@@ -111,3 +111,20 @@ add_test(
     NAME test_redundancy_manager
     COMMAND test_redundancy_manager
 )
+
+# test_power_policies
+
+add_executable(test_power_policies
+    test_power_policies.c
+    ../app/power_policies.c
+    mocks/event_bus_mock.c
+)
+
+target_link_libraries(test_power_policies PRIVATE
+    ${TEST_COMMON_LIBS}
+)
+
+add_test(
+    NAME test_power_policies
+    COMMAND test_power_policies
+)

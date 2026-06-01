@@ -34,7 +34,8 @@
  */
 typedef struct {
     power_profile_t current_profile; /**< The current power profile. */
-    bool initialized; /**< True if the application is initialized. */
+    bool initialized;          /**< True if the application is initialized. */
+    uint32_t mppt_cooldown[6]; /**< cooldown timer for each mppt channel */
 } power_policies_t;
 
 /** @} */ // end power_policies_types

@@ -205,6 +205,8 @@ void redundancy_manager_init(redundancy_manager_t *manager) {
 
     osusat_event_bus_publish(REDUNDANCY_EVENT_HEALTH_RECOVERED,
                              &manager->health, sizeof(manager->health));
+    osusat_event_bus_publish(REDUNDANCY_EVENT_SYSTEM_HEALTH_CHANGED,
+                             &manager->health, sizeof(manager->health));
 }
 
 static void redundancy_manager_handle_tick(const osusat_event_t *e, void *ctx) {
@@ -614,6 +616,8 @@ redundancy_manager_publish_health_change(redundancy_manager_t *manager,
     LOG_INFO(EPS_COMPONENT_MAIN, "System health changed to %s", health_str);
 
     osusat_event_bus_publish(event_id, &new_health, sizeof(new_health));
+    osusat_event_bus_publish(REDUNDANCY_EVENT_SYSTEM_HEALTH_CHANGED,
+                             &new_health, sizeof(new_health));
 }
 
 static void redundancy_manager_publish_component_degradation(

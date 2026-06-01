@@ -90,6 +90,13 @@ typedef enum {
     REDUNDANCY_EVENT_HEALTH_RECOVERED,
 
     /**
+     * @brief Published when system health changes.
+     *
+     * Payload: system_health_t
+     */
+    REDUNDANCY_EVENT_SYSTEM_HEALTH_CHANGED,
+
+    /**
      * @brief Published when a specific component becomes degraded.
      *
      * Indicates a component failure with fallback available. Affected services
@@ -153,6 +160,9 @@ typedef enum {
 #define REDUNDANCY_EVENT_HEALTH_RECOVERED                                      \
     OSUSAT_BUILD_EVENT_ID(REDUNDANCY_MANAGER_SERVICE_UID,                      \
                           REDUNDANCY_EVENT_HEALTH_RECOVERED)
+#define REDUNDANCY_EVENT_SYSTEM_HEALTH_CHANGED                                 \
+    OSUSAT_BUILD_EVENT_ID(REDUNDANCY_MANAGER_SERVICE_UID,                      \
+                          REDUNDANCY_EVENT_SYSTEM_HEALTH_CHANGED)
 #define REDUNDANCY_EVENT_COMPONENT_DEGRADED                                    \
     OSUSAT_BUILD_EVENT_ID(REDUNDANCY_MANAGER_SERVICE_UID,                      \
                           REDUNDANCY_EVENT_COMPONENT_DEGRADED)
