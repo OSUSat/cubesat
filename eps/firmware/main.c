@@ -20,6 +20,7 @@
 #include "stm32l4xx_hal_rcc.h"
 #include "uart_events.h"
 #include "usart.h"
+#include "watchdog.h"
 
 // event bus
 #define EVENT_QUEUE_SIZE 16
@@ -36,6 +37,7 @@ static mppt_t mppt_controller_service;
 static redundancy_manager_t redundancy_manager_service;
 static uart_events_t usart1_events_service;
 static uart_events_t usart3_events_service;
+static watchdog_t watchdog;
 
 int main() {
     // initialize BSP HAL
@@ -78,6 +80,7 @@ int main() {
     power_profiles_init(&power_profiles_service, &rail_controller);
     mppt_init(&mppt_controller_service);
     redundancy_manager_init(&redundancy_manager_service);
+    watchdog_init(&watchdog);
 
     // initialize applications
     command_handler_init(&command_handler);

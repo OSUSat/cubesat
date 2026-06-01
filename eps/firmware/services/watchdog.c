@@ -9,7 +9,17 @@
 #include "hal_time.h"
 #include "iwdg.h"
 #include "logging.h"
+#include "osusat/event_bus.h"
 #include <stddef.h>
+
+/**
+ * @brief System Tick Handler.
+ * Called automatically by the Event Bus.
+ *
+ * @param e   The event (SYSTICK).
+ * @param ctx The context pointer (points to watchdog_t).
+ */
+static void watchdog_handle_tick(const osusat_event_t *e, void *ctx);
 
 void watchdog_init(watchdog_t *watchdog) {
     if (watchdog == NULL) {
@@ -22,6 +32,8 @@ void watchdog_init(watchdog_t *watchdog) {
 
     // initialize external watchdog pin state
     hal_gpio_write(WATCHDOG_WDI_PIN, HAL_GPIO_STATE_LOW);
+
+    osusat_event_bus_subscribe(EVENT_SYSTICK, watchdog_handle_tick, watchdog);
 }
 
 void watchdog_pet(watchdog_t *watchdog) {
@@ -45,4 +57,16 @@ void watchdog_force_reset(watchdog_t *watchdog) {
     while (1) {
         // block indefinitely to let hardware watchdog expire
     }
+}
+
+static void watchdog_handle_tick(const osusat_event_t *e, void *ctx) {
+    (void)e;
+
+    watchdog_t *watchdog = (watchdog_t *)ctx;
+
+    if (watchdog == NULL || !watchdog->enabled) {
+        return;
+    }
+
+    watchdog_pet(watchdog);
 }
