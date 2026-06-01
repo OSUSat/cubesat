@@ -4,6 +4,8 @@
  */
 
 #include "watchdog.h"
+#include "eps_config.h"
+#include "hal_gpio.h"
 #include "hal_time.h"
 #include "iwdg.h"
 #include <stddef.h>
@@ -16,6 +18,9 @@ void watchdog_init(watchdog_t *watchdog) {
     watchdog->timeout_ms = 512;
     watchdog->last_pet_tick = hal_time_get_ms();
     watchdog->enabled = true;
+
+    // initialize external watchdog pin state
+    hal_gpio_write(WATCHDOG_WDI_PIN, HAL_GPIO_STATE_LOW);
 }
 
 void watchdog_pet(watchdog_t *watchdog) {
@@ -24,6 +29,7 @@ void watchdog_pet(watchdog_t *watchdog) {
     }
 
     HAL_IWDG_Refresh(&hiwdg);
+    hal_gpio_toggle(WATCHDOG_WDI_PIN);
     watchdog->last_pet_tick = hal_time_get_ms();
 }
 

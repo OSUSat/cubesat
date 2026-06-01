@@ -115,6 +115,7 @@ if(NOT TARGET_ARCH STREQUAL "ARM")
         ../services/watchdog.c
         ../mocks/bsp/hal_stubs.c
         ../mocks/hal_time_mock.c
+        ../mocks/hal_gpio_mock.c
     )
 
     target_link_libraries(test_watchdog PRIVATE
