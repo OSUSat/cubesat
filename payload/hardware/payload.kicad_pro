@@ -60,7 +60,7 @@
           "hatch_smoothing_level": 0,
           "hatch_smoothing_value": 0.1,
           "hatch_thickness": 1.0,
-          "min_clearance": 0.0,
+          "min_clearance": 0.15,
           "min_island_area": 10.0,
           "min_thickness": 0.2,
           "pad_connection": 3,
@@ -211,7 +211,10 @@
       ],
       "track_widths": [
         0.0,
-        0.25
+        0.2,
+        0.25,
+        0.3,
+        0.5
       ],
       "tuning_pattern_settings": {
         "diff_pair_defaults": {
@@ -537,7 +540,7 @@
         "diff_pair_width": 0.1519,
         "name": "100 ohm differential",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 1,
+        "priority": 2,
         "schematic_color": "rgb(199, 91, 82)",
         "tuning_profile": ""
       },
@@ -547,8 +550,15 @@
         "diff_pair_width": 0.2097,
         "name": "90 ohm differential",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 0,
+        "priority": 1,
         "schematic_color": "rgb(0, 82, 149)",
+        "tuning_profile": ""
+      },
+      {
+        "name": "CAN",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": 0,
+        "schematic_color": "rgb(182, 133, 10)",
         "tuning_profile": ""
       }
     ],
@@ -569,6 +579,14 @@
       {
         "netclass": "90 ohm differential",
         "pattern": "**/USB_D*"
+      },
+      {
+        "netclass": "CAN",
+        "pattern": "**/CAN*+"
+      },
+      {
+        "netclass": "CAN",
+        "pattern": "**/CAN*-"
       }
     ]
   },
@@ -750,6 +768,30 @@
           "label": "#",
           "name": "${ITEM_NUMBER}",
           "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Sim.Pins",
+          "name": "Sim.Pins",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "KLC_S3.3",
+          "name": "KLC_S3.3",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "KLC_S4.1",
+          "name": "KLC_S4.1",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "LCSC",
+          "name": "LCSC",
+          "show": false
         }
       ],
       "filter_string": "",
@@ -808,7 +850,7 @@
         "uuid": "6c55f0ca-d6e4-4a04-9323-ecf7d8843170"
       }
     ],
-    "used_designators": "U2,U4,#PWR7-8,#PWR10-14,J1",
+    "used_designators": "#PWR31-32,R5-6,J5,M1,U9",
     "variants": []
   },
   "sheets": [
@@ -831,6 +873,10 @@
     [
       "e8057e65-de86-4674-be4a-6a6d58efe02c",
       "CAN"
+    ],
+    [
+      "d4b7b76f-24e6-4b2a-a93b-55ace58d0ff9",
+      "CAN1"
     ]
   ],
   "text_variables": {},
