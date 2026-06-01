@@ -8,6 +8,7 @@
 #include "hal_gpio.h"
 #include "hal_time.h"
 #include "iwdg.h"
+#include "logging.h"
 #include <stddef.h>
 
 void watchdog_init(watchdog_t *watchdog) {
@@ -24,11 +25,14 @@ void watchdog_init(watchdog_t *watchdog) {
 }
 
 void watchdog_pet(watchdog_t *watchdog) {
-    if (watchdog == NULL) {
+    if (watchdog == NULL || !watchdog->enabled) {
         return;
     }
 
-    HAL_IWDG_Refresh(&hiwdg);
+    if (HAL_IWDG_Refresh(&hiwdg) != HAL_OK) {
+        // handle refresh failure by logging an error
+        LOG_ERROR(EPS_COMPONENT_MAIN, "watchdog pet failed");
+    }
     hal_gpio_toggle(WATCHDOG_WDI_PIN);
     watchdog->last_pet_tick = hal_time_get_ms();
 }

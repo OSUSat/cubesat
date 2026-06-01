@@ -57,9 +57,35 @@ void test_watchdog_pet(void) {
     printf("Test passed.\n");
 }
 
+void test_watchdog_disabled(void) {
+    printf("Running test: %s\n", __func__);
+    watchdog_t wd;
+
+    hal_gpio_init();
+    hal_gpio_set_mode(WATCHDOG_WDI_PIN, HAL_GPIO_MODE_OUTPUT);
+
+    watchdog_init(&wd);
+    wd.enabled = false;
+
+    uint32_t initial_refresh_count = mock_iwdg_refresh_count;
+    uint32_t initial_tick = wd.last_pet_tick;
+
+    usleep(2000);
+
+    watchdog_pet(&wd);
+
+    // should not refresh IWDG or change state since disabled
+    assert(mock_iwdg_refresh_count == initial_refresh_count);
+    assert(wd.last_pet_tick == initial_tick);
+    assert(hal_gpio_read(WATCHDOG_WDI_PIN) == HAL_GPIO_STATE_LOW);
+
+    printf("Test passed.\n");
+}
+
 int main(void) {
     test_watchdog_init();
     test_watchdog_pet();
+    test_watchdog_disabled();
 
     return 0;
 }
