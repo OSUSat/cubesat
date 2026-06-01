@@ -5,10 +5,16 @@
 
 #include "battery_management.h"
 #include "eps_config.h"
+#include "hal_adc.h"
+#include "hal_gpio.h"
+#include "hal_i2c.h"
 #include "osusat/event_bus.h"
 #include <stddef.h>
 #include <stdint.h>
 #include <string.h>
+
+#define BATTERY_CHARGE_PIN 24
+#define BATTERY_BALANCE_PIN 25
 
 // TODO: ensure system tick fires every 100Hz (10ms)
 // this way we can update the battery loop every 100ms
@@ -41,6 +47,11 @@ void battery_init(battery_management_t *manager) {
 
     memset(manager, 0, sizeof(battery_management_t));
 
+    hal_gpio_set_mode(BATTERY_CHARGE_PIN, HAL_GPIO_MODE_OUTPUT);
+    hal_gpio_set_mode(BATTERY_BALANCE_PIN, HAL_GPIO_MODE_OUTPUT);
+    hal_gpio_write(BATTERY_CHARGE_PIN, HAL_GPIO_STATE_LOW);
+    hal_gpio_write(BATTERY_BALANCE_PIN, HAL_GPIO_STATE_LOW);
+
     bool healthy = battery_run_diagnostics(manager);
 
     if (healthy) {
@@ -62,8 +73,11 @@ void battery_charge_control(battery_management_t *manager, bool enable) {
         return;
 
     manager->battery_status.charging = enable;
+    manager->battery_status.balancing = enable;
 
-    // TODO: perform hardware action
+    gpio_state_t state = enable ? HAL_GPIO_STATE_HIGH : HAL_GPIO_STATE_LOW;
+    hal_gpio_write(BATTERY_CHARGE_PIN, state);
+    hal_gpio_write(BATTERY_BALANCE_PIN, state);
 
     osusat_event_bus_publish(BATTERY_EVENT_CHARGING_CHANGE, &enable, 1);
 }
@@ -101,7 +115,12 @@ static void battery_handle_tick(const osusat_event_t *e, void *ctx) {
 }
 
 static void battery_perform_update(battery_management_t *manager) {
-    float voltage = 0; // TODO: replace with real read
+    if (manager == NULL) {
+        return;
+    }
+
+    uint16_t raw_voltage = hal_adc_read(ADC_CHANNEL_0);
+    float voltage = ((float)raw_voltage / 4095.0f) * 4.5f;
 
     manager->battery_status.voltage = voltage;
 
@@ -125,9 +144,23 @@ static void battery_perform_update(battery_management_t *manager) {
 }
 
 static bool battery_run_diagnostics(battery_management_t *manager) {
-    (void)manager;
+    if (manager == NULL) {
+        return false;
+    }
 
-    // TODO: perform real checks
+    uint8_t dummy_buf = 0;
+    i2c_error_t i2c_err = hal_i2c_mem_read(I2C_BUS_1, 0x6A, 0x26, &dummy_buf, 1,
+                                           NULL, NULL, NULL);
+    if (i2c_err != I2C_HAL_ERR_NONE) {
+        return false;
+    }
+
+    uint16_t raw_voltage = hal_adc_read(ADC_CHANNEL_0);
+    float voltage = ((float)raw_voltage / 4095.0f) * 4.5f;
+
+    if (voltage > 0.0f && voltage < CRITICAL_BATTERY_VOLTAGE_THRESHOLD) {
+        return false;
+    }
 
     return true;
 }

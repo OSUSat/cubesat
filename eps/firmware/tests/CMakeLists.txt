@@ -83,6 +83,9 @@ add_executable(test_battery_management
     test_battery_management.c
     ../services/battery_management.c
     mocks/event_bus_mock.c
+    ../mocks/hal_adc_mock.c
+    ../mocks/hal_gpio_mock.c
+    ../mocks/hal_i2c_mock.c
 )
 
 target_link_libraries(test_battery_management PRIVATE
