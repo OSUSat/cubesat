@@ -31,8 +31,14 @@ typedef struct {
     i2c_error_cb_t error_callback; /**< Curretn user error callback hook */
     void *error_callback_ctx;      /**< Error context */
 
-    bool busy;        /**< Whether the line is busy */
-    bool initialized; /**< Init flag */
+    /*
+     * This field is accessed both from interrupt context (ISRs like
+     * HAL_I2C_MasterRxCpltCallback) and main loop context (e.g. hal_i2c_read).
+     * It must be declared volatile to prevent compiler optimizations from
+     * caching the read/write accesses.
+     */
+    volatile bool busy; /**< Whether the line is busy */
+    bool initialized;   /**< Init flag */
 } i2c_bus_state_t;
 
 static i2c_bus_state_t g_bus_state[I2C_BUS_COUNT];
