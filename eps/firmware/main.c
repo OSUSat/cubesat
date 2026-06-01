@@ -80,7 +80,8 @@ int main() {
     redundancy_manager_init(&redundancy_manager_service);
 
     // initialize applications
-    command_handler_init(&command_handler);
+    command_handler_init(&command_handler, &usart1_events_service,
+                         &usart3_events_service);
     power_policies_init(&power_policies);
 
     LOG_INFO(EPS_COMPONENT_MAIN, "Initialization complete");
