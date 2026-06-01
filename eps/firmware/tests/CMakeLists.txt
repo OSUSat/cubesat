@@ -11,6 +11,19 @@ include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/mocks
 )
 
+if(TARGET_ARCH STREQUAL "ARM")
+    include_directories(
+        ../bsp/mcu/Inc
+        ../bsp/hal_driver/Inc
+        ../bsp/cmsis/Include
+        ../bsp/cmsis/Device/ST/STM32L4xx/Include
+    )
+else()
+    include_directories(
+        ../mocks/bsp
+    )
+endif()
+
 # test_power_profiles
 
 add_executable(test_power_profiles
@@ -93,3 +106,23 @@ add_test(
     NAME test_battery_management
     COMMAND test_battery_management
 )
+
+# test_watchdog
+
+if(NOT TARGET_ARCH STREQUAL "ARM")
+    add_executable(test_watchdog
+        test_watchdog.c
+        ../services/watchdog.c
+        ../mocks/bsp/hal_stubs.c
+        ../mocks/hal_time_mock.c
+    )
+
+    target_link_libraries(test_watchdog PRIVATE
+        ${TEST_COMMON_LIBS}
+    )
+
+    add_test(
+        NAME test_watchdog
+        COMMAND test_watchdog
+    )
+endif()
