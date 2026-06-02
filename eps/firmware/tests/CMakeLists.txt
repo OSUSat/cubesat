@@ -142,3 +142,22 @@ if(NOT TARGET_ARCH STREQUAL "ARM")
         COMMAND test_watchdog
     )
 endif()
+
+# test_can_mock
+
+if(NOT TARGET_ARCH STREQUAL "ARM")
+    add_executable(test_can_mock
+        test_can_mock.c
+        ../mocks/hal_can_mock.c
+    )
+
+    target_link_libraries(test_can_mock PRIVATE
+        ${TEST_COMMON_LIBS}
+    )
+
+    add_test(
+        NAME test_can_mock
+        COMMAND test_can_mock
+    )
+endif()
+
