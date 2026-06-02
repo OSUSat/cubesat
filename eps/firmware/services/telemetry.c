@@ -5,12 +5,26 @@
 
 #include "telemetry.h"
 #include "hal_time.h"
+#include "osusat/event_bus.h"
 #include <string.h>
+
+#define TELEMETRY_UPDATE_INTERVAL_TICKS 600
+
+/**
+ * @brief System Tick Handler.
+ * Called automatically by the Event Bus.
+ *
+ * @param e   The event (SYSTICK).
+ * @param ctx The context pointer (points to mppt_t).
+ */
+static void telemetry_handle_tick(const osusat_event_t *e, void *ctx);
 
 void telemetry_init(telemetry_t *telemetry) {
     if (telemetry == NULL) {
         return;
     }
+
+    osusat_event_bus_subscribe(EVENT_SYSTICK, telemetry_handle_tick, telemetry);
 
     memset(telemetry, 0, sizeof(telemetry_t));
 }
@@ -112,3 +126,20 @@ eps_telemetry_t telemetry_get_all(telemetry_t *telemetry) {
 
     return telemetry->telemetry;
 }
+
+static void telemetry_handle_tick(const osusat_event_t *e, void *ctx) {
+    (void)e;
+
+    telemetry_t *telemetry = (telemetry_t *)ctx;
+
+    if (telemetry == NULL || !telemetry->initialized) {
+        return;
+    }
+
+    telemetry->tick_counter++;
+
+    if (telemetry->tick_counter >= TELEMETRY_UPDATE_INTERVAL_TICKS) {
+        telemetry->tick_counter = 0;
+        telemetry_update(telemetry);
+    }
+};

@@ -14,13 +14,13 @@
 #ifndef TELEMETRY_H
 #define TELEMETRY_H
 
-#include <stdbool.h>
-#include <stdint.h>
 #include "battery_management.h"
 #include "mppt_controller.h"
 #include "rail_controller.h"
 #include "redundancy_manager.h"
 #include "uart_events.h"
+#include <stdbool.h>
+#include <stdint.h>
 
 /**
  * @defgroup telemetry Telemetry Service
@@ -60,12 +60,13 @@ typedef struct {
  * It may include nested structures from other services.
  */
 typedef struct {
-    battery_status_t battery;                        /**< BMS status telemetry */
-    mppt_channel_t mppt_channels[NUM_MPPT_CHANNELS]; /**< Solar/MPPT channels telemetry */
-    rail_t rails[NUM_POWER_RAILS];                   /**< Power rails telemetry */
-    redundancy_telemetry_t redundancy;               /**< Redundancy manager telemetry */
-    uart_telemetry_t uart1;                          /**< USART1 telemetry */
-    uart_telemetry_t uart3;                          /**< USART3 telemetry */
+    battery_status_t battery; /**< BMS status telemetry */
+    mppt_channel_t
+        mppt_channels[NUM_MPPT_CHANNELS]; /**< Solar/MPPT channels telemetry */
+    rail_t rails[NUM_POWER_RAILS];        /**< Power rails telemetry */
+    redundancy_telemetry_t redundancy;    /**< Redundancy manager telemetry */
+    uart_telemetry_t uart1;               /**< USART1 telemetry */
+    uart_telemetry_t uart3;               /**< USART3 telemetry */
 } eps_telemetry_t;
 
 /**
@@ -83,6 +84,10 @@ typedef struct {
     const redundancy_manager_t *redundancy_manager;
     const uart_events_t *usart1_events;
     const uart_events_t *usart3_events;
+
+    uint32_t
+        tick_counter; /**< Internal counter for timing telemetry collection */
+    bool initialized; /**< Whether the telemetry service has been initialized */
 } telemetry_t;
 
 /** @} */ // end telemetry_types

@@ -18,6 +18,7 @@
 #include "stm32l4xx_hal.h"
 #include "stm32l4xx_hal_gpio.h"
 #include "stm32l4xx_hal_rcc.h"
+#include "telemetry.h"
 #include "uart_events.h"
 #include "usart.h"
 #include "watchdog.h"
@@ -38,6 +39,7 @@ static redundancy_manager_t redundancy_manager_service;
 static uart_events_t usart1_events_service;
 static uart_events_t usart3_events_service;
 static watchdog_t watchdog;
+static telemetry_t telemetry;
 
 int main() {
     // initialize BSP HAL
@@ -81,6 +83,7 @@ int main() {
     mppt_init(&mppt_controller_service);
     redundancy_manager_init(&redundancy_manager_service);
     watchdog_init(&watchdog);
+    telemetry_init(&telemetry);
 
     // initialize applications
     command_handler_init(&command_handler);
