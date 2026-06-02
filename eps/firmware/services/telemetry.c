@@ -27,6 +27,8 @@ void telemetry_init(telemetry_t *telemetry) {
     osusat_event_bus_subscribe(EVENT_SYSTICK, telemetry_handle_tick, telemetry);
 
     memset(telemetry, 0, sizeof(telemetry_t));
+
+    telemetry->initialized = true;
 }
 
 void telemetry_update(telemetry_t *telemetry) {

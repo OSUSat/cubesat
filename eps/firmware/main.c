@@ -85,6 +85,13 @@ int main() {
     watchdog_init(&watchdog);
     telemetry_init(&telemetry);
 
+    // telemetry.battery_manager = &battery_manager;
+    telemetry.mppt_controller = &mppt_controller_service;
+    telemetry.rail_controller = &rail_controller;
+    telemetry.redundancy_manager = &redundancy_manager_service;
+    telemetry.usart1_events = &usart1_events_service;
+    telemetry.usart3_events = &usart3_events_service;
+
     // initialize applications
     command_handler_init(&command_handler);
     power_policies_init(&power_policies);
