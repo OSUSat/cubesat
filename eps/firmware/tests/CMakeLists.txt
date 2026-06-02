@@ -107,6 +107,21 @@ add_test(
     COMMAND test_battery_management
 )
 
+# test_telemetry
+
+add_executable(test_telemetry
+    test_telemetry.c
+    ../services/telemetry.c
+)
+
+target_link_libraries(test_telemetry PRIVATE
+    ${TEST_COMMON_LIBS}
+)
+
+add_test(
+    NAME test_telemetry
+    COMMAND test_telemetry
+)
 # test_watchdog
 
 if(NOT TARGET_ARCH STREQUAL "ARM")

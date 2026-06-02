@@ -7,6 +7,7 @@
 #include "hal_uart.h"
 #include "i2c.h"
 #include "iwdg.h"
+#include "battery_management.h"
 #include "logging.h"
 #include "mppt_controller.h"
 #include "osusat/event_bus.h"
@@ -18,6 +19,7 @@
 #include "stm32l4xx_hal.h"
 #include "stm32l4xx_hal_gpio.h"
 #include "stm32l4xx_hal_rcc.h"
+#include "telemetry.h"
 #include "uart_events.h"
 #include "usart.h"
 #include "watchdog.h"
@@ -31,6 +33,7 @@ static command_handler_t command_handler;
 static power_policies_t power_policies;
 
 // services
+static battery_management_t battery_manager_service;
 static rail_controller_t rail_controller;
 static power_profiles_t power_profiles_service;
 static mppt_t mppt_controller_service;
@@ -38,6 +41,7 @@ static redundancy_manager_t redundancy_manager_service;
 static uart_events_t usart1_events_service;
 static uart_events_t usart3_events_service;
 static watchdog_t watchdog;
+static telemetry_t telemetry;
 
 int main() {
     // initialize BSP HAL
@@ -76,11 +80,20 @@ int main() {
 
     logging_init(OSUSAT_SLOG_INFO, &usart1_events_service,
                  &usart3_events_service);
+    battery_init(&battery_manager_service);
     rail_controller_init(&rail_controller);
     power_profiles_init(&power_profiles_service, &rail_controller);
     mppt_init(&mppt_controller_service);
     redundancy_manager_init(&redundancy_manager_service);
     watchdog_init(&watchdog);
+    telemetry_init(&telemetry);
+
+    telemetry.battery_manager = &battery_manager_service;
+    telemetry.mppt_controller = &mppt_controller_service;
+    telemetry.rail_controller = &rail_controller;
+    telemetry.redundancy_manager = &redundancy_manager_service;
+    telemetry.usart1_events = &usart1_events_service;
+    telemetry.usart3_events = &usart3_events_service;
 
     // initialize applications
     command_handler_init(&command_handler);
@@ -94,6 +107,7 @@ int main() {
     while (1) {
         if (g_main_tick_flag) {
             g_main_tick_flag = 0;
+            osusat_event_bus_publish(EVENT_SYSTICK, NULL, 0);
             osusat_event_bus_process();
         } else {
             __WFI();
