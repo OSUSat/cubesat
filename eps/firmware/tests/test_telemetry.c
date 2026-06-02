@@ -107,6 +107,9 @@ void test_telemetry_update(void) {
     redundancy.faults[0].active = true;
     redundancy.faults[1].active = false;
     redundancy.faults[2].active = true;
+    for (size_t i = 0; i < COMPONENT_COUNT; i++) {
+        redundancy.component_status[i] = true;
+    }
     redundancy.component_status[COMPONENT_UART_PRIMARY] = false; // degraded
     redundancy.component_status[COMPONENT_UART_SECONDARY] = true;
 
