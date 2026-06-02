@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Logging Service &#8212; OSUSat EPS Firmware  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Watchdog Service" href="watchdog.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="logging-service">
+<h1>Logging Service<a class="headerlink" href="#logging-service" title="Link to this heading">¶</a></h1>
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group__logging"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">Logging</span> <span class="pre">Service</span></span></dt>
+<dd><p>Structured logging for EPS subsystems. </p>
+</dd></dl>
+
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group__logging__types"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">Component</span> <span class="pre">IDs</span></span></dt>
+<dd><p>Component identifiers for log filtering and organization. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.EPS_COMPONENT_MAIN">
+<span class="target" id="group__logging__types_1ga57bb7714cca858a4d242e4faae4d16be"></span><span class="sig-name descname"><span class="n"><span class="pre">EPS_COMPONENT_MAIN</span></span></span><a class="headerlink" href="#c.EPS_COMPONENT_MAIN" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Main application </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.EPS_COMPONENT_RAIL">
+<span class="target" id="group__logging__types_1gaf9a800c412982dad103d3fd3c30832a8"></span><span class="sig-name descname"><span class="n"><span class="pre">EPS_COMPONENT_RAIL</span></span></span><a class="headerlink" href="#c.EPS_COMPONENT_RAIL" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Rail controller </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.EPS_COMPONENT_MPPT">
+<span class="target" id="group__logging__types_1ga71b097124eec6614773df02f9d3536c6"></span><span class="sig-name descname"><span class="n"><span class="pre">EPS_COMPONENT_MPPT</span></span></span><a class="headerlink" href="#c.EPS_COMPONENT_MPPT" title="Link to this definition">¶</a><br /></dt>
+<dd><p>MPPT controller </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.EPS_COMPONENT_POWER">
+<span class="target" id="group__logging__types_1gae05c4ecc5dba13b13fdbcb42203c7ffa"></span><span class="sig-name descname"><span class="n"><span class="pre">EPS_COMPONENT_POWER</span></span></span><a class="headerlink" href="#c.EPS_COMPONENT_POWER" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Power policies </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.EPS_COMPONENT_CMD">
+<span class="target" id="group__logging__types_1ga2d9976523d25e747ebbc5227b62cd093"></span><span class="sig-name descname"><span class="n"><span class="pre">EPS_COMPONENT_CMD</span></span></span><a class="headerlink" href="#c.EPS_COMPONENT_CMD" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Command handler </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.EPS_COMPONENT_COMMS">
+<span class="target" id="group__logging__types_1ga471259b27302e5e668b4acebabc1b841"></span><span class="sig-name descname"><span class="n"><span class="pre">EPS_COMPONENT_COMMS</span></span></span><a class="headerlink" href="#c.EPS_COMPONENT_COMMS" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Communications </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.EPS_COMPONENT_ADC">
+<span class="target" id="group__logging__types_1gaf68cd1f523b39ea9c3e72584f38e0c75"></span><span class="sig-name descname"><span class="n"><span class="pre">EPS_COMPONENT_ADC</span></span></span><a class="headerlink" href="#c.EPS_COMPONENT_ADC" title="Link to this definition">¶</a><br /></dt>
+<dd><p>ADC/sensing </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.EPS_COMPONENT_PROFILE">
+<span class="target" id="group__logging__types_1ga1d608e9ac62c6ee38a1e91da10c684c1"></span><span class="sig-name descname"><span class="n"><span class="pre">EPS_COMPONENT_PROFILE</span></span></span><a class="headerlink" href="#c.EPS_COMPONENT_PROFILE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Power profiles </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group__logging__api"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">Public</span> <span class="pre">API</span></span></dt>
+<dd><p>External interface for the logging service. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv412logging_init19osusat_slog_level_tP13uart_events_tP13uart_events_t">
+<span id="_CPPv312logging_init19osusat_slog_level_tP13uart_events_tP13uart_events_t"></span><span id="_CPPv212logging_init19osusat_slog_level_tP13uart_events_tP13uart_events_t"></span><span id="logging_init__osusat_slog_level_t.uart_events_tP.uart_events_tP"></span><span class="target" id="group__logging__api_1gad98cd5cecd0a227222fd9b1c51f9e1ef"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">logging_init</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">osusat_slog_level_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">min_level</span></span>, <a class="reference internal" href="uart_events.html#_CPPv413uart_events_t" title="uart_events_t"><span class="n"><span class="pre">uart_events_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">primary_uart</span></span>, <a class="reference internal" href="uart_events.html#_CPPv413uart_events_t" title="uart_events_t"><span class="n"><span class="pre">uart_events_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">aux_uart</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv412logging_init19osusat_slog_level_tP13uart_events_tP13uart_events_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Initialize the logging service. </p>
+<p>Must be called after hal_uart_init() and before any logging.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>min_level</strong> – <strong>[in]</strong> Minimum log level to record. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv413logging_flushv">
+<span id="_CPPv313logging_flushv"></span><span id="_CPPv213logging_flushv"></span><span id="logging_flush__void"></span><span class="target" id="group__logging__api_1gae344a717b3119e6abed5c4b75737a337"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">logging_flush</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv413logging_flushv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Flush pending logs to OBC via UART. </p>
+<p>Should be called periodically from main loop or triggered by events.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Number of log entries flushed. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv417logging_set_level19osusat_slog_level_t">
+<span id="_CPPv317logging_set_level19osusat_slog_level_t"></span><span id="_CPPv217logging_set_level19osusat_slog_level_t"></span><span id="logging_set_level__osusat_slog_level_t"></span><span class="target" id="group__logging__api_1gac5d48d0826af20ccbcfefcae52dab9df"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">logging_set_level</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">osusat_slog_level_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">level</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv417logging_set_level19osusat_slog_level_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Change the minimum log level at runtime. </p>
+<p>Useful for debugging, can be called via command handler.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>level</strong> – <strong>[in]</strong> New minimum log level. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv421logging_pending_countv">
+<span id="_CPPv321logging_pending_countv"></span><span id="_CPPv221logging_pending_countv"></span><span id="logging_pending_count__void"></span><span class="target" id="group__logging__api_1ga68313b2800456508351fdf21c8685fbf"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">logging_pending_count</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv421logging_pending_countv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get number of pending log entries. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Approximate count of buffered logs. </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">OSUSat EPS Firmware</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Services:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="battery_management.html">Battery Management Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mppt_controller.html">MPPT Controller Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="power_profiles.html">Power Profiles Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rail_controller.html">Rail Controller Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="redundancy_manager.html">Redundancy Manager Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telemetry.html">Telemetry Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="uart_events.html">UART Events Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="watchdog.html">Watchdog Service</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Logging Service</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#c.EPS_COMPONENT_MAIN"><code class="docutils literal notranslate"><span class="pre">EPS_COMPONENT_MAIN</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.EPS_COMPONENT_RAIL"><code class="docutils literal notranslate"><span class="pre">EPS_COMPONENT_RAIL</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.EPS_COMPONENT_MPPT"><code class="docutils literal notranslate"><span class="pre">EPS_COMPONENT_MPPT</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.EPS_COMPONENT_POWER"><code class="docutils literal notranslate"><span class="pre">EPS_COMPONENT_POWER</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.EPS_COMPONENT_CMD"><code class="docutils literal notranslate"><span class="pre">EPS_COMPONENT_CMD</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.EPS_COMPONENT_COMMS"><code class="docutils literal notranslate"><span class="pre">EPS_COMPONENT_COMMS</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.EPS_COMPONENT_ADC"><code class="docutils literal notranslate"><span class="pre">EPS_COMPONENT_ADC</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.EPS_COMPONENT_PROFILE"><code class="docutils literal notranslate"><span class="pre">EPS_COMPONENT_PROFILE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv412logging_init19osusat_slog_level_tP13uart_events_tP13uart_events_t"><code class="docutils literal notranslate"><span class="pre">logging_init()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv413logging_flushv"><code class="docutils literal notranslate"><span class="pre">logging_flush()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv417logging_set_level19osusat_slog_level_t"><code class="docutils literal notranslate"><span class="pre">logging_set_level()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv421logging_pending_countv"><code class="docutils literal notranslate"><span class="pre">logging_pending_count()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="watchdog.html" title="previous chapter">Watchdog Service</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2025, FerretCode.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.1.0</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/services/logging.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
