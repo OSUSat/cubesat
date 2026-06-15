@@ -1,0 +1,5 @@
+- Change 100k resistor on VSYS load switch enable pull-up resistor to 10k
+- 50k resistor on current limit (CLIM) pins on each LTC4415 are outside the 125-1000 ohm range. Swap for 100-160 ohm resistor or short to GND for 6A limit.
+- Swap 3.3v and 5v silkscreen labels on voltage regulators
+- Set the OC pin on each voltage regulator to 21.5k
+- Put BOOT switch positions on silkscreen
