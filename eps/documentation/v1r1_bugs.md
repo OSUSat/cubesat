@@ -3,3 +3,4 @@
 - Swap 3.3v and 5v silkscreen labels on voltage regulators
 - Set the OC pin on each voltage regulator to 21.5k
 - Put BOOT switch positions on silkscreen
+- Update BOM and crystal pinout to passive crystal instead of crystal oscillator
