@@ -21,6 +21,7 @@
 #include "stm32l4xx_it.h"
 #include "hal_i2c.h"
 #include "hal_uart.h"
+#include "hal_can.h"
 #include "i2c.h"
 #include "main.h"
 /* Private includes ----------------------------------------------------------*/
@@ -419,6 +420,38 @@ void ADC1_2_IRQHandler(void) {
     /* USER CODE BEGIN ADC1_2_IRQn 1 */
 
     /* USER CODE END ADC1_2_IRQn 1 */
+}
+
+void CAN1_TX_IRQHandler(void) {
+    hal_can_isr_handler(HAL_CAN_PORT_1);
+}
+
+void CAN1_RX0_IRQHandler(void) {
+    hal_can_isr_handler(HAL_CAN_PORT_1);
+}
+
+void CAN1_RX1_IRQHandler(void) {
+    hal_can_isr_handler(HAL_CAN_PORT_1);
+}
+
+void CAN1_SCE_IRQHandler(void) {
+    hal_can_isr_handler(HAL_CAN_PORT_1);
+}
+
+void CAN2_TX_IRQHandler(void) {
+    hal_can_isr_handler(HAL_CAN_PORT_2);
+}
+
+void CAN2_RX0_IRQHandler(void) {
+    hal_can_isr_handler(HAL_CAN_PORT_2);
+}
+
+void CAN2_RX1_IRQHandler(void) {
+    hal_can_isr_handler(HAL_CAN_PORT_2);
+}
+
+void CAN2_SCE_IRQHandler(void) {
+    hal_can_isr_handler(HAL_CAN_PORT_2);
 }
 
 /* USER CODE END 1 */

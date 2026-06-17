@@ -86,6 +86,7 @@ elseif(BUILD_HITL)
         mocks/hal_i2c_mock.c
         mocks/hal_time_mock.c
         mocks/bsp/clock_mock.c
+        mocks/hal_can_mock.c
     )
 
     add_executable(eps_firmware
