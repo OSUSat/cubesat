@@ -30,6 +30,10 @@ void watchdog_init(watchdog_t *watchdog) {
     watchdog->last_pet_tick = hal_time_get_ms();
     watchdog->enabled = true;
 
+    // initialize watchdog scaling configuration pins
+    hal_gpio_write(WATCHDOG_SET0_PIN, HAL_GPIO_STATE_LOW);
+    hal_gpio_write(WATCHDOG_SET1_PIN, HAL_GPIO_STATE_LOW);
+
     // initialize external watchdog pin state
     hal_gpio_write(WATCHDOG_WDI_PIN, HAL_GPIO_STATE_LOW);
 
@@ -45,6 +49,7 @@ void watchdog_pet(watchdog_t *watchdog) {
         // handle refresh failure by logging an error
         LOG_ERROR(EPS_COMPONENT_MAIN, "watchdog pet failed");
     }
+
     hal_gpio_toggle(WATCHDOG_WDI_PIN);
     watchdog->last_pet_tick = hal_time_get_ms();
 }

@@ -6,7 +6,7 @@
 
 #define NUM_MPPT_CHANNELS 1 // the number of MPPT channels per device
 #define NUM_POWER_RAILS 8   // the number of power rails available on the EPS
-#define NUM_GPIO_PINS 36    // number of GPIO pins in use
+#define NUM_GPIO_PINS 27    // number of GPIO pins in use
 
 // i2c peripheral pins
 // i2c1: scl -> pg14, sda -> pg13
@@ -169,9 +169,15 @@ static const gpio_config_t gpio_board_config[NUM_GPIO_PINS] = {
     {3, 15, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_OUTPUT},
     // MAX6369 external hardware watchdog WDI pin (Port E Pin 5)
     {4, 5, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_OUTPUT},
+    // Watchdog SET0 pin (Port E Pin 3)
+    {4, 3, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_OUTPUT},
+    // Watchdog SET1 pin (Port E Pin 4)
+    {4, 4, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_OUTPUT},
 };
 
-#define WATCHDOG_WDI_PIN 24
+#define WATCHDOG_WDI_PIN  24
+#define WATCHDOG_SET0_PIN 25
+#define WATCHDOG_SET1_PIN 26
 
 static const rail_config_t RAIL_CONFIGS[NUM_POWER_RAILS] = {
     [RAIL_OBC] = {.rail_id = RAIL_OBC,
