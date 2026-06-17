@@ -4,3 +4,5 @@
 - Set the OC pin on each voltage regulator to 21.5k
 - Put BOOT switch positions on silkscreen
 - Update BOM and crystal pinout to passive crystal instead of crystal oscillator
+- Use an inverting circuit instead of non-inverting circuit on the comparator circuit in the current monitors
+- Place a DNP capacitor or leave floating the slew control pin on the load switch
