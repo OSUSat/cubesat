@@ -189,6 +189,7 @@ if(NOT TARGET_ARCH STREQUAL "ARM")
         ../services/logging.c
         ../services/can_events.c
         ../mocks/hal_can_mock.c
+        ../mocks/hal_flash_mock.c
         mocks/event_bus_mock.c
     )
 

@@ -4,7 +4,9 @@
  */
 
 #include "telemetry.h"
+#include "events.h"
 #include "hal_time.h"
+#include "logging.h"
 #include "osusat/event_bus.h"
 #include <string.h>
 
@@ -166,5 +168,13 @@ static void telemetry_handle_tick(const osusat_event_t *e, void *ctx) {
     if (telemetry->tick_counter >= TELEMETRY_UPDATE_INTERVAL_TICKS) {
         telemetry->tick_counter = 0;
         telemetry_update(telemetry);
+
+        LOG_INFO(EPS_COMPONENT_ADC,
+                 "Telemetry snapshot: Battery V: %.2fV, I: %.2fA, Health: %d",
+                 telemetry->telemetry.battery.voltage,
+                 telemetry->telemetry.battery.current,
+                 telemetry->telemetry.redundancy.health);
+
+        osusat_event_bus_publish(APP_EVENT_REQUEST_LOGGING_FLUSH_LOGS, NULL, 0);
     }
 };

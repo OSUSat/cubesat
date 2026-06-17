@@ -6,6 +6,7 @@
 #include "logging.h"
 #include "can_events.h"
 #include "events.h"
+#include "hal_flash.h"
 #include "hal_time.h"
 #include "messages.h"
 #include "osusat/event_bus.h"
@@ -16,6 +17,12 @@
 #include <stddef.h>
 #include <stdint.h>
 #include <string.h>
+
+#define FLASH_LOG_START_ADDR 0x10000
+#define FLASH_LOG_SECTOR_SIZE 2048
+#define FLASH_LOG_END_ADDR 0x20000
+
+static uint32_t g_flash_log_write_ptr = FLASH_LOG_START_ADDR;
 
 #define MAX_LOG_ENTRIES_PER_FLUSH 5
 #define LOG_FLUSH_INTERVAL_CYCLES 600
@@ -43,6 +50,7 @@ static void logging_handle_tick(const osusat_event_t *e, void *ctx);
 static void logging_handle_request(const osusat_event_t *e, void *ctx);
 static void logging_handle_redundancy(const osusat_event_t *e, void *ctx);
 static void send_log_packet(log_flush_context_t *ctx, bool is_last);
+static void write_log_to_flash(const uint8_t *data, size_t size);
 
 void logging_init(osusat_slog_level_t min_level, can_events_t *primary_can,
                   can_events_t *aux_can) {
@@ -60,6 +68,10 @@ void logging_init(osusat_slog_level_t min_level, can_events_t *primary_can,
     osusat_event_bus_subscribe(APP_EVENT_REQUEST_LOGGING_FLUSH_LOGS,
                                logging_handle_request, NULL);
 
+    hal_flash_init();
+    hal_flash_erase_sector(FLASH_LOG_START_ADDR);
+    g_flash_log_write_ptr = FLASH_LOG_START_ADDR;
+
     osusat_event_bus_subscribe(REDUNDANCY_EVENT_COMPONENT_DEGRADED,
                                logging_handle_redundancy, NULL);
     osusat_event_bus_subscribe(REDUNDANCY_EVENT_COMPONENT_RECOVERED,
@@ -70,10 +82,27 @@ void logging_init(osusat_slog_level_t min_level, can_events_t *primary_can,
              primary_can->port + 1, aux_can->port + 1);
 }
 
+static void write_log_to_flash(const uint8_t *data, size_t size) {
+    uint32_t current_page = g_flash_log_write_ptr / FLASH_LOG_SECTOR_SIZE;
+    uint32_t end_page = (g_flash_log_write_ptr + size) / FLASH_LOG_SECTOR_SIZE;
+
+    if (g_flash_log_write_ptr + size >= FLASH_LOG_END_ADDR) {
+        g_flash_log_write_ptr = FLASH_LOG_START_ADDR;
+        current_page = g_flash_log_write_ptr / FLASH_LOG_SECTOR_SIZE;
+        end_page = (g_flash_log_write_ptr + size) / FLASH_LOG_SECTOR_SIZE;
+        hal_flash_erase_sector(g_flash_log_write_ptr);
+    }
+
+    for (uint32_t page = current_page + 1; page <= end_page; page++) {
+        hal_flash_erase_sector(page * FLASH_LOG_SECTOR_SIZE);
+    }
+
+    hal_flash_write(g_flash_log_write_ptr, data, size);
+    g_flash_log_write_ptr += size;
+}
+
 static void send_log_packet(log_flush_context_t *ctx, bool is_last) {
-    // don't flush if we have no CAN service connected
-    if (ctx->payload_offset == 0 || g_active_can == NULL ||
-        !g_active_can->initialized) {
+    if (ctx->payload_offset == 0) {
         return;
     }
 
@@ -87,7 +116,19 @@ static void send_log_packet(log_flush_context_t *ctx, bool is_last) {
                            .payload_len = (uint8_t)ctx->payload_offset,
                            .payload = ctx->payload_buffer};
 
-    can_events_send_packet(g_active_can, &packet);
+    // serialize packet to write to flash
+    uint8_t packed_buf[CAN_RX_MAX_PACKET_SIZE];
+
+    int16_t len = osusat_packet_pack(&packet, packed_buf, sizeof(packed_buf));
+
+    if (len > 0) {
+        write_log_to_flash(packed_buf, (size_t)len);
+    }
+
+    // try to send over CAN if available
+    if (g_active_can != NULL && g_active_can->initialized) {
+        can_events_send_packet(g_active_can, &packet);
+    }
 
     ctx->payload_offset = 0;
 }

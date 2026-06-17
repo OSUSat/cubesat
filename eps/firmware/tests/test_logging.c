@@ -4,6 +4,7 @@
 #include "packet.h"
 #include "services/can_events.h"
 #include "services/logging.h"
+#include "hal_flash.h"
 #include <assert.h>
 #include <stdio.h>
 #include <string.h>
@@ -75,8 +76,64 @@ void test_logging_flush(void) {
     printf("Test passed.\n");
 }
 
+void test_logging_flash_backup(void) {
+    printf("Running test: %s\n", __func__);
+    mock_can_reset();
+    mock_event_bus_reset();
+
+    // initialize CAN port
+    hal_can_config_t config = {.baudrate = 250000};
+    hal_can_init(HAL_CAN_PORT_1, &config);
+    hal_can_init(HAL_CAN_PORT_2, &config);
+
+    can_events_t primary_can;
+    can_events_t aux_can;
+    can_events_init(&primary_can, HAL_CAN_PORT_1);
+    can_events_init(&aux_can, HAL_CAN_PORT_2);
+
+    logging_init(OSUSAT_SLOG_INFO, &primary_can, &aux_can);
+
+    // flush the initialization log message first
+    size_t count1 = logging_flush();
+    assert(count1 == 1);
+
+    // log something long enough
+    LOG_INFO(EPS_COMPONENT_MAIN,
+             "Test log message! This is a long message to ensure that the "
+             "pending count is greater than zero.");
+
+    // flush
+    size_t count2 = logging_flush();
+    assert(count2 == 1); // 1 test log
+
+    // Read back mock flash
+    uint8_t flash_buf[512];
+    hal_flash_read(0x10000, flash_buf, sizeof(flash_buf));
+
+    OSUSatPacket first_packet;
+    OSUSatPacketResult res1 =
+        osusat_packet_unpack(&first_packet, flash_buf, sizeof(flash_buf));
+    assert(res1 == OSUSAT_PACKET_OK);
+
+    size_t first_packet_size = OSUSAT_FRAME_OVERHEAD + first_packet.payload_len;
+
+    OSUSatPacket second_packet;
+    OSUSatPacketResult res2 =
+        osusat_packet_unpack(&second_packet, flash_buf + first_packet_size,
+                             sizeof(flash_buf) - first_packet_size);
+    assert(res2 == OSUSAT_PACKET_OK);
+    assert(second_packet.version == 1);
+    assert(second_packet.destination == OSUSatDestination_OBC);
+    assert(second_packet.source == OSUSatDestination_EPS);
+    assert(second_packet.message_type == OSUSatMessageType_LOG);
+    assert(second_packet.command_id == OSUSatCommonCommand_LOG);
+
+    printf("Test passed.\n");
+}
+
 int main(void) {
     test_logging_init();
     test_logging_flush();
+    test_logging_flash_backup();
     return 0;
 }
