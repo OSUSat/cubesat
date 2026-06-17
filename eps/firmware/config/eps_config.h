@@ -10,99 +10,99 @@
 
 // i2c peripheral pins
 // i2c1: scl -> pg14, sda -> pg13
-#define I2C1_SCL_PORT      6
-#define I2C1_SCL_PIN       14
-#define I2C1_SDA_PORT      6
-#define I2C1_SDA_PIN       13
+#define I2C1_SCL_PORT 6
+#define I2C1_SCL_PIN 14
+#define I2C1_SDA_PORT 6
+#define I2C1_SDA_PIN 13
 
 // i2c2: scl -> pb10, sda -> pb11
-#define I2C2_SCL_PORT      1
-#define I2C2_SCL_PIN       10
-#define I2C2_SDA_PORT      1
-#define I2C2_SDA_PIN       11
+#define I2C2_SCL_PORT 1
+#define I2C2_SCL_PIN 10
+#define I2C2_SDA_PORT 1
+#define I2C2_SDA_PIN 11
 
 // i2c3: scl -> pg7, sda -> pg8
-#define I2C3_SCL_PORT      6
-#define I2C3_SCL_PIN       7
-#define I2C3_SDA_PORT      6
-#define I2C3_SDA_PIN       8
+#define I2C3_SCL_PORT 6
+#define I2C3_SCL_PIN 7
+#define I2C3_SDA_PORT 6
+#define I2C3_SDA_PIN 8
 
 // i2c4: scl -> pf14, sda -> pf15
-#define I2C4_SCL_PORT      5
-#define I2C4_SCL_PIN       14
-#define I2C4_SDA_PORT      5
-#define I2C4_SDA_PIN       15
+#define I2C4_SCL_PORT 5
+#define I2C4_SCL_PIN 14
+#define I2C4_SDA_PORT 5
+#define I2C4_SDA_PIN 15
 
 // usart peripheral pins
 // usart1: tx -> pg9, rx -> pg10
-#define USART1_TX_PORT     6
-#define USART1_TX_PIN      9
-#define USART1_RX_PORT     6
-#define USART1_RX_PIN      10
+#define USART1_TX_PORT 6
+#define USART1_TX_PIN 9
+#define USART1_RX_PORT 6
+#define USART1_RX_PIN 10
 
 // usart3: tx -> pc4, rx -> pc5
-#define USART3_TX_PORT     2
-#define USART3_TX_PIN      4
-#define USART3_RX_PORT     2
-#define USART3_RX_PIN      5
+#define USART3_TX_PORT 2
+#define USART3_TX_PIN 4
+#define USART3_RX_PORT 2
+#define USART3_RX_PIN 5
 
 // can peripheral pins
 // can1: rx -> pa11, tx -> pa12
-#define CAN1_RX_PORT       0
-#define CAN1_RX_PIN        11
-#define CAN1_TX_PORT       0
-#define CAN1_TX_PIN        12
+#define CAN1_RX_PORT 0
+#define CAN1_RX_PIN 11
+#define CAN1_TX_PORT 0
+#define CAN1_TX_PIN 12
 
 // can2: rx -> pb5, tx -> pb6
-#define CAN2_RX_PORT       1
-#define CAN2_RX_PIN        5
-#define CAN2_TX_PORT       1
-#define CAN2_TX_PIN        6
+#define CAN2_RX_PORT 1
+#define CAN2_RX_PIN 5
+#define CAN2_TX_PORT 1
+#define CAN2_TX_PIN 6
 
 // adc2 channel input pins
 // pc2 -> adc2_in3 (adcx_in3)
-#define ADC2_IN3_PORT      2
-#define ADC2_IN3_PIN       2
+#define ADC2_IN3_PORT 2
+#define ADC2_IN3_PIN 2
 
 // pc3 -> adc2_in4 (adcx_in4)
-#define ADC2_IN4_PORT      2
-#define ADC2_IN4_PIN       3
+#define ADC2_IN4_PORT 2
+#define ADC2_IN4_PIN 3
 
 // pa0 -> adc2_in5 (adcx_in5)
-#define ADC2_IN5_PORT      0
-#define ADC2_IN5_PIN       0
+#define ADC2_IN5_PORT 0
+#define ADC2_IN5_PIN 0
 
 // pa1 -> adc2_in6 (adcx_in6)
-#define ADC2_IN6_PORT      0
-#define ADC2_IN6_PIN       1
+#define ADC2_IN6_PORT 0
+#define ADC2_IN6_PIN 1
 
 // pa2 -> adc2_in7 (adcx_in7)
-#define ADC2_IN7_PORT      0
-#define ADC2_IN7_PIN       2
+#define ADC2_IN7_PORT 0
+#define ADC2_IN7_PIN 2
 
 // pa3 -> adc2_in8 (adcx_in8)
-#define ADC2_IN8_PORT      0
-#define ADC2_IN8_PIN       3
+#define ADC2_IN8_PORT 0
+#define ADC2_IN8_PIN 3
 
 // pa4 -> adc2_in9 (adcx_in9)
-#define ADC2_IN9_PORT      0
-#define ADC2_IN9_PIN       4
+#define ADC2_IN9_PORT 0
+#define ADC2_IN9_PIN 4
 
 // pa5 -> adc2_in10 (adcx_in10)
-#define ADC2_IN10_PORT     0
-#define ADC2_IN10_PIN      5
+#define ADC2_IN10_PORT 0
+#define ADC2_IN10_PIN 5
 
 // pa6 -> adc2_in11 (adcx_in11)
-#define ADC2_IN11_PORT     0
-#define ADC2_IN11_PIN      6
+#define ADC2_IN11_PORT 0
+#define ADC2_IN11_PIN 6
 
 // pa7 -> adc2_in12 (adcx_in12)
-#define ADC2_IN12_PORT     0
-#define ADC2_IN12_PIN      7
+#define ADC2_IN12_PORT 0
+#define ADC2_IN12_PIN 7
 
 // pb0 -> adc2_in15 (adcx_in15)
-#define ADC2_IN15_PORT     1
-#define ADC2_IN15_PIN      0
+#define ADC2_IN15_PORT 1
+#define ADC2_IN15_PIN 0
 
 #define CRITICAL_BATTERY_VOLTAGE_THRESHOLD 3.3f
 
@@ -173,9 +173,15 @@ static const gpio_config_t gpio_board_config[NUM_GPIO_PINS] = {
     {4, 3, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_OUTPUT},
     // Watchdog SET1 pin (Port E Pin 4)
     {4, 4, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_OUTPUT},
+    // CANBus Transciever 1 Pins
+    {0, 11, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_INPUT},  // RX
+    {0, 12, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_OUTPUT}, // TX
+    // CANBus Transciever 2 Pins
+    {1, 5, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_INPUT},  // RX
+    {1, 6, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_OUTPUT}, // TX
 };
 
-#define WATCHDOG_WDI_PIN  24
+#define WATCHDOG_WDI_PIN 24
 #define WATCHDOG_SET0_PIN 25
 #define WATCHDOG_SET1_PIN 26
 

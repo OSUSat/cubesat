@@ -117,6 +117,29 @@ void telemetry_update(telemetry_t *telemetry) {
         telemetry->telemetry.uart3.initialized =
             telemetry->usart3_events->initialized;
     }
+
+    // copy can stats if valid
+    if (telemetry->can1_events != NULL) {
+        telemetry->telemetry.can1.rx_byte_count =
+            telemetry->can1_events->rx_byte_count;
+        telemetry->telemetry.can1.rx_packet_count =
+            telemetry->can1_events->rx_packet_count;
+        telemetry->telemetry.can1.rx_crc_error_count =
+            telemetry->can1_events->rx_crc_error_count;
+        telemetry->telemetry.can1.initialized =
+            telemetry->can1_events->initialized;
+    }
+
+    if (telemetry->can2_events != NULL) {
+        telemetry->telemetry.can2.rx_byte_count =
+            telemetry->can2_events->rx_byte_count;
+        telemetry->telemetry.can2.rx_packet_count =
+            telemetry->can2_events->rx_packet_count;
+        telemetry->telemetry.can2.rx_crc_error_count =
+            telemetry->can2_events->rx_crc_error_count;
+        telemetry->telemetry.can2.initialized =
+            telemetry->can2_events->initialized;
+    }
 }
 
 eps_telemetry_t telemetry_get_all(telemetry_t *telemetry) {

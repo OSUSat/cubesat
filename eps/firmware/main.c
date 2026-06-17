@@ -1,13 +1,15 @@
 #include "adc.h"
 #include "app/command_handler.h"
+#include "battery_management.h"
+#include "can_events.h"
 #include "clock.h"
 #include "dma.h"
 #include "gpio.h"
+#include "hal_can.h"
 #include "hal_time.h"
 #include "hal_uart.h"
 #include "i2c.h"
 #include "iwdg.h"
-#include "battery_management.h"
 #include "logging.h"
 #include "mppt_controller.h"
 #include "osusat/event_bus.h"
@@ -40,6 +42,8 @@ static mppt_t mppt_controller_service;
 static redundancy_manager_t redundancy_manager_service;
 static uart_events_t usart1_events_service;
 static uart_events_t usart3_events_service;
+static can_events_t can1_events_service;
+static can_events_t can2_events_service;
 static watchdog_t watchdog;
 static telemetry_t telemetry;
 
@@ -78,8 +82,14 @@ int main() {
     uart_events_init(&usart1_events_service, UART_PORT_1);
     uart_events_init(&usart3_events_service, UART_PORT_3);
 
-    logging_init(OSUSAT_SLOG_INFO, &usart1_events_service,
-                 &usart3_events_service);
+    hal_can_config_t can_config = {.baudrate = 250000};
+    hal_can_init(HAL_CAN_PORT_1, &can_config);
+    hal_can_init(HAL_CAN_PORT_2, &can_config);
+
+    can_events_init(&can1_events_service, HAL_CAN_PORT_1);
+    can_events_init(&can2_events_service, HAL_CAN_PORT_2);
+
+    logging_init(OSUSAT_SLOG_INFO, &can1_events_service, &can2_events_service);
     battery_init(&battery_manager_service);
     rail_controller_init(&rail_controller);
     power_profiles_init(&power_profiles_service, &rail_controller);
@@ -94,6 +104,8 @@ int main() {
     telemetry.redundancy_manager = &redundancy_manager_service;
     telemetry.usart1_events = &usart1_events_service;
     telemetry.usart3_events = &usart3_events_service;
+    telemetry.can1_events = &can1_events_service;
+    telemetry.can2_events = &can2_events_service;
 
     // initialize applications
     command_handler_init(&command_handler);
