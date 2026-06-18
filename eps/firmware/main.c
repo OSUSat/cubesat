@@ -53,10 +53,12 @@ static telemetry_t telemetry;
 int main() {
     // initialize BSP HAL
     HAL_Init();
+#if defined(__arm__)
     HAL_DBGMCU_EnableDBGSleepMode();
     HAL_DBGMCU_EnableDBGStopMode();
     HAL_DBGMCU_EnableDBGStandbyMode();
     __HAL_DBGMCU_FREEZE_IWDG();
+#endif
     bsp_clock_init();
 
     MX_DMA_Init();
