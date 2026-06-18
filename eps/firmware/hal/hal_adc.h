@@ -27,14 +27,21 @@
 
 /**
  * @enum adc_channel_t
- * @brief Available ADC input channels.
+ * @brief Available ADC input channels mapping to regular DMA ranks.
  */
 typedef enum {
-    ADC_CHANNEL_0 = 0, /**< ADC channel 0 */
-    ADC_CHANNEL_1,     /**< ADC channel 1 */
-    ADC_CHANNEL_2,     /**< ADC channel 2 */
-    ADC_CHANNEL_3,     /**< ADC channel 3 */
-    ADC_CHANNEL_MAX    /**< Total number of ADC channels */
+    ADC_CHANNEL_0 = 0,  /**< PC2 (ADC2_IN3) - Placeholder name */
+    ADC_CHANNEL_1,      /**< PC3 (ADC2_IN4) - Placeholder name */
+    ADC_CHANNEL_2,      /**< PA0 (ADC2_IN5) - Placeholder name */
+    ADC_CHANNEL_3,      /**< PA1 (ADC2_IN6) - Placeholder name */
+    ADC_CHANNEL_4,      /**< PA2 (ADC2_IN7) - Placeholder name */
+    ADC_CHANNEL_5,      /**< PA3 (ADC2_IN8) - Placeholder name */
+    ADC_CHANNEL_6,      /**< PA4 (ADC2_IN9) - Placeholder name */
+    ADC_CHANNEL_7,      /**< PA5 (ADC2_IN10) - Placeholder name */
+    ADC_CHANNEL_8,      /**< PA6 (ADC2_IN11) - Placeholder name */
+    ADC_CHANNEL_9,      /**< PA7 (ADC2_IN12) - Placeholder name */
+    ADC_CHANNEL_10,     /**< PB0 (ADC2_IN15) - Placeholder name */
+    ADC_CHANNEL_MAX     /**< Total number of ADC channels */
 } adc_channel_t;
 
 /** @} */ // end adc_types

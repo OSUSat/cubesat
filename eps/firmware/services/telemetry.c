@@ -8,6 +8,7 @@
 #include "hal_time.h"
 #include "logging.h"
 #include "osusat/event_bus.h"
+#include "hal_adc.h"
 #include <string.h>
 
 #define TELEMETRY_UPDATE_INTERVAL_TICKS 600
@@ -142,6 +143,14 @@ void telemetry_update(telemetry_t *telemetry) {
         telemetry->telemetry.can2.initialized =
             telemetry->can2_events->initialized;
     }
+
+    // Read 5V regulator voltage (ADC_CHANNEL_8)
+    uint16_t raw_5v = hal_adc_read(ADC_CHANNEL_8);
+    telemetry->telemetry.v_reg_5v = (raw_5v / 4095.0f) * 6.6f;
+
+    // Read 3.3V internal reference / regulator voltage (ADC_CHANNEL_9)
+    uint16_t raw_3v3 = hal_adc_read(ADC_CHANNEL_9);
+    telemetry->telemetry.v_reg_3v3 = (raw_3v3 / 4095.0f) * 4.0f;
 }
 
 eps_telemetry_t telemetry_get_all(telemetry_t *telemetry) {
@@ -174,6 +183,26 @@ static void telemetry_handle_tick(const osusat_event_t *e, void *ctx) {
                  telemetry->telemetry.battery.voltage,
                  telemetry->telemetry.battery.current,
                  telemetry->telemetry.redundancy.health);
+
+        LOG_INFO(EPS_COMPONENT_ADC,
+                 "Rails 0-3 I: OBC=%.2fA, Radio=%.2fA, GPS=%.2fA, Pld1=%.2fA",
+                 telemetry->telemetry.rails[RAIL_OBC].current,
+                 telemetry->telemetry.rails[RAIL_RADIO].current,
+                 telemetry->telemetry.rails[RAIL_GPS].current,
+                 telemetry->telemetry.rails[RAIL_PAYLOAD_1].current);
+
+        LOG_INFO(EPS_COMPONENT_ADC,
+                 "Rails 4-7 I: Pld2=%.2fA, 5V=%.2fA, 3V3=%.2fA, Aux=%.2fA",
+                 telemetry->telemetry.rails[RAIL_PAYLOAD_2].current,
+                 telemetry->telemetry.rails[RAIL_5V_BUS].current,
+                 telemetry->telemetry.rails[RAIL_3V3_BUS].current,
+                 telemetry->telemetry.rails[RAIL_AUX].current);
+
+        LOG_INFO(EPS_COMPONENT_ADC,
+                 "Regs/MPPT V: 5V=%.2fV, 3V3=%.2fV, MPPT=%.2fV",
+                 telemetry->telemetry.v_reg_5v,
+                 telemetry->telemetry.v_reg_3v3,
+                 telemetry->telemetry.mppt_channels[0].input_voltage);
 
         osusat_event_bus_publish(APP_EVENT_REQUEST_LOGGING_FLUSH_LOGS, NULL, 0);
     }

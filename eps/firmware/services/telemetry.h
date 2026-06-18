@@ -73,6 +73,8 @@ typedef struct {
     uart_telemetry_t uart3;               /**< USART3 telemetry */
     can_telemetry_t can1;                 /**< CAN1 telemetry */
     can_telemetry_t can2;                 /**< CAN2 telemetry */
+    float v_reg_5v;                       /**< 5V regulator voltage in V */
+    float v_reg_3v3;                      /**< 3.3V regulator voltage in V */
 } eps_telemetry_t;
 
 /**

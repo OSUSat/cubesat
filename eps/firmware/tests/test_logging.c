@@ -108,7 +108,7 @@ void test_logging_flash_backup(void) {
 
     // Read back mock flash
     uint8_t flash_buf[512];
-    hal_flash_read(0x10000, flash_buf, sizeof(flash_buf));
+    hal_flash_read(FLASH_LOG_START_ADDR, flash_buf, sizeof(flash_buf));
 
     OSUSatPacket first_packet;
     OSUSatPacketResult res1 =

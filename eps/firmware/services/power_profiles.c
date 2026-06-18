@@ -20,7 +20,7 @@ void power_profiles_init(power_profiles_t *profiles,
     profiles->rail_controller = controller;
     profiles->initialized = true;
 
-    // set initial state to SAFE, gradual bringup
+    // set initial state to SAFE
     profiles->current_profile = POWER_PROFILE_SAFE;
 
     power_profiles_enable(profiles, profiles->current_profile);

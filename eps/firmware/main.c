@@ -25,6 +25,9 @@
 #include "uart_events.h"
 #include "usart.h"
 #include "watchdog.h"
+#include "hal_gpio.h"
+#include "eps_config.h"
+
 
 // event bus
 #define EVENT_QUEUE_SIZE 16
@@ -50,11 +53,21 @@ static telemetry_t telemetry;
 int main() {
     // initialize BSP HAL
     HAL_Init();
+    HAL_DBGMCU_EnableDBGSleepMode();
+    HAL_DBGMCU_EnableDBGStopMode();
+    HAL_DBGMCU_EnableDBGStandbyMode();
+    __HAL_DBGMCU_FREEZE_IWDG();
     bsp_clock_init();
 
     MX_DMA_Init();
 
     MX_GPIO_Init();
+    hal_gpio_init();
+    hal_gpio_write(WATCHDOG_SET0_PIN, HAL_GPIO_STATE_HIGH);
+    hal_gpio_write(WATCHDOG_SET1_PIN, HAL_GPIO_STATE_HIGH);
+    for (int i = 0; i < 8; i++) {
+        hal_gpio_write(RAIL_RESET_PIN_START + i, HAL_GPIO_STATE_HIGH);
+    }
     MX_ADC2_Init();
 
     MX_I2C1_Init();

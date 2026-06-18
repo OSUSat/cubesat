@@ -8,6 +8,10 @@
 #ifndef LOGGING_H
 #define LOGGING_H
 
+#define FLASH_LOG_START_ADDR 0x08010000
+#define FLASH_LOG_SECTOR_SIZE 2048
+#define FLASH_LOG_END_ADDR 0x08020000
+
 #include "can_events.h"
 #include "osusat/slog.h"
 #include <stdint.h>

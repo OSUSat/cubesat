@@ -6,7 +6,7 @@
 
 #define NUM_MPPT_CHANNELS 1 // the number of MPPT channels per device
 #define NUM_POWER_RAILS 8   // the number of power rails available on the EPS
-#define NUM_GPIO_PINS 27    // number of GPIO pins in use
+#define NUM_GPIO_PINS 31    // number of GPIO pins in use
 
 // i2c peripheral pins
 // i2c1: scl -> pg14, sda -> pg13
@@ -118,7 +118,7 @@ typedef enum { // these rails correspond to the hardware rails
     RAIL_PAYLOAD_2,
     RAIL_5V_BUS,
     RAIL_3V3_BUS,
-    // TODO: add more rails as needed
+    RAIL_AUX, // 8th rail
 } power_rail_t;
 
 typedef uint8_t gpio_port_id_t; // e.g., 0 = Port A, 1 = Port B, 2 = Port C
@@ -141,49 +141,55 @@ typedef struct {
 } rail_config_t;
 
 static const gpio_config_t gpio_board_config[NUM_GPIO_PINS] = {
-    // power rail state tracking (note that the pin is pulled up by hardware)
-    {0, 0, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_IT_RISING_FALLING},
-    {0, 1, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_IT_RISING_FALLING},
-    {0, 2, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_IT_RISING_FALLING},
-    {0, 3, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_IT_RISING_FALLING},
-    {0, 4, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_IT_RISING_FALLING},
-    {0, 5, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_IT_RISING_FALLING},
-    {0, 6, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_IT_RISING_FALLING},
-    {0, 7, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_IT_RISING_FALLING},
-    // power rail control
-    {3, 0, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_OUTPUT},
-    {3, 1, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_OUTPUT},
-    {3, 2, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_OUTPUT},
-    {3, 3, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_OUTPUT},
-    {3, 4, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_OUTPUT},
-    {3, 5, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_OUTPUT},
-    {3, 6, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_OUTPUT},
-    {3, 7, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_OUTPUT},
-    {3, 8, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_OUTPUT},
-    {3, 9, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_OUTPUT},
-    {3, 10, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_OUTPUT},
-    {3, 11, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_OUTPUT},
-    {3, 12, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_OUTPUT},
-    {3, 13, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_OUTPUT},
-    {3, 14, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_OUTPUT},
-    {3, 15, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_OUTPUT},
+    // power rail state tracking (monitoring)
+    {1, 8, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_IT_RISING_FALLING},  // index 0 (PB8)
+    {1, 9, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_IT_RISING_FALLING},  // index 1 (PB9)
+    {1, 10, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_IT_RISING_FALLING}, // index 2 (PB10)
+    {1, 11, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_IT_RISING_FALLING}, // index 3 (PB11)
+    {1, 12, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_IT_RISING_FALLING}, // index 4 (PB12)
+    {1, 13, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_IT_RISING_FALLING}, // index 5 (PB13)
+    {1, 14, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_IT_RISING_FALLING}, // index 6 (PB14)
+    {1, 15, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_IT_RISING_FALLING}, // index 7 (PB15)
+
+    // power rail control (ON pins)
+    {3, 0, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_OUTPUT},             // index 8 (PD0)
+    {3, 2, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_OUTPUT},             // index 9 (PD2)
+    {3, 4, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_OUTPUT},             // index 10 (PD4)
+    {3, 6, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_OUTPUT},             // index 11 (PD6)
+    {3, 8, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_OUTPUT},             // index 12 (PD8)
+    {3, 10, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_OUTPUT},            // index 13 (PD10)
+    {3, 12, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_OUTPUT},            // index 14 (PD12)
+    {3, 14, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_OUTPUT},            // index 15 (PD14)
+
     // MAX6369 external hardware watchdog WDI pin (Port E Pin 5)
-    {4, 5, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_OUTPUT},
+    {4, 5, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_OUTPUT},             // index 16 (PE5)
     // Watchdog SET0 pin (Port E Pin 3)
-    {4, 3, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_OUTPUT},
+    {4, 3, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_OUTPUT},             // index 17 (PE3)
     // Watchdog SET1 pin (Port E Pin 4)
-    {4, 4, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_OUTPUT},
+    {4, 4, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_OUTPUT},             // index 18 (PE4)
+
     // CANBus Transciever 1 Pins
-    {0, 11, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_INPUT},  // RX
-    {0, 12, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_OUTPUT}, // TX
+    {0, 11, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_INPUT},             // index 19 (PA11 - RX)
+    {0, 12, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_OUTPUT},            // index 20 (PA12 - TX)
     // CANBus Transciever 2 Pins
-    {1, 5, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_INPUT},  // RX
-    {1, 6, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_OUTPUT}, // TX
+    {1, 5, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_INPUT},              // index 21 (PB5 - RX)
+    {1, 6, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_OUTPUT},             // index 22 (PB6 - TX)
+
+    // power rail reset pins (PD1, PD3, PD5, PD7, PD9, PD11, PD13, PD15)
+    {3, 1, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_OUTPUT},             // index 23 (PD1)
+    {3, 3, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_OUTPUT},             // index 24 (PD3)
+    {3, 5, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_OUTPUT},             // index 25 (PD5)
+    {3, 7, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_OUTPUT},             // index 26 (PD7)
+    {3, 9, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_OUTPUT},             // index 27 (PD9)
+    {3, 11, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_OUTPUT},            // index 28 (PD11)
+    {3, 13, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_OUTPUT},            // index 29 (PD13)
+    {3, 15, HAL_GPIO_NO_PULL, HAL_GPIO_MODE_OUTPUT},            // index 30 (PD15)
 };
 
-#define WATCHDOG_WDI_PIN 24
-#define WATCHDOG_SET0_PIN 25
-#define WATCHDOG_SET1_PIN 26
+#define WATCHDOG_WDI_PIN 16
+#define WATCHDOG_SET0_PIN 17
+#define WATCHDOG_SET1_PIN 18
+#define RAIL_RESET_PIN_START 23
 
 static const rail_config_t RAIL_CONFIGS[NUM_POWER_RAILS] = {
     [RAIL_OBC] = {.rail_id = RAIL_OBC,
@@ -227,6 +233,12 @@ static const rail_config_t RAIL_CONFIGS[NUM_POWER_RAILS] = {
                       .voltage_min = 3.0f,
                       .voltage_max = 3.6f,
                       .current_limit = 4.0f,
-                      .name = "3.3V Bus"}};
+                      .name = "3.3V Bus"},
+    [RAIL_AUX] = {.rail_id = RAIL_AUX,
+                  .nominal_voltage = 3.3f,
+                  .voltage_min = 3.0f,
+                  .voltage_max = 3.6f,
+                  .current_limit = 1.0f,
+                  .name = "Aux Rail"}};
 
 #endif

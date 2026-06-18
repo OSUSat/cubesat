@@ -18,9 +18,6 @@
 #include <stdint.h>
 #include <string.h>
 
-#define FLASH_LOG_START_ADDR 0x10000
-#define FLASH_LOG_SECTOR_SIZE 2048
-#define FLASH_LOG_END_ADDR 0x20000
 
 static uint32_t g_flash_log_write_ptr = FLASH_LOG_START_ADDR;
 
