@@ -110,8 +110,16 @@ static void battery_handle_tick(const osusat_event_t *e, void *ctx) {
     }
 }
 
+#ifdef HITL
+float g_mock_battery_voltage = 3.8f;
+#endif
+
 static void battery_perform_update(battery_management_t *manager) {
+#ifdef HITL
+    float voltage = g_mock_battery_voltage;
+#else
     float voltage = 3.8f; // Mock nominal battery voltage for testing
+#endif
 
     manager->battery_status.voltage = voltage;
 

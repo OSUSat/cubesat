@@ -112,6 +112,7 @@ add_test(
 add_executable(test_telemetry
     test_telemetry.c
     ../services/telemetry.c
+    ../mocks/hal_adc_mock.c
 )
 
 target_link_libraries(test_telemetry PRIVATE
