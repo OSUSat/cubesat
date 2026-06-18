@@ -104,10 +104,10 @@
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv412logging_init19osusat_slog_level_tP13uart_events_tP13uart_events_t">
-<span id="_CPPv312logging_init19osusat_slog_level_tP13uart_events_tP13uart_events_t"></span><span id="_CPPv212logging_init19osusat_slog_level_tP13uart_events_tP13uart_events_t"></span><span id="logging_init__osusat_slog_level_t.uart_events_tP.uart_events_tP"></span><span class="target" id="group__logging__api_1gad98cd5cecd0a227222fd9b1c51f9e1ef"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">logging_init</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">osusat_slog_level_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">min_level</span></span>, <a class="reference internal" href="uart_events.html#_CPPv413uart_events_t" title="uart_events_t"><span class="n"><span class="pre">uart_events_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">primary_uart</span></span>, <a class="reference internal" href="uart_events.html#_CPPv413uart_events_t" title="uart_events_t"><span class="n"><span class="pre">uart_events_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">aux_uart</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv412logging_init19osusat_slog_level_tP13uart_events_tP13uart_events_t" title="Link to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv412logging_init19osusat_slog_level_tP12can_events_tP12can_events_t">
+<span id="_CPPv312logging_init19osusat_slog_level_tP12can_events_tP12can_events_t"></span><span id="_CPPv212logging_init19osusat_slog_level_tP12can_events_tP12can_events_t"></span><span id="logging_init__osusat_slog_level_t.can_events_tP.can_events_tP"></span><span class="target" id="group__logging__api_1gacfa3b63f33f6b41229b7293c37ffef4e"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">logging_init</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">osusat_slog_level_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">min_level</span></span>, <span class="n"><span class="pre">can_events_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">primary_can</span></span>, <span class="n"><span class="pre">can_events_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">aux_can</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv412logging_init19osusat_slog_level_tP12can_events_tP12can_events_t" title="Link to this definition">¶</a><br /></dt>
 <dd><p>Initialize the logging service. </p>
-<p>Must be called after hal_uart_init() and before any logging.</p>
+<p>Must be called after hal_can_init() and before any logging.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>min_level</strong> – <strong>[in]</strong> Minimum log level to record. </p>
@@ -118,7 +118,7 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv413logging_flushv">
 <span id="_CPPv313logging_flushv"></span><span id="_CPPv213logging_flushv"></span><span id="logging_flush__void"></span><span class="target" id="group__logging__api_1gae344a717b3119e6abed5c4b75737a337"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">logging_flush</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv413logging_flushv" title="Link to this definition">¶</a><br /></dt>
-<dd><p>Flush pending logs to OBC via UART. </p>
+<dd><p>Flush pending logs to OBC via CAN. </p>
 <p>Should be called periodically from main loop or triggered by events.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -200,7 +200,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#c.EPS_COMPONENT_COMMS"><code class="docutils literal notranslate"><span class="pre">EPS_COMPONENT_COMMS</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#c.EPS_COMPONENT_ADC"><code class="docutils literal notranslate"><span class="pre">EPS_COMPONENT_ADC</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#c.EPS_COMPONENT_PROFILE"><code class="docutils literal notranslate"><span class="pre">EPS_COMPONENT_PROFILE</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#_CPPv412logging_init19osusat_slog_level_tP13uart_events_tP13uart_events_t"><code class="docutils literal notranslate"><span class="pre">logging_init()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv412logging_init19osusat_slog_level_tP12can_events_tP12can_events_t"><code class="docutils literal notranslate"><span class="pre">logging_init()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#_CPPv413logging_flushv"><code class="docutils literal notranslate"><span class="pre">logging_flush()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#_CPPv417logging_set_level19osusat_slog_level_t"><code class="docutils literal notranslate"><span class="pre">logging_set_level()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#_CPPv421logging_pending_countv"><code class="docutils literal notranslate"><span class="pre">logging_pending_count()</span></code></a></li>
