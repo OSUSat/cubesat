@@ -199,5 +199,17 @@ void SysTick_Handler(void)
 /******************************************************************************/
 
 /* USER CODE BEGIN 1 */
+#include <stdio.h>
 
+extern void hal_i2c_isr_handler(int bus);
+
+void I2C2_EV_IRQHandler(void)
+{
+  hal_i2c_isr_handler(2); // I2C_BUS_2
+}
+
+void I2C2_ER_IRQHandler(void)
+{
+  hal_i2c_isr_handler(2); // I2C_BUS_2
+}
 /* USER CODE END 1 */

@@ -73,6 +73,7 @@ if(TARGET_ARCH STREQUAL "ARM")
         STM32H743xx
         USE_HAL_DRIVER
         USE_PWR_LDO_SUPPLY
+        USE_SEMIHOSTING  # Enable this only when running/debugging under OpenOCD semihosting
     )
 
 elseif(BUILD_HITL)
@@ -89,6 +90,7 @@ elseif(BUILD_HITL)
         mocks/bsp/clock_mock.c
         mocks/hal_can_mock.c
         mocks/hal_flash_mock.c
+        mocks/hal_fram_mock.c
     )
 
     add_executable(obc_firmware

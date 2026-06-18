@@ -45,7 +45,7 @@
  * @{
  */
 
-#define FRAM_LOG_SIZE 16384  // 16KB mock FRAM log buffer
+#define FRAM_LOG_SIZE 1024  // 1KB real FRAM log buffer (remaining 1KB for telemetry)
 
 /**
  * @brief Initialize the logging service.

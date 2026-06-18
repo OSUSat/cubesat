@@ -6,6 +6,7 @@
 #include "logging.h"
 #include "hal_time.h"
 #include "hal_uart.h"
+#include "hal_fram.h"
 #include "osusat/event_bus.h"
 #include "osusat/ring_buffer.h"
 #include <stddef.h>
@@ -19,8 +20,6 @@ static osusat_ring_buffer_t log_ring_buffer;
 static uint32_t tick_counter = 0;
 #define LOG_FLUSH_INTERVAL_CYCLES 100
 
-// mock FRAM Buffer
-static uint8_t fram_mock_buffer[FRAM_LOG_SIZE];
 static uint32_t g_fram_log_write_ptr = 0;
 
 static void logging_handle_tick(const osusat_event_t *e, void *ctx);
@@ -78,8 +77,14 @@ int __io_putchar(int ch) {
 }
 
 void logging_init(osusat_slog_level_t min_level) {
-    // clear mock FRAM
-    memset(fram_mock_buffer, 0, sizeof(fram_mock_buffer));
+    // initialize FRAM HAL
+    hal_fram_init();
+
+#if !defined(__arm__)
+    // clear mock FRAM on host to start clean
+    uint8_t zero_buf[FRAM_LOG_SIZE] = {0};
+    hal_fram_write(0, zero_buf, sizeof(zero_buf));
+#endif
     g_fram_log_write_ptr = 0;
 
     // initialize the ring buffer used by slog
@@ -93,7 +98,7 @@ void logging_init(osusat_slog_level_t min_level) {
     osusat_event_bus_subscribe(EVENT_SYSTICK, logging_handle_tick, NULL);
 
     LOG_INFO(OBC_COMPONENT_LOGGING,
-             "OBC Logging service initialized (Mock FRAM size: %d bytes)",
+             "OBC Logging service initialized (FRAM size: %d bytes)",
              FRAM_LOG_SIZE);
 }
 
@@ -115,7 +120,7 @@ static void write_to_fram(const uint8_t *data, size_t size) {
         g_fram_log_write_ptr = 0; // Wrap around to the beginning
     }
 
-    memcpy(&fram_mock_buffer[g_fram_log_write_ptr], data, size);
+    hal_fram_write_it(g_fram_log_write_ptr, data, size, NULL, NULL);
     g_fram_log_write_ptr += size;
 }
 
@@ -166,7 +171,13 @@ void logging_set_level(osusat_slog_level_t level) {
 
 size_t logging_pending_count(void) { return osusat_slog_pending_count(); }
 
-const uint8_t *logging_get_fram_buffer(void) { return fram_mock_buffer; }
+const uint8_t *logging_get_fram_buffer(void) {
+#if defined(__arm__)
+    return NULL;
+#else
+    return hal_fram_get_mock_buffer();
+#endif
+}
 
 uint32_t logging_get_fram_write_ptr(void) { return g_fram_log_write_ptr; }
 

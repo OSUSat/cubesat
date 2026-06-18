@@ -7,15 +7,132 @@
 #include "hal_time.h"
 #include "hal_uart.h"
 #include "logging.h"
+#include "sensors.h"
 #include "obc_config.h"
 #include "osusat/event_bus.h"
 #include "peripherals.h"
 #include "stm32h7xx_hal.h"
+#include "hal_fram.h"
+
+uint8_t debug_fram_buf[1024];
+uint8_t debug_telemetry_buf[1024];
 
 #define EVENT_QUEUE_SIZE 16
 static osusat_event_t event_queue[EVENT_QUEUE_SIZE];
 static can_events_t can1_events_service;
 static can_events_t can2_events_service;
+
+#if defined(__arm__) && defined(DEEP_SLEEP_ENABLED) && (DEEP_SLEEP_ENABLED == 1)
+static void check_deep_sleep_status(void) {
+    __HAL_RCC_PWR_CLK_ENABLE();
+    HAL_PWR_EnableBkUpAccess();
+
+    // Disable write protection
+    RTC->WPR = 0xCA;
+    RTC->WPR = 0x53;
+
+    uint32_t magic = RTC->BKP1R;
+    if (magic == 0x534C505F) {
+        uint32_t cycles = RTC->BKP0R;
+        if (cycles > 0) {
+            RTC->BKP0R = cycles - 1;
+            
+            // Enable LSI
+            RCC_OscInitTypeDef RCC_OscInitStruct = {0};
+            RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_LSI;
+            RCC_OscInitStruct.LSIState = RCC_LSI_ON;
+            if (HAL_RCC_OscConfig(&RCC_OscInitStruct) == HAL_OK) {
+                // Enable RTC clock source (LSI)
+                __HAL_RCC_RTC_CONFIG(RCC_RTCCLKSOURCE_LSI);
+                __HAL_RCC_RTC_ENABLE();
+
+                // Disable Wakeup Timer
+                RTC->CR &= ~RTC_CR_WUTE;
+
+                // Wait for wakeup timer write flag to be set
+                while ((RTC->ISR & RTC_ISR_WUTWF) == 0);
+
+                // Set wakeup clock source to ck_spre (1 Hz clock)
+                RTC->CR &= ~RTC_CR_WUCKSEL;
+                RTC->CR |= 4U; // 4: ck_spre (1Hz)
+
+                // Set counter value (10 - 1 = 9)
+                RTC->WUTR = 9;
+
+                // Clear Wakeup Flag
+                RTC->ISR &= ~RTC_ISR_WUTF;
+
+                // Enable Wakeup Timer and interrupt
+                RTC->CR |= RTC_CR_WUTIE | RTC_CR_WUTE;
+
+                // Clear PWR wakeup flags
+                __HAL_PWR_CLEAR_WAKEUPFLAG(PWR_FLAG_WKUP1 | PWR_FLAG_WKUP2 | PWR_FLAG_WKUP3 | PWR_FLAG_WKUP4 | PWR_FLAG_WKUP5 | PWR_FLAG_WKUP6);
+
+                // Enter Standby Mode
+                HAL_PWR_EnterSTANDBYMode();
+            }
+        } else {
+            RTC->BKP1R = 0;
+        }
+    }
+    
+    // Enable write protection
+    RTC->WPR = 0xFF;
+}
+
+static void enter_deep_sleep(void) {
+    LOG_INFO(OBC_COMPONENT_MAIN, "Entering deep sleep standby mode for %d seconds...", DEEP_SLEEP_SLEEP_DURATION_S);
+    HAL_Delay(100);
+
+    __HAL_RCC_PWR_CLK_ENABLE();
+    HAL_PWR_EnableBkUpAccess();
+
+    // Enable LSI
+    RCC_OscInitTypeDef RCC_OscInitStruct = {0};
+    RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_LSI;
+    RCC_OscInitStruct.LSIState = RCC_LSI_ON;
+    HAL_RCC_OscConfig(&RCC_OscInitStruct);
+
+    // Enable RTC clock source (LSI)
+    __HAL_RCC_RTC_CONFIG(RCC_RTCCLKSOURCE_LSI);
+    __HAL_RCC_RTC_ENABLE();
+
+    // Disable write protection
+    RTC->WPR = 0xCA;
+    RTC->WPR = 0x53;
+
+    // Disable Wakeup Timer
+    RTC->CR &= ~RTC_CR_WUTE;
+
+    // Wait for wakeup timer write flag to be set
+    while ((RTC->ISR & RTC_ISR_WUTWF) == 0);
+
+    // Set wakeup clock source to ck_spre (1 Hz clock)
+    RTC->CR &= ~RTC_CR_WUCKSEL;
+    RTC->CR |= 4U; // 4: ck_spre (1Hz)
+
+    // Set counter value (duration - 1)
+    RTC->WUTR = DEEP_SLEEP_SLEEP_DURATION_S - 1;
+
+    // Clear Wakeup Flag
+    RTC->ISR &= ~RTC_ISR_WUTF;
+
+    // Enable Wakeup Timer and interrupt
+    RTC->CR |= RTC_CR_WUTIE | RTC_CR_WUTE;
+
+    // Enable write protection
+    RTC->WPR = 0xFF;
+
+    // Clear PWR wakeup flags
+    __HAL_PWR_CLEAR_WAKEUPFLAG(PWR_FLAG_WKUP1 | PWR_FLAG_WKUP2 | PWR_FLAG_WKUP3 | PWR_FLAG_WKUP4 | PWR_FLAG_WKUP5 | PWR_FLAG_WKUP6);
+
+    // Enter Standby Mode
+    HAL_PWR_EnterSTANDBYMode();
+
+    // Fallback in case Standby failed
+    HAL_NVIC_SystemReset();
+}
+#endif
 
 int main(void) {
 #if defined(__arm__)
@@ -25,6 +142,10 @@ int main(void) {
     MPU_Config();
 
     HAL_Init();
+
+#if defined(__arm__) && defined(DEEP_SLEEP_ENABLED) && (DEEP_SLEEP_ENABLED == 1)
+    check_deep_sleep_status();
+#endif
 
 #if defined(__arm__)
     HAL_DBGMCU_EnableDBGSleepMode();
@@ -44,7 +165,7 @@ int main(void) {
 
     MX_FDCAN1_Init();
     MX_FDCAN2_Init();
-    // MX_I2C2_Init();
+    MX_I2C2_Init();
     // MX_SDMMC1_SD_Init();
     // MX_SPI1_Init();
     // MX_SPI4_Init();
@@ -81,7 +202,10 @@ int main(void) {
 
     // hal_gpio_toggle(WATCHDOG_WDI_PIN);
 
-    // hal_i2c_init(I2C_BUS_2);
+    hal_i2c_init(I2C_BUS_2);
+    sensors_init();
+
+    // Debug FRAM reads removed to prevent startup I2C conflicts
 
 #if defined(__arm__)
     extern volatile uint8_t g_main_tick_flag;
@@ -94,17 +218,23 @@ int main(void) {
 
             static uint32_t last_blink = 0;
             uint32_t now = hal_time_get_ms();
-            if (now - last_blink >= 500) {
+            if (now - last_blink >= 2000) {
                 last_blink = now;
-
-                hal_gpio_toggle(GREEN_LED_PIN);
+                hal_gpio_write(GREEN_LED_PIN, HAL_GPIO_STATE_HIGH);
                 hal_gpio_write(RED_LED_PIN, HAL_GPIO_STATE_LOW);
-
                 LOG_INFO(OBC_COMPONENT_MAIN, "OBC heartbeat, uptime: %lu ms",
                          (unsigned long)now);
+            } else if (now - last_blink >= 20) {
+                hal_gpio_write(GREEN_LED_PIN, HAL_GPIO_STATE_LOW);
             }
 
             hal_gpio_toggle(WATCHDOG_WDI_PIN);
+
+#if defined(__arm__) && defined(DEEP_SLEEP_ENABLED) && (DEEP_SLEEP_ENABLED == 1)
+            if (now >= DEEP_SLEEP_WAKE_DURATION_S * 1000) {
+                enter_deep_sleep();
+            }
+#endif
         } else {
             __WFI();
         }
