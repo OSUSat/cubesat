@@ -7,3 +7,4 @@
 - Use an inverting circuit instead of non-inverting circuit on the comparator circuit in the current monitors
 - Place a DNP capacitor or leave floating the slew control pin on the load switch
 - Replace power path ideal diode with one that can support battery pack voltage
+- Replace MPPT vs USB ideal diode with one that can support solar channel voltage
