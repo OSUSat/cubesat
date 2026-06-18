@@ -49,6 +49,10 @@ void hal_can_init(hal_can_port_t port, const hal_can_config_t *config) {
         MX_CAN2_Init();
     }
 
+    if (state->hcan->State == HAL_CAN_STATE_ERROR) {
+        return;
+    }
+
     /* configure standard accept-all filter */
     CAN_FilterTypeDef filter_init = {0};
     filter_init.FilterIdHigh = 0x0000;
@@ -69,7 +73,7 @@ void hal_can_init(hal_can_port_t port, const hal_can_config_t *config) {
     }
 
     if (HAL_CAN_ConfigFilter(state->hcan, &filter_init) != HAL_OK) {
-        Error_Handler();
+        return;
     }
 
     /* activate notifications for interrupt driven rx, tx, and errors */
@@ -80,7 +84,7 @@ void hal_can_init(hal_can_port_t port, const hal_can_config_t *config) {
 
     /* start the CAN peripheral */
     if (HAL_CAN_Start(state->hcan) != HAL_OK) {
-        Error_Handler();
+        return;
     }
 
     state->initialized = true;

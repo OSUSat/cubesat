@@ -112,6 +112,7 @@ add_test(
 add_executable(test_telemetry
     test_telemetry.c
     ../services/telemetry.c
+    ../mocks/hal_adc_mock.c
 )
 
 target_link_libraries(test_telemetry PRIVATE
@@ -158,6 +159,48 @@ if(NOT TARGET_ARCH STREQUAL "ARM")
     add_test(
         NAME test_can_mock
         COMMAND test_can_mock
+    )
+endif()
+
+# test_can_events
+
+if(NOT TARGET_ARCH STREQUAL "ARM")
+    add_executable(test_can_events
+        test_can_events.c
+        ../services/can_events.c
+        ../mocks/hal_can_mock.c
+        mocks/event_bus_mock.c
+    )
+
+    target_link_libraries(test_can_events PRIVATE
+        ${TEST_COMMON_LIBS}
+    )
+
+    add_test(
+        NAME test_can_events
+        COMMAND test_can_events
+    )
+endif()
+
+# test_logging
+
+if(NOT TARGET_ARCH STREQUAL "ARM")
+    add_executable(test_logging
+        test_logging.c
+        ../services/logging.c
+        ../services/can_events.c
+        ../mocks/hal_can_mock.c
+        ../mocks/hal_flash_mock.c
+        mocks/event_bus_mock.c
+    )
+
+    target_link_libraries(test_logging PRIVATE
+        ${TEST_COMMON_LIBS}
+    )
+
+    add_test(
+        NAME test_logging
+        COMMAND test_logging
     )
 endif()
 

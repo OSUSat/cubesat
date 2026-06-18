@@ -3,8 +3,8 @@
  * @brief Unit tests for the telemetry aggregation service.
  */
 
-#include "services/telemetry.h"
 #include "hal_time.h"
+#include "services/telemetry.h"
 #include <assert.h>
 #include <stdio.h>
 #include <string.h>
@@ -15,9 +15,7 @@ void hal_time_init(void) {
     // no-op for tests
 }
 
-uint32_t hal_time_get_ms(void) {
-    return simulated_time_ms;
-}
+uint32_t hal_time_get_ms(void) { return simulated_time_ms; }
 
 void test_telemetry_init(void) {
     printf("Running test: %s\n", __func__);
@@ -32,6 +30,8 @@ void test_telemetry_init(void) {
     assert(telemetry.redundancy_manager == NULL);
     assert(telemetry.usart1_events == NULL);
     assert(telemetry.usart3_events == NULL);
+    assert(telemetry.can1_events == NULL);
+    assert(telemetry.can2_events == NULL);
 
     assert(telemetry.telemetry.battery.voltage == 0.0f);
     assert(telemetry.telemetry.battery.current == 0.0f);
@@ -52,6 +52,8 @@ void test_telemetry_init(void) {
 
     assert(telemetry.telemetry.uart1.rx_byte_count == 0);
     assert(telemetry.telemetry.uart3.rx_byte_count == 0);
+    assert(telemetry.telemetry.can1.rx_byte_count == 0);
+    assert(telemetry.telemetry.can2.rx_byte_count == 0);
 
     printf("Test passed.\n");
 }
@@ -127,6 +129,20 @@ void test_telemetry_update(void) {
     uart3.rx_crc_error_count = 0;
     uart3.initialized = true;
 
+    can_events_t can1;
+    memset(&can1, 0, sizeof(can1));
+    can1.rx_byte_count = 2048;
+    can1.rx_packet_count = 84;
+    can1.rx_crc_error_count = 4;
+    can1.initialized = true;
+
+    can_events_t can2;
+    memset(&can2, 0, sizeof(can2));
+    can2.rx_byte_count = 256;
+    can2.rx_packet_count = 10;
+    can2.rx_crc_error_count = 0;
+    can2.initialized = true;
+
     // set service pointers in the telemetry manager
     telemetry.battery_manager = &battery;
     telemetry.mppt_controller = &mppt;
@@ -134,6 +150,8 @@ void test_telemetry_update(void) {
     telemetry.redundancy_manager = &redundancy;
     telemetry.usart1_events = &uart1;
     telemetry.usart3_events = &uart3;
+    telemetry.can1_events = &can1;
+    telemetry.can2_events = &can2;
 
     simulated_time_ms = 98765;
 
@@ -163,7 +181,8 @@ void test_telemetry_update(void) {
     assert(tlm.redundancy.health == SYSTEM_HEALTH_DEGRADED);
     assert(tlm.redundancy.total_faults_since_boot == 3);
     assert(tlm.redundancy.active_fault_count == 2);
-    assert(tlm.redundancy.degraded_components == (1U << COMPONENT_UART_PRIMARY));
+    assert(tlm.redundancy.degraded_components ==
+           (1U << COMPONENT_UART_PRIMARY));
     assert(tlm.redundancy.timestamp_ms == 98765);
 
     // verify uart metrics
@@ -174,6 +193,15 @@ void test_telemetry_update(void) {
     assert(tlm.uart3.rx_byte_count == 512);
     assert(tlm.uart3.rx_crc_error_count == 0);
     assert(tlm.uart3.initialized == true);
+
+    // verify can metrics
+    assert(tlm.can1.rx_byte_count == 2048);
+    assert(tlm.can1.rx_crc_error_count == 4);
+    assert(tlm.can1.initialized == true);
+
+    assert(tlm.can2.rx_byte_count == 256);
+    assert(tlm.can2.rx_crc_error_count == 0);
+    assert(tlm.can2.initialized == true);
 
     printf("Test passed.\n");
 }
@@ -191,6 +219,7 @@ void test_telemetry_null_pointers(void) {
     assert(tlm.battery.voltage == 0.0f);
     assert(tlm.redundancy.health == SYSTEM_HEALTH_OK);
     assert(tlm.uart1.rx_byte_count == 0);
+    assert(tlm.can1.rx_byte_count == 0);
 
     // telemetry_update should handle NULL input pointer gracefully
     telemetry_update(NULL);

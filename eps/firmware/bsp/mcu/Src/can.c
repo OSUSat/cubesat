@@ -16,9 +16,7 @@ void MX_CAN1_Init(void) {
     hcan1.Init.AutoRetransmission = DISABLE;
     hcan1.Init.ReceiveFifoLocked = DISABLE;
     hcan1.Init.TransmitFifoPriority = DISABLE;
-    if (HAL_CAN_Init(&hcan1) != HAL_OK) {
-        Error_Handler();
-    }
+    HAL_CAN_Init(&hcan1);
 }
 
 void MX_CAN2_Init(void) {
@@ -34,9 +32,7 @@ void MX_CAN2_Init(void) {
     hcan2.Init.AutoRetransmission = DISABLE;
     hcan2.Init.ReceiveFifoLocked = DISABLE;
     hcan2.Init.TransmitFifoPriority = DISABLE;
-    if (HAL_CAN_Init(&hcan2) != HAL_OK) {
-        Error_Handler();
-    }
+    HAL_CAN_Init(&hcan2);
 }
 
 void HAL_CAN_MspInit(CAN_HandleTypeDef *canHandle) {
@@ -50,7 +46,16 @@ void HAL_CAN_MspInit(CAN_HandleTypeDef *canHandle) {
         PA11     ------> CAN1_RX
         PA12     ------> CAN1_TX
         */
-        GPIO_InitStruct.Pin = GPIO_PIN_11 | GPIO_PIN_12;
+        // Configure RX pin (PA11) with Pull-up
+        GPIO_InitStruct.Pin = GPIO_PIN_11;
+        GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+        GPIO_InitStruct.Pull = GPIO_PULLUP;
+        GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+        GPIO_InitStruct.Alternate = GPIO_AF9_CAN1;
+        HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+        // Configure TX pin (PA12) without Pull
+        GPIO_InitStruct.Pin = GPIO_PIN_12;
         GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
         GPIO_InitStruct.Pull = GPIO_NOPULL;
         GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
@@ -76,7 +81,16 @@ void HAL_CAN_MspInit(CAN_HandleTypeDef *canHandle) {
         PB5     ------> CAN2_RX
         PB6     ------> CAN2_TX
         */
-        GPIO_InitStruct.Pin = GPIO_PIN_5 | GPIO_PIN_6;
+        // Configure RX pin (PB5) with Pull-up
+        GPIO_InitStruct.Pin = GPIO_PIN_5;
+        GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+        GPIO_InitStruct.Pull = GPIO_PULLUP;
+        GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+        GPIO_InitStruct.Alternate = GPIO_AF9_CAN1;
+        HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+        // Configure TX pin (PB6) without Pull
+        GPIO_InitStruct.Pin = GPIO_PIN_6;
         GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
         GPIO_InitStruct.Pull = GPIO_NOPULL;
         GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;

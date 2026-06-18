@@ -26,6 +26,8 @@ void test_battery_init(void) {
     printf("Test passed.\n");
 }
 
+extern float g_mock_battery_voltage;
+
 void test_battery_critical_low(void) {
     printf("Running test: %s\n", __func__);
 
@@ -36,6 +38,8 @@ void test_battery_critical_low(void) {
     battery_init(&manager);
 
     mock_event_bus_reset_published(); // clear events from init
+
+    g_mock_battery_voltage = 3.0f;
 
     // trigger the tick handler enough times to call battery_perform_update
     for (int i = 0; i < BATTERY_UPDATE_INTERVAL_TICKS; i++) {
@@ -56,6 +60,8 @@ void test_battery_critical_low(void) {
 
     assert(critical_event_found);
     assert(manager.battery_status.protection);
+
+    g_mock_battery_voltage = 3.8f;
 
     printf("Test passed.\n");
 }

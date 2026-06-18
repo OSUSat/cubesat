@@ -46,7 +46,7 @@ void MX_IWDG_Init(void)
     Error_Handler();
   }
   /* USER CODE BEGIN IWDG_Init 2 */
-
+  __HAL_DBGMCU_FREEZE_IWDG();
   /* USER CODE END IWDG_Init 2 */
 
 }

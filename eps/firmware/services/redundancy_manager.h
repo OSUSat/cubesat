@@ -182,6 +182,7 @@ typedef enum {
     FAULT_SOURCE_RAIL,    /**< Rail controller (overcurrent, enable failures) */
     FAULT_SOURCE_SENSOR,  /**< I2C/SPI sensor timeouts or bad data */
     FAULT_SOURCE_UART,    /**< UART communication errors */
+    FAULT_SOURCE_CAN,     /**< CANBus communication errors */
     FAULT_SOURCE_WATCHDOG, /**< Watchdog timeout or service hang */
     FAULT_SOURCE_MEMORY,   /**< Flash/EEPROM errors */
     FAULT_SOURCE_COUNT     /**< Number of fault sources */
@@ -236,6 +237,8 @@ typedef enum {
     COMPONENT_SOLAR_STRING_4, /**< Solar panel string 4 */
     COMPONENT_SOLAR_STRING_5, /**< Solar panel string 5 */
     COMPONENT_SOLAR_STRING_6, /**< Solar panel string 6 */
+    COMPONENT_CAN_PRIMARY,    /**< Primary CAN (port 1) */
+    COMPONENT_CAN_SECONDARY,  /**< Secondary CAN (port 2) */
     COMPONENT_COUNT           /**< Number of tracked components */
 } component_id_t;
 
