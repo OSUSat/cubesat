@@ -1,0 +1,10 @@
+- Change 100k resistor on VSYS load switch enable pull-up resistor to 10k
+- 50k resistor on current limit (CLIM) pins on each LTC4415 are outside the 125-1000 ohm range. Swap for 100-160 ohm resistor or short to GND for 6A limit.
+- Swap 3.3v and 5v silkscreen labels on voltage regulators
+- Set the OC pin on each voltage regulator to 21.5k
+- Put BOOT switch positions on silkscreen
+- Update BOM and crystal pinout to passive crystal instead of crystal oscillator
+- Use an inverting circuit instead of non-inverting circuit on the comparator circuit in the current monitors
+- Place a DNP capacitor or leave floating the slew control pin on the load switch
+- Replace power path ideal diode with one that can support battery pack voltage
+- Replace MPPT vs USB ideal diode with one that can support solar channel voltage
