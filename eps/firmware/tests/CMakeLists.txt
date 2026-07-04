@@ -11,6 +11,19 @@ include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/mocks
 )
 
+if(TARGET_ARCH STREQUAL "ARM")
+    include_directories(
+        ../bsp/mcu/Inc
+        ../bsp/hal_driver/Inc
+        ../bsp/cmsis/Include
+        ../bsp/cmsis/Device/ST/STM32L4xx/Include
+    )
+else()
+    include_directories(
+        ../mocks/bsp
+    )
+endif()
+
 # test_power_profiles
 
 add_executable(test_power_profiles
@@ -93,3 +106,101 @@ add_test(
     NAME test_battery_management
     COMMAND test_battery_management
 )
+
+# test_telemetry
+
+add_executable(test_telemetry
+    test_telemetry.c
+    ../services/telemetry.c
+    ../mocks/hal_adc_mock.c
+)
+
+target_link_libraries(test_telemetry PRIVATE
+    ${TEST_COMMON_LIBS}
+)
+
+add_test(
+    NAME test_telemetry
+    COMMAND test_telemetry
+)
+# test_watchdog
+
+if(NOT TARGET_ARCH STREQUAL "ARM")
+    add_executable(test_watchdog
+        test_watchdog.c
+        ../services/watchdog.c
+        ../mocks/bsp/hal_stubs.c
+        ../mocks/hal_time_mock.c
+        ../mocks/hal_gpio_mock.c
+    )
+
+    target_link_libraries(test_watchdog PRIVATE
+        ${TEST_COMMON_LIBS}
+    )
+
+    add_test(
+        NAME test_watchdog
+        COMMAND test_watchdog
+    )
+endif()
+
+# test_can_mock
+
+if(NOT TARGET_ARCH STREQUAL "ARM")
+    add_executable(test_can_mock
+        test_can_mock.c
+        ../mocks/hal_can_mock.c
+    )
+
+    target_link_libraries(test_can_mock PRIVATE
+        ${TEST_COMMON_LIBS}
+    )
+
+    add_test(
+        NAME test_can_mock
+        COMMAND test_can_mock
+    )
+endif()
+
+# test_can_events
+
+if(NOT TARGET_ARCH STREQUAL "ARM")
+    add_executable(test_can_events
+        test_can_events.c
+        ../services/can_events.c
+        ../mocks/hal_can_mock.c
+        mocks/event_bus_mock.c
+    )
+
+    target_link_libraries(test_can_events PRIVATE
+        ${TEST_COMMON_LIBS}
+    )
+
+    add_test(
+        NAME test_can_events
+        COMMAND test_can_events
+    )
+endif()
+
+# test_logging
+
+if(NOT TARGET_ARCH STREQUAL "ARM")
+    add_executable(test_logging
+        test_logging.c
+        ../services/logging.c
+        ../services/can_events.c
+        ../mocks/hal_can_mock.c
+        ../mocks/hal_flash_mock.c
+        mocks/event_bus_mock.c
+    )
+
+    target_link_libraries(test_logging PRIVATE
+        ${TEST_COMMON_LIBS}
+    )
+
+    add_test(
+        NAME test_logging
+        COMMAND test_logging
+    )
+endif()
+

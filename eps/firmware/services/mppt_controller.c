@@ -6,7 +6,9 @@
 #include "mppt_controller.h"
 #include "eps_config.h"
 #include "events.h"
+#include "logging.h"
 #include "osusat/event_bus.h"
+#include "hal_adc.h"
 #include <stddef.h>
 #include <stdint.h>
 #include <string.h>
@@ -42,9 +44,15 @@ void mppt_init(mppt_t *mppt) {
         return;
     }
 
+    static mppt_channel_t mppt_channel_array[NUM_MPPT_CHANNELS];
+    memset(mppt_channel_array, 0, sizeof(mppt_channel_array));
+
     memset(mppt, 0, sizeof(mppt_t));
+    mppt->channels = mppt_channel_array;
+    mppt->num_channels = NUM_MPPT_CHANNELS;
 
     mppt->initialized = true;
+    LOG_INFO(EPS_COMPONENT_MPPT, "MPPT controller initialized");
 
     osusat_event_bus_subscribe(EVENT_SYSTICK, mppt_handle_tick, mppt);
     osusat_event_bus_subscribe(APP_EVENT_REQUEST_MPPT_ENABLE_CHANNEL,
@@ -73,6 +81,7 @@ void mppt_enable(uint8_t ch) {
         return;
     }
 
+    LOG_INFO(EPS_COMPONENT_MPPT, "Enabling MPPT channel %d", ch);
     // TODO: enable mppt channel
 }
 
@@ -81,6 +90,7 @@ void mppt_disable(uint8_t ch) {
         return;
     }
 
+    LOG_INFO(EPS_COMPONENT_MPPT, "Disabling MPPT channel %d", ch);
     // TODO: disable mppt channel
 }
 
@@ -102,10 +112,25 @@ static void mppt_handle_tick(const osusat_event_t *e, void *ctx) {
 }
 
 static void mppt_perform_update(mppt_t *mppt) {
+    if (mppt->num_channels > 0 && mppt->channels != NULL) {
+        // Read raw input voltage from ADC_CHANNEL_10 (index 10)
+        uint16_t raw_adc = hal_adc_read(ADC_CHANNEL_10);
+        // Map 12-bit ADC value to panel voltage (e.g. 0-15.0V range)
+        mppt->channels[0].input_voltage = (raw_adc / 4095.0f) * 15.0f;
+        mppt->channels[0].enabled = true;
+        // Mock some other telemetry parameters for a complete snapshot
+        mppt->channels[0].input_current = 0.5f;
+        mppt->channels[0].output_voltage = 4.2f;
+        mppt->channels[0].output_current = 0.6f;
+        mppt->channels[0].power = mppt->channels[0].output_voltage * mppt->channels[0].output_current;
+    }
+
     mppt->telemetry_tick_counter++;
 
     if (mppt->telemetry_tick_counter >= TELEMETRY_INTERVAL_CYCLES) {
         mppt->telemetry_tick_counter = 0;
+
+        LOG_INFO(EPS_COMPONENT_MPPT, "MPPT controller telemetry update");
 
         // publish telemetry snapshot for every enabled MPPT channel
         for (size_t channel = 0; channel < mppt->num_channels; channel++) {
@@ -113,7 +138,7 @@ static void mppt_perform_update(mppt_t *mppt) {
                 continue;
             }
 
-            osusat_event_bus_publish(MPPT_EVENT_TELEMETRY, &mppt->channels,
+            osusat_event_bus_publish(MPPT_EVENT_TELEMETRY, &mppt->channels[channel],
                                      sizeof(mppt_channel_t));
         }
     }

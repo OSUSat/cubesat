@@ -4,7 +4,9 @@
  */
 
 #include "logging.h"
+#include "can_events.h"
 #include "events.h"
+#include "hal_flash.h"
 #include "hal_time.h"
 #include "messages.h"
 #include "osusat/event_bus.h"
@@ -12,10 +14,12 @@
 #include "osusat/slog.h"
 #include "packet.h"
 #include "redundancy_manager.h"
-#include "uart_events.h"
 #include <stddef.h>
 #include <stdint.h>
 #include <string.h>
+
+
+static uint32_t g_flash_log_write_ptr = FLASH_LOG_START_ADDR;
 
 #define MAX_LOG_ENTRIES_PER_FLUSH 5
 #define LOG_FLUSH_INTERVAL_CYCLES 600
@@ -25,10 +29,10 @@ static uint8_t log_storage[LOG_STORAGE_SIZE];
 static osusat_ring_buffer_t log_ring_buffer;
 static uint32_t tick_counter;
 
-// pointer to the UART service instance we use for flushing
-static uart_events_t *g_primary_uart = NULL;
-static uart_events_t *g_aux_uart = NULL;
-static uart_events_t *g_active_uart = NULL;
+// pointer to the CAN service instance we use for flushing
+static can_events_t *g_primary_can = NULL;
+static can_events_t *g_aux_can = NULL;
+static can_events_t *g_active_can = NULL;
 
 #define LOG_PACKET_MAX_PAYLOAD 200
 
@@ -43,13 +47,14 @@ static void logging_handle_tick(const osusat_event_t *e, void *ctx);
 static void logging_handle_request(const osusat_event_t *e, void *ctx);
 static void logging_handle_redundancy(const osusat_event_t *e, void *ctx);
 static void send_log_packet(log_flush_context_t *ctx, bool is_last);
+static void write_log_to_flash(const uint8_t *data, size_t size);
 
-void logging_init(osusat_slog_level_t min_level, uart_events_t *primary_uart,
-                  uart_events_t *aux_uart) {
-    g_primary_uart = primary_uart;
-    g_aux_uart = aux_uart;
+void logging_init(osusat_slog_level_t min_level, can_events_t *primary_can,
+                  can_events_t *aux_can) {
+    g_primary_can = primary_can;
+    g_aux_can = aux_can;
 
-    g_active_uart = g_primary_uart;
+    g_active_can = g_primary_can;
 
     osusat_ring_buffer_init(&log_ring_buffer, log_storage, sizeof(log_storage),
                             true);
@@ -60,20 +65,41 @@ void logging_init(osusat_slog_level_t min_level, uart_events_t *primary_uart,
     osusat_event_bus_subscribe(APP_EVENT_REQUEST_LOGGING_FLUSH_LOGS,
                                logging_handle_request, NULL);
 
+    hal_flash_init();
+    hal_flash_erase_sector(FLASH_LOG_START_ADDR);
+    g_flash_log_write_ptr = FLASH_LOG_START_ADDR;
+
     osusat_event_bus_subscribe(REDUNDANCY_EVENT_COMPONENT_DEGRADED,
                                logging_handle_redundancy, NULL);
     osusat_event_bus_subscribe(REDUNDANCY_EVENT_COMPONENT_RECOVERED,
                                logging_handle_redundancy, NULL);
 
     LOG_INFO(EPS_COMPONENT_MAIN,
-             "Logging service initialized (Primary: UART%d, Aux: UART%d)",
-             primary_uart->port, aux_uart->port);
+             "Logging service initialized (Primary: CAN%d, Aux: CAN%d)",
+             primary_can->port + 1, aux_can->port + 1);
+}
+
+static void write_log_to_flash(const uint8_t *data, size_t size) {
+    uint32_t current_page = g_flash_log_write_ptr / FLASH_LOG_SECTOR_SIZE;
+    uint32_t end_page = (g_flash_log_write_ptr + size) / FLASH_LOG_SECTOR_SIZE;
+
+    if (g_flash_log_write_ptr + size >= FLASH_LOG_END_ADDR) {
+        g_flash_log_write_ptr = FLASH_LOG_START_ADDR;
+        current_page = g_flash_log_write_ptr / FLASH_LOG_SECTOR_SIZE;
+        end_page = (g_flash_log_write_ptr + size) / FLASH_LOG_SECTOR_SIZE;
+        hal_flash_erase_sector(g_flash_log_write_ptr);
+    }
+
+    for (uint32_t page = current_page + 1; page <= end_page; page++) {
+        hal_flash_erase_sector(page * FLASH_LOG_SECTOR_SIZE);
+    }
+
+    hal_flash_write(g_flash_log_write_ptr, data, size);
+    g_flash_log_write_ptr += size;
 }
 
 static void send_log_packet(log_flush_context_t *ctx, bool is_last) {
-    // don't flush if we have no UART service connected
-    if (ctx->payload_offset == 0 || g_active_uart == NULL ||
-        !g_active_uart->initialized) {
+    if (ctx->payload_offset == 0) {
         return;
     }
 
@@ -87,7 +113,19 @@ static void send_log_packet(log_flush_context_t *ctx, bool is_last) {
                            .payload_len = (uint8_t)ctx->payload_offset,
                            .payload = ctx->payload_buffer};
 
-    uart_events_send_packet(g_active_uart, &packet);
+    // serialize packet to write to flash
+    uint8_t packed_buf[CAN_RX_MAX_PACKET_SIZE];
+
+    int16_t len = osusat_packet_pack(&packet, packed_buf, sizeof(packed_buf));
+
+    if (len > 0) {
+        write_log_to_flash(packed_buf, (size_t)len);
+    }
+
+    // try to send over CAN if available
+    if (g_active_can != NULL && g_active_can->initialized) {
+        can_events_send_packet(g_active_can, &packet);
+    }
 
     ctx->payload_offset = 0;
 }
@@ -137,7 +175,7 @@ static void logging_handle_request(const osusat_event_t *e, void *ctx) {
 }
 
 size_t logging_flush(void) {
-    if (g_active_uart == NULL || !g_active_uart->initialized) {
+    if (g_active_can == NULL || !g_active_can->initialized) {
         return 0;
     }
 
@@ -174,18 +212,18 @@ static void logging_handle_redundancy(const osusat_event_t *e, void *ctx) {
         component_degradation_t *payload =
             (component_degradation_t *)e->payload;
 
-        // if primary UART failed, switch to AUX
-        if (payload->component == COMPONENT_UART_PRIMARY) {
-            if (g_aux_uart && g_aux_uart->initialized) {
-                g_active_uart = g_aux_uart;
+        // if primary CAN failed, switch to AUX
+        if (payload->component == COMPONENT_CAN_PRIMARY) {
+            if (g_aux_can && g_aux_can->initialized) {
+                g_active_can = g_aux_can;
             }
         }
     } else if (e->id == REDUNDANCY_EVENT_COMPONENT_RECOVERED) {
         if (e->payload_len >= sizeof(component_id_t)) {
             component_id_t comp = *(component_id_t *)e->payload;
 
-            if (comp == COMPONENT_UART_PRIMARY) {
-                g_active_uart = g_primary_uart;
+            if (comp == COMPONENT_CAN_PRIMARY) {
+                g_active_can = g_primary_can;
             }
         }
     }

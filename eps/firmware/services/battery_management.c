@@ -5,6 +5,7 @@
 
 #include "battery_management.h"
 #include "eps_config.h"
+#include "logging.h"
 #include "osusat/event_bus.h"
 #include <stddef.h>
 #include <stdint.h>
@@ -45,9 +46,13 @@ void battery_init(battery_management_t *manager) {
 
     if (healthy) {
         manager->initialized = true;
+        LOG_INFO(EPS_COMPONENT_MAIN,
+                 "Battery management initialized successfully");
         osusat_event_bus_publish(BATTERY_EVENT_SELF_CHECK_PASSED, NULL, 0);
     } else {
         manager->initialized = false;
+        LOG_ERROR(EPS_COMPONENT_MAIN,
+                  "Battery self-check failed on initialization");
 
         uint8_t failure_code = 0x01; // TODO: replace with real failure code
         osusat_event_bus_publish(BATTERY_EVENT_SELF_CHECK_FAILED, &failure_code,
@@ -63,6 +68,8 @@ void battery_charge_control(battery_management_t *manager, bool enable) {
 
     manager->battery_status.charging = enable;
 
+    LOG_INFO(EPS_COMPONENT_MAIN, "Battery charge control state set to %d",
+             enable);
     // TODO: perform hardware action
 
     osusat_event_bus_publish(BATTERY_EVENT_CHARGING_CHANGE, &enable, 1);
@@ -77,6 +84,9 @@ void battery_protect_mode(battery_management_t *manager) {
     battery_charge_control(manager, false);
 
     manager->battery_status.protection = true;
+    LOG_ERROR(EPS_COMPONENT_MAIN,
+              "Battery protection mode triggered! Voltage: %.2fV",
+              manager->battery_status.voltage);
 
     osusat_event_bus_publish(BATTERY_EVENT_FAULT_DETECTED,
                              &manager->battery_status,
@@ -100,13 +110,23 @@ static void battery_handle_tick(const osusat_event_t *e, void *ctx) {
     }
 }
 
+#ifdef HITL
+float g_mock_battery_voltage = 3.8f;
+#endif
+
 static void battery_perform_update(battery_management_t *manager) {
-    float voltage = 0; // TODO: replace with real read
+#ifdef HITL
+    float voltage = g_mock_battery_voltage;
+#else
+    float voltage = 3.8f; // Mock nominal battery voltage for testing
+#endif
 
     manager->battery_status.voltage = voltage;
 
     if (voltage < CRITICAL_BATTERY_VOLTAGE_THRESHOLD &&
         !manager->battery_status.protection) {
+        LOG_WARN(EPS_COMPONENT_MAIN,
+                 "Critical low battery voltage detected: %.2fV", voltage);
         battery_protect_mode(manager);
 
         osusat_event_bus_publish(BATTERY_EVENT_CRITICAL_LOW, &voltage,
@@ -117,6 +137,9 @@ static void battery_perform_update(battery_management_t *manager) {
 
     if (manager->telemetry_tick_counter >= TELEMETRY_INTERVAL_CYCLES) {
         manager->telemetry_tick_counter = 0;
+        LOG_INFO(
+            EPS_COMPONENT_MAIN, "Battery update telemetry: V=%.2fV, I=%.2fA",
+            manager->battery_status.voltage, manager->battery_status.current);
 
         osusat_event_bus_publish(BATTERY_EVENT_TELEMETRY,
                                  &manager->battery_status,

@@ -150,6 +150,8 @@ static void exti_irq_release(uint16_t pin_mask) {
 }
 
 void hal_gpio_init() {
+    state.initialized = true;
+
     for (int i = 0; i < NUM_GPIO_PINS; i++) {
         pins[i].port = hal_port_id_to_port(gpio_board_config[i].port);
         pins[i].pin_mask = (1U << gpio_board_config[i].pin);
@@ -157,8 +159,6 @@ void hal_gpio_init() {
 
         hal_gpio_set_mode(i, gpio_board_config[i].default_mode);
     }
-
-    state.initialized = true;
 }
 
 void hal_gpio_set_mode(uint8_t pin, gpio_mode_t mode) {

@@ -2,14 +2,18 @@
  * @file logging.h
  * @brief EPS Logging Service
  *
- * Provides structured logging with automatic flushing to OBC via UART.
+ * Provides structured logging with automatic flushing to OBC via CANBus.
  */
 
 #ifndef LOGGING_H
 #define LOGGING_H
 
+#define FLASH_LOG_START_ADDR 0x08010000
+#define FLASH_LOG_SECTOR_SIZE 2048
+#define FLASH_LOG_END_ADDR 0x08020000
+
+#include "can_events.h"
 #include "osusat/slog.h"
-#include "uart_events.h"
 #include <stdint.h>
 
 #ifdef __cplusplus
@@ -53,15 +57,15 @@ extern "C" {
 /**
  * @brief Initialize the logging service.
  *
- * Must be called after hal_uart_init() and before any logging.
+ * Must be called after hal_can_init() and before any logging.
  *
  * @param[in] min_level Minimum log level to record.
  */
-void logging_init(osusat_slog_level_t min_level, uart_events_t *primary_uart,
-                  uart_events_t *aux_uart);
+void logging_init(osusat_slog_level_t min_level, can_events_t *primary_can,
+                  can_events_t *aux_can);
 
 /**
- * @brief Flush pending logs to OBC via UART.
+ * @brief Flush pending logs to OBC via CAN.
  *
  * Should be called periodically from main loop or triggered by events.
  *

@@ -14,6 +14,13 @@
 #ifndef TELEMETRY_H
 #define TELEMETRY_H
 
+#include "battery_management.h"
+#include "can_events.h"
+#include "mppt_controller.h"
+#include "rail_controller.h"
+#include "redundancy_manager.h"
+#include "uart_events.h"
+#include <stdbool.h>
 #include <stdint.h>
 
 /**
@@ -35,6 +42,20 @@
  * @{
  */
 
+typedef struct {
+    uint32_t rx_byte_count;      /**< Total received bytes */
+    uint32_t rx_packet_count;    /**< Total packets decoded */
+    uint32_t rx_crc_error_count; /**< Total errors counted */
+    bool initialized;            /**< True if initialized */
+} uart_telemetry_t;
+
+typedef struct {
+    uint32_t rx_byte_count;      /**< Total received bytes */
+    uint32_t rx_packet_count;    /**< Total packets decoded */
+    uint32_t rx_crc_error_count; /**< Total errors counted */
+    bool initialized;            /**< True if initialized */
+} can_telemetry_t;
+
 /**
  * @struct eps_telemetry_t
  * @brief The Master Telemetry Packet.
@@ -43,7 +64,17 @@
  * It may include nested structures from other services.
  */
 typedef struct {
-    // TODO: this will be a larger struct containing all service telemetry data
+    battery_status_t battery; /**< BMS status telemetry */
+    mppt_channel_t
+        mppt_channels[NUM_MPPT_CHANNELS]; /**< Solar/MPPT channels telemetry */
+    rail_t rails[NUM_POWER_RAILS];        /**< Power rails telemetry */
+    redundancy_telemetry_t redundancy;    /**< Redundancy manager telemetry */
+    uart_telemetry_t uart1;               /**< USART1 telemetry */
+    uart_telemetry_t uart3;               /**< USART3 telemetry */
+    can_telemetry_t can1;                 /**< CAN1 telemetry */
+    can_telemetry_t can2;                 /**< CAN2 telemetry */
+    float v_reg_5v;                       /**< 5V regulator voltage in V */
+    float v_reg_3v3;                      /**< 3.3V regulator voltage in V */
 } eps_telemetry_t;
 
 /**
@@ -55,6 +86,18 @@ typedef struct {
  */
 typedef struct {
     eps_telemetry_t telemetry; /**< The current aggregated data snapshot. */
+    const battery_management_t *battery_manager;
+    const mppt_t *mppt_controller;
+    const rail_controller_t *rail_controller;
+    const redundancy_manager_t *redundancy_manager;
+    const uart_events_t *usart1_events;
+    const uart_events_t *usart3_events;
+    const can_events_t *can1_events;
+    const can_events_t *can2_events;
+
+    uint32_t
+        tick_counter; /**< Internal counter for timing telemetry collection */
+    bool initialized; /**< Whether the telemetry service has been initialized */
 } telemetry_t;
 
 /** @} */ // end telemetry_types
