@@ -1,5 +1,14 @@
 # Schematic & Layout Design Guidelines
 
+## Document Control
+
+- Version: 1
+- Author: Ethan Eggert
+- Approver: Nick Alves 
+- Last Revised date: 07/5/2026
+- Approval Status: Approved
+
+
 ## Overview
 
 This document outlines general guidelines that must be followed when designing PCB schematics and layouts.
@@ -45,6 +54,22 @@ This document outlines general guidelines that must be followed when designing P
 - 0 ohm resistors/solder-bridges on key lines
 - Utilize DNP (do-not-populate)
     - Especially use them in places that may be useful for the flight model but maybe not on the bench (e.g., slew rate control)
+
+### Connectors
+
+- When possible, use connectors with flight heritage or are part of a space-rated line
+
+### Accessibility
+
+- Add test points for the following:
+    - Main system power rails
+    - Key signals
+
+### Inhibits
+
+- Every subsystem design must include at least one inhibit mechanism that disables the hardware when inserted
+    - Pin jumpers offer a good solution for most applications
+    - Deployment switches are necessary for the EPS and may be used for other subsystems as well
 
 ### Readiness Review
 
@@ -92,6 +117,10 @@ This document outlines general guidelines that must be followed when designing P
 
 - Follow manufacturers' design constraints. You can find design rules online for popular board manufacturers that can be imported into KiCad.
 - Populate component symbols with manufacturer library part numbers
+- Never select a pure-tin finish (e.g., lead free HASL)
+    - Tin whiskers run the risk of shorting in a vacuum
+    - Select an alternative like leaded HASL or ENIG
+- Check material outgassing properties against launch provider requirements for flight revisions
 
 ### Silkscreen
 
@@ -121,6 +150,7 @@ This document outlines general guidelines that must be followed when designing P
 - Measure regulator outputs before connecting sensitive components like MCU
 - Validate communications lines with logic analyzer/oscilloscope
 - Incrementally enable loads
+- After the design is stable, fill out an [ATP](./writing_atps.md) and put it in Git
 
 ### Documentation
 

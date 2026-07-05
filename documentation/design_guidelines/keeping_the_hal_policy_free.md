@@ -1,5 +1,13 @@
 # Keeping the HAL Policy Free
 
+## Document Control
+
+- Version: 1
+- Author: Ethan Eggert
+- Approver: 
+- Last Revised date: 07/5/2026
+- Approval Status: Unapproved
+
 ## Overview
 
 When working with services in firmware you may find that some need signals from the HAL for error reporting, state tracking, or hardware events in general (e.g., an error reporting service wanting signals for CANBus faults). Your first instinct might be to create a new service ID for the HAL and integrate it with the event bus, but this introduces a few different architecture smells:

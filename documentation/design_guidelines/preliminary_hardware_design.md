@@ -1,5 +1,14 @@
 # Preliminary Hardware Design Guidelines
 
+## Document Control
+
+- Version: 1
+- Author: Ethan Eggert
+- Approver: 
+- Last Revised date: 07/5/2026
+- Approval Status: Unapproved
+
+
 ## Overview
 
 These guidelines outline the process and requirements for ALL OSUSat hardware design before CAD tools like KiCad are ever touched. All preliminary design information should primarily live in a `subsystem_info.md` document like [eps/documentation/subsystem_info.md](../../eps/documentation/subsystem_info.md), where system requirements, procedures, deliverables, and other important information about the design of the subsystem are listed.

@@ -1,5 +1,13 @@
 # Refactoring Polling-Based Modules to be Event Driven
 
+## Document Control
+
+- Version: 1
+- Author: Ethan Eggert
+- Approver: 
+- Last Revised date: 07/5/2026
+- Approval Status: Unapproved
+
 ## Overview
 
 These guidelines outline a general decision framework for converting polling-based firmware modules into event-driven modules using the OSUSat core libraries.

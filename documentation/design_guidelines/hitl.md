@@ -1,5 +1,13 @@
 # Hardware-In-The-Loop Testing (HITL)
 
+## Document Control
+
+- Version: 1
+- Author: Ethan Eggert
+- Approver: 
+- Last Revised date: 11/5/2025
+- Approval Status: Unapproved
+
 # Overview
 
 Hardware in-the-loop testing (HITL) is a technique used for testing embedded firmware by running real hardware and firmware components against simulated system components. For example, the firmware could be run on the actual microcontroller with some hardware components, but most of the system is simulated.
