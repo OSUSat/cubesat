@@ -2,7 +2,13 @@
 
 # EPS Subsystem
 
-Date July 3, 2026
+## Document Control
+
+- Version: 1
+- Author: Ethan Eggert
+- Approver: 
+- Last Revised date: 07/5/2026
+- Approval Status: Unapproved
 
 # Background and context
 
