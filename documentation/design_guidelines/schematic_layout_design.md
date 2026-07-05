@@ -27,6 +27,7 @@ This document outlines general guidelines that must be followed when designing P
 - Include breakdown voltage for capacitors
 - Include saturation current for inductors
 - Toggle on inter-sheet-references
+- IC Component datasheets included in `documentation/datasheets/`
 
 ### Power & Ground
 

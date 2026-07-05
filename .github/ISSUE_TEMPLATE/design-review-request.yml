@@ -1,0 +1,118 @@
+name: Design Review Request
+description: >-
+  Request review of a design BEFORE starting layout/routing or writing/refactoring
+  code. The goal is to catch requirement
+  gaps before time is spent on implementation.
+title: "[Design Review]: "
+labels:
+  - design-review
+  - needs-review
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Fill this out **before** starting the work, not after it's done. "Not yet" is a
+        fine answer on the checklist below, just meaning a reviewer will help close
+        the gap before implementation starts.
+
+  - type: input
+    id: subsystem
+    attributes:
+      label: Subsystem
+      placeholder: e.g. EPS, ADCS, COMMS
+    validations:
+      required: true
+
+  - type: dropdown
+    id: work-type
+    attributes:
+      label: Type of work
+      options:
+        - Schematic
+        - Layout
+        - New firmware service
+        - Firmware refactor
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: target-start-date
+    attributes:
+      label: Target start date
+      placeholder: e.g. 2026-07-15
+    validations:
+      required: false
+
+  - type: input
+    id: reviewers
+    attributes:
+      label: Reviewer(s) requested
+      placeholder: "@username, @username"
+    validations:
+      required: false
+
+  - type: textarea
+    id: description
+    attributes:
+      label: What you're about to build
+      description: One paragraph description of the change.
+    validations:
+      required: true
+
+  - type: textarea
+    id: requirements
+    attributes:
+      label: Which requirement(s) does this satisfy?
+      description: >-
+        Reference the subsystem information document. If no requirement exists yet for this
+        work, write it first.
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: prework-checklist
+    attributes:
+      label: Pre-work checklist
+      description: Evaluate what's true right now.
+      options:
+        - label: >-
+            Relevant subsystem information doc section (mission context, electrical requirements,
+            part tradeoffs) exists and covers this work
+        - label: >-
+            (Hardware) Relevant part(s) selected with a documented tradeoff, or
+            reusing an already-approved part
+        - label: >-
+            (Hardware) Derating requirements for any new part identified before
+            layout begins
+        - label: >-
+            (Hardware) If this touches envelope, mass, power architecture, RBF,
+            deployment switches, or RF: CDS-compliance checklist reviewed
+        - label: >-
+            (Firmware) Interface sketched out and classified into Question/Command/Loop
+            per the event-driven refactor guideline
+        - label: >-
+            (Firmware) Proposed event UID(s) checked against the existing UID
+            registry for collisions
+        - label: Known open questions or risks are listed below
+
+  - type: textarea
+    id: open-questions
+    attributes:
+      label: Open questions / risks
+      description: >-
+        This is the most useful field for a you and the reviewer. List any questions here
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        ### For reviewers
+        Leave the review decision as a comment on this issue, not in the form above:
+        - **Gaps identified:**
+        - **Action items before work starts:**
+        - **Cleared to proceed?** Yes / Yes with action items / No — revisit after action items resolved
+
+        Apply the `cleared-to-proceed` label and close the issue once resolved.
