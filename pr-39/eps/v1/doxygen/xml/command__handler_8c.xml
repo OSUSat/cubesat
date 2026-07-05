@@ -1,0 +1,186 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="command__handler_8c" kind="file" language="C++">
+    <compoundname>command_handler.c</compoundname>
+    <includes refid="command__handler_8h" local="yes">command_handler.h</includes>
+    <includes refid="events_8h" local="yes">events.h</includes>
+    <includes refid="messages_8h" local="yes">messages.h</includes>
+    <includes refid="event__bus_8h" local="yes">osusat/event_bus.h</includes>
+    <includes refid="packet_8h" local="yes">packet.h</includes>
+    <includes local="no">string.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/app/command_handler.c</label>
+        <link refid="command__handler_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>command_handler.h</label>
+        <link refid="command__handler_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>events.h</label>
+        <link refid="events_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>osusat/event_bus.h</label>
+        <link refid="event__bus_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>messages.h</label>
+        <link refid="messages_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>packet.h</label>
+        <link refid="packet_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>stdbool.h</label>
+      </node>
+      <node id="7">
+        <label>stddef.h</label>
+      </node>
+      <node id="4">
+        <label>stdint.h</label>
+      </node>
+      <node id="10">
+        <label>string.h</label>
+      </node>
+    </incdepgraph>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="command__handler_8c_1a03560030867d8ce455c62d372b4fe8b0" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void handle_uart_event</definition>
+        <argsstring>(const osusat_event_t *e, void *ctx) __attribute__((unused))</argsstring>
+        <name>handle_uart_event</name>
+        <param>
+          <type>const <ref refid="structosusat__event__t" kindref="compound">osusat_event_t</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>ctx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/app/command_handler.c" line="31" column="13" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/app/command_handler.c" bodystart="31" bodyend="38" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/app/command_handler.c" declline="13" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="command__handler_8c_1a16b975d8fccdb2dcde49ad26dc07db10" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void process_packet</definition>
+        <argsstring>(command_handler_t *app, const OSUSatPacket *packet) __attribute__((unused))</argsstring>
+        <name>process_packet</name>
+        <param>
+          <type><ref refid="structcommand__handler__t" kindref="compound">command_handler_t</ref> *</type>
+          <declname>app</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structOSUSatPacket" kindref="compound">OSUSatPacket</ref> *</type>
+          <declname>packet</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/app/command_handler.c" line="40" column="13" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/app/command_handler.c" bodystart="40" bodyend="53" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/app/command_handler.c" declline="15" declcolumn="13"/>
+      </memberdef>
+      <member refid="group__command__handler__api_1ga11e93676c655043736e4a8cd8f9f85d4" kind="function"><name>command_handler_init</name></member>
+    </sectiondef>
+    <briefdescription>
+<para>Application layer for processing incoming commands. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="command__handler_8h" kindref="compound">command_handler.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="events_8h" kindref="compound">events.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="messages_8h" kindref="compound">messages.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="event__bus_8h" kindref="compound">osusat/event_bus.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="packet_8h" kindref="compound">packet.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>handle_uart_event(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structosusat__event__t" kindref="compound">osusat_event_t</ref><sp/>*e,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*ctx)</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="bootstrap_2Core_2Src_2syscalls_8c_1af9aace1b44b73111e15aa39f06f43456" kindref="member">__attribute__</ref>((unused));</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>process_packet(<ref refid="structcommand__handler__t" kindref="compound">command_handler_t</ref><sp/>*app,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structOSUSatPacket" kindref="compound">OSUSatPacket</ref><sp/>*packet)</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="bootstrap_2Core_2Src_2syscalls_8c_1af9aace1b44b73111e15aa39f06f43456" kindref="member">__attribute__</ref>((unused));</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__command__handler__api_1ga11e93676c655043736e4a8cd8f9f85d4" kindref="member">command_handler_init</ref>(<ref refid="structcommand__handler__t" kindref="compound">command_handler_t</ref><sp/>*app)<sp/>{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(app<sp/>==<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>memset(app,<sp/>0,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<ref refid="structcommand__handler__t" kindref="compound">command_handler_t</ref>));</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>app-&gt;<ref refid="structcommand__handler__t_1a9d45c59d50cb5f14358a00c4ef95a3f8" kindref="member">initialized</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>subscribe<sp/>to<sp/>uart<sp/>events</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>osusat_event_bus_subscribe(UART_EVENT_PACKET_RECEIVED,<sp/>handle_uart_event,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>app);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>handle_uart_event(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structosusat__event__t" kindref="compound">osusat_event_t</ref><sp/>*e,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*ctx)<sp/>{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structcommand__handler__t" kindref="compound">command_handler_t</ref><sp/>*app<sp/><ref refid="bootstrap_2Core_2Src_2syscalls_8c_1af9aace1b44b73111e15aa39f06f43456" kindref="member">__attribute__</ref>((unused))<sp/>=<sp/>(<ref refid="structcommand__handler__t" kindref="compound">command_handler_t</ref><sp/>*)ctx;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>if<sp/>(e-&gt;id<sp/>==<sp/>UART_EVENT_PACKET_RECEIVED)<sp/>{</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>OSUSatPacket<sp/>*packet<sp/>=<sp/>(OSUSatPacket<sp/>*)e-&gt;payload;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>process_packet(app,<sp/>packet);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>process_packet(<ref refid="structcommand__handler__t" kindref="compound">command_handler_t</ref><sp/>*app,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structOSUSatPacket" kindref="compound">OSUSatPacket</ref><sp/>*packet)<sp/>{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>implement<sp/>command<sp/>processing<sp/>logic.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>switch<sp/>(packet-&gt;message_id)<sp/>{</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>case<sp/>MSG_ID_TOGGLE_SAFE_MODE:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>{</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>request<sp/>a<sp/>change<sp/>to<sp/>safe<sp/>mode<sp/>over<sp/>the<sp/>event<sp/>bus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/>osusat_event_bus_publish(APP_EVENT_REQUEST_POWER_PROFILE_SAFE,<sp/>NULL,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/>0);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>default:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>break;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/app/command_handler.c"/>
+  </compounddef>
+</doxygen>

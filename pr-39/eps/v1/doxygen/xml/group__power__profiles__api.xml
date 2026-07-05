@@ -1,0 +1,173 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="group__power__profiles__api" kind="group">
+    <compoundname>power_profiles_api</compoundname>
+    <title>Public API</title>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="group__power__profiles__api_1gab8448eefa1b2c48c6385e8ab507ffce4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void power_profiles_init</definition>
+        <argsstring>(power_profiles_t *profiles, rail_controller_t *controller)</argsstring>
+        <name>power_profiles_init</name>
+        <param>
+          <type><ref refid="structpower__profiles__t" kindref="compound">power_profiles_t</ref> *</type>
+          <declname>profiles</declname>
+        </param>
+        <param>
+          <type><ref refid="structrail__controller__t" kindref="compound">rail_controller_t</ref> *</type>
+          <declname>controller</declname>
+        </param>
+        <briefdescription>
+<para>Initialize the Power Profiles Service. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This must be called once at startup. It subscribes to profile change request events from the application layer.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">profiles</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The power profiles service instance. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">controller</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The rail controller instance. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/power_profiles.h" line="104" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/power_profiles.c" bodystart="12" bodyend="32" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/power_profiles.h" declline="104" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__power__profiles__api_1gad7c6a83ce0113bd858d66ca7b2c91f45" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__power__profiles__types_1gaffe08cae8739332391c30af934a68280" kindref="member">power_profile_status_t</ref></type>
+        <definition>power_profile_status_t power_profiles_enable</definition>
+        <argsstring>(power_profiles_t *profiles, power_profile_t profile)</argsstring>
+        <name>power_profiles_enable</name>
+        <param>
+          <type><ref refid="structpower__profiles__t" kindref="compound">power_profiles_t</ref> *</type>
+          <declname>profiles</declname>
+        </param>
+        <param>
+          <type><ref refid="group__power__profiles__types_1gaaa76c374d83ff47037a4930b2a616025" kindref="member">power_profile_t</ref></type>
+          <declname>profile</declname>
+        </param>
+        <briefdescription>
+<para>Enable all power rails associated with a specific profile. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Iterates through the list of rails defined for the given profile and instructs the Rail Controller to turn them ON.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">profiles</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The power profiles service instance. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">profile</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The target profile to enable (e.g., POWER_PROFILE_NOMINAL).</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>POWER_PROFILE_SUCCESS</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Operation successful. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>POWER_PROFILE_ERROR_INVALID_PROFILE</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The provided profile ID does not exist. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/power_profiles.h" line="121" column="24" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/power_profiles.c" bodystart="34" bodyend="48" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/power_profiles.h" declline="121" declcolumn="24"/>
+      </memberdef>
+      <memberdef kind="function" id="group__power__profiles__api_1ga9fc78b2b700a9edb2843ffea8ad17f8c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__power__profiles__types_1gaffe08cae8739332391c30af934a68280" kindref="member">power_profile_status_t</ref></type>
+        <definition>power_profile_status_t power_profiles_disable</definition>
+        <argsstring>(power_profiles_t *profiles, power_profile_t profile)</argsstring>
+        <name>power_profiles_disable</name>
+        <param>
+          <type><ref refid="structpower__profiles__t" kindref="compound">power_profiles_t</ref> *</type>
+          <declname>profiles</declname>
+        </param>
+        <param>
+          <type><ref refid="group__power__profiles__types_1gaaa76c374d83ff47037a4930b2a616025" kindref="member">power_profile_t</ref></type>
+          <declname>profile</declname>
+        </param>
+        <briefdescription>
+<para>Disable all power rails associated with a specific profile. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Iterates through the list of rails defined for the given profile and instructs the Rail Controller to turn them OFF.</para>
+<para><simplesect kind="note"><para>This is typically used when transitioning out of a state, or to shut down specific subsystems associated with a mode.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">profiles</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The power profiles service instance. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">profile</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The target profile to disable.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>POWER_PROFILE_SUCCESS</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Operation successful. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>POWER_PROFILE_ERROR_INVALID_PROFILE</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The provided profile ID does not exist. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/power_profiles.h" line="140" column="24" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/power_profiles.c" bodystart="50" bodyend="64" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/power_profiles.h" declline="140" declcolumn="24"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Functions for applying power configurations. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

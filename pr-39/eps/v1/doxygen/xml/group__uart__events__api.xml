@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="group__uart__events__api" kind="group">
+    <compoundname>uart_events_api</compoundname>
+    <title>Public API</title>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="group__uart__events__api_1gac49317802c3a26a65adc994980d2b38e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void uart_events_init</definition>
+        <argsstring>(uart_events_t *uart, uart_port_t port)</argsstring>
+        <name>uart_events_init</name>
+        <param>
+          <type><ref refid="structuart__events__t" kindref="compound">uart_events_t</ref> *</type>
+          <declname>uart</declname>
+        </param>
+        <param>
+          <type><ref refid="group__uart__types_1ga7f28644638bd57536eb5260695e83de9" kindref="member">uart_port_t</ref></type>
+          <declname>port</declname>
+        </param>
+        <briefdescription>
+<para>Initialize the UART service. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">uart</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Service instance </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Physical HAL port to use </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/uart_events.h" line="108" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/uart_events.c" bodystart="50" bodyend="66" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/uart_events.h" declline="108" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__uart__events__api_1ga4757f4c4b537d90f1f4ef303cd2a61db" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void uart_events_send_packet</definition>
+        <argsstring>(uart_events_t *uart, const OSUSatPacket *packet)</argsstring>
+        <name>uart_events_send_packet</name>
+        <param>
+          <type><ref refid="structuart__events__t" kindref="compound">uart_events_t</ref> *</type>
+          <declname>uart</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structOSUSatPacket" kindref="compound">OSUSatPacket</ref> *</type>
+          <declname>packet</declname>
+        </param>
+        <briefdescription>
+<para>Queue a packet for transmission. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Uses <ref refid="packet_8h_1a93662568ee003d2da0b8e869867834f1" kindref="member">osusat_packet_pack()</ref> to serialize before sending.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">uart</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Service instance </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">packet</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the packet to send </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/uart_events.h" line="118" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/uart_events.c" bodystart="68" bodyend="82" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/uart_events.h" declline="118" declcolumn="6"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

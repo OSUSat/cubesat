@@ -1,0 +1,272 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="bsp_2hal__driver_2Src_2stm32l4xx__hal__pwr_8c" kind="file" language="C++">
+    <compoundname>stm32l4xx_hal_pwr.c</compoundname>
+    <includes local="yes">stm32l4xx_hal.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Src/stm32l4xx_hal_pwr.c</label>
+        <link refid="bsp_2hal__driver_2Src_2stm32l4xx__hal__pwr_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>stm32l4xx_hal.h</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+<para>PWR HAL module driver. This file provides firmware functions to manage the following functionalities of the Power Controller (PWR) peripheral: </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>MCD Application Team<itemizedlist>
+<listitem><para>Initialization/de-initialization functions</para>
+</listitem><listitem><para>Peripheral Control functions</para>
+</listitem></itemizedlist>
+</para>
+</simplesect>
+<simplesect kind="attention"><para></para>
+</simplesect>
+Copyright (c) 2019 STMicroelectronics. All rights reserved.</para>
+<para>This software is licensed under terms that can be found in the LICENSE file in the root directory of this software component. If no LICENSE file comes with this software, it is provided AS-IS. </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Includes<sp/>------------------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;stm32l4xx_hal.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>HAL_PWR_MODULE_ENABLED</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>typedef<sp/>-----------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>define<sp/>------------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PVD_MODE_IT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((uint32_t)0x00010000)<sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PVD_MODE_EVT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((uint32_t)0x00020000)<sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PVD_RISING_EDGE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((uint32_t)0x00000001)<sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PVD_FALLING_EDGE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((uint32_t)0x00000002)<sp/><sp/></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>macro<sp/>-------------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>variables<sp/>---------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>function<sp/>prototypes<sp/>-----------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Exported<sp/>functions<sp/>--------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__PWR__Exported__Functions__Group1_1ga7edb99b94a46448c34f0301b0a077ff5" kindref="member">HAL_PWR_DeInit</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="87"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><ref refid="group__RCC__APB1__Force__Release__Reset_1gaf454341fae45fdfacfea2f45c07ce3e0" kindref="member">__HAL_RCC_PWR_FORCE_RESET</ref>();</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><ref refid="group__RCC__APB1__Force__Release__Reset_1gaaa5a340d38d50e508243f48bbb47dd32" kindref="member">__HAL_RCC_PWR_RELEASE_RESET</ref>();</highlight></codeline>
+<codeline lineno="90"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__PWR__Exported__Functions__Group1_1ga3d07cef39bf294db4aed7e06e5dbf9af" kindref="member">HAL_PWR_EnableBkUpAccess</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="105"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga04651c526497822a859942b928e57f8e" kindref="member">PWR</ref>-&gt;CR1,<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1ga09950f76d292eb9d01f72dd825082f1b" kindref="member">PWR_CR1_DBP</ref>);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__PWR__Exported__Functions__Group1_1ga1513de5f2e4b72e094fb04bab786fec8" kindref="member">HAL_PWR_DisableBkUpAccess</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="115"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><ref refid="group__Exported__macros_1ga133aae6fc0d41bffab39ab223a7001de" kindref="member">CLEAR_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga04651c526497822a859942b928e57f8e" kindref="member">PWR</ref>-&gt;CR1,<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1ga09950f76d292eb9d01f72dd825082f1b" kindref="member">PWR_CR1_DBP</ref>);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/><ref refid="group__PWR__Exported__Functions__Group2_1gad7dac916270a2ac987f19413f8aedd87" kindref="member">HAL_PWR_ConfigPVD</ref>(<ref refid="structPWR__PVDTypeDef" kindref="compound">PWR_PVDTypeDef</ref><sp/>*sConfigPVD)</highlight></codeline>
+<codeline lineno="312"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>the<sp/>parameters<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(<ref refid="group__PWR__Private__Macros_1gabac4485a57abc97aad91eaa0b65ae927" kindref="member">IS_PWR_PVD_LEVEL</ref>(sConfigPVD-&gt;<ref refid="structPWR__PVDTypeDef_1a540471bc6ac947fd8bc2c87f61d9faab" kindref="member">PVDLevel</ref>));</highlight></codeline>
+<codeline lineno="315"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(<ref refid="group__PWR__Private__Macros_1ga8edfbbba20e58a9281408c23dc6ff7ef" kindref="member">IS_PWR_PVD_MODE</ref>(sConfigPVD-&gt;<ref refid="structPWR__PVDTypeDef_1af692d691f0cb5871b319fd371fab34d8" kindref="member">Mode</ref>));</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"></highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Set<sp/>PLS<sp/>bits<sp/>according<sp/>to<sp/>PVDLevel<sp/>value<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="318"><highlight class="normal"><sp/><sp/><ref refid="group__Exported__macros_1ga6553c99f510c3bab8cc0a91602053247" kindref="member">MODIFY_REG</ref>(<ref refid="group__Peripheral__declaration_1ga04651c526497822a859942b928e57f8e" kindref="member">PWR</ref>-&gt;CR2,<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1gaf4b697d94b29f811dca702a8dfcd8266" kindref="member">PWR_CR2_PLS</ref>,<sp/>sConfigPVD-&gt;<ref refid="structPWR__PVDTypeDef_1a540471bc6ac947fd8bc2c87f61d9faab" kindref="member">PVDLevel</ref>);</highlight></codeline>
+<codeline lineno="319"><highlight class="normal"></highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Clear<sp/>any<sp/>previous<sp/>config.<sp/>Keep<sp/>it<sp/>clear<sp/>if<sp/>no<sp/>event<sp/>or<sp/>IT<sp/>mode<sp/>is<sp/>selected<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/><ref refid="group__PWR__Exported__Macros_1ga8bd379e960497722450c7cea474a7e7a" kindref="member">__HAL_PWR_PVD_EXTI_DISABLE_EVENT</ref>();</highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/><ref refid="group__PWR__Exported__Macros_1gad240d7bf8f15191b068497b9aead1f1f" kindref="member">__HAL_PWR_PVD_EXTI_DISABLE_IT</ref>();</highlight></codeline>
+<codeline lineno="323"><highlight class="normal"><sp/><sp/><ref refid="group__PWR__Exported__Macros_1ga1ca57168205f8cd8d1014e6eb9465f2d" kindref="member">__HAL_PWR_PVD_EXTI_DISABLE_FALLING_EDGE</ref>();</highlight></codeline>
+<codeline lineno="324"><highlight class="normal"><sp/><sp/><ref refid="group__PWR__Exported__Macros_1ga1ca8fd7f3286a176f6be540c75a004c6" kindref="member">__HAL_PWR_PVD_EXTI_DISABLE_RISING_EDGE</ref>();</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"></highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Configure<sp/>interrupt<sp/>mode<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">((sConfigPVD-&gt;<ref refid="structPWR__PVDTypeDef_1af692d691f0cb5871b319fd371fab34d8" kindref="member">Mode</ref><sp/>&amp;<sp/>PVD_MODE_IT)<sp/>==<sp/>PVD_MODE_IT)</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="329"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__PWR__Exported__Macros_1ga3180f039cf14ef78a64089f387f8f9c2" kindref="member">__HAL_PWR_PVD_EXTI_ENABLE_IT</ref>();</highlight></codeline>
+<codeline lineno="330"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="331"><highlight class="normal"></highlight></codeline>
+<codeline lineno="332"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Configure<sp/>event<sp/>mode<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="333"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">((sConfigPVD-&gt;<ref refid="structPWR__PVDTypeDef_1af692d691f0cb5871b319fd371fab34d8" kindref="member">Mode</ref><sp/>&amp;<sp/>PVD_MODE_EVT)<sp/>==<sp/>PVD_MODE_EVT)</highlight></codeline>
+<codeline lineno="334"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__PWR__Exported__Macros_1gae5ba5672fe8cb7c1686c7f2cc211b128" kindref="member">__HAL_PWR_PVD_EXTI_ENABLE_EVENT</ref>();</highlight></codeline>
+<codeline lineno="336"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="337"><highlight class="normal"></highlight></codeline>
+<codeline lineno="338"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Configure<sp/>the<sp/>edge<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="339"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">((sConfigPVD-&gt;<ref refid="structPWR__PVDTypeDef_1af692d691f0cb5871b319fd371fab34d8" kindref="member">Mode</ref><sp/>&amp;<sp/>PVD_RISING_EDGE)<sp/>==<sp/>PVD_RISING_EDGE)</highlight></codeline>
+<codeline lineno="340"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="341"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__PWR__Exported__Macros_1ga7bef3f30c9fe267c99d5240fbf3f878c" kindref="member">__HAL_PWR_PVD_EXTI_ENABLE_RISING_EDGE</ref>();</highlight></codeline>
+<codeline lineno="342"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="343"><highlight class="normal"></highlight></codeline>
+<codeline lineno="344"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">((sConfigPVD-&gt;<ref refid="structPWR__PVDTypeDef_1af692d691f0cb5871b319fd371fab34d8" kindref="member">Mode</ref><sp/>&amp;<sp/>PVD_FALLING_EDGE)<sp/>==<sp/>PVD_FALLING_EDGE)</highlight></codeline>
+<codeline lineno="345"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="346"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__PWR__Exported__Macros_1ga5b971478563a00e1ee1a9d8ca8054e08" kindref="member">__HAL_PWR_PVD_EXTI_ENABLE_FALLING_EDGE</ref>();</highlight></codeline>
+<codeline lineno="347"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="348"><highlight class="normal"></highlight></codeline>
+<codeline lineno="349"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>;</highlight></codeline>
+<codeline lineno="350"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="351"><highlight class="normal"></highlight></codeline>
+<codeline lineno="352"><highlight class="normal"></highlight></codeline>
+<codeline lineno="357"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__PWR__Exported__Functions__Group2_1ga729c254eac1847073d8a55621384107d" kindref="member">HAL_PWR_EnablePVD</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="358"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="359"><highlight class="normal"><sp/><sp/><ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga04651c526497822a859942b928e57f8e" kindref="member">PWR</ref>-&gt;CR2,<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1gaabd4b7fcf83841d5063a413eb6557bd8" kindref="member">PWR_CR2_PVDE</ref>);</highlight></codeline>
+<codeline lineno="360"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="361"><highlight class="normal"></highlight></codeline>
+<codeline lineno="366"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__PWR__Exported__Functions__Group2_1ga3a843cc2fd1a1bb02c7f2dfa355bf9ec" kindref="member">HAL_PWR_DisablePVD</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="367"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="368"><highlight class="normal"><sp/><sp/><ref refid="group__Exported__macros_1ga133aae6fc0d41bffab39ab223a7001de" kindref="member">CLEAR_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga04651c526497822a859942b928e57f8e" kindref="member">PWR</ref>-&gt;CR2,<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1gaabd4b7fcf83841d5063a413eb6557bd8" kindref="member">PWR_CR2_PVDE</ref>);</highlight></codeline>
+<codeline lineno="369"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="370"><highlight class="normal"></highlight></codeline>
+<codeline lineno="371"><highlight class="normal"></highlight></codeline>
+<codeline lineno="372"><highlight class="normal"></highlight></codeline>
+<codeline lineno="373"><highlight class="normal"></highlight></codeline>
+<codeline lineno="391"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__PWR__Exported__Functions__Group2_1gab821ac9058a5feb78491bff15d9ae591" kindref="member">HAL_PWR_EnableWakeUpPin</ref>(uint32_t<sp/>WakeUpPinPolarity)</highlight></codeline>
+<codeline lineno="392"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="393"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(<ref refid="group__PWREx__Private__Macros_1gac6fcc59d6ff95b8feda1b228517f9c3f" kindref="member">IS_PWR_WAKEUP_PIN</ref>(WakeUpPinPolarity));</highlight></codeline>
+<codeline lineno="394"><highlight class="normal"></highlight></codeline>
+<codeline lineno="395"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Specifies<sp/>the<sp/>Wake-Up<sp/>pin<sp/>polarity<sp/>for<sp/>the<sp/>event<sp/>detection</highlight></codeline>
+<codeline lineno="396"><highlight class="comment"><sp/><sp/><sp/><sp/>(rising<sp/>or<sp/>falling<sp/>edge)<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="397"><highlight class="normal"><sp/><sp/><ref refid="group__Exported__macros_1ga6553c99f510c3bab8cc0a91602053247" kindref="member">MODIFY_REG</ref>(<ref refid="group__Peripheral__declaration_1ga04651c526497822a859942b928e57f8e" kindref="member">PWR</ref>-&gt;CR4,<sp/>(<ref refid="group__Peripheral__Registers__Bits__Definition_1gafd81a36df9d6c650511a6b4670707748" kindref="member">PWR_CR3_EWUP</ref><sp/>&amp;<sp/>WakeUpPinPolarity),<sp/>(WakeUpPinPolarity<sp/>&gt;&gt;<sp/><ref refid="group__PWREx__WUP__Polarity_1ga21257e8b8c5dd0d90f68aa5ac31c818b" kindref="member">PWR_WUP_POLARITY_SHIFT</ref>));</highlight></codeline>
+<codeline lineno="398"><highlight class="normal"></highlight></codeline>
+<codeline lineno="399"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Enable<sp/>wake-up<sp/>pin<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="400"><highlight class="normal"><sp/><sp/><ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga04651c526497822a859942b928e57f8e" kindref="member">PWR</ref>-&gt;CR3,<sp/>(<ref refid="group__Peripheral__Registers__Bits__Definition_1gafd81a36df9d6c650511a6b4670707748" kindref="member">PWR_CR3_EWUP</ref><sp/>&amp;<sp/>WakeUpPinPolarity));</highlight></codeline>
+<codeline lineno="401"><highlight class="normal"></highlight></codeline>
+<codeline lineno="402"><highlight class="normal"></highlight></codeline>
+<codeline lineno="403"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="404"><highlight class="normal"></highlight></codeline>
+<codeline lineno="412"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__PWR__Exported__Functions__Group2_1gab12ca816929e23e36f5ed8f4ccdb1472" kindref="member">HAL_PWR_DisableWakeUpPin</ref>(uint32_t<sp/>WakeUpPinx)</highlight></codeline>
+<codeline lineno="413"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="414"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(<ref refid="group__PWREx__Private__Macros_1gac6fcc59d6ff95b8feda1b228517f9c3f" kindref="member">IS_PWR_WAKEUP_PIN</ref>(WakeUpPinx));</highlight></codeline>
+<codeline lineno="415"><highlight class="normal"></highlight></codeline>
+<codeline lineno="416"><highlight class="normal"><sp/><sp/><ref refid="group__Exported__macros_1ga133aae6fc0d41bffab39ab223a7001de" kindref="member">CLEAR_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga04651c526497822a859942b928e57f8e" kindref="member">PWR</ref>-&gt;CR3,<sp/>(<ref refid="group__Peripheral__Registers__Bits__Definition_1gafd81a36df9d6c650511a6b4670707748" kindref="member">PWR_CR3_EWUP</ref><sp/>&amp;<sp/>WakeUpPinx));</highlight></codeline>
+<codeline lineno="417"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="418"><highlight class="normal"></highlight></codeline>
+<codeline lineno="419"><highlight class="normal"></highlight></codeline>
+<codeline lineno="444"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__PWR__Exported__Functions__Group2_1ga5c84f4e046525c22d233c8a3443fab5f" kindref="member">HAL_PWR_EnterSLEEPMode</ref>(uint32_t<sp/>Regulator,<sp/>uint8_t<sp/>SLEEPEntry)</highlight></codeline>
+<codeline lineno="445"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="446"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>the<sp/>parameters<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="447"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(<ref refid="group__PWR__Private__Macros_1ga03c105070272141c0bab5f2b74469072" kindref="member">IS_PWR_REGULATOR</ref>(Regulator));</highlight></codeline>
+<codeline lineno="448"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(<ref refid="group__PWR__Private__Macros_1ga9b36a9c213a77d36340788b2e7e277ff" kindref="member">IS_PWR_SLEEP_ENTRY</ref>(SLEEPEntry));</highlight></codeline>
+<codeline lineno="449"><highlight class="normal"></highlight></codeline>
+<codeline lineno="450"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Set<sp/>Regulator<sp/>parameter<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="451"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(Regulator<sp/>==<sp/><ref refid="group__PWR__Regulator__state__in__SLEEP__STOP__mode_1ga1d5b4e1482184286e28c16162f530039" kindref="member">PWR_MAINREGULATOR_ON</ref>)</highlight></codeline>
+<codeline lineno="452"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="453"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>If<sp/>in<sp/>low-power<sp/>run<sp/>mode<sp/>at<sp/>this<sp/>point,<sp/>exit<sp/>it<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="454"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a5b44dfd2a26f85f7b628b0945daff2c3" kindref="member">HAL_IS_BIT_SET</ref>(<ref refid="group__Peripheral__declaration_1ga04651c526497822a859942b928e57f8e" kindref="member">PWR</ref>-&gt;SR2,<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1ga8b4c0d31f1dbb17ccb85a6e582a00b9d" kindref="member">PWR_SR2_REGLPF</ref>))</highlight></codeline>
+<codeline lineno="455"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="456"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="group__PWREx__Exported__Functions__Group1_1ga848ac532d5c69ae9357a8ebcd8bb82f1" kindref="member">HAL_PWREx_DisableLowPowerRunMode</ref>()<sp/>!=<sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>)</highlight></codeline>
+<codeline lineno="457"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="458"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>;</highlight></codeline>
+<codeline lineno="459"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="460"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="461"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Regulator<sp/>now<sp/>in<sp/>main<sp/>mode.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="462"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="463"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="464"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="465"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>If<sp/>in<sp/>run<sp/>mode,<sp/>first<sp/>move<sp/>to<sp/>low-power<sp/>run<sp/>mode.</highlight></codeline>
+<codeline lineno="466"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>The<sp/>system<sp/>clock<sp/>frequency<sp/>must<sp/>be<sp/>below<sp/>2<sp/>MHz<sp/>at<sp/>this<sp/>point.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="467"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a5b44dfd2a26f85f7b628b0945daff2c3" kindref="member">HAL_IS_BIT_SET</ref>(<ref refid="group__Peripheral__declaration_1ga04651c526497822a859942b928e57f8e" kindref="member">PWR</ref>-&gt;SR2,<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1ga8b4c0d31f1dbb17ccb85a6e582a00b9d" kindref="member">PWR_SR2_REGLPF</ref>)<sp/>==<sp/><ref refid="group__Exported__types_1gga89136caac2e14c55151f527ac02daaffa589b7d94a3d91d145720e2fed0eb3a05" kindref="member">RESET</ref>)</highlight></codeline>
+<codeline lineno="468"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="469"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__PWREx__Exported__Functions__Group1_1ga03d018969b6940092bb32a3869b8c84e" kindref="member">HAL_PWREx_EnableLowPowerRunMode</ref>();</highlight></codeline>
+<codeline lineno="470"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="471"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="472"><highlight class="normal"></highlight></codeline>
+<codeline lineno="473"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Clear<sp/>SLEEPDEEP<sp/>bit<sp/>of<sp/>Cortex<sp/>System<sp/>Control<sp/>Register<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="474"><highlight class="normal"><sp/><sp/><ref refid="group__Exported__macros_1ga133aae6fc0d41bffab39ab223a7001de" kindref="member">CLEAR_BIT</ref>(<ref refid="group__CMSIS__CORE_1gaaaf6477c2bde2f00f99e3c2fd1060b01" kindref="member">SCB</ref>-&gt;SCR,<sp/>((uint32_t)<ref refid="group__CMSIS__CORE_1ga77c06a69c63f4b3f6ec1032e911e18e7" kindref="member">SCB_SCR_SLEEPDEEP_Msk</ref>));</highlight></codeline>
+<codeline lineno="475"><highlight class="normal"></highlight></codeline>
+<codeline lineno="476"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Select<sp/>SLEEP<sp/>mode<sp/>entry<sp/>-------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="477"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(SLEEPEntry<sp/>==<sp/><ref refid="group__PWR__SLEEP__mode__entry_1ga4f0f99a3526c57efb3501b016639fa45" kindref="member">PWR_SLEEPENTRY_WFI</ref>)</highlight></codeline>
+<codeline lineno="478"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="479"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Request<sp/>Wait<sp/>For<sp/>Interrupt<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="480"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__CMSIS__Core__InstructionInterface_1gad23bf2b78a9a4524157c9de0d30b7448" kindref="member">__WFI</ref>();</highlight></codeline>
+<codeline lineno="481"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="482"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="483"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="484"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Request<sp/>Wait<sp/>For<sp/>Event<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="485"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__CMSIS__Core__InstructionInterface_1gaab4f296d0022b4b10dc0976eb22052f9" kindref="member">__SEV</ref>();</highlight></codeline>
+<codeline lineno="486"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__CMSIS__Core__InstructionInterface_1gaac6cc7dd4325d9cb40d3290fa5244b3d" kindref="member">__WFE</ref>();</highlight></codeline>
+<codeline lineno="487"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__CMSIS__Core__InstructionInterface_1gaac6cc7dd4325d9cb40d3290fa5244b3d" kindref="member">__WFE</ref>();</highlight></codeline>
+<codeline lineno="488"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="489"><highlight class="normal"></highlight></codeline>
+<codeline lineno="490"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="491"><highlight class="normal"></highlight></codeline>
+<codeline lineno="492"><highlight class="normal"></highlight></codeline>
+<codeline lineno="523"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__PWR__Exported__Functions__Group2_1gacfca5f1062274423e08317c0a5a225fa" kindref="member">HAL_PWR_EnterSTOPMode</ref>(uint32_t<sp/>Regulator,<sp/>uint8_t<sp/>STOPEntry)</highlight></codeline>
+<codeline lineno="524"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="525"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>the<sp/>parameters<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="526"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(<ref refid="group__PWR__Private__Macros_1ga03c105070272141c0bab5f2b74469072" kindref="member">IS_PWR_REGULATOR</ref>(Regulator));</highlight></codeline>
+<codeline lineno="527"><highlight class="normal"></highlight></codeline>
+<codeline lineno="528"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(Regulator<sp/>==<sp/><ref refid="group__PWR__Regulator__state__in__SLEEP__STOP__mode_1gab9922a15f8414818d736d5e7fcace963" kindref="member">PWR_LOWPOWERREGULATOR_ON</ref>)</highlight></codeline>
+<codeline lineno="529"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="530"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__PWREx__Exported__Functions__Group1_1ga3a51da1f13d37cb1aee7a08c5ec57fb2" kindref="member">HAL_PWREx_EnterSTOP1Mode</ref>(STOPEntry);</highlight></codeline>
+<codeline lineno="531"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="532"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="533"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="534"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__PWREx__Exported__Functions__Group1_1gaaf42742d4b4331ef39167ce91872a6c8" kindref="member">HAL_PWREx_EnterSTOP0Mode</ref>(STOPEntry);</highlight></codeline>
+<codeline lineno="535"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="536"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="537"><highlight class="normal"></highlight></codeline>
+<codeline lineno="556"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__PWR__Exported__Functions__Group2_1ga40736f74c169077fcd08f34470559aa2" kindref="member">HAL_PWR_EnterSTANDBYMode</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="557"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="558"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Set<sp/>Stand-by<sp/>mode<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="559"><highlight class="normal"><sp/><sp/><ref refid="group__Exported__macros_1ga6553c99f510c3bab8cc0a91602053247" kindref="member">MODIFY_REG</ref>(<ref refid="group__Peripheral__declaration_1ga04651c526497822a859942b928e57f8e" kindref="member">PWR</ref>-&gt;CR1,<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1gaf533ae177088e3bea24206d65fdb8989" kindref="member">PWR_CR1_LPMS</ref>,<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1gac735f4a9afc62e1bb440a8a1a754b318" kindref="member">PWR_CR1_LPMS_STANDBY</ref>);</highlight></codeline>
+<codeline lineno="560"><highlight class="normal"></highlight></codeline>
+<codeline lineno="561"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Set<sp/>SLEEPDEEP<sp/>bit<sp/>of<sp/>Cortex<sp/>System<sp/>Control<sp/>Register<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="562"><highlight class="normal"><sp/><sp/><ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(<ref refid="group__CMSIS__CORE_1gaaaf6477c2bde2f00f99e3c2fd1060b01" kindref="member">SCB</ref>-&gt;SCR,<sp/>((uint32_t)<ref refid="group__CMSIS__CORE_1ga77c06a69c63f4b3f6ec1032e911e18e7" kindref="member">SCB_SCR_SLEEPDEEP_Msk</ref>));</highlight></codeline>
+<codeline lineno="563"><highlight class="normal"></highlight></codeline>
+<codeline lineno="564"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>This<sp/>option<sp/>is<sp/>used<sp/>to<sp/>ensure<sp/>that<sp/>store<sp/>operations<sp/>are<sp/>completed<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="565"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined<sp/>(<sp/>__CC_ARM)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="566"><highlight class="normal"><sp/><sp/>__force_stores();</highlight></codeline>
+<codeline lineno="567"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="568"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Request<sp/>Wait<sp/>For<sp/>Interrupt<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="569"><highlight class="normal"><sp/><sp/><ref refid="group__CMSIS__Core__InstructionInterface_1gad23bf2b78a9a4524157c9de0d30b7448" kindref="member">__WFI</ref>();</highlight></codeline>
+<codeline lineno="570"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="571"><highlight class="normal"></highlight></codeline>
+<codeline lineno="572"><highlight class="normal"></highlight></codeline>
+<codeline lineno="573"><highlight class="normal"></highlight></codeline>
+<codeline lineno="582"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__PWR__Exported__Functions__Group2_1ga85d0154c96068b286072a64fca4c7e6a" kindref="member">HAL_PWR_EnableSleepOnExit</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="583"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="584"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Set<sp/>SLEEPONEXIT<sp/>bit<sp/>of<sp/>Cortex<sp/>System<sp/>Control<sp/>Register<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="585"><highlight class="normal"><sp/><sp/><ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(<ref refid="group__CMSIS__CORE_1gaaaf6477c2bde2f00f99e3c2fd1060b01" kindref="member">SCB</ref>-&gt;SCR,<sp/>((uint32_t)<ref refid="group__CMSIS__CORE_1ga50a243e317b9a70781b02758d45b05ee" kindref="member">SCB_SCR_SLEEPONEXIT_Msk</ref>));</highlight></codeline>
+<codeline lineno="586"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="587"><highlight class="normal"></highlight></codeline>
+<codeline lineno="588"><highlight class="normal"></highlight></codeline>
+<codeline lineno="595"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__PWR__Exported__Functions__Group2_1ga1da299e8186a3e08a694865bd41c3bb0" kindref="member">HAL_PWR_DisableSleepOnExit</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="596"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="597"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Clear<sp/>SLEEPONEXIT<sp/>bit<sp/>of<sp/>Cortex<sp/>System<sp/>Control<sp/>Register<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="598"><highlight class="normal"><sp/><sp/><ref refid="group__Exported__macros_1ga133aae6fc0d41bffab39ab223a7001de" kindref="member">CLEAR_BIT</ref>(<ref refid="group__CMSIS__CORE_1gaaaf6477c2bde2f00f99e3c2fd1060b01" kindref="member">SCB</ref>-&gt;SCR,<sp/>((uint32_t)<ref refid="group__CMSIS__CORE_1ga50a243e317b9a70781b02758d45b05ee" kindref="member">SCB_SCR_SLEEPONEXIT_Msk</ref>));</highlight></codeline>
+<codeline lineno="599"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="600"><highlight class="normal"></highlight></codeline>
+<codeline lineno="601"><highlight class="normal"></highlight></codeline>
+<codeline lineno="602"><highlight class="normal"></highlight></codeline>
+<codeline lineno="609"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__PWR__Exported__Functions__Group2_1ga6f33b1c8c8cc85129c68ac302a281033" kindref="member">HAL_PWR_EnableSEVOnPend</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="610"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="611"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Set<sp/>SEVONPEND<sp/>bit<sp/>of<sp/>Cortex<sp/>System<sp/>Control<sp/>Register<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="612"><highlight class="normal"><sp/><sp/><ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(<ref refid="group__CMSIS__CORE_1gaaaf6477c2bde2f00f99e3c2fd1060b01" kindref="member">SCB</ref>-&gt;SCR,<sp/>((uint32_t)<ref refid="group__CMSIS__CORE_1gafb98656644a14342e467505f69a997c9" kindref="member">SCB_SCR_SEVONPEND_Msk</ref>));</highlight></codeline>
+<codeline lineno="613"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="614"><highlight class="normal"></highlight></codeline>
+<codeline lineno="615"><highlight class="normal"></highlight></codeline>
+<codeline lineno="622"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__PWR__Exported__Functions__Group2_1ga7811014def9b864dd490a63ada4bab68" kindref="member">HAL_PWR_DisableSEVOnPend</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="623"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="624"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Clear<sp/>SEVONPEND<sp/>bit<sp/>of<sp/>Cortex<sp/>System<sp/>Control<sp/>Register<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="625"><highlight class="normal"><sp/><sp/><ref refid="group__Exported__macros_1ga133aae6fc0d41bffab39ab223a7001de" kindref="member">CLEAR_BIT</ref>(<ref refid="group__CMSIS__CORE_1gaaaf6477c2bde2f00f99e3c2fd1060b01" kindref="member">SCB</ref>-&gt;SCR,<sp/>((uint32_t)<ref refid="group__CMSIS__CORE_1gafb98656644a14342e467505f69a997c9" kindref="member">SCB_SCR_SEVONPEND_Msk</ref>));</highlight></codeline>
+<codeline lineno="626"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="627"><highlight class="normal"></highlight></codeline>
+<codeline lineno="628"><highlight class="normal"></highlight></codeline>
+<codeline lineno="629"><highlight class="normal"></highlight></codeline>
+<codeline lineno="630"><highlight class="normal"></highlight></codeline>
+<codeline lineno="631"><highlight class="normal"></highlight></codeline>
+<codeline lineno="636"><highlight class="normal">__weak<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__PWR__Exported__Functions__Group2_1gaa4843b3eb7989f5b95e1218af4086940" kindref="member">HAL_PWR_PVDCallback</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="637"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="638"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>NOTE<sp/>:<sp/>This<sp/>function<sp/>should<sp/>not<sp/>be<sp/>modified;<sp/>when<sp/>the<sp/>callback<sp/>is<sp/>needed,</highlight></codeline>
+<codeline lineno="639"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>the<sp/>HAL_PWR_PVDCallback<sp/>can<sp/>be<sp/>implemented<sp/>in<sp/>the<sp/>user<sp/>file</highlight></codeline>
+<codeline lineno="640"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="641"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="642"><highlight class="normal"></highlight></codeline>
+<codeline lineno="651"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>HAL_PWR_MODULE_ENABLED<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Src/stm32l4xx_hal_pwr.c"/>
+  </compounddef>
+</doxygen>

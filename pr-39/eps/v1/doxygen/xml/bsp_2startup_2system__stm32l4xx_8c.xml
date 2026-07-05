@@ -1,0 +1,247 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="bsp_2startup_2system__stm32l4xx_8c" kind="file" language="C++">
+    <compoundname>system_stm32l4xx.c</compoundname>
+    <includes local="yes">stm32l4xx.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/startup/system_stm32l4xx.c</label>
+        <link refid="bsp_2startup_2system__stm32l4xx_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>stm32l4xx.h</label>
+      </node>
+    </incdepgraph>
+    <sectiondef kind="define">
+      <member refid="group__STM32L4xx__System__Private__Defines_1gaeafcff4f57440c60e64812dddd13e7cb" kind="define"><name>HSE_VALUE</name></member>
+      <member refid="group__STM32L4xx__System__Private__Defines_1ga90e2a73d7fe4a7425c6e31fef5ce7263" kind="define"><name>MSI_VALUE</name></member>
+      <member refid="group__STM32L4xx__System__Private__Defines_1gaaa8c76e274d0f6dd2cefb5d0b17fbc37" kind="define"><name>HSI_VALUE</name></member>
+    </sectiondef>
+    <sectiondef kind="var">
+      <member refid="group__STM32L4xx__System__Private__Variables_1gaa3cd3e43291e81e795d642b79b6088e6" kind="variable"><name>SystemCoreClock</name></member>
+      <member refid="group__STM32L4xx__System__Private__Variables_1ga6e1d9cd666f0eacbfde31e9932a93466" kind="variable"><name>AHBPrescTable</name></member>
+      <member refid="group__STM32L4xx__System__Private__Variables_1ga5b4f8b768465842cf854a8f993b375e9" kind="variable"><name>APBPrescTable</name></member>
+      <member refid="group__STM32L4xx__System__Private__Variables_1ga4d9e663c3c5bd4ca3361bf97d48158bf" kind="variable"><name>MSIRangeTable</name></member>
+    </sectiondef>
+    <sectiondef kind="func">
+      <member refid="group__STM32L4xx__System__Private__Functions_1ga93f514700ccf00d08dbdcff7f1224eb2" kind="function"><name>SystemInit</name></member>
+      <member refid="group__STM32L4xx__System__Private__Functions_1gae0c36a9591fe6e9c45ecb21a794f0f0f" kind="function"><name>SystemCoreClockUpdate</name></member>
+    </sectiondef>
+    <briefdescription>
+<para>CMSIS Cortex-M4 Device Peripheral Access Layer System Source File. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>MCD Application Team </para>
+</simplesect>
+This file provides two functions and one global variable to be called from user application:<itemizedlist>
+<listitem><para><ref refid="group__STM32L4xx__System__Private__Functions_1ga93f514700ccf00d08dbdcff7f1224eb2" kindref="member">SystemInit()</ref>: This function is called at startup just after reset and before branch to main program. This call is made inside the &quot;startup_stm32l4xx.s&quot; file.</para>
+</listitem><listitem><para>SystemCoreClock variable: Contains the core clock (HCLK), it can be used by the user application to setup the SysTick timer or configure other parameters.</para>
+</listitem><listitem><para><ref refid="group__STM32L4xx__System__Private__Functions_1gae0c36a9591fe6e9c45ecb21a794f0f0f" kindref="member">SystemCoreClockUpdate()</ref>: Updates the variable SystemCoreClock and must be called whenever the core clock is changed during program execution.</para>
+</listitem></itemizedlist>
+</para>
+<para>After each device reset the MSI (4 MHz) is used as system clock source. Then <ref refid="group__STM32L4xx__System__Private__Functions_1ga93f514700ccf00d08dbdcff7f1224eb2" kindref="member">SystemInit()</ref> function is called, in &quot;startup_stm32l4xx.s&quot; file, to configure the system clock before to branch to main program.</para>
+<sect1 id="bsp_2startup_2system__stm32l4xx_8c_1autotoc_md33">
+<title>This file configures the system clock as follows:</title>
+<para><hruler/>
+ </para>
+<sect2 id="bsp_2startup_2system__stm32l4xx_8c_1autotoc_md34">
+<title>System Clock source                    | MSI</title>
+</sect2>
+<sect2 id="bsp_2startup_2system__stm32l4xx_8c_1autotoc_md35">
+<title>SYSCLK(Hz)                             | 4000000</title>
+</sect2>
+<sect2 id="bsp_2startup_2system__stm32l4xx_8c_1autotoc_md36">
+<title>HCLK(Hz)                               | 4000000</title>
+</sect2>
+<sect2 id="bsp_2startup_2system__stm32l4xx_8c_1autotoc_md37">
+<title>AHB Prescaler                          | 1</title>
+</sect2>
+<sect2 id="bsp_2startup_2system__stm32l4xx_8c_1autotoc_md38">
+<title>APB1 Prescaler                         | 1</title>
+</sect2>
+<sect2 id="bsp_2startup_2system__stm32l4xx_8c_1autotoc_md39">
+<title>APB2 Prescaler                         | 1</title>
+</sect2>
+<sect2 id="bsp_2startup_2system__stm32l4xx_8c_1autotoc_md40">
+<title>PLL_M                                  | 1</title>
+</sect2>
+<sect2 id="bsp_2startup_2system__stm32l4xx_8c_1autotoc_md41">
+<title>PLL_N                                  | 8</title>
+</sect2>
+<sect2 id="bsp_2startup_2system__stm32l4xx_8c_1autotoc_md42">
+<title>PLL_P                                  | 7</title>
+</sect2>
+<sect2 id="bsp_2startup_2system__stm32l4xx_8c_1autotoc_md43">
+<title>PLL_Q                                  | 2</title>
+</sect2>
+<sect2 id="bsp_2startup_2system__stm32l4xx_8c_1autotoc_md44">
+<title>PLL_R                                  | 2</title>
+</sect2>
+<sect2 id="bsp_2startup_2system__stm32l4xx_8c_1autotoc_md45">
+<title>PLLSAI1_P                              | NA</title>
+</sect2>
+<sect2 id="bsp_2startup_2system__stm32l4xx_8c_1autotoc_md46">
+<title>PLLSAI1_Q                              | NA</title>
+</sect2>
+<sect2 id="bsp_2startup_2system__stm32l4xx_8c_1autotoc_md47">
+<title>PLLSAI1_R                              | NA</title>
+</sect2>
+<sect2 id="bsp_2startup_2system__stm32l4xx_8c_1autotoc_md48">
+<title>PLLSAI2_P                              | NA</title>
+</sect2>
+<sect2 id="bsp_2startup_2system__stm32l4xx_8c_1autotoc_md49">
+<title>PLLSAI2_Q                              | NA</title>
+</sect2>
+<sect2 id="bsp_2startup_2system__stm32l4xx_8c_1autotoc_md50">
+<title>PLLSAI2_R                              | NA</title>
+<para>Require 48MHz for USB OTG FS, | Disabled </para>
+</sect2>
+<sect2 id="bsp_2startup_2system__stm32l4xx_8c_1autotoc_md51">
+<title>SDIO and RNG clock                     |</title>
+<para>=============================================================================</para>
+<para><simplesect kind="attention"><para></para>
+</simplesect>
+Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
+<para>This software is licensed under terms that can be found in the LICENSE file in the root directory of this software component. If no LICENSE file comes with this software, it is provided AS-IS. </para>
+</sect2>
+</sect1>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;stm32l4xx.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>!defined<sp/><sp/>(HSE_VALUE)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#define<sp/>HSE_VALUE<sp/><sp/><sp/><sp/>8000000U<sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>HSE_VALUE<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>!defined<sp/><sp/>(MSI_VALUE)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#define<sp/>MSI_VALUE<sp/><sp/><sp/><sp/>4000000U<sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>MSI_VALUE<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>!defined<sp/><sp/>(HSI_VALUE)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#define<sp/>HSI_VALUE<sp/><sp/><sp/><sp/>16000000U<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>HSI_VALUE<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Note:<sp/>Following<sp/>vector<sp/>table<sp/>addresses<sp/>must<sp/>be<sp/>defined<sp/>in<sp/>line<sp/>with<sp/>linker</highlight></codeline>
+<codeline lineno="122"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>configuration.<sp/>*/</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>#define<sp/>USER_VECT_TAB_ADDRESS<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(USER_VECT_TAB_ADDRESS)</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>#define<sp/>VECT_TAB_SRAM<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(VECT_TAB_SRAM)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>VECT_TAB_BASE_ADDRESS<sp/><sp/><sp/>SRAM1_BASE<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>VECT_TAB_BASE_ADDRESS<sp/><sp/><sp/>FLASH_BASE<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>VECT_TAB_SRAM<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>!defined(VECT_TAB_OFFSET)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>VECT_TAB_OFFSET<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x00000000U<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>VECT_TAB_OFFSET<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>USER_VECT_TAB_ADDRESS<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight><highlight class="comment">/******************************************************************************/</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>The<sp/>SystemCoreClock<sp/>variable<sp/>is<sp/>updated<sp/>in<sp/>three<sp/>ways:</highlight></codeline>
+<codeline lineno="165"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/>1)<sp/>by<sp/>calling<sp/>CMSIS<sp/>function<sp/>SystemCoreClockUpdate()</highlight></codeline>
+<codeline lineno="166"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/>2)<sp/>by<sp/>calling<sp/>HAL<sp/>API<sp/>function<sp/>HAL_RCC_GetHCLKFreq()</highlight></codeline>
+<codeline lineno="167"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/>3)<sp/>each<sp/>time<sp/>HAL_RCC_ClockConfig()<sp/>is<sp/>called<sp/>to<sp/>configure<sp/>the<sp/>system<sp/>clock<sp/>frequency</highlight></codeline>
+<codeline lineno="168"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Note:<sp/>If<sp/>you<sp/>use<sp/>this<sp/>function<sp/>to<sp/>configure<sp/>the<sp/>system<sp/>clock;<sp/>then<sp/>there</highlight></codeline>
+<codeline lineno="169"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>is<sp/>no<sp/>need<sp/>to<sp/>call<sp/>the<sp/>2<sp/>first<sp/>functions<sp/>listed<sp/>above,<sp/>since<sp/>SystemCoreClock</highlight></codeline>
+<codeline lineno="170"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>variable<sp/>is<sp/>updated<sp/>automatically.</highlight></codeline>
+<codeline lineno="171"><highlight class="comment"><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/>uint32_t<sp/><ref refid="group__STM32L4xx__System__Private__Variables_1gaa3cd3e43291e81e795d642b79b6088e6" kindref="member">SystemCoreClock</ref><sp/>=<sp/>4000000U;</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/><sp/><ref refid="group__STM32L4xx__System__Private__Variables_1ga6e1d9cd666f0eacbfde31e9932a93466" kindref="member">AHBPrescTable</ref>[16]<sp/>=<sp/>{0U,<sp/>0U,<sp/>0U,<sp/>0U,<sp/>0U,<sp/>0U,<sp/>0U,<sp/>0U,<sp/>1U,<sp/>2U,<sp/>3U,<sp/>4U,<sp/>6U,<sp/>7U,<sp/>8U,<sp/>9U};</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/><sp/><ref refid="group__STM32L4xx__System__Private__Variables_1ga5b4f8b768465842cf854a8f993b375e9" kindref="member">APBPrescTable</ref>[8]<sp/>=<sp/><sp/>{0U,<sp/>0U,<sp/>0U,<sp/>0U,<sp/>1U,<sp/>2U,<sp/>3U,<sp/>4U};</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint32_t<sp/><ref refid="group__STM32L4xx__System__Private__Variables_1ga4d9e663c3c5bd4ca3361bf97d48158bf" kindref="member">MSIRangeTable</ref>[12]<sp/>=<sp/>{100000U,<sp/><sp/><sp/>200000U,<sp/><sp/><sp/>400000U,<sp/><sp/><sp/>800000U,<sp/><sp/>1000000U,<sp/><sp/>2000000U,<sp/>\</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>4000000U,<sp/>8000000U,<sp/>16000000U,<sp/>24000000U,<sp/>32000000U,<sp/>48000000U};</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__STM32L4xx__System__Private__Functions_1ga93f514700ccf00d08dbdcff7f1224eb2" kindref="member">SystemInit</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="200"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(USER_VECT_TAB_ADDRESS)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Configure<sp/>the<sp/>Vector<sp/>Table<sp/>location<sp/>-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><ref refid="group__CMSIS__CORE_1gaaaf6477c2bde2f00f99e3c2fd1060b01" kindref="member">SCB</ref>-&gt;VTOR<sp/>=<sp/>VECT_TAB_BASE_ADDRESS<sp/>|<sp/>VECT_TAB_OFFSET;</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>FPU<sp/>settings<sp/>------------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="207"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>(__FPU_PRESENT<sp/>==<sp/>1)<sp/>&amp;&amp;<sp/>(__FPU_USED<sp/>==<sp/>1)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><ref refid="group__CMSIS__CORE_1gaaaf6477c2bde2f00f99e3c2fd1060b01" kindref="member">SCB</ref>-&gt;CPACR<sp/>|=<sp/>((3UL<sp/>&lt;&lt;<sp/>20U)|(3UL<sp/>&lt;&lt;<sp/>22U));<sp/><sp/></highlight><highlight class="comment">/*<sp/>set<sp/>CP10<sp/>and<sp/>CP11<sp/>Full<sp/>Access<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="210"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"></highlight></codeline>
+<codeline lineno="253"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__STM32L4xx__System__Private__Functions_1gae0c36a9591fe6e9c45ecb21a794f0f0f" kindref="member">SystemCoreClockUpdate</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="254"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/>uint32_t<sp/>tmp,<sp/>msirange,<sp/>pllvco,<sp/>pllsource,<sp/>pllm,<sp/>pllr;</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"></highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Get<sp/>MSI<sp/>Range<sp/>frequency--------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;CR<sp/>&amp;<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1ga49933766dd383651a6757d47f76649de" kindref="member">RCC_CR_MSIRGSEL</ref>)<sp/>==<sp/>0U)</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/>{<sp/></highlight><highlight class="comment">/*<sp/>MSISRANGE<sp/>from<sp/>RCC_CSR<sp/>applies<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/>msirange<sp/>=<sp/>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;CSR<sp/>&amp;<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1ga054a1764497165e83c364efc148f42f0" kindref="member">RCC_CSR_MSISRANGE</ref>)<sp/>&gt;&gt;<sp/>8U;</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/>{<sp/></highlight><highlight class="comment">/*<sp/>MSIRANGE<sp/>from<sp/>RCC_CR<sp/>applies<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/>msirange<sp/>=<sp/>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;CR<sp/>&amp;<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1ga07ad83eab3b62a51d110572d0a78c833" kindref="member">RCC_CR_MSIRANGE</ref>)<sp/>&gt;&gt;<sp/>4U;</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*MSI<sp/>frequency<sp/>range<sp/>in<sp/>HZ*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/>msirange<sp/>=<sp/><ref refid="group__STM32L4xx__System__Private__Variables_1ga4d9e663c3c5bd4ca3361bf97d48158bf" kindref="member">MSIRangeTable</ref>[msirange];</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"></highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Get<sp/>SYSCLK<sp/>source<sp/>-------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;CFGR<sp/>&amp;<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1ga15bf2269500dc97e137315f44aa015c9" kindref="member">RCC_CFGR_SWS</ref>)</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>0x00:<sp/><sp/></highlight><highlight class="comment">/*<sp/>MSI<sp/>used<sp/>as<sp/>system<sp/>clock<sp/>source<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__STM32L4xx__System__Private__Variables_1gaa3cd3e43291e81e795d642b79b6088e6" kindref="member">SystemCoreClock</ref><sp/>=<sp/>msirange;</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"></highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>0x04:<sp/><sp/></highlight><highlight class="comment">/*<sp/>HSI<sp/>used<sp/>as<sp/>system<sp/>clock<sp/>source<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__STM32L4xx__System__Private__Variables_1gaa3cd3e43291e81e795d642b79b6088e6" kindref="member">SystemCoreClock</ref><sp/>=<sp/><ref refid="group__STM32L4xx__System__Private__Defines_1gaaa8c76e274d0f6dd2cefb5d0b17fbc37" kindref="member">HSI_VALUE</ref>;</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"></highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>0x08:<sp/><sp/></highlight><highlight class="comment">/*<sp/>HSE<sp/>used<sp/>as<sp/>system<sp/>clock<sp/>source<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__STM32L4xx__System__Private__Variables_1gaa3cd3e43291e81e795d642b79b6088e6" kindref="member">SystemCoreClock</ref><sp/>=<sp/><ref refid="group__STM32L4xx__System__Private__Defines_1gaeafcff4f57440c60e64812dddd13e7cb" kindref="member">HSE_VALUE</ref>;</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"></highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>0x0C:<sp/><sp/></highlight><highlight class="comment">/*<sp/>PLL<sp/>used<sp/>as<sp/>system<sp/>clock<sp/><sp/>source<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>PLL_VCO<sp/>=<sp/>(HSE_VALUE<sp/>or<sp/>HSI_VALUE<sp/>or<sp/>MSI_VALUE/<sp/>PLLM)<sp/>*<sp/>PLLN</highlight></codeline>
+<codeline lineno="286"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SYSCLK<sp/>=<sp/>PLL_VCO<sp/>/<sp/>PLLR</highlight></codeline>
+<codeline lineno="287"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>pllsource<sp/>=<sp/>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;PLLCFGR<sp/>&amp;<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1ga92cb53ea81d2c47537eb217cc6659a2e" kindref="member">RCC_PLLCFGR_PLLSRC</ref>);</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>pllm<sp/>=<sp/>((<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;PLLCFGR<sp/>&amp;<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1ga9a42e8b9ee60126976d9be056e5e66b1" kindref="member">RCC_PLLCFGR_PLLM</ref>)<sp/>&gt;&gt;<sp/>4U)<sp/>+<sp/>1U<sp/>;</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"></highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(pllsource)</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>0x02:<sp/><sp/></highlight><highlight class="comment">/*<sp/>HSI<sp/>used<sp/>as<sp/>PLL<sp/>clock<sp/>source<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pllvco<sp/>=<sp/>(<ref refid="group__STM32L4xx__System__Private__Defines_1gaaa8c76e274d0f6dd2cefb5d0b17fbc37" kindref="member">HSI_VALUE</ref><sp/>/<sp/>pllm);</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"></highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>0x03:<sp/><sp/></highlight><highlight class="comment">/*<sp/>HSE<sp/>used<sp/>as<sp/>PLL<sp/>clock<sp/>source<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pllvco<sp/>=<sp/>(<ref refid="group__STM32L4xx__System__Private__Defines_1gaeafcff4f57440c60e64812dddd13e7cb" kindref="member">HSE_VALUE</ref><sp/>/<sp/>pllm);</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"></highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:<sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>MSI<sp/>used<sp/>as<sp/>PLL<sp/>clock<sp/>source<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pllvco<sp/>=<sp/>(msirange<sp/>/<sp/>pllm);</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>pllvco<sp/>=<sp/>pllvco<sp/>*<sp/>((<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;PLLCFGR<sp/>&amp;<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1ga4b571901d7cdc93ca1ecc1531f26ba6a" kindref="member">RCC_PLLCFGR_PLLN</ref>)<sp/>&gt;&gt;<sp/>8U);</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>pllr<sp/>=<sp/>(((<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;PLLCFGR<sp/>&amp;<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1gaf94ebe400d76dd3d34e78244a8ceb050" kindref="member">RCC_PLLCFGR_PLLR</ref>)<sp/>&gt;&gt;<sp/>25U)<sp/>+<sp/>1U)<sp/>*<sp/>2U;</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__STM32L4xx__System__Private__Variables_1gaa3cd3e43291e81e795d642b79b6088e6" kindref="member">SystemCoreClock</ref><sp/>=<sp/>pllvco/pllr;</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"></highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__STM32L4xx__System__Private__Variables_1gaa3cd3e43291e81e795d642b79b6088e6" kindref="member">SystemCoreClock</ref><sp/>=<sp/>msirange;</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Compute<sp/>HCLK<sp/>clock<sp/>frequency<sp/>--------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="315"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Get<sp/>HCLK<sp/>prescaler<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="316"><highlight class="normal"><sp/><sp/>tmp<sp/>=<sp/><ref refid="group__STM32L4xx__System__Private__Variables_1ga6e1d9cd666f0eacbfde31e9932a93466" kindref="member">AHBPrescTable</ref>[((<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;CFGR<sp/>&amp;<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1gafe10e66938644ee8054a2426ff23efea" kindref="member">RCC_CFGR_HPRE</ref>)<sp/>&gt;&gt;<sp/>4U)];</highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>HCLK<sp/>clock<sp/>frequency<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="318"><highlight class="normal"><sp/><sp/><ref refid="group__STM32L4xx__System__Private__Variables_1gaa3cd3e43291e81e795d642b79b6088e6" kindref="member">SystemCoreClock</ref><sp/>&gt;&gt;=<sp/>tmp;</highlight></codeline>
+<codeline lineno="319"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"></highlight></codeline>
+<codeline lineno="321"><highlight class="normal"></highlight></codeline>
+<codeline lineno="334"><highlight class="normal"></highlight><highlight class="comment">/************************<sp/>(C)<sp/>COPYRIGHT<sp/>STMicroelectronics<sp/>*****END<sp/>OF<sp/>FILE****/</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/startup/system_stm32l4xx.c"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,266 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="power__profiles_8c" kind="file" language="C++">
+    <compoundname>power_profiles.c</compoundname>
+    <includes refid="power__profiles_8h" local="yes">power_profiles.h</includes>
+    <includes refid="eps__power__profiles_8h" local="yes">eps_power_profiles.h</includes>
+    <includes refid="events_8h" local="yes">events.h</includes>
+    <includes refid="event__bus_8h" local="yes">osusat/event_bus.h</includes>
+    <includes refid="rail__controller_8h" local="yes">rail_controller.h</includes>
+    <includes local="no">string.h</includes>
+    <incdepgraph>
+      <node id="10">
+        <label>events.h</label>
+        <link refid="events_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>eps_config.h</label>
+        <link refid="eps__config_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>eps_power_profiles.h</label>
+        <link refid="eps__power__profiles_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>hal_gpio_types.h</label>
+        <link refid="hal__gpio__types_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>osusat/event_bus.h</label>
+        <link refid="event__bus_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/power_profiles.c</label>
+        <link refid="power__profiles_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>power_profiles.h</label>
+        <link refid="power__profiles_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>rail_controller.h</label>
+        <link refid="rail__controller_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>stdbool.h</label>
+      </node>
+      <node id="8">
+        <label>stddef.h</label>
+      </node>
+      <node id="7">
+        <label>stdint.h</label>
+      </node>
+      <node id="12">
+        <label>string.h</label>
+      </node>
+    </incdepgraph>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="power__profiles_8c_1a0ae9fe1d4ee913fe0067450f810fddde" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__power__profiles__types_1gaffe08cae8739332391c30af934a68280" kindref="member">power_profile_status_t</ref></type>
+        <definition>static power_profile_status_t _select_power_rails</definition>
+        <argsstring>(power_profile_t profile, power_profile_info_t *info)</argsstring>
+        <name>_select_power_rails</name>
+        <param>
+          <type><ref refid="group__power__profiles__types_1gaaa76c374d83ff47037a4930b2a616025" kindref="member">power_profile_t</ref></type>
+          <declname>profile</declname>
+        </param>
+        <param>
+          <type><ref refid="structpower__profile__info__t" kindref="compound">power_profile_info_t</ref> *</type>
+          <declname>info</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/power_profiles.c" line="90" column="31" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/power_profiles.c" bodystart="90" bodyend="112" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/power_profiles.c" declline="8" declcolumn="31"/>
+      </memberdef>
+      <memberdef kind="function" id="power__profiles_8c_1a28c8d8b4ad4e0fa793e77a6a5c849f58" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void handle_profile_request_event</definition>
+        <argsstring>(const osusat_event_t *e, void *ctx)</argsstring>
+        <name>handle_profile_request_event</name>
+        <param>
+          <type>const <ref refid="structosusat__event__t" kindref="compound">osusat_event_t</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>ctx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/power_profiles.c" line="66" column="13" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/power_profiles.c" bodystart="66" bodyend="88" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/power_profiles.c" declline="10" declcolumn="13"/>
+      </memberdef>
+      <member refid="group__power__profiles__api_1gab8448eefa1b2c48c6385e8ab507ffce4" kind="function"><name>power_profiles_init</name></member>
+      <member refid="group__power__profiles__api_1gad7c6a83ce0113bd858d66ca7b2c91f45" kind="function"><name>power_profiles_enable</name></member>
+      <member refid="group__power__profiles__api_1ga9fc78b2b700a9edb2843ffea8ad17f8c" kind="function"><name>power_profiles_disable</name></member>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="power__profiles_8h" kindref="compound">power_profiles.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="eps__power__profiles_8h" kindref="compound">eps_power_profiles.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="events_8h" kindref="compound">events.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="event__bus_8h" kindref="compound">osusat/event_bus.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="rail__controller_8h" kindref="compound">rail_controller.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="group__power__profiles__types_1gaffe08cae8739332391c30af934a68280" kindref="member">power_profile_status_t</ref><sp/>_select_power_rails(<ref refid="group__power__profiles__types_1gaaa76c374d83ff47037a4930b2a616025" kindref="member">power_profile_t</ref><sp/>profile,</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structpower__profile__info__t" kindref="compound">power_profile_info_t</ref><sp/>*info);</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>handle_profile_request_event(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structosusat__event__t" kindref="compound">osusat_event_t</ref><sp/>*e,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*ctx);</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__power__profiles__api_1gab8448eefa1b2c48c6385e8ab507ffce4" kindref="member">power_profiles_init</ref>(<ref refid="structpower__profiles__t" kindref="compound">power_profiles_t</ref><sp/>*profiles,</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structrail__controller__t" kindref="compound">rail_controller_t</ref><sp/>*controller)<sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(profiles<sp/>==<sp/>NULL<sp/>||<sp/>controller<sp/>==<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>memset(profiles,<sp/>0,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<ref refid="structpower__profiles__t" kindref="compound">power_profiles_t</ref>));</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>profiles-&gt;<ref refid="structpower__profiles__t_1a43f735344dc5923fd95329aa83d4d230" kindref="member">rail_controller</ref><sp/>=<sp/>controller;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>profiles-&gt;<ref refid="structpower__profiles__t_1a356afb85cead295316ba22d1f55e646d" kindref="member">initialized</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>set<sp/>initial<sp/>state<sp/>to<sp/>SAFE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>profiles-&gt;<ref refid="structpower__profiles__t_1aa161369cef5e6f219067f40f2b356d90" kindref="member">current_profile</ref><sp/>=<sp/><ref refid="group__power__profiles__types_1ggaaa76c374d83ff47037a4930b2a616025a8e3f2e879a8ec11926814ea8cb5e403f" kindref="member">POWER_PROFILE_SAFE</ref>;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__power__profiles__api_1gad7c6a83ce0113bd858d66ca7b2c91f45" kindref="member">power_profiles_enable</ref>(profiles,<sp/>profiles-&gt;<ref refid="structpower__profiles__t_1aa161369cef5e6f219067f40f2b356d90" kindref="member">current_profile</ref>);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__osusat__event__bus__api_1gae83611a56e85f92a045e85cb804a4fde" kindref="member">osusat_event_bus_subscribe</ref>(<ref refid="group__app__events_1ga293c9c6626b63baf66c303e96307aa5a" kindref="member">APP_EVENT_REQUEST_POWER_PROFILE_NOMINAL</ref>,</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle_profile_request_event,<sp/>profiles);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__osusat__event__bus__api_1gae83611a56e85f92a045e85cb804a4fde" kindref="member">osusat_event_bus_subscribe</ref>(<ref refid="group__app__events_1ga25e8236a59e46ae24a0544f21b20fc70" kindref="member">APP_EVENT_REQUEST_POWER_PROFILE_SAFE</ref>,</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle_profile_request_event,<sp/>profiles);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><ref refid="group__power__profiles__types_1gaffe08cae8739332391c30af934a68280" kindref="member">power_profile_status_t</ref><sp/><ref refid="group__power__profiles__api_1gad7c6a83ce0113bd858d66ca7b2c91f45" kindref="member">power_profiles_enable</ref>(<ref refid="structpower__profiles__t" kindref="compound">power_profiles_t</ref><sp/>*profiles,</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__power__profiles__types_1gaaa76c374d83ff47037a4930b2a616025" kindref="member">power_profile_t</ref><sp/>profile)<sp/>{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structpower__profile__info__t" kindref="compound">power_profile_info_t</ref><sp/>info;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__power__profiles__types_1gaffe08cae8739332391c30af934a68280" kindref="member">power_profile_status_t</ref><sp/>status<sp/>=<sp/>_select_power_rails(profile,<sp/>&amp;info);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(status<sp/>!=<sp/><ref refid="group__power__profiles__types_1ggaffe08cae8739332391c30af934a68280a4f32efdb8273667595d5b1827aa42ac8" kindref="member">POWER_PROFILE_SUCCESS</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>status;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>info.<ref refid="structpower__profile__info__t_1a85186541bdd9d1bc8972e53213337255" kindref="member">count</ref>;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__rail__controller__api_1ga8cbfeb3e6f0570ada9a5dff861664207" kindref="member">rail_controller_enable</ref>(profiles-&gt;<ref refid="structpower__profiles__t_1a43f735344dc5923fd95329aa83d4d230" kindref="member">rail_controller</ref>,<sp/>info.<ref refid="structpower__profile__info__t_1a7b1b1387a4be433665337202fa407ca4" kindref="member">rails</ref>[i]);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__power__profiles__types_1ggaffe08cae8739332391c30af934a68280a4f32efdb8273667595d5b1827aa42ac8" kindref="member">POWER_PROFILE_SUCCESS</ref>;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><ref refid="group__power__profiles__types_1gaffe08cae8739332391c30af934a68280" kindref="member">power_profile_status_t</ref><sp/><ref refid="group__power__profiles__api_1ga9fc78b2b700a9edb2843ffea8ad17f8c" kindref="member">power_profiles_disable</ref>(<ref refid="structpower__profiles__t" kindref="compound">power_profiles_t</ref><sp/>*profiles,</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__power__profiles__types_1gaaa76c374d83ff47037a4930b2a616025" kindref="member">power_profile_t</ref><sp/>profile)<sp/>{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structpower__profile__info__t" kindref="compound">power_profile_info_t</ref><sp/>info;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__power__profiles__types_1gaffe08cae8739332391c30af934a68280" kindref="member">power_profile_status_t</ref><sp/>status<sp/>=<sp/>_select_power_rails(profile,<sp/>&amp;info);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(status<sp/>!=<sp/><ref refid="group__power__profiles__types_1ggaffe08cae8739332391c30af934a68280a4f32efdb8273667595d5b1827aa42ac8" kindref="member">POWER_PROFILE_SUCCESS</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>status;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>info.<ref refid="structpower__profile__info__t_1a85186541bdd9d1bc8972e53213337255" kindref="member">count</ref>;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__rail__controller__api_1ga98d6f2a9fdab9901173ee9a419071ceb" kindref="member">rail_controller_disable</ref>(profiles-&gt;<ref refid="structpower__profiles__t_1a43f735344dc5923fd95329aa83d4d230" kindref="member">rail_controller</ref>,<sp/>info.<ref refid="structpower__profile__info__t_1a7b1b1387a4be433665337202fa407ca4" kindref="member">rails</ref>[i]);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__power__profiles__types_1ggaffe08cae8739332391c30af934a68280a4f32efdb8273667595d5b1827aa42ac8" kindref="member">POWER_PROFILE_SUCCESS</ref>;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>handle_profile_request_event(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structosusat__event__t" kindref="compound">osusat_event_t</ref><sp/>*e,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*ctx)<sp/>{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structpower__profiles__t" kindref="compound">power_profiles_t</ref><sp/>*profiles<sp/>=<sp/>(<ref refid="structpower__profiles__t" kindref="compound">power_profiles_t</ref><sp/>*)ctx;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__power__profiles__types_1gaaa76c374d83ff47037a4930b2a616025" kindref="member">power_profile_t</ref><sp/>requested_profile;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(e-&gt;<ref refid="group__osusat__event__bus_1ga50b8f7dc805b7558c90d8f130c83e73d" kindref="member">id</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="group__app__events_1ga293c9c6626b63baf66c303e96307aa5a" kindref="member">APP_EVENT_REQUEST_POWER_PROFILE_NOMINAL</ref>:</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>requested_profile<sp/>=<sp/><ref refid="group__power__profiles__types_1ggaaa76c374d83ff47037a4930b2a616025a94c0466438e870a5895ae082f37d1c7c" kindref="member">POWER_PROFILE_NOMINAL</ref>;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="group__app__events_1ga25e8236a59e46ae24a0544f21b20fc70" kindref="member">APP_EVENT_REQUEST_POWER_PROFILE_SAFE</ref>:</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>requested_profile<sp/>=<sp/><ref refid="group__power__profiles__types_1ggaaa76c374d83ff47037a4930b2a616025a8e3f2e879a8ec11926814ea8cb5e403f" kindref="member">POWER_PROFILE_SAFE</ref>;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;<sp/></highlight><highlight class="comment">//<sp/>unknown<sp/>event</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(profiles-&gt;<ref refid="structpower__profiles__t_1aa161369cef5e6f219067f40f2b356d90" kindref="member">current_profile</ref><sp/>!=<sp/>requested_profile)<sp/>{</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__power__profiles__api_1ga9fc78b2b700a9edb2843ffea8ad17f8c" kindref="member">power_profiles_disable</ref>(profiles,<sp/>profiles-&gt;<ref refid="structpower__profiles__t_1aa161369cef5e6f219067f40f2b356d90" kindref="member">current_profile</ref>);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>profiles-&gt;<ref refid="structpower__profiles__t_1aa161369cef5e6f219067f40f2b356d90" kindref="member">current_profile</ref><sp/>=<sp/>requested_profile;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__power__profiles__api_1gad7c6a83ce0113bd858d66ca7b2c91f45" kindref="member">power_profiles_enable</ref>(profiles,<sp/>profiles-&gt;<ref refid="structpower__profiles__t_1aa161369cef5e6f219067f40f2b356d90" kindref="member">current_profile</ref>);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="88"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="group__power__profiles__types_1gaffe08cae8739332391c30af934a68280" kindref="member">power_profile_status_t</ref><sp/>_select_power_rails(<ref refid="group__power__profiles__types_1gaaa76c374d83ff47037a4930b2a616025" kindref="member">power_profile_t</ref><sp/>profile,</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structpower__profile__info__t" kindref="compound">power_profile_info_t</ref><sp/>*info)<sp/>{</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(profile)<sp/>{</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="group__power__profiles__types_1ggaaa76c374d83ff47037a4930b2a616025a94c0466438e870a5895ae082f37d1c7c" kindref="member">POWER_PROFILE_NOMINAL</ref>:</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*info<sp/>=<sp/>(<ref refid="structpower__profile__info__t" kindref="compound">power_profile_info_t</ref>){.<ref refid="structpower__profile__info__t_1a7b1b1387a4be433665337202fa407ca4" kindref="member">rails</ref><sp/>=<sp/>nominal_mode_rails,</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.count<sp/>=<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(nominal_mode_rails)<sp/>/</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(nominal_mode_rails[0])};</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__power__profiles__types_1ggaffe08cae8739332391c30af934a68280a4f32efdb8273667595d5b1827aa42ac8" kindref="member">POWER_PROFILE_SUCCESS</ref>;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="group__power__profiles__types_1ggaaa76c374d83ff47037a4930b2a616025a8e3f2e879a8ec11926814ea8cb5e403f" kindref="member">POWER_PROFILE_SAFE</ref>:</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*info<sp/>=<sp/>(<ref refid="structpower__profile__info__t" kindref="compound">power_profile_info_t</ref>){.<ref refid="structpower__profile__info__t_1a7b1b1387a4be433665337202fa407ca4" kindref="member">rails</ref><sp/>=<sp/>safe_mode_rails,</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.count<sp/>=<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(safe_mode_rails)<sp/>/</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(safe_mode_rails[0])};</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__power__profiles__types_1ggaffe08cae8739332391c30af934a68280a4f32efdb8273667595d5b1827aa42ac8" kindref="member">POWER_PROFILE_SUCCESS</ref>;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*info<sp/>=<sp/>(<ref refid="structpower__profile__info__t" kindref="compound">power_profile_info_t</ref>){.<ref refid="structpower__profile__info__t_1a7b1b1387a4be433665337202fa407ca4" kindref="member">rails</ref><sp/>=<sp/>NULL,<sp/>.count<sp/>=<sp/>0};</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__power__profiles__types_1ggaffe08cae8739332391c30af934a68280acfc21d8e61e3345d86db66660e26620e" kindref="member">POWER_PROFILE_ERROR_INVALID_PROFILE</ref>;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="112"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/power_profiles.c"/>
+  </compounddef>
+</doxygen>
