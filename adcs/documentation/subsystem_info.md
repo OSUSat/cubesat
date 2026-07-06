@@ -73,7 +73,9 @@ These are intentionally left out of v1. If on-orbit characterization data (see r
 - Magnetorquer-only attitude control literature for CubeSats: background on achievable pointing accuracy and the underactuation limitation: https://www.ri.cmu.edu/app/uploads/2020/06/magnetorquer_only.pdf
 - Reference example of a commercial wound-coil magnetorquer board (single PCB driver + separate wound coils per axis, similar to the approach proposed here): https://nanoavionics.com/cubesat-components/cubesat-magnetorquer-satbus-mtq/
 - CSSWE passive magnetic attitude control system — reference for hysteresis rod/detumble sizing, still relevant even though v1 adds active control on top: https://lasp.colorado.edu/csswe/system/subsystems/adcs/
-- The CubeSat Design Specification, for any magnetic material or deployable constraints: [](../spec/CDS+REV14_1+2022-02-09.pdf)
+- The CubeSat Design Specification, for any magnetic material or deployable constraints: [CDS spec](../spec/CDS+REV14_1+2022-02-09.pdf)
+- Low Cost Self-Wound Magnetorquer Guide: [ResearchGate](https://www.researchgate.net/publication/361548818_A_Guide_to_Self-Built_Low-Cost_Magnetorquers_as_will_be_used_in_the_3U_CubeSat_SOURCE)
+- Low Cost ADCS System: [ResearchGate](https://www.researchgate.net/publication/363862530_Low-Cost_Attitude_Determination_and_Control_System_of_the_Student-Built_3U_CubeSat_SOURCE)
 
 # Next steps
 
