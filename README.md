@@ -1,17 +1,18 @@
-# Oregon State University (OSU) AIAA/SCRT Climate Science CubeSat
+# Oregon State University (OSU) AIAA OSUSat/SCRT Climate Science CubeSat
 
-Welcome to the central repository for the **OSU SCRT Climate Science CubeSat** project. This repository contains the hardware designs, firmware, and documentation for the sub-systems comprising the satellite.
+Welcome to the central repository for the **OSUSat Climate Science CubeSat** project. This repository contains the hardware designs, firmware, and documentation for the sub-systems comprising the satellite.
 
 ---
 
 ## Mission Context & Goals
 
-The **SCRT Climate Science CubeSat** is a low-Earth orbit (LEO) satellite designed to capture high-resolution imagery and scientific data for climate science research. 
+The **OSUSat Climate Science CubeSat** is a low-Earth orbit (LEO) satellite designed to capture high-resolution imagery and scientific data for climate science research. 
 
 ### Mission Objectives
-1. **Earth Observations**: Capture multispectral or high-resolution imagery using a dual-camera payload to study atmospheric conditions, cloud formations, and regional surface changes.
-2. **Reliable Power Delivery (EPS)**: Harvest solar power from 6 body-mounted solar panels, manage charge for 4x 18650 Li-ion batteries, and regulate power rails to prevent overcurrent/overvoltage events.
-3. **Command & Telemetry (OBC)**: Orchestrate system operations, manage communication buses (UART, CANBus, I2C, SPI), process ground commands, and monitor satellite health.
+
+1. **Earth Observations**: Capture multispectral or high-resolution imagery using a dual-camera payload to study surface health, atmospheric conditions, cloud formations.
+2. **Reliable Power Delivery (EPS)**: Harvest solar power from 6 body-mounted solar panels, manage charge for 4x 18650 Li-ion batteries, and distribute and regulate power rails to prevent overcurrent/overvoltage events.
+3. **Command & Telemetry (OBC)**: Orchestrate system operations, manage communication buses (CANBus, UART, I2C, SPI), process ground commands, and monitor satellite health.
 
 ---
 
@@ -142,6 +143,7 @@ git submodule update --init --recursive
 ### 3. Compilation Guide
 
 #### Building for the ARM Target (e.g., EPS v1)
+
 To build the firmware binaries to flash onto the MCU:
 
 ```bash
