@@ -87,9 +87,3 @@ Common test categories to include, in rough execution order:
 ## Traceability
 
 Each test step should trace back to a specific requirement (from the subsystem's kickoff doc, interface spec, or CDS-compliance checklist) so that acceptance test coverage can be checked against requirements during a design review. A simple traceability table (requirement ID -> ATP step number) at the end of the document is often sufficient.
-
-## Version Control & Records
-
-- The blank ATP is a controlled, versioned document like any schematic or firmware source file
-- Each executed run produces an "as-run" copy — the filled-in procedure with actual results and signatures — which is a permanent record, not to be edited after the fact
-- As-run ATPs are typically retained as part of the unit's data pack, referenced during CDR and flight readiness reviews
