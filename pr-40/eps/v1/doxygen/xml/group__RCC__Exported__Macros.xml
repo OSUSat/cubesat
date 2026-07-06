@@ -1,0 +1,2453 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="group__RCC__Exported__Macros" kind="group">
+    <compoundname>RCC_Exported_Macros</compoundname>
+    <title>RCC Exported Macros</title>
+    <innergroup refid="group__RCC__AHB1__Peripheral__Clock__Enable__Disable">AHB1 Peripheral Clock Enable Disable</innergroup>
+    <innergroup refid="group__RCC__AHB2__Peripheral__Clock__Enable__Disable">AHB2 Peripheral Clock Enable Disable</innergroup>
+    <innergroup refid="group__RCC__AHB3__Clock__Enable__Disable">AHB3 Peripheral Clock Enable Disable</innergroup>
+    <innergroup refid="group__RCC__APB1__Clock__Enable__Disable">APB1 Peripheral Clock Enable Disable</innergroup>
+    <innergroup refid="group__RCC__APB2__Clock__Enable__Disable">APB2 Peripheral Clock Enable Disable</innergroup>
+    <innergroup refid="group__RCC__AHB1__Peripheral__Clock__Enable__Disable__Status">AHB1 Peripheral Clock Enabled or Disabled Status</innergroup>
+    <innergroup refid="group__RCC__AHB2__Clock__Enable__Disable__Status">AHB2 Peripheral Clock Enabled or Disabled Status</innergroup>
+    <innergroup refid="group__RCC__AHB3__Clock__Enable__Disable__Status">AHB3 Peripheral Clock Enabled or Disabled Status</innergroup>
+    <innergroup refid="group__RCC__APB1__Clock__Enable__Disable__Status">APB1 Peripheral Clock Enabled or Disabled Status</innergroup>
+    <innergroup refid="group__RCC__APB2__Clock__Enable__Disable__Status">APB2 Peripheral Clock Enabled or Disabled Status</innergroup>
+    <innergroup refid="group__RCC__AHB1__Force__Release__Reset">AHB1 Peripheral Force Release Reset</innergroup>
+    <innergroup refid="group__RCC__AHB2__Force__Release__Reset">AHB2 Peripheral Force Release Reset</innergroup>
+    <innergroup refid="group__RCC__AHB3__Force__Release__Reset">AHB3 Peripheral Force Release Reset</innergroup>
+    <innergroup refid="group__RCC__APB1__Force__Release__Reset">APB1 Peripheral Force Release Reset</innergroup>
+    <innergroup refid="group__RCC__APB2__Force__Release__Reset">APB2 Peripheral Force Release Reset</innergroup>
+    <innergroup refid="group__RCC__AHB1__Clock__Sleep__Enable__Disable">AHB1 Peripheral Clock Sleep Enable Disable</innergroup>
+    <innergroup refid="group__RCC__AHB2__Clock__Sleep__Enable__Disable">AHB2 Peripheral Clock Sleep Enable Disable</innergroup>
+    <innergroup refid="group__RCC__AHB3__Clock__Sleep__Enable__Disable">AHB3 Peripheral Clock Sleep Enable Disable</innergroup>
+    <innergroup refid="group__RCC__APB1__Clock__Sleep__Enable__Disable">APB1 Peripheral Clock Sleep Enable Disable</innergroup>
+    <innergroup refid="group__RCC__APB2__Clock__Sleep__Enable__Disable">APB2 Peripheral Clock Sleep Enable Disable</innergroup>
+    <innergroup refid="group__RCC__AHB1__Clock__Sleep__Enable__Disable__Status">AHB1 Peripheral Clock Sleep Enabled or Disabled Status</innergroup>
+    <innergroup refid="group__RCC__AHB2__Clock__Sleep__Enable__Disable__Status">AHB2 Peripheral Clock Sleep Enabled or Disabled Status</innergroup>
+    <innergroup refid="group__RCC__AHB3__Clock__Sleep__Enable__Disable__Status">AHB3 Peripheral Clock Sleep Enabled or Disabled Status</innergroup>
+    <innergroup refid="group__RCC__APB1__Clock__Sleep__Enable__Disable__Status">APB1 Peripheral Clock Sleep Enabled or Disabled Status</innergroup>
+    <innergroup refid="group__RCC__APB2__Clock__Sleep__Enable__Disable__Status">APB2 Peripheral Clock Sleep Enabled or Disabled Status</innergroup>
+    <innergroup refid="group__RCC__Backup__Domain__Reset">RCC Backup Domain Reset</innergroup>
+    <innergroup refid="group__RCC__RTC__Clock__Configuration">RCC RTC Clock Configuration</innergroup>
+    <innergroup refid="group__RCC__Flags__Interrupts__Management">Flags Interrupts Management</innergroup>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="group__RCC__Exported__Macros_1gaab944f562b53fc74bcc0e4958388fd42" prot="public" static="no">
+        <name>__HAL_RCC_HSI_ENABLE</name>
+        <param></param>
+        <initializer><ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;CR, <ref refid="group__Peripheral__Registers__Bits__Definition_1gaf4fcacf94a97f7d49a70e089b39cf474" kindref="member">RCC_CR_HSION</ref>)</initializer>
+        <briefdescription>
+<para>Macros to enable or disable the Internal High Speed 16MHz oscillator (HSI). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>The HSI is stopped by hardware when entering STOP and STANDBY modes. It is used (enabled by hardware) as system clock source after startup from Reset, wakeup from STOP and STANDBY mode, or in case of failure of the HSE used directly or indirectly as system clock (if the Clock Security System CSS is enabled). </para>
+</simplesect>
+<simplesect kind="note"><para>HSI can not be stopped if it is used as system clock source. In this case, you have to select another source of the system clock then stop the HSI. </para>
+</simplesect>
+<simplesect kind="note"><para>After enabling the HSI, the application software should wait on HSIRDY flag to be set indicating that HSI clock is stable and can be used as system clock source. This parameter can be: ENABLE or DISABLE. </para>
+</simplesect>
+<simplesect kind="note"><para>When the HSI is stopped, HSIRDY flag goes low after 6 HSI oscillator clock cycles. </para>
+</simplesect>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h" line="3939" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h" bodystart="3939" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Exported__Macros_1ga0c0dc8bc0ef58703782f45b4e487c031" prot="public" static="no">
+        <name>__HAL_RCC_HSI_DISABLE</name>
+        <param></param>
+        <initializer><ref refid="group__Exported__macros_1ga133aae6fc0d41bffab39ab223a7001de" kindref="member">CLEAR_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;CR, <ref refid="group__Peripheral__Registers__Bits__Definition_1gaf4fcacf94a97f7d49a70e089b39cf474" kindref="member">RCC_CR_HSION</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h" line="3941" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h" bodystart="3941" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Exported__Macros_1ga74c3b20fdb9a7672c50aa97bb46537b1" prot="public" static="no">
+        <name>__HAL_RCC_HSI_CALIBRATIONVALUE_ADJUST</name>
+        <param><defname>__HSICALIBRATIONVALUE__</defname></param>
+        <initializer>                  <ref refid="group__Exported__macros_1ga6553c99f510c3bab8cc0a91602053247" kindref="member">MODIFY_REG</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;ICSCR, <ref refid="group__Peripheral__Registers__Bits__Definition_1gab79c333962d5bd80636eca9997759804" kindref="member">RCC_ICSCR_HSITRIM</ref>, (__HSICALIBRATIONVALUE__) &lt;&lt; <ref refid="group__Peripheral__Registers__Bits__Definition_1ga1f1261416d104fe7cd9f5001ffbf8330" kindref="member">RCC_ICSCR_HSITRIM_Pos</ref>)</initializer>
+        <briefdescription>
+<para>Macro to adjust the Internal High Speed 16MHz oscillator (HSI) calibration value. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>The calibration is used to compensate for the variations in voltage and temperature that influence the frequency of the internal HSI RC. </para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HSICALIBRATIONVALUE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the calibration trimming value (default is RCC_HSICALIBRATION_DEFAULT). This parameter must be a number between 0 and 31 on STM32L43x/STM32L44x/STM32L47x/STM32L48x or between 0 and 127 on other devices. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h" line="3952" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h" bodystart="3952" bodyend="3953"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Exported__Macros_1ga0a7d0e174acf397e7d1410dddc54486b" prot="public" static="no">
+        <name>__HAL_RCC_HSIAUTOMATIC_START_ENABLE</name>
+        <param></param>
+        <initializer><ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;CR, <ref refid="group__Peripheral__Registers__Bits__Definition_1ga8f0aba1e728b2409378cda9d59e6a506" kindref="member">RCC_CR_HSIASFS</ref>)</initializer>
+        <briefdescription>
+<para>Macros to enable or disable the wakeup the Internal High Speed oscillator (HSI) in parallel to the Internal Multi Speed oscillator (MSI) used at system wakeup. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>The enable of this function has not effect on the HSION bit. This parameter can be: ENABLE or DISABLE. </para>
+</simplesect>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h" line="3962" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h" bodystart="3962" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Exported__Macros_1gaf9bd79bc1e116a980b1218af2f4b3597" prot="public" static="no">
+        <name>__HAL_RCC_HSIAUTOMATIC_START_DISABLE</name>
+        <param></param>
+        <initializer><ref refid="group__Exported__macros_1ga133aae6fc0d41bffab39ab223a7001de" kindref="member">CLEAR_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;CR, <ref refid="group__Peripheral__Registers__Bits__Definition_1ga8f0aba1e728b2409378cda9d59e6a506" kindref="member">RCC_CR_HSIASFS</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h" line="3964" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h" bodystart="3964" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Exported__Macros_1gae069a430441e0547d753a7b47feaebd1" prot="public" static="no">
+        <name>__HAL_RCC_HSISTOP_ENABLE</name>
+        <param></param>
+        <initializer><ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;CR, <ref refid="group__Peripheral__Registers__Bits__Definition_1gaa9172ae30b26b2daad9442579b8e2dd0" kindref="member">RCC_CR_HSIKERON</ref>)</initializer>
+        <briefdescription>
+<para>Macros to enable or disable the force of the Internal High Speed oscillator (HSI) in STOP mode to be quickly available as kernel clock for USARTs and I2Cs. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>Keeping the HSI ON in STOP mode allows to avoid slowing down the communication speed because of the HSI startup time. </para>
+</simplesect>
+<simplesect kind="note"><para>The enable of this function has not effect on the HSION bit. This parameter can be: ENABLE or DISABLE. </para>
+</simplesect>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h" line="3975" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h" bodystart="3975" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Exported__Macros_1gaca5ca4b6c2cbd0e638b4c3b8b71cbc61" prot="public" static="no">
+        <name>__HAL_RCC_HSISTOP_DISABLE</name>
+        <param></param>
+        <initializer><ref refid="group__Exported__macros_1ga133aae6fc0d41bffab39ab223a7001de" kindref="member">CLEAR_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;CR, <ref refid="group__Peripheral__Registers__Bits__Definition_1gaa9172ae30b26b2daad9442579b8e2dd0" kindref="member">RCC_CR_HSIKERON</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h" line="3977" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h" bodystart="3977" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Exported__Macros_1gaf6797e8502d134483ba092f5d4345c70" prot="public" static="no">
+        <name>__HAL_RCC_MSI_ENABLE</name>
+        <param></param>
+        <initializer><ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;CR, <ref refid="group__Peripheral__Registers__Bits__Definition_1gaee09fff7bffaaabc64d99627f2249795" kindref="member">RCC_CR_MSION</ref>)</initializer>
+        <briefdescription>
+<para>Macros to enable or disable the Internal Multi Speed oscillator (MSI). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>The MSI is stopped by hardware when entering STOP and STANDBY modes. It is used (enabled by hardware) as system clock source after startup from Reset, wakeup from STOP and STANDBY mode, or in case of failure of the HSE used directly or indirectly as system clock (if the Clock Security System CSS is enabled). </para>
+</simplesect>
+<simplesect kind="note"><para>MSI can not be stopped if it is used as system clock source. In this case, you have to select another source of the system clock then stop the MSI. </para>
+</simplesect>
+<simplesect kind="note"><para>After enabling the MSI, the application software should wait on MSIRDY flag to be set indicating that MSI clock is stable and can be used as system clock source. </para>
+</simplesect>
+<simplesect kind="note"><para>When the MSI is stopped, MSIRDY flag goes low after 6 MSI oscillator clock cycles. </para>
+</simplesect>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h" line="3996" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h" bodystart="3996" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Exported__Macros_1ga49c15fd232bd099f020e508fe9c3cd12" prot="public" static="no">
+        <name>__HAL_RCC_MSI_DISABLE</name>
+        <param></param>
+        <initializer><ref refid="group__Exported__macros_1ga133aae6fc0d41bffab39ab223a7001de" kindref="member">CLEAR_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;CR, <ref refid="group__Peripheral__Registers__Bits__Definition_1gaee09fff7bffaaabc64d99627f2249795" kindref="member">RCC_CR_MSION</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h" line="3998" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h" bodystart="3998" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Exported__Macros_1ga2e9aac4b5b3049bf2e10d04f2424e0ce" prot="public" static="no">
+        <name>__HAL_RCC_MSI_CALIBRATIONVALUE_ADJUST</name>
+        <param><defname>__MSICALIBRATIONVALUE__</defname></param>
+        <initializer>                  <ref refid="group__Exported__macros_1ga6553c99f510c3bab8cc0a91602053247" kindref="member">MODIFY_REG</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;ICSCR, <ref refid="group__Peripheral__Registers__Bits__Definition_1ga7f61335b01758a4336598e7fa97445e6" kindref="member">RCC_ICSCR_MSITRIM</ref>, (__MSICALIBRATIONVALUE__) &lt;&lt; <ref refid="group__Peripheral__Registers__Bits__Definition_1ga05b6fa91ff6f0b1264ccb75c1943a4f6" kindref="member">RCC_ICSCR_MSITRIM_Pos</ref>)</initializer>
+        <briefdescription>
+<para>Macro Adjusts the Internal Multi Speed oscillator (MSI) calibration value. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>The calibration is used to compensate for the variations in voltage and temperature that influence the frequency of the internal MSI RC. Refer to the Application Note AN3300 for more details on how to calibrate the MSI. </para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__MSICALIBRATIONVALUE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the calibration trimming value (default is RCC_MSICALIBRATION_DEFAULT). This parameter must be a number between 0 and 255. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h" line="4010" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h" bodystart="4010" bodyend="4011"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Exported__Macros_1gafe679885cf67635d1ec8c36eb9bc4688" prot="public" static="no">
+        <name>__HAL_RCC_MSI_RANGE_CONFIG</name>
+        <param><defname>__MSIRANGEVALUE__</defname></param>
+        <initializer>                  do {                                                         \
+                    <ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;CR, <ref refid="group__Peripheral__Registers__Bits__Definition_1ga49933766dd383651a6757d47f76649de" kindref="member">RCC_CR_MSIRGSEL</ref>);                         \
+                    <ref refid="group__Exported__macros_1ga6553c99f510c3bab8cc0a91602053247" kindref="member">MODIFY_REG</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;CR, <ref refid="group__Peripheral__Registers__Bits__Definition_1ga07ad83eab3b62a51d110572d0a78c833" kindref="member">RCC_CR_MSIRANGE</ref>, (__MSIRANGEVALUE__)); \
+                  } while(0)</initializer>
+        <briefdescription>
+<para>Macro configures the Internal Multi Speed oscillator (MSI) clock range in run mode. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>After restart from Reset , the MSI clock is around 4 MHz. After stop the startup clock can be MSI (at any of its possible frequencies, the one that was used before entering stop mode) or HSI. After Standby its frequency can be selected between 4 possible values (1, 2, 4 or 8 MHz). </para>
+</simplesect>
+<simplesect kind="note"><para>MSIRANGE can be modified when MSI is OFF (MSION=0) or when MSI is ready (MSIRDY=1). </para>
+</simplesect>
+<simplesect kind="note"><para>The MSI clock range after reset can be modified on the fly. </para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__MSIRANGEVALUE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the MSI clock range. This parameter must be one of the following values: <itemizedlist>
+<listitem><para><ref refid="group__RCC__MSI__Clock__Range_1ga3a266a56e6a43bdaef4bbcc1eee4c360" kindref="member">RCC_MSIRANGE_0</ref> MSI clock is around 100 KHz </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MSI__Clock__Range_1ga90601d6a9beb6a00245ecbf193d0ece5" kindref="member">RCC_MSIRANGE_1</ref> MSI clock is around 200 KHz </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MSI__Clock__Range_1gafa12a5d5063914b4aa66c8f12324926e" kindref="member">RCC_MSIRANGE_2</ref> MSI clock is around 400 KHz </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MSI__Clock__Range_1ga2eb0f8e9e5800747454d52f5497dea57" kindref="member">RCC_MSIRANGE_3</ref> MSI clock is around 800 KHz </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MSI__Clock__Range_1gab5ca16a71f018ae2ceb5bcef29434f1c" kindref="member">RCC_MSIRANGE_4</ref> MSI clock is around 1 MHz </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MSI__Clock__Range_1gabcd068b50d4fdfb3529272fbb169ebb1" kindref="member">RCC_MSIRANGE_5</ref> MSI clock is around 2 MHz </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MSI__Clock__Range_1ga7f6e3de13b041244869fba14585c43fe" kindref="member">RCC_MSIRANGE_6</ref> MSI clock is around 4 MHz (default after Reset) </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MSI__Clock__Range_1gaf0095aea854bcebdeaf424884611fdf7" kindref="member">RCC_MSIRANGE_7</ref> MSI clock is around 8 MHz </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MSI__Clock__Range_1ga2486a2c68d9d1660cee46db8ff2d8a7e" kindref="member">RCC_MSIRANGE_8</ref> MSI clock is around 16 MHz </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MSI__Clock__Range_1gabff618662f94da794a4c4485d2c46eb0" kindref="member">RCC_MSIRANGE_9</ref> MSI clock is around 24 MHz </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MSI__Clock__Range_1ga74f652762f6663ff0255004a5dcaf249" kindref="member">RCC_MSIRANGE_10</ref> MSI clock is around 32 MHz </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MSI__Clock__Range_1gac64bbb470bd6b2658b0723453bcfcff4" kindref="member">RCC_MSIRANGE_11</ref> MSI clock is around 48 MHz </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h" line="4039" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h" bodystart="4039" bodyend="4043"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Exported__Macros_1gab9ea8235fad928775ea22e112b18cb59" prot="public" static="no">
+        <name>__HAL_RCC_MSI_STANDBY_RANGE_CONFIG</name>
+        <param><defname>__MSIRANGEVALUE__</defname></param>
+        <initializer>                  <ref refid="group__Exported__macros_1ga6553c99f510c3bab8cc0a91602053247" kindref="member">MODIFY_REG</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;CSR, <ref refid="group__Peripheral__Registers__Bits__Definition_1ga054a1764497165e83c364efc148f42f0" kindref="member">RCC_CSR_MSISRANGE</ref>, (__MSIRANGEVALUE__) &lt;&lt; 4U)</initializer>
+        <briefdescription>
+<para>Macro configures the Internal Multi Speed oscillator (MSI) clock range after Standby mode After Standby its frequency can be selected between 4 possible values (1, 2, 4 or 8 MHz). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__MSIRANGEVALUE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the MSI clock range. This parameter must be one of the following values: <itemizedlist>
+<listitem><para><ref refid="group__RCC__MSI__Clock__Range_1gab5ca16a71f018ae2ceb5bcef29434f1c" kindref="member">RCC_MSIRANGE_4</ref> MSI clock is around 1 MHz </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MSI__Clock__Range_1gabcd068b50d4fdfb3529272fbb169ebb1" kindref="member">RCC_MSIRANGE_5</ref> MSI clock is around 2 MHz </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MSI__Clock__Range_1ga7f6e3de13b041244869fba14585c43fe" kindref="member">RCC_MSIRANGE_6</ref> MSI clock is around 4 MHz (default after Reset) </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MSI__Clock__Range_1gaf0095aea854bcebdeaf424884611fdf7" kindref="member">RCC_MSIRANGE_7</ref> MSI clock is around 8 MHz </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h" line="4056" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h" bodystart="4056" bodyend="4057"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Exported__Macros_1gaad04b0c76f81734ba4881d97321667b9" prot="public" static="no">
+        <name>__HAL_RCC_GET_MSI_RANGE</name>
+        <param></param>
+        <initializer>                  ((<ref refid="group__Exported__macros_1ga822bb1bb9710d5f2fa6396b84e583c33" kindref="member">READ_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;CR, <ref refid="group__Peripheral__Registers__Bits__Definition_1ga49933766dd383651a6757d47f76649de" kindref="member">RCC_CR_MSIRGSEL</ref>) != 0U) ?             \
+                   <ref refid="group__Exported__macros_1ga822bb1bb9710d5f2fa6396b84e583c33" kindref="member">READ_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;CR, <ref refid="group__Peripheral__Registers__Bits__Definition_1ga07ad83eab3b62a51d110572d0a78c833" kindref="member">RCC_CR_MSIRANGE</ref>) :                        \
+                   (<ref refid="group__Exported__macros_1ga822bb1bb9710d5f2fa6396b84e583c33" kindref="member">READ_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;CSR, <ref refid="group__Peripheral__Registers__Bits__Definition_1ga054a1764497165e83c364efc148f42f0" kindref="member">RCC_CSR_MSISRANGE</ref>) &gt;&gt; 4U))</initializer>
+        <briefdescription>
+<para>Macro to get the Internal Multi Speed oscillator (MSI) clock range in run mode. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>MSI</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>clock range. This parameter must be one of the following values: <itemizedlist>
+<listitem><para><ref refid="group__RCC__MSI__Clock__Range_1ga3a266a56e6a43bdaef4bbcc1eee4c360" kindref="member">RCC_MSIRANGE_0</ref> MSI clock is around 100 KHz </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MSI__Clock__Range_1ga90601d6a9beb6a00245ecbf193d0ece5" kindref="member">RCC_MSIRANGE_1</ref> MSI clock is around 200 KHz </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MSI__Clock__Range_1gafa12a5d5063914b4aa66c8f12324926e" kindref="member">RCC_MSIRANGE_2</ref> MSI clock is around 400 KHz </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MSI__Clock__Range_1ga2eb0f8e9e5800747454d52f5497dea57" kindref="member">RCC_MSIRANGE_3</ref> MSI clock is around 800 KHz </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MSI__Clock__Range_1gab5ca16a71f018ae2ceb5bcef29434f1c" kindref="member">RCC_MSIRANGE_4</ref> MSI clock is around 1 MHz </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MSI__Clock__Range_1gabcd068b50d4fdfb3529272fbb169ebb1" kindref="member">RCC_MSIRANGE_5</ref> MSI clock is around 2 MHz </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MSI__Clock__Range_1ga7f6e3de13b041244869fba14585c43fe" kindref="member">RCC_MSIRANGE_6</ref> MSI clock is around 4 MHz (default after Reset) </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MSI__Clock__Range_1gaf0095aea854bcebdeaf424884611fdf7" kindref="member">RCC_MSIRANGE_7</ref> MSI clock is around 8 MHz </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MSI__Clock__Range_1ga2486a2c68d9d1660cee46db8ff2d8a7e" kindref="member">RCC_MSIRANGE_8</ref> MSI clock is around 16 MHz </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MSI__Clock__Range_1gabff618662f94da794a4c4485d2c46eb0" kindref="member">RCC_MSIRANGE_9</ref> MSI clock is around 24 MHz </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MSI__Clock__Range_1ga74f652762f6663ff0255004a5dcaf249" kindref="member">RCC_MSIRANGE_10</ref> MSI clock is around 32 MHz </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MSI__Clock__Range_1gac64bbb470bd6b2658b0723453bcfcff4" kindref="member">RCC_MSIRANGE_11</ref> MSI clock is around 48 MHz </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h" line="4075" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h" bodystart="4075" bodyend="4078"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Exported__Macros_1ga560de8b8991db4a296de878a7a8aa58b" prot="public" static="no">
+        <name>__HAL_RCC_LSI_ENABLE</name>
+        <param></param>
+        <initializer><ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;CSR, <ref refid="group__Peripheral__Registers__Bits__Definition_1ga803cbf97bda1ebaf9afee2a3c9f0851b" kindref="member">RCC_CSR_LSION</ref>)</initializer>
+        <briefdescription>
+<para>Macros to enable or disable the Internal Low Speed oscillator (LSI). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>After enabling the LSI, the application software should wait on LSIRDY flag to be set indicating that LSI clock is stable and can be used to clock the IWDG and/or the RTC. </para>
+</simplesect>
+<simplesect kind="note"><para>LSI can not be disabled if the IWDG is running. </para>
+</simplesect>
+<simplesect kind="note"><para>When the LSI is stopped, LSIRDY flag goes low after 6 LSI oscillator clock cycles. </para>
+</simplesect>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h" line="4089" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h" bodystart="4089" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Exported__Macros_1ga4f96095bb4acda60b7f66d5d927da181" prot="public" static="no">
+        <name>__HAL_RCC_LSI_DISABLE</name>
+        <param></param>
+        <initializer><ref refid="group__Exported__macros_1ga133aae6fc0d41bffab39ab223a7001de" kindref="member">CLEAR_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;CSR, <ref refid="group__Peripheral__Registers__Bits__Definition_1ga803cbf97bda1ebaf9afee2a3c9f0851b" kindref="member">RCC_CSR_LSION</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h" line="4091" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h" bodystart="4091" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Exported__Macros_1gaa3d98648399f15d02645ef84f6ca8e4b" prot="public" static="no">
+        <name>__HAL_RCC_HSE_CONFIG</name>
+        <param><defname>__STATE__</defname></param>
+        <initializer>                    do {                                     \
+                      if((__STATE__) == <ref refid="group__RCC__HSE__Config_1gabc4f70a44776c557af20496b04d9a9db" kindref="member">RCC_HSE_ON</ref>)          \
+                      {                                      \
+                        <ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;CR, <ref refid="group__Peripheral__Registers__Bits__Definition_1gadb8228c9020595b4cf9995137b8c9a7d" kindref="member">RCC_CR_HSEON</ref>);      \
+                      }                                      \
+                      else if((__STATE__) == <ref refid="group__RCC__HSE__Config_1ga5ca515db2d5c4d5bdb9ee3d154df2704" kindref="member">RCC_HSE_BYPASS</ref>) \
+                      {                                      \
+                        <ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;CR, <ref refid="group__Peripheral__Registers__Bits__Definition_1gaa3288090671af5a959aae4d7f7696d55" kindref="member">RCC_CR_HSEBYP</ref>);     \
+                        <ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;CR, <ref refid="group__Peripheral__Registers__Bits__Definition_1gadb8228c9020595b4cf9995137b8c9a7d" kindref="member">RCC_CR_HSEON</ref>);      \
+                      }                                      \
+                      else                                   \
+                      {                                      \
+                        <ref refid="group__Exported__macros_1ga133aae6fc0d41bffab39ab223a7001de" kindref="member">CLEAR_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;CR, <ref refid="group__Peripheral__Registers__Bits__Definition_1gadb8228c9020595b4cf9995137b8c9a7d" kindref="member">RCC_CR_HSEON</ref>);    \
+                        <ref refid="group__Exported__macros_1ga133aae6fc0d41bffab39ab223a7001de" kindref="member">CLEAR_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;CR, <ref refid="group__Peripheral__Registers__Bits__Definition_1gaa3288090671af5a959aae4d7f7696d55" kindref="member">RCC_CR_HSEBYP</ref>);   \
+                      }                                      \
+                    } while(0)</initializer>
+        <briefdescription>
+<para>Macro to configure the External High Speed oscillator (HSE). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>Transition HSE Bypass to HSE On and HSE On to HSE Bypass are not supported by this macro. User should request a transition to HSE Off first and then HSE On or HSE Bypass. </para>
+</simplesect>
+<simplesect kind="note"><para>After enabling the HSE (RCC_HSE_ON or RCC_HSE_Bypass), the application software should wait on HSERDY flag to be set indicating that HSE clock is stable and can be used to clock the PLL and/or system clock. </para>
+</simplesect>
+<simplesect kind="note"><para>HSE state can not be changed if it is used directly or through the PLL as system clock. In this case, you have to select another source of the system clock then change the HSE state (ex. disable it). </para>
+</simplesect>
+<simplesect kind="note"><para>The HSE is stopped by hardware when entering STOP and STANDBY modes. </para>
+</simplesect>
+<simplesect kind="note"><para>This function reset the CSSON bit, so if the clock security system(CSS) was previously enabled you have to enable it again after calling this function. </para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__STATE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the new state of the HSE. This parameter can be one of the following values: <itemizedlist>
+<listitem><para><ref refid="group__RCC__HSE__Config_1ga1616626d23fbce440398578855df6f97" kindref="member">RCC_HSE_OFF</ref> Turn OFF the HSE oscillator, HSERDY flag goes low after 6 HSE oscillator clock cycles. </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__HSE__Config_1gabc4f70a44776c557af20496b04d9a9db" kindref="member">RCC_HSE_ON</ref> Turn ON the HSE oscillator. </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__HSE__Config_1ga5ca515db2d5c4d5bdb9ee3d154df2704" kindref="member">RCC_HSE_BYPASS</ref> HSE oscillator bypassed with external clock. </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h" line="4116" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h" bodystart="4116" bodyend="4132"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Exported__Macros_1ga6b2b48f429e347c1c9c469122c64798b" prot="public" static="no">
+        <name>__HAL_RCC_LSE_CONFIG</name>
+        <param><defname>__STATE__</defname></param>
+        <initializer>                    do {                                       \
+                      if((__STATE__) == <ref refid="group__RCC__LSE__Config_1gac981ea636c2f215e4473901e0912f55a" kindref="member">RCC_LSE_ON</ref>)            \
+                      {                                        \
+                        <ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;BDCR, <ref refid="group__Peripheral__Registers__Bits__Definition_1ga00145f8814cb9a5b180d76499d97aead" kindref="member">RCC_BDCR_LSEON</ref>);    \
+                      }                                        \
+                      else if((__STATE__) == <ref refid="group__RCC__LSE__Config_1gaad580157edbae878edbcc83c5a68e767" kindref="member">RCC_LSE_BYPASS</ref>)   \
+                      {                                        \
+                        <ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;BDCR, <ref refid="group__Peripheral__Registers__Bits__Definition_1ga542dffd7f8dc4da5401b54d822a22af0" kindref="member">RCC_BDCR_LSEBYP</ref>);   \
+                        <ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;BDCR, <ref refid="group__Peripheral__Registers__Bits__Definition_1ga00145f8814cb9a5b180d76499d97aead" kindref="member">RCC_BDCR_LSEON</ref>);    \
+                      }                                        \
+                      else                                     \
+                      {                                        \
+                        <ref refid="group__Exported__macros_1ga133aae6fc0d41bffab39ab223a7001de" kindref="member">CLEAR_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;BDCR, <ref refid="group__Peripheral__Registers__Bits__Definition_1ga00145f8814cb9a5b180d76499d97aead" kindref="member">RCC_BDCR_LSEON</ref>);  \
+                        <ref refid="group__Exported__macros_1ga133aae6fc0d41bffab39ab223a7001de" kindref="member">CLEAR_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;BDCR, <ref refid="group__Peripheral__Registers__Bits__Definition_1ga542dffd7f8dc4da5401b54d822a22af0" kindref="member">RCC_BDCR_LSEBYP</ref>); \
+                      }                                        \
+                    } while(0)</initializer>
+        <briefdescription>
+<para>Macro to configure the External Low Speed oscillator (LSE). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>Transitions LSE Bypass to LSE On and LSE On to LSE Bypass are not supported by this macro. User should request a transition to LSE Off first and then LSE On or LSE Bypass. </para>
+</simplesect>
+<simplesect kind="note"><para>As the LSE is in the Backup domain and write access is denied to this domain after reset, you have to enable write access using <ref refid="group__PWR__Exported__Functions__Group1_1ga3d07cef39bf294db4aed7e06e5dbf9af" kindref="member">HAL_PWR_EnableBkUpAccess()</ref> function before to configure the LSE (to be done once after reset). </para>
+</simplesect>
+<simplesect kind="note"><para>After enabling the LSE (RCC_LSE_ON or RCC_LSE_BYPASS), the application software should wait on LSERDY flag to be set indicating that LSE clock is stable and can be used to clock the RTC. </para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__STATE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the new state of the LSE. This parameter can be one of the following values: <itemizedlist>
+<listitem><para><ref refid="group__RCC__LSE__Config_1ga6645c27708d0cad1a4ab61d2abb24c77" kindref="member">RCC_LSE_OFF</ref> Turn OFF the LSE oscillator, LSERDY flag goes low after 6 LSE oscillator clock cycles. </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__LSE__Config_1gac981ea636c2f215e4473901e0912f55a" kindref="member">RCC_LSE_ON</ref> Turn ON the LSE oscillator. </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__LSE__Config_1gaad580157edbae878edbcc83c5a68e767" kindref="member">RCC_LSE_BYPASS</ref> LSE oscillator bypassed with external clock. </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h" line="4154" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h" bodystart="4154" bodyend="4170"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Exported__Macros_1ga2d6c4c7e951bfd007d26988fbfe6eaa4" prot="public" static="no">
+        <name>__HAL_RCC_RTC_CONFIG</name>
+        <param><defname>__RTC_CLKSOURCE__</defname></param>
+        <initializer>                  <ref refid="group__Exported__macros_1ga6553c99f510c3bab8cc0a91602053247" kindref="member">MODIFY_REG</ref>( <ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;BDCR, <ref refid="group__Peripheral__Registers__Bits__Definition_1gabe30dbd38f6456990ee641648bc05d40" kindref="member">RCC_BDCR_RTCSEL</ref>, (__RTC_CLKSOURCE__))</initializer>
+        <briefdescription>
+<para>Macros to configure the RTC clock (RTCCLK). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>As the RTC clock configuration bits are in the Backup domain and write access is denied to this domain after reset, you have to enable write access using the Power Backup Access macro before to configure the RTC clock source (to be done once after reset). </para>
+</simplesect>
+<simplesect kind="note"><para>Once the RTC clock is configured it cannot be changed unless the Backup domain is reset using <ref refid="group__RCC__Backup__Domain__Reset_1ga3bf7da608ff985873ca8e248fb1dc4f0" kindref="member">__HAL_RCC_BACKUPRESET_FORCE()</ref> macro, or by a Power On Reset (POR).</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__RTC_CLKSOURCE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the RTC clock source. This parameter can be one of the following values: <itemizedlist>
+<listitem><para><ref refid="group__HAL__RCC__Aliased_1ga7ac4762e5f4ebe4a04aea58edc9c46a9" kindref="member">RCC_RTCCLKSOURCE_NONE</ref> No clock selected as RTC clock. </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__RTC__Clock__Source_1ga5dca8d63f250a20bd6bc005670d0c150" kindref="member">RCC_RTCCLKSOURCE_LSE</ref> LSE selected as RTC clock. </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__RTC__Clock__Source_1gab47a1afb8b5eef9f20f4772961d0a5f4" kindref="member">RCC_RTCCLKSOURCE_LSI</ref> LSI selected as RTC clock. </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__RTC__Clock__Source_1ga070b819c6eca00d4b89cbf35216c3a92" kindref="member">RCC_RTCCLKSOURCE_HSE_DIV32</ref> HSE clock divided by 32 selected</para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>If the LSE or LSI is used as RTC clock source, the RTC continues to work in STOP and STANDBY modes, and can be used as wakeup source. However, when the HSE clock is used as RTC clock source, the RTC cannot be used in STOP and STANDBY modes. </para>
+</simplesect>
+<simplesect kind="note"><para>The maximum input clock frequency for RTC is 1MHz (when using HSE as RTC clock source). </para>
+</simplesect>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h" line="4211" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h" bodystart="4211" bodyend="4212"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Exported__Macros_1gad40d00ff1c984ebd011ea9f6e7f93c44" prot="public" static="no">
+        <name>__HAL_RCC_GET_RTC_SOURCE</name>
+        <param></param>
+        <initializer>(<ref refid="group__Exported__macros_1ga822bb1bb9710d5f2fa6396b84e583c33" kindref="member">READ_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;BDCR, <ref refid="group__Peripheral__Registers__Bits__Definition_1gabe30dbd38f6456990ee641648bc05d40" kindref="member">RCC_BDCR_RTCSEL</ref>))</initializer>
+        <briefdescription>
+<para>Macro to get the RTC clock source. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>The</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>returned value can be one of the following: <itemizedlist>
+<listitem><para><ref refid="group__HAL__RCC__Aliased_1ga7ac4762e5f4ebe4a04aea58edc9c46a9" kindref="member">RCC_RTCCLKSOURCE_NONE</ref> No clock selected as RTC clock. </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__RTC__Clock__Source_1ga5dca8d63f250a20bd6bc005670d0c150" kindref="member">RCC_RTCCLKSOURCE_LSE</ref> LSE selected as RTC clock. </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__RTC__Clock__Source_1gab47a1afb8b5eef9f20f4772961d0a5f4" kindref="member">RCC_RTCCLKSOURCE_LSI</ref> LSI selected as RTC clock. </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__RTC__Clock__Source_1ga070b819c6eca00d4b89cbf35216c3a92" kindref="member">RCC_RTCCLKSOURCE_HSE_DIV32</ref> HSE clock divided by 32 selected </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h" line="4222" column="10" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h" bodystart="4222" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Exported__Macros_1gaaf196a2df41b0bcbc32745c2b218e696" prot="public" static="no">
+        <name>__HAL_RCC_PLL_ENABLE</name>
+        <param></param>
+        <initializer><ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;CR, <ref refid="group__Peripheral__Registers__Bits__Definition_1gad0e73d5b0a4883e074d40029b49ee47e" kindref="member">RCC_CR_PLLON</ref>)</initializer>
+        <briefdescription>
+<para>Macros to enable or disable the main PLL. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>After enabling the main PLL, the application software should wait on PLLRDY flag to be set indicating that PLL clock is stable and can be used as system clock source. </para>
+</simplesect>
+<simplesect kind="note"><para>The main PLL can not be disabled if it is used as system clock source </para>
+</simplesect>
+<simplesect kind="note"><para>The main PLL is disabled by hardware when entering STOP and STANDBY modes. </para>
+</simplesect>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h" line="4232" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h" bodystart="4232" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Exported__Macros_1ga718a6afcb1492cc2796be78445a7d5ab" prot="public" static="no">
+        <name>__HAL_RCC_PLL_DISABLE</name>
+        <param></param>
+        <initializer><ref refid="group__Exported__macros_1ga133aae6fc0d41bffab39ab223a7001de" kindref="member">CLEAR_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;CR, <ref refid="group__Peripheral__Registers__Bits__Definition_1gad0e73d5b0a4883e074d40029b49ee47e" kindref="member">RCC_CR_PLLON</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h" line="4234" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h" bodystart="4234" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Exported__Macros_1gaf9a8466f991888332ec978dc92c62d7d" prot="public" static="no">
+        <name>__HAL_RCC_PLL_PLLSOURCE_CONFIG</name>
+        <param><defname>__PLLSOURCE__</defname></param>
+        <initializer>                  <ref refid="group__Exported__macros_1ga6553c99f510c3bab8cc0a91602053247" kindref="member">MODIFY_REG</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;PLLCFGR, <ref refid="group__Peripheral__Registers__Bits__Definition_1ga92cb53ea81d2c47537eb217cc6659a2e" kindref="member">RCC_PLLCFGR_PLLSRC</ref>, (__PLLSOURCE__))</initializer>
+        <briefdescription>
+<para>Macro to configure the PLL clock source. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>This function must be used only when the main PLL is disabled. </para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__PLLSOURCE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the PLL entry clock source. This parameter can be one of the following values: <itemizedlist>
+<listitem><para><ref refid="group__RCC__PLL__Clock__Source_1ga2a440b01eaeb8f3a6282598fc748ef1f" kindref="member">RCC_PLLSOURCE_NONE</ref> No clock selected as PLL clock entry </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__PLL__Clock__Source_1ga5a17d8f572153069f1914e622ca0f474" kindref="member">RCC_PLLSOURCE_MSI</ref> MSI oscillator clock selected as PLL clock entry </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__PLL__Clock__Source_1ga0e07703f1ccb3d60f8a47a2dc631c218" kindref="member">RCC_PLLSOURCE_HSI</ref> HSI oscillator clock selected as PLL clock entry </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__PLL__Clock__Source_1ga197cea7fe5c2db26fe7fcdb0f99dd4d7" kindref="member">RCC_PLLSOURCE_HSE</ref> HSE oscillator clock selected as PLL clock entry </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>This clock source is common for the main PLL and audio PLL (PLLSAI1 and PLLSAI2). </para>
+</simplesect>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h" line="4248" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h" bodystart="4248" bodyend="4249"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Exported__Macros_1gabca62f581e6c2553cca7ef0d7a2a4b7f" prot="public" static="no">
+        <name>__HAL_RCC_PLL_PLLM_CONFIG</name>
+        <param><defname>__PLLM__</defname></param>
+        <initializer>                  <ref refid="group__Exported__macros_1ga6553c99f510c3bab8cc0a91602053247" kindref="member">MODIFY_REG</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;PLLCFGR, <ref refid="group__Peripheral__Registers__Bits__Definition_1ga9a42e8b9ee60126976d9be056e5e66b1" kindref="member">RCC_PLLCFGR_PLLM</ref>, ((__PLLM__) - 1) &lt;&lt; 4U)</initializer>
+        <briefdescription>
+<para>Macro to configure the PLL source division factor M. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>This function must be used only when the main PLL is disabled. </para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__PLLM__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the division factor for PLL VCO input clock This parameter must be a number between Min_Data = 1 and Max_Data = 16 on STM32L4Rx/STM32L4Sx devices. This parameter must be a number between Min_Data = 1 and Max_Data = 8 on other devices. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>You have to set the PLLM parameter correctly to ensure that the VCO input frequency ranges from 4 to 16 MHz. It is recommended to select a frequency of 16 MHz to limit PLL jitter. </para>
+</simplesect>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h" line="4262" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h" bodystart="4262" bodyend="4263"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Exported__Macros_1gafc6015c0052e797d909e5d9eab7771c9" prot="public" static="no">
+        <name>__HAL_RCC_PLL_CONFIG</name>
+        <param><defname>__PLLSOURCE__</defname></param>
+        <param><defname>__PLLM__</defname></param>
+        <param><defname>__PLLN__</defname></param>
+        <param><defname>__PLLQ__</defname></param>
+        <param><defname>__PLLR__</defname></param>
+        <initializer>                  <ref refid="group__Exported__macros_1ga6553c99f510c3bab8cc0a91602053247" kindref="member">MODIFY_REG</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;PLLCFGR, \
+                             (<ref refid="group__Peripheral__Registers__Bits__Definition_1ga92cb53ea81d2c47537eb217cc6659a2e" kindref="member">RCC_PLLCFGR_PLLSRC</ref> | <ref refid="group__Peripheral__Registers__Bits__Definition_1ga9a42e8b9ee60126976d9be056e5e66b1" kindref="member">RCC_PLLCFGR_PLLM</ref> | <ref refid="group__Peripheral__Registers__Bits__Definition_1ga4b571901d7cdc93ca1ecc1531f26ba6a" kindref="member">RCC_PLLCFGR_PLLN</ref> | \
+                              <ref refid="group__Peripheral__Registers__Bits__Definition_1ga546495f69f570cb4b81d4a59054c7ed1" kindref="member">RCC_PLLCFGR_PLLQ</ref> | <ref refid="group__Peripheral__Registers__Bits__Definition_1gaf94ebe400d76dd3d34e78244a8ceb050" kindref="member">RCC_PLLCFGR_PLLR</ref>), \
+                             ((__PLLSOURCE__) | \
+                              (((__PLLM__) - 1U) &lt;&lt; <ref refid="group__Peripheral__Registers__Bits__Definition_1ga681f0ec251dffb419df8fa23137fe810" kindref="member">RCC_PLLCFGR_PLLM_Pos</ref>) | \
+                              ((__PLLN__) &lt;&lt; <ref refid="group__Peripheral__Registers__Bits__Definition_1ga78a5913e3fc53a740fe874ece04b2d84" kindref="member">RCC_PLLCFGR_PLLN_Pos</ref>) | \
+                              ((((__PLLQ__) &gt;&gt; 1U) - 1U) &lt;&lt; <ref refid="group__Peripheral__Registers__Bits__Definition_1gac574324eee39c3dcee75b37d7728c9ae" kindref="member">RCC_PLLCFGR_PLLQ_Pos</ref>) | \
+                              ((((__PLLR__) &gt;&gt; 1U) - 1U) &lt;&lt; <ref refid="group__Peripheral__Registers__Bits__Definition_1ga6a5d83613de06413fea907a5a4df341b" kindref="member">RCC_PLLCFGR_PLLR_Pos</ref>)))</initializer>
+        <briefdescription>
+<para>Macro to configure the main PLL clock source, multiplication and division factors. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>This function must be used only when the main PLL is disabled.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__PLLSOURCE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the PLL entry clock source. This parameter can be one of the following values: <itemizedlist>
+<listitem><para><ref refid="group__RCC__PLL__Clock__Source_1ga2a440b01eaeb8f3a6282598fc748ef1f" kindref="member">RCC_PLLSOURCE_NONE</ref> No clock selected as PLL clock entry </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__PLL__Clock__Source_1ga5a17d8f572153069f1914e622ca0f474" kindref="member">RCC_PLLSOURCE_MSI</ref> MSI oscillator clock selected as PLL clock entry </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__PLL__Clock__Source_1ga0e07703f1ccb3d60f8a47a2dc631c218" kindref="member">RCC_PLLSOURCE_HSI</ref> HSI oscillator clock selected as PLL clock entry </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__PLL__Clock__Source_1ga197cea7fe5c2db26fe7fcdb0f99dd4d7" kindref="member">RCC_PLLSOURCE_HSE</ref> HSE oscillator clock selected as PLL clock entry </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>This clock source is common for the main PLL and audio PLL (PLLSAI1 and PLLSAI2).</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__PLLM__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the division factor for PLL VCO input clock. This parameter must be a number between Min_Data = 1 and Max_Data = 16 on STM32L4Rx/STM32L4Sx devices. This parameter must be a number between Min_Data = 1 and Max_Data = 8 on other devices. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>You have to set the PLLM parameter correctly to ensure that the VCO input frequency ranges from 4 to 16 MHz. It is recommended to select a frequency of 16 MHz to limit PLL jitter.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__PLLN__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the multiplication factor for PLL VCO output clock. This parameter must be a number between 8 and 86. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>You have to set the PLLN parameter correctly to ensure that the VCO output frequency is between 64 and 344 MHz.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__PLLP__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the division factor for SAI clock when SAI available on device. This parameter must be a number in the range (7 or 17) for STM32L47x/STM32L48x else (2 to 31).</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>__PLLQ__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the division factor for OTG FS, SDMMC1 and RNG clocks. This parameter must be in the range (2, 4, 6 or 8). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>If the USB OTG FS is used in your application, you have to set the PLLQ parameter correctly to have 48 MHz clock for the USB. However, the SDMMC1 and RNG need a frequency lower than or equal to 48 MHz to work correctly. </para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__PLLR__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the division factor for the main system clock. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>You have to set the PLLR parameter correctly to not exceed 80MHZ. This parameter must be in the range (2, 4, 6 or 8). </para>
+</simplesect>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h" line="4332" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h" bodystart="4332" bodyend="4340"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Exported__Macros_1ga3ea1390f8124e2b3b8d53e95541d6e53" prot="public" static="no">
+        <name>__HAL_RCC_GET_PLL_OSCSOURCE</name>
+        <param></param>
+        <initializer>(<ref refid="group__Exported__macros_1ga822bb1bb9710d5f2fa6396b84e583c33" kindref="member">READ_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;PLLCFGR, <ref refid="group__Peripheral__Registers__Bits__Definition_1ga92cb53ea81d2c47537eb217cc6659a2e" kindref="member">RCC_PLLCFGR_PLLSRC</ref>))</initializer>
+        <briefdescription>
+<para>Macro to get the oscillator used as PLL clock source. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>The</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>oscillator used as PLL clock source. The returned value can be one of the following:<itemizedlist>
+<listitem><para>RCC_PLLSOURCE_NONE: No oscillator is used as PLL clock source.</para>
+</listitem><listitem><para>RCC_PLLSOURCE_MSI: MSI oscillator is used as PLL clock source.</para>
+</listitem><listitem><para>RCC_PLLSOURCE_HSI: HSI oscillator is used as PLL clock source.</para>
+</listitem><listitem><para>RCC_PLLSOURCE_HSE: HSE oscillator is used as PLL clock source. </para>
+</listitem></itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h" line="4352" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h" bodystart="4352" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Exported__Macros_1gaab70beccea4c82e4acc69befcdb5e862" prot="public" static="no">
+        <name>__HAL_RCC_PLLCLKOUT_ENABLE</name>
+        <param><defname>__PLLCLOCKOUT__</defname></param>
+        <initializer><ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;PLLCFGR, (__PLLCLOCKOUT__))</initializer>
+        <briefdescription>
+<para>Enable or disable each clock output (RCC_PLL_SYSCLK, RCC_PLL_48M1CLK, RCC_PLL_SAI3CLK) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>Enabling/disabling clock outputs RCC_PLL_SAI3CLK and RCC_PLL_48M1CLK can be done at anytime without the need to stop the PLL in order to save power. But RCC_PLL_SYSCLK cannot be stopped if used as System Clock. </para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__PLLCLOCKOUT__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the PLL clock to be output. This parameter can be one or a combination of the following values: <itemizedlist>
+<listitem><para>RCC_PLL_SAI3CLK This clock is used to generate an accurate clock to achieve high-quality audio performance on SAI interface in case. </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__PLL__Clock__Output_1ga951a7b0946764a1067f5dbcb359761cf" kindref="member">RCC_PLL_48M1CLK</ref> This Clock is used to generate the clock for the USB OTG FS (48 MHz), the random analog generator (&lt;=48 MHz) and the SDMMC1 (&lt;= 48 MHz). </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__PLL__Clock__Output_1ga2452d1b434015696d6129a247e9bfee9" kindref="member">RCC_PLL_SYSCLK</ref> This Clock is used to generate the high speed system clock (up to 80MHz) </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h" line="4368" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h" bodystart="4368" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Exported__Macros_1gaee19cf9a5cb792b5c9a94ad88103ab93" prot="public" static="no">
+        <name>__HAL_RCC_PLLCLKOUT_DISABLE</name>
+        <param><defname>__PLLCLOCKOUT__</defname></param>
+        <initializer><ref refid="group__Exported__macros_1ga133aae6fc0d41bffab39ab223a7001de" kindref="member">CLEAR_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;PLLCFGR, (__PLLCLOCKOUT__))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h" line="4370" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h" bodystart="4370" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Exported__Macros_1ga8df63b4aaea1551f9d4ba3fe22360cbb" prot="public" static="no">
+        <name>__HAL_RCC_GET_PLLCLKOUT_CONFIG</name>
+        <param><defname>__PLLCLOCKOUT__</defname></param>
+        <initializer><ref refid="group__Exported__macros_1ga822bb1bb9710d5f2fa6396b84e583c33" kindref="member">READ_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;PLLCFGR, (__PLLCLOCKOUT__))</initializer>
+        <briefdescription>
+<para>Get clock output enable status (RCC_PLL_SYSCLK, RCC_PLL_48M1CLK, RCC_PLL_SAI3CLK) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__PLLCLOCKOUT__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the output PLL clock to be checked. This parameter can be one of the following values: <itemizedlist>
+<listitem><para>RCC_PLL_SAI3CLK This clock is used to generate an accurate clock to achieve high-quality audio performance on SAI interface in case. </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__PLL__Clock__Output_1ga951a7b0946764a1067f5dbcb359761cf" kindref="member">RCC_PLL_48M1CLK</ref> This Clock is used to generate the clock for the USB OTG FS (48 MHz), the random analog generator (&lt;=48 MHz) and the SDMMC1 (&lt;= 48 MHz). </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__PLL__Clock__Output_1ga2452d1b434015696d6129a247e9bfee9" kindref="member">RCC_PLL_SYSCLK</ref> This Clock is used to generate the high speed system clock (up to 80MHz) </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>/ RESET </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h" line="4383" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h" bodystart="4383" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Exported__Macros_1gaa29be28740b3d480e83efbc2e695c1b8" prot="public" static="no">
+        <name>__HAL_RCC_SYSCLK_CONFIG</name>
+        <param><defname>__SYSCLKSOURCE__</defname></param>
+        <initializer>                  <ref refid="group__Exported__macros_1ga6553c99f510c3bab8cc0a91602053247" kindref="member">MODIFY_REG</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;CFGR, <ref refid="group__Peripheral__Registers__Bits__Definition_1ga0eea5e5f7743a7e8995b8beeb18355c1" kindref="member">RCC_CFGR_SW</ref>, (__SYSCLKSOURCE__))</initializer>
+        <briefdescription>
+<para>Macro to configure the system clock source. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__SYSCLKSOURCE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the system clock source. This parameter can be one of the following values:<itemizedlist>
+<listitem><para>RCC_SYSCLKSOURCE_MSI: MSI oscillator is used as system clock source.</para>
+</listitem><listitem><para>RCC_SYSCLKSOURCE_HSI: HSI oscillator is used as system clock source.</para>
+</listitem><listitem><para>RCC_SYSCLKSOURCE_HSE: HSE oscillator is used as system clock source.</para>
+</listitem><listitem><para>RCC_SYSCLKSOURCE_PLLCLK: PLL output is used as system clock source. </para>
+</listitem></itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h" line="4395" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h" bodystart="4395" bodyend="4396"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Exported__Macros_1gac99c2453d9e77c8b457acc0210e754c2" prot="public" static="no">
+        <name>__HAL_RCC_GET_SYSCLK_SOURCE</name>
+        <param></param>
+        <initializer>(<ref refid="group__Exported__macros_1ga822bb1bb9710d5f2fa6396b84e583c33" kindref="member">READ_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;CFGR, <ref refid="group__Peripheral__Registers__Bits__Definition_1ga15bf2269500dc97e137315f44aa015c9" kindref="member">RCC_CFGR_SWS</ref>))</initializer>
+        <briefdescription>
+<para>Macro to get the clock source used as system clock. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>The</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>clock source used as system clock. The returned value can be one of the following:<itemizedlist>
+<listitem><para>RCC_SYSCLKSOURCE_STATUS_MSI: MSI used as system clock.</para>
+</listitem><listitem><para>RCC_SYSCLKSOURCE_STATUS_HSI: HSI used as system clock.</para>
+</listitem><listitem><para>RCC_SYSCLKSOURCE_STATUS_HSE: HSE used as system clock.</para>
+</listitem><listitem><para>RCC_SYSCLKSOURCE_STATUS_PLLCLK: PLL used as system clock. </para>
+</listitem></itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h" line="4406" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h" bodystart="4406" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Exported__Macros_1gad6731530ebbbcc0696e9bd94eb0d2724" prot="public" static="no">
+        <name>__HAL_RCC_LSEDRIVE_CONFIG</name>
+        <param><defname>__LSEDRIVE__</defname></param>
+        <initializer>                  <ref refid="group__Exported__macros_1ga6553c99f510c3bab8cc0a91602053247" kindref="member">MODIFY_REG</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;BDCR, <ref refid="group__Peripheral__Registers__Bits__Definition_1gaa9e761cf5e09906a38e9c7e8e750514c" kindref="member">RCC_BDCR_LSEDRV</ref>, (__LSEDRIVE__))</initializer>
+        <briefdescription>
+<para>Macro to configure the External Low Speed oscillator (LSE) drive capability. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>As the LSE is in the Backup domain and write access is denied to this domain after reset, you have to enable write access using <ref refid="group__PWR__Exported__Functions__Group1_1ga3d07cef39bf294db4aed7e06e5dbf9af" kindref="member">HAL_PWR_EnableBkUpAccess()</ref> function before to configure the LSE (to be done once after reset). </para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__LSEDRIVE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the new state of the LSE drive capability. This parameter can be one of the following values: <itemizedlist>
+<listitem><para><ref refid="group__RCC__LSEDrive__Config_1gab5fa5b50304710db2d7f6d583a225da3" kindref="member">RCC_LSEDRIVE_LOW</ref> LSE oscillator low drive capability. </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__LSEDrive__Config_1ga1151beb7f9869e91fe7617936ad0efff" kindref="member">RCC_LSEDRIVE_MEDIUMLOW</ref> LSE oscillator medium low drive capability. </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__LSEDrive__Config_1ga295eed1e1368d526fa0f6356ceecbc48" kindref="member">RCC_LSEDRIVE_MEDIUMHIGH</ref> LSE oscillator medium high drive capability. </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__LSEDrive__Config_1ga90b0854f3813d7ab2781519bfa58fd95" kindref="member">RCC_LSEDRIVE_HIGH</ref> LSE oscillator high drive capability. </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h" line="4422" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h" bodystart="4422" bodyend="4423"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Exported__Macros_1ga3e665d8b6f33fd9371bb4fff4ce54811" prot="public" static="no">
+        <name>__HAL_RCC_WAKEUPSTOP_CLK_CONFIG</name>
+        <param><defname>__STOPWUCLK__</defname></param>
+        <initializer>                  <ref refid="group__Exported__macros_1ga6553c99f510c3bab8cc0a91602053247" kindref="member">MODIFY_REG</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;CFGR, <ref refid="group__Peripheral__Registers__Bits__Definition_1ga623e4f1eb613f4793d3d500c1cfd746a" kindref="member">RCC_CFGR_STOPWUCK</ref>, (__STOPWUCLK__))</initializer>
+        <briefdescription>
+<para>Macro to configure the wake up from stop clock. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__STOPWUCLK__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the clock source used after wake up from stop. This parameter can be one of the following values: <itemizedlist>
+<listitem><para><ref refid="group__RCC__Stop__WakeUpClock_1gac18b40ff768e227cbb2f661b9f40373a" kindref="member">RCC_STOP_WAKEUPCLOCK_MSI</ref> MSI selected as system clock source </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__Stop__WakeUpClock_1ga7230033023839d06ad8cad89ea60a6c9" kindref="member">RCC_STOP_WAKEUPCLOCK_HSI</ref> HSI selected as system clock source </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h" line="4433" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h" bodystart="4433" bodyend="4434"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Exported__Macros_1ga7e5f7f1efc92794b6f0e96068240b45e" prot="public" static="no">
+        <name>__HAL_RCC_MCO1_CONFIG</name>
+        <param><defname>__MCOCLKSOURCE__</defname></param>
+        <param><defname>__MCODIV__</defname></param>
+        <initializer>                 <ref refid="group__Exported__macros_1ga6553c99f510c3bab8cc0a91602053247" kindref="member">MODIFY_REG</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;CFGR, (<ref refid="group__Peripheral__Registers__Bits__Definition_1ga76304e842d0244575776a28f82cafcfd" kindref="member">RCC_CFGR_MCOSEL</ref> | <ref refid="group__Peripheral__Registers__Bits__Definition_1ga2c2055812655d6acfda9a73dd2e94e10" kindref="member">RCC_CFGR_MCOPRE</ref>), ((__MCOCLKSOURCE__) | (__MCODIV__)))</initializer>
+        <briefdescription>
+<para>Macro to configure the MCO clock. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__MCOCLKSOURCE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the MCO clock source. This parameter can be one of the following values: <itemizedlist>
+<listitem><para><ref refid="group__RCC__MCO1__Clock__Source_1ga725a16362f3324ef5866dc5a1ff07cf5" kindref="member">RCC_MCO1SOURCE_NOCLOCK</ref> MCO output disabled </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MCO1__Clock__Source_1gae8ca2959a1252ecd319843da02c79526" kindref="member">RCC_MCO1SOURCE_SYSCLK</ref> System clock selected as MCO source </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MCO1__Clock__Source_1gac5ae615cfe916da9ecb212cf8ac102a6" kindref="member">RCC_MCO1SOURCE_MSI</ref> MSI clock selected as MCO source </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MCO1__Clock__Source_1gad99c388c455852143220397db3730635" kindref="member">RCC_MCO1SOURCE_HSI</ref> HSI clock selected as MCO source </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MCO1__Clock__Source_1ga5582d2ab152eb440a6cc3ae4833b043f" kindref="member">RCC_MCO1SOURCE_HSE</ref> HSE clock selected as MCO source </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MCO1__Clock__Source_1ga79d888f2238eaa4e4b8d02b3900ea18b" kindref="member">RCC_MCO1SOURCE_PLLCLK</ref> Main PLL clock selected as MCO source </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MCO1__Clock__Source_1ga4ada18d28374df66c1b6da16606c23d8" kindref="member">RCC_MCO1SOURCE_LSI</ref> LSI clock selected as MCO source </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MCO1__Clock__Source_1gaa01b6cb196df3a4ad690f8bcaa4d0621" kindref="member">RCC_MCO1SOURCE_LSE</ref> LSE clock selected as MCO source   </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>__MCODIV__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the MCO clock prescaler. This parameter can be one of the following values: <itemizedlist>
+<listitem><para><ref refid="group__RCC__MCOx__Clock__Prescaler_1ga438d8c3bead4e1ec5dd5757cb0313d53" kindref="member">RCC_MCODIV_1</ref> MCO clock source is divided by 1 </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MCOx__Clock__Prescaler_1ga6198330847077f4da351915518140bfc" kindref="member">RCC_MCODIV_2</ref> MCO clock source is divided by 2 </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MCOx__Clock__Prescaler_1ga1bdc2eb56aaeb53dc3ca5cd72f22d4c8" kindref="member">RCC_MCODIV_4</ref> MCO clock source is divided by 4 </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MCOx__Clock__Prescaler_1gadb84d9a10db2c49376be8fada619fe08" kindref="member">RCC_MCODIV_8</ref> MCO clock source is divided by 8 </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MCOx__Clock__Prescaler_1ga3ab3ab9547ef8800355111517b547882" kindref="member">RCC_MCODIV_16</ref> MCO clock source is divided by 16 </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h" line="4462" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h" bodystart="4462" bodyend="4463"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Exported__Macros_1gaab944f562b53fc74bcc0e4958388fd42" prot="public" static="no">
+        <name>__HAL_RCC_HSI_ENABLE</name>
+        <param></param>
+        <initializer><ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;CR, <ref refid="group__Peripheral__Registers__Bits__Definition_1gaf4fcacf94a97f7d49a70e089b39cf474" kindref="member">RCC_CR_HSION</ref>)</initializer>
+        <briefdescription>
+<para>Macros to enable or disable the Internal High Speed 16MHz oscillator (HSI). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>The HSI is stopped by hardware when entering STOP and STANDBY modes. It is used (enabled by hardware) as system clock source after startup from Reset, wakeup from STOP and STANDBY mode, or in case of failure of the HSE used directly or indirectly as system clock (if the Clock Security System CSS is enabled). </para>
+</simplesect>
+<simplesect kind="note"><para>HSI can not be stopped if it is used as system clock source. In this case, you have to select another source of the system clock then stop the HSI. </para>
+</simplesect>
+<simplesect kind="note"><para>After enabling the HSI, the application software should wait on HSIRDY flag to be set indicating that HSI clock is stable and can be used as system clock source. This parameter can be: ENABLE or DISABLE. </para>
+</simplesect>
+<simplesect kind="note"><para>When the HSI is stopped, HSIRDY flag goes low after 6 HSI oscillator clock cycles. </para>
+</simplesect>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_rcc.h" line="3939" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_rcc.h" bodystart="3939" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Exported__Macros_1ga0c0dc8bc0ef58703782f45b4e487c031" prot="public" static="no">
+        <name>__HAL_RCC_HSI_DISABLE</name>
+        <param></param>
+        <initializer><ref refid="group__Exported__macros_1ga133aae6fc0d41bffab39ab223a7001de" kindref="member">CLEAR_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;CR, <ref refid="group__Peripheral__Registers__Bits__Definition_1gaf4fcacf94a97f7d49a70e089b39cf474" kindref="member">RCC_CR_HSION</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_rcc.h" line="3941" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_rcc.h" bodystart="3941" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Exported__Macros_1ga74c3b20fdb9a7672c50aa97bb46537b1" prot="public" static="no">
+        <name>__HAL_RCC_HSI_CALIBRATIONVALUE_ADJUST</name>
+        <param><defname>__HSICALIBRATIONVALUE__</defname></param>
+        <initializer>                  <ref refid="group__Exported__macros_1ga6553c99f510c3bab8cc0a91602053247" kindref="member">MODIFY_REG</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;ICSCR, <ref refid="group__Peripheral__Registers__Bits__Definition_1gab79c333962d5bd80636eca9997759804" kindref="member">RCC_ICSCR_HSITRIM</ref>, (__HSICALIBRATIONVALUE__) &lt;&lt; <ref refid="group__Peripheral__Registers__Bits__Definition_1ga1f1261416d104fe7cd9f5001ffbf8330" kindref="member">RCC_ICSCR_HSITRIM_Pos</ref>)</initializer>
+        <briefdescription>
+<para>Macro to adjust the Internal High Speed 16MHz oscillator (HSI) calibration value. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>The calibration is used to compensate for the variations in voltage and temperature that influence the frequency of the internal HSI RC. </para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HSICALIBRATIONVALUE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the calibration trimming value (default is RCC_HSICALIBRATION_DEFAULT). This parameter must be a number between 0 and 31 on STM32L43x/STM32L44x/STM32L47x/STM32L48x or between 0 and 127 on other devices. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_rcc.h" line="3952" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_rcc.h" bodystart="3952" bodyend="3953"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Exported__Macros_1ga0a7d0e174acf397e7d1410dddc54486b" prot="public" static="no">
+        <name>__HAL_RCC_HSIAUTOMATIC_START_ENABLE</name>
+        <param></param>
+        <initializer><ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;CR, <ref refid="group__Peripheral__Registers__Bits__Definition_1ga8f0aba1e728b2409378cda9d59e6a506" kindref="member">RCC_CR_HSIASFS</ref>)</initializer>
+        <briefdescription>
+<para>Macros to enable or disable the wakeup the Internal High Speed oscillator (HSI) in parallel to the Internal Multi Speed oscillator (MSI) used at system wakeup. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>The enable of this function has not effect on the HSION bit. This parameter can be: ENABLE or DISABLE. </para>
+</simplesect>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_rcc.h" line="3962" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_rcc.h" bodystart="3962" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Exported__Macros_1gaf9bd79bc1e116a980b1218af2f4b3597" prot="public" static="no">
+        <name>__HAL_RCC_HSIAUTOMATIC_START_DISABLE</name>
+        <param></param>
+        <initializer><ref refid="group__Exported__macros_1ga133aae6fc0d41bffab39ab223a7001de" kindref="member">CLEAR_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;CR, <ref refid="group__Peripheral__Registers__Bits__Definition_1ga8f0aba1e728b2409378cda9d59e6a506" kindref="member">RCC_CR_HSIASFS</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_rcc.h" line="3964" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_rcc.h" bodystart="3964" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Exported__Macros_1gae069a430441e0547d753a7b47feaebd1" prot="public" static="no">
+        <name>__HAL_RCC_HSISTOP_ENABLE</name>
+        <param></param>
+        <initializer><ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;CR, <ref refid="group__Peripheral__Registers__Bits__Definition_1gaa9172ae30b26b2daad9442579b8e2dd0" kindref="member">RCC_CR_HSIKERON</ref>)</initializer>
+        <briefdescription>
+<para>Macros to enable or disable the force of the Internal High Speed oscillator (HSI) in STOP mode to be quickly available as kernel clock for USARTs and I2Cs. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>Keeping the HSI ON in STOP mode allows to avoid slowing down the communication speed because of the HSI startup time. </para>
+</simplesect>
+<simplesect kind="note"><para>The enable of this function has not effect on the HSION bit. This parameter can be: ENABLE or DISABLE. </para>
+</simplesect>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_rcc.h" line="3975" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_rcc.h" bodystart="3975" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Exported__Macros_1gaca5ca4b6c2cbd0e638b4c3b8b71cbc61" prot="public" static="no">
+        <name>__HAL_RCC_HSISTOP_DISABLE</name>
+        <param></param>
+        <initializer><ref refid="group__Exported__macros_1ga133aae6fc0d41bffab39ab223a7001de" kindref="member">CLEAR_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;CR, <ref refid="group__Peripheral__Registers__Bits__Definition_1gaa9172ae30b26b2daad9442579b8e2dd0" kindref="member">RCC_CR_HSIKERON</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_rcc.h" line="3977" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_rcc.h" bodystart="3977" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Exported__Macros_1gaf6797e8502d134483ba092f5d4345c70" prot="public" static="no">
+        <name>__HAL_RCC_MSI_ENABLE</name>
+        <param></param>
+        <initializer><ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;CR, <ref refid="group__Peripheral__Registers__Bits__Definition_1gaee09fff7bffaaabc64d99627f2249795" kindref="member">RCC_CR_MSION</ref>)</initializer>
+        <briefdescription>
+<para>Macros to enable or disable the Internal Multi Speed oscillator (MSI). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>The MSI is stopped by hardware when entering STOP and STANDBY modes. It is used (enabled by hardware) as system clock source after startup from Reset, wakeup from STOP and STANDBY mode, or in case of failure of the HSE used directly or indirectly as system clock (if the Clock Security System CSS is enabled). </para>
+</simplesect>
+<simplesect kind="note"><para>MSI can not be stopped if it is used as system clock source. In this case, you have to select another source of the system clock then stop the MSI. </para>
+</simplesect>
+<simplesect kind="note"><para>After enabling the MSI, the application software should wait on MSIRDY flag to be set indicating that MSI clock is stable and can be used as system clock source. </para>
+</simplesect>
+<simplesect kind="note"><para>When the MSI is stopped, MSIRDY flag goes low after 6 MSI oscillator clock cycles. </para>
+</simplesect>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_rcc.h" line="3996" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_rcc.h" bodystart="3996" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Exported__Macros_1ga49c15fd232bd099f020e508fe9c3cd12" prot="public" static="no">
+        <name>__HAL_RCC_MSI_DISABLE</name>
+        <param></param>
+        <initializer><ref refid="group__Exported__macros_1ga133aae6fc0d41bffab39ab223a7001de" kindref="member">CLEAR_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;CR, <ref refid="group__Peripheral__Registers__Bits__Definition_1gaee09fff7bffaaabc64d99627f2249795" kindref="member">RCC_CR_MSION</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_rcc.h" line="3998" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_rcc.h" bodystart="3998" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Exported__Macros_1ga2e9aac4b5b3049bf2e10d04f2424e0ce" prot="public" static="no">
+        <name>__HAL_RCC_MSI_CALIBRATIONVALUE_ADJUST</name>
+        <param><defname>__MSICALIBRATIONVALUE__</defname></param>
+        <initializer>                  <ref refid="group__Exported__macros_1ga6553c99f510c3bab8cc0a91602053247" kindref="member">MODIFY_REG</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;ICSCR, <ref refid="group__Peripheral__Registers__Bits__Definition_1ga7f61335b01758a4336598e7fa97445e6" kindref="member">RCC_ICSCR_MSITRIM</ref>, (__MSICALIBRATIONVALUE__) &lt;&lt; <ref refid="group__Peripheral__Registers__Bits__Definition_1ga05b6fa91ff6f0b1264ccb75c1943a4f6" kindref="member">RCC_ICSCR_MSITRIM_Pos</ref>)</initializer>
+        <briefdescription>
+<para>Macro Adjusts the Internal Multi Speed oscillator (MSI) calibration value. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>The calibration is used to compensate for the variations in voltage and temperature that influence the frequency of the internal MSI RC. Refer to the Application Note AN3300 for more details on how to calibrate the MSI. </para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__MSICALIBRATIONVALUE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the calibration trimming value (default is RCC_MSICALIBRATION_DEFAULT). This parameter must be a number between 0 and 255. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_rcc.h" line="4010" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_rcc.h" bodystart="4010" bodyend="4011"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Exported__Macros_1gafe679885cf67635d1ec8c36eb9bc4688" prot="public" static="no">
+        <name>__HAL_RCC_MSI_RANGE_CONFIG</name>
+        <param><defname>__MSIRANGEVALUE__</defname></param>
+        <initializer>                  do {                                                         \
+                    <ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;CR, <ref refid="group__Peripheral__Registers__Bits__Definition_1ga49933766dd383651a6757d47f76649de" kindref="member">RCC_CR_MSIRGSEL</ref>);                         \
+                    <ref refid="group__Exported__macros_1ga6553c99f510c3bab8cc0a91602053247" kindref="member">MODIFY_REG</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;CR, <ref refid="group__Peripheral__Registers__Bits__Definition_1ga07ad83eab3b62a51d110572d0a78c833" kindref="member">RCC_CR_MSIRANGE</ref>, (__MSIRANGEVALUE__)); \
+                  } while(0)</initializer>
+        <briefdescription>
+<para>Macro configures the Internal Multi Speed oscillator (MSI) clock range in run mode. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>After restart from Reset , the MSI clock is around 4 MHz. After stop the startup clock can be MSI (at any of its possible frequencies, the one that was used before entering stop mode) or HSI. After Standby its frequency can be selected between 4 possible values (1, 2, 4 or 8 MHz). </para>
+</simplesect>
+<simplesect kind="note"><para>MSIRANGE can be modified when MSI is OFF (MSION=0) or when MSI is ready (MSIRDY=1). </para>
+</simplesect>
+<simplesect kind="note"><para>The MSI clock range after reset can be modified on the fly. </para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__MSIRANGEVALUE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the MSI clock range. This parameter must be one of the following values: <itemizedlist>
+<listitem><para><ref refid="group__RCC__MSI__Clock__Range_1ga3a266a56e6a43bdaef4bbcc1eee4c360" kindref="member">RCC_MSIRANGE_0</ref> MSI clock is around 100 KHz </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MSI__Clock__Range_1ga90601d6a9beb6a00245ecbf193d0ece5" kindref="member">RCC_MSIRANGE_1</ref> MSI clock is around 200 KHz </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MSI__Clock__Range_1gafa12a5d5063914b4aa66c8f12324926e" kindref="member">RCC_MSIRANGE_2</ref> MSI clock is around 400 KHz </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MSI__Clock__Range_1ga2eb0f8e9e5800747454d52f5497dea57" kindref="member">RCC_MSIRANGE_3</ref> MSI clock is around 800 KHz </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MSI__Clock__Range_1gab5ca16a71f018ae2ceb5bcef29434f1c" kindref="member">RCC_MSIRANGE_4</ref> MSI clock is around 1 MHz </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MSI__Clock__Range_1gabcd068b50d4fdfb3529272fbb169ebb1" kindref="member">RCC_MSIRANGE_5</ref> MSI clock is around 2 MHz </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MSI__Clock__Range_1ga7f6e3de13b041244869fba14585c43fe" kindref="member">RCC_MSIRANGE_6</ref> MSI clock is around 4 MHz (default after Reset) </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MSI__Clock__Range_1gaf0095aea854bcebdeaf424884611fdf7" kindref="member">RCC_MSIRANGE_7</ref> MSI clock is around 8 MHz </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MSI__Clock__Range_1ga2486a2c68d9d1660cee46db8ff2d8a7e" kindref="member">RCC_MSIRANGE_8</ref> MSI clock is around 16 MHz </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MSI__Clock__Range_1gabff618662f94da794a4c4485d2c46eb0" kindref="member">RCC_MSIRANGE_9</ref> MSI clock is around 24 MHz </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MSI__Clock__Range_1ga74f652762f6663ff0255004a5dcaf249" kindref="member">RCC_MSIRANGE_10</ref> MSI clock is around 32 MHz </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MSI__Clock__Range_1gac64bbb470bd6b2658b0723453bcfcff4" kindref="member">RCC_MSIRANGE_11</ref> MSI clock is around 48 MHz </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_rcc.h" line="4039" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_rcc.h" bodystart="4039" bodyend="4043"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Exported__Macros_1gab9ea8235fad928775ea22e112b18cb59" prot="public" static="no">
+        <name>__HAL_RCC_MSI_STANDBY_RANGE_CONFIG</name>
+        <param><defname>__MSIRANGEVALUE__</defname></param>
+        <initializer>                  <ref refid="group__Exported__macros_1ga6553c99f510c3bab8cc0a91602053247" kindref="member">MODIFY_REG</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;CSR, <ref refid="group__Peripheral__Registers__Bits__Definition_1ga054a1764497165e83c364efc148f42f0" kindref="member">RCC_CSR_MSISRANGE</ref>, (__MSIRANGEVALUE__) &lt;&lt; 4U)</initializer>
+        <briefdescription>
+<para>Macro configures the Internal Multi Speed oscillator (MSI) clock range after Standby mode After Standby its frequency can be selected between 4 possible values (1, 2, 4 or 8 MHz). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__MSIRANGEVALUE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the MSI clock range. This parameter must be one of the following values: <itemizedlist>
+<listitem><para><ref refid="group__RCC__MSI__Clock__Range_1gab5ca16a71f018ae2ceb5bcef29434f1c" kindref="member">RCC_MSIRANGE_4</ref> MSI clock is around 1 MHz </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MSI__Clock__Range_1gabcd068b50d4fdfb3529272fbb169ebb1" kindref="member">RCC_MSIRANGE_5</ref> MSI clock is around 2 MHz </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MSI__Clock__Range_1ga7f6e3de13b041244869fba14585c43fe" kindref="member">RCC_MSIRANGE_6</ref> MSI clock is around 4 MHz (default after Reset) </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MSI__Clock__Range_1gaf0095aea854bcebdeaf424884611fdf7" kindref="member">RCC_MSIRANGE_7</ref> MSI clock is around 8 MHz </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_rcc.h" line="4056" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_rcc.h" bodystart="4056" bodyend="4057"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Exported__Macros_1gaad04b0c76f81734ba4881d97321667b9" prot="public" static="no">
+        <name>__HAL_RCC_GET_MSI_RANGE</name>
+        <param></param>
+        <initializer>                  ((<ref refid="group__Exported__macros_1ga822bb1bb9710d5f2fa6396b84e583c33" kindref="member">READ_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;CR, <ref refid="group__Peripheral__Registers__Bits__Definition_1ga49933766dd383651a6757d47f76649de" kindref="member">RCC_CR_MSIRGSEL</ref>) != 0U) ?             \
+                   <ref refid="group__Exported__macros_1ga822bb1bb9710d5f2fa6396b84e583c33" kindref="member">READ_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;CR, <ref refid="group__Peripheral__Registers__Bits__Definition_1ga07ad83eab3b62a51d110572d0a78c833" kindref="member">RCC_CR_MSIRANGE</ref>) :                        \
+                   (<ref refid="group__Exported__macros_1ga822bb1bb9710d5f2fa6396b84e583c33" kindref="member">READ_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;CSR, <ref refid="group__Peripheral__Registers__Bits__Definition_1ga054a1764497165e83c364efc148f42f0" kindref="member">RCC_CSR_MSISRANGE</ref>) &gt;&gt; 4U))</initializer>
+        <briefdescription>
+<para>Macro to get the Internal Multi Speed oscillator (MSI) clock range in run mode. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>MSI</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>clock range. This parameter must be one of the following values: <itemizedlist>
+<listitem><para><ref refid="group__RCC__MSI__Clock__Range_1ga3a266a56e6a43bdaef4bbcc1eee4c360" kindref="member">RCC_MSIRANGE_0</ref> MSI clock is around 100 KHz </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MSI__Clock__Range_1ga90601d6a9beb6a00245ecbf193d0ece5" kindref="member">RCC_MSIRANGE_1</ref> MSI clock is around 200 KHz </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MSI__Clock__Range_1gafa12a5d5063914b4aa66c8f12324926e" kindref="member">RCC_MSIRANGE_2</ref> MSI clock is around 400 KHz </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MSI__Clock__Range_1ga2eb0f8e9e5800747454d52f5497dea57" kindref="member">RCC_MSIRANGE_3</ref> MSI clock is around 800 KHz </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MSI__Clock__Range_1gab5ca16a71f018ae2ceb5bcef29434f1c" kindref="member">RCC_MSIRANGE_4</ref> MSI clock is around 1 MHz </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MSI__Clock__Range_1gabcd068b50d4fdfb3529272fbb169ebb1" kindref="member">RCC_MSIRANGE_5</ref> MSI clock is around 2 MHz </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MSI__Clock__Range_1ga7f6e3de13b041244869fba14585c43fe" kindref="member">RCC_MSIRANGE_6</ref> MSI clock is around 4 MHz (default after Reset) </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MSI__Clock__Range_1gaf0095aea854bcebdeaf424884611fdf7" kindref="member">RCC_MSIRANGE_7</ref> MSI clock is around 8 MHz </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MSI__Clock__Range_1ga2486a2c68d9d1660cee46db8ff2d8a7e" kindref="member">RCC_MSIRANGE_8</ref> MSI clock is around 16 MHz </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MSI__Clock__Range_1gabff618662f94da794a4c4485d2c46eb0" kindref="member">RCC_MSIRANGE_9</ref> MSI clock is around 24 MHz </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MSI__Clock__Range_1ga74f652762f6663ff0255004a5dcaf249" kindref="member">RCC_MSIRANGE_10</ref> MSI clock is around 32 MHz </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MSI__Clock__Range_1gac64bbb470bd6b2658b0723453bcfcff4" kindref="member">RCC_MSIRANGE_11</ref> MSI clock is around 48 MHz </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_rcc.h" line="4075" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_rcc.h" bodystart="4075" bodyend="4078"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Exported__Macros_1ga560de8b8991db4a296de878a7a8aa58b" prot="public" static="no">
+        <name>__HAL_RCC_LSI_ENABLE</name>
+        <param></param>
+        <initializer><ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;CSR, <ref refid="group__Peripheral__Registers__Bits__Definition_1ga803cbf97bda1ebaf9afee2a3c9f0851b" kindref="member">RCC_CSR_LSION</ref>)</initializer>
+        <briefdescription>
+<para>Macros to enable or disable the Internal Low Speed oscillator (LSI). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>After enabling the LSI, the application software should wait on LSIRDY flag to be set indicating that LSI clock is stable and can be used to clock the IWDG and/or the RTC. </para>
+</simplesect>
+<simplesect kind="note"><para>LSI can not be disabled if the IWDG is running. </para>
+</simplesect>
+<simplesect kind="note"><para>When the LSI is stopped, LSIRDY flag goes low after 6 LSI oscillator clock cycles. </para>
+</simplesect>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_rcc.h" line="4089" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_rcc.h" bodystart="4089" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Exported__Macros_1ga4f96095bb4acda60b7f66d5d927da181" prot="public" static="no">
+        <name>__HAL_RCC_LSI_DISABLE</name>
+        <param></param>
+        <initializer><ref refid="group__Exported__macros_1ga133aae6fc0d41bffab39ab223a7001de" kindref="member">CLEAR_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;CSR, <ref refid="group__Peripheral__Registers__Bits__Definition_1ga803cbf97bda1ebaf9afee2a3c9f0851b" kindref="member">RCC_CSR_LSION</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_rcc.h" line="4091" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_rcc.h" bodystart="4091" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Exported__Macros_1gaa3d98648399f15d02645ef84f6ca8e4b" prot="public" static="no">
+        <name>__HAL_RCC_HSE_CONFIG</name>
+        <param><defname>__STATE__</defname></param>
+        <initializer>                    do {                                     \
+                      if((__STATE__) == <ref refid="group__RCC__HSE__Config_1gabc4f70a44776c557af20496b04d9a9db" kindref="member">RCC_HSE_ON</ref>)          \
+                      {                                      \
+                        <ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;CR, <ref refid="group__Peripheral__Registers__Bits__Definition_1gadb8228c9020595b4cf9995137b8c9a7d" kindref="member">RCC_CR_HSEON</ref>);      \
+                      }                                      \
+                      else if((__STATE__) == <ref refid="group__RCC__HSE__Config_1ga5ca515db2d5c4d5bdb9ee3d154df2704" kindref="member">RCC_HSE_BYPASS</ref>) \
+                      {                                      \
+                        <ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;CR, <ref refid="group__Peripheral__Registers__Bits__Definition_1gaa3288090671af5a959aae4d7f7696d55" kindref="member">RCC_CR_HSEBYP</ref>);     \
+                        <ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;CR, <ref refid="group__Peripheral__Registers__Bits__Definition_1gadb8228c9020595b4cf9995137b8c9a7d" kindref="member">RCC_CR_HSEON</ref>);      \
+                      }                                      \
+                      else                                   \
+                      {                                      \
+                        <ref refid="group__Exported__macros_1ga133aae6fc0d41bffab39ab223a7001de" kindref="member">CLEAR_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;CR, <ref refid="group__Peripheral__Registers__Bits__Definition_1gadb8228c9020595b4cf9995137b8c9a7d" kindref="member">RCC_CR_HSEON</ref>);    \
+                        <ref refid="group__Exported__macros_1ga133aae6fc0d41bffab39ab223a7001de" kindref="member">CLEAR_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;CR, <ref refid="group__Peripheral__Registers__Bits__Definition_1gaa3288090671af5a959aae4d7f7696d55" kindref="member">RCC_CR_HSEBYP</ref>);   \
+                      }                                      \
+                    } while(0)</initializer>
+        <briefdescription>
+<para>Macro to configure the External High Speed oscillator (HSE). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>Transition HSE Bypass to HSE On and HSE On to HSE Bypass are not supported by this macro. User should request a transition to HSE Off first and then HSE On or HSE Bypass. </para>
+</simplesect>
+<simplesect kind="note"><para>After enabling the HSE (RCC_HSE_ON or RCC_HSE_Bypass), the application software should wait on HSERDY flag to be set indicating that HSE clock is stable and can be used to clock the PLL and/or system clock. </para>
+</simplesect>
+<simplesect kind="note"><para>HSE state can not be changed if it is used directly or through the PLL as system clock. In this case, you have to select another source of the system clock then change the HSE state (ex. disable it). </para>
+</simplesect>
+<simplesect kind="note"><para>The HSE is stopped by hardware when entering STOP and STANDBY modes. </para>
+</simplesect>
+<simplesect kind="note"><para>This function reset the CSSON bit, so if the clock security system(CSS) was previously enabled you have to enable it again after calling this function. </para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__STATE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the new state of the HSE. This parameter can be one of the following values: <itemizedlist>
+<listitem><para><ref refid="group__RCC__HSE__Config_1ga1616626d23fbce440398578855df6f97" kindref="member">RCC_HSE_OFF</ref> Turn OFF the HSE oscillator, HSERDY flag goes low after 6 HSE oscillator clock cycles. </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__HSE__Config_1gabc4f70a44776c557af20496b04d9a9db" kindref="member">RCC_HSE_ON</ref> Turn ON the HSE oscillator. </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__HSE__Config_1ga5ca515db2d5c4d5bdb9ee3d154df2704" kindref="member">RCC_HSE_BYPASS</ref> HSE oscillator bypassed with external clock. </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_rcc.h" line="4116" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_rcc.h" bodystart="4116" bodyend="4132"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Exported__Macros_1ga6b2b48f429e347c1c9c469122c64798b" prot="public" static="no">
+        <name>__HAL_RCC_LSE_CONFIG</name>
+        <param><defname>__STATE__</defname></param>
+        <initializer>                    do {                                       \
+                      if((__STATE__) == <ref refid="group__RCC__LSE__Config_1gac981ea636c2f215e4473901e0912f55a" kindref="member">RCC_LSE_ON</ref>)            \
+                      {                                        \
+                        <ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;BDCR, <ref refid="group__Peripheral__Registers__Bits__Definition_1ga00145f8814cb9a5b180d76499d97aead" kindref="member">RCC_BDCR_LSEON</ref>);    \
+                      }                                        \
+                      else if((__STATE__) == <ref refid="group__RCC__LSE__Config_1gaad580157edbae878edbcc83c5a68e767" kindref="member">RCC_LSE_BYPASS</ref>)   \
+                      {                                        \
+                        <ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;BDCR, <ref refid="group__Peripheral__Registers__Bits__Definition_1ga542dffd7f8dc4da5401b54d822a22af0" kindref="member">RCC_BDCR_LSEBYP</ref>);   \
+                        <ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;BDCR, <ref refid="group__Peripheral__Registers__Bits__Definition_1ga00145f8814cb9a5b180d76499d97aead" kindref="member">RCC_BDCR_LSEON</ref>);    \
+                      }                                        \
+                      else                                     \
+                      {                                        \
+                        <ref refid="group__Exported__macros_1ga133aae6fc0d41bffab39ab223a7001de" kindref="member">CLEAR_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;BDCR, <ref refid="group__Peripheral__Registers__Bits__Definition_1ga00145f8814cb9a5b180d76499d97aead" kindref="member">RCC_BDCR_LSEON</ref>);  \
+                        <ref refid="group__Exported__macros_1ga133aae6fc0d41bffab39ab223a7001de" kindref="member">CLEAR_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;BDCR, <ref refid="group__Peripheral__Registers__Bits__Definition_1ga542dffd7f8dc4da5401b54d822a22af0" kindref="member">RCC_BDCR_LSEBYP</ref>); \
+                      }                                        \
+                    } while(0)</initializer>
+        <briefdescription>
+<para>Macro to configure the External Low Speed oscillator (LSE). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>Transitions LSE Bypass to LSE On and LSE On to LSE Bypass are not supported by this macro. User should request a transition to LSE Off first and then LSE On or LSE Bypass. </para>
+</simplesect>
+<simplesect kind="note"><para>As the LSE is in the Backup domain and write access is denied to this domain after reset, you have to enable write access using <ref refid="group__PWR__Exported__Functions__Group1_1ga3d07cef39bf294db4aed7e06e5dbf9af" kindref="member">HAL_PWR_EnableBkUpAccess()</ref> function before to configure the LSE (to be done once after reset). </para>
+</simplesect>
+<simplesect kind="note"><para>After enabling the LSE (RCC_LSE_ON or RCC_LSE_BYPASS), the application software should wait on LSERDY flag to be set indicating that LSE clock is stable and can be used to clock the RTC. </para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__STATE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the new state of the LSE. This parameter can be one of the following values: <itemizedlist>
+<listitem><para><ref refid="group__RCC__LSE__Config_1ga6645c27708d0cad1a4ab61d2abb24c77" kindref="member">RCC_LSE_OFF</ref> Turn OFF the LSE oscillator, LSERDY flag goes low after 6 LSE oscillator clock cycles. </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__LSE__Config_1gac981ea636c2f215e4473901e0912f55a" kindref="member">RCC_LSE_ON</ref> Turn ON the LSE oscillator. </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__LSE__Config_1gaad580157edbae878edbcc83c5a68e767" kindref="member">RCC_LSE_BYPASS</ref> LSE oscillator bypassed with external clock. </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_rcc.h" line="4154" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_rcc.h" bodystart="4154" bodyend="4170"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Exported__Macros_1ga2d6c4c7e951bfd007d26988fbfe6eaa4" prot="public" static="no">
+        <name>__HAL_RCC_RTC_CONFIG</name>
+        <param><defname>__RTC_CLKSOURCE__</defname></param>
+        <initializer>                  <ref refid="group__Exported__macros_1ga6553c99f510c3bab8cc0a91602053247" kindref="member">MODIFY_REG</ref>( <ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;BDCR, <ref refid="group__Peripheral__Registers__Bits__Definition_1gabe30dbd38f6456990ee641648bc05d40" kindref="member">RCC_BDCR_RTCSEL</ref>, (__RTC_CLKSOURCE__))</initializer>
+        <briefdescription>
+<para>Macros to configure the RTC clock (RTCCLK). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>As the RTC clock configuration bits are in the Backup domain and write access is denied to this domain after reset, you have to enable write access using the Power Backup Access macro before to configure the RTC clock source (to be done once after reset). </para>
+</simplesect>
+<simplesect kind="note"><para>Once the RTC clock is configured it cannot be changed unless the Backup domain is reset using <ref refid="group__RCC__Backup__Domain__Reset_1ga3bf7da608ff985873ca8e248fb1dc4f0" kindref="member">__HAL_RCC_BACKUPRESET_FORCE()</ref> macro, or by a Power On Reset (POR).</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__RTC_CLKSOURCE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the RTC clock source. This parameter can be one of the following values: <itemizedlist>
+<listitem><para><ref refid="group__HAL__RCC__Aliased_1ga7ac4762e5f4ebe4a04aea58edc9c46a9" kindref="member">RCC_RTCCLKSOURCE_NONE</ref> No clock selected as RTC clock. </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__RTC__Clock__Source_1ga5dca8d63f250a20bd6bc005670d0c150" kindref="member">RCC_RTCCLKSOURCE_LSE</ref> LSE selected as RTC clock. </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__RTC__Clock__Source_1gab47a1afb8b5eef9f20f4772961d0a5f4" kindref="member">RCC_RTCCLKSOURCE_LSI</ref> LSI selected as RTC clock. </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__RTC__Clock__Source_1ga070b819c6eca00d4b89cbf35216c3a92" kindref="member">RCC_RTCCLKSOURCE_HSE_DIV32</ref> HSE clock divided by 32 selected</para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>If the LSE or LSI is used as RTC clock source, the RTC continues to work in STOP and STANDBY modes, and can be used as wakeup source. However, when the HSE clock is used as RTC clock source, the RTC cannot be used in STOP and STANDBY modes. </para>
+</simplesect>
+<simplesect kind="note"><para>The maximum input clock frequency for RTC is 1MHz (when using HSE as RTC clock source). </para>
+</simplesect>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_rcc.h" line="4211" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_rcc.h" bodystart="4211" bodyend="4212"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Exported__Macros_1gad40d00ff1c984ebd011ea9f6e7f93c44" prot="public" static="no">
+        <name>__HAL_RCC_GET_RTC_SOURCE</name>
+        <param></param>
+        <initializer>(<ref refid="group__Exported__macros_1ga822bb1bb9710d5f2fa6396b84e583c33" kindref="member">READ_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;BDCR, <ref refid="group__Peripheral__Registers__Bits__Definition_1gabe30dbd38f6456990ee641648bc05d40" kindref="member">RCC_BDCR_RTCSEL</ref>))</initializer>
+        <briefdescription>
+<para>Macro to get the RTC clock source. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>The</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>returned value can be one of the following: <itemizedlist>
+<listitem><para><ref refid="group__HAL__RCC__Aliased_1ga7ac4762e5f4ebe4a04aea58edc9c46a9" kindref="member">RCC_RTCCLKSOURCE_NONE</ref> No clock selected as RTC clock. </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__RTC__Clock__Source_1ga5dca8d63f250a20bd6bc005670d0c150" kindref="member">RCC_RTCCLKSOURCE_LSE</ref> LSE selected as RTC clock. </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__RTC__Clock__Source_1gab47a1afb8b5eef9f20f4772961d0a5f4" kindref="member">RCC_RTCCLKSOURCE_LSI</ref> LSI selected as RTC clock. </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__RTC__Clock__Source_1ga070b819c6eca00d4b89cbf35216c3a92" kindref="member">RCC_RTCCLKSOURCE_HSE_DIV32</ref> HSE clock divided by 32 selected </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_rcc.h" line="4222" column="10" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_rcc.h" bodystart="4222" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Exported__Macros_1gaaf196a2df41b0bcbc32745c2b218e696" prot="public" static="no">
+        <name>__HAL_RCC_PLL_ENABLE</name>
+        <param></param>
+        <initializer><ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;CR, <ref refid="group__Peripheral__Registers__Bits__Definition_1gad0e73d5b0a4883e074d40029b49ee47e" kindref="member">RCC_CR_PLLON</ref>)</initializer>
+        <briefdescription>
+<para>Macros to enable or disable the main PLL. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>After enabling the main PLL, the application software should wait on PLLRDY flag to be set indicating that PLL clock is stable and can be used as system clock source. </para>
+</simplesect>
+<simplesect kind="note"><para>The main PLL can not be disabled if it is used as system clock source </para>
+</simplesect>
+<simplesect kind="note"><para>The main PLL is disabled by hardware when entering STOP and STANDBY modes. </para>
+</simplesect>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_rcc.h" line="4232" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_rcc.h" bodystart="4232" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Exported__Macros_1ga718a6afcb1492cc2796be78445a7d5ab" prot="public" static="no">
+        <name>__HAL_RCC_PLL_DISABLE</name>
+        <param></param>
+        <initializer><ref refid="group__Exported__macros_1ga133aae6fc0d41bffab39ab223a7001de" kindref="member">CLEAR_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;CR, <ref refid="group__Peripheral__Registers__Bits__Definition_1gad0e73d5b0a4883e074d40029b49ee47e" kindref="member">RCC_CR_PLLON</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_rcc.h" line="4234" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_rcc.h" bodystart="4234" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Exported__Macros_1gaf9a8466f991888332ec978dc92c62d7d" prot="public" static="no">
+        <name>__HAL_RCC_PLL_PLLSOURCE_CONFIG</name>
+        <param><defname>__PLLSOURCE__</defname></param>
+        <initializer>                  <ref refid="group__Exported__macros_1ga6553c99f510c3bab8cc0a91602053247" kindref="member">MODIFY_REG</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;PLLCFGR, <ref refid="group__Peripheral__Registers__Bits__Definition_1ga92cb53ea81d2c47537eb217cc6659a2e" kindref="member">RCC_PLLCFGR_PLLSRC</ref>, (__PLLSOURCE__))</initializer>
+        <briefdescription>
+<para>Macro to configure the PLL clock source. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>This function must be used only when the main PLL is disabled. </para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__PLLSOURCE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the PLL entry clock source. This parameter can be one of the following values: <itemizedlist>
+<listitem><para><ref refid="group__RCC__PLL__Clock__Source_1ga2a440b01eaeb8f3a6282598fc748ef1f" kindref="member">RCC_PLLSOURCE_NONE</ref> No clock selected as PLL clock entry </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__PLL__Clock__Source_1ga5a17d8f572153069f1914e622ca0f474" kindref="member">RCC_PLLSOURCE_MSI</ref> MSI oscillator clock selected as PLL clock entry </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__PLL__Clock__Source_1ga0e07703f1ccb3d60f8a47a2dc631c218" kindref="member">RCC_PLLSOURCE_HSI</ref> HSI oscillator clock selected as PLL clock entry </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__PLL__Clock__Source_1ga197cea7fe5c2db26fe7fcdb0f99dd4d7" kindref="member">RCC_PLLSOURCE_HSE</ref> HSE oscillator clock selected as PLL clock entry </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>This clock source is common for the main PLL and audio PLL (PLLSAI1 and PLLSAI2). </para>
+</simplesect>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_rcc.h" line="4248" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_rcc.h" bodystart="4248" bodyend="4249"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Exported__Macros_1gabca62f581e6c2553cca7ef0d7a2a4b7f" prot="public" static="no">
+        <name>__HAL_RCC_PLL_PLLM_CONFIG</name>
+        <param><defname>__PLLM__</defname></param>
+        <initializer>                  <ref refid="group__Exported__macros_1ga6553c99f510c3bab8cc0a91602053247" kindref="member">MODIFY_REG</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;PLLCFGR, <ref refid="group__Peripheral__Registers__Bits__Definition_1ga9a42e8b9ee60126976d9be056e5e66b1" kindref="member">RCC_PLLCFGR_PLLM</ref>, ((__PLLM__) - 1) &lt;&lt; 4U)</initializer>
+        <briefdescription>
+<para>Macro to configure the PLL source division factor M. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>This function must be used only when the main PLL is disabled. </para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__PLLM__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the division factor for PLL VCO input clock This parameter must be a number between Min_Data = 1 and Max_Data = 16 on STM32L4Rx/STM32L4Sx devices. This parameter must be a number between Min_Data = 1 and Max_Data = 8 on other devices. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>You have to set the PLLM parameter correctly to ensure that the VCO input frequency ranges from 4 to 16 MHz. It is recommended to select a frequency of 16 MHz to limit PLL jitter. </para>
+</simplesect>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_rcc.h" line="4262" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_rcc.h" bodystart="4262" bodyend="4263"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Exported__Macros_1gafc6015c0052e797d909e5d9eab7771c9" prot="public" static="no">
+        <name>__HAL_RCC_PLL_CONFIG</name>
+        <param><defname>__PLLSOURCE__</defname></param>
+        <param><defname>__PLLM__</defname></param>
+        <param><defname>__PLLN__</defname></param>
+        <param><defname>__PLLQ__</defname></param>
+        <param><defname>__PLLR__</defname></param>
+        <initializer>                  <ref refid="group__Exported__macros_1ga6553c99f510c3bab8cc0a91602053247" kindref="member">MODIFY_REG</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;PLLCFGR, \
+                             (<ref refid="group__Peripheral__Registers__Bits__Definition_1ga92cb53ea81d2c47537eb217cc6659a2e" kindref="member">RCC_PLLCFGR_PLLSRC</ref> | <ref refid="group__Peripheral__Registers__Bits__Definition_1ga9a42e8b9ee60126976d9be056e5e66b1" kindref="member">RCC_PLLCFGR_PLLM</ref> | <ref refid="group__Peripheral__Registers__Bits__Definition_1ga4b571901d7cdc93ca1ecc1531f26ba6a" kindref="member">RCC_PLLCFGR_PLLN</ref> | \
+                              <ref refid="group__Peripheral__Registers__Bits__Definition_1ga546495f69f570cb4b81d4a59054c7ed1" kindref="member">RCC_PLLCFGR_PLLQ</ref> | <ref refid="group__Peripheral__Registers__Bits__Definition_1gaf94ebe400d76dd3d34e78244a8ceb050" kindref="member">RCC_PLLCFGR_PLLR</ref>), \
+                             ((__PLLSOURCE__) | \
+                              (((__PLLM__) - 1U) &lt;&lt; <ref refid="group__Peripheral__Registers__Bits__Definition_1ga681f0ec251dffb419df8fa23137fe810" kindref="member">RCC_PLLCFGR_PLLM_Pos</ref>) | \
+                              ((__PLLN__) &lt;&lt; <ref refid="group__Peripheral__Registers__Bits__Definition_1ga78a5913e3fc53a740fe874ece04b2d84" kindref="member">RCC_PLLCFGR_PLLN_Pos</ref>) | \
+                              ((((__PLLQ__) &gt;&gt; 1U) - 1U) &lt;&lt; <ref refid="group__Peripheral__Registers__Bits__Definition_1gac574324eee39c3dcee75b37d7728c9ae" kindref="member">RCC_PLLCFGR_PLLQ_Pos</ref>) | \
+                              ((((__PLLR__) &gt;&gt; 1U) - 1U) &lt;&lt; <ref refid="group__Peripheral__Registers__Bits__Definition_1ga6a5d83613de06413fea907a5a4df341b" kindref="member">RCC_PLLCFGR_PLLR_Pos</ref>)))</initializer>
+        <briefdescription>
+<para>Macro to configure the main PLL clock source, multiplication and division factors. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>This function must be used only when the main PLL is disabled.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__PLLSOURCE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the PLL entry clock source. This parameter can be one of the following values: <itemizedlist>
+<listitem><para><ref refid="group__RCC__PLL__Clock__Source_1ga2a440b01eaeb8f3a6282598fc748ef1f" kindref="member">RCC_PLLSOURCE_NONE</ref> No clock selected as PLL clock entry </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__PLL__Clock__Source_1ga5a17d8f572153069f1914e622ca0f474" kindref="member">RCC_PLLSOURCE_MSI</ref> MSI oscillator clock selected as PLL clock entry </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__PLL__Clock__Source_1ga0e07703f1ccb3d60f8a47a2dc631c218" kindref="member">RCC_PLLSOURCE_HSI</ref> HSI oscillator clock selected as PLL clock entry </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__PLL__Clock__Source_1ga197cea7fe5c2db26fe7fcdb0f99dd4d7" kindref="member">RCC_PLLSOURCE_HSE</ref> HSE oscillator clock selected as PLL clock entry </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>This clock source is common for the main PLL and audio PLL (PLLSAI1 and PLLSAI2).</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__PLLM__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the division factor for PLL VCO input clock. This parameter must be a number between Min_Data = 1 and Max_Data = 16 on STM32L4Rx/STM32L4Sx devices. This parameter must be a number between Min_Data = 1 and Max_Data = 8 on other devices. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>You have to set the PLLM parameter correctly to ensure that the VCO input frequency ranges from 4 to 16 MHz. It is recommended to select a frequency of 16 MHz to limit PLL jitter.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__PLLN__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the multiplication factor for PLL VCO output clock. This parameter must be a number between 8 and 86. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>You have to set the PLLN parameter correctly to ensure that the VCO output frequency is between 64 and 344 MHz.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__PLLP__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the division factor for SAI clock when SAI available on device. This parameter must be a number in the range (7 or 17) for STM32L47x/STM32L48x else (2 to 31).</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>__PLLQ__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the division factor for OTG FS, SDMMC1 and RNG clocks. This parameter must be in the range (2, 4, 6 or 8). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>If the USB OTG FS is used in your application, you have to set the PLLQ parameter correctly to have 48 MHz clock for the USB. However, the SDMMC1 and RNG need a frequency lower than or equal to 48 MHz to work correctly. </para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__PLLR__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the division factor for the main system clock. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>You have to set the PLLR parameter correctly to not exceed 80MHZ. This parameter must be in the range (2, 4, 6 or 8). </para>
+</simplesect>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_rcc.h" line="4332" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_rcc.h" bodystart="4332" bodyend="4340"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Exported__Macros_1ga3ea1390f8124e2b3b8d53e95541d6e53" prot="public" static="no">
+        <name>__HAL_RCC_GET_PLL_OSCSOURCE</name>
+        <param></param>
+        <initializer>(<ref refid="group__Exported__macros_1ga822bb1bb9710d5f2fa6396b84e583c33" kindref="member">READ_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;PLLCFGR, <ref refid="group__Peripheral__Registers__Bits__Definition_1ga92cb53ea81d2c47537eb217cc6659a2e" kindref="member">RCC_PLLCFGR_PLLSRC</ref>))</initializer>
+        <briefdescription>
+<para>Macro to get the oscillator used as PLL clock source. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>The</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>oscillator used as PLL clock source. The returned value can be one of the following:<itemizedlist>
+<listitem><para>RCC_PLLSOURCE_NONE: No oscillator is used as PLL clock source.</para>
+</listitem><listitem><para>RCC_PLLSOURCE_MSI: MSI oscillator is used as PLL clock source.</para>
+</listitem><listitem><para>RCC_PLLSOURCE_HSI: HSI oscillator is used as PLL clock source.</para>
+</listitem><listitem><para>RCC_PLLSOURCE_HSE: HSE oscillator is used as PLL clock source. </para>
+</listitem></itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_rcc.h" line="4352" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_rcc.h" bodystart="4352" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Exported__Macros_1gaab70beccea4c82e4acc69befcdb5e862" prot="public" static="no">
+        <name>__HAL_RCC_PLLCLKOUT_ENABLE</name>
+        <param><defname>__PLLCLOCKOUT__</defname></param>
+        <initializer><ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;PLLCFGR, (__PLLCLOCKOUT__))</initializer>
+        <briefdescription>
+<para>Enable or disable each clock output (RCC_PLL_SYSCLK, RCC_PLL_48M1CLK, RCC_PLL_SAI3CLK) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>Enabling/disabling clock outputs RCC_PLL_SAI3CLK and RCC_PLL_48M1CLK can be done at anytime without the need to stop the PLL in order to save power. But RCC_PLL_SYSCLK cannot be stopped if used as System Clock. </para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__PLLCLOCKOUT__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the PLL clock to be output. This parameter can be one or a combination of the following values: <itemizedlist>
+<listitem><para>RCC_PLL_SAI3CLK This clock is used to generate an accurate clock to achieve high-quality audio performance on SAI interface in case. </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__PLL__Clock__Output_1ga951a7b0946764a1067f5dbcb359761cf" kindref="member">RCC_PLL_48M1CLK</ref> This Clock is used to generate the clock for the USB OTG FS (48 MHz), the random analog generator (&lt;=48 MHz) and the SDMMC1 (&lt;= 48 MHz). </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__PLL__Clock__Output_1ga2452d1b434015696d6129a247e9bfee9" kindref="member">RCC_PLL_SYSCLK</ref> This Clock is used to generate the high speed system clock (up to 80MHz) </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_rcc.h" line="4368" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_rcc.h" bodystart="4368" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Exported__Macros_1gaee19cf9a5cb792b5c9a94ad88103ab93" prot="public" static="no">
+        <name>__HAL_RCC_PLLCLKOUT_DISABLE</name>
+        <param><defname>__PLLCLOCKOUT__</defname></param>
+        <initializer><ref refid="group__Exported__macros_1ga133aae6fc0d41bffab39ab223a7001de" kindref="member">CLEAR_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;PLLCFGR, (__PLLCLOCKOUT__))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_rcc.h" line="4370" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_rcc.h" bodystart="4370" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Exported__Macros_1ga8df63b4aaea1551f9d4ba3fe22360cbb" prot="public" static="no">
+        <name>__HAL_RCC_GET_PLLCLKOUT_CONFIG</name>
+        <param><defname>__PLLCLOCKOUT__</defname></param>
+        <initializer><ref refid="group__Exported__macros_1ga822bb1bb9710d5f2fa6396b84e583c33" kindref="member">READ_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;PLLCFGR, (__PLLCLOCKOUT__))</initializer>
+        <briefdescription>
+<para>Get clock output enable status (RCC_PLL_SYSCLK, RCC_PLL_48M1CLK, RCC_PLL_SAI3CLK) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__PLLCLOCKOUT__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the output PLL clock to be checked. This parameter can be one of the following values: <itemizedlist>
+<listitem><para>RCC_PLL_SAI3CLK This clock is used to generate an accurate clock to achieve high-quality audio performance on SAI interface in case. </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__PLL__Clock__Output_1ga951a7b0946764a1067f5dbcb359761cf" kindref="member">RCC_PLL_48M1CLK</ref> This Clock is used to generate the clock for the USB OTG FS (48 MHz), the random analog generator (&lt;=48 MHz) and the SDMMC1 (&lt;= 48 MHz). </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__PLL__Clock__Output_1ga2452d1b434015696d6129a247e9bfee9" kindref="member">RCC_PLL_SYSCLK</ref> This Clock is used to generate the high speed system clock (up to 80MHz) </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>/ RESET </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_rcc.h" line="4383" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_rcc.h" bodystart="4383" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Exported__Macros_1gaa29be28740b3d480e83efbc2e695c1b8" prot="public" static="no">
+        <name>__HAL_RCC_SYSCLK_CONFIG</name>
+        <param><defname>__SYSCLKSOURCE__</defname></param>
+        <initializer>                  <ref refid="group__Exported__macros_1ga6553c99f510c3bab8cc0a91602053247" kindref="member">MODIFY_REG</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;CFGR, <ref refid="group__Peripheral__Registers__Bits__Definition_1ga0eea5e5f7743a7e8995b8beeb18355c1" kindref="member">RCC_CFGR_SW</ref>, (__SYSCLKSOURCE__))</initializer>
+        <briefdescription>
+<para>Macro to configure the system clock source. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__SYSCLKSOURCE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the system clock source. This parameter can be one of the following values:<itemizedlist>
+<listitem><para>RCC_SYSCLKSOURCE_MSI: MSI oscillator is used as system clock source.</para>
+</listitem><listitem><para>RCC_SYSCLKSOURCE_HSI: HSI oscillator is used as system clock source.</para>
+</listitem><listitem><para>RCC_SYSCLKSOURCE_HSE: HSE oscillator is used as system clock source.</para>
+</listitem><listitem><para>RCC_SYSCLKSOURCE_PLLCLK: PLL output is used as system clock source. </para>
+</listitem></itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_rcc.h" line="4395" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_rcc.h" bodystart="4395" bodyend="4396"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Exported__Macros_1gac99c2453d9e77c8b457acc0210e754c2" prot="public" static="no">
+        <name>__HAL_RCC_GET_SYSCLK_SOURCE</name>
+        <param></param>
+        <initializer>(<ref refid="group__Exported__macros_1ga822bb1bb9710d5f2fa6396b84e583c33" kindref="member">READ_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;CFGR, <ref refid="group__Peripheral__Registers__Bits__Definition_1ga15bf2269500dc97e137315f44aa015c9" kindref="member">RCC_CFGR_SWS</ref>))</initializer>
+        <briefdescription>
+<para>Macro to get the clock source used as system clock. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>The</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>clock source used as system clock. The returned value can be one of the following:<itemizedlist>
+<listitem><para>RCC_SYSCLKSOURCE_STATUS_MSI: MSI used as system clock.</para>
+</listitem><listitem><para>RCC_SYSCLKSOURCE_STATUS_HSI: HSI used as system clock.</para>
+</listitem><listitem><para>RCC_SYSCLKSOURCE_STATUS_HSE: HSE used as system clock.</para>
+</listitem><listitem><para>RCC_SYSCLKSOURCE_STATUS_PLLCLK: PLL used as system clock. </para>
+</listitem></itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_rcc.h" line="4406" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_rcc.h" bodystart="4406" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Exported__Macros_1gad6731530ebbbcc0696e9bd94eb0d2724" prot="public" static="no">
+        <name>__HAL_RCC_LSEDRIVE_CONFIG</name>
+        <param><defname>__LSEDRIVE__</defname></param>
+        <initializer>                  <ref refid="group__Exported__macros_1ga6553c99f510c3bab8cc0a91602053247" kindref="member">MODIFY_REG</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;BDCR, <ref refid="group__Peripheral__Registers__Bits__Definition_1gaa9e761cf5e09906a38e9c7e8e750514c" kindref="member">RCC_BDCR_LSEDRV</ref>, (__LSEDRIVE__))</initializer>
+        <briefdescription>
+<para>Macro to configure the External Low Speed oscillator (LSE) drive capability. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>As the LSE is in the Backup domain and write access is denied to this domain after reset, you have to enable write access using <ref refid="group__PWR__Exported__Functions__Group1_1ga3d07cef39bf294db4aed7e06e5dbf9af" kindref="member">HAL_PWR_EnableBkUpAccess()</ref> function before to configure the LSE (to be done once after reset). </para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__LSEDRIVE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the new state of the LSE drive capability. This parameter can be one of the following values: <itemizedlist>
+<listitem><para><ref refid="group__RCC__LSEDrive__Config_1gab5fa5b50304710db2d7f6d583a225da3" kindref="member">RCC_LSEDRIVE_LOW</ref> LSE oscillator low drive capability. </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__LSEDrive__Config_1ga1151beb7f9869e91fe7617936ad0efff" kindref="member">RCC_LSEDRIVE_MEDIUMLOW</ref> LSE oscillator medium low drive capability. </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__LSEDrive__Config_1ga295eed1e1368d526fa0f6356ceecbc48" kindref="member">RCC_LSEDRIVE_MEDIUMHIGH</ref> LSE oscillator medium high drive capability. </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__LSEDrive__Config_1ga90b0854f3813d7ab2781519bfa58fd95" kindref="member">RCC_LSEDRIVE_HIGH</ref> LSE oscillator high drive capability. </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_rcc.h" line="4422" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_rcc.h" bodystart="4422" bodyend="4423"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Exported__Macros_1ga3e665d8b6f33fd9371bb4fff4ce54811" prot="public" static="no">
+        <name>__HAL_RCC_WAKEUPSTOP_CLK_CONFIG</name>
+        <param><defname>__STOPWUCLK__</defname></param>
+        <initializer>                  <ref refid="group__Exported__macros_1ga6553c99f510c3bab8cc0a91602053247" kindref="member">MODIFY_REG</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;CFGR, <ref refid="group__Peripheral__Registers__Bits__Definition_1ga623e4f1eb613f4793d3d500c1cfd746a" kindref="member">RCC_CFGR_STOPWUCK</ref>, (__STOPWUCLK__))</initializer>
+        <briefdescription>
+<para>Macro to configure the wake up from stop clock. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__STOPWUCLK__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the clock source used after wake up from stop. This parameter can be one of the following values: <itemizedlist>
+<listitem><para><ref refid="group__RCC__Stop__WakeUpClock_1gac18b40ff768e227cbb2f661b9f40373a" kindref="member">RCC_STOP_WAKEUPCLOCK_MSI</ref> MSI selected as system clock source </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__Stop__WakeUpClock_1ga7230033023839d06ad8cad89ea60a6c9" kindref="member">RCC_STOP_WAKEUPCLOCK_HSI</ref> HSI selected as system clock source </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_rcc.h" line="4433" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_rcc.h" bodystart="4433" bodyend="4434"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Exported__Macros_1ga7e5f7f1efc92794b6f0e96068240b45e" prot="public" static="no">
+        <name>__HAL_RCC_MCO1_CONFIG</name>
+        <param><defname>__MCOCLKSOURCE__</defname></param>
+        <param><defname>__MCODIV__</defname></param>
+        <initializer>                 <ref refid="group__Exported__macros_1ga6553c99f510c3bab8cc0a91602053247" kindref="member">MODIFY_REG</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;CFGR, (<ref refid="group__Peripheral__Registers__Bits__Definition_1ga76304e842d0244575776a28f82cafcfd" kindref="member">RCC_CFGR_MCOSEL</ref> | <ref refid="group__Peripheral__Registers__Bits__Definition_1ga2c2055812655d6acfda9a73dd2e94e10" kindref="member">RCC_CFGR_MCOPRE</ref>), ((__MCOCLKSOURCE__) | (__MCODIV__)))</initializer>
+        <briefdescription>
+<para>Macro to configure the MCO clock. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__MCOCLKSOURCE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the MCO clock source. This parameter can be one of the following values: <itemizedlist>
+<listitem><para><ref refid="group__RCC__MCO1__Clock__Source_1ga725a16362f3324ef5866dc5a1ff07cf5" kindref="member">RCC_MCO1SOURCE_NOCLOCK</ref> MCO output disabled </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MCO1__Clock__Source_1gae8ca2959a1252ecd319843da02c79526" kindref="member">RCC_MCO1SOURCE_SYSCLK</ref> System clock selected as MCO source </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MCO1__Clock__Source_1gac5ae615cfe916da9ecb212cf8ac102a6" kindref="member">RCC_MCO1SOURCE_MSI</ref> MSI clock selected as MCO source </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MCO1__Clock__Source_1gad99c388c455852143220397db3730635" kindref="member">RCC_MCO1SOURCE_HSI</ref> HSI clock selected as MCO source </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MCO1__Clock__Source_1ga5582d2ab152eb440a6cc3ae4833b043f" kindref="member">RCC_MCO1SOURCE_HSE</ref> HSE clock selected as MCO source </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MCO1__Clock__Source_1ga79d888f2238eaa4e4b8d02b3900ea18b" kindref="member">RCC_MCO1SOURCE_PLLCLK</ref> Main PLL clock selected as MCO source </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MCO1__Clock__Source_1ga4ada18d28374df66c1b6da16606c23d8" kindref="member">RCC_MCO1SOURCE_LSI</ref> LSI clock selected as MCO source </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MCO1__Clock__Source_1gaa01b6cb196df3a4ad690f8bcaa4d0621" kindref="member">RCC_MCO1SOURCE_LSE</ref> LSE clock selected as MCO source   </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>__MCODIV__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the MCO clock prescaler. This parameter can be one of the following values: <itemizedlist>
+<listitem><para><ref refid="group__RCC__MCOx__Clock__Prescaler_1ga438d8c3bead4e1ec5dd5757cb0313d53" kindref="member">RCC_MCODIV_1</ref> MCO clock source is divided by 1 </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MCOx__Clock__Prescaler_1ga6198330847077f4da351915518140bfc" kindref="member">RCC_MCODIV_2</ref> MCO clock source is divided by 2 </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MCOx__Clock__Prescaler_1ga1bdc2eb56aaeb53dc3ca5cd72f22d4c8" kindref="member">RCC_MCODIV_4</ref> MCO clock source is divided by 4 </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MCOx__Clock__Prescaler_1gadb84d9a10db2c49376be8fada619fe08" kindref="member">RCC_MCODIV_8</ref> MCO clock source is divided by 8 </para>
+</listitem>
+<listitem><para><ref refid="group__RCC__MCOx__Clock__Prescaler_1ga3ab3ab9547ef8800355111517b547882" kindref="member">RCC_MCODIV_16</ref> MCO clock source is divided by 16 </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_rcc.h" line="4462" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_rcc.h" bodystart="4462" bodyend="4463"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

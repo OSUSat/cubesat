@@ -1,0 +1,228 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="hal__can__mock_8c" kind="file" language="C++">
+    <compoundname>hal_can_mock.c</compoundname>
+    <includes refid="hal__can__mock_8h" local="yes">hal_can_mock.h</includes>
+    <includes local="no">stdio.h</includes>
+    <includes local="no">string.h</includes>
+    <incdepgraph>
+      <node id="3">
+        <label>hal_can.h</label>
+        <link refid="hal__can_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/mocks/hal_can_mock.c</label>
+        <link refid="hal__can__mock_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>hal_can_mock.h</label>
+        <link refid="hal__can__mock_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>stdbool.h</label>
+      </node>
+      <node id="6">
+        <label>stddef.h</label>
+      </node>
+      <node id="5">
+        <label>stdint.h</label>
+      </node>
+      <node id="7">
+        <label>stdio.h</label>
+      </node>
+      <node id="8">
+        <label>string.h</label>
+      </node>
+    </incdepgraph>
+    <innerclass refid="structcan__mock__port__t" prot="public">can_mock_port_t</innerclass>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="hal__can__mock_8c_1a3b0330d37094f2d5d1c4310009f3c9db" prot="public" static="no">
+        <name>MOCK_CAN_QUEUE_SIZE</name>
+        <initializer>32</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/mocks/hal_can_mock.c" line="5" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/mocks/hal_can_mock.c" bodystart="5" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="hal__can__mock_8c_1ad746491e944384e2150ad2497838d2b9" prot="public" static="yes" mutable="no">
+        <type><ref refid="structcan__mock__port__t" kindref="compound">can_mock_port_t</ref></type>
+        <definition>can_mock_port_t can_ports[HAL_CAN_PORT_MAX]</definition>
+        <argsstring>[HAL_CAN_PORT_MAX]</argsstring>
+        <name>can_ports</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/mocks/hal_can_mock.c" line="22" column="24" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/mocks/hal_can_mock.c" bodystart="22" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <member refid="group__can__api_1gaee75487bc1a6b3c93fc347d818d5fd18" kind="function"><name>hal_can_init</name></member>
+      <member refid="group__can__api_1ga8a524c5e1b426d9222656f692ed92c03" kind="function"><name>hal_can_write</name></member>
+      <member refid="group__can__api_1ga4dd37d5795d680815722a43124c64c8b" kind="function"><name>hal_can_register_rx_callback</name></member>
+      <member refid="group__can__api_1ga72caff0e5a7fe741fb1546fd7c7587f6" kind="function"><name>hal_can_register_tx_callback</name></member>
+      <member refid="group__can__api_1gac9fc5cf7611124be5ee8bf5e6218ed26" kind="function"><name>hal_can_register_error_callback</name></member>
+      <member refid="group__can__api_1ga6b98e16889952465b964a7e6b5d01e0c" kind="function"><name>hal_can_isr_handler</name></member>
+      <member refid="group__can__mock_1gad1dd6d91538233c7f3a3f288cd4cbe6b" kind="function"><name>mock_can_push_rx</name></member>
+      <member refid="group__can__mock_1ga6871d37aa0f5ba3ecd6b5b1062899031" kind="function"><name>mock_can_get_tx</name></member>
+      <member refid="group__can__mock_1ga7b0f9cb84a6d3e153e6c5648666297b1" kind="function"><name>mock_can_reset</name></member>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="hal__can__mock_8h" kindref="compound">hal_can_mock.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdio.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MOCK_CAN_QUEUE_SIZE<sp/>32</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7" refid="structcan__mock__port__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>initialized;</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__can__types_1ga6a4873f0aefa6b5c891174d24dc89523" kindref="member">hal_can_rx_cb_t</ref><sp/>rx_cb;</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*rx_cb_ctx;</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__can__types_1gaa1855c6c62ad7361ec91e6872e92acdd" kindref="member">hal_can_tx_cb_t</ref><sp/>tx_cb;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*tx_cb_ctx;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__can__types_1ga27842fc8e60ca805f6daf1fd815564b6" kindref="member">hal_can_error_cb_t</ref><sp/>err_cb;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*err_cb_ctx;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structhal__can__msg__t" kindref="compound">hal_can_msg_t</ref><sp/>tx_queue[<ref refid="hal__can__mock_8c_1a3b0330d37094f2d5d1c4310009f3c9db" kindref="member">MOCK_CAN_QUEUE_SIZE</ref>];</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>tx_head;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>tx_tail;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>tx_count;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal">}<sp/><ref refid="structcan__mock__port__t" kindref="compound">can_mock_port_t</ref>;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structcan__mock__port__t" kindref="compound">can_mock_port_t</ref><sp/>can_ports[<ref refid="group__can__types_1gga83a77f224d5e726b32e0c7e7acff1163a47b1cb98c87de850be1f916c23a4a0de" kindref="member">HAL_CAN_PORT_MAX</ref>];</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__can__api_1gaee75487bc1a6b3c93fc347d818d5fd18" kindref="member">hal_can_init</ref>(<ref refid="group__can__types_1ga83a77f224d5e726b32e0c7e7acff1163" kindref="member">hal_can_port_t</ref><sp/>port,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhal__can__config__t" kindref="compound">hal_can_config_t</ref><sp/>*config)<sp/>{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(port<sp/>&gt;=<sp/><ref refid="group__can__types_1gga83a77f224d5e726b32e0c7e7acff1163a47b1cb98c87de850be1f916c23a4a0de" kindref="member">HAL_CAN_PORT_MAX</ref><sp/>||<sp/>config<sp/>==<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structcan__mock__port__t" kindref="compound">can_mock_port_t</ref><sp/>*p<sp/>=<sp/>&amp;can_ports[port];</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>memset(p,<sp/>0,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(*p));</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>p-&gt;<ref refid="structcan__mock__port__t_1a596bd587bb51899c1addf32842ff83e1" kindref="member">initialized</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;MOCK<sp/>CAN%u<sp/>initialized<sp/>@<sp/>%lu<sp/>baud\n&quot;</highlight><highlight class="normal">,<sp/>port<sp/>+<sp/>1,</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal">)config-&gt;<ref refid="structhal__can__config__t_1a035fe2ebe68ac9cdd0992070679002df" kindref="member">baudrate</ref>);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><ref refid="group__can__types_1gaeb6a2f8beecd9def75dff7fa7c2f0d00" kindref="member">hal_can_status_t</ref><sp/><ref refid="group__can__api_1ga8a524c5e1b426d9222656f692ed92c03" kindref="member">hal_can_write</ref>(<ref refid="group__can__types_1ga83a77f224d5e726b32e0c7e7acff1163" kindref="member">hal_can_port_t</ref><sp/>port,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhal__can__msg__t" kindref="compound">hal_can_msg_t</ref><sp/>*msg)<sp/>{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(port<sp/>&gt;=<sp/><ref refid="group__can__types_1gga83a77f224d5e726b32e0c7e7acff1163a47b1cb98c87de850be1f916c23a4a0de" kindref="member">HAL_CAN_PORT_MAX</ref><sp/>||<sp/>msg<sp/>==<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__can__types_1ggaeb6a2f8beecd9def75dff7fa7c2f0d00a7491e6002bd789ec1fb36a3e20e6eaa7" kindref="member">HAL_CAN_ERROR</ref>;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structcan__mock__port__t" kindref="compound">can_mock_port_t</ref><sp/>*p<sp/>=<sp/>&amp;can_ports[port];</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!p-&gt;<ref refid="structcan__mock__port__t_1a596bd587bb51899c1addf32842ff83e1" kindref="member">initialized</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__can__types_1ggaeb6a2f8beecd9def75dff7fa7c2f0d00a7491e6002bd789ec1fb36a3e20e6eaa7" kindref="member">HAL_CAN_ERROR</ref>;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(p-&gt;<ref refid="structcan__mock__port__t_1acb48ace90a2c413eb2b38c3bd1e0d775" kindref="member">tx_count</ref><sp/>&gt;=<sp/><ref refid="hal__can__mock_8c_1a3b0330d37094f2d5d1c4310009f3c9db" kindref="member">MOCK_CAN_QUEUE_SIZE</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__can__types_1ggaeb6a2f8beecd9def75dff7fa7c2f0d00ada2eff86f3d4b0747e4bac54486b03d0" kindref="member">HAL_CAN_BUSY</ref>;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>store<sp/>transmitted<sp/>message<sp/>in<sp/>mock<sp/>tx<sp/>queue<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>p-&gt;<ref refid="structcan__mock__port__t_1ad6beafbf21a437b83dc5bcfdbd597ec1" kindref="member">tx_queue</ref>[p-&gt;<ref refid="structcan__mock__port__t_1a69c3d2005b2666e2ae3494157754e87e" kindref="member">tx_head</ref>]<sp/>=<sp/>*msg;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>p-&gt;<ref refid="structcan__mock__port__t_1a69c3d2005b2666e2ae3494157754e87e" kindref="member">tx_head</ref><sp/>=<sp/>(p-&gt;<ref refid="structcan__mock__port__t_1a69c3d2005b2666e2ae3494157754e87e" kindref="member">tx_head</ref><sp/>+<sp/>1)<sp/>%<sp/><ref refid="hal__can__mock_8c_1a3b0330d37094f2d5d1c4310009f3c9db" kindref="member">MOCK_CAN_QUEUE_SIZE</ref>;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>p-&gt;<ref refid="structcan__mock__port__t_1acb48ace90a2c413eb2b38c3bd1e0d775" kindref="member">tx_count</ref>++;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>fire<sp/>TX<sp/>complete<sp/>callback<sp/>to<sp/>simulate<sp/>non-blocking<sp/>transmission<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(p-&gt;<ref refid="structcan__mock__port__t_1a5b4f541353d581f898d6f4f650573bad" kindref="member">tx_cb</ref><sp/>!=<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>p-&gt;<ref refid="structcan__mock__port__t_1a5b4f541353d581f898d6f4f650573bad" kindref="member">tx_cb</ref>(port,<sp/>p-&gt;<ref refid="structcan__mock__port__t_1ac02b1783d763936c70ca702ca09d4d35" kindref="member">tx_cb_ctx</ref>);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__can__types_1ggaeb6a2f8beecd9def75dff7fa7c2f0d00af8abc9c057afe8b767acd0aab294c278" kindref="member">HAL_CAN_OK</ref>;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__can__api_1ga4dd37d5795d680815722a43124c64c8b" kindref="member">hal_can_register_rx_callback</ref>(<ref refid="group__can__types_1ga83a77f224d5e726b32e0c7e7acff1163" kindref="member">hal_can_port_t</ref><sp/>port,<sp/><ref refid="group__can__types_1ga6a4873f0aefa6b5c891174d24dc89523" kindref="member">hal_can_rx_cb_t</ref><sp/>cb,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*ctx)<sp/>{</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(port<sp/>&gt;=<sp/><ref refid="group__can__types_1gga83a77f224d5e726b32e0c7e7acff1163a47b1cb98c87de850be1f916c23a4a0de" kindref="member">HAL_CAN_PORT_MAX</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>can_ports[port].<ref refid="structcan__mock__port__t_1ad3ec1b5da55368ff2805faf8c0439446" kindref="member">rx_cb</ref><sp/>=<sp/>cb;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>can_ports[port].<ref refid="structcan__mock__port__t_1a2fad1f0f3680a2e764c356497abc1f2e" kindref="member">rx_cb_ctx</ref><sp/>=<sp/>ctx;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__can__api_1ga72caff0e5a7fe741fb1546fd7c7587f6" kindref="member">hal_can_register_tx_callback</ref>(<ref refid="group__can__types_1ga83a77f224d5e726b32e0c7e7acff1163" kindref="member">hal_can_port_t</ref><sp/>port,<sp/><ref refid="group__can__types_1gaa1855c6c62ad7361ec91e6872e92acdd" kindref="member">hal_can_tx_cb_t</ref><sp/>cb,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*ctx)<sp/>{</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(port<sp/>&gt;=<sp/><ref refid="group__can__types_1gga83a77f224d5e726b32e0c7e7acff1163a47b1cb98c87de850be1f916c23a4a0de" kindref="member">HAL_CAN_PORT_MAX</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>can_ports[port].<ref refid="structcan__mock__port__t_1a5b4f541353d581f898d6f4f650573bad" kindref="member">tx_cb</ref><sp/>=<sp/>cb;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>can_ports[port].<ref refid="structcan__mock__port__t_1ac02b1783d763936c70ca702ca09d4d35" kindref="member">tx_cb_ctx</ref><sp/>=<sp/>ctx;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__can__api_1gac9fc5cf7611124be5ee8bf5e6218ed26" kindref="member">hal_can_register_error_callback</ref>(<ref refid="group__can__types_1ga83a77f224d5e726b32e0c7e7acff1163" kindref="member">hal_can_port_t</ref><sp/>port,<sp/><ref refid="group__can__types_1ga27842fc8e60ca805f6daf1fd815564b6" kindref="member">hal_can_error_cb_t</ref><sp/>cb,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*ctx)<sp/>{</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(port<sp/>&gt;=<sp/><ref refid="group__can__types_1gga83a77f224d5e726b32e0c7e7acff1163a47b1cb98c87de850be1f916c23a4a0de" kindref="member">HAL_CAN_PORT_MAX</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>can_ports[port].<ref refid="structcan__mock__port__t_1af571ed45e2c48abf805d73001e6be8d7" kindref="member">err_cb</ref><sp/>=<sp/>cb;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>can_ports[port].<ref refid="structcan__mock__port__t_1ab089dc617687a89f0b9665ad6d69e6a1" kindref="member">err_cb_ctx</ref><sp/>=<sp/>ctx;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__can__api_1ga6b98e16889952465b964a7e6b5d01e0c" kindref="member">hal_can_isr_handler</ref>(<ref refid="group__can__types_1ga83a77f224d5e726b32e0c7e7acff1163" kindref="member">hal_can_port_t</ref><sp/>port)<sp/>{</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>mock<sp/>isr<sp/>has<sp/>nothing<sp/>to<sp/>do<sp/>since<sp/>actions<sp/>are<sp/>simulated<sp/>via<sp/>functions<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>(void)port;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__can__mock_1gad1dd6d91538233c7f3a3f288cd4cbe6b" kindref="member">mock_can_push_rx</ref>(<ref refid="group__can__types_1ga83a77f224d5e726b32e0c7e7acff1163" kindref="member">hal_can_port_t</ref><sp/>port,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhal__can__msg__t" kindref="compound">hal_can_msg_t</ref><sp/>*msg)<sp/>{</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(port<sp/>&gt;=<sp/><ref refid="group__can__types_1gga83a77f224d5e726b32e0c7e7acff1163a47b1cb98c87de850be1f916c23a4a0de" kindref="member">HAL_CAN_PORT_MAX</ref><sp/>||<sp/>msg<sp/>==<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structcan__mock__port__t" kindref="compound">can_mock_port_t</ref><sp/>*p<sp/>=<sp/>&amp;can_ports[port];</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!p-&gt;<ref refid="structcan__mock__port__t_1a596bd587bb51899c1addf32842ff83e1" kindref="member">initialized</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>directly<sp/>trigger<sp/>the<sp/>rx<sp/>callback<sp/>to<sp/>simulate<sp/>incoming<sp/>packet<sp/>interrupt<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(p-&gt;<ref refid="structcan__mock__port__t_1ad3ec1b5da55368ff2805faf8c0439446" kindref="member">rx_cb</ref><sp/>!=<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>p-&gt;<ref refid="structcan__mock__port__t_1ad3ec1b5da55368ff2805faf8c0439446" kindref="member">rx_cb</ref>(port,<sp/>msg,<sp/>p-&gt;<ref refid="structcan__mock__port__t_1a2fad1f0f3680a2e764c356497abc1f2e" kindref="member">rx_cb_ctx</ref>);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="107"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="group__can__mock_1ga6871d37aa0f5ba3ecd6b5b1062899031" kindref="member">mock_can_get_tx</ref>(<ref refid="group__can__types_1ga83a77f224d5e726b32e0c7e7acff1163" kindref="member">hal_can_port_t</ref><sp/>port,<sp/><ref refid="structhal__can__msg__t" kindref="compound">hal_can_msg_t</ref><sp/>*out,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>max_len)<sp/>{</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(port<sp/>&gt;=<sp/><ref refid="group__can__types_1gga83a77f224d5e726b32e0c7e7acff1163a47b1cb98c87de850be1f916c23a4a0de" kindref="member">HAL_CAN_PORT_MAX</ref><sp/>||<sp/>out<sp/>==<sp/>NULL<sp/>||<sp/>max_len<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structcan__mock__port__t" kindref="compound">can_mock_port_t</ref><sp/>*p<sp/>=<sp/>&amp;can_ports[port];</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>retrieved<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(retrieved<sp/>&lt;<sp/>max_len<sp/>&amp;&amp;<sp/>p-&gt;tx_count<sp/>&gt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>out[retrieved]<sp/>=<sp/>p-&gt;<ref refid="structcan__mock__port__t_1ad6beafbf21a437b83dc5bcfdbd597ec1" kindref="member">tx_queue</ref>[p-&gt;<ref refid="structcan__mock__port__t_1aeb72aef17a661014ac95b319f8d46ae6" kindref="member">tx_tail</ref>];</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>p-&gt;<ref refid="structcan__mock__port__t_1aeb72aef17a661014ac95b319f8d46ae6" kindref="member">tx_tail</ref><sp/>=<sp/>(p-&gt;<ref refid="structcan__mock__port__t_1aeb72aef17a661014ac95b319f8d46ae6" kindref="member">tx_tail</ref><sp/>+<sp/>1)<sp/>%<sp/><ref refid="hal__can__mock_8c_1a3b0330d37094f2d5d1c4310009f3c9db" kindref="member">MOCK_CAN_QUEUE_SIZE</ref>;</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>p-&gt;<ref refid="structcan__mock__port__t_1acb48ace90a2c413eb2b38c3bd1e0d775" kindref="member">tx_count</ref>--;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>retrieved++;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>retrieved;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__can__mock_1ga7b0f9cb84a6d3e153e6c5648666297b1" kindref="member">mock_can_reset</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>memset(can_ports,<sp/>0,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(can_ports));</highlight></codeline>
+<codeline lineno="129"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/mocks/hal_can_mock.c"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,491 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="group__i2c__api" kind="group">
+    <compoundname>i2c_api</compoundname>
+    <title>Public API</title>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="group__i2c__api_1ga9883371a45c5f264b1924250f2186ea8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void hal_i2c_init</definition>
+        <argsstring>(i2c_bus_t bus)</argsstring>
+        <name>hal_i2c_init</name>
+        <param>
+          <type><ref refid="group__i2c__types_1ga29c2ef19c960dcf416306806f97d1250" kindref="member">i2c_bus_t</ref></type>
+          <declname>bus</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_i2c.h" line="106" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_i2c.c" bodystart="149" bodyend="176" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_i2c.h" declline="106" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__i2c__api_1gadfa9915830eb6c75a08aec4f316a2afd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__i2c__types_1ga4e07871ca4ae83f158fa20d135b309b2" kindref="member">i2c_error_t</ref></type>
+        <definition>i2c_error_t hal_i2c_write</definition>
+        <argsstring>(i2c_bus_t bus, uint8_t addr, const uint8_t *data, uint16_t len, i2c_tx_callback_t cb, i2c_error_cb_t err_cb, void *ctx)</argsstring>
+        <name>hal_i2c_write</name>
+        <param>
+          <type><ref refid="group__i2c__types_1ga29c2ef19c960dcf416306806f97d1250" kindref="member">i2c_bus_t</ref></type>
+          <declname>bus</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>addr</declname>
+        </param>
+        <param>
+          <type>const uint8_t *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>len</declname>
+        </param>
+        <param>
+          <type><ref refid="group__i2c__types_1gac2d88f9efda78f33b98be08bfb51efb6" kindref="member">i2c_tx_callback_t</ref></type>
+          <declname>cb</declname>
+        </param>
+        <param>
+          <type><ref refid="group__i2c__types_1ga9de1a575fb98bd4f4333b8c24922cf33" kindref="member">i2c_error_cb_t</ref></type>
+          <declname>err_cb</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>ctx</declname>
+        </param>
+        <briefdescription>
+<para>Write data to an I2C device. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">bus</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The I2C bus identifier (I2C_BUS_1, etc.) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">addr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The 7-bit device address. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the data buffer to transmit. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">len</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of bytes to write. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">cb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The callback to fire upon completion </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">err_cb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The callback to fire upon an error occurring </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">ctx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The context to provide to the callback upon firing</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>i2c_status_t Status code. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_i2c.h" line="121" column="13" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_i2c.c" bodystart="256" bodyend="284" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_i2c.h" declline="121" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__i2c__api_1ga4c8684bd894c0b2e8e98770f9d4441b2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__i2c__types_1ga4e07871ca4ae83f158fa20d135b309b2" kindref="member">i2c_error_t</ref></type>
+        <definition>i2c_error_t hal_i2c_mem_write</definition>
+        <argsstring>(i2c_bus_t bus, uint8_t addr, uint8_t reg, uint8_t *data, uint16_t len, i2c_tx_callback_t cb, i2c_error_cb_t err_cb, void *ctx)</argsstring>
+        <name>hal_i2c_mem_write</name>
+        <param>
+          <type><ref refid="group__i2c__types_1ga29c2ef19c960dcf416306806f97d1250" kindref="member">i2c_bus_t</ref></type>
+          <declname>bus</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>addr</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>reg</declname>
+        </param>
+        <param>
+          <type>uint8_t *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>len</declname>
+        </param>
+        <param>
+          <type><ref refid="group__i2c__types_1gac2d88f9efda78f33b98be08bfb51efb6" kindref="member">i2c_tx_callback_t</ref></type>
+          <declname>cb</declname>
+        </param>
+        <param>
+          <type><ref refid="group__i2c__types_1ga9de1a575fb98bd4f4333b8c24922cf33" kindref="member">i2c_error_cb_t</ref></type>
+          <declname>err_cb</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>ctx</declname>
+        </param>
+        <briefdescription>
+<para>Write to a specific register on the I2C device. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">bus</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The I2C bus identifier. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">addr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The 7-bit device address. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">reg</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The register address to write to. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the buffer containing data to be transmitted. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">len</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of bytes to write. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">cb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The callback to fire upon completion </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">err_cb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The callback to fire upon an error occurring </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">ctx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The context to provide to the callback upon firing</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>i2c_status_t Status code. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_i2c.h" line="139" column="13" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_i2c.c" bodystart="286" bodyend="314" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_i2c.h" declline="139" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__i2c__api_1ga4096fcca633c30375f7eb6498b0c5349" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__i2c__types_1ga4e07871ca4ae83f158fa20d135b309b2" kindref="member">i2c_error_t</ref></type>
+        <definition>i2c_error_t hal_i2c_read</definition>
+        <argsstring>(i2c_bus_t bus, uint8_t addr, uint8_t *data, uint16_t len, i2c_rx_callback_t cb, i2c_error_cb_t err_cb, void *ctx)</argsstring>
+        <name>hal_i2c_read</name>
+        <param>
+          <type><ref refid="group__i2c__types_1ga29c2ef19c960dcf416306806f97d1250" kindref="member">i2c_bus_t</ref></type>
+          <declname>bus</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>addr</declname>
+        </param>
+        <param>
+          <type>uint8_t *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>len</declname>
+        </param>
+        <param>
+          <type><ref refid="group__i2c__types_1gac79efc826177e385f296336ca66522bd" kindref="member">i2c_rx_callback_t</ref></type>
+          <declname>cb</declname>
+        </param>
+        <param>
+          <type><ref refid="group__i2c__types_1ga9de1a575fb98bd4f4333b8c24922cf33" kindref="member">i2c_error_cb_t</ref></type>
+          <declname>err_cb</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>ctx</declname>
+        </param>
+        <briefdescription>
+<para>Read data from an I2C device. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">bus</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The I2C bus identifier. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">addr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The 7-bit device address. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the buffer to store received data. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">len</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of bytes to read. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">cb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The callback to fire upon completion </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">err_cb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The callback to fire upon an error occurring </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">ctx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The context to provide to the callback upon firing</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>i2c_status_t Status code. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_i2c.h" line="156" column="13" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_i2c.c" bodystart="178" bodyend="215" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_i2c.h" declline="156" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__i2c__api_1ga261b1117be4ef49aed7919ca80f4f93a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__i2c__types_1ga4e07871ca4ae83f158fa20d135b309b2" kindref="member">i2c_error_t</ref></type>
+        <definition>i2c_error_t hal_i2c_mem_read</definition>
+        <argsstring>(i2c_bus_t bus, uint8_t addr, uint8_t reg, uint8_t *data, uint16_t len, i2c_rx_callback_t cb, i2c_error_cb_t err_cb, void *ctx)</argsstring>
+        <name>hal_i2c_mem_read</name>
+        <param>
+          <type><ref refid="group__i2c__types_1ga29c2ef19c960dcf416306806f97d1250" kindref="member">i2c_bus_t</ref></type>
+          <declname>bus</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>addr</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>reg</declname>
+        </param>
+        <param>
+          <type>uint8_t *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>len</declname>
+        </param>
+        <param>
+          <type><ref refid="group__i2c__types_1gac79efc826177e385f296336ca66522bd" kindref="member">i2c_rx_callback_t</ref></type>
+          <declname>cb</declname>
+        </param>
+        <param>
+          <type><ref refid="group__i2c__types_1ga9de1a575fb98bd4f4333b8c24922cf33" kindref="member">i2c_error_cb_t</ref></type>
+          <declname>err_cb</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>ctx</declname>
+        </param>
+        <briefdescription>
+<para>Write to a register, then read data (Common pattern for sensors). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">bus</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The I2C bus identifier. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">addr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The 7-bit device address. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">reg</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The register address to read from. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the buffer to store received data. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">len</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of bytes to read. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">cb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The callback to fire upon completion </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">err_cb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The callback to fire upon an error occurring </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">ctx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The context to provide to the callback upon firing</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>i2c_status_t Status code. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_i2c.h" line="174" column="13" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_i2c.c" bodystart="217" bodyend="254" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_i2c.h" declline="174" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__i2c__api_1gae01bf06db1ae22542c580edf46b633b8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void hal_i2c_isr_handler</definition>
+        <argsstring>(i2c_bus_t bus)</argsstring>
+        <name>hal_i2c_isr_handler</name>
+        <param>
+          <type><ref refid="group__i2c__types_1ga29c2ef19c960dcf416306806f97d1250" kindref="member">i2c_bus_t</ref></type>
+          <declname>bus</declname>
+        </param>
+        <briefdescription>
+<para>ISR entry point for I2C interrupts Should be called from MCU&apos;s I2C_IRQHandler() </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">The</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>I2C bus </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_i2c.h" line="184" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_i2c.c" bodystart="328" bodyend="339" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_i2c.h" declline="184" declcolumn="6"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>External interface for interacting with the I2C driver. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,219 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="group__osusat__event__bus__types" kind="group">
+    <compoundname>osusat_event_bus_types</compoundname>
+    <title>Structures</title>
+    <innerclass refid="structosusat__event__t" prot="public">osusat_event_t</innerclass>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="group__osusat__event__bus__types_1ga850910b01a6da075d04e80abdb9f4575" prot="public" static="no" strong="no">
+        <type></type>
+        <name>osusat_system_code_t</name>
+        <enumvalue id="group__osusat__event__bus__types_1gga850910b01a6da075d04e80abdb9f4575aa2ffd23fa80c0f84c0d47a4c337ce2b8" prot="public">
+          <name>SYSTEM_SYSTICK</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Periodic heartbeat (e.g. 100Hz) </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__osusat__event__bus__types_1gga850910b01a6da075d04e80abdb9f4575ae0cbe284d52220d87004d969af6e0e84" prot="public">
+          <name>SYSTEM_INIT_DONE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>All services initialized </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__osusat__event__bus__types_1gga850910b01a6da075d04e80abdb9f4575a50a25f8cf12a2dc250308e3ad9f30bba" prot="public">
+          <name>SYSTEM_HEARTBEAT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Heartbeat event for health monitoring </para>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>System Event Codes. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/event_bus.h" line="78" column="1" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/event_bus.h" bodystart="78" bodyend="82"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group__osusat__event__bus__types_1gac1bdf9439b2f075299a2f98e80fe4264" prot="public" static="no">
+        <type>uint32_t</type>
+        <definition>typedef uint32_t osusat_event_id_t</definition>
+        <argsstring></argsstring>
+        <name>osusat_event_id_t</name>
+        <briefdescription>
+<para>Event Identifier Type (32-bit). </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Constructed using <ref refid="group__osusat__event__bus__types_1ga6fb66ede3b29d386fec6f57800d3e980" kindref="member">OSUSAT_BUILD_EVENT_ID()</ref>. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/event_bus.h" line="49" column="18" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/event_bus.h" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__osusat__event__bus__types_1gaccccae08b2fbb1acea7a6cb888e36c01" prot="public" static="no">
+        <type>void(*</type>
+        <definition>typedef void(* osusat_event_handler_t) (const osusat_event_t *event, void *ctx)</definition>
+        <argsstring>)(const osusat_event_t *event, void *ctx)</argsstring>
+        <name>osusat_event_handler_t</name>
+        <briefdescription>
+<para>Event Handler Callback definition. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">event</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the event data. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">ctx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>User context pointer registered during subscription. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/event_bus.h" line="105" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/event_bus.h" bodystart="105" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="group__osusat__event__bus__types_1gab355e9006e9f0cf24e041773adeb4879" prot="public" static="no">
+        <name>OSUSAT_EVENT_MAX_PAYLOAD</name>
+        <initializer>32</initializer>
+        <briefdescription>
+<para>Max payload size in bytes. Kept small (8 bytes) to fit primitives (double, uint64_t) or pointers. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/event_bus.h" line="36" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/event_bus.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__osusat__event__bus__types_1ga8c163c9064b16f0123eedbeb1eb707bd" prot="public" static="no">
+        <name>OSUSAT_EVENT_MAX_SUBSCRIBERS</name>
+        <initializer>128</initializer>
+        <briefdescription>
+<para>Maximum number of active subscriptions allowed system-wide. Adjust based on RAM constraints. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/event_bus.h" line="42" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/event_bus.h" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__osusat__event__bus__types_1ga6fb66ede3b29d386fec6f57800d3e980" prot="public" static="no">
+        <name>OSUSAT_BUILD_EVENT_ID</name>
+        <param><defname>svc_uid</defname></param>
+        <param><defname>code</defname></param>
+        <initializer>    (((uint32_t)(svc_uid) &lt;&lt; 16) | ((uint32_t)(code) &amp; 0xFFFF))</initializer>
+        <briefdescription>
+<para>Helper to build a unique ID from a Service UID and Local Code. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>svc_uid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Unique 16-bit Service Identifier (e.g. 0xBA77 for Batt). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>code</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Local enum value (0-65535). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/event_bus.h" line="57" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/event_bus.h" bodystart="57" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="define" id="group__osusat__event__bus__types_1ga0cfe0bd33260387b955447a03f32a69a" prot="public" static="no">
+        <name>OSUSAT_GET_SERVICE_UID</name>
+        <param><defname>event_id</defname></param>
+        <initializer>((uint16_t)((event_id) &gt;&gt; 16))</initializer>
+        <briefdescription>
+<para>Helper to extract the Service UID from an Event ID. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/event_bus.h" line="63" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/event_bus.h" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__osusat__event__bus__types_1ga2af3a3500818b8b884a161c9c4d4759b" prot="public" static="no">
+        <name>OSUSAT_GET_LOCAL_CODE</name>
+        <param><defname>event_id</defname></param>
+        <initializer>((uint16_t)((event_id) &amp; 0xFFFF))</initializer>
+        <briefdescription>
+<para>Helper to extract the Local Code from an Event ID. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/event_bus.h" line="68" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/event_bus.h" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__osusat__event__bus__types_1gaacc98bdfe07e8d560177b3ab85e9eaa1" prot="public" static="no">
+        <name>OSUSAT_SERVICE_UID_SYSTEM</name>
+        <initializer>0x0000</initializer>
+        <briefdescription>
+<para>Reserved UID for Core System Events. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/event_bus.h" line="73" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/event_bus.h" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__osusat__event__bus__types_1gaaa9fd284ba6ed1757d6ec8dc1bd19379" prot="public" static="no">
+        <name>EVENT_SYSTICK</name>
+        <initializer>    <ref refid="group__osusat__event__bus__types_1ga6fb66ede3b29d386fec6f57800d3e980" kindref="member">OSUSAT_BUILD_EVENT_ID</ref>(<ref refid="group__osusat__event__bus__types_1gaacc98bdfe07e8d560177b3ab85e9eaa1" kindref="member">OSUSAT_SERVICE_UID_SYSTEM</ref>, <ref refid="group__osusat__event__bus__types_1gga850910b01a6da075d04e80abdb9f4575aa2ffd23fa80c0f84c0d47a4c337ce2b8" kindref="member">SYSTEM_SYSTICK</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/event_bus.h" line="84" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/event_bus.h" bodystart="84" bodyend="85"/>
+      </memberdef>
+      <memberdef kind="define" id="group__osusat__event__bus__types_1gae3e11f4492290430fe94d0d67f1896dd" prot="public" static="no">
+        <name>EVENT_SYSTEM_INIT</name>
+        <initializer>    <ref refid="group__osusat__event__bus__types_1ga6fb66ede3b29d386fec6f57800d3e980" kindref="member">OSUSAT_BUILD_EVENT_ID</ref>(<ref refid="group__osusat__event__bus__types_1gaacc98bdfe07e8d560177b3ab85e9eaa1" kindref="member">OSUSAT_SERVICE_UID_SYSTEM</ref>, <ref refid="group__osusat__event__bus__types_1gga850910b01a6da075d04e80abdb9f4575ae0cbe284d52220d87004d969af6e0e84" kindref="member">SYSTEM_INIT_DONE</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/event_bus.h" line="86" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/event_bus.h" bodystart="86" bodyend="87"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Structures used by the Event Bus. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

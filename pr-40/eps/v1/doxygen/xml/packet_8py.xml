@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="packet_8py" kind="file" language="Python">
+    <compoundname>packet.py</compoundname>
+    <innerclass refid="classosusat__messaging_1_1packet_1_1OSUSatPacket" prot="public">osusat_messaging::packet::OSUSatPacket</innerclass>
+    <innernamespace refid="namespaceosusat__messaging">osusat_messaging</innernamespace>
+    <innernamespace refid="namespaceosusat__messaging_1_1packet">osusat_messaging::packet</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1" refid="namespaceosusat__messaging_1_1packet" refkind="compound"><highlight class="keyword">import</highlight><highlight class="normal"><sp/>struct</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>crccheck.crc<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>Crc16Ccitt</highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>.<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>messages</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal">START_BYTE<sp/>=<sp/>0x7E</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal">HEADER_FORMAT<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;&gt;BBBBBBBB&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">#<sp/>big-endian</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal">HEADER_SIZE<sp/>=<sp/>struct.calcsize(HEADER_FORMAT)</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal">LENGTH_FORMAT<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;&gt;B&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal">LENGTH_SIZE<sp/>=<sp/>struct.calcsize(LENGTH_FORMAT)</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal">CRC_FORMAT<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;&gt;H&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">#<sp/>big-endian</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal">CRC_SIZE<sp/>=<sp/>struct.calcsize(CRC_FORMAT)</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal">MIN_PACKET_SIZE<sp/>=<sp/>1<sp/>+<sp/>HEADER_SIZE<sp/>+<sp/>LENGTH_SIZE<sp/>+<sp/>CRC_SIZE</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal">calculate_crc(data:<sp/>bytes)<sp/>-&gt;<sp/>int:</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="20"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Calculates<sp/>the<sp/>CRC-16-CCITT<sp/>CRC<sp/>for<sp/>the<sp/>given<sp/>data.</highlight></codeline>
+<codeline lineno="21"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>Crc16Ccitt.calc(data)</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24" refid="classosusat__messaging_1_1packet_1_1OSUSatPacket" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classosusat__messaging_1_1packet_1_1OSUSatPacket" kindref="compound">OSUSatPacket</ref>:</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="26"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>A<sp/>class<sp/>to<sp/>represent,<sp/>encode,<sp/>and<sp/>decode<sp/>an<sp/>OSUSat/SCRT<sp/>messaging<sp/>packet.</highlight></codeline>
+<codeline lineno="27"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="classosusat__messaging_1_1packet_1_1OSUSatPacket_1ad39a232c8684964d0d3b84cc0d48aa03" kindref="member">__init__</ref>(self,<sp/>version:<sp/>int,<sp/>destination:<sp/>int,<sp/>source:<sp/>int,</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>message_type:<sp/>int,<sp/>command_id:<sp/>int,<sp/>sequence:<sp/>int<sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>is_last_chunk:<sp/>bool<sp/>=<sp/></highlight><highlight class="keyword">True</highlight><highlight class="normal">,<sp/>payload:<sp/>bytes<sp/>=<sp/>b</highlight><highlight class="stringliteral">&apos;&apos;</highlight><highlight class="normal">):</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self.<ref refid="classosusat__messaging_1_1packet_1_1OSUSatPacket_1ab249d082c1af03a15667def423f736ec" kindref="member">version</ref><sp/>=<sp/>version</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self.<ref refid="classosusat__messaging_1_1packet_1_1OSUSatPacket_1a501d27f447ca529e4129204e6ce9f8de" kindref="member">destination</ref><sp/>=<sp/>destination</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self.<ref refid="classosusat__messaging_1_1packet_1_1OSUSatPacket_1aeba7262df752c2ef452d490fa31a12f7" kindref="member">source</ref><sp/>=<sp/>source</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self.<ref refid="classosusat__messaging_1_1packet_1_1OSUSatPacket_1afa4dfe259f37e9a1834c8ec79652d26b" kindref="member">message_type</ref><sp/>=<sp/>message_type</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self.<ref refid="classosusat__messaging_1_1packet_1_1OSUSatPacket_1add15ffc09c37559083513066fd787b4f" kindref="member">command_id</ref><sp/>=<sp/>command_id</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self.<ref refid="classosusat__messaging_1_1packet_1_1OSUSatPacket_1a3d995be07c369d278edc815ca3b5bc0f" kindref="member">sequence</ref><sp/>=<sp/>sequence</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self.<ref refid="classosusat__messaging_1_1packet_1_1OSUSatPacket_1af753955287a6f6fde841c528dce23bac" kindref="member">is_last_chunk</ref><sp/>=<sp/>is_last_chunk</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self.<ref refid="classosusat__messaging_1_1packet_1_1OSUSatPacket_1a440909dcde2128c5863b5549f1d9dcf6" kindref="member">payload</ref><sp/>=<sp/>payload</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="classosusat__messaging_1_1packet_1_1OSUSatPacket_1aa189b4919d4b63c790d36ec85d59e375" kindref="member">__repr__</ref>(self):</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="43"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Generate<sp/>a<sp/>string<sp/>representation<sp/>of<sp/>an<sp/>OSUSat<sp/>packet</highlight></codeline>
+<codeline lineno="44"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dest_name<sp/>=<sp/>messages.Destination.__dict__.get(str(self.<ref refid="classosusat__messaging_1_1packet_1_1OSUSatPacket_1a501d27f447ca529e4129204e6ce9f8de" kindref="member">destination</ref>),<sp/>f</highlight><highlight class="stringliteral">&apos;{self.destination:#04x}&apos;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(f</highlight><highlight class="stringliteral">&quot;OSUSatPacket(dest={dest_name},<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>f</highlight><highlight class="stringliteral">&quot;type={self.message_type:#04x},<sp/>cmd={self.command_id:#04x},<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>f</highlight><highlight class="stringliteral">&quot;payload_len={len(self.payload)})&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="classosusat__messaging_1_1packet_1_1OSUSatPacket_1a1f799a5db62370fd0f25fd56917c2aa4" kindref="member">pack</ref>(self)<sp/>-&gt;<sp/>bytes:</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="53"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Serializes<sp/>the<sp/>packet<sp/>object<sp/>into<sp/>a<sp/>bytes<sp/>object<sp/>ready<sp/>for<sp/>transmission.</highlight></codeline>
+<codeline lineno="54"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>len(self.<ref refid="classosusat__messaging_1_1packet_1_1OSUSatPacket_1a440909dcde2128c5863b5549f1d9dcf6" kindref="member">payload</ref>)<sp/>&gt;<sp/>255:</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">raise</highlight><highlight class="normal"><sp/>ValueError(</highlight><highlight class="stringliteral">&quot;Payload<sp/>length<sp/>cannot<sp/>exceed<sp/>255<sp/>bytes.&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>header<sp/>=<sp/>struct.pack(</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HEADER_FORMAT,</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self.<ref refid="classosusat__messaging_1_1packet_1_1OSUSatPacket_1ab249d082c1af03a15667def423f736ec" kindref="member">version</ref>,</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self.<ref refid="classosusat__messaging_1_1packet_1_1OSUSatPacket_1a501d27f447ca529e4129204e6ce9f8de" kindref="member">destination</ref>,</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self.<ref refid="classosusat__messaging_1_1packet_1_1OSUSatPacket_1aeba7262df752c2ef452d490fa31a12f7" kindref="member">source</ref>,</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self.<ref refid="classosusat__messaging_1_1packet_1_1OSUSatPacket_1afa4dfe259f37e9a1834c8ec79652d26b" kindref="member">message_type</ref>,</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self.<ref refid="classosusat__messaging_1_1packet_1_1OSUSatPacket_1add15ffc09c37559083513066fd787b4f" kindref="member">command_id</ref>,</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self.<ref refid="classosusat__messaging_1_1packet_1_1OSUSatPacket_1a3d995be07c369d278edc815ca3b5bc0f" kindref="member">sequence</ref>,</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1<sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>self.<ref refid="classosusat__messaging_1_1packet_1_1OSUSatPacket_1af753955287a6f6fde841c528dce23bac" kindref="member">is_last_chunk</ref><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>0,</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>len(self.<ref refid="classosusat__messaging_1_1packet_1_1OSUSatPacket_1a440909dcde2128c5863b5549f1d9dcf6" kindref="member">payload</ref>),</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>data<sp/>for<sp/>CRC<sp/>includes<sp/>header<sp/>and<sp/>payload</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data_for_crc<sp/>=<sp/>header<sp/>+<sp/>self.<ref refid="classosusat__messaging_1_1packet_1_1OSUSatPacket_1a440909dcde2128c5863b5549f1d9dcf6" kindref="member">payload</ref></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>crc<sp/>=<sp/>calculate_crc(data_for_crc)</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>packed_crc<sp/>=<sp/>struct.pack(CRC_FORMAT,<sp/>crc)</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>bytes([START_BYTE])<sp/>+<sp/>data_for_crc<sp/>+<sp/>packed_crc</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="preprocessor">@classmethod</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="classosusat__messaging_1_1packet_1_1OSUSatPacket_1a321d0a4d627c4449c00d506aea2e84a4" kindref="member">unpack</ref>(cls,<sp/>packet_bytes:<sp/>bytes):</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="80"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Deserializes<sp/>a<sp/>bytes<sp/>object<sp/>into<sp/>an<sp/>OSUSatPacket<sp/>object.</highlight></codeline>
+<codeline lineno="81"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Raises<sp/>ValueError<sp/>if<sp/>the<sp/>packet<sp/>is<sp/>invalid.</highlight></codeline>
+<codeline lineno="82"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="83"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>This<sp/>method<sp/>should<sp/>always<sp/>be<sp/>used<sp/>within<sp/>an<sp/>exception<sp/>handler.</highlight></codeline>
+<codeline lineno="84"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">not</highlight><highlight class="normal"><sp/>packet_bytes<sp/></highlight><highlight class="keywordflow">or</highlight><highlight class="normal"><sp/>packet_bytes[0]<sp/>!=<sp/>START_BYTE:</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">raise</highlight><highlight class="normal"><sp/>ValueError(f</highlight><highlight class="stringliteral">&quot;Invalid<sp/>start<sp/>byte.<sp/>Expected<sp/>{START_BYTE:#02x}.&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>len(packet_bytes)<sp/>&lt;<sp/>MIN_PACKET_SIZE:</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">raise</highlight><highlight class="normal"><sp/>ValueError(f</highlight><highlight class="stringliteral">&quot;Packet<sp/>too<sp/>short.<sp/>Min<sp/>size<sp/>is<sp/>{MIN_PACKET_SIZE}<sp/>bytes.&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>verify<sp/>CRC</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>received_crc<sp/>=<sp/>struct.unpack(CRC_FORMAT,<sp/>packet_bytes[-CRC_SIZE:])[0]</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data_to_check<sp/>=<sp/>packet_bytes[1:-CRC_SIZE]</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>calculated_crc<sp/>=<sp/>calculate_crc(data_to_check)</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>received_crc<sp/>!=<sp/>calculated_crc:</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">raise</highlight><highlight class="normal"><sp/>ValueError(f</highlight><highlight class="stringliteral">&quot;CRC<sp/>mismatch.<sp/>Received<sp/>{received_crc},<sp/>calculated<sp/>{calculated_crc}.&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>unpack<sp/>header<sp/>fields</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>header_fields<sp/>=<sp/>struct.unpack(HEADER_FORMAT,<sp/>data_to_check[:HEADER_SIZE])</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(version,<sp/>destination,<sp/>source,<sp/>message_type,<sp/>command_id,</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sequence,<sp/>last_chunk_flag,<sp/>payload_len)<sp/>=<sp/>header_fields</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>extract<sp/>payload<sp/>and<sp/>validate<sp/>length</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>payload<sp/>=<sp/>data_to_check[HEADER_SIZE:]</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>len(payload)<sp/>!=<sp/>payload_len:</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">raise</highlight><highlight class="normal"><sp/>ValueError(f</highlight><highlight class="stringliteral">&quot;Actual<sp/>payload<sp/>length<sp/>{len(payload)}<sp/>does<sp/>not<sp/>match<sp/>length<sp/>in<sp/>header<sp/>{payload_len}.&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>cls(</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>version=version,<sp/>destination=destination,<sp/>source=source,</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>message_type=message_type,<sp/>command_id=command_id,<sp/>sequence=sequence,</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>is_last_chunk=(last_chunk_flag<sp/>!=<sp/>0),<sp/>payload=payload</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)</highlight></codeline>
+    </programlisting>
+    <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/messaging/python/osusat_messaging/packet.py"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,280 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="group__can__api" kind="group">
+    <compoundname>can_api</compoundname>
+    <title>Public API</title>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="group__can__api_1gaee75487bc1a6b3c93fc347d818d5fd18" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void hal_can_init</definition>
+        <argsstring>(hal_can_port_t port, const hal_can_config_t *config)</argsstring>
+        <name>hal_can_init</name>
+        <param>
+          <type><ref refid="group__can__types_1ga83a77f224d5e726b32e0c7e7acff1163" kindref="member">hal_can_port_t</ref></type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structhal__can__config__t" kindref="compound">hal_can_config_t</ref> *</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+<para>Initialize the CAN driver for a port. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The CAN port to initialize. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>config</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to configuration structure. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_can.h" line="130" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/mocks/hal_can_mock.c" bodystart="24" bodyend="35" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_can.h" declline="130" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__can__api_1ga8a524c5e1b426d9222656f692ed92c03" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__can__types_1gaeb6a2f8beecd9def75dff7fa7c2f0d00" kindref="member">hal_can_status_t</ref></type>
+        <definition>hal_can_status_t hal_can_write</definition>
+        <argsstring>(hal_can_port_t port, const hal_can_msg_t *msg)</argsstring>
+        <name>hal_can_write</name>
+        <param>
+          <type><ref refid="group__can__types_1ga83a77f224d5e726b32e0c7e7acff1163" kindref="member">hal_can_port_t</ref></type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structhal__can__msg__t" kindref="compound">hal_can_msg_t</ref> *</type>
+          <declname>msg</declname>
+        </param>
+        <briefdescription>
+<para>Write (transmit) a message to the CAN bus. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The CAN port. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>msg</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the message to transmit. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hal_can_status_t Status code. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_can.h" line="139" column="18" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/mocks/hal_can_mock.c" bodystart="37" bodyend="62" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_can.h" declline="139" declcolumn="18"/>
+      </memberdef>
+      <memberdef kind="function" id="group__can__api_1ga4dd37d5795d680815722a43124c64c8b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void hal_can_register_rx_callback</definition>
+        <argsstring>(hal_can_port_t port, hal_can_rx_cb_t cb, void *ctx)</argsstring>
+        <name>hal_can_register_rx_callback</name>
+        <param>
+          <type><ref refid="group__can__types_1ga83a77f224d5e726b32e0c7e7acff1163" kindref="member">hal_can_port_t</ref></type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type><ref refid="group__can__types_1ga6a4873f0aefa6b5c891174d24dc89523" kindref="member">hal_can_rx_cb_t</ref></type>
+          <declname>cb</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>ctx</declname>
+        </param>
+        <briefdescription>
+<para>Register a callback that fires when a new message is received. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The CAN port. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>cb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The RX callback function. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ctx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>User-specified context pointer. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_can.h" line="148" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/mocks/hal_can_mock.c" bodystart="64" bodyend="70" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_can.h" declline="148" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__can__api_1ga72caff0e5a7fe741fb1546fd7c7587f6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void hal_can_register_tx_callback</definition>
+        <argsstring>(hal_can_port_t port, hal_can_tx_cb_t cb, void *ctx)</argsstring>
+        <name>hal_can_register_tx_callback</name>
+        <param>
+          <type><ref refid="group__can__types_1ga83a77f224d5e726b32e0c7e7acff1163" kindref="member">hal_can_port_t</ref></type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type><ref refid="group__can__types_1gaa1855c6c62ad7361ec91e6872e92acdd" kindref="member">hal_can_tx_cb_t</ref></type>
+          <declname>cb</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>ctx</declname>
+        </param>
+        <briefdescription>
+<para>Register a callback that fires when a TX operation is complete. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The CAN port. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>cb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The TX callback function. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ctx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>User-specified context pointer. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_can.h" line="157" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/mocks/hal_can_mock.c" bodystart="72" bodyend="78" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_can.h" declline="157" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__can__api_1gac9fc5cf7611124be5ee8bf5e6218ed26" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void hal_can_register_error_callback</definition>
+        <argsstring>(hal_can_port_t port, hal_can_error_cb_t cb, void *ctx)</argsstring>
+        <name>hal_can_register_error_callback</name>
+        <param>
+          <type><ref refid="group__can__types_1ga83a77f224d5e726b32e0c7e7acff1163" kindref="member">hal_can_port_t</ref></type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type><ref refid="group__can__types_1ga27842fc8e60ca805f6daf1fd815564b6" kindref="member">hal_can_error_cb_t</ref></type>
+          <declname>cb</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>ctx</declname>
+        </param>
+        <briefdescription>
+<para>Register a callback that fires when a CAN error occurs. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The CAN port. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>cb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The error callback function. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ctx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>User-specified context pointer. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_can.h" line="166" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/mocks/hal_can_mock.c" bodystart="80" bodyend="86" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_can.h" declline="166" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__can__api_1ga6b98e16889952465b964a7e6b5d01e0c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void hal_can_isr_handler</definition>
+        <argsstring>(hal_can_port_t port)</argsstring>
+        <name>hal_can_isr_handler</name>
+        <param>
+          <type><ref refid="group__can__types_1ga83a77f224d5e726b32e0c7e7acff1163" kindref="member">hal_can_port_t</ref></type>
+          <declname>port</declname>
+        </param>
+        <briefdescription>
+<para>ISR entry point for CAN interrupts. Should be called from the MCU&apos;s CAN IRQ handlers. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The CAN port. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_can.h" line="174" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/mocks/hal_can_mock.c" bodystart="88" bodyend="91" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_can.h" declline="174" declcolumn="6"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>External interface for interacting with the CAN driver. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>
