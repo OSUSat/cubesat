@@ -1,0 +1,2599 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="group__UART__Private__Macros" kind="group">
+    <compoundname>UART_Private_Macros</compoundname>
+    <title>UART Private Macros</title>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="group__UART__Private__Macros_1ga6394af5fd57e94157d54bd79e1f7265d" prot="public" static="no">
+        <name>UART_DIV_LPUART</name>
+        <param><defname>__PCLK__</defname></param>
+        <param><defname>__BAUD__</defname></param>
+        <initializer>(((((uint64_t)(__PCLK__)*256U)) + ((__BAUD__)/2U)) / (__BAUD__))</initializer>
+        <briefdescription>
+<para>BRR division operation to set BRR register with LPUART. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__PCLK__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>LPUART clock. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>__BAUD__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Baud rate set by the user. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>Division</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>result </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="1316" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="1316" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1ga3b4ab2ec164132268de4719de4625a82" prot="public" static="no">
+        <name>UART_DIV_SAMPLING8</name>
+        <param><defname>__PCLK__</defname></param>
+        <param><defname>__BAUD__</defname></param>
+        <initializer>((((__PCLK__)*2U) + ((__BAUD__)/2U)) / (__BAUD__))</initializer>
+        <briefdescription>
+<para>BRR division operation to set BRR register in 8-bit oversampling mode. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__PCLK__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART clock. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>__BAUD__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Baud rate set by the user. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>Division</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>result </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="1323" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="1323" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1gac2423ff86559eb91198bcc438caec865" prot="public" static="no">
+        <name>UART_DIV_SAMPLING16</name>
+        <param><defname>__PCLK__</defname></param>
+        <param><defname>__BAUD__</defname></param>
+        <initializer>(((__PCLK__) + ((__BAUD__)/2U)) / (__BAUD__))</initializer>
+        <briefdescription>
+<para>BRR division operation to set BRR register in 16-bit oversampling mode. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__PCLK__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART clock. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>__BAUD__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Baud rate set by the user. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>Division</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>result </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="1330" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="1330" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1gac0df0132f5d0ad91a86f2ee9489ba699" prot="public" static="no">
+        <name>UART_INSTANCE_LOWPOWER</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer>(<ref refid="group__Exported__macros_1gabe1d97ef8a001d77efa0d7633e7a42de" kindref="member">IS_LPUART_INSTANCE</ref>((__HANDLE__)-&gt;Instance))</initializer>
+        <briefdescription>
+<para>Check whether or not UART instance is Low Power UART. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the UART Handle. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(instance is LPUART) or RESET (instance isn&apos;t LPUART) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="1337" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="1337" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1gaa8f50c3cc4c04875ea490fb81a08731d" prot="public" static="no">
+        <name>IS_UART_BAUDRATE</name>
+        <param><defname>__BAUDRATE__</defname></param>
+        <initializer>((__BAUDRATE__) &lt; 10000001U)</initializer>
+        <briefdescription>
+<para>Check UART Baud rate. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__BAUDRATE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Baudrate specified by the user. The maximum Baud Rate is derived from the maximum clock on L4 divided by the smallest oversampling used on the USART (i.e. 8) (i.e. 120 MHz on STM32L4Rx/L4Sx, 80 Mhz otherwise) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>BAUDRATE</bold> is valid) or RESET (<bold>BAUDRATE</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="1349" column="10" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="1349" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1ga8acf6b6648717b7192439f1b426321a4" prot="public" static="no">
+        <name>IS_UART_ASSERTIONTIME</name>
+        <param><defname>__TIME__</defname></param>
+        <initializer>((__TIME__) &lt;= 0x1FU)</initializer>
+        <briefdescription>
+<para>Check UART assertion time. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__TIME__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>5-bit value assertion time. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>Test</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>result (TRUE or FALSE). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="1356" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="1356" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1ga7e060b24713e3fb49f4f0f4fa71dd85f" prot="public" static="no">
+        <name>IS_UART_DEASSERTIONTIME</name>
+        <param><defname>__TIME__</defname></param>
+        <initializer>((__TIME__) &lt;= 0x1FU)</initializer>
+        <briefdescription>
+<para>Check UART deassertion time. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__TIME__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>5-bit value deassertion time. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>Test</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>result (TRUE or FALSE). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="1362" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="1362" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1ga0fa4dec621a59f8c07f42548cdbb7f18" prot="public" static="no">
+        <name>IS_UART_STOPBITS</name>
+        <param><defname>__STOPBITS__</defname></param>
+        <initializer>                                        (((__STOPBITS__) == <ref refid="group__UART__Stop__Bits_1ga4c280770879367f7af395b7b41f60d93" kindref="member">UART_STOPBITS_0_5</ref>) || \
+                                        ((__STOPBITS__) == <ref refid="group__UART__Stop__Bits_1ga7cf97e555292d574de8abc596ba0e2ce" kindref="member">UART_STOPBITS_1</ref>)   || \
+                                        ((__STOPBITS__) == <ref refid="group__UART__Stop__Bits_1ga99fcce2358d8ef0b60cf562e4d9fddd8" kindref="member">UART_STOPBITS_1_5</ref>) || \
+                                        ((__STOPBITS__) == <ref refid="group__UART__Stop__Bits_1ga91616523380f7450aac6cb7e17f0c0f2" kindref="member">UART_STOPBITS_2</ref>))</initializer>
+        <briefdescription>
+<para>Ensure that UART frame number of stop bits is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__STOPBITS__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART frame number of stop bits. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>STOPBITS</bold> is valid) or RESET (<bold>STOPBITS</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="1369" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="1369" bodyend="1372"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1ga165adc0070f15c78424d279cb1ea70fc" prot="public" static="no">
+        <name>IS_LPUART_STOPBITS</name>
+        <param><defname>__STOPBITS__</defname></param>
+        <initializer>                                          (((__STOPBITS__) == <ref refid="group__UART__Stop__Bits_1ga7cf97e555292d574de8abc596ba0e2ce" kindref="member">UART_STOPBITS_1</ref>) || \
+                                          ((__STOPBITS__) == <ref refid="group__UART__Stop__Bits_1ga91616523380f7450aac6cb7e17f0c0f2" kindref="member">UART_STOPBITS_2</ref>))</initializer>
+        <briefdescription>
+<para>Ensure that LPUART frame number of stop bits is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__STOPBITS__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>LPUART frame number of stop bits. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>STOPBITS</bold> is valid) or RESET (<bold>STOPBITS</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="1379" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="1379" bodyend="1380"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1ga57b0798bfa43d210f492eb3c5e218a86" prot="public" static="no">
+        <name>IS_UART_PARITY</name>
+        <param><defname>__PARITY__</defname></param>
+        <initializer>                                    (((__PARITY__) == <ref refid="group__UART__Parity_1ga270dea6e1a92dd83fe58802450bdd60c" kindref="member">UART_PARITY_NONE</ref>) || \
+                                    ((__PARITY__) == <ref refid="group__UART__Parity_1ga063b14ac42ef9e8f4246c17a586b14eb" kindref="member">UART_PARITY_EVEN</ref>) || \
+                                    ((__PARITY__) == <ref refid="group__UART__Parity_1ga229615e64964f68f7a856ea6ffea359e" kindref="member">UART_PARITY_ODD</ref>))</initializer>
+        <briefdescription>
+<para>Ensure that UART frame parity is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__PARITY__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART frame parity. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>PARITY</bold> is valid) or RESET (<bold>PARITY</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="1387" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="1387" bodyend="1389"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1ga92977d9daf0c39d875df200ae0ae6acd" prot="public" static="no">
+        <name>IS_UART_HARDWARE_FLOW_CONTROL</name>
+        <param><defname>__CONTROL__</defname></param>
+        <initializer>  (((__CONTROL__) == <ref refid="group__UART__Hardware__Flow__Control_1gae0569001c06b7760cd38c481f84116cf" kindref="member">UART_HWCONTROL_NONE</ref>) || \
+   ((__CONTROL__) == <ref refid="group__UART__Hardware__Flow__Control_1ga6d5dad09c6abf30f252084ba0f8c0b7d" kindref="member">UART_HWCONTROL_RTS</ref>)  || \
+   ((__CONTROL__) == <ref refid="group__UART__Hardware__Flow__Control_1ga352f517245986e3b86bc75f8472c51ea" kindref="member">UART_HWCONTROL_CTS</ref>)  || \
+   ((__CONTROL__) == <ref refid="group__UART__Hardware__Flow__Control_1ga7c91698e8f08ba7ed3f2a0ba9aa27d73" kindref="member">UART_HWCONTROL_RTS_CTS</ref>))</initializer>
+        <briefdescription>
+<para>Ensure that UART hardware flow control is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__CONTROL__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART hardware flow control. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>CONTROL</bold> is valid) or RESET (<bold>CONTROL</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="1396" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="1396" bodyend="1400"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1gae5b637b9191dea1f8fd3846b886dd38b" prot="public" static="no">
+        <name>IS_UART_MODE</name>
+        <param><defname>__MODE__</defname></param>
+        <initializer>((((__MODE__) &amp; (~((uint32_t)(<ref refid="group__UART__Mode_1gab47c162935901e89322e2ce6700b6744" kindref="member">UART_MODE_TX_RX</ref>)))) == 0x00U) &amp;&amp; ((__MODE__) != 0x00U))</initializer>
+        <briefdescription>
+<para>Ensure that UART communication mode is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__MODE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART communication mode. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>MODE</bold> is valid) or RESET (<bold>MODE</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="1407" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="1407" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1ga754855879401ab846803a03eec2f7f10" prot="public" static="no">
+        <name>IS_UART_STATE</name>
+        <param><defname>__STATE__</defname></param>
+        <initializer>                                  (((__STATE__) == <ref refid="group__UART__State_1gaf32492459be708981ebc5615194cdae9" kindref="member">UART_STATE_DISABLE</ref>) || \
+                                  ((__STATE__) == <ref refid="group__UART__State_1gab6b470dccef2a518a45554b171acff5b" kindref="member">UART_STATE_ENABLE</ref>))</initializer>
+        <briefdescription>
+<para>Ensure that UART state is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__STATE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART state. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>STATE</bold> is valid) or RESET (<bold>STATE</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="1414" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="1414" bodyend="1415"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1ga8d918253e015c4a8aa07316a89f8265e" prot="public" static="no">
+        <name>IS_UART_OVERSAMPLING</name>
+        <param><defname>__SAMPLING__</defname></param>
+        <initializer>                                            (((__SAMPLING__) == <ref refid="group__UART__Over__Sampling_1gaa6a320ec65d248d76f21de818db1a2f0" kindref="member">UART_OVERSAMPLING_16</ref>) || \
+                                            ((__SAMPLING__) == <ref refid="group__UART__Over__Sampling_1gaeb13896e8bdc1bb041e01a86a868ee0b" kindref="member">UART_OVERSAMPLING_8</ref>))</initializer>
+        <briefdescription>
+<para>Ensure that UART oversampling is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__SAMPLING__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART oversampling. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>SAMPLING</bold> is valid) or RESET (<bold>SAMPLING</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="1422" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="1422" bodyend="1423"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1ga6452a4420dac4abd4f0ea0e1677f37a9" prot="public" static="no">
+        <name>IS_UART_ONE_BIT_SAMPLE</name>
+        <param><defname>__ONEBIT__</defname></param>
+        <initializer>                                            (((__ONEBIT__) == <ref refid="group__UART__OneBit__Sampling_1gadfcb0e9db2719321048b249b2c5cc15f" kindref="member">UART_ONE_BIT_SAMPLE_DISABLE</ref>) || \
+                                            ((__ONEBIT__) == <ref refid="group__UART__OneBit__Sampling_1gadcc0aed6e7a466da3c45363f69dcbfb6" kindref="member">UART_ONE_BIT_SAMPLE_ENABLE</ref>))</initializer>
+        <briefdescription>
+<para>Ensure that UART frame sampling is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__ONEBIT__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART frame sampling. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>ONEBIT</bold> is valid) or RESET (<bold>ONEBIT</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="1430" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="1430" bodyend="1431"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1ga88f07bdfe1fcdff17edbbba2f196110d" prot="public" static="no">
+        <name>IS_UART_ADVFEATURE_AUTOBAUDRATEMODE</name>
+        <param><defname>__MODE__</defname></param>
+        <initializer>                                                        (((__MODE__) == <ref refid="group__UART__AutoBaud__Rate__Mode_1ga87bcd5d6ca1b354785788366c9c47606" kindref="member">UART_ADVFEATURE_AUTOBAUDRATE_ONSTARTBIT</ref>)    || \
+                                                        ((__MODE__) == <ref refid="group__UART__AutoBaud__Rate__Mode_1ga8ac0407640f138067bdcf2ad6cdc04cc" kindref="member">UART_ADVFEATURE_AUTOBAUDRATE_ONFALLINGEDGE</ref>) || \
+                                                        ((__MODE__) == <ref refid="group__UART__AutoBaud__Rate__Mode_1ga0bdbaec8f1186a4bbbdef5e09896a3e2" kindref="member">UART_ADVFEATURE_AUTOBAUDRATE_ON0X7FFRAME</ref>)   || \
+                                                        ((__MODE__) == <ref refid="group__UART__AutoBaud__Rate__Mode_1gaa325fa0ee642902e4746a53f9b58720d" kindref="member">UART_ADVFEATURE_AUTOBAUDRATE_ON0X55FRAME</ref>))</initializer>
+        <briefdescription>
+<para>Ensure that UART auto Baud rate detection mode is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__MODE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART auto Baud rate detection mode. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>MODE</bold> is valid) or RESET (<bold>MODE</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="1438" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="1438" bodyend="1441"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1gaa2ad21da17caf46375c7bd4efbde8b17" prot="public" static="no">
+        <name>IS_UART_RECEIVER_TIMEOUT</name>
+        <param><defname>__TIMEOUT__</defname></param>
+        <initializer>                                                (((__TIMEOUT__) == <ref refid="group__UART__Receiver__Timeout_1ga575c43813df656b21dc39aff6a968046" kindref="member">UART_RECEIVER_TIMEOUT_DISABLE</ref>) || \
+                                                ((__TIMEOUT__) == <ref refid="group__UART__Receiver__Timeout_1ga6e25985f0dacc3e79ae552746952ac18" kindref="member">UART_RECEIVER_TIMEOUT_ENABLE</ref>))</initializer>
+        <briefdescription>
+<para>Ensure that UART receiver timeout setting is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__TIMEOUT__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART receiver timeout setting. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>TIMEOUT</bold> is valid) or RESET (<bold>TIMEOUT</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="1448" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="1448" bodyend="1449"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1gaee43ee42a5b1ba061322ab0763c6ef4f" prot="public" static="no">
+        <name>IS_UART_RECEIVER_TIMEOUT_VALUE</name>
+        <param><defname>__TIMEOUTVALUE__</defname></param>
+        <initializer>((__TIMEOUTVALUE__) &lt;= 0xFFFFFFU)</initializer>
+        <briefdescription>
+<para>Check the receiver timeout value. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>The maximum UART receiver timeout value is 0xFFFFFF. </para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__TIMEOUTVALUE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>receiver timeout value. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>Test</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>result (TRUE or FALSE) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="1456" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="1456" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1ga13d7f9876db68d9d6316204a8a2588de" prot="public" static="no">
+        <name>IS_UART_LIN</name>
+        <param><defname>__LIN__</defname></param>
+        <initializer>                                     (((__LIN__) == <ref refid="group__UART__LIN_1ga7bc4a2de3d6b29235188020628c4b30c" kindref="member">UART_LIN_DISABLE</ref>) || \
+                                     ((__LIN__) == <ref refid="group__UART__LIN_1gaf3f2741d3af2737c51c3040e79fdc664" kindref="member">UART_LIN_ENABLE</ref>))</initializer>
+        <briefdescription>
+<para>Ensure that UART LIN state is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__LIN__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART LIN state. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>LIN</bold> is valid) or RESET (<bold>LIN</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="1463" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="1463" bodyend="1464"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1gac8ac0d0dc7fad5edf53150ce05d902ee" prot="public" static="no">
+        <name>IS_UART_LIN_BREAK_DETECT_LENGTH</name>
+        <param><defname>__LENGTH__</defname></param>
+        <initializer>                                                     (((__LENGTH__) == <ref refid="group__UART__LIN__Break__Detection_1ga027616b7a36b36e0e51ffee947533624" kindref="member">UART_LINBREAKDETECTLENGTH_10B</ref>) || \
+                                                     ((__LENGTH__) == <ref refid="group__UART__LIN__Break__Detection_1ga2f66fcd37de7a3ca9e1101305f2e23e6" kindref="member">UART_LINBREAKDETECTLENGTH_11B</ref>))</initializer>
+        <briefdescription>
+<para>Ensure that UART LIN break detection length is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__LENGTH__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART LIN break detection length. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>LENGTH</bold> is valid) or RESET (<bold>LENGTH</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="1471" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="1471" bodyend="1472"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1ga433107c59f6d1c66a38e53e38fdc0a57" prot="public" static="no">
+        <name>IS_UART_DMA_TX</name>
+        <param><defname>__DMATX__</defname></param>
+        <initializer>                                       (((__DMATX__) == <ref refid="group__UART__DMA__Tx_1gaa318cc9c1aa55acc5bb93f378ac7d8e4" kindref="member">UART_DMA_TX_DISABLE</ref>) || \
+                                       ((__DMATX__) == <ref refid="group__UART__DMA__Tx_1gab1c3e8113617fb9c8fc63b3f3d7c8c65" kindref="member">UART_DMA_TX_ENABLE</ref>))</initializer>
+        <briefdescription>
+<para>Ensure that UART DMA TX state is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__DMATX__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART DMA TX state. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>DMATX</bold> is valid) or RESET (<bold>DMATX</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="1479" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="1479" bodyend="1480"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1ga85c4c9339de2076106942cd9ab61ad77" prot="public" static="no">
+        <name>IS_UART_DMA_RX</name>
+        <param><defname>__DMARX__</defname></param>
+        <initializer>                                       (((__DMARX__) == <ref refid="group__UART__DMA__Rx_1gac65987cb4d8fd5da0f7dc695312f6afa" kindref="member">UART_DMA_RX_DISABLE</ref>) || \
+                                       ((__DMARX__) == <ref refid="group__UART__DMA__Rx_1gab871994de6d36a02b8ec34af197dff1d" kindref="member">UART_DMA_RX_ENABLE</ref>))</initializer>
+        <briefdescription>
+<para>Ensure that UART DMA RX state is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__DMARX__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART DMA RX state. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>DMARX</bold> is valid) or RESET (<bold>DMARX</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="1487" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="1487" bodyend="1488"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1ga2298a324be00d275d98b336569ee3f97" prot="public" static="no">
+        <name>IS_UART_HALF_DUPLEX</name>
+        <param><defname>__HDSEL__</defname></param>
+        <initializer>                                            (((__HDSEL__) == <ref refid="group__UART__Half__Duplex__Selection_1ga282d253c045fd9a3785c6c3e3293346c" kindref="member">UART_HALF_DUPLEX_DISABLE</ref>) || \
+                                            ((__HDSEL__) == <ref refid="group__UART__Half__Duplex__Selection_1ga61e92cc4435c05d850f9fd5456f391e6" kindref="member">UART_HALF_DUPLEX_ENABLE</ref>))</initializer>
+        <briefdescription>
+<para>Ensure that UART half-duplex state is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HDSEL__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART half-duplex state. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>HDSEL</bold> is valid) or RESET (<bold>HDSEL</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="1495" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="1495" bodyend="1496"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1ga144aecf3ad6ca3ce6653ae113c9a6141" prot="public" static="no">
+        <name>IS_UART_WAKEUPMETHOD</name>
+        <param><defname>__WAKEUP__</defname></param>
+        <initializer>                                          (((__WAKEUP__) == <ref refid="group__UART__WakeUp__Methods_1ga2411ed44c5d82db84c5819e1e2b5b8b3" kindref="member">UART_WAKEUPMETHOD_IDLELINE</ref>) || \
+                                          ((__WAKEUP__) == <ref refid="group__UART__WakeUp__Methods_1ga4c6935f26f8f2a9fe70fd6306a9882cb" kindref="member">UART_WAKEUPMETHOD_ADDRESSMARK</ref>))</initializer>
+        <briefdescription>
+<para>Ensure that UART wake-up method is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__WAKEUP__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART wake-up method . </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>WAKEUP</bold> is valid) or RESET (<bold>WAKEUP</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="1503" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="1503" bodyend="1504"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1ga5cf62c9c598753525888cc7c24be3cb2" prot="public" static="no">
+        <name>IS_UART_REQUEST_PARAMETER</name>
+        <param><defname>__PARAM__</defname></param>
+        <initializer>                                              (((__PARAM__) == <ref refid="group__UART__Request__Parameters_1ga8cdce81a934ab7d0c2eecb4d85300d4e" kindref="member">UART_AUTOBAUD_REQUEST</ref>)     || \
+                                              ((__PARAM__) == <ref refid="group__UART__Request__Parameters_1ga52ced88a9f4ce90f3725901cf91f38b3" kindref="member">UART_SENDBREAK_REQUEST</ref>)    || \
+                                              ((__PARAM__) == <ref refid="group__UART__Request__Parameters_1gadd5f511803928fd042f7fc6ef99f9cfb" kindref="member">UART_MUTE_MODE_REQUEST</ref>)    || \
+                                              ((__PARAM__) == <ref refid="group__UART__Request__Parameters_1gaf2ee2d4b1bdcbc7772ddc0da89566936" kindref="member">UART_RXDATA_FLUSH_REQUEST</ref>) || \
+                                              ((__PARAM__) == <ref refid="group__UART__Request__Parameters_1gafecbd800f456ed666a42ac0842cd2c4b" kindref="member">UART_TXDATA_FLUSH_REQUEST</ref>))</initializer>
+        <briefdescription>
+<para>Ensure that UART request parameter is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__PARAM__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART request parameter. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>PARAM</bold> is valid) or RESET (<bold>PARAM</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="1511" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="1511" bodyend="1515"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1gad91bec43fbbaa25cec138ef8fcfbdad5" prot="public" static="no">
+        <name>IS_UART_ADVFEATURE_INIT</name>
+        <param><defname>__INIT__</defname></param>
+        <initializer>                                                            ((__INIT__) &lt;= (<ref refid="group__UART__Advanced__Features__Initialization__Type_1gab696b28f33174d038e0bfd300c1b2a77" kindref="member">UART_ADVFEATURE_NO_INIT</ref>                | \
+                                                            <ref refid="group__UART__Advanced__Features__Initialization__Type_1ga17c49d1895d43bfd6e0cf993103731ae" kindref="member">UART_ADVFEATURE_TXINVERT_INIT</ref>          | \
+                                                            <ref refid="group__UART__Advanced__Features__Initialization__Type_1gad5a4923f3e771d276c6a5332e3945e2a" kindref="member">UART_ADVFEATURE_RXINVERT_INIT</ref>          | \
+                                                            <ref refid="group__UART__Advanced__Features__Initialization__Type_1ga3066937ab29631f78820865605e83628" kindref="member">UART_ADVFEATURE_DATAINVERT_INIT</ref>        | \
+                                                            <ref refid="group__UART__Advanced__Features__Initialization__Type_1ga56b48c24063e0f04b09f592c3ce7d2ac" kindref="member">UART_ADVFEATURE_SWAP_INIT</ref>              | \
+                                                            <ref refid="group__UART__Advanced__Features__Initialization__Type_1ga053355b64de3105a19f3e5560f3557e4" kindref="member">UART_ADVFEATURE_RXOVERRUNDISABLE_INIT</ref>  | \
+                                                            <ref refid="group__UART__Advanced__Features__Initialization__Type_1gafd2fb1991911b82d75556eafe228ef90" kindref="member">UART_ADVFEATURE_DMADISABLEONERROR_INIT</ref> | \
+                                                            <ref refid="group__UART__Advanced__Features__Initialization__Type_1ga09fdbb71292c899d6dc89a41e5752564" kindref="member">UART_ADVFEATURE_AUTOBAUDRATE_INIT</ref>      | \
+                                                            <ref refid="group__UART__Advanced__Features__Initialization__Type_1ga911654f44cd040f41871ec5af5ec1343" kindref="member">UART_ADVFEATURE_MSBFIRST_INIT</ref>))</initializer>
+        <briefdescription>
+<para>Ensure that UART advanced features initialization is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__INIT__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART advanced features initialization. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>INIT</bold> is valid) or RESET (<bold>INIT</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="1522" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="1522" bodyend="1530"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1ga4295a61b0afe152975609cedb9034fdc" prot="public" static="no">
+        <name>IS_UART_ADVFEATURE_TXINV</name>
+        <param><defname>__TXINV__</defname></param>
+        <initializer>                                             (((__TXINV__) == <ref refid="group__UART__Tx__Inv_1gaf2ef53664b0d4b93758575b9ee1b949b" kindref="member">UART_ADVFEATURE_TXINV_DISABLE</ref>) || \
+                                             ((__TXINV__) == <ref refid="group__UART__Tx__Inv_1ga1e0ddbed5fc5ddce5314f63e96e29c3d" kindref="member">UART_ADVFEATURE_TXINV_ENABLE</ref>))</initializer>
+        <briefdescription>
+<para>Ensure that UART frame TX inversion setting is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__TXINV__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART frame TX inversion setting. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>TXINV</bold> is valid) or RESET (<bold>TXINV</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="1537" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="1537" bodyend="1538"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1ga7f53ad0eca57b7ffabcae9007b7bbfa6" prot="public" static="no">
+        <name>IS_UART_ADVFEATURE_RXINV</name>
+        <param><defname>__RXINV__</defname></param>
+        <initializer>                                             (((__RXINV__) == <ref refid="group__UART__Rx__Inv_1gae9598a2e4fec4b9166ad5eab24027870" kindref="member">UART_ADVFEATURE_RXINV_DISABLE</ref>) || \
+                                             ((__RXINV__) == <ref refid="group__UART__Rx__Inv_1gae12343bc2373080ae518ce7b536205cb" kindref="member">UART_ADVFEATURE_RXINV_ENABLE</ref>))</initializer>
+        <briefdescription>
+<para>Ensure that UART frame RX inversion setting is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__RXINV__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART frame RX inversion setting. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>RXINV</bold> is valid) or RESET (<bold>RXINV</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="1545" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="1545" bodyend="1546"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1ga8f6cd85ae5ce7f8dd0ed9227ef5154f6" prot="public" static="no">
+        <name>IS_UART_ADVFEATURE_DATAINV</name>
+        <param><defname>__DATAINV__</defname></param>
+        <initializer>                                                 (((__DATAINV__) == <ref refid="group__UART__Data__Inv_1gab9aca2bdf257bd77e42213fdfdb884d3" kindref="member">UART_ADVFEATURE_DATAINV_DISABLE</ref>) || \
+                                                 ((__DATAINV__) == <ref refid="group__UART__Data__Inv_1ga090ecbcdc57b47144aefee8faf1eaf23" kindref="member">UART_ADVFEATURE_DATAINV_ENABLE</ref>))</initializer>
+        <briefdescription>
+<para>Ensure that UART frame data inversion setting is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__DATAINV__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART frame data inversion setting. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>DATAINV</bold> is valid) or RESET (<bold>DATAINV</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="1553" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="1553" bodyend="1554"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1gaf095ad39d3035f722c6976921a84dbea" prot="public" static="no">
+        <name>IS_UART_ADVFEATURE_SWAP</name>
+        <param><defname>__SWAP__</defname></param>
+        <initializer>                                           (((__SWAP__) == <ref refid="group__UART__Rx__Tx__Swap_1gad1217ff59732b36d4ee9b50e7ed81ec4" kindref="member">UART_ADVFEATURE_SWAP_DISABLE</ref>) || \
+                                           ((__SWAP__) == <ref refid="group__UART__Rx__Tx__Swap_1ga83138521e54eef41c75e9c37c2246eba" kindref="member">UART_ADVFEATURE_SWAP_ENABLE</ref>))</initializer>
+        <briefdescription>
+<para>Ensure that UART frame RX/TX pins swap setting is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__SWAP__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART frame RX/TX pins swap setting. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>SWAP</bold> is valid) or RESET (<bold>SWAP</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="1561" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="1561" bodyend="1562"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1ga57b4229ecb4387a0bb9137fed8de13b8" prot="public" static="no">
+        <name>IS_UART_OVERRUN</name>
+        <param><defname>__OVERRUN__</defname></param>
+        <initializer>                                          (((__OVERRUN__) == <ref refid="group__UART__Overrun__Disable_1gac467cc43fa4c3af4acb0fd161061c219" kindref="member">UART_ADVFEATURE_OVERRUN_ENABLE</ref>) || \
+                                          ((__OVERRUN__) == <ref refid="group__UART__Overrun__Disable_1ga19961cd52b746dac7a6860faad2ab40d" kindref="member">UART_ADVFEATURE_OVERRUN_DISABLE</ref>))</initializer>
+        <briefdescription>
+<para>Ensure that UART frame overrun setting is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__OVERRUN__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART frame overrun setting. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>OVERRUN</bold> is valid) or RESET (<bold>OVERRUN</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="1569" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="1569" bodyend="1570"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1ga7318c3e5c175b896444697a0a9407b2f" prot="public" static="no">
+        <name>IS_UART_ADVFEATURE_AUTOBAUDRATE</name>
+        <param><defname>__AUTOBAUDRATE__</defname></param>
+        <initializer>                                                            (((__AUTOBAUDRATE__) == \
+                                                            <ref refid="group__UART__AutoBaudRate__Enable_1gaca66b20599569c6b7576f0600050bb61" kindref="member">UART_ADVFEATURE_AUTOBAUDRATE_DISABLE</ref>) || \
+                                                           ((__AUTOBAUDRATE__) == <ref refid="group__UART__AutoBaudRate__Enable_1gad4eee70c6d23721dd95c6a2465e10ca4" kindref="member">UART_ADVFEATURE_AUTOBAUDRATE_ENABLE</ref>))</initializer>
+        <briefdescription>
+<para>Ensure that UART auto Baud rate state is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__AUTOBAUDRATE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART auto Baud rate state. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>AUTOBAUDRATE</bold> is valid) or RESET (<bold>AUTOBAUDRATE</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="1577" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="1577" bodyend="1579"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1ga15b46dfa0d80a4583864a31da73e3c99" prot="public" static="no">
+        <name>IS_UART_ADVFEATURE_DMAONRXERROR</name>
+        <param><defname>__DMA__</defname></param>
+        <initializer>                                                   (((__DMA__) == <ref refid="group__UART__DMA__Disable__on__Rx__Error_1ga14469fd73075e481184234019a7b6734" kindref="member">UART_ADVFEATURE_DMA_ENABLEONRXERROR</ref>) || \
+                                                   ((__DMA__) == <ref refid="group__UART__DMA__Disable__on__Rx__Error_1gae838b9dfc0c2c082d5382973b369012b" kindref="member">UART_ADVFEATURE_DMA_DISABLEONRXERROR</ref>))</initializer>
+        <briefdescription>
+<para>Ensure that UART DMA enabling or disabling on error setting is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__DMA__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART DMA enabling or disabling on error setting. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>DMA</bold> is valid) or RESET (<bold>DMA</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="1586" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="1586" bodyend="1587"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1ga82289de330949918b037acf94fb12aef" prot="public" static="no">
+        <name>IS_UART_ADVFEATURE_MSBFIRST</name>
+        <param><defname>__MSBFIRST__</defname></param>
+        <initializer>                                                   (((__MSBFIRST__) == <ref refid="group__UART__MSB__First_1gae606b5f132b17af40d58c7d41fad35a5" kindref="member">UART_ADVFEATURE_MSBFIRST_DISABLE</ref>) || \
+                                                   ((__MSBFIRST__) == <ref refid="group__UART__MSB__First_1gafb917e79562ccd13909c13056b34302f" kindref="member">UART_ADVFEATURE_MSBFIRST_ENABLE</ref>))</initializer>
+        <briefdescription>
+<para>Ensure that UART frame MSB first setting is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__MSBFIRST__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART frame MSB first setting. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>MSBFIRST</bold> is valid) or RESET (<bold>MSBFIRST</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="1594" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="1594" bodyend="1595"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1gae0055233b6372a290fe69c811d307c5e" prot="public" static="no">
+        <name>IS_UART_ADVFEATURE_STOPMODE</name>
+        <param><defname>__STOPMODE__</defname></param>
+        <initializer>                                                   (((__STOPMODE__) == <ref refid="group__UART__Stop__Mode__Enable_1gab6c2929b1d4c2fe0319e412101b5dcc2" kindref="member">UART_ADVFEATURE_STOPMODE_DISABLE</ref>) || \
+                                                   ((__STOPMODE__) == <ref refid="group__UART__Stop__Mode__Enable_1gacc03fae31dda679f071909eeed2e5e22" kindref="member">UART_ADVFEATURE_STOPMODE_ENABLE</ref>))</initializer>
+        <briefdescription>
+<para>Ensure that UART stop mode state is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__STOPMODE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART stop mode state. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>STOPMODE</bold> is valid) or RESET (<bold>STOPMODE</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="1602" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="1602" bodyend="1603"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1ga9df22e11f8bc82847fbe16b6f073ae04" prot="public" static="no">
+        <name>IS_UART_MUTE_MODE</name>
+        <param><defname>__MUTE__</defname></param>
+        <initializer>                                           (((__MUTE__) == <ref refid="group__UART__Mute__Mode_1ga11b6414641d82b941920c291e19aa042" kindref="member">UART_ADVFEATURE_MUTEMODE_DISABLE</ref>) || \
+                                           ((__MUTE__) == <ref refid="group__UART__Mute__Mode_1gaa9ca3763538abf310102ac34e81cdcbc" kindref="member">UART_ADVFEATURE_MUTEMODE_ENABLE</ref>))</initializer>
+        <briefdescription>
+<para>Ensure that UART mute mode state is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__MUTE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART mute mode state. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>MUTE</bold> is valid) or RESET (<bold>MUTE</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="1610" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="1610" bodyend="1611"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1gaab6d7b59cffaf070ac3db100c76f4654" prot="public" static="no">
+        <name>IS_UART_WAKEUP_SELECTION</name>
+        <param><defname>__WAKE__</defname></param>
+        <initializer>                                            (((__WAKE__) == <ref refid="group__UART__WakeUp__from__Stop__Selection_1ga926f94a665ed3d200e76aeb01f2ae275" kindref="member">UART_WAKEUP_ON_ADDRESS</ref>)           || \
+                                            ((__WAKE__) == <ref refid="group__UART__WakeUp__from__Stop__Selection_1gade5095181db7434078e904af198c1699" kindref="member">UART_WAKEUP_ON_STARTBIT</ref>)          || \
+                                            ((__WAKE__) == <ref refid="group__UART__WakeUp__from__Stop__Selection_1ga77464f7eaba9f0a34876b1df36b8292e" kindref="member">UART_WAKEUP_ON_READDATA_NONEMPTY</ref>))</initializer>
+        <briefdescription>
+<para>Ensure that UART wake-up selection is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__WAKE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART wake-up selection. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>WAKE</bold> is valid) or RESET (<bold>WAKE</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="1618" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="1618" bodyend="1620"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1gaecf169f01673ae67b12b3155e074bf12" prot="public" static="no">
+        <name>IS_UART_DE_POLARITY</name>
+        <param><defname>__POLARITY__</defname></param>
+        <initializer>                                              (((__POLARITY__) == <ref refid="group__UART__DriverEnable__Polarity_1ga0cff167e046507f91497853b772282c5" kindref="member">UART_DE_POLARITY_HIGH</ref>) || \
+                                              ((__POLARITY__) == <ref refid="group__UART__DriverEnable__Polarity_1ga92a5839b1b14f95ee4b8f4842a24f37b" kindref="member">UART_DE_POLARITY_LOW</ref>))</initializer>
+        <briefdescription>
+<para>Ensure that UART driver enable polarity is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__POLARITY__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART driver enable polarity. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>POLARITY</bold> is valid) or RESET (<bold>POLARITY</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="1627" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="1627" bodyend="1628"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1ga6394af5fd57e94157d54bd79e1f7265d" prot="public" static="no">
+        <name>UART_DIV_LPUART</name>
+        <param><defname>__PCLK__</defname></param>
+        <param><defname>__BAUD__</defname></param>
+        <initializer>(((((uint64_t)(__PCLK__)*256U)) + ((__BAUD__)/2U)) / (__BAUD__))</initializer>
+        <briefdescription>
+<para>BRR division operation to set BRR register with LPUART. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__PCLK__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>LPUART clock. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>__BAUD__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Baud rate set by the user. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>Division</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>result </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" line="1316" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" bodystart="1316" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1ga3b4ab2ec164132268de4719de4625a82" prot="public" static="no">
+        <name>UART_DIV_SAMPLING8</name>
+        <param><defname>__PCLK__</defname></param>
+        <param><defname>__BAUD__</defname></param>
+        <initializer>((((__PCLK__)*2U) + ((__BAUD__)/2U)) / (__BAUD__))</initializer>
+        <briefdescription>
+<para>BRR division operation to set BRR register in 8-bit oversampling mode. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__PCLK__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART clock. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>__BAUD__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Baud rate set by the user. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>Division</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>result </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" line="1323" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" bodystart="1323" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1gac2423ff86559eb91198bcc438caec865" prot="public" static="no">
+        <name>UART_DIV_SAMPLING16</name>
+        <param><defname>__PCLK__</defname></param>
+        <param><defname>__BAUD__</defname></param>
+        <initializer>(((__PCLK__) + ((__BAUD__)/2U)) / (__BAUD__))</initializer>
+        <briefdescription>
+<para>BRR division operation to set BRR register in 16-bit oversampling mode. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__PCLK__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART clock. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>__BAUD__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Baud rate set by the user. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>Division</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>result </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" line="1330" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" bodystart="1330" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1gac0df0132f5d0ad91a86f2ee9489ba699" prot="public" static="no">
+        <name>UART_INSTANCE_LOWPOWER</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer>(<ref refid="group__Exported__macros_1gabe1d97ef8a001d77efa0d7633e7a42de" kindref="member">IS_LPUART_INSTANCE</ref>((__HANDLE__)-&gt;Instance))</initializer>
+        <briefdescription>
+<para>Check whether or not UART instance is Low Power UART. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the UART Handle. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(instance is LPUART) or RESET (instance isn&apos;t LPUART) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" line="1337" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" bodystart="1337" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1gaa8f50c3cc4c04875ea490fb81a08731d" prot="public" static="no">
+        <name>IS_UART_BAUDRATE</name>
+        <param><defname>__BAUDRATE__</defname></param>
+        <initializer>((__BAUDRATE__) &lt; 10000001U)</initializer>
+        <briefdescription>
+<para>Check UART Baud rate. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__BAUDRATE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Baudrate specified by the user. The maximum Baud Rate is derived from the maximum clock on L4 divided by the smallest oversampling used on the USART (i.e. 8) (i.e. 120 MHz on STM32L4Rx/L4Sx, 80 Mhz otherwise) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>BAUDRATE</bold> is valid) or RESET (<bold>BAUDRATE</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" line="1349" column="10" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" bodystart="1349" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1ga8acf6b6648717b7192439f1b426321a4" prot="public" static="no">
+        <name>IS_UART_ASSERTIONTIME</name>
+        <param><defname>__TIME__</defname></param>
+        <initializer>((__TIME__) &lt;= 0x1FU)</initializer>
+        <briefdescription>
+<para>Check UART assertion time. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__TIME__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>5-bit value assertion time. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>Test</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>result (TRUE or FALSE). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" line="1356" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" bodystart="1356" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1ga7e060b24713e3fb49f4f0f4fa71dd85f" prot="public" static="no">
+        <name>IS_UART_DEASSERTIONTIME</name>
+        <param><defname>__TIME__</defname></param>
+        <initializer>((__TIME__) &lt;= 0x1FU)</initializer>
+        <briefdescription>
+<para>Check UART deassertion time. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__TIME__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>5-bit value deassertion time. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>Test</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>result (TRUE or FALSE). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" line="1362" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" bodystart="1362" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1ga0fa4dec621a59f8c07f42548cdbb7f18" prot="public" static="no">
+        <name>IS_UART_STOPBITS</name>
+        <param><defname>__STOPBITS__</defname></param>
+        <initializer>                                        (((__STOPBITS__) == <ref refid="group__UART__Stop__Bits_1ga4c280770879367f7af395b7b41f60d93" kindref="member">UART_STOPBITS_0_5</ref>) || \
+                                        ((__STOPBITS__) == <ref refid="group__UART__Stop__Bits_1ga7cf97e555292d574de8abc596ba0e2ce" kindref="member">UART_STOPBITS_1</ref>)   || \
+                                        ((__STOPBITS__) == <ref refid="group__UART__Stop__Bits_1ga99fcce2358d8ef0b60cf562e4d9fddd8" kindref="member">UART_STOPBITS_1_5</ref>) || \
+                                        ((__STOPBITS__) == <ref refid="group__UART__Stop__Bits_1ga91616523380f7450aac6cb7e17f0c0f2" kindref="member">UART_STOPBITS_2</ref>))</initializer>
+        <briefdescription>
+<para>Ensure that UART frame number of stop bits is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__STOPBITS__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART frame number of stop bits. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>STOPBITS</bold> is valid) or RESET (<bold>STOPBITS</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" line="1369" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" bodystart="1369" bodyend="1372"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1ga165adc0070f15c78424d279cb1ea70fc" prot="public" static="no">
+        <name>IS_LPUART_STOPBITS</name>
+        <param><defname>__STOPBITS__</defname></param>
+        <initializer>                                          (((__STOPBITS__) == <ref refid="group__UART__Stop__Bits_1ga7cf97e555292d574de8abc596ba0e2ce" kindref="member">UART_STOPBITS_1</ref>) || \
+                                          ((__STOPBITS__) == <ref refid="group__UART__Stop__Bits_1ga91616523380f7450aac6cb7e17f0c0f2" kindref="member">UART_STOPBITS_2</ref>))</initializer>
+        <briefdescription>
+<para>Ensure that LPUART frame number of stop bits is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__STOPBITS__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>LPUART frame number of stop bits. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>STOPBITS</bold> is valid) or RESET (<bold>STOPBITS</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" line="1379" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" bodystart="1379" bodyend="1380"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1ga57b0798bfa43d210f492eb3c5e218a86" prot="public" static="no">
+        <name>IS_UART_PARITY</name>
+        <param><defname>__PARITY__</defname></param>
+        <initializer>                                    (((__PARITY__) == <ref refid="group__UART__Parity_1ga270dea6e1a92dd83fe58802450bdd60c" kindref="member">UART_PARITY_NONE</ref>) || \
+                                    ((__PARITY__) == <ref refid="group__UART__Parity_1ga063b14ac42ef9e8f4246c17a586b14eb" kindref="member">UART_PARITY_EVEN</ref>) || \
+                                    ((__PARITY__) == <ref refid="group__UART__Parity_1ga229615e64964f68f7a856ea6ffea359e" kindref="member">UART_PARITY_ODD</ref>))</initializer>
+        <briefdescription>
+<para>Ensure that UART frame parity is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__PARITY__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART frame parity. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>PARITY</bold> is valid) or RESET (<bold>PARITY</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" line="1387" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" bodystart="1387" bodyend="1389"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1ga92977d9daf0c39d875df200ae0ae6acd" prot="public" static="no">
+        <name>IS_UART_HARDWARE_FLOW_CONTROL</name>
+        <param><defname>__CONTROL__</defname></param>
+        <initializer>  (((__CONTROL__) == <ref refid="group__UART__Hardware__Flow__Control_1gae0569001c06b7760cd38c481f84116cf" kindref="member">UART_HWCONTROL_NONE</ref>) || \
+   ((__CONTROL__) == <ref refid="group__UART__Hardware__Flow__Control_1ga6d5dad09c6abf30f252084ba0f8c0b7d" kindref="member">UART_HWCONTROL_RTS</ref>)  || \
+   ((__CONTROL__) == <ref refid="group__UART__Hardware__Flow__Control_1ga352f517245986e3b86bc75f8472c51ea" kindref="member">UART_HWCONTROL_CTS</ref>)  || \
+   ((__CONTROL__) == <ref refid="group__UART__Hardware__Flow__Control_1ga7c91698e8f08ba7ed3f2a0ba9aa27d73" kindref="member">UART_HWCONTROL_RTS_CTS</ref>))</initializer>
+        <briefdescription>
+<para>Ensure that UART hardware flow control is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__CONTROL__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART hardware flow control. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>CONTROL</bold> is valid) or RESET (<bold>CONTROL</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" line="1396" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" bodystart="1396" bodyend="1400"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1gae5b637b9191dea1f8fd3846b886dd38b" prot="public" static="no">
+        <name>IS_UART_MODE</name>
+        <param><defname>__MODE__</defname></param>
+        <initializer>((((__MODE__) &amp; (~((uint32_t)(<ref refid="group__UART__Mode_1gab47c162935901e89322e2ce6700b6744" kindref="member">UART_MODE_TX_RX</ref>)))) == 0x00U) &amp;&amp; ((__MODE__) != 0x00U))</initializer>
+        <briefdescription>
+<para>Ensure that UART communication mode is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__MODE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART communication mode. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>MODE</bold> is valid) or RESET (<bold>MODE</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" line="1407" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" bodystart="1407" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1ga754855879401ab846803a03eec2f7f10" prot="public" static="no">
+        <name>IS_UART_STATE</name>
+        <param><defname>__STATE__</defname></param>
+        <initializer>                                  (((__STATE__) == <ref refid="group__UART__State_1gaf32492459be708981ebc5615194cdae9" kindref="member">UART_STATE_DISABLE</ref>) || \
+                                  ((__STATE__) == <ref refid="group__UART__State_1gab6b470dccef2a518a45554b171acff5b" kindref="member">UART_STATE_ENABLE</ref>))</initializer>
+        <briefdescription>
+<para>Ensure that UART state is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__STATE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART state. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>STATE</bold> is valid) or RESET (<bold>STATE</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" line="1414" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" bodystart="1414" bodyend="1415"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1ga8d918253e015c4a8aa07316a89f8265e" prot="public" static="no">
+        <name>IS_UART_OVERSAMPLING</name>
+        <param><defname>__SAMPLING__</defname></param>
+        <initializer>                                            (((__SAMPLING__) == <ref refid="group__UART__Over__Sampling_1gaa6a320ec65d248d76f21de818db1a2f0" kindref="member">UART_OVERSAMPLING_16</ref>) || \
+                                            ((__SAMPLING__) == <ref refid="group__UART__Over__Sampling_1gaeb13896e8bdc1bb041e01a86a868ee0b" kindref="member">UART_OVERSAMPLING_8</ref>))</initializer>
+        <briefdescription>
+<para>Ensure that UART oversampling is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__SAMPLING__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART oversampling. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>SAMPLING</bold> is valid) or RESET (<bold>SAMPLING</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" line="1422" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" bodystart="1422" bodyend="1423"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1ga6452a4420dac4abd4f0ea0e1677f37a9" prot="public" static="no">
+        <name>IS_UART_ONE_BIT_SAMPLE</name>
+        <param><defname>__ONEBIT__</defname></param>
+        <initializer>                                            (((__ONEBIT__) == <ref refid="group__UART__OneBit__Sampling_1gadfcb0e9db2719321048b249b2c5cc15f" kindref="member">UART_ONE_BIT_SAMPLE_DISABLE</ref>) || \
+                                            ((__ONEBIT__) == <ref refid="group__UART__OneBit__Sampling_1gadcc0aed6e7a466da3c45363f69dcbfb6" kindref="member">UART_ONE_BIT_SAMPLE_ENABLE</ref>))</initializer>
+        <briefdescription>
+<para>Ensure that UART frame sampling is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__ONEBIT__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART frame sampling. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>ONEBIT</bold> is valid) or RESET (<bold>ONEBIT</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" line="1430" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" bodystart="1430" bodyend="1431"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1ga88f07bdfe1fcdff17edbbba2f196110d" prot="public" static="no">
+        <name>IS_UART_ADVFEATURE_AUTOBAUDRATEMODE</name>
+        <param><defname>__MODE__</defname></param>
+        <initializer>                                                        (((__MODE__) == <ref refid="group__UART__AutoBaud__Rate__Mode_1ga87bcd5d6ca1b354785788366c9c47606" kindref="member">UART_ADVFEATURE_AUTOBAUDRATE_ONSTARTBIT</ref>)    || \
+                                                        ((__MODE__) == <ref refid="group__UART__AutoBaud__Rate__Mode_1ga8ac0407640f138067bdcf2ad6cdc04cc" kindref="member">UART_ADVFEATURE_AUTOBAUDRATE_ONFALLINGEDGE</ref>) || \
+                                                        ((__MODE__) == <ref refid="group__UART__AutoBaud__Rate__Mode_1ga0bdbaec8f1186a4bbbdef5e09896a3e2" kindref="member">UART_ADVFEATURE_AUTOBAUDRATE_ON0X7FFRAME</ref>)   || \
+                                                        ((__MODE__) == <ref refid="group__UART__AutoBaud__Rate__Mode_1gaa325fa0ee642902e4746a53f9b58720d" kindref="member">UART_ADVFEATURE_AUTOBAUDRATE_ON0X55FRAME</ref>))</initializer>
+        <briefdescription>
+<para>Ensure that UART auto Baud rate detection mode is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__MODE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART auto Baud rate detection mode. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>MODE</bold> is valid) or RESET (<bold>MODE</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" line="1438" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" bodystart="1438" bodyend="1441"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1gaa2ad21da17caf46375c7bd4efbde8b17" prot="public" static="no">
+        <name>IS_UART_RECEIVER_TIMEOUT</name>
+        <param><defname>__TIMEOUT__</defname></param>
+        <initializer>                                                (((__TIMEOUT__) == <ref refid="group__UART__Receiver__Timeout_1ga575c43813df656b21dc39aff6a968046" kindref="member">UART_RECEIVER_TIMEOUT_DISABLE</ref>) || \
+                                                ((__TIMEOUT__) == <ref refid="group__UART__Receiver__Timeout_1ga6e25985f0dacc3e79ae552746952ac18" kindref="member">UART_RECEIVER_TIMEOUT_ENABLE</ref>))</initializer>
+        <briefdescription>
+<para>Ensure that UART receiver timeout setting is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__TIMEOUT__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART receiver timeout setting. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>TIMEOUT</bold> is valid) or RESET (<bold>TIMEOUT</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" line="1448" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" bodystart="1448" bodyend="1449"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1gaee43ee42a5b1ba061322ab0763c6ef4f" prot="public" static="no">
+        <name>IS_UART_RECEIVER_TIMEOUT_VALUE</name>
+        <param><defname>__TIMEOUTVALUE__</defname></param>
+        <initializer>((__TIMEOUTVALUE__) &lt;= 0xFFFFFFU)</initializer>
+        <briefdescription>
+<para>Check the receiver timeout value. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>The maximum UART receiver timeout value is 0xFFFFFF. </para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__TIMEOUTVALUE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>receiver timeout value. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>Test</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>result (TRUE or FALSE) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" line="1456" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" bodystart="1456" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1ga13d7f9876db68d9d6316204a8a2588de" prot="public" static="no">
+        <name>IS_UART_LIN</name>
+        <param><defname>__LIN__</defname></param>
+        <initializer>                                     (((__LIN__) == <ref refid="group__UART__LIN_1ga7bc4a2de3d6b29235188020628c4b30c" kindref="member">UART_LIN_DISABLE</ref>) || \
+                                     ((__LIN__) == <ref refid="group__UART__LIN_1gaf3f2741d3af2737c51c3040e79fdc664" kindref="member">UART_LIN_ENABLE</ref>))</initializer>
+        <briefdescription>
+<para>Ensure that UART LIN state is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__LIN__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART LIN state. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>LIN</bold> is valid) or RESET (<bold>LIN</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" line="1463" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" bodystart="1463" bodyend="1464"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1gac8ac0d0dc7fad5edf53150ce05d902ee" prot="public" static="no">
+        <name>IS_UART_LIN_BREAK_DETECT_LENGTH</name>
+        <param><defname>__LENGTH__</defname></param>
+        <initializer>                                                     (((__LENGTH__) == <ref refid="group__UART__LIN__Break__Detection_1ga027616b7a36b36e0e51ffee947533624" kindref="member">UART_LINBREAKDETECTLENGTH_10B</ref>) || \
+                                                     ((__LENGTH__) == <ref refid="group__UART__LIN__Break__Detection_1ga2f66fcd37de7a3ca9e1101305f2e23e6" kindref="member">UART_LINBREAKDETECTLENGTH_11B</ref>))</initializer>
+        <briefdescription>
+<para>Ensure that UART LIN break detection length is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__LENGTH__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART LIN break detection length. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>LENGTH</bold> is valid) or RESET (<bold>LENGTH</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" line="1471" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" bodystart="1471" bodyend="1472"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1ga433107c59f6d1c66a38e53e38fdc0a57" prot="public" static="no">
+        <name>IS_UART_DMA_TX</name>
+        <param><defname>__DMATX__</defname></param>
+        <initializer>                                       (((__DMATX__) == <ref refid="group__UART__DMA__Tx_1gaa318cc9c1aa55acc5bb93f378ac7d8e4" kindref="member">UART_DMA_TX_DISABLE</ref>) || \
+                                       ((__DMATX__) == <ref refid="group__UART__DMA__Tx_1gab1c3e8113617fb9c8fc63b3f3d7c8c65" kindref="member">UART_DMA_TX_ENABLE</ref>))</initializer>
+        <briefdescription>
+<para>Ensure that UART DMA TX state is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__DMATX__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART DMA TX state. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>DMATX</bold> is valid) or RESET (<bold>DMATX</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" line="1479" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" bodystart="1479" bodyend="1480"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1ga85c4c9339de2076106942cd9ab61ad77" prot="public" static="no">
+        <name>IS_UART_DMA_RX</name>
+        <param><defname>__DMARX__</defname></param>
+        <initializer>                                       (((__DMARX__) == <ref refid="group__UART__DMA__Rx_1gac65987cb4d8fd5da0f7dc695312f6afa" kindref="member">UART_DMA_RX_DISABLE</ref>) || \
+                                       ((__DMARX__) == <ref refid="group__UART__DMA__Rx_1gab871994de6d36a02b8ec34af197dff1d" kindref="member">UART_DMA_RX_ENABLE</ref>))</initializer>
+        <briefdescription>
+<para>Ensure that UART DMA RX state is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__DMARX__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART DMA RX state. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>DMARX</bold> is valid) or RESET (<bold>DMARX</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" line="1487" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" bodystart="1487" bodyend="1488"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1ga2298a324be00d275d98b336569ee3f97" prot="public" static="no">
+        <name>IS_UART_HALF_DUPLEX</name>
+        <param><defname>__HDSEL__</defname></param>
+        <initializer>                                            (((__HDSEL__) == <ref refid="group__UART__Half__Duplex__Selection_1ga282d253c045fd9a3785c6c3e3293346c" kindref="member">UART_HALF_DUPLEX_DISABLE</ref>) || \
+                                            ((__HDSEL__) == <ref refid="group__UART__Half__Duplex__Selection_1ga61e92cc4435c05d850f9fd5456f391e6" kindref="member">UART_HALF_DUPLEX_ENABLE</ref>))</initializer>
+        <briefdescription>
+<para>Ensure that UART half-duplex state is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HDSEL__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART half-duplex state. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>HDSEL</bold> is valid) or RESET (<bold>HDSEL</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" line="1495" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" bodystart="1495" bodyend="1496"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1ga144aecf3ad6ca3ce6653ae113c9a6141" prot="public" static="no">
+        <name>IS_UART_WAKEUPMETHOD</name>
+        <param><defname>__WAKEUP__</defname></param>
+        <initializer>                                          (((__WAKEUP__) == <ref refid="group__UART__WakeUp__Methods_1ga2411ed44c5d82db84c5819e1e2b5b8b3" kindref="member">UART_WAKEUPMETHOD_IDLELINE</ref>) || \
+                                          ((__WAKEUP__) == <ref refid="group__UART__WakeUp__Methods_1ga4c6935f26f8f2a9fe70fd6306a9882cb" kindref="member">UART_WAKEUPMETHOD_ADDRESSMARK</ref>))</initializer>
+        <briefdescription>
+<para>Ensure that UART wake-up method is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__WAKEUP__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART wake-up method . </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>WAKEUP</bold> is valid) or RESET (<bold>WAKEUP</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" line="1503" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" bodystart="1503" bodyend="1504"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1ga5cf62c9c598753525888cc7c24be3cb2" prot="public" static="no">
+        <name>IS_UART_REQUEST_PARAMETER</name>
+        <param><defname>__PARAM__</defname></param>
+        <initializer>                                              (((__PARAM__) == <ref refid="group__UART__Request__Parameters_1ga8cdce81a934ab7d0c2eecb4d85300d4e" kindref="member">UART_AUTOBAUD_REQUEST</ref>)     || \
+                                              ((__PARAM__) == <ref refid="group__UART__Request__Parameters_1ga52ced88a9f4ce90f3725901cf91f38b3" kindref="member">UART_SENDBREAK_REQUEST</ref>)    || \
+                                              ((__PARAM__) == <ref refid="group__UART__Request__Parameters_1gadd5f511803928fd042f7fc6ef99f9cfb" kindref="member">UART_MUTE_MODE_REQUEST</ref>)    || \
+                                              ((__PARAM__) == <ref refid="group__UART__Request__Parameters_1gaf2ee2d4b1bdcbc7772ddc0da89566936" kindref="member">UART_RXDATA_FLUSH_REQUEST</ref>) || \
+                                              ((__PARAM__) == <ref refid="group__UART__Request__Parameters_1gafecbd800f456ed666a42ac0842cd2c4b" kindref="member">UART_TXDATA_FLUSH_REQUEST</ref>))</initializer>
+        <briefdescription>
+<para>Ensure that UART request parameter is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__PARAM__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART request parameter. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>PARAM</bold> is valid) or RESET (<bold>PARAM</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" line="1511" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" bodystart="1511" bodyend="1515"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1gad91bec43fbbaa25cec138ef8fcfbdad5" prot="public" static="no">
+        <name>IS_UART_ADVFEATURE_INIT</name>
+        <param><defname>__INIT__</defname></param>
+        <initializer>                                                            ((__INIT__) &lt;= (<ref refid="group__UART__Advanced__Features__Initialization__Type_1gab696b28f33174d038e0bfd300c1b2a77" kindref="member">UART_ADVFEATURE_NO_INIT</ref>                | \
+                                                            <ref refid="group__UART__Advanced__Features__Initialization__Type_1ga17c49d1895d43bfd6e0cf993103731ae" kindref="member">UART_ADVFEATURE_TXINVERT_INIT</ref>          | \
+                                                            <ref refid="group__UART__Advanced__Features__Initialization__Type_1gad5a4923f3e771d276c6a5332e3945e2a" kindref="member">UART_ADVFEATURE_RXINVERT_INIT</ref>          | \
+                                                            <ref refid="group__UART__Advanced__Features__Initialization__Type_1ga3066937ab29631f78820865605e83628" kindref="member">UART_ADVFEATURE_DATAINVERT_INIT</ref>        | \
+                                                            <ref refid="group__UART__Advanced__Features__Initialization__Type_1ga56b48c24063e0f04b09f592c3ce7d2ac" kindref="member">UART_ADVFEATURE_SWAP_INIT</ref>              | \
+                                                            <ref refid="group__UART__Advanced__Features__Initialization__Type_1ga053355b64de3105a19f3e5560f3557e4" kindref="member">UART_ADVFEATURE_RXOVERRUNDISABLE_INIT</ref>  | \
+                                                            <ref refid="group__UART__Advanced__Features__Initialization__Type_1gafd2fb1991911b82d75556eafe228ef90" kindref="member">UART_ADVFEATURE_DMADISABLEONERROR_INIT</ref> | \
+                                                            <ref refid="group__UART__Advanced__Features__Initialization__Type_1ga09fdbb71292c899d6dc89a41e5752564" kindref="member">UART_ADVFEATURE_AUTOBAUDRATE_INIT</ref>      | \
+                                                            <ref refid="group__UART__Advanced__Features__Initialization__Type_1ga911654f44cd040f41871ec5af5ec1343" kindref="member">UART_ADVFEATURE_MSBFIRST_INIT</ref>))</initializer>
+        <briefdescription>
+<para>Ensure that UART advanced features initialization is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__INIT__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART advanced features initialization. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>INIT</bold> is valid) or RESET (<bold>INIT</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" line="1522" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" bodystart="1522" bodyend="1530"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1ga4295a61b0afe152975609cedb9034fdc" prot="public" static="no">
+        <name>IS_UART_ADVFEATURE_TXINV</name>
+        <param><defname>__TXINV__</defname></param>
+        <initializer>                                             (((__TXINV__) == <ref refid="group__UART__Tx__Inv_1gaf2ef53664b0d4b93758575b9ee1b949b" kindref="member">UART_ADVFEATURE_TXINV_DISABLE</ref>) || \
+                                             ((__TXINV__) == <ref refid="group__UART__Tx__Inv_1ga1e0ddbed5fc5ddce5314f63e96e29c3d" kindref="member">UART_ADVFEATURE_TXINV_ENABLE</ref>))</initializer>
+        <briefdescription>
+<para>Ensure that UART frame TX inversion setting is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__TXINV__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART frame TX inversion setting. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>TXINV</bold> is valid) or RESET (<bold>TXINV</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" line="1537" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" bodystart="1537" bodyend="1538"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1ga7f53ad0eca57b7ffabcae9007b7bbfa6" prot="public" static="no">
+        <name>IS_UART_ADVFEATURE_RXINV</name>
+        <param><defname>__RXINV__</defname></param>
+        <initializer>                                             (((__RXINV__) == <ref refid="group__UART__Rx__Inv_1gae9598a2e4fec4b9166ad5eab24027870" kindref="member">UART_ADVFEATURE_RXINV_DISABLE</ref>) || \
+                                             ((__RXINV__) == <ref refid="group__UART__Rx__Inv_1gae12343bc2373080ae518ce7b536205cb" kindref="member">UART_ADVFEATURE_RXINV_ENABLE</ref>))</initializer>
+        <briefdescription>
+<para>Ensure that UART frame RX inversion setting is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__RXINV__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART frame RX inversion setting. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>RXINV</bold> is valid) or RESET (<bold>RXINV</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" line="1545" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" bodystart="1545" bodyend="1546"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1ga8f6cd85ae5ce7f8dd0ed9227ef5154f6" prot="public" static="no">
+        <name>IS_UART_ADVFEATURE_DATAINV</name>
+        <param><defname>__DATAINV__</defname></param>
+        <initializer>                                                 (((__DATAINV__) == <ref refid="group__UART__Data__Inv_1gab9aca2bdf257bd77e42213fdfdb884d3" kindref="member">UART_ADVFEATURE_DATAINV_DISABLE</ref>) || \
+                                                 ((__DATAINV__) == <ref refid="group__UART__Data__Inv_1ga090ecbcdc57b47144aefee8faf1eaf23" kindref="member">UART_ADVFEATURE_DATAINV_ENABLE</ref>))</initializer>
+        <briefdescription>
+<para>Ensure that UART frame data inversion setting is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__DATAINV__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART frame data inversion setting. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>DATAINV</bold> is valid) or RESET (<bold>DATAINV</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" line="1553" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" bodystart="1553" bodyend="1554"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1gaf095ad39d3035f722c6976921a84dbea" prot="public" static="no">
+        <name>IS_UART_ADVFEATURE_SWAP</name>
+        <param><defname>__SWAP__</defname></param>
+        <initializer>                                           (((__SWAP__) == <ref refid="group__UART__Rx__Tx__Swap_1gad1217ff59732b36d4ee9b50e7ed81ec4" kindref="member">UART_ADVFEATURE_SWAP_DISABLE</ref>) || \
+                                           ((__SWAP__) == <ref refid="group__UART__Rx__Tx__Swap_1ga83138521e54eef41c75e9c37c2246eba" kindref="member">UART_ADVFEATURE_SWAP_ENABLE</ref>))</initializer>
+        <briefdescription>
+<para>Ensure that UART frame RX/TX pins swap setting is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__SWAP__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART frame RX/TX pins swap setting. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>SWAP</bold> is valid) or RESET (<bold>SWAP</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" line="1561" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" bodystart="1561" bodyend="1562"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1ga57b4229ecb4387a0bb9137fed8de13b8" prot="public" static="no">
+        <name>IS_UART_OVERRUN</name>
+        <param><defname>__OVERRUN__</defname></param>
+        <initializer>                                          (((__OVERRUN__) == <ref refid="group__UART__Overrun__Disable_1gac467cc43fa4c3af4acb0fd161061c219" kindref="member">UART_ADVFEATURE_OVERRUN_ENABLE</ref>) || \
+                                          ((__OVERRUN__) == <ref refid="group__UART__Overrun__Disable_1ga19961cd52b746dac7a6860faad2ab40d" kindref="member">UART_ADVFEATURE_OVERRUN_DISABLE</ref>))</initializer>
+        <briefdescription>
+<para>Ensure that UART frame overrun setting is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__OVERRUN__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART frame overrun setting. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>OVERRUN</bold> is valid) or RESET (<bold>OVERRUN</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" line="1569" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" bodystart="1569" bodyend="1570"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1ga7318c3e5c175b896444697a0a9407b2f" prot="public" static="no">
+        <name>IS_UART_ADVFEATURE_AUTOBAUDRATE</name>
+        <param><defname>__AUTOBAUDRATE__</defname></param>
+        <initializer>                                                            (((__AUTOBAUDRATE__) == \
+                                                            <ref refid="group__UART__AutoBaudRate__Enable_1gaca66b20599569c6b7576f0600050bb61" kindref="member">UART_ADVFEATURE_AUTOBAUDRATE_DISABLE</ref>) || \
+                                                           ((__AUTOBAUDRATE__) == <ref refid="group__UART__AutoBaudRate__Enable_1gad4eee70c6d23721dd95c6a2465e10ca4" kindref="member">UART_ADVFEATURE_AUTOBAUDRATE_ENABLE</ref>))</initializer>
+        <briefdescription>
+<para>Ensure that UART auto Baud rate state is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__AUTOBAUDRATE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART auto Baud rate state. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>AUTOBAUDRATE</bold> is valid) or RESET (<bold>AUTOBAUDRATE</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" line="1577" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" bodystart="1577" bodyend="1579"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1ga15b46dfa0d80a4583864a31da73e3c99" prot="public" static="no">
+        <name>IS_UART_ADVFEATURE_DMAONRXERROR</name>
+        <param><defname>__DMA__</defname></param>
+        <initializer>                                                   (((__DMA__) == <ref refid="group__UART__DMA__Disable__on__Rx__Error_1ga14469fd73075e481184234019a7b6734" kindref="member">UART_ADVFEATURE_DMA_ENABLEONRXERROR</ref>) || \
+                                                   ((__DMA__) == <ref refid="group__UART__DMA__Disable__on__Rx__Error_1gae838b9dfc0c2c082d5382973b369012b" kindref="member">UART_ADVFEATURE_DMA_DISABLEONRXERROR</ref>))</initializer>
+        <briefdescription>
+<para>Ensure that UART DMA enabling or disabling on error setting is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__DMA__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART DMA enabling or disabling on error setting. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>DMA</bold> is valid) or RESET (<bold>DMA</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" line="1586" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" bodystart="1586" bodyend="1587"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1ga82289de330949918b037acf94fb12aef" prot="public" static="no">
+        <name>IS_UART_ADVFEATURE_MSBFIRST</name>
+        <param><defname>__MSBFIRST__</defname></param>
+        <initializer>                                                   (((__MSBFIRST__) == <ref refid="group__UART__MSB__First_1gae606b5f132b17af40d58c7d41fad35a5" kindref="member">UART_ADVFEATURE_MSBFIRST_DISABLE</ref>) || \
+                                                   ((__MSBFIRST__) == <ref refid="group__UART__MSB__First_1gafb917e79562ccd13909c13056b34302f" kindref="member">UART_ADVFEATURE_MSBFIRST_ENABLE</ref>))</initializer>
+        <briefdescription>
+<para>Ensure that UART frame MSB first setting is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__MSBFIRST__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART frame MSB first setting. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>MSBFIRST</bold> is valid) or RESET (<bold>MSBFIRST</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" line="1594" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" bodystart="1594" bodyend="1595"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1gae0055233b6372a290fe69c811d307c5e" prot="public" static="no">
+        <name>IS_UART_ADVFEATURE_STOPMODE</name>
+        <param><defname>__STOPMODE__</defname></param>
+        <initializer>                                                   (((__STOPMODE__) == <ref refid="group__UART__Stop__Mode__Enable_1gab6c2929b1d4c2fe0319e412101b5dcc2" kindref="member">UART_ADVFEATURE_STOPMODE_DISABLE</ref>) || \
+                                                   ((__STOPMODE__) == <ref refid="group__UART__Stop__Mode__Enable_1gacc03fae31dda679f071909eeed2e5e22" kindref="member">UART_ADVFEATURE_STOPMODE_ENABLE</ref>))</initializer>
+        <briefdescription>
+<para>Ensure that UART stop mode state is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__STOPMODE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART stop mode state. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>STOPMODE</bold> is valid) or RESET (<bold>STOPMODE</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" line="1602" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" bodystart="1602" bodyend="1603"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1ga9df22e11f8bc82847fbe16b6f073ae04" prot="public" static="no">
+        <name>IS_UART_MUTE_MODE</name>
+        <param><defname>__MUTE__</defname></param>
+        <initializer>                                           (((__MUTE__) == <ref refid="group__UART__Mute__Mode_1ga11b6414641d82b941920c291e19aa042" kindref="member">UART_ADVFEATURE_MUTEMODE_DISABLE</ref>) || \
+                                           ((__MUTE__) == <ref refid="group__UART__Mute__Mode_1gaa9ca3763538abf310102ac34e81cdcbc" kindref="member">UART_ADVFEATURE_MUTEMODE_ENABLE</ref>))</initializer>
+        <briefdescription>
+<para>Ensure that UART mute mode state is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__MUTE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART mute mode state. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>MUTE</bold> is valid) or RESET (<bold>MUTE</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" line="1610" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" bodystart="1610" bodyend="1611"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1gaab6d7b59cffaf070ac3db100c76f4654" prot="public" static="no">
+        <name>IS_UART_WAKEUP_SELECTION</name>
+        <param><defname>__WAKE__</defname></param>
+        <initializer>                                            (((__WAKE__) == <ref refid="group__UART__WakeUp__from__Stop__Selection_1ga926f94a665ed3d200e76aeb01f2ae275" kindref="member">UART_WAKEUP_ON_ADDRESS</ref>)           || \
+                                            ((__WAKE__) == <ref refid="group__UART__WakeUp__from__Stop__Selection_1gade5095181db7434078e904af198c1699" kindref="member">UART_WAKEUP_ON_STARTBIT</ref>)          || \
+                                            ((__WAKE__) == <ref refid="group__UART__WakeUp__from__Stop__Selection_1ga77464f7eaba9f0a34876b1df36b8292e" kindref="member">UART_WAKEUP_ON_READDATA_NONEMPTY</ref>))</initializer>
+        <briefdescription>
+<para>Ensure that UART wake-up selection is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__WAKE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART wake-up selection. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>WAKE</bold> is valid) or RESET (<bold>WAKE</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" line="1618" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" bodystart="1618" bodyend="1620"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Private__Macros_1gaecf169f01673ae67b12b3155e074bf12" prot="public" static="no">
+        <name>IS_UART_DE_POLARITY</name>
+        <param><defname>__POLARITY__</defname></param>
+        <initializer>                                              (((__POLARITY__) == <ref refid="group__UART__DriverEnable__Polarity_1ga0cff167e046507f91497853b772282c5" kindref="member">UART_DE_POLARITY_HIGH</ref>) || \
+                                              ((__POLARITY__) == <ref refid="group__UART__DriverEnable__Polarity_1ga92a5839b1b14f95ee4b8f4842a24f37b" kindref="member">UART_DE_POLARITY_LOW</ref>))</initializer>
+        <briefdescription>
+<para>Ensure that UART driver enable polarity is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__POLARITY__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART driver enable polarity. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>POLARITY</bold> is valid) or RESET (<bold>POLARITY</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" line="1627" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" bodystart="1627" bodyend="1628"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

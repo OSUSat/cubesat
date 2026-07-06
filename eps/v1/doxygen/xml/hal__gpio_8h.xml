@@ -1,0 +1,155 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="hal__gpio_8h" kind="file" language="C++">
+    <compoundname>hal_gpio.h</compoundname>
+    <includes refid="hal__gpio__types_8h" local="yes">hal_gpio_types.h</includes>
+    <includes local="no">stdbool.h</includes>
+    <includes local="no">stdint.h</includes>
+    <includedby refid="hal__gpio_8c" local="yes">/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_gpio.c</includedby>
+    <includedby refid="main_8c" local="yes">/home/runner/work/cubesat/cubesat/eps/v1/firmware/main.c</includedby>
+    <includedby refid="hal__gpio__mock_8h" local="yes">/home/runner/work/cubesat/cubesat/eps/v1/firmware/mocks/hal_gpio_mock.h</includedby>
+    <includedby refid="rail__controller_8c" local="yes">/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/rail_controller.c</includedby>
+    <includedby refid="watchdog_8c" local="yes">/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/watchdog.c</includedby>
+    <includedby refid="test__gpio__mock_8c" local="yes">/home/runner/work/cubesat/cubesat/eps/v1/firmware/tests/test_gpio_mock.c</includedby>
+    <includedby refid="test__watchdog_8c" local="yes">/home/runner/work/cubesat/cubesat/eps/v1/firmware/tests/test_watchdog.c</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_gpio.h</label>
+        <link refid="hal__gpio_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>hal_gpio_types.h</label>
+        <link refid="hal__gpio__types_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>stdbool.h</label>
+      </node>
+      <node id="4">
+        <label>stdint.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_gpio.c</label>
+        <link refid="hal__gpio_8c"/>
+      </node>
+      <node id="1">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_gpio.h</label>
+        <link refid="hal__gpio_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/main.c</label>
+        <link refid="main_8c"/>
+      </node>
+      <node id="5">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/mocks/hal_gpio_mock.c</label>
+        <link refid="hal__gpio__mock_8c"/>
+      </node>
+      <node id="4">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/mocks/hal_gpio_mock.h</label>
+        <link refid="hal__gpio__mock_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/rail_controller.c</label>
+        <link refid="rail__controller_8c"/>
+      </node>
+      <node id="8">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/watchdog.c</label>
+        <link refid="watchdog_8c"/>
+      </node>
+      <node id="6">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/tests/test_gpio_mock.c</label>
+        <link refid="test__gpio__mock_8c"/>
+      </node>
+      <node id="9">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/tests/test_watchdog.c</label>
+        <link refid="test__watchdog_8c"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structgpio__pin__t" prot="public">gpio_pin_t</innerclass>
+    <sectiondef kind="typedef">
+      <member refid="group__gpio__types_1gaa6522fb9760184b5f293ad42375be160" kind="typedef"><name>gpio_callback_t</name></member>
+    </sectiondef>
+    <sectiondef kind="func">
+      <member refid="group__gpio__api_1gab5ae6f712980fbf6f16ecb6dc8ae1a36" kind="function"><name>hal_gpio_init</name></member>
+      <member refid="group__gpio__api_1ga4e1c7c73211d9c5c4a5314453aafed8c" kind="function"><name>hal_gpio_set_mode</name></member>
+      <member refid="group__gpio__api_1ga9add8d838aee6a869270f6e5c731d481" kind="function"><name>hal_gpio_register_callback</name></member>
+      <member refid="group__gpio__api_1gaa314f8a9a4b7b51a49361b942b7d2c3b" kind="function"><name>hal_gpio_write</name></member>
+      <member refid="group__gpio__api_1ga6c1cff12f9dda7780aeb06202056d529" kind="function"><name>hal_gpio_read</name></member>
+      <member refid="group__gpio__api_1ga8d567a689867d0c1be8f447cca081242" kind="function"><name>hal_gpio_toggle</name></member>
+    </sectiondef>
+    <briefdescription>
+<para>GPIO hardware abstraction public API. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This driver provides a simple interface for managing GPIO pins. It is used by services to manage hardware peripherals. </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>GPIO_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>GPIO_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="hal__gpio__types_8h" kindref="compound">hal_gpio_types.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdbool.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="group__gpio__types_1gaa6522fb9760184b5f293ad42375be160" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>void<sp/>(*<ref refid="group__gpio__types_1gaa6522fb9760184b5f293ad42375be160" kindref="member">gpio_callback_t</ref>)(uint8_t<sp/>pin,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*ctx);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44" refid="structgpio__pin__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="45" refid="structgpio__pin__t_1afd74d71f1c12d761565460f8d2505455" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hal__gpio__types_8h_1a491a2cbfb4e94f2afcc0d5bdef2dc454" kindref="member">gpio_mode_t</ref><sp/><ref refid="structgpio__pin__t_1afd74d71f1c12d761565460f8d2505455" kindref="member">mode</ref>;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="46" refid="structgpio__pin__t_1af116e65f0d8b9684d6a62f6e1553dc5d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hal__gpio__types_8h_1a2ff5468d5ab752db6fa1fb95363392a6" kindref="member">gpio_state_t</ref><sp/><ref refid="structgpio__pin__t_1af116e65f0d8b9684d6a62f6e1553dc5d" kindref="member">state</ref>;<sp/></highlight></codeline>
+<codeline lineno="47" refid="structgpio__pin__t_1a6705b76fd25a98ac26fd8948ad4bd81d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hal__gpio__types_8h_1a15988813fd44aa06a2300421601952f8" kindref="member">gpio_pull_t</ref><sp/><ref refid="structgpio__pin__t_1a6705b76fd25a98ac26fd8948ad4bd81d" kindref="member">pull</ref>;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="48" refid="structgpio__pin__t_1a38ef2d80b92197e5ed3482c02bf3b0d7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structgpio__pin__t_1a38ef2d80b92197e5ed3482c02bf3b0d7" kindref="member">irq_enabled</ref>;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="50" refid="structgpio__pin__t_1a9bc4607df40693bcce13a1f926f9d149" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__gpio__types_1gaa6522fb9760184b5f293ad42375be160" kindref="member">gpio_callback_t</ref><sp/><ref refid="structgpio__pin__t_1a9bc4607df40693bcce13a1f926f9d149" kindref="member">cb</ref>;<sp/></highlight></codeline>
+<codeline lineno="51" refid="structgpio__pin__t_1af39c05e286fd81cc76d20d9574cee2f0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<ref refid="structgpio__pin__t_1af39c05e286fd81cc76d20d9574cee2f0" kindref="member">ctx</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="52"><highlight class="normal">}<sp/><ref refid="structgpio__pin__t" kindref="compound">gpio_pin_t</ref>;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<sp/><highlight class="comment">//<sp/>end<sp/>gpio_types</highlight><codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__gpio__api_1gab5ae6f712980fbf6f16ecb6dc8ae1a36" kindref="member">hal_gpio_init</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__gpio__api_1ga4e1c7c73211d9c5c4a5314453aafed8c" kindref="member">hal_gpio_set_mode</ref>(uint8_t<sp/>pin,<sp/><ref refid="hal__gpio__types_8h_1a491a2cbfb4e94f2afcc0d5bdef2dc454" kindref="member">gpio_mode_t</ref><sp/>mode);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__gpio__api_1ga9add8d838aee6a869270f6e5c731d481" kindref="member">hal_gpio_register_callback</ref>(uint8_t<sp/>pin,<sp/><ref refid="group__gpio__types_1gaa6522fb9760184b5f293ad42375be160" kindref="member">gpio_callback_t</ref><sp/>callback,</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*ctx);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__gpio__api_1gaa314f8a9a4b7b51a49361b942b7d2c3b" kindref="member">hal_gpio_write</ref>(uint8_t<sp/>pin,<sp/><ref refid="hal__gpio__types_8h_1a2ff5468d5ab752db6fa1fb95363392a6" kindref="member">gpio_state_t</ref><sp/>state);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><ref refid="hal__gpio__types_8h_1a2ff5468d5ab752db6fa1fb95363392a6" kindref="member">gpio_state_t</ref><sp/><ref refid="group__gpio__api_1ga6c1cff12f9dda7780aeb06202056d529" kindref="member">hal_gpio_read</ref>(uint8_t<sp/>pin);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__gpio__api_1ga8d567a689867d0c1be8f447cca081242" kindref="member">hal_gpio_toggle</ref>(uint8_t<sp/>pin);</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<sp/><highlight class="comment">//<sp/>end<sp/>gpio_api</highlight><codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<sp/><highlight class="comment">//<sp/>end<sp/>gpio</highlight><codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>GPIO_H</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_gpio.h"/>
+  </compounddef>
+</doxygen>

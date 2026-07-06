@@ -1,0 +1,116 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="hal__adc__mock_8c" kind="file" language="C++">
+    <compoundname>hal_adc_mock.c</compoundname>
+    <includes refid="hal__adc__mock_8h" local="yes">hal_adc_mock.h</includes>
+    <includes local="no">stdint.h</includes>
+    <includes local="no">stdio.h</includes>
+    <incdepgraph>
+      <node id="3">
+        <label>hal_adc.h</label>
+        <link refid="hal__adc_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/mocks/hal_adc_mock.c</label>
+        <link refid="hal__adc__mock_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>hal_adc_mock.h</label>
+        <link refid="hal__adc__mock_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>stdint.h</label>
+      </node>
+      <node id="5">
+        <label>stdio.h</label>
+      </node>
+    </incdepgraph>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="hal__adc__mock_8c_1a08daee1483e4da843c7116aaf2542529" prot="public" static="no">
+        <name>MAX_ADC_CHANNELS</name>
+        <initializer><ref refid="group__adc__types_1ggaafc4060027875f8fe46242b0656d7814abfe49e087a8e8e4844dff47acdaf7e97" kindref="member">ADC_CHANNEL_MAX</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/mocks/hal_adc_mock.c" line="13" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/mocks/hal_adc_mock.c" bodystart="13" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="hal__adc__mock_8c_1a439e10dd0dd1b329ad928dfa147df7ff" prot="public" static="yes" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t mock_adc_values[MAX_ADC_CHANNELS]</definition>
+        <argsstring>[MAX_ADC_CHANNELS]</argsstring>
+        <name>mock_adc_values</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/mocks/hal_adc_mock.c" line="15" column="17" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/mocks/hal_adc_mock.c" bodystart="15" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <member refid="group__adc__api_1ga81b32a5bbfb422b51862d59fe2a33ccd" kind="function"><name>hal_adc_init</name></member>
+      <member refid="group__adc__api_1ga4e6e34bb10795f8866a932879948804c" kind="function"><name>hal_adc_read</name></member>
+      <member refid="group__adc__mock_1gab0a1ac2d9ce21be0c33d1a404223da90" kind="function"><name>mock_adc_set_value</name></member>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="hal__adc__mock_8h" kindref="compound">hal_adc_mock.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdio.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MAX_ADC_CHANNELS<sp/>ADC_CHANNEL_MAX</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>uint16_t<sp/>mock_adc_values[<ref refid="hal__adc__mock_8c_1a08daee1483e4da843c7116aaf2542529" kindref="member">MAX_ADC_CHANNELS</ref>];</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__adc__api_1ga81b32a5bbfb422b51862d59fe2a33ccd" kindref="member">hal_adc_init</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;MOCK:<sp/>ADC<sp/>initialized\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="hal__adc__mock_8c_1a08daee1483e4da843c7116aaf2542529" kindref="member">MAX_ADC_CHANNELS</ref>;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mock_adc_values[i]<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="23"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal">uint16_t<sp/><ref refid="group__adc__api_1ga4e6e34bb10795f8866a932879948804c" kindref="member">hal_adc_read</ref>(<ref refid="group__adc__types_1gaafc4060027875f8fe46242b0656d7814" kindref="member">adc_channel_t</ref><sp/>channel)<sp/>{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(channel<sp/>&gt;=<sp/><ref refid="hal__adc__mock_8c_1a08daee1483e4da843c7116aaf2542529" kindref="member">MAX_ADC_CHANNELS</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;MOCK<sp/>ERROR:<sp/>ADC<sp/>channel<sp/>%d<sp/>out<sp/>of<sp/>bounds\n&quot;</highlight><highlight class="normal">,<sp/>channel);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/>value<sp/>=<sp/>mock_adc_values[channel];</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;MOCK:<sp/>Reading<sp/>ADC<sp/>channel<sp/>%d<sp/>=&gt;<sp/>%u\n&quot;</highlight><highlight class="normal">,<sp/>channel,<sp/>value);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>value;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__adc__mock_1gab0a1ac2d9ce21be0c33d1a404223da90" kindref="member">mock_adc_set_value</ref>(<ref refid="group__adc__types_1gaafc4060027875f8fe46242b0656d7814" kindref="member">adc_channel_t</ref><sp/>channel,<sp/>uint16_t<sp/>value)<sp/>{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(channel<sp/>&gt;=<sp/><ref refid="hal__adc__mock_8c_1a08daee1483e4da843c7116aaf2542529" kindref="member">MAX_ADC_CHANNELS</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;MOCK<sp/>ERROR:<sp/>ADC<sp/>channel<sp/>%d<sp/>out<sp/>of<sp/>bounds\n&quot;</highlight><highlight class="normal">,<sp/>channel);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;MOCK:<sp/>Setting<sp/>ADC<sp/>channel<sp/>%d<sp/>to<sp/>%u\n&quot;</highlight><highlight class="normal">,<sp/>channel,<sp/>value);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>mock_adc_values[channel]<sp/>=<sp/>value;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/mocks/hal_adc_mock.c"/>
+  </compounddef>
+</doxygen>

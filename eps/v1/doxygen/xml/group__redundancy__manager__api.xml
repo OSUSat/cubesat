@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="group__redundancy__manager__api" kind="group">
+    <compoundname>redundancy_manager_api</compoundname>
+    <title>Public API</title>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="group__redundancy__manager__api_1gadd9a3bd1c1926239b7616532cc18b449" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void redundancy_manager_init</definition>
+        <argsstring>(redundancy_manager_t *manager)</argsstring>
+        <name>redundancy_manager_init</name>
+        <param>
+          <type><ref refid="structredundancy__manager__t" kindref="compound">redundancy_manager_t</ref> *</type>
+          <declname>manager</declname>
+        </param>
+        <briefdescription>
+<para>Initialize the Redundancy Manager. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Clears all faults, sets system health to SYSTEM_HEALTH_OK, and subscribes to:<itemizedlist>
+<listitem><para>Fault events from all services (e.g., BATTERY_EVENT_FAULT_DETECTED)</para>
+</listitem><listitem><para>Query request events from applications</para>
+</listitem><listitem><para>Recovery events from services</para>
+</listitem></itemizedlist>
+</para>
+<para>Publishes initial REDUNDANCY_EVENT_HEALTH_RECOVERED event after init.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">manager</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The redundancy manager to initialize. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/redundancy_manager.h" line="362" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/redundancy_manager.c" bodystart="140" bodyend="192" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/redundancy_manager.h" declline="362" declcolumn="6"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Functions for initializing the redundancy manager. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>All interaction with the redundancy manager occurs through events. The manager publishes health updates and responds to query requests via the event bus. </para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

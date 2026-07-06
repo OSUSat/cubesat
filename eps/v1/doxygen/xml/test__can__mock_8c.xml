@@ -1,0 +1,297 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="test__can__mock_8c" kind="file" language="C++">
+    <compoundname>test_can_mock.c</compoundname>
+    <includes refid="hal__can_8h" local="yes">hal_can.h</includes>
+    <includes refid="hal__can__mock_8h" local="yes">hal_can_mock.h</includes>
+    <includes local="no">assert.h</includes>
+    <includes local="no">stdio.h</includes>
+    <includes local="no">string.h</includes>
+    <incdepgraph>
+      <node id="2">
+        <label>hal_can.h</label>
+        <link refid="hal__can_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>hal_can_mock.h</label>
+        <link refid="hal__can__mock_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/tests/test_can_mock.c</label>
+        <link refid="test__can__mock_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>assert.h</label>
+      </node>
+      <node id="3">
+        <label>stdbool.h</label>
+      </node>
+      <node id="6">
+        <label>stddef.h</label>
+      </node>
+      <node id="4">
+        <label>stdint.h</label>
+      </node>
+      <node id="8">
+        <label>stdio.h</label>
+      </node>
+      <node id="9">
+        <label>string.h</label>
+      </node>
+    </incdepgraph>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="test__can__mock_8c_1abe00484ce1ea88ea754232e354792e36" prot="public" static="yes" mutable="no">
+        <type>bool</type>
+        <definition>bool tx_callback_fired</definition>
+        <argsstring></argsstring>
+        <name>tx_callback_fired</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/tests/test_can_mock.c" line="7" column="13" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/tests/test_can_mock.c" bodystart="7" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="test__can__mock_8c_1a08895af60cdb7bc93652dda0eee195fb" prot="public" static="yes" mutable="no">
+        <type>bool</type>
+        <definition>bool rx_callback_fired</definition>
+        <argsstring></argsstring>
+        <name>rx_callback_fired</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/tests/test_can_mock.c" line="8" column="13" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/tests/test_can_mock.c" bodystart="8" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="test__can__mock_8c_1a3b7411e4429a5e5eadfec2f5d9d4dee8" prot="public" static="yes" mutable="no">
+        <type><ref refid="structhal__can__msg__t" kindref="compound">hal_can_msg_t</ref></type>
+        <definition>hal_can_msg_t last_rx_msg</definition>
+        <argsstring></argsstring>
+        <name>last_rx_msg</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/tests/test_can_mock.c" line="9" column="22" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/tests/test_can_mock.c" bodystart="9" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="test__can__mock_8c_1ad931dbdf52470887aac28ae46ae09f16" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void can_tx_cb</definition>
+        <argsstring>(hal_can_port_t port, void *ctx)</argsstring>
+        <name>can_tx_cb</name>
+        <param>
+          <type><ref refid="group__can__types_1ga83a77f224d5e726b32e0c7e7acff1163" kindref="member">hal_can_port_t</ref></type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>ctx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/tests/test_can_mock.c" line="11" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/tests/test_can_mock.c" bodystart="11" bodyend="15"/>
+      </memberdef>
+      <memberdef kind="function" id="test__can__mock_8c_1a09d1ac32957b49e6dcdcc91dc6f6e5dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void can_rx_cb</definition>
+        <argsstring>(hal_can_port_t port, const hal_can_msg_t *msg, void *ctx)</argsstring>
+        <name>can_rx_cb</name>
+        <param>
+          <type><ref refid="group__can__types_1ga83a77f224d5e726b32e0c7e7acff1163" kindref="member">hal_can_port_t</ref></type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structhal__can__msg__t" kindref="compound">hal_can_msg_t</ref> *</type>
+          <declname>msg</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>ctx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/tests/test_can_mock.c" line="17" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/tests/test_can_mock.c" bodystart="17" bodyend="22"/>
+      </memberdef>
+      <memberdef kind="function" id="test__can__mock_8c_1a3e163bbe2452e16425fda2c959935ecb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void test_can_init_and_transmit</definition>
+        <argsstring>(void)</argsstring>
+        <name>test_can_init_and_transmit</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/tests/test_can_mock.c" line="24" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/tests/test_can_mock.c" bodystart="24" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="test__can__mock_8c_1a714822c2638ca8799386b16733a61fa2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void test_can_receive</definition>
+        <argsstring>(void)</argsstring>
+        <name>test_can_receive</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/tests/test_can_mock.c" line="57" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/tests/test_can_mock.c" bodystart="57" bodyend="83"/>
+      </memberdef>
+      <memberdef kind="function" id="test__can__mock_8c_1a840291bc02cba5474a4cb46a9b9566fe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int main</definition>
+        <argsstring>(void)</argsstring>
+        <name>main</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/tests/test_can_mock.c" line="85" column="5" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/tests/test_can_mock.c" bodystart="85" bodyend="90"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="hal__can_8h" kindref="compound">hal_can.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="hal__can__mock_8h" kindref="compound">hal_can_mock.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;assert.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdio.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>tx_callback_fired<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>rx_callback_fired<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structhal__can__msg__t" kindref="compound">hal_can_msg_t</ref><sp/>last_rx_msg;</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="test__can__mock_8c_1ad931dbdf52470887aac28ae46ae09f16" kindref="member">can_tx_cb</ref>(<ref refid="group__can__types_1ga83a77f224d5e726b32e0c7e7acff1163" kindref="member">hal_can_port_t</ref><sp/>port,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*ctx)<sp/>{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/>(void)port;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>(void)ctx;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>tx_callback_fired<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="test__can__mock_8c_1a09d1ac32957b49e6dcdcc91dc6f6e5dc" kindref="member">can_rx_cb</ref>(<ref refid="group__can__types_1ga83a77f224d5e726b32e0c7e7acff1163" kindref="member">hal_can_port_t</ref><sp/>port,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhal__can__msg__t" kindref="compound">hal_can_msg_t</ref><sp/>*msg,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*ctx)<sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>(void)port;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>(void)ctx;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>rx_callback_fired<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>last_rx_msg<sp/>=<sp/>*msg;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="test__can__mock_8c_1a3e163bbe2452e16425fda2c959935ecb" kindref="member">test_can_init_and_transmit</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Running<sp/>test:<sp/>%s\n&quot;</highlight><highlight class="normal">,<sp/>__func__);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structhal__can__config__t" kindref="compound">hal_can_config_t</ref><sp/>config<sp/>=<sp/>{.<ref refid="structhal__can__config__t_1a035fe2ebe68ac9cdd0992070679002df" kindref="member">baudrate</ref><sp/>=<sp/>250000};</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__can__api_1gaee75487bc1a6b3c93fc347d818d5fd18" kindref="member">hal_can_init</ref>(<ref refid="group__can__types_1gga83a77f224d5e726b32e0c7e7acff1163aac46ad8f66070ccf930a4b21f5512039" kindref="member">HAL_CAN_PORT_1</ref>,<sp/>&amp;config);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>tx_callback_fired<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__can__api_1ga72caff0e5a7fe741fb1546fd7c7587f6" kindref="member">hal_can_register_tx_callback</ref>(<ref refid="group__can__types_1gga83a77f224d5e726b32e0c7e7acff1163aac46ad8f66070ccf930a4b21f5512039" kindref="member">HAL_CAN_PORT_1</ref>,<sp/><ref refid="test__can__mock_8c_1ad931dbdf52470887aac28ae46ae09f16" kindref="member">can_tx_cb</ref>,<sp/>NULL);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structhal__can__msg__t" kindref="compound">hal_can_msg_t</ref><sp/>tx_msg<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.<ref refid="structhal__can__msg__t_1a915d9fb57b719983617ae96d655eefae" kindref="member">id</ref><sp/>=<sp/>0x123,</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.id_type<sp/>=<sp/><ref refid="group__can__types_1gga82e327fd51718fe7488208d31bcd0970a6c2ef9ad99f769274b09e4908049e78d" kindref="member">HAL_CAN_ID_STD</ref>,</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.rtr<sp/>=<sp/><ref refid="group__can__types_1ggaf102438ea18694f7a9339683b50a19d3adbc763834c27abea9956a905811b4a90" kindref="member">HAL_CAN_RTR_DATA</ref>,</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.dlc<sp/>=<sp/>4,</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.data<sp/>=<sp/>{0xAA,<sp/>0xBB,<sp/>0xCC,<sp/>0xDD}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__can__types_1gaeb6a2f8beecd9def75dff7fa7c2f0d00" kindref="member">hal_can_status_t</ref><sp/>status<sp/>=<sp/><ref refid="group__can__api_1ga8a524c5e1b426d9222656f692ed92c03" kindref="member">hal_can_write</ref>(<ref refid="group__can__types_1gga83a77f224d5e726b32e0c7e7acff1163aac46ad8f66070ccf930a4b21f5512039" kindref="member">HAL_CAN_PORT_1</ref>,<sp/>&amp;tx_msg);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(status<sp/>==<sp/><ref refid="group__can__types_1ggaeb6a2f8beecd9def75dff7fa7c2f0d00af8abc9c057afe8b767acd0aab294c278" kindref="member">HAL_CAN_OK</ref>);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(tx_callback_fired);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structhal__can__msg__t" kindref="compound">hal_can_msg_t</ref><sp/>retrieved_msg<sp/>=<sp/>{0};</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>count<sp/>=<sp/><ref refid="group__can__mock_1ga6871d37aa0f5ba3ecd6b5b1062899031" kindref="member">mock_can_get_tx</ref>(<ref refid="group__can__types_1gga83a77f224d5e726b32e0c7e7acff1163aac46ad8f66070ccf930a4b21f5512039" kindref="member">HAL_CAN_PORT_1</ref>,<sp/>&amp;retrieved_msg,<sp/>1);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(count<sp/>==<sp/>1);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(retrieved_msg.<ref refid="structhal__can__msg__t_1a915d9fb57b719983617ae96d655eefae" kindref="member">id</ref><sp/>==<sp/>tx_msg.<ref refid="structhal__can__msg__t_1a915d9fb57b719983617ae96d655eefae" kindref="member">id</ref>);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(retrieved_msg.<ref refid="structhal__can__msg__t_1af60e2f35059e4c412730cd68118811b5" kindref="member">id_type</ref><sp/>==<sp/>tx_msg.<ref refid="structhal__can__msg__t_1af60e2f35059e4c412730cd68118811b5" kindref="member">id_type</ref>);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(retrieved_msg.<ref refid="structhal__can__msg__t_1a85b16081242769e2ec30c1140066fd24" kindref="member">rtr</ref><sp/>==<sp/>tx_msg.<ref refid="structhal__can__msg__t_1a85b16081242769e2ec30c1140066fd24" kindref="member">rtr</ref>);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(retrieved_msg.<ref refid="structhal__can__msg__t_1a0df091d638b20ccca454be9e25676392" kindref="member">dlc</ref><sp/>==<sp/>tx_msg.<ref refid="structhal__can__msg__t_1a0df091d638b20ccca454be9e25676392" kindref="member">dlc</ref>);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(memcmp(retrieved_msg.<ref refid="structhal__can__msg__t_1a59646cc502102b8ccfbf35d8b199cd66" kindref="member">data</ref>,<sp/>tx_msg.<ref refid="structhal__can__msg__t_1a59646cc502102b8ccfbf35d8b199cd66" kindref="member">data</ref>,<sp/>4)<sp/>==<sp/>0);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Test<sp/>passed.\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="test__can__mock_8c_1a714822c2638ca8799386b16733a61fa2" kindref="member">test_can_receive</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Running<sp/>test:<sp/>%s\n&quot;</highlight><highlight class="normal">,<sp/>__func__);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structhal__can__config__t" kindref="compound">hal_can_config_t</ref><sp/>config<sp/>=<sp/>{.<ref refid="structhal__can__config__t_1a035fe2ebe68ac9cdd0992070679002df" kindref="member">baudrate</ref><sp/>=<sp/>500000};</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__can__api_1gaee75487bc1a6b3c93fc347d818d5fd18" kindref="member">hal_can_init</ref>(<ref refid="group__can__types_1gga83a77f224d5e726b32e0c7e7acff1163a2428504723e2f469d58bc3bbade475a9" kindref="member">HAL_CAN_PORT_2</ref>,<sp/>&amp;config);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>rx_callback_fired<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__can__api_1ga4dd37d5795d680815722a43124c64c8b" kindref="member">hal_can_register_rx_callback</ref>(<ref refid="group__can__types_1gga83a77f224d5e726b32e0c7e7acff1163a2428504723e2f469d58bc3bbade475a9" kindref="member">HAL_CAN_PORT_2</ref>,<sp/><ref refid="test__can__mock_8c_1a09d1ac32957b49e6dcdcc91dc6f6e5dc" kindref="member">can_rx_cb</ref>,<sp/>NULL);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structhal__can__msg__t" kindref="compound">hal_can_msg_t</ref><sp/>rx_msg<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.<ref refid="structhal__can__msg__t_1a915d9fb57b719983617ae96d655eefae" kindref="member">id</ref><sp/>=<sp/>0x1FABCDE,</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.id_type<sp/>=<sp/><ref refid="group__can__types_1gga82e327fd51718fe7488208d31bcd0970af091582bbb83bc3f1512530256f1241b" kindref="member">HAL_CAN_ID_EXT</ref>,</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.rtr<sp/>=<sp/><ref refid="group__can__types_1ggaf102438ea18694f7a9339683b50a19d3adbc763834c27abea9956a905811b4a90" kindref="member">HAL_CAN_RTR_DATA</ref>,</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.dlc<sp/>=<sp/>8,</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.data<sp/>=<sp/>{1,<sp/>2,<sp/>3,<sp/>4,<sp/>5,<sp/>6,<sp/>7,<sp/>8}</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__can__mock_1gad1dd6d91538233c7f3a3f288cd4cbe6b" kindref="member">mock_can_push_rx</ref>(<ref refid="group__can__types_1gga83a77f224d5e726b32e0c7e7acff1163a2428504723e2f469d58bc3bbade475a9" kindref="member">HAL_CAN_PORT_2</ref>,<sp/>&amp;rx_msg);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(rx_callback_fired);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(last_rx_msg.<ref refid="structhal__can__msg__t_1a915d9fb57b719983617ae96d655eefae" kindref="member">id</ref><sp/>==<sp/>rx_msg.<ref refid="structhal__can__msg__t_1a915d9fb57b719983617ae96d655eefae" kindref="member">id</ref>);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(last_rx_msg.<ref refid="structhal__can__msg__t_1af60e2f35059e4c412730cd68118811b5" kindref="member">id_type</ref><sp/>==<sp/>rx_msg.<ref refid="structhal__can__msg__t_1af60e2f35059e4c412730cd68118811b5" kindref="member">id_type</ref>);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(last_rx_msg.<ref refid="structhal__can__msg__t_1a85b16081242769e2ec30c1140066fd24" kindref="member">rtr</ref><sp/>==<sp/>rx_msg.<ref refid="structhal__can__msg__t_1a85b16081242769e2ec30c1140066fd24" kindref="member">rtr</ref>);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(last_rx_msg.<ref refid="structhal__can__msg__t_1a0df091d638b20ccca454be9e25676392" kindref="member">dlc</ref><sp/>==<sp/>rx_msg.<ref refid="structhal__can__msg__t_1a0df091d638b20ccca454be9e25676392" kindref="member">dlc</ref>);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(memcmp(last_rx_msg.<ref refid="structhal__can__msg__t_1a59646cc502102b8ccfbf35d8b199cd66" kindref="member">data</ref>,<sp/>rx_msg.<ref refid="structhal__can__msg__t_1a59646cc502102b8ccfbf35d8b199cd66" kindref="member">data</ref>,<sp/>8)<sp/>==<sp/>0);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Test<sp/>passed.\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="test__can__mock_8c_1a840291bc02cba5474a4cb46a9b9566fe" kindref="member">main</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__can__mock_1ga7b0f9cb84a6d3e153e6c5648666297b1" kindref="member">mock_can_reset</ref>();</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="test__can__mock_8c_1a3e163bbe2452e16425fda2c959935ecb" kindref="member">test_can_init_and_transmit</ref>();</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="test__can__mock_8c_1a714822c2638ca8799386b16733a61fa2" kindref="member">test_can_receive</ref>();</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/tests/test_can_mock.c"/>
+  </compounddef>
+</doxygen>
