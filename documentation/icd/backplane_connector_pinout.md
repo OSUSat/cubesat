@@ -75,8 +75,8 @@
 | 26 | CAN_MAIN_L | Bidirectional | CAN logic levels | - |
 | 27 | OBC_HEARTBEAT | Out (from OBC) | 3.3v Logic level | |
 | 28 | CAN_AUX_H | Bidirectional | CAN logic levels | Renamed from CAN_AUX+ |
-| 29 | CAN_AUX_L | Bidirectional | CAN logic levels |  |
-| 30 | SLOT_ID0 | In (per board) | TBD | Keying scheme Layer 4; encoding TBD |
+| 29 | SLOT_ID0 | In (per board) | TBD | Keying scheme Layer 4; encoding TBD |
+| 30 | CAN_AUX_L | Bidirectional | CAN logic levels |  |
 | 31 | SLOT_ID1 | In (per board) | TBD | Keying scheme Layer 4; encoding TBD |
 | 32 | SLOT_ID2 | In (per board) | TBD | Keying scheme Layer 4; encoding TBD |
 | 33 | SPI_SCLK | Out (from OBC) | Logic level, TBD | Point-to-point, Payload<->OBC only. Not present on other slots. |
@@ -151,6 +151,7 @@ Submit a design review request (per the Design Review Request template) referenc
 | Version | Date | Author | Summary of Change | Approved By |
 | :---- | :---- | :---- | :---- | :---- |
 | 1 | 08/01/2026 | Ethan Eggert | Draft initial ICD | |
+| 1 | 08/01/2026 | Ethan Eggert | Swap CANBus pins to be adajacent to make differential routing easier | |
 
 
 ## 8. Traceability
