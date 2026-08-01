@@ -36,6 +36,7 @@ The backplane is the shared physical and electrical board that every other subsy
 
 # Scope and deliverables
 
+
 | Deliverable | Description |
 | :---- | :---- |
 | Connector standard selection | Select a single pin-and-socket connector family (e.g., a small-pitch board-to-board connector) used identically across every subsystem board |
