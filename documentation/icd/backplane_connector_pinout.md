@@ -69,22 +69,22 @@
 | 20 | GND | - | - | |
 | 21 | EPS_PGOOD | Out (from EPS) | 3.3v Logic level | |
 | 22 | GND | - | - | |
-| 23 | EPS_OBC_RESET | Out (from EPS) | 3.3v Logic level | |
+| 23 | CAN_MAIN_H | Bidirectional | CAN logic levels | |
 | 24 | CAN_MAIN_H | Bidirectional | CAN logic levels | - |
-| 25 | OBC_EPS_RESET | Out (from OBC) | 3.3v Logic level | |
+| 25 | CAN_MAIN_L| Bidirectional | CAN logic levels | |
 | 26 | CAN_MAIN_L | Bidirectional | CAN logic levels | - |
 | 27 | OBC_HEARTBEAT | Out (from OBC) | 3.3v Logic level | |
-| 28 | CAN_AUX_H | Bidirectional | CAN logic levels | Renamed from CAN_AUX+ |
+| 28 | EPS_OBC_RESET | Out (from EPS) | 3.3v Logic level|  |
 | 29 | SLOT_ID0 | In (per board) | TBD | Keying scheme Layer 4; encoding TBD |
-| 30 | CAN_AUX_L | Bidirectional | CAN logic levels |  |
+| 30 | OBC_EPS_RESET | Out (from OBC) | 3.3v Logic level |  |
 | 31 | SLOT_ID1 | In (per board) | TBD | Keying scheme Layer 4; encoding TBD |
 | 32 | SLOT_ID2 | In (per board) | TBD | Keying scheme Layer 4; encoding TBD |
 | 33 | SPI_SCLK | Out (from OBC) | Logic level, TBD | Point-to-point, Payload<->OBC only. Not present on other slots. |
 | 34 | SPI_MOSI | Out (from OBC) | Logic level, TBD | Point-to-point, Payload<->OBC only. Not present on other slots. |
 | 35 | SPI_MISO | Out (from Payload) | Logic level, TBD | Point-to-point, Payload<->OBC only. Not present on other slots. |
-| 36 | SPARE | - | - | Reserved for future revision |
+| 36 | CAN_AUX_H | Bidirectional | CAN logic levels |  |
 | 37 | SPARE | - | - | Reserved for future revision |
-| 38 | SPARE | - | - | Reserved for future revision |
+| 38 | CAN_AUX_L | Bidirectional | CAN logic levels |  |
 | 39 | GND | - | - | |
 | 40 | GND | - | - | |
 
@@ -152,6 +152,7 @@ Submit a design review request (per the Design Review Request template) referenc
 | :---- | :---- | :---- | :---- | :---- |
 | 1 | 08/01/2026 | Ethan Eggert | Draft initial ICD | |
 | 1 | 08/01/2026 | Ethan Eggert | Swap CANBus pins to be adajacent to make differential routing easier | |
+| 1 | 09/01/2026 | Ethan Eggert | Cluster main CANBus pins to make routing straight, remove SPAREs, and move AUX CAN line | |
 
 
 ## 8. Traceability
