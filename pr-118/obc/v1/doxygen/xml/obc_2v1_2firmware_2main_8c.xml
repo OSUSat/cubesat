@@ -1,0 +1,583 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="obc_2v1_2firmware_2main_8c" kind="file" language="C++">
+    <compoundname>main.c</compoundname>
+    <includes refid="can__events_8h" local="yes">can_events.h</includes>
+    <includes local="yes">clock.h</includes>
+    <includes local="yes">dma.h</includes>
+    <includes refid="hal__can_8h" local="yes">hal_can.h</includes>
+    <includes refid="hal__gpio_8h" local="yes">hal_gpio.h</includes>
+    <includes refid="hal__i2c_8h" local="yes">hal_i2c.h</includes>
+    <includes refid="hal__time_8h" local="yes">hal_time.h</includes>
+    <includes refid="hal__uart_8h" local="yes">hal_uart.h</includes>
+    <includes refid="logging_8h" local="yes">logging.h</includes>
+    <includes refid="sensors_8h" local="yes">sensors.h</includes>
+    <includes refid="obc__config_8h" local="yes">obc_config.h</includes>
+    <includes refid="event__bus_8h" local="yes">osusat/event_bus.h</includes>
+    <includes local="yes">peripherals.h</includes>
+    <includes local="yes">stm32h7xx_hal.h</includes>
+    <includes refid="hal__fram_8h" local="yes">hal_fram.h</includes>
+    <incdepgraph>
+      <node id="6">
+        <label>osusat/event_bus.h</label>
+        <link refid="event__bus_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>ring_buffer.h</label>
+        <link refid="ring__buffer_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>osusat/slog.h</label>
+        <link refid="slog_8h"/>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>messages.h</label>
+        <link refid="messages_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>packet.h</label>
+        <link refid="packet_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>obc_config.h</label>
+        <link refid="obc__config_8h_source"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>hal_can.h</label>
+        <link refid="hal__can_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>hal_fram.h</label>
+        <link refid="hal__fram_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>hal_gpio.h</label>
+        <link refid="hal__gpio_8h"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>hal_gpio_types.h</label>
+        <link refid="hal__gpio__types_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>hal_i2c.h</label>
+        <link refid="hal__i2c_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>hal_time.h</label>
+        <link refid="hal__time_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>hal_uart.h</label>
+        <link refid="hal__uart_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/home/runner/work/cubesat/cubesat/obc/v1/firmware/main.c</label>
+        <link refid="obc_2v1_2firmware_2main_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>can_events.h</label>
+        <link refid="can__events_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>logging.h</label>
+        <link refid="logging_8h"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>sensors.h</label>
+        <link refid="sensors_8h"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>clock.h</label>
+      </node>
+      <node id="11">
+        <label>dma.h</label>
+      </node>
+      <node id="23">
+        <label>peripherals.h</label>
+      </node>
+      <node id="20">
+        <label>stdarg.h</label>
+      </node>
+      <node id="4">
+        <label>stdbool.h</label>
+      </node>
+      <node id="7">
+        <label>stddef.h</label>
+      </node>
+      <node id="5">
+        <label>stdint.h</label>
+      </node>
+      <node id="24">
+        <label>stm32h7xx_hal.h</label>
+      </node>
+    </incdepgraph>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="obc_2v1_2firmware_2main_8c_1a3d16e5de491dfd7c361575b398679dd3" prot="public" static="no">
+        <name>EVENT_QUEUE_SIZE</name>
+        <initializer>16</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/main.c" line="20" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/main.c" bodystart="20" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="obc_2v1_2firmware_2main_8c_1af52bd22adacb40fb8b2fdd05d0b90382" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t debug_fram_buf[1024]</definition>
+        <argsstring>[1024]</argsstring>
+        <name>debug_fram_buf</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/main.c" line="17" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/main.c" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="obc_2v1_2firmware_2main_8c_1a79517acec4069edfda48be09ab7ffd89" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t debug_telemetry_buf[1024]</definition>
+        <argsstring>[1024]</argsstring>
+        <name>debug_telemetry_buf</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/main.c" line="18" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/main.c" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="obc_2v1_2firmware_2main_8c_1a24fc820a747e9907f19776f90494f9d2" prot="public" static="yes" mutable="no">
+        <type><ref refid="structosusat__event__t" kindref="compound">osusat_event_t</ref></type>
+        <definition>osusat_event_t event_queue[EVENT_QUEUE_SIZE]</definition>
+        <argsstring>[EVENT_QUEUE_SIZE]</argsstring>
+        <name>event_queue</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/main.c" line="21" column="23" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/main.c" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="obc_2v1_2firmware_2main_8c_1a9498c7852b3d7b6c3df2e5cd5bb306f3" prot="public" static="yes" mutable="no">
+        <type><ref refid="structcan__events__t" kindref="compound">can_events_t</ref></type>
+        <definition>can_events_t can1_events_service</definition>
+        <argsstring></argsstring>
+        <name>can1_events_service</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/main.c" line="22" column="21" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/main.c" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="obc_2v1_2firmware_2main_8c_1aa8b73bef716fb6c7f339431d98f6a62e" prot="public" static="yes" mutable="no">
+        <type><ref refid="structcan__events__t" kindref="compound">can_events_t</ref></type>
+        <definition>can_events_t can2_events_service</definition>
+        <argsstring></argsstring>
+        <name>can2_events_service</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/main.c" line="23" column="21" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/main.c" bodystart="23" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="obc_2v1_2firmware_2main_8c_1a840291bc02cba5474a4cb46a9b9566fe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int main</definition>
+        <argsstring>(void)</argsstring>
+        <name>main</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/main.c" line="137" column="5" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/main.c" bodystart="137" bodyend="249"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="can__events_8h" kindref="compound">can_events.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;clock.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;dma.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="hal__can_8h" kindref="compound">hal_can.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="hal__gpio_8h" kindref="compound">hal_gpio.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="hal__i2c_8h" kindref="compound">hal_i2c.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="hal__time_8h" kindref="compound">hal_time.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="hal__uart_8h" kindref="compound">hal_uart.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="logging_8h" kindref="compound">logging.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="sensors_8h" kindref="compound">sensors.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;obc_config.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="event__bus_8h" kindref="compound">osusat/event_bus.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;peripherals.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;stm32h7xx_hal.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="hal__fram_8h" kindref="compound">hal_fram.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal">uint8_t<sp/>debug_fram_buf[1024];</highlight></codeline>
+<codeline lineno="18"><highlight class="normal">uint8_t<sp/>debug_telemetry_buf[1024];</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>EVENT_QUEUE_SIZE<sp/>16</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structosusat__event__t" kindref="compound">osusat_event_t</ref><sp/>event_queue[EVENT_QUEUE_SIZE];</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structcan__events__t" kindref="compound">can_events_t</ref><sp/>can1_events_service;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structcan__events__t" kindref="compound">can_events_t</ref><sp/>can2_events_service;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(__arm__)<sp/>&amp;&amp;<sp/>defined(DEEP_SLEEP_ENABLED)<sp/>&amp;&amp;<sp/>(DEEP_SLEEP_ENABLED<sp/>==<sp/>1)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>check_deep_sleep_status(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>__HAL_RCC_PWR_CLK_ENABLE();</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>HAL_PWR_EnableBkUpAccess();</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Disable<sp/>write<sp/>protection</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>RTC-&gt;WPR<sp/>=<sp/>0xCA;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>RTC-&gt;WPR<sp/>=<sp/>0x53;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>magic<sp/>=<sp/>RTC-&gt;BKP1R;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(magic<sp/>==<sp/>0x534C505F)<sp/>{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>cycles<sp/>=<sp/>RTC-&gt;BKP0R;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cycles<sp/>&gt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RTC-&gt;BKP0R<sp/>=<sp/>cycles<sp/>-<sp/>1;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Enable<sp/>LSI</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structRCC__OscInitTypeDef" kindref="compound">RCC_OscInitTypeDef</ref><sp/>RCC_OscInitStruct<sp/>=<sp/>{0};</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RCC_OscInitStruct.<ref refid="structRCC__OscInitTypeDef_1af9e7bc89cab81c1705d94c74c7a81088" kindref="member">OscillatorType</ref><sp/>=<sp/>RCC_OSCILLATORTYPE_LSI;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RCC_OscInitStruct.<ref refid="structRCC__OscInitTypeDef_1a955de90db8882fde02c4fb59c7c000f0" kindref="member">LSIState</ref><sp/>=<sp/>RCC_LSI_ON;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(HAL_RCC_OscConfig(&amp;RCC_OscInitStruct)<sp/>==<sp/>HAL_OK)<sp/>{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Enable<sp/>RTC<sp/>clock<sp/>source<sp/>(LSI)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__HAL_RCC_RTC_CONFIG(RCC_RTCCLKSOURCE_LSI);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__RCC__Exported__Macros_1gab7cc36427c31da645a0e38e181f8ce0f" kindref="member">__HAL_RCC_RTC_ENABLE</ref>();</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Disable<sp/>Wakeup<sp/>Timer</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RTC-&gt;CR<sp/>&amp;=<sp/>~RTC_CR_WUTE;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Wait<sp/>for<sp/>wakeup<sp/>timer<sp/>write<sp/>flag<sp/>to<sp/>be<sp/>set</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>((RTC-&gt;ISR<sp/>&amp;<sp/>RTC_ISR_WUTWF)<sp/>==<sp/>0);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Set<sp/>wakeup<sp/>clock<sp/>source<sp/>to<sp/>ck_spre<sp/>(1<sp/>Hz<sp/>clock)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RTC-&gt;CR<sp/>&amp;=<sp/>~RTC_CR_WUCKSEL;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RTC-&gt;CR<sp/>|=<sp/>4U;<sp/></highlight><highlight class="comment">//<sp/>4:<sp/>ck_spre<sp/>(1Hz)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Set<sp/>counter<sp/>value<sp/>(10<sp/>-<sp/>1<sp/>=<sp/>9)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RTC-&gt;WUTR<sp/>=<sp/>9;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Clear<sp/>Wakeup<sp/>Flag</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RTC-&gt;ISR<sp/>&amp;=<sp/>~RTC_ISR_WUTF;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Enable<sp/>Wakeup<sp/>Timer<sp/>and<sp/>interrupt</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RTC-&gt;CR<sp/>|=<sp/>RTC_CR_WUTIE<sp/>|<sp/>RTC_CR_WUTE;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Clear<sp/>PWR<sp/>wakeup<sp/>flags</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__PWR__Exported__Macro_1ga21189c3a699027e3e932dff6985b2516" kindref="member">__HAL_PWR_CLEAR_WAKEUPFLAG</ref>(PWR_FLAG_WKUP1<sp/>|<sp/>PWR_FLAG_WKUP2<sp/>|<sp/>PWR_FLAG_WKUP3<sp/>|<sp/>PWR_FLAG_WKUP4<sp/>|<sp/>PWR_FLAG_WKUP5<sp/>|<sp/>PWR_FLAG_WKUP6);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Enter<sp/>Standby<sp/>Mode</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HAL_PWR_EnterSTANDBYMode();</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RTC-&gt;BKP1R<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Enable<sp/>write<sp/>protection</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>RTC-&gt;WPR<sp/>=<sp/>0xFF;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>enter_deep_sleep(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__osusat__slog__api_1ga7bbefdd3b087c6a39b6f677b63f25d94" kindref="member">LOG_INFO</ref>(<ref refid="group__logging__types_1gab0b8fd9a9944a1e8eccc88f6858636b6" kindref="member">OBC_COMPONENT_MAIN</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Entering<sp/>deep<sp/>sleep<sp/>standby<sp/>mode<sp/>for<sp/>%d<sp/>seconds...&quot;</highlight><highlight class="normal">,<sp/>DEEP_SLEEP_SLEEP_DURATION_S);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__HAL__Exported__Functions_1gae63b34eea12780ca2e1100c2402da18e" kindref="member">HAL_Delay</ref>(100);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>__HAL_RCC_PWR_CLK_ENABLE();</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>HAL_PWR_EnableBkUpAccess();</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Enable<sp/>LSI</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structRCC__OscInitTypeDef" kindref="compound">RCC_OscInitTypeDef</ref><sp/>RCC_OscInitStruct<sp/>=<sp/>{0};</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>RCC_OscInitStruct.<ref refid="structRCC__OscInitTypeDef_1af9e7bc89cab81c1705d94c74c7a81088" kindref="member">OscillatorType</ref><sp/>=<sp/>RCC_OSCILLATORTYPE_LSI;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>RCC_OscInitStruct.<ref refid="structRCC__OscInitTypeDef_1a955de90db8882fde02c4fb59c7c000f0" kindref="member">LSIState</ref><sp/>=<sp/>RCC_LSI_ON;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>HAL_RCC_OscConfig(&amp;RCC_OscInitStruct);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Enable<sp/>RTC<sp/>clock<sp/>source<sp/>(LSI)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>__HAL_RCC_RTC_CONFIG(RCC_RTCCLKSOURCE_LSI);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__RCC__Exported__Macros_1gab7cc36427c31da645a0e38e181f8ce0f" kindref="member">__HAL_RCC_RTC_ENABLE</ref>();</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Disable<sp/>write<sp/>protection</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>RTC-&gt;WPR<sp/>=<sp/>0xCA;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/>RTC-&gt;WPR<sp/>=<sp/>0x53;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Disable<sp/>Wakeup<sp/>Timer</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>RTC-&gt;CR<sp/>&amp;=<sp/>~RTC_CR_WUTE;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Wait<sp/>for<sp/>wakeup<sp/>timer<sp/>write<sp/>flag<sp/>to<sp/>be<sp/>set</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>((RTC-&gt;ISR<sp/>&amp;<sp/>RTC_ISR_WUTWF)<sp/>==<sp/>0);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Set<sp/>wakeup<sp/>clock<sp/>source<sp/>to<sp/>ck_spre<sp/>(1<sp/>Hz<sp/>clock)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>RTC-&gt;CR<sp/>&amp;=<sp/>~RTC_CR_WUCKSEL;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/>RTC-&gt;CR<sp/>|=<sp/>4U;<sp/></highlight><highlight class="comment">//<sp/>4:<sp/>ck_spre<sp/>(1Hz)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Set<sp/>counter<sp/>value<sp/>(duration<sp/>-<sp/>1)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/>RTC-&gt;WUTR<sp/>=<sp/>DEEP_SLEEP_SLEEP_DURATION_S<sp/>-<sp/>1;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Clear<sp/>Wakeup<sp/>Flag</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/>RTC-&gt;ISR<sp/>&amp;=<sp/>~RTC_ISR_WUTF;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Enable<sp/>Wakeup<sp/>Timer<sp/>and<sp/>interrupt</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/>RTC-&gt;CR<sp/>|=<sp/>RTC_CR_WUTIE<sp/>|<sp/>RTC_CR_WUTE;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Enable<sp/>write<sp/>protection</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/>RTC-&gt;WPR<sp/>=<sp/>0xFF;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Clear<sp/>PWR<sp/>wakeup<sp/>flags</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__PWR__Exported__Macro_1ga21189c3a699027e3e932dff6985b2516" kindref="member">__HAL_PWR_CLEAR_WAKEUPFLAG</ref>(PWR_FLAG_WKUP1<sp/>|<sp/>PWR_FLAG_WKUP2<sp/>|<sp/>PWR_FLAG_WKUP3<sp/>|<sp/>PWR_FLAG_WKUP4<sp/>|<sp/>PWR_FLAG_WKUP5<sp/>|<sp/>PWR_FLAG_WKUP6);</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Enter<sp/>Standby<sp/>Mode</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/>HAL_PWR_EnterSTANDBYMode();</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Fallback<sp/>in<sp/>case<sp/>Standby<sp/>failed</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/>HAL_NVIC_SystemReset();</highlight></codeline>
+<codeline lineno="134"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>main(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(__arm__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__CMSIS__CORE_1gaaaf6477c2bde2f00f99e3c2fd1060b01" kindref="member">SCB</ref>-&gt;VTOR<sp/>=<sp/>0x08000000;</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/>MPU_Config();</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__HAL__Group1_1gaecac54d350c3730e6831eb404e557dc4" kindref="member">HAL_Init</ref>();</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(__arm__)<sp/>&amp;&amp;<sp/>defined(DEEP_SLEEP_ENABLED)<sp/>&amp;&amp;<sp/>(DEEP_SLEEP_ENABLED<sp/>==<sp/>1)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/>check_deep_sleep_status();</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(__arm__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__HAL__Exported__Functions_1gaf031bcc71ebad9b7edf405547efd762b" kindref="member">HAL_DBGMCU_EnableDBGSleepMode</ref>();</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__HAL__Exported__Functions_1gadf25043b17de4bef38a95a75fd03e5c4" kindref="member">HAL_DBGMCU_EnableDBGStopMode</ref>();</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__HAL__Exported__Functions_1ga28a1323b2eeb0a408c1cfdbfa0db5ead" kindref="member">HAL_DBGMCU_EnableDBGStandbyMode</ref>();</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/>bsp_clock_init();</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/>MX_GPIO_Init();</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__obc__gpio_1gab5ae6f712980fbf6f16ecb6dc8ae1a36" kindref="member">hal_gpio_init</ref>();</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__obc__gpio_1gaa314f8a9a4b7b51a49361b942b7d2c3b" kindref="member">hal_gpio_write</ref>(WATCHDOG_SET0_PIN,<sp/>HAL_GPIO_STATE_HIGH);</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__obc__gpio_1gaa314f8a9a4b7b51a49361b942b7d2c3b" kindref="member">hal_gpio_write</ref>(WATCHDOG_SET1_PIN,<sp/>HAL_GPIO_STATE_HIGH);</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__obc__gpio_1gaa314f8a9a4b7b51a49361b942b7d2c3b" kindref="member">hal_gpio_write</ref>(WATCHDOG_SET2_PIN,<sp/>HAL_GPIO_STATE_LOW);</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__obc__gpio_1gaa314f8a9a4b7b51a49361b942b7d2c3b" kindref="member">hal_gpio_write</ref>(WATCHDOG_WDI_PIN,<sp/>HAL_GPIO_STATE_LOW);</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/>MX_FDCAN1_Init();</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/>MX_FDCAN2_Init();</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/>MX_I2C2_Init();</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>MX_SDMMC1_SD_Init();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>MX_SPI1_Init();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>MX_SPI4_Init();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>MX_UART7_Init();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>MX_USART1_UART_Init();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>MX_USART6_UART_Init();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>MX_USB_OTG_HS_PCD_Init();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__osusat__event__bus__api_1gaae6e93a3fbfe725ca1494eb91284863c" kindref="member">osusat_event_bus_init</ref>(event_queue,<sp/>EVENT_QUEUE_SIZE);</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__obc__time_1gaf754b59b56d2a344d9c868bdec1137c5" kindref="member">hal_time_init</ref>();</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__logging__api_1gab472c7887dc39c12bba0022d7a0ac99f" kindref="member">logging_init</ref>(<ref refid="group__osusat__slog__types_1ggafe0f1801f6e3827f06165e284313814ba0910e0bc044406b4a8be8fbd9198bb24" kindref="member">OSUSAT_SLOG_INFO</ref>);</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>uart_config_t<sp/>uart_config<sp/>=<sp/>{.baudrate<sp/>=<sp/>115200};</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>hal_uart_init(UART_PORT_1,<sp/>&amp;uart_config);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>hal_uart_init(UART_PORT_6,<sp/>&amp;uart_config);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>hal_uart_init(UART_PORT_7,<sp/>&amp;uart_config);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structhal__can__config__t" kindref="compound">hal_can_config_t</ref><sp/>can_config<sp/>=<sp/>{.<ref refid="structhal__can__config__t_1a035fe2ebe68ac9cdd0992070679002df" kindref="member">baudrate</ref><sp/>=<sp/>250000};</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__obc__can_1gaee75487bc1a6b3c93fc347d818d5fd18" kindref="member">hal_can_init</ref>(<ref refid="group__obc__can_1gga83a77f224d5e726b32e0c7e7acff1163aac46ad8f66070ccf930a4b21f5512039" kindref="member">HAL_CAN_PORT_1</ref>,<sp/>&amp;can_config);</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__obc__can_1gaee75487bc1a6b3c93fc347d818d5fd18" kindref="member">hal_can_init</ref>(<ref refid="group__obc__can_1gga83a77f224d5e726b32e0c7e7acff1163a2428504723e2f469d58bc3bbade475a9" kindref="member">HAL_CAN_PORT_2</ref>,<sp/>&amp;can_config);</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__can__events__api_1ga4db1fa5defe1a1618ead802defedd4f7" kindref="member">can_events_init</ref>(&amp;can1_events_service,<sp/><ref refid="group__obc__can_1gga83a77f224d5e726b32e0c7e7acff1163aac46ad8f66070ccf930a4b21f5512039" kindref="member">HAL_CAN_PORT_1</ref>);</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__can__events__api_1ga4db1fa5defe1a1618ead802defedd4f7" kindref="member">can_events_init</ref>(&amp;can2_events_service,<sp/><ref refid="group__obc__can_1gga83a77f224d5e726b32e0c7e7acff1163a2428504723e2f469d58bc3bbade475a9" kindref="member">HAL_CAN_PORT_2</ref>);</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__osusat__slog__api_1ga7bbefdd3b087c6a39b6f677b63f25d94" kindref="member">LOG_INFO</ref>(<ref refid="group__logging__types_1gab0b8fd9a9944a1e8eccc88f6858636b6" kindref="member">OBC_COMPONENT_MAIN</ref>,<sp/></highlight><highlight class="stringliteral">&quot;OBC<sp/>initialization<sp/>complete&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="198"><highlight class="comment"><sp/><sp/><sp/><sp/>hal_gpio_write(WATCHDOG_SET0_PIN,<sp/>HAL_GPIO_STATE_LOW);</highlight></codeline>
+<codeline lineno="199"><highlight class="comment"><sp/><sp/><sp/><sp/>hal_gpio_write(WATCHDOG_SET1_PIN,<sp/>HAL_GPIO_STATE_LOW);</highlight></codeline>
+<codeline lineno="200"><highlight class="comment"><sp/><sp/><sp/><sp/>hal_gpio_write(WATCHDOG_SET2_PIN,<sp/>HAL_GPIO_STATE_HIGH);</highlight></codeline>
+<codeline lineno="201"><highlight class="comment"><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>hal_gpio_toggle(WATCHDOG_WDI_PIN);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__obc__i2c_1ga9883371a45c5f264b1924250f2186ea8" kindref="member">hal_i2c_init</ref>(<ref refid="group__obc__i2c_1gga29c2ef19c960dcf416306806f97d1250a3abbf3238dc4cd408421ae3c47512a60" kindref="member">I2C_BUS_2</ref>);</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="sensors_8c_1ac5ec1d578591899e43c3515d05e573b7" kindref="member">sensors_init</ref>();</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"></highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Debug<sp/>FRAM<sp/>reads<sp/>removed<sp/>to<sp/>prevent<sp/>startup<sp/>I2C<sp/>conflicts</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"></highlight></codeline>
+<codeline lineno="210"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(__arm__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/>uint8_t<sp/>g_main_tick_flag;</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(1)<sp/>{</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(g_main_tick_flag)<sp/>{</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>g_main_tick_flag<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__osusat__event__bus__api_1ga9a19dc997602dd4c0a2bd006b51e2486" kindref="member">osusat_event_bus_publish</ref>(EVENT_SYSTICK,<sp/>NULL,<sp/>0);</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__osusat__event__bus__api_1ga0a64376500bc5e410ce4d8e436475bb3" kindref="member">osusat_event_bus_process</ref>();</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"></highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>uint32_t<sp/>last_blink<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>now<sp/>=<sp/><ref refid="group__obc__time_1ga697ad15eedc3e4ef194c93f24734e0a2" kindref="member">hal_time_get_ms</ref>();</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(now<sp/>-<sp/>last_blink<sp/>&gt;=<sp/>2000)<sp/>{</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>last_blink<sp/>=<sp/>now;</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__obc__gpio_1gaa314f8a9a4b7b51a49361b942b7d2c3b" kindref="member">hal_gpio_write</ref>(GREEN_LED_PIN,<sp/>HAL_GPIO_STATE_HIGH);</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__obc__gpio_1gaa314f8a9a4b7b51a49361b942b7d2c3b" kindref="member">hal_gpio_write</ref>(RED_LED_PIN,<sp/>HAL_GPIO_STATE_LOW);</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__osusat__slog__api_1ga7bbefdd3b087c6a39b6f677b63f25d94" kindref="member">LOG_INFO</ref>(<ref refid="group__logging__types_1gab0b8fd9a9944a1e8eccc88f6858636b6" kindref="member">OBC_COMPONENT_MAIN</ref>,<sp/></highlight><highlight class="stringliteral">&quot;OBC<sp/>heartbeat,<sp/>uptime:<sp/>%lu<sp/>ms&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal">)now);</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(now<sp/>-<sp/>last_blink<sp/>&gt;=<sp/>20)<sp/>{</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__obc__gpio_1gaa314f8a9a4b7b51a49361b942b7d2c3b" kindref="member">hal_gpio_write</ref>(GREEN_LED_PIN,<sp/>HAL_GPIO_STATE_LOW);</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"></highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__obc__gpio_1ga8d567a689867d0c1be8f447cca081242" kindref="member">hal_gpio_toggle</ref>(WATCHDOG_WDI_PIN);</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"></highlight></codeline>
+<codeline lineno="233"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(__arm__)<sp/>&amp;&amp;<sp/>defined(DEEP_SLEEP_ENABLED)<sp/>&amp;&amp;<sp/>(DEEP_SLEEP_ENABLED<sp/>==<sp/>1)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(now<sp/>&gt;=<sp/>DEEP_SLEEP_WAKE_DURATION_S<sp/>*<sp/>1000)<sp/>{</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>enter_deep_sleep();</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__CMSIS__Core__InstructionInterface_1gad23bf2b78a9a4524157c9de0d30b7448" kindref="member">__WFI</ref>();</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(1)<sp/>{</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__osusat__event__bus__api_1ga0a64376500bc5e410ce4d8e436475bb3" kindref="member">osusat_event_bus_process</ref>();</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="247"><highlight class="normal"></highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="249"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/main.c"/>
+  </compounddef>
+</doxygen>

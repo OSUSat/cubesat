@@ -1,0 +1,916 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="group__DMA__Exported__Macros" kind="group">
+    <compoundname>DMA_Exported_Macros</compoundname>
+    <title>DMA Exported Macros</title>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="group__DMA__Exported__Macros_1gaadcee34f0999c8eafd37de2f69daa0ac" prot="public" static="no">
+        <name>__HAL_DMA_RESET_HANDLE_STATE</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer>((__HANDLE__)-&gt;State = <ref refid="group__DMA__Exported__Types_1gga9c012af359987a240826f29073bbe463a9e7be73da32b8c837cde0318e0d5eed2" kindref="member">HAL_DMA_STATE_RESET</ref>)</initializer>
+        <briefdescription>
+<para>Reset DMA handle state. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the DMA handle. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h" line="676" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h" bodystart="676" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DMA__Exported__Macros_1ga8f0ff408d25904040b9d23ee7f6af080" prot="public" static="no">
+        <name>__HAL_DMA_GET_FS</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer>((IS_DMA_STREAM_INSTANCE((__HANDLE__)-&gt;Instance))? (((<ref refid="structDMA__Stream__TypeDef" kindref="compound">DMA_Stream_TypeDef</ref> *)(__HANDLE__)-&gt;Instance)-&gt;FCR &amp; (<ref refid="group__Peripheral__Registers__Bits__Definition_1ga56094479dc9b173b00ccfb199d8a2853" kindref="member">DMA_SxFCR_FS</ref>)) : 0)</initializer>
+        <briefdescription>
+<para>Return the current DMA Stream FIFO filled level. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>DMA handle </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>The</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>FIFO filling state.<itemizedlist>
+<listitem><para>DMA_FIFOStatus_Less1QuarterFull: when FIFO is less than 1 quarter-full and not empty.</para>
+</listitem><listitem><para>DMA_FIFOStatus_1QuarterFull: if more than 1 quarter-full.</para>
+</listitem><listitem><para>DMA_FIFOStatus_HalfFull: if more than 1 half-full.</para>
+</listitem><listitem><para>DMA_FIFOStatus_3QuartersFull: if more than 3 quarters-full.</para>
+</listitem><listitem><para>DMA_FIFOStatus_Empty: when FIFO is empty</para>
+</listitem><listitem><para>DMA_FIFOStatus_Full: when FIFO is full </para>
+</listitem></itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h" line="690" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h" bodystart="690" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DMA__Exported__Macros_1ga93900b3ef3f87ef924eb887279a434b4" prot="public" static="no">
+        <name>__HAL_DMA_ENABLE</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer>((IS_DMA_STREAM_INSTANCE((__HANDLE__)-&gt;Instance))? (((<ref refid="structDMA__Stream__TypeDef" kindref="compound">DMA_Stream_TypeDef</ref> *)(__HANDLE__)-&gt;Instance)-&gt;CR |=  <ref refid="group__Peripheral__Registers__Bits__Definition_1gaabf69fe92e9a44167535365b0fe4ea9e" kindref="member">DMA_SxCR_EN</ref>) : \
+(((<ref refid="structBDMA__Channel__TypeDef" kindref="compound">BDMA_Channel_TypeDef</ref> *)(__HANDLE__)-&gt;Instance)-&gt;CCR |=  <ref refid="group__Peripheral__Registers__Bits__Definition_1ga34ff479471bbc8eea0ca2b91431c3dd7" kindref="member">BDMA_CCR_EN</ref>))</initializer>
+        <briefdescription>
+<para>Enable the specified DMA Stream. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>DMA handle </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h" line="697" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h" bodystart="697" bodyend="699"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DMA__Exported__Macros_1gafeef4c5e8c3f015cdecc0f37bbe063dc" prot="public" static="no">
+        <name>__HAL_DMA_DISABLE</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer>((IS_DMA_STREAM_INSTANCE((__HANDLE__)-&gt;Instance))? (((<ref refid="structDMA__Stream__TypeDef" kindref="compound">DMA_Stream_TypeDef</ref> *)(__HANDLE__)-&gt;Instance)-&gt;CR &amp;=  ~<ref refid="group__Peripheral__Registers__Bits__Definition_1gaabf69fe92e9a44167535365b0fe4ea9e" kindref="member">DMA_SxCR_EN</ref>) : \
+(((<ref refid="structBDMA__Channel__TypeDef" kindref="compound">BDMA_Channel_TypeDef</ref> *)(__HANDLE__)-&gt;Instance)-&gt;CCR &amp;=  ~<ref refid="group__Peripheral__Registers__Bits__Definition_1ga34ff479471bbc8eea0ca2b91431c3dd7" kindref="member">BDMA_CCR_EN</ref>))</initializer>
+        <briefdescription>
+<para>Disable the specified DMA Stream. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>DMA handle </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h" line="706" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h" bodystart="706" bodyend="708"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DMA__Exported__Macros_1gae3feef5ea50ff13a6a5b98cb353c87b0" prot="public" static="no">
+        <name>__HAL_DMA_GET_TC_FLAG_INDEX</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer>(((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA1_Stream0))? DMA_FLAG_TCIF0_4 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA2_Stream0))? DMA_FLAG_TCIF0_4 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA1_Stream4))? DMA_FLAG_TCIF0_4 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA2_Stream4))? DMA_FLAG_TCIF0_4 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA1_Stream1))? DMA_FLAG_TCIF1_5 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA2_Stream1))? DMA_FLAG_TCIF1_5 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA1_Stream5))? DMA_FLAG_TCIF1_5 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA2_Stream5))? DMA_FLAG_TCIF1_5 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA1_Stream2))? DMA_FLAG_TCIF2_6 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA2_Stream2))? DMA_FLAG_TCIF2_6 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA1_Stream6))? DMA_FLAG_TCIF2_6 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA2_Stream6))? DMA_FLAG_TCIF2_6 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA1_Stream3))? DMA_FLAG_TCIF3_7 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA2_Stream3))? DMA_FLAG_TCIF3_7 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA1_Stream7))? DMA_FLAG_TCIF3_7 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA2_Stream7))? DMA_FLAG_TCIF3_7 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)BDMA_Channel0))? BDMA_FLAG_TC0   :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)BDMA_Channel1))? BDMA_FLAG_TC1   :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)BDMA_Channel2))? BDMA_FLAG_TC2   :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)BDMA_Channel3))? BDMA_FLAG_TC3   :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)BDMA_Channel4))? BDMA_FLAG_TC4   :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)BDMA_Channel5))? BDMA_FLAG_TC5   :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)BDMA_Channel6))? BDMA_FLAG_TC6   :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)BDMA_Channel7))? BDMA_FLAG_TC7   :\
+ (uint32_t)0x00000000)</initializer>
+        <briefdescription>
+<para>Return the current DMA Stream transfer complete flag. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>DMA handle </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>The</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specified transfer complete flag index. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h" line="753" column="10" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h" bodystart="753" bodyend="778"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DMA__Exported__Macros_1ga0095f5f3166a82bedc67744ac94acfba" prot="public" static="no">
+        <name>__HAL_DMA_GET_HT_FLAG_INDEX</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer>(((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA1_Stream0))? DMA_FLAG_HTIF0_4 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA2_Stream0))? DMA_FLAG_HTIF0_4 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA1_Stream4))? DMA_FLAG_HTIF0_4 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA2_Stream4))? DMA_FLAG_HTIF0_4 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA1_Stream1))? DMA_FLAG_HTIF1_5 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA2_Stream1))? DMA_FLAG_HTIF1_5 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA1_Stream5))? DMA_FLAG_HTIF1_5 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA2_Stream5))? DMA_FLAG_HTIF1_5 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA1_Stream2))? DMA_FLAG_HTIF2_6 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA2_Stream2))? DMA_FLAG_HTIF2_6 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA1_Stream6))? DMA_FLAG_HTIF2_6 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA2_Stream6))? DMA_FLAG_HTIF2_6 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA1_Stream3))? DMA_FLAG_HTIF3_7 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA2_Stream3))? DMA_FLAG_HTIF3_7 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA1_Stream7))? DMA_FLAG_HTIF3_7 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA2_Stream7))? DMA_FLAG_HTIF3_7 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)BDMA_Channel0))? BDMA_FLAG_HT0   :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)BDMA_Channel1))? BDMA_FLAG_HT1   :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)BDMA_Channel2))? BDMA_FLAG_HT2   :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)BDMA_Channel3))? BDMA_FLAG_HT3   :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)BDMA_Channel4))? BDMA_FLAG_HT4   :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)BDMA_Channel5))? BDMA_FLAG_HT5   :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)BDMA_Channel6))? BDMA_FLAG_HT6   :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)BDMA_Channel7))? BDMA_FLAG_HT7   :\
+ (uint32_t)0x00000000)</initializer>
+        <briefdescription>
+<para>Return the current DMA Stream half transfer complete flag. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>DMA handle </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>The</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specified half transfer complete flag index. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h" line="822" column="10" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h" bodystart="822" bodyend="847"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DMA__Exported__Macros_1ga5e765bb3b1c5fc9f1b1abbbb764250bc" prot="public" static="no">
+        <name>__HAL_DMA_GET_TE_FLAG_INDEX</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer>(((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA1_Stream0))? DMA_FLAG_TEIF0_4 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA2_Stream0))? DMA_FLAG_TEIF0_4 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA1_Stream4))? DMA_FLAG_TEIF0_4 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA2_Stream4))? DMA_FLAG_TEIF0_4 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA1_Stream1))? DMA_FLAG_TEIF1_5 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA2_Stream1))? DMA_FLAG_TEIF1_5 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA1_Stream5))? DMA_FLAG_TEIF1_5 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA2_Stream5))? DMA_FLAG_TEIF1_5 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA1_Stream2))? DMA_FLAG_TEIF2_6 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA2_Stream2))? DMA_FLAG_TEIF2_6 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA1_Stream6))? DMA_FLAG_TEIF2_6 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA2_Stream6))? DMA_FLAG_TEIF2_6 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA1_Stream3))? DMA_FLAG_TEIF3_7 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA2_Stream3))? DMA_FLAG_TEIF3_7 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA1_Stream7))? DMA_FLAG_TEIF3_7 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA2_Stream7))? DMA_FLAG_TEIF3_7 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)BDMA_Channel0))? BDMA_FLAG_TE0   :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)BDMA_Channel1))? BDMA_FLAG_TE1   :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)BDMA_Channel2))? BDMA_FLAG_TE2   :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)BDMA_Channel3))? BDMA_FLAG_TE3   :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)BDMA_Channel4))? BDMA_FLAG_TE4   :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)BDMA_Channel5))? BDMA_FLAG_TE5   :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)BDMA_Channel6))? BDMA_FLAG_TE6   :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)BDMA_Channel7))? BDMA_FLAG_TE7   :\
+ (uint32_t)0x00000000)</initializer>
+        <briefdescription>
+<para>Return the current DMA Stream transfer error flag. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>DMA handle </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>The</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specified transfer error flag index. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h" line="891" column="10" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h" bodystart="891" bodyend="916"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DMA__Exported__Macros_1ga5878c3a1dbcf01e6840fffcf1f244088" prot="public" static="no">
+        <name>__HAL_DMA_GET_FE_FLAG_INDEX</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer>(((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA1_Stream0))? DMA_FLAG_FEIF0_4 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA2_Stream0))? DMA_FLAG_FEIF0_4 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA1_Stream4))? DMA_FLAG_FEIF0_4 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA2_Stream4))? DMA_FLAG_FEIF0_4 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA1_Stream1))? DMA_FLAG_FEIF1_5 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA2_Stream1))? DMA_FLAG_FEIF1_5 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA1_Stream5))? DMA_FLAG_FEIF1_5 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA2_Stream5))? DMA_FLAG_FEIF1_5 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA1_Stream2))? DMA_FLAG_FEIF2_6 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA2_Stream2))? DMA_FLAG_FEIF2_6 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA1_Stream6))? DMA_FLAG_FEIF2_6 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA2_Stream6))? DMA_FLAG_FEIF2_6 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA1_Stream3))? DMA_FLAG_FEIF3_7 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA2_Stream3))? DMA_FLAG_FEIF3_7 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA1_Stream7))? DMA_FLAG_FEIF3_7 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA2_Stream7))? DMA_FLAG_FEIF3_7 :\
+  (uint32_t)0x00000000)</initializer>
+        <briefdescription>
+<para>Return the current DMA Stream FIFO error flag. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>DMA handle </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>The</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specified FIFO error flag index. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h" line="924" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h" bodystart="924" bodyend="941"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DMA__Exported__Macros_1ga23d1f282af3b9aa7aa396dcad94865d8" prot="public" static="no">
+        <name>__HAL_DMA_GET_DME_FLAG_INDEX</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer>(((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA1_Stream0))? DMA_FLAG_DMEIF0_4 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA2_Stream0))? DMA_FLAG_DMEIF0_4 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA1_Stream4))? DMA_FLAG_DMEIF0_4 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA2_Stream4))? DMA_FLAG_DMEIF0_4 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA1_Stream1))? DMA_FLAG_DMEIF1_5 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA2_Stream1))? DMA_FLAG_DMEIF1_5 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA1_Stream5))? DMA_FLAG_DMEIF1_5 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA2_Stream5))? DMA_FLAG_DMEIF1_5 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA1_Stream2))? DMA_FLAG_DMEIF2_6 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA2_Stream2))? DMA_FLAG_DMEIF2_6 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA1_Stream6))? DMA_FLAG_DMEIF2_6 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA2_Stream6))? DMA_FLAG_DMEIF2_6 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA1_Stream3))? DMA_FLAG_DMEIF3_7 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA2_Stream3))? DMA_FLAG_DMEIF3_7 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA1_Stream7))? DMA_FLAG_DMEIF3_7 :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)DMA2_Stream7))? DMA_FLAG_DMEIF3_7 :\
+  (uint32_t)0x00000000)</initializer>
+        <briefdescription>
+<para>Return the current DMA Stream direct mode error flag. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>DMA handle </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>The</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specified direct mode error flag index. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h" line="948" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h" bodystart="948" bodyend="965"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DMA__Exported__Macros_1ga8779acdae52ce7746973df2b83704d10" prot="public" static="no">
+        <name>__HAL_BDMA_GET_GI_FLAG_INDEX</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer>(((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)BDMA_Channel0))? <ref refid="group__Peripheral__Registers__Bits__Definition_1ga5e1cca96f3a10bfed45e2f705d25b87c" kindref="member">BDMA_ISR_GIF0</ref> :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)BDMA_Channel1))? <ref refid="group__Peripheral__Registers__Bits__Definition_1gad521e81de9add44f5871ff74b39103b6" kindref="member">BDMA_ISR_GIF1</ref> :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)BDMA_Channel2))? <ref refid="group__Peripheral__Registers__Bits__Definition_1ga01919ef840f83f1d173d22d8c408cac6" kindref="member">BDMA_ISR_GIF2</ref> :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)BDMA_Channel3))? <ref refid="group__Peripheral__Registers__Bits__Definition_1gafcad475de62a1e7886ddf2d50d7d943f" kindref="member">BDMA_ISR_GIF3</ref> :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)BDMA_Channel4))? <ref refid="group__Peripheral__Registers__Bits__Definition_1gaa1fff1b89dcabcecaef8585a1a4d442e" kindref="member">BDMA_ISR_GIF4</ref> :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)BDMA_Channel5))? <ref refid="group__Peripheral__Registers__Bits__Definition_1gad54501a1f7450bf220d14f83a72b16fe" kindref="member">BDMA_ISR_GIF5</ref> :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)BDMA_Channel6))? <ref refid="group__Peripheral__Registers__Bits__Definition_1ga3721d586718d8e475c7c50ed45e6fbab" kindref="member">BDMA_ISR_GIF6</ref> :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) == ((uint32_t)BDMA_Channel7))? <ref refid="group__Peripheral__Registers__Bits__Definition_1gab9b4ca2423db8bcf9035e67a4988fb1d" kindref="member">BDMA_ISR_GIF7</ref> :\
+  (uint32_t)0x00000000)</initializer>
+        <briefdescription>
+<para>Returns the current BDMA Channel Global interrupt flag. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>DMA handle </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>The</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specified transfer error flag index. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h" line="992" column="10" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h" bodystart="992" bodyend="1001"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DMA__Exported__Macros_1ga798d4b3b3fbd32b95540967bb35b35be" prot="public" static="no">
+        <name>__HAL_DMA_GET_FLAG</name>
+        <param><defname>__HANDLE__</defname></param>
+        <param><defname>__FLAG__</defname></param>
+        <initializer>(((uint32_t)((__HANDLE__)-&gt;Instance) &gt; (uint32_t)DMA2_Stream7)? (BDMA-&gt;ISR &amp; (__FLAG__))  :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) &gt; (uint32_t)DMA2_Stream3)? (DMA2-&gt;HISR &amp; (__FLAG__)) :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) &gt; (uint32_t)DMA1_Stream7)? (DMA2-&gt;LISR &amp; (__FLAG__)) :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) &gt; (uint32_t)DMA1_Stream3)? (DMA1-&gt;HISR &amp; (__FLAG__)) : (DMA1-&gt;LISR &amp; (__FLAG__)))</initializer>
+        <briefdescription>
+<para>Get the DMA Stream pending flags. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>DMA handle </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>__FLAG__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Get the specified flag. This parameter can be any combination of the following values: <itemizedlist>
+<listitem><para>DMA_FLAG_TCIFx: Transfer complete flag. </para>
+</listitem>
+<listitem><para>DMA_FLAG_HTIFx: Half transfer complete flag. </para>
+</listitem>
+<listitem><para>DMA_FLAG_TEIFx: Transfer error flag. </para>
+</listitem>
+<listitem><para>DMA_FLAG_DMEIFx: Direct mode error flag. </para>
+</listitem>
+<listitem><para>DMA_FLAG_FEIFx: FIFO error flag. Where x can be 0_4, 1_5, 2_6 or 3_7 to select the DMA Stream flag. </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>The</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>state of FLAG (SET or RESET). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h" line="1025" column="10" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h" bodystart="1025" bodyend="1029"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DMA__Exported__Macros_1gabc041fb1c85ea7a3af94e42470ef7f2a" prot="public" static="no">
+        <name>__HAL_DMA_CLEAR_FLAG</name>
+        <param><defname>__HANDLE__</defname></param>
+        <param><defname>__FLAG__</defname></param>
+        <initializer>(((uint32_t)((__HANDLE__)-&gt;Instance) &gt; (uint32_t)DMA2_Stream7)? (BDMA-&gt;IFCR = (__FLAG__))  :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) &gt; (uint32_t)DMA2_Stream3)? (DMA2-&gt;HIFCR = (__FLAG__)) :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) &gt; (uint32_t)DMA1_Stream7)? (DMA2-&gt;LIFCR = (__FLAG__)) :\
+ ((uint32_t)((__HANDLE__)-&gt;Instance) &gt; (uint32_t)DMA1_Stream3)? (DMA1-&gt;HIFCR = (__FLAG__)) : (DMA1-&gt;LIFCR = (__FLAG__)))</initializer>
+        <briefdescription>
+<para>Clear the DMA Stream pending flags. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>DMA handle </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>__FLAG__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the flag to clear. This parameter can be any combination of the following values: <itemizedlist>
+<listitem><para>DMA_FLAG_TCIFx: Transfer complete flag. </para>
+</listitem>
+<listitem><para>DMA_FLAG_HTIFx: Half transfer complete flag. </para>
+</listitem>
+<listitem><para>DMA_FLAG_TEIFx: Transfer error flag. </para>
+</listitem>
+<listitem><para>DMA_FLAG_DMEIFx: Direct mode error flag. </para>
+</listitem>
+<listitem><para>DMA_FLAG_FEIFx: FIFO error flag. Where x can be 0_4, 1_5, 2_6 or 3_7 to select the DMA Stream flag. </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h" line="1053" column="10" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h" bodystart="1053" bodyend="1057"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DMA__Exported__Macros_1ga04039af9ae2375f5774d44ab4833628c" prot="public" static="no">
+        <name>DMA_TO_BDMA_IT</name>
+        <param><defname>__DMA_IT__</defname></param>
+        <initializer>((((__DMA_IT__) &amp; (DMA_IT_TC | DMA_IT_HT | DMA_IT_TE)) == (DMA_IT_TC | DMA_IT_HT | DMA_IT_TE)) ? (<ref refid="group__Peripheral__Registers__Bits__Definition_1ga2f37526514f1bcdf92475260f06c4159" kindref="member">BDMA_CCR_TCIE</ref> | <ref refid="group__Peripheral__Registers__Bits__Definition_1ga903d3c2250a0f84af9a6b0497caf5a57" kindref="member">BDMA_CCR_HTIE</ref> |<ref refid="group__Peripheral__Registers__Bits__Definition_1gaf81d00a5b8d3633f47b41cd27c3e3702" kindref="member">BDMA_CCR_TEIE</ref>) :\
+ (((__DMA_IT__) &amp; (DMA_IT_TC | DMA_IT_HT)) == (DMA_IT_TC | DMA_IT_HT)) ? (<ref refid="group__Peripheral__Registers__Bits__Definition_1ga2f37526514f1bcdf92475260f06c4159" kindref="member">BDMA_CCR_TCIE</ref> | <ref refid="group__Peripheral__Registers__Bits__Definition_1ga903d3c2250a0f84af9a6b0497caf5a57" kindref="member">BDMA_CCR_HTIE</ref>) :\
+ (((__DMA_IT__) &amp; (DMA_IT_HT | DMA_IT_TE)) == (DMA_IT_HT | DMA_IT_TE)) ? (<ref refid="group__Peripheral__Registers__Bits__Definition_1ga903d3c2250a0f84af9a6b0497caf5a57" kindref="member">BDMA_CCR_HTIE</ref> |<ref refid="group__Peripheral__Registers__Bits__Definition_1gaf81d00a5b8d3633f47b41cd27c3e3702" kindref="member">BDMA_CCR_TEIE</ref>)  :\
+ (((__DMA_IT__) &amp; (DMA_IT_TC | DMA_IT_TE)) == (DMA_IT_TC | DMA_IT_TE)) ? (<ref refid="group__Peripheral__Registers__Bits__Definition_1ga2f37526514f1bcdf92475260f06c4159" kindref="member">BDMA_CCR_TCIE</ref> |<ref refid="group__Peripheral__Registers__Bits__Definition_1gaf81d00a5b8d3633f47b41cd27c3e3702" kindref="member">BDMA_CCR_TEIE</ref>)  :\
+ ((__DMA_IT__) == DMA_IT_TC) ? <ref refid="group__Peripheral__Registers__Bits__Definition_1ga2f37526514f1bcdf92475260f06c4159" kindref="member">BDMA_CCR_TCIE</ref> :\
+ ((__DMA_IT__) == DMA_IT_HT) ? <ref refid="group__Peripheral__Registers__Bits__Definition_1ga903d3c2250a0f84af9a6b0497caf5a57" kindref="member">BDMA_CCR_HTIE</ref> :\
+ ((__DMA_IT__) == DMA_IT_TE) ? <ref refid="group__Peripheral__Registers__Bits__Definition_1gaf81d00a5b8d3633f47b41cd27c3e3702" kindref="member">BDMA_CCR_TEIE</ref> :\
+ (uint32_t)0x00000000)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h" line="1060" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h" bodystart="1060" bodyend="1068"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DMA__Exported__Macros_1ga10896c6dfbdf3d44464a069b1721ca8b" prot="public" static="no">
+        <name>__HAL_BDMA_CHANNEL_ENABLE_IT</name>
+        <param><defname>__HANDLE__</defname></param>
+        <param><defname>__INTERRUPT__</defname></param>
+        <initializer>(((<ref refid="structBDMA__Channel__TypeDef" kindref="compound">BDMA_Channel_TypeDef</ref> *)(__HANDLE__)-&gt;Instance)-&gt;CCR |= (DMA_TO_BDMA_IT(__INTERRUPT__)))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h" line="1071" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h" bodystart="1071" bodyend="1072"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DMA__Exported__Macros_1ga8a533441ac435e67f8900ea093cedc62" prot="public" static="no">
+        <name>__HAL_DMA_STREAM_ENABLE_IT</name>
+        <param><defname>__HANDLE__</defname></param>
+        <param><defname>__INTERRUPT__</defname></param>
+        <initializer>(((__INTERRUPT__) != DMA_IT_FE)? \
+(((<ref refid="structDMA__Stream__TypeDef" kindref="compound">DMA_Stream_TypeDef</ref> *)(__HANDLE__)-&gt;Instance)-&gt;CR |= (__INTERRUPT__)) : (((<ref refid="structDMA__Stream__TypeDef" kindref="compound">DMA_Stream_TypeDef</ref> *)(__HANDLE__)-&gt;Instance)-&gt;FCR |= (__INTERRUPT__)))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h" line="1074" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h" bodystart="1074" bodyend="1075"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DMA__Exported__Macros_1ga2124233229c04ca90b790cd8cddfa98b" prot="public" static="no">
+        <name>__HAL_DMA_ENABLE_IT</name>
+        <param><defname>__HANDLE__</defname></param>
+        <param><defname>__INTERRUPT__</defname></param>
+        <initializer>                                                        ((IS_DMA_STREAM_INSTANCE((__HANDLE__)-&gt;Instance))?\
+                                                        (__HAL_DMA_STREAM_ENABLE_IT((__HANDLE__), (__INTERRUPT__))) :\
+                                                        (__HAL_BDMA_CHANNEL_ENABLE_IT((__HANDLE__), (__INTERRUPT__))))</initializer>
+        <briefdescription>
+<para>Enable the specified DMA Stream interrupts. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>DMA handle </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>__INTERRUPT__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the DMA interrupt sources to be enabled or disabled. This parameter can be one of the following values: <itemizedlist>
+<listitem><para>DMA_IT_TC: Transfer complete interrupt mask. </para>
+</listitem>
+<listitem><para>DMA_IT_HT: Half transfer complete interrupt mask. </para>
+</listitem>
+<listitem><para>DMA_IT_TE: Transfer error interrupt mask. </para>
+</listitem>
+<listitem><para>DMA_IT_FE: FIFO error interrupt mask. </para>
+</listitem>
+<listitem><para>DMA_IT_DME: Direct mode error interrupt. </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h" line="1089" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h" bodystart="1089" bodyend="1091"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DMA__Exported__Macros_1gafe490c84a1411bd6378b374d214dcb20" prot="public" static="no">
+        <name>__HAL_BDMA_CHANNEL_DISABLE_IT</name>
+        <param><defname>__HANDLE__</defname></param>
+        <param><defname>__INTERRUPT__</defname></param>
+        <initializer>(((<ref refid="structBDMA__Channel__TypeDef" kindref="compound">BDMA_Channel_TypeDef</ref> *)(__HANDLE__)-&gt;Instance)-&gt;CCR &amp;= ~(DMA_TO_BDMA_IT(__INTERRUPT__)))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h" line="1094" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h" bodystart="1094" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DMA__Exported__Macros_1gaaa6db3b6d5a3382ec0f763a10b6f9369" prot="public" static="no">
+        <name>__HAL_DMA_STREAM_DISABLE_IT</name>
+        <param><defname>__HANDLE__</defname></param>
+        <param><defname>__INTERRUPT__</defname></param>
+        <initializer>(((__INTERRUPT__) != DMA_IT_FE)? \
+(((<ref refid="structDMA__Stream__TypeDef" kindref="compound">DMA_Stream_TypeDef</ref> *)(__HANDLE__)-&gt;Instance)-&gt;CR &amp;= ~(__INTERRUPT__)) : (((<ref refid="structDMA__Stream__TypeDef" kindref="compound">DMA_Stream_TypeDef</ref> *)(__HANDLE__)-&gt;Instance)-&gt;FCR &amp;= ~(__INTERRUPT__)))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h" line="1096" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h" bodystart="1096" bodyend="1097"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DMA__Exported__Macros_1ga2867eab09398df2daac55c3f327654da" prot="public" static="no">
+        <name>__HAL_DMA_DISABLE_IT</name>
+        <param><defname>__HANDLE__</defname></param>
+        <param><defname>__INTERRUPT__</defname></param>
+        <initializer>                                                         ((IS_DMA_STREAM_INSTANCE((__HANDLE__)-&gt;Instance))?\
+                                                         (__HAL_DMA_STREAM_DISABLE_IT((__HANDLE__), (__INTERRUPT__))) :\
+                                                         (__HAL_BDMA_CHANNEL_DISABLE_IT((__HANDLE__), (__INTERRUPT__))))</initializer>
+        <briefdescription>
+<para>Disable the specified DMA Stream interrupts. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>DMA handle </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>__INTERRUPT__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the DMA interrupt sources to be enabled or disabled. This parameter can be one of the following values: <itemizedlist>
+<listitem><para>DMA_IT_TC: Transfer complete interrupt mask. </para>
+</listitem>
+<listitem><para>DMA_IT_HT: Half transfer complete interrupt mask. </para>
+</listitem>
+<listitem><para>DMA_IT_TE: Transfer error interrupt mask. </para>
+</listitem>
+<listitem><para>DMA_IT_FE: FIFO error interrupt mask. </para>
+</listitem>
+<listitem><para>DMA_IT_DME: Direct mode error interrupt. </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h" line="1111" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h" bodystart="1111" bodyend="1113"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DMA__Exported__Macros_1ga9d152a1c740a622552b553a00699f772" prot="public" static="no">
+        <name>__HAL_BDMA_CHANNEL_GET_IT_SOURCE</name>
+        <param><defname>__HANDLE__</defname></param>
+        <param><defname>__INTERRUPT__</defname></param>
+        <initializer>((((<ref refid="structBDMA__Channel__TypeDef" kindref="compound">BDMA_Channel_TypeDef</ref> *)(__HANDLE__)-&gt;Instance)-&gt;CCR &amp; (DMA_TO_BDMA_IT(__INTERRUPT__))))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h" line="1116" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h" bodystart="1116" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DMA__Exported__Macros_1gac164d54cf97c4dc75a26844a2c5f2f20" prot="public" static="no">
+        <name>__HAL_DMA_STREAM_GET_IT_SOURCE</name>
+        <param><defname>__HANDLE__</defname></param>
+        <param><defname>__INTERRUPT__</defname></param>
+        <initializer>                                                        (((__INTERRUPT__) != DMA_IT_FE)? \
+                                                        (((<ref refid="structDMA__Stream__TypeDef" kindref="compound">DMA_Stream_TypeDef</ref> *)(__HANDLE__)-&gt;Instance)-&gt;CR &amp; (__INTERRUPT__)) : \
+                                                        (((<ref refid="structDMA__Stream__TypeDef" kindref="compound">DMA_Stream_TypeDef</ref> *)(__HANDLE__)-&gt;Instance)-&gt;FCR &amp; (__INTERRUPT__)))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h" line="1118" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h" bodystart="1118" bodyend="1120"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DMA__Exported__Macros_1ga206f24e6bee4600515b9b6b1ec79365b" prot="public" static="no">
+        <name>__HAL_DMA_GET_IT_SOURCE</name>
+        <param><defname>__HANDLE__</defname></param>
+        <param><defname>__INTERRUPT__</defname></param>
+        <initializer>                                                            ((IS_DMA_STREAM_INSTANCE((__HANDLE__)-&gt;Instance))? \
+                                                            (__HAL_DMA_STREAM_GET_IT_SOURCE((__HANDLE__), (__INTERRUPT__))) :\
+                                                            (__HAL_BDMA_CHANNEL_GET_IT_SOURCE((__HANDLE__), (__INTERRUPT__))))</initializer>
+        <briefdescription>
+<para>Check whether the specified DMA Stream interrupt is enabled or not. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>DMA handle </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>__INTERRUPT__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the DMA interrupt source to check. This parameter can be one of the following values: <itemizedlist>
+<listitem><para>DMA_IT_TC: Transfer complete interrupt mask. </para>
+</listitem>
+<listitem><para>DMA_IT_HT: Half transfer complete interrupt mask. </para>
+</listitem>
+<listitem><para>DMA_IT_TE: Transfer error interrupt mask. </para>
+</listitem>
+<listitem><para>DMA_IT_FE: FIFO error interrupt mask. </para>
+</listitem>
+<listitem><para>DMA_IT_DME: Direct mode error interrupt. </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>The</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>state of DMA_IT. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h" line="1134" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h" bodystart="1134" bodyend="1136"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DMA__Exported__Macros_1ga448a8f809df86ccffae200ffd33d0a82" prot="public" static="no">
+        <name>__HAL_DMA_SET_COUNTER</name>
+        <param><defname>__HANDLE__</defname></param>
+        <param><defname>__COUNTER__</defname></param>
+        <initializer>                                                        ((IS_DMA_STREAM_INSTANCE((__HANDLE__)-&gt;Instance))? \
+                                                        (((<ref refid="structDMA__Stream__TypeDef" kindref="compound">DMA_Stream_TypeDef</ref> *)(__HANDLE__)-&gt;Instance)-&gt;NDTR = (uint16_t)(__COUNTER__)) :\
+                                                        (((<ref refid="structBDMA__Channel__TypeDef" kindref="compound">BDMA_Channel_TypeDef</ref> *)(__HANDLE__)-&gt;Instance)-&gt;CNDTR = (uint16_t)(__COUNTER__)))</initializer>
+        <briefdescription>
+<para>Writes the number of data units to be transferred on the DMA Stream. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>DMA handle </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>__COUNTER__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of data units to be transferred (from 0 to 65535) Number of data items depends only on the Peripheral data format.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>If Peripheral data format is Bytes: number of data units is equal to total number of bytes to be transferred.</para>
+</simplesect>
+<simplesect kind="note"><para>If Peripheral data format is Half-Word: number of data units is equal to total number of bytes to be transferred / 2.</para>
+</simplesect>
+<simplesect kind="note"><para>If Peripheral data format is Word: number of data units is equal to total number of bytes to be transferred / 4.</para>
+</simplesect>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>The</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>number of remaining data units in the current DMAy Streamx transfer. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h" line="1155" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h" bodystart="1155" bodyend="1157"/>
+      </memberdef>
+      <memberdef kind="define" id="group__DMA__Exported__Macros_1ga082d691311bac96641dc35a17cfe8e63" prot="public" static="no">
+        <name>__HAL_DMA_GET_COUNTER</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer>                                           ((IS_DMA_STREAM_INSTANCE((__HANDLE__)-&gt;Instance))? \
+                                           (((<ref refid="structDMA__Stream__TypeDef" kindref="compound">DMA_Stream_TypeDef</ref> *)(__HANDLE__)-&gt;Instance)-&gt;NDTR) :\
+                                           (((<ref refid="structBDMA__Channel__TypeDef" kindref="compound">BDMA_Channel_TypeDef</ref> *)(__HANDLE__)-&gt;Instance)-&gt;CNDTR))</initializer>
+        <briefdescription>
+<para>Returns the number of remaining data units in the current DMAy Streamx transfer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>DMA handle</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>The</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>number of remaining data units in the current DMA Stream transfer. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h" line="1165" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h" bodystart="1165" bodyend="1167"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

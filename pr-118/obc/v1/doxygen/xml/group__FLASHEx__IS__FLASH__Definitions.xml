@@ -1,0 +1,366 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="group__FLASHEx__IS__FLASH__Definitions" kind="group">
+    <compoundname>FLASHEx_IS_FLASH_Definitions</compoundname>
+    <title>FLASHEx Private macros to check input parameters</title>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="group__FLASHEx__IS__FLASH__Definitions_1gaf15a6822d2421a33b6857059348ab476" prot="public" static="no">
+        <name>IS_FLASH_TYPEERASE</name>
+        <param><defname>VALUE</defname></param>
+        <initializer>                                          (((VALUE) == <ref refid="group__FLASHEx__Type__Erase_1gaee700cbbc746cf72fca3ebf07ee20c4e" kindref="member">FLASH_TYPEERASE_SECTORS</ref>) || \
+                                          ((VALUE) == <ref refid="group__FLASHEx__Type__Erase_1ga9bc03534e69c625e1b4f0f05c3852243" kindref="member">FLASH_TYPEERASE_MASSERASE</ref>))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash_ex.h" line="913" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash_ex.h" bodystart="913" bodyend="914"/>
+      </memberdef>
+      <memberdef kind="define" id="group__FLASHEx__IS__FLASH__Definitions_1ga8164622401a6cacf006679166de93c21" prot="public" static="no">
+        <name>IS_WRPSTATE</name>
+        <param><defname>VALUE</defname></param>
+        <initializer>                                          (((VALUE) == <ref refid="group__FLASHEx__WRP__State_1gaa34eb6205fe554f65a311ee974d5a4ab" kindref="member">OB_WRPSTATE_DISABLE</ref>) || \
+                                          ((VALUE) == <ref refid="group__FLASHEx__WRP__State_1ga9fc463145ab57616baa36d95523186a1" kindref="member">OB_WRPSTATE_ENABLE</ref>))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash_ex.h" line="923" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash_ex.h" bodystart="923" bodyend="924"/>
+      </memberdef>
+      <memberdef kind="define" id="group__FLASHEx__IS__FLASH__Definitions_1ga87cd48c2373f47668470a38892ed07e3" prot="public" static="no">
+        <name>IS_OPTIONBYTE</name>
+        <param><defname>VALUE</defname></param>
+        <initializer>                                          ((((VALUE) &amp; <ref refid="group__FLASHEx__Option__Type_1ga242f762f6db284aa457287f8bd74145b" kindref="member">OPTIONBYTE_ALL</ref>) != 0U) &amp;&amp; \
+                                          (((VALUE) &amp; ~<ref refid="group__FLASHEx__Option__Type_1ga242f762f6db284aa457287f8bd74145b" kindref="member">OPTIONBYTE_ALL</ref>) == 0U))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash_ex.h" line="926" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash_ex.h" bodystart="926" bodyend="927"/>
+      </memberdef>
+      <memberdef kind="define" id="group__FLASHEx__IS__FLASH__Definitions_1gac1673536ea261ec834af6e3733f58231" prot="public" static="no">
+        <name>IS_OB_BOOT_ADDRESS</name>
+        <param><defname>ADDRESS</defname></param>
+        <initializer>((ADDRESS) &lt;= 0x8013U)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash_ex.h" line="929" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash_ex.h" bodystart="929" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__FLASHEx__IS__FLASH__Definitions_1ga8d602a97cd688390b3d1956d9970e712" prot="public" static="no">
+        <name>IS_OB_RDP_LEVEL</name>
+        <param><defname>LEVEL</defname></param>
+        <initializer>                                          (((LEVEL) == OB_RDP_LEVEL_0)   ||\
+                                          ((LEVEL) == OB_RDP_LEVEL_1)   ||\
+                                          ((LEVEL) == <ref refid="group__FLASHEx__Option__Bytes__Read__Protection_1ga2262afca565429ce2808d835c49e5ee6" kindref="member">OB_RDP_LEVEL_2</ref>))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash_ex.h" line="931" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash_ex.h" bodystart="931" bodyend="933"/>
+      </memberdef>
+      <memberdef kind="define" id="group__FLASHEx__IS__FLASH__Definitions_1gaf2871652c08e76499d9449be6556f12c" prot="public" static="no">
+        <name>IS_OB_IWDG_SOURCE</name>
+        <param><defname>SOURCE</defname></param>
+        <initializer>(((SOURCE) == <ref refid="group__FLASHEx__Option__Bytes__IWatchdog_1ga5a357e232c955444c3f2ccb9a937ffce" kindref="member">OB_IWDG_SW</ref>) || ((SOURCE) == <ref refid="group__FLASHEx__Option__Bytes__IWatchdog_1gadfcbfa963d79c339ec8e2d5a7734e47a" kindref="member">OB_IWDG_HW</ref>))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash_ex.h" line="935" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash_ex.h" bodystart="935" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__FLASHEx__IS__FLASH__Definitions_1ga131ae3434f300c8317dd6b3b349c7cab" prot="public" static="no">
+        <name>IS_OB_STOP_SOURCE</name>
+        <param><defname>SOURCE</defname></param>
+        <initializer>(((SOURCE) == <ref refid="group__FLASHEx__Option__Bytes__nRST__STOP_1ga7344fe0ec25c5eb2d11db7c855325436" kindref="member">OB_STOP_NO_RST</ref>) || ((SOURCE) == <ref refid="group__FLASHEx__Option__Bytes__nRST__STOP_1gaef92c03b1f279c532bfa13d3bb074b57" kindref="member">OB_STOP_RST</ref>))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash_ex.h" line="937" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash_ex.h" bodystart="937" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__FLASHEx__IS__FLASH__Definitions_1ga8a05393df3a5e89551b4e2e1e8c5b884" prot="public" static="no">
+        <name>IS_OB_STDBY_SOURCE</name>
+        <param><defname>SOURCE</defname></param>
+        <initializer>(((SOURCE) == <ref refid="group__FLASHEx__Option__Bytes__nRST__STDBY_1gad776ed7b3b9a98013aac9976eedb7e94" kindref="member">OB_STDBY_NO_RST</ref>) || ((SOURCE) == <ref refid="group__FLASHEx__Option__Bytes__nRST__STDBY_1ga69451a6f69247528f58735c9c83499ce" kindref="member">OB_STDBY_RST</ref>))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash_ex.h" line="939" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash_ex.h" bodystart="939" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__FLASHEx__IS__FLASH__Definitions_1gab320b4e9c392f95a7a5262b2f5e9545f" prot="public" static="no">
+        <name>IS_OB_IWDG_STOP_FREEZE</name>
+        <param><defname>FREEZE</defname></param>
+        <initializer>(((FREEZE) == <ref refid="group__FLASHEx__Option__Bytes__IWDG__FREEZE__STOP_1gae0c882a6f14ebe5d1969b50d5a2dbb17" kindref="member">OB_IWDG_STOP_FREEZE</ref>) || ((FREEZE) == <ref refid="group__FLASHEx__Option__Bytes__IWDG__FREEZE__STOP_1gacbec0b12f9a0cebadcba12ed53891a2c" kindref="member">OB_IWDG_STOP_ACTIVE</ref>))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash_ex.h" line="941" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash_ex.h" bodystart="941" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__FLASHEx__IS__FLASH__Definitions_1ga112de18ab98fba9247f0bfcfb55e0c20" prot="public" static="no">
+        <name>IS_OB_IWDG_STDBY_FREEZE</name>
+        <param><defname>FREEZE</defname></param>
+        <initializer>(((FREEZE) == <ref refid="group__FLASHEx__Option__Bytes__IWDG__FREEZE__SANDBY_1ga2033b993c192a55757fc3fb0d8cfebc9" kindref="member">OB_IWDG_STDBY_FREEZE</ref>) || ((FREEZE) == <ref refid="group__FLASHEx__Option__Bytes__IWDG__FREEZE__SANDBY_1gac371d40c19dd808bdcf77c77a07e2944" kindref="member">OB_IWDG_STDBY_ACTIVE</ref>))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash_ex.h" line="943" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash_ex.h" bodystart="943" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__FLASHEx__IS__FLASH__Definitions_1gac97ecd832fce5f4b4ff9ef7bc4493013" prot="public" static="no">
+        <name>IS_OB_BOR_LEVEL</name>
+        <param><defname>LEVEL</defname></param>
+        <initializer>                                          (((LEVEL) == <ref refid="group__FLASHEx__BOR__Reset__Level_1ga08a8d333e34b1fd8b0a701ce4e4f8156" kindref="member">OB_BOR_LEVEL0</ref>) || ((LEVEL) == <ref refid="group__FLASHEx__BOR__Reset__Level_1ga3a888b788e75f0bc1f9add85c9ccd9d6" kindref="member">OB_BOR_LEVEL1</ref>) || \
+                                          ((LEVEL) == <ref refid="group__FLASHEx__BOR__Reset__Level_1gad678e849fcf817f6ed2d837538e8ebc2" kindref="member">OB_BOR_LEVEL2</ref>) || ((LEVEL) == <ref refid="group__FLASHEx__BOR__Reset__Level_1ga3132b8202c0a345e9dd33d136714b046" kindref="member">OB_BOR_LEVEL3</ref>))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash_ex.h" line="945" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash_ex.h" bodystart="945" bodyend="946"/>
+      </memberdef>
+      <memberdef kind="define" id="group__FLASHEx__IS__FLASH__Definitions_1gafcbd098d482318a622a58bf168547389" prot="public" static="no">
+        <name>IS_FLASH_LATENCY</name>
+        <param><defname>LATENCY</defname></param>
+        <initializer>                                          (((LATENCY) == <ref refid="group__FLASH__Latency_1ga1276f51e97dc9857ca261fae4eb890f3" kindref="member">FLASH_LATENCY_0</ref>)  || \
+                                          ((LATENCY) == <ref refid="group__FLASH__Latency_1ga28c611f2cb4a3772ab37c538357fd5f6" kindref="member">FLASH_LATENCY_1</ref>)  || \
+                                          ((LATENCY) == <ref refid="group__FLASH__Latency_1ga69d209f9cb4f625010d72555c8dceb03" kindref="member">FLASH_LATENCY_2</ref>)  || \
+                                          ((LATENCY) == <ref refid="group__FLASH__Latency_1ga2f607c9fa7bdcd53df0e98a7b1e67496" kindref="member">FLASH_LATENCY_3</ref>)  || \
+                                          ((LATENCY) == <ref refid="group__FLASH__Latency_1ga65fe32d2c25a3d5ee3dce89dee459fa5" kindref="member">FLASH_LATENCY_4</ref>)  || \
+                                          ((LATENCY) == <ref refid="group__FLASH__Latency_1ga2517d62fa71e27b3b53223bbaacd06f7" kindref="member">FLASH_LATENCY_5</ref>)  || \
+                                          ((LATENCY) == <ref refid="group__FLASH__Latency_1gad047485b4941997af3c55ad61ad9c13a" kindref="member">FLASH_LATENCY_6</ref>)  || \
+                                          ((LATENCY) == <ref refid="group__FLASH__Latency_1ga09e9f01dd2e6e361adc9c995a5a73510" kindref="member">FLASH_LATENCY_7</ref>)  || \
+                                          ((LATENCY) == <ref refid="group__FLASH__Latency_1ga50fca6ee68a03a46093ddd1aad0a604b" kindref="member">FLASH_LATENCY_8</ref>)  || \
+                                          ((LATENCY) == <ref refid="group__FLASH__Latency_1gac7d2f544eb57b8bc1d1c09d541963b3d" kindref="member">FLASH_LATENCY_9</ref>)  || \
+                                          ((LATENCY) == <ref refid="group__FLASH__Latency_1ga952e79cae902b129bf4b80de551a99f0" kindref="member">FLASH_LATENCY_10</ref>) || \
+                                          ((LATENCY) == <ref refid="group__FLASH__Latency_1ga235a33dd983649073f34c116c652d96a" kindref="member">FLASH_LATENCY_11</ref>) || \
+                                          ((LATENCY) == <ref refid="group__FLASH__Latency_1ga20112b2d31eba4cd95f777c1f8114d9e" kindref="member">FLASH_LATENCY_12</ref>) || \
+                                          ((LATENCY) == <ref refid="group__FLASH__Latency_1ga38e8648bb8eda820024540149ffd6862" kindref="member">FLASH_LATENCY_13</ref>) || \
+                                          ((LATENCY) == <ref refid="group__FLASH__Latency_1gaf8e5bf2f7815e848d1fd17c0bceb6cbc" kindref="member">FLASH_LATENCY_14</ref>) || \
+                                          ((LATENCY) == <ref refid="group__FLASH__Latency_1ga1ab3df3c865f316286cc653a7e8a6b5a" kindref="member">FLASH_LATENCY_15</ref>))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash_ex.h" line="948" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash_ex.h" bodystart="948" bodyend="963"/>
+      </memberdef>
+      <memberdef kind="define" id="group__FLASHEx__IS__FLASH__Definitions_1ga9e7722ee983a9411f59c0fdb81bc0e08" prot="public" static="no">
+        <name>IS_FLASH_SECTOR</name>
+        <param><defname>SECTOR</defname></param>
+        <initializer>((SECTOR) &lt; FLASH_SECTOR_TOTAL)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash_ex.h" line="965" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash_ex.h" bodystart="965" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__FLASHEx__IS__FLASH__Definitions_1gade36d0d5f5de92caf5a5e7ee22394b87" prot="public" static="no">
+        <name>IS_OB_WRP_SECTOR</name>
+        <param><defname>SECTOR</defname></param>
+        <initializer>((SECTOR) != 0x00000000U)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash_ex.h" line="970" column="10" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash_ex.h" bodystart="970" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__FLASHEx__IS__FLASH__Definitions_1ga6aeea9ef12189007b4d186a144fb54f6" prot="public" static="no">
+        <name>IS_OB_PCROP_RDP</name>
+        <param><defname>CONFIG</defname></param>
+        <initializer>                                          (((CONFIG) == <ref refid="group__FLASHEx__OB__PCROP__RDP_1gaa64bfd8f4fa303d49e40d21a865bfe4b" kindref="member">OB_PCROP_RDP_NOT_ERASE</ref>) || \
+                                          ((CONFIG) == <ref refid="group__FLASHEx__OB__PCROP__RDP_1gadc1d319505606fc82937702a2baf1bd3" kindref="member">OB_PCROP_RDP_ERASE</ref>))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash_ex.h" line="973" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash_ex.h" bodystart="973" bodyend="974"/>
+      </memberdef>
+      <memberdef kind="define" id="group__FLASHEx__IS__FLASH__Definitions_1ga6bd4064333d849ddcff4e831e64d50e3" prot="public" static="no">
+        <name>IS_OB_SECURE_RDP</name>
+        <param><defname>CONFIG</defname></param>
+        <initializer>                                          (((CONFIG) == <ref refid="group__FLASHEx__OB__SECURE__RDP_1ga6af9739c8ce5411fa7bd08a43085467f" kindref="member">OB_SECURE_RDP_NOT_ERASE</ref>) || \
+                                          ((CONFIG) == <ref refid="group__FLASHEx__OB__SECURE__RDP_1gaed5a6331a1c20d0cc0d23a6b7a06d36b" kindref="member">OB_SECURE_RDP_ERASE</ref>))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash_ex.h" line="976" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash_ex.h" bodystart="976" bodyend="977"/>
+      </memberdef>
+      <memberdef kind="define" id="group__FLASHEx__IS__FLASH__Definitions_1ga9e8b5a360108aff5eedfc7431ab125e1" prot="public" static="no">
+        <name>IS_OB_USER_IOHSLV</name>
+        <param><defname>VALUE</defname></param>
+        <initializer>(((VALUE) == <ref refid="group__FLASHEx__OB__IOHSLV_1ga8030bff5b676b9921dc3973a3ab9ff72" kindref="member">OB_IOHSLV_DISABLE</ref>) || ((VALUE) == <ref refid="group__FLASHEx__OB__IOHSLV_1ga099290745e25bd5a7f1ca84ace05fb24" kindref="member">OB_IOHSLV_ENABLE</ref>))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash_ex.h" line="983" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash_ex.h" bodystart="983" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__FLASHEx__IS__FLASH__Definitions_1ga41eb29a0776083ce176b2e660dd6d5cf" prot="public" static="no">
+        <name>IS_OB_IWDG1_SOURCE</name>
+        <param><defname>SOURCE</defname></param>
+        <initializer>(((SOURCE) == <ref refid="group__FLASHEx__OB__IWDG1__SW_1gaca3bd64d1363e15b34eccd54f855de7e" kindref="member">OB_IWDG1_SW</ref>) || ((SOURCE) == <ref refid="group__FLASHEx__OB__IWDG1__SW_1ga0f515281b1c4ccb2bd14bb4a653b2a06" kindref="member">OB_IWDG1_HW</ref>))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash_ex.h" line="989" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash_ex.h" bodystart="989" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__FLASHEx__IS__FLASH__Definitions_1gae3bc28e8d38633a7576e95e1b39e64cb" prot="public" static="no">
+        <name>IS_OB_STOP_D1_RESET</name>
+        <param><defname>VALUE</defname></param>
+        <initializer>(((VALUE) == <ref refid="group__FLASHEx__OB__NRST__STOP__D1_1ga54518e62a53dc555cc92394b19817369" kindref="member">OB_STOP_NO_RST_D1</ref>) || ((VALUE) == <ref refid="group__FLASHEx__OB__NRST__STOP__D1_1ga7496d9f8feb32fd49a18bd7e05646095" kindref="member">OB_STOP_RST_D1</ref>))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash_ex.h" line="993" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash_ex.h" bodystart="993" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__FLASHEx__IS__FLASH__Definitions_1gac49b0b1bad3d90eb27f1f6faa64cc1db" prot="public" static="no">
+        <name>IS_OB_STDBY_D1_RESET</name>
+        <param><defname>VALUE</defname></param>
+        <initializer>(((VALUE) == <ref refid="group__FLASHEx__OB__NRST__STDBY__D1_1ga74d8f18fcf2d305e1538fba6867907e4" kindref="member">OB_STDBY_NO_RST_D1</ref>) || ((VALUE) == <ref refid="group__FLASHEx__OB__NRST__STDBY__D1_1gafd66c897008e782380565076090fa914" kindref="member">OB_STDBY_RST_D1</ref>))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash_ex.h" line="995" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash_ex.h" bodystart="995" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__FLASHEx__IS__FLASH__Definitions_1ga395a9bf65b7afd3d86179d7c12d79578" prot="public" static="no">
+        <name>IS_OB_USER_IWDG_STOP</name>
+        <param><defname>VALUE</defname></param>
+        <initializer>(((VALUE) == <ref refid="group__FLASHEx__Option__Bytes__IWDG__FREEZE__STOP_1gae0c882a6f14ebe5d1969b50d5a2dbb17" kindref="member">OB_IWDG_STOP_FREEZE</ref>) || ((VALUE) == <ref refid="group__FLASHEx__Option__Bytes__IWDG__FREEZE__STOP_1gacbec0b12f9a0cebadcba12ed53891a2c" kindref="member">OB_IWDG_STOP_ACTIVE</ref>))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash_ex.h" line="997" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash_ex.h" bodystart="997" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__FLASHEx__IS__FLASH__Definitions_1ga14d8e49c2f7926e252617e51df838dfd" prot="public" static="no">
+        <name>IS_OB_USER_IWDG_STDBY</name>
+        <param><defname>VALUE</defname></param>
+        <initializer>(((VALUE) == <ref refid="group__FLASHEx__Option__Bytes__IWDG__FREEZE__SANDBY_1ga2033b993c192a55757fc3fb0d8cfebc9" kindref="member">OB_IWDG_STDBY_FREEZE</ref>) || ((VALUE) == <ref refid="group__FLASHEx__Option__Bytes__IWDG__FREEZE__SANDBY_1gac371d40c19dd808bdcf77c77a07e2944" kindref="member">OB_IWDG_STDBY_ACTIVE</ref>))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash_ex.h" line="999" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash_ex.h" bodystart="999" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__FLASHEx__IS__FLASH__Definitions_1ga702ed58324bfbb37bc8c689c09c39595" prot="public" static="no">
+        <name>IS_OB_USER_ST_RAM_SIZE</name>
+        <param><defname>VALUE</defname></param>
+        <initializer>                                          (((VALUE) == <ref refid="group__FLASHEx__OB__ST__RAM__SIZE_1ga04217fd5bfd5f72f7133fa4fb282de7b" kindref="member">OB_ST_RAM_SIZE_2KB</ref>) || ((VALUE) == <ref refid="group__FLASHEx__OB__ST__RAM__SIZE_1gafb8da0413dc083a96979f423b2fe668a" kindref="member">OB_ST_RAM_SIZE_4KB</ref>) || \
+                                          ((VALUE) == <ref refid="group__FLASHEx__OB__ST__RAM__SIZE_1ga62bd8548d6942106d8e5bbac1a3e1165" kindref="member">OB_ST_RAM_SIZE_8KB</ref>) || ((VALUE) == <ref refid="group__FLASHEx__OB__ST__RAM__SIZE_1gac8b2bbd7d709bb642a277fe393afebce" kindref="member">OB_ST_RAM_SIZE_16KB</ref>))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash_ex.h" line="1001" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash_ex.h" bodystart="1001" bodyend="1002"/>
+      </memberdef>
+      <memberdef kind="define" id="group__FLASHEx__IS__FLASH__Definitions_1gabb2e868ccbd85617c0ea6a583140535b" prot="public" static="no">
+        <name>IS_OB_USER_SECURITY</name>
+        <param><defname>VALUE</defname></param>
+        <initializer>(((VALUE) == <ref refid="group__FLASHEx__OB__SECURITY_1ga65cf987abc534ac99ad41cbc9641ffe0" kindref="member">OB_SECURITY_ENABLE</ref>) || ((VALUE) == <ref refid="group__FLASHEx__OB__SECURITY_1gad7599b114220fb9fb493feaefa6ab76a" kindref="member">OB_SECURITY_DISABLE</ref>))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash_ex.h" line="1004" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash_ex.h" bodystart="1004" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__FLASHEx__IS__FLASH__Definitions_1ga68ff0f976e73a1a0f2b5474fd5973d2d" prot="public" static="no">
+        <name>IS_OB_USER_TYPE</name>
+        <param><defname>TYPE</defname></param>
+        <initializer>                                          ((((TYPE) &amp; OB_USER_ALL) != 0U) &amp;&amp; \
+                                          (((TYPE) &amp; ~OB_USER_ALL) == 0U))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash_ex.h" line="1027" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash_ex.h" bodystart="1027" bodyend="1028"/>
+      </memberdef>
+      <memberdef kind="define" id="group__FLASHEx__IS__FLASH__Definitions_1ga9f462f01604e0d69a61be0795040c584" prot="public" static="no">
+        <name>IS_OB_BOOT_ADD_OPTION</name>
+        <param><defname>VALUE</defname></param>
+        <initializer>                                          (((VALUE) == <ref refid="group__FLASHEx__OB__BOOT__OPTION_1ga811cba88354fa9a1e7acbd97dda20f96" kindref="member">OB_BOOT_ADD0</ref>)  || \
+                                          ((VALUE) == <ref refid="group__FLASHEx__OB__BOOT__OPTION_1ga51f3f1260815a690a496c82bb1c95141" kindref="member">OB_BOOT_ADD1</ref>)  || \
+                                          ((VALUE) == <ref refid="group__FLASHEx__OB__BOOT__OPTION_1ga8872d795a3aed08e90990b16aadcbbfc" kindref="member">OB_BOOT_ADD_BOTH</ref>))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash_ex.h" line="1030" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash_ex.h" bodystart="1030" bodyend="1032"/>
+      </memberdef>
+      <memberdef kind="define" id="group__FLASHEx__IS__FLASH__Definitions_1ga4f8a952ef3d17442be3df685f57fac2a" prot="public" static="no">
+        <name>IS_FLASH_TYPECRC</name>
+        <param><defname>VALUE</defname></param>
+        <initializer>                                          (((VALUE) == <ref refid="group__FLASHEx__CRC__Selection__Type_1ga701a5f2da56e320a5196bee265d5d290" kindref="member">FLASH_CRC_ADDR</ref>)    || \
+                                          ((VALUE) == <ref refid="group__FLASHEx__CRC__Selection__Type_1ga4b6569ae79c85acc8c311bedfbdbfc9a" kindref="member">FLASH_CRC_SECTORS</ref>) || \
+                                          ((VALUE) == <ref refid="group__FLASHEx__CRC__Selection__Type_1ga0ec0a69e733de8c2d126f80861cdec51" kindref="member">FLASH_CRC_BANK</ref>))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash_ex.h" line="1034" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash_ex.h" bodystart="1034" bodyend="1036"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

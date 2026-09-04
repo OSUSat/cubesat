@@ -1,0 +1,133 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="hal__fram__mock_8c" kind="file" language="C++">
+    <compoundname>hal_fram_mock.c</compoundname>
+    <includes refid="hal__fram_8h" local="yes">hal_fram.h</includes>
+    <includes local="no">string.h</includes>
+    <incdepgraph>
+      <node id="2">
+        <label>hal_fram.h</label>
+        <link refid="hal__fram_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/home/runner/work/cubesat/cubesat/obc/v1/firmware/mocks/hal_fram_mock.c</label>
+        <link refid="hal__fram__mock_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>stdbool.h</label>
+      </node>
+      <node id="4">
+        <label>stddef.h</label>
+      </node>
+      <node id="5">
+        <label>stdint.h</label>
+      </node>
+      <node id="6">
+        <label>string.h</label>
+      </node>
+    </incdepgraph>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="hal__fram__mock_8c_1a22032de1ba61ff7442e6e7fcd550ae78" prot="public" static="no">
+        <name>MOCK_FRAM_SIZE</name>
+        <initializer>2048</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/mocks/hal_fram_mock.c" line="9" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/mocks/hal_fram_mock.c" bodystart="9" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="hal__fram__mock_8c_1a7e606b68f25532f8fcc7d134987ae2f5" prot="public" static="yes" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t mock_fram_storage[MOCK_FRAM_SIZE]</definition>
+        <argsstring>[MOCK_FRAM_SIZE]</argsstring>
+        <name>mock_fram_storage</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/mocks/hal_fram_mock.c" line="10" column="16" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/mocks/hal_fram_mock.c" bodystart="10" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <member refid="group__obc__fram_1ga390f948982f771e2ca9a470275e57168" kind="function"><name>hal_fram_init</name></member>
+      <member refid="group__obc__fram_1ga68a8cc6f68f0647700df1385c0de4a87" kind="function"><name>hal_fram_write</name></member>
+      <member refid="group__obc__fram_1ga9d52df171e03b6f680f93b566dab036e" kind="function"><name>hal_fram_read</name></member>
+      <member refid="group__obc__fram_1ga3ea96795ac90100e81c8d3d51d9c9da8" kind="function"><name>hal_fram_get_mock_buffer</name></member>
+      <member refid="group__obc__fram_1ga250114811f28848bfa4a042743dbb3fc" kind="function"><name>hal_fram_write_it</name></member>
+      <member refid="group__obc__fram_1gac68e9b064fc8774c88e6454036c5d46e" kind="function"><name>hal_fram_read_it</name></member>
+    </sectiondef>
+    <briefdescription>
+<para>Mock implementation of the FRAM driver HAL for host testing. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="hal__fram_8h" kindref="compound">hal_fram.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MOCK_FRAM_SIZE<sp/>2048</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>uint8_t<sp/>mock_fram_storage[MOCK_FRAM_SIZE];</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__obc__fram_1ga390f948982f771e2ca9a470275e57168" kindref="member">hal_fram_init</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>clear<sp/>mock<sp/>FRAM</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>memset(mock_fram_storage,<sp/>0,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(mock_fram_storage));</highlight></codeline>
+<codeline lineno="15"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><ref refid="group__obc__fram_1gaa5e4d5aabd6ebd52dfe796cfa23cd97b" kindref="member">hal_fram_status_t</ref><sp/><ref refid="group__obc__fram_1ga68a8cc6f68f0647700df1385c0de4a87" kindref="member">hal_fram_write</ref>(uint32_t<sp/>address,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>*data,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>size)<sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(address<sp/>+<sp/>size<sp/>&gt;<sp/>MOCK_FRAM_SIZE)<sp/>{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__obc__fram_1ggaa5e4d5aabd6ebd52dfe796cfa23cd97baffe2e037ff71c5e98bbd893ac1a7cf73" kindref="member">HAL_FRAM_ERROR</ref>;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>memcpy(&amp;mock_fram_storage[address],<sp/>data,<sp/>size);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__obc__fram_1ggaa5e4d5aabd6ebd52dfe796cfa23cd97ba7f3cbc51d028804f10421980d20d9076" kindref="member">HAL_FRAM_OK</ref>;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><ref refid="group__obc__fram_1gaa5e4d5aabd6ebd52dfe796cfa23cd97b" kindref="member">hal_fram_status_t</ref><sp/><ref refid="group__obc__fram_1ga9d52df171e03b6f680f93b566dab036e" kindref="member">hal_fram_read</ref>(uint32_t<sp/>address,<sp/>uint8_t<sp/>*buffer,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>size)<sp/>{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(address<sp/>+<sp/>size<sp/>&gt;<sp/>MOCK_FRAM_SIZE)<sp/>{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__obc__fram_1ggaa5e4d5aabd6ebd52dfe796cfa23cd97baffe2e037ff71c5e98bbd893ac1a7cf73" kindref="member">HAL_FRAM_ERROR</ref>;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>memcpy(buffer,<sp/>&amp;mock_fram_storage[address],<sp/>size);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__obc__fram_1ggaa5e4d5aabd6ebd52dfe796cfa23cd97ba7f3cbc51d028804f10421980d20d9076" kindref="member">HAL_FRAM_OK</ref>;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>*<ref refid="group__obc__fram_1ga3ea96795ac90100e81c8d3d51d9c9da8" kindref="member">hal_fram_get_mock_buffer</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>mock_fram_storage;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><ref refid="group__obc__fram_1gaa5e4d5aabd6ebd52dfe796cfa23cd97b" kindref="member">hal_fram_status_t</ref><sp/><ref refid="group__obc__fram_1ga250114811f28848bfa4a042743dbb3fc" kindref="member">hal_fram_write_it</ref>(uint32_t<sp/>address,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>*data,</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>size,<sp/><ref refid="group__obc__fram_1ga94cbdb268480e96749778e7745af89ea" kindref="member">hal_fram_callback_t</ref><sp/>cb,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*ctx)<sp/>{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__obc__fram_1gaa5e4d5aabd6ebd52dfe796cfa23cd97b" kindref="member">hal_fram_status_t</ref><sp/>status<sp/>=<sp/><ref refid="group__obc__fram_1ga68a8cc6f68f0647700df1385c0de4a87" kindref="member">hal_fram_write</ref>(address,<sp/>data,<sp/>size);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cb)<sp/>{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cb(status,<sp/>ctx);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>status;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><ref refid="group__obc__fram_1gaa5e4d5aabd6ebd52dfe796cfa23cd97b" kindref="member">hal_fram_status_t</ref><sp/><ref refid="group__obc__fram_1gac68e9b064fc8774c88e6454036c5d46e" kindref="member">hal_fram_read_it</ref>(uint32_t<sp/>address,<sp/>uint8_t<sp/>*buffer,</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>size,<sp/><ref refid="group__obc__fram_1ga94cbdb268480e96749778e7745af89ea" kindref="member">hal_fram_callback_t</ref><sp/>cb,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*ctx)<sp/>{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__obc__fram_1gaa5e4d5aabd6ebd52dfe796cfa23cd97b" kindref="member">hal_fram_status_t</ref><sp/>status<sp/>=<sp/><ref refid="group__obc__fram_1ga9d52df171e03b6f680f93b566dab036e" kindref="member">hal_fram_read</ref>(address,<sp/>buffer,<sp/>size);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cb)<sp/>{</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cb(status,<sp/>ctx);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>status;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/mocks/hal_fram_mock.c"/>
+  </compounddef>
+</doxygen>

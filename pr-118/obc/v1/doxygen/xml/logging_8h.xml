@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="logging_8h" kind="file" language="C++">
+    <compoundname>logging.h</compoundname>
+    <includes refid="slog_8h" local="yes">osusat/slog.h</includes>
+    <includes local="no">stdint.h</includes>
+    <includes local="no">stddef.h</includes>
+    <includedby refid="obc_2v1_2firmware_2main_8c" local="yes">/home/runner/work/cubesat/cubesat/obc/v1/firmware/main.c</includedby>
+    <includedby refid="can__events_8c" local="yes">/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/can_events.c</includedby>
+    <includedby refid="logging_8c" local="yes">/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/logging.c</includedby>
+    <includedby refid="sensors_8c" local="yes">/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/sensors.c</includedby>
+    <incdepgraph>
+      <node id="3">
+        <label>ring_buffer.h</label>
+        <link refid="ring__buffer_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>osusat/slog.h</label>
+        <link refid="slog_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/logging.h</label>
+        <link refid="logging_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>stdarg.h</label>
+      </node>
+      <node id="4">
+        <label>stdbool.h</label>
+      </node>
+      <node id="5">
+        <label>stddef.h</label>
+      </node>
+      <node id="6">
+        <label>stdint.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/can_events.c</label>
+        <link refid="can__events_8c"/>
+      </node>
+      <node id="3">
+        <label>/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/logging.c</label>
+        <link refid="logging_8c"/>
+      </node>
+      <node id="1">
+        <label>/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/logging.h</label>
+        <link refid="logging_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/sensors.c</label>
+        <link refid="sensors_8c"/>
+      </node>
+    </invincdepgraph>
+    <sectiondef kind="define">
+      <member refid="group__logging__types_1gab0b8fd9a9944a1e8eccc88f6858636b6" kind="define"><name>OBC_COMPONENT_MAIN</name></member>
+      <member refid="group__logging__types_1gad35ccdcb934075059caa35e49d3a04e8" kind="define"><name>OBC_COMPONENT_COMMAND</name></member>
+      <member refid="group__logging__types_1ga28e07e65eb1b11b6dfb0589247fb6e00" kind="define"><name>OBC_COMPONENT_LOGGING</name></member>
+      <member refid="group__logging__types_1ga9cac0c2c82fd28e12cbcde4944158f70" kind="define"><name>OBC_COMPONENT_CAN</name></member>
+      <member refid="group__logging__types_1ga02b4dbeb7350560cb0edadcbf1b9a088" kind="define"><name>OBC_COMPONENT_UART</name></member>
+      <member refid="group__logging__types_1gab3dfce298e5f0cfc421601813b8b8e95" kind="define"><name>OBC_COMPONENT_SENSORS</name></member>
+      <member refid="group__logging__types_1gabf697db3c6b4c221b3899341ca8c4aec" kind="define"><name>OBC_COMPONENT_WATCHDOG</name></member>
+      <member refid="group__logging__api_1ga173fe71e335a20eddb1a39870744429e" kind="define"><name>FRAM_LOG_SIZE</name></member>
+    </sectiondef>
+    <sectiondef kind="func">
+      <member refid="group__logging__api_1gab472c7887dc39c12bba0022d7a0ac99f" kind="function"><name>logging_init</name></member>
+      <member refid="group__logging__api_1gae4adb3779250b040d37537491856dad5" kind="function"><name>logging_write_external_log</name></member>
+      <member refid="group__logging__api_1gae344a717b3119e6abed5c4b75737a337" kind="function"><name>logging_flush</name></member>
+      <member refid="group__logging__api_1gac5d48d0826af20ccbcfefcae52dab9df" kind="function"><name>logging_set_level</name></member>
+      <member refid="group__logging__api_1ga68313b2800456508351fdf21c8685fbf" kind="function"><name>logging_pending_count</name></member>
+      <member refid="group__logging__api_1ga7595483af83ec7a5305c9d3777a81997" kind="function"><name>logging_get_fram_buffer</name></member>
+      <member refid="group__logging__api_1gac902fb1bf52b4fb79abcac5a66ad527c" kind="function"><name>logging_get_fram_write_ptr</name></member>
+    </sectiondef>
+    <briefdescription>
+<para>OBC Logging Service. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Provides structured logging with buffering and flushing to a local mock FRAM. </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>LOGGING_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOGGING_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="slog_8h" kindref="compound">osusat/slog.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stddef.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30" refid="group__logging__types_1gab0b8fd9a9944a1e8eccc88f6858636b6" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OBC_COMPONENT_MAIN<sp/><sp/><sp/><sp/><sp/>0x20<sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="group__logging__types_1gad35ccdcb934075059caa35e49d3a04e8" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OBC_COMPONENT_COMMAND<sp/><sp/>0x21<sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="group__logging__types_1ga28e07e65eb1b11b6dfb0589247fb6e00" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OBC_COMPONENT_LOGGING<sp/><sp/>0x22<sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33" refid="group__logging__types_1ga9cac0c2c82fd28e12cbcde4944158f70" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OBC_COMPONENT_CAN<sp/><sp/><sp/><sp/><sp/><sp/>0x23<sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="group__logging__types_1ga02b4dbeb7350560cb0edadcbf1b9a088" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OBC_COMPONENT_UART<sp/><sp/><sp/><sp/><sp/>0x24<sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="group__logging__types_1gab3dfce298e5f0cfc421601813b8b8e95" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OBC_COMPONENT_SENSORS<sp/><sp/>0x25<sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36" refid="group__logging__types_1gabf697db3c6b4c221b3899341ca8c4aec" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OBC_COMPONENT_WATCHDOG<sp/>0x26<sp/><sp/><sp/><sp/></highlight></codeline>
+<sp/><highlight class="comment">//<sp/>end<sp/>logging_types</highlight><codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FRAM_LOG_SIZE<sp/>1024<sp/><sp/></highlight><highlight class="comment">//<sp/>1KB<sp/>real<sp/>FRAM<sp/>log<sp/>buffer<sp/>(remaining<sp/>1KB<sp/>for<sp/>telemetry)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__logging__api_1gab472c7887dc39c12bba0022d7a0ac99f" kindref="member">logging_init</ref>(<ref refid="group__osusat__slog__types_1gafe0f1801f6e3827f06165e284313814b" kindref="member">osusat_slog_level_t</ref><sp/>min_level);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__logging__api_1gae4adb3779250b040d37537491856dad5" kindref="member">logging_write_external_log</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structosusat__slog__entry__t" kindref="compound">osusat_slog_entry_t</ref><sp/>*entry,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*message);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="group__logging__api_1gae344a717b3119e6abed5c4b75737a337" kindref="member">logging_flush</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__logging__api_1gac5d48d0826af20ccbcfefcae52dab9df" kindref="member">logging_set_level</ref>(<ref refid="group__osusat__slog__types_1gafe0f1801f6e3827f06165e284313814b" kindref="member">osusat_slog_level_t</ref><sp/>level);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="group__logging__api_1ga68313b2800456508351fdf21c8685fbf" kindref="member">logging_pending_count</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t*<sp/><ref refid="group__logging__api_1ga7595483af83ec7a5305c9d3777a81997" kindref="member">logging_get_fram_buffer</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal">uint32_t<sp/><ref refid="group__logging__api_1gac902fb1bf52b4fb79abcac5a66ad527c" kindref="member">logging_get_fram_write_ptr</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<sp/><highlight class="comment">//<sp/>end<sp/>logging_api</highlight><codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<sp/><highlight class="comment">//<sp/>end<sp/>logging</highlight><codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>LOGGING_H</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/logging.h"/>
+  </compounddef>
+</doxygen>

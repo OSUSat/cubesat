@@ -1,0 +1,208 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="group__rail__controller__types" kind="group">
+    <compoundname>rail_controller_types</compoundname>
+    <title>Types</title>
+    <innerclass refid="structrail__t" prot="public">rail_t</innerclass>
+    <innerclass refid="structrail__controller__t" prot="public">rail_controller_t</innerclass>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="group__rail__controller__types_1ga3bd9884abd3690d3ba0c4cf26f25b5ab" prot="public" static="no" strong="no">
+        <type></type>
+        <name>rail_controller_id_t</name>
+        <enumvalue id="group__rail__controller__types_1gga3bd9884abd3690d3ba0c4cf26f25b5abab4c93039bcbfcf7fb07709b4f429a231" prot="public">
+          <name>RAIL_CONTROLLER_FAULT_DETECTED</name>
+          <initializer>= 0x10</initializer>
+          <briefdescription>
+<para>Published when a critical fault is detected. Payload: <ref refid="structrail__controller__t" kindref="compound">rail_controller_t</ref> (Snapshot at time of failure) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__rail__controller__types_1gga3bd9884abd3690d3ba0c4cf26f25b5abab3cc09ba06a41fe5a2a0d04f0a9dfca5" prot="public">
+          <name>RAIL_CONTROLLER_OVERCURRENT_DETECTED</name>
+          <briefdescription>
+<para>Published when an overcurrent is detected on a single rail. Payload: <ref refid="structrail__t" kindref="compound">rail_t</ref> (Snapshot at time of failure) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__rail__controller__types_1gga3bd9884abd3690d3ba0c4cf26f25b5abac555dbc2e96928016607c65e4b389054" prot="public">
+          <name>RAIL_CONTROLLER_UNDERVOLTAGE_DETECTED</name>
+          <briefdescription>
+<para>Published when an undervoltage event is detected on a single rail. Payload: <ref refid="structrail__t" kindref="compound">rail_t</ref> (Snapshot at time of failure) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__rail__controller__types_1gga3bd9884abd3690d3ba0c4cf26f25b5ababc7e9f4093d45d9672b8ea4c0bb97870" prot="public">
+          <name>RAIL_CONTROLLER_OVERVOLTAGE_DETECTED</name>
+          <briefdescription>
+<para>Published when an overvoltage event is detected on a single rail. Payload: <ref refid="structrail__t" kindref="compound">rail_t</ref> (Snapshot at time of failure) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__rail__controller__types_1gga3bd9884abd3690d3ba0c4cf26f25b5aba8e1284f8693c5f75afd85b015ae43b56" prot="public">
+          <name>RAIL_CONTROLLER_RAIL_FAULT_DETECTED</name>
+          <briefdescription>
+<para>Published when a critical fault is detected on a single rail. Payload: <ref refid="structrail__t" kindref="compound">rail_t</ref> (Snapshot at time of failure) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__rail__controller__types_1gga3bd9884abd3690d3ba0c4cf26f25b5aba052414a0616a8898a742a8616d0afb43" prot="public">
+          <name>RAIL_CONTROLLER_TELEMETRY</name>
+          <briefdescription>
+<para>Telemetry snapshot of one rail. Published for each rail Payload: <ref refid="structrail__t" kindref="compound">rail_t</ref> (Snapshot) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/rail_controller.h" line="43" column="1" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/rail_controller.h" bodystart="43" bodyend="79"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__rail__controller__types_1ga8bef9b2b3691523113963038a1a05ff7" prot="public" static="no" strong="no">
+        <type></type>
+        <name>rail_status_t</name>
+        <enumvalue id="group__rail__controller__types_1gga8bef9b2b3691523113963038a1a05ff7a5764657dda26390311134e6de1fd4c19" prot="public">
+          <name>RAIL_STATUS_OK</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Rail is operating nominally. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__rail__controller__types_1gga8bef9b2b3691523113963038a1a05ff7a5c188d956abbed3faf043df14cbfdc6d" prot="public">
+          <name>RAIL_STATUS_DISABLED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Rail is intentionally disabled. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__rail__controller__types_1gga8bef9b2b3691523113963038a1a05ff7af1ce86835d5b72a7bf7ba539a6206ef8" prot="public">
+          <name>RAIL_STATUS_OVERCURRENT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Rail was shut down due to current limit violation. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__rail__controller__types_1gga8bef9b2b3691523113963038a1a05ff7a8f2a6ac7d8afa255b8e5dccbcccb24db" prot="public">
+          <name>RAIL_STATUS_UNDERVOLTAGE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Rail voltage is below expected threshold </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__rail__controller__types_1gga8bef9b2b3691523113963038a1a05ff7a55474274df0d459a486029f7e39cb903" prot="public">
+          <name>RAIL_STATUS_OVERVOLTAGE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__rail__controller__types_1gga8bef9b2b3691523113963038a1a05ff7a8d75dc53a366a3594e62be5c04551deb" prot="public">
+          <name>RAIL_STATUS_FAULT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>&lt;Rail voltage is above expected threshold Generic fault or hardware failure </para>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Operational health status of a power rail. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/rail_controller.h" line="101" column="1" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/rail_controller.h" bodystart="101" bodyend="113"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="group__rail__controller__types_1ga99040401649d8ef59ac63a3a8bb66328" prot="public" static="no">
+        <name>RAIL_CONTROLLER_SERVICE_ID</name>
+        <initializer>0xAC25</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/rail_controller.h" line="41" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/rail_controller.h" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__rail__controller__types_1ga8ecc94ddbc35783f9896a2ae00d2bb19" prot="public" static="no">
+        <name>RAIL_CONTROLLER_EVENT_FAULT_DETECTED</name>
+        <initializer>    <ref refid="group__osusat__event__bus__types_1ga6fb66ede3b29d386fec6f57800d3e980" kindref="member">OSUSAT_BUILD_EVENT_ID</ref>(<ref refid="group__rail__controller__types_1ga99040401649d8ef59ac63a3a8bb66328" kindref="member">RAIL_CONTROLLER_SERVICE_ID</ref>,                          \
+                          <ref refid="group__rail__controller__types_1gga3bd9884abd3690d3ba0c4cf26f25b5abab4c93039bcbfcf7fb07709b4f429a231" kindref="member">RAIL_CONTROLLER_FAULT_DETECTED</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/rail_controller.h" line="81" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/rail_controller.h" bodystart="81" bodyend="83"/>
+      </memberdef>
+      <memberdef kind="define" id="group__rail__controller__types_1ga57ae3be9f5b3c89a6c3005c30323bfe4" prot="public" static="no">
+        <name>RAIL_CONTROLLER_EVENT_OVERCURRENT_DETECTED</name>
+        <initializer>    <ref refid="group__osusat__event__bus__types_1ga6fb66ede3b29d386fec6f57800d3e980" kindref="member">OSUSAT_BUILD_EVENT_ID</ref>(<ref refid="group__rail__controller__types_1ga99040401649d8ef59ac63a3a8bb66328" kindref="member">RAIL_CONTROLLER_SERVICE_ID</ref>,                          \
+                          <ref refid="group__rail__controller__types_1gga3bd9884abd3690d3ba0c4cf26f25b5abab3cc09ba06a41fe5a2a0d04f0a9dfca5" kindref="member">RAIL_CONTROLLER_OVERCURRENT_DETECTED</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/rail_controller.h" line="84" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/rail_controller.h" bodystart="84" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="define" id="group__rail__controller__types_1ga0cecdad0abdb0d385515ce690f2b0b3e" prot="public" static="no">
+        <name>RAIL_CONTROLLER_EVENT_UNDERVOLTAGE_DETECTED</name>
+        <initializer>    <ref refid="group__osusat__event__bus__types_1ga6fb66ede3b29d386fec6f57800d3e980" kindref="member">OSUSAT_BUILD_EVENT_ID</ref>(<ref refid="group__rail__controller__types_1ga99040401649d8ef59ac63a3a8bb66328" kindref="member">RAIL_CONTROLLER_SERVICE_ID</ref>,                          \
+                          <ref refid="group__rail__controller__types_1gga3bd9884abd3690d3ba0c4cf26f25b5abac555dbc2e96928016607c65e4b389054" kindref="member">RAIL_CONTROLLER_UNDERVOLTAGE_DETECTED</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/rail_controller.h" line="87" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/rail_controller.h" bodystart="87" bodyend="89"/>
+      </memberdef>
+      <memberdef kind="define" id="group__rail__controller__types_1gaab112b67bc8dd7e291415c49f856552f" prot="public" static="no">
+        <name>RAIL_CONTROLLER_EVENT_OVERVOLTAGE_DETECTED</name>
+        <initializer>    <ref refid="group__osusat__event__bus__types_1ga6fb66ede3b29d386fec6f57800d3e980" kindref="member">OSUSAT_BUILD_EVENT_ID</ref>(<ref refid="group__rail__controller__types_1ga99040401649d8ef59ac63a3a8bb66328" kindref="member">RAIL_CONTROLLER_SERVICE_ID</ref>,                          \
+                          <ref refid="group__rail__controller__types_1gga3bd9884abd3690d3ba0c4cf26f25b5ababc7e9f4093d45d9672b8ea4c0bb97870" kindref="member">RAIL_CONTROLLER_OVERVOLTAGE_DETECTED</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/rail_controller.h" line="90" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/rail_controller.h" bodystart="90" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="define" id="group__rail__controller__types_1ga2c8d94b97b8d3a27c80397708f474956" prot="public" static="no">
+        <name>RAIL_CONTROLLER_EVENT_RAIL_FAULT_DETECTED</name>
+        <initializer>    <ref refid="group__osusat__event__bus__types_1ga6fb66ede3b29d386fec6f57800d3e980" kindref="member">OSUSAT_BUILD_EVENT_ID</ref>(<ref refid="group__rail__controller__types_1ga99040401649d8ef59ac63a3a8bb66328" kindref="member">RAIL_CONTROLLER_SERVICE_ID</ref>,                          \
+                          <ref refid="group__rail__controller__types_1gga3bd9884abd3690d3ba0c4cf26f25b5aba8e1284f8693c5f75afd85b015ae43b56" kindref="member">RAIL_CONTROLLER_RAIL_FAULT_DETECTED</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/rail_controller.h" line="93" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/rail_controller.h" bodystart="93" bodyend="95"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Structures and Enums for rail status monitoring. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

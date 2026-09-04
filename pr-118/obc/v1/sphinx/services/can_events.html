@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>CAN Events Service &#8212; OSUSat OBC Firmware  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Logging Service" href="logging.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="can-events-service">
+<h1>CAN Events Service<a class="headerlink" href="#can-events-service" title="Link to this heading">¶</a></h1>
+<p>CANBus Communication Service for OBC. </p>
+<p>Integrates the OSUSat Packet Library with the HAL CAN driver. </p>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv412can_events_t">
+<span id="_CPPv312can_events_t"></span><span id="_CPPv212can_events_t"></span><span id="can_events_t"></span><span class="target" id="structcan__events__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">can_events_t</span></span></span><a class="headerlink" href="#_CPPv412can_events_t" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;can_events.h&gt;</em></div>
+<p>CAN Service State Object. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12can_events_t11initializedE">
+<span id="_CPPv3N12can_events_t11initializedE"></span><span id="_CPPv2N12can_events_t11initializedE"></span><span id="can_events_t::initialized__b"></span><span class="target" id="structcan__events__t_1a3bcd147172ce242d187edc7b774feeaa"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">initialized</span></span></span><a class="headerlink" href="#_CPPv4N12can_events_t11initializedE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Whether the CAN events service is initialized. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12can_events_t4portE">
+<span id="_CPPv3N12can_events_t4portE"></span><span id="_CPPv2N12can_events_t4portE"></span><span id="can_events_t::port__hal_can_port_t"></span><span class="target" id="structcan__events__t_1a56d9525c9f252749c6f2875852faeb74"></span><span class="n"><span class="pre">hal_can_port_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">port</span></span></span><a class="headerlink" href="#_CPPv4N12can_events_t4portE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>The CAN port the service is acting on. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12can_events_t13rx_byte_countE">
+<span id="_CPPv3N12can_events_t13rx_byte_countE"></span><span id="_CPPv2N12can_events_t13rx_byte_countE"></span><span id="can_events_t::rx_byte_count__uint32_t"></span><span class="target" id="structcan__events__t_1aefb7477e9b004692cdbf26dbe93ad713"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rx_byte_count</span></span></span><a class="headerlink" href="#_CPPv4N12can_events_t13rx_byte_countE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Telemetry: total received bytes. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12can_events_t15rx_packet_countE">
+<span id="_CPPv3N12can_events_t15rx_packet_countE"></span><span id="_CPPv2N12can_events_t15rx_packet_countE"></span><span id="can_events_t::rx_packet_count__uint32_t"></span><span class="target" id="structcan__events__t_1af73d56205a837ceb68be6217df721648"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rx_packet_count</span></span></span><a class="headerlink" href="#_CPPv4N12can_events_t15rx_packet_countE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Telemetry: total packets decoded. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12can_events_t18rx_crc_error_countE">
+<span id="_CPPv3N12can_events_t18rx_crc_error_countE"></span><span id="_CPPv2N12can_events_t18rx_crc_error_countE"></span><span id="can_events_t::rx_crc_error_count__uint32_t"></span><span class="target" id="structcan__events__t_1af2a27433dac7b9210591df991b3335ea"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rx_crc_error_count</span></span></span><a class="headerlink" href="#_CPPv4N12can_events_t18rx_crc_error_countE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Telemetry: total errors counted. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12can_events_t11packet_poolE">
+<span id="_CPPv3N12can_events_t11packet_poolE"></span><span id="_CPPv2N12can_events_t11packet_poolE"></span><span id="can_events_t::packet_pool__uint8_tAA"></span><span class="target" id="structcan__events__t_1aa3ccd429e08709cc2dd3df22f5eb6e32"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">packet_pool</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">CAN_PACKET_POOL_SIZE</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">CAN_RX_MAX_PACKET_SIZE</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N12can_events_t11packet_poolE" title="Link to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12can_events_t10pool_indexE">
+<span id="_CPPv3N12can_events_t10pool_indexE"></span><span id="_CPPv2N12can_events_t10pool_indexE"></span><span id="can_events_t::pool_index__uint8_t"></span><span class="target" id="structcan__events__t_1a0be0f3ee5630d7864fa4cfb3d1c6ba7f"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pool_index</span></span></span><a class="headerlink" href="#_CPPv4N12can_events_t10pool_indexE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Index of the buffer currently being filled. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12can_events_t12decode_indexE">
+<span id="_CPPv3N12can_events_t12decode_indexE"></span><span id="_CPPv2N12can_events_t12decode_indexE"></span><span id="can_events_t::decode_index__uint16_t"></span><span class="target" id="structcan__events__t_1a44b9e6eada5e6fc493715ec22d562c80"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">decode_index</span></span></span><a class="headerlink" href="#_CPPv4N12can_events_t12decode_indexE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Write position within the current buffer. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12can_events_t8rx_stateE">
+<span id="_CPPv3N12can_events_t8rx_stateE"></span><span id="_CPPv2N12can_events_t8rx_stateE"></span><span id="can_events_t::rx_state__can_rx_state_t"></span><span class="target" id="structcan__events__t_1ac43c2222775002a12f487e9a11c8e124"></span><span class="n"><span class="pre">can_rx_state_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rx_state</span></span></span><a class="headerlink" href="#_CPPv4N12can_events_t8rx_stateE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Current Rx state. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12can_events_t19expected_packet_lenE">
+<span id="_CPPv3N12can_events_t19expected_packet_lenE"></span><span id="_CPPv2N12can_events_t19expected_packet_lenE"></span><span id="can_events_t::expected_packet_len__uint16_t"></span><span class="target" id="structcan__events__t_1a9894c23c287a7414c7840c10ef31a578"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">expected_packet_len</span></span></span><a class="headerlink" href="#_CPPv4N12can_events_t19expected_packet_lenE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>The expected packet length. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">OSUSat OBC Firmware</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Services:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="sensors.html">Sensors Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">Logging Service</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">CAN Events Service</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv412can_events_t"><code class="docutils literal notranslate"><span class="pre">can_events_t</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="logging.html" title="previous chapter">Logging Service</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2025, OSUSat.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.1.0</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/services/can_events.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

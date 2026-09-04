@@ -1,0 +1,672 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="group__SPI__Exported__Macros" kind="group">
+    <compoundname>SPI_Exported_Macros</compoundname>
+    <title>SPI Exported Macros</title>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="group__SPI__Exported__Macros_1ga0d846f9517715960873e854b4a0790b0" prot="public" static="no">
+        <name>__HAL_SPI_RESET_HANDLE_STATE</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer>((__HANDLE__)-&gt;State = <ref refid="group__SPI__Exported__Types_1gga8891cb64e76198a860172d94c638c9b4adbc218df2c9841b561282b40b3ded69d" kindref="member">HAL_SPI_STATE_RESET</ref>)</initializer>
+        <briefdescription>
+<para>Reset SPI handle state. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the SPI Handle. This parameter can be SPI where x: 1, 2, 3, 4, 5 or 6 to select the SPI peripheral. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h" line="672" column="10" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h" bodystart="672" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__SPI__Exported__Macros_1ga76064652f6f56d8868720b5541e854f5" prot="public" static="no">
+        <name>__HAL_SPI_ENABLE_IT</name>
+        <param><defname>__HANDLE__</defname></param>
+        <param><defname>__INTERRUPT__</defname></param>
+        <initializer>((__HANDLE__)-&gt;Instance-&gt;IER |= (__INTERRUPT__))</initializer>
+        <briefdescription>
+<para>Enable the specified SPI interrupts. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the SPI Handle. This parameter can be SPI where x: 1, 2, 3, 4, 5 or 6 to select the SPI peripheral. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>__INTERRUPT__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the interrupt source to enable or disable. This parameter can be one of the following values: <itemizedlist>
+<listitem><para>SPI_IT_RXP : Rx-Packet available interrupt </para>
+</listitem>
+<listitem><para>SPI_IT_TXP : Tx-Packet space available interrupt </para>
+</listitem>
+<listitem><para>SPI_IT_DXP : Duplex Packet interrupt </para>
+</listitem>
+<listitem><para>SPI_IT_EOT : End of transfer interrupt </para>
+</listitem>
+<listitem><para>SPI_IT_TXTF : Transmission Transfer Filled interrupt </para>
+</listitem>
+<listitem><para>SPI_IT_UDR : Underrun interrupt </para>
+</listitem>
+<listitem><para>SPI_IT_OVR : Overrun interrupt </para>
+</listitem>
+<listitem><para>SPI_IT_CRCERR : CRC error interrupt </para>
+</listitem>
+<listitem><para>SPI_IT_FRE : TI mode frame format error interrupt </para>
+</listitem>
+<listitem><para>SPI_IT_MODF : Mode fault interrupt </para>
+</listitem>
+<listitem><para>SPI_IT_TSERF : Additional number of data reloaded interrupt </para>
+</listitem>
+<listitem><para>SPI_IT_ERR : Error interrupt </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h" line="694" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h" bodystart="694" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__SPI__Exported__Macros_1ga47fa7321c5755bfbff1a7229fbe5b21c" prot="public" static="no">
+        <name>__HAL_SPI_DISABLE_IT</name>
+        <param><defname>__HANDLE__</defname></param>
+        <param><defname>__INTERRUPT__</defname></param>
+        <initializer>((__HANDLE__)-&gt;Instance-&gt;IER &amp;= (~(__INTERRUPT__)))</initializer>
+        <briefdescription>
+<para>Disable the specified SPI interrupts. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the SPI Handle. This parameter can be SPI where x: 1, 2, 3, 4, 5 or 6 to select the SPI peripheral. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>__INTERRUPT__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the interrupt source to enable or disable. This parameter can be one of the following values: <itemizedlist>
+<listitem><para>SPI_IT_RXP : Rx-Packet available interrupt </para>
+</listitem>
+<listitem><para>SPI_IT_TXP : Tx-Packet space available interrupt </para>
+</listitem>
+<listitem><para>SPI_IT_DXP : Duplex Packet interrupt </para>
+</listitem>
+<listitem><para>SPI_IT_EOT : End of transfer interrupt </para>
+</listitem>
+<listitem><para>SPI_IT_TXTF : Transmission Transfer Filled interrupt </para>
+</listitem>
+<listitem><para>SPI_IT_UDR : Underrun interrupt </para>
+</listitem>
+<listitem><para>SPI_IT_OVR : Overrun interrupt </para>
+</listitem>
+<listitem><para>SPI_IT_CRCERR : CRC error interrupt </para>
+</listitem>
+<listitem><para>SPI_IT_FRE : TI mode frame format error interrupt </para>
+</listitem>
+<listitem><para>SPI_IT_MODF : Mode fault interrupt </para>
+</listitem>
+<listitem><para>SPI_IT_TSERF : Additional number of data reloaded interrupt </para>
+</listitem>
+<listitem><para>SPI_IT_ERR : Error interrupt </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h" line="715" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h" bodystart="715" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__SPI__Exported__Macros_1gabdaab061e4603331a0ec4b9d651df0b5" prot="public" static="no">
+        <name>__HAL_SPI_GET_IT_SOURCE</name>
+        <param><defname>__HANDLE__</defname></param>
+        <param><defname>__INTERRUPT__</defname></param>
+        <initializer>                                                              ((((__HANDLE__)-&gt;Instance-&gt;IER &amp; \
+                                                              (__INTERRUPT__)) == (__INTERRUPT__)) ? SET : RESET)</initializer>
+        <briefdescription>
+<para>Check whether the specified SPI interrupt source is enabled or not. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the SPI Handle. This parameter can be SPI where x: 1, 2, 3, 4, 5 or 6 to select the SPI peripheral. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>__INTERRUPT__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the SPI interrupt source to check. This parameter can be one of the following values: <itemizedlist>
+<listitem><para>SPI_IT_RXP : Rx-Packet available interrupt </para>
+</listitem>
+<listitem><para>SPI_IT_TXP : Tx-Packet space available interrupt </para>
+</listitem>
+<listitem><para>SPI_IT_DXP : Duplex Packet interrupt </para>
+</listitem>
+<listitem><para>SPI_IT_EOT : End of transfer interrupt </para>
+</listitem>
+<listitem><para>SPI_IT_TXTF : Transmission Transfer Filled interrupt </para>
+</listitem>
+<listitem><para>SPI_IT_UDR : Underrun interrupt </para>
+</listitem>
+<listitem><para>SPI_IT_OVR : Overrun interrupt </para>
+</listitem>
+<listitem><para>SPI_IT_CRCERR : CRC error interrupt </para>
+</listitem>
+<listitem><para>SPI_IT_FRE : TI mode frame format error interrupt </para>
+</listitem>
+<listitem><para>SPI_IT_MODF : Mode fault interrupt </para>
+</listitem>
+<listitem><para>SPI_IT_TSERF : Additional number of data reloaded interrupt </para>
+</listitem>
+<listitem><para>SPI_IT_ERR : Error interrupt </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>The</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>new state of <bold>IT</bold> (TRUE or FALSE). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h" line="736" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h" bodystart="736" bodyend="737"/>
+      </memberdef>
+      <memberdef kind="define" id="group__SPI__Exported__Macros_1gaa0bbe5fb55f93fd277ddb6acf58cec53" prot="public" static="no">
+        <name>__HAL_SPI_GET_FLAG</name>
+        <param><defname>__HANDLE__</defname></param>
+        <param><defname>__FLAG__</defname></param>
+        <initializer>((((__HANDLE__)-&gt;Instance-&gt;SR) &amp; (__FLAG__)) == (__FLAG__))</initializer>
+        <briefdescription>
+<para>Check whether the specified SPI flag is set or not. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the SPI Handle. This parameter can be SPI where x: 1, 2, 3, 4, 5 or 6 to select the SPI peripheral. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>__FLAG__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the flag to check. This parameter can be one of the following values: <itemizedlist>
+<listitem><para>SPI_FLAG_RXP : Rx-Packet available flag </para>
+</listitem>
+<listitem><para>SPI_FLAG_TXP : Tx-Packet space available flag </para>
+</listitem>
+<listitem><para>SPI_FLAG_DXP : Duplex Packet flag </para>
+</listitem>
+<listitem><para>SPI_FLAG_EOT : End of transfer flag </para>
+</listitem>
+<listitem><para>SPI_FLAG_TXTF : Transmission Transfer Filled flag </para>
+</listitem>
+<listitem><para>SPI_FLAG_UDR : Underrun flag </para>
+</listitem>
+<listitem><para>SPI_FLAG_OVR : Overrun flag </para>
+</listitem>
+<listitem><para>SPI_FLAG_CRCERR : CRC error flag </para>
+</listitem>
+<listitem><para>SPI_FLAG_FRE : TI mode frame format error flag </para>
+</listitem>
+<listitem><para>SPI_FLAG_MODF : Mode fault flag </para>
+</listitem>
+<listitem><para>SPI_FLAG_TSERF : Additional number of data reloaded flag </para>
+</listitem>
+<listitem><para>SPI_FLAG_SUSP : Transfer suspend complete flag </para>
+</listitem>
+<listitem><para>SPI_FLAG_TXC : TxFIFO transmission complete flag </para>
+</listitem>
+<listitem><para>SPI_FLAG_FRLVL : Fifo reception level flag </para>
+</listitem>
+<listitem><para>SPI_FLAG_RXWNE : RxFIFO word not empty flag </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>The</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>new state of <bold>FLAG</bold> (TRUE or FALSE). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h" line="761" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h" bodystart="761" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__SPI__Exported__Macros_1gad1cb4100b67726531ad426d300f4cd26" prot="public" static="no">
+        <name>__HAL_SPI_CLEAR_CRCERRFLAG</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer>SET_BIT((__HANDLE__)-&gt;Instance-&gt;IFCR , <ref refid="group__Peripheral__Registers__Bits__Definition_1gaa776b437fb542da2298b25f64d2b4820" kindref="member">SPI_IFCR_CRCEC</ref>)</initializer>
+        <briefdescription>
+<para>Clear the SPI CRCERR pending flag. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the SPI Handle. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h" line="767" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h" bodystart="767" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__SPI__Exported__Macros_1ga6c88becbe528c542156bc201622efba2" prot="public" static="no">
+        <name>__HAL_SPI_CLEAR_MODFFLAG</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer>SET_BIT((__HANDLE__)-&gt;Instance-&gt;IFCR , (uint32_t)(<ref refid="group__Peripheral__Registers__Bits__Definition_1ga33f5f7e482ff62448df98ed1bef9d62b" kindref="member">SPI_IFCR_MODFC</ref>));</initializer>
+        <briefdescription>
+<para>Clear the SPI MODF pending flag. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the SPI Handle. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h" line="773" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h" bodystart="773" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__SPI__Exported__Macros_1gaf6af33b1c5d334b9fe7bb778c5b6442e" prot="public" static="no">
+        <name>__HAL_SPI_CLEAR_OVRFLAG</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer>SET_BIT((__HANDLE__)-&gt;Instance-&gt;IFCR , <ref refid="group__Peripheral__Registers__Bits__Definition_1gafe909f94add018dc698a1057b6e174da" kindref="member">SPI_IFCR_OVRC</ref>)</initializer>
+        <briefdescription>
+<para>Clear the SPI OVR pending flag. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the SPI Handle. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h" line="779" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h" bodystart="779" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__SPI__Exported__Macros_1ga7ff182f5cf6c731318c882351d6d7ac2" prot="public" static="no">
+        <name>__HAL_SPI_CLEAR_FREFLAG</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer>SET_BIT((__HANDLE__)-&gt;Instance-&gt;IFCR , <ref refid="group__Peripheral__Registers__Bits__Definition_1gadec3e1c72d5f45f6b9a2681d8275ffb5" kindref="member">SPI_IFCR_TIFREC</ref>)</initializer>
+        <briefdescription>
+<para>Clear the SPI FRE pending flag. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the SPI Handle. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h" line="785" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h" bodystart="785" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__SPI__Exported__Macros_1ga788e7e6782849d79499064b05050627e" prot="public" static="no">
+        <name>__HAL_SPI_CLEAR_UDRFLAG</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer>SET_BIT((__HANDLE__)-&gt;Instance-&gt;IFCR , <ref refid="group__Peripheral__Registers__Bits__Definition_1ga13b510c8ba08f0e130469ab6a94c844a" kindref="member">SPI_IFCR_UDRC</ref>)</initializer>
+        <briefdescription>
+<para>Clear the SPI UDR pending flag. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the SPI Handle. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h" line="791" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h" bodystart="791" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__SPI__Exported__Macros_1ga82b82dd74c0fe69c823e92323fde890a" prot="public" static="no">
+        <name>__HAL_SPI_CLEAR_EOTFLAG</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer>SET_BIT((__HANDLE__)-&gt;Instance-&gt;IFCR , <ref refid="group__Peripheral__Registers__Bits__Definition_1ga0a13f7af7ba888d7dbbbf016ccac324b" kindref="member">SPI_IFCR_EOTC</ref>)</initializer>
+        <briefdescription>
+<para>Clear the SPI EOT pending flag. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the SPI Handle. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h" line="797" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h" bodystart="797" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__SPI__Exported__Macros_1gac4e14a47b0110348bb2edf1eb6023a50" prot="public" static="no">
+        <name>__HAL_SPI_CLEAR_TXTFFLAG</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer>SET_BIT((__HANDLE__)-&gt;Instance-&gt;IFCR , <ref refid="group__Peripheral__Registers__Bits__Definition_1ga45f2b0107d9e8789831c616c984088e0" kindref="member">SPI_IFCR_TXTFC</ref>)</initializer>
+        <briefdescription>
+<para>Clear the SPI UDR pending flag. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the SPI Handle. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h" line="803" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h" bodystart="803" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__SPI__Exported__Macros_1ga76cb5dc888df5c6d19675e4d076b750d" prot="public" static="no">
+        <name>__HAL_SPI_CLEAR_SUSPFLAG</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer>SET_BIT((__HANDLE__)-&gt;Instance-&gt;IFCR , <ref refid="group__Peripheral__Registers__Bits__Definition_1ga63d88f8a3205e7c27d73e90df3d57a34" kindref="member">SPI_IFCR_SUSPC</ref>)</initializer>
+        <briefdescription>
+<para>Clear the SPI SUSP pending flag. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the SPI Handle. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h" line="809" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h" bodystart="809" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__SPI__Exported__Macros_1ga9a45859eee2e15a4a6367cc4a5066c8b" prot="public" static="no">
+        <name>__HAL_SPI_CLEAR_TSERFFLAG</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer>SET_BIT((__HANDLE__)-&gt;Instance-&gt;IFCR , <ref refid="group__Peripheral__Registers__Bits__Definition_1gad058d0a0046d7de998d9d73635009c9e" kindref="member">SPI_IFCR_TSERFC</ref>)</initializer>
+        <briefdescription>
+<para>Clear the SPI TSERF pending flag. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the SPI Handle. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h" line="815" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h" bodystart="815" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__SPI__Exported__Macros_1ga16d2d73c2b16004499ae8d492e71fd4e" prot="public" static="no">
+        <name>__HAL_SPI_ENABLE</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer>SET_BIT((__HANDLE__)-&gt;Instance-&gt;CR1 , <ref refid="group__Peripheral__Registers__Bits__Definition_1gac5a646d978d3b98eb7c6a5d95d75c3f9" kindref="member">SPI_CR1_SPE</ref>)</initializer>
+        <briefdescription>
+<para>Enable the SPI peripheral. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the SPI Handle. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h" line="821" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h" bodystart="821" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__SPI__Exported__Macros_1gaa10d88f87d16de53bd81dfb33bd56959" prot="public" static="no">
+        <name>__HAL_SPI_DISABLE</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer>CLEAR_BIT((__HANDLE__)-&gt;Instance-&gt;CR1 , <ref refid="group__Peripheral__Registers__Bits__Definition_1gac5a646d978d3b98eb7c6a5d95d75c3f9" kindref="member">SPI_CR1_SPE</ref>)</initializer>
+        <briefdescription>
+<para>Disable the SPI peripheral. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the SPI Handle. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h" line="827" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h" bodystart="827" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

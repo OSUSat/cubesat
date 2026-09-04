@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="system__stm32h7xx_8h" kind="file" language="C++">
+    <compoundname>system_stm32h7xx.h</compoundname>
+    <includedby refid="stm32h743xx_8h" local="yes">/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h743xx.h</includedby>
+    <invincdepgraph>
+      <node id="2">
+        <label>/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h743xx.h</label>
+        <link refid="stm32h743xx_8h"/>
+      </node>
+      <node id="1">
+        <label>/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/CMSIS/Device/ST/STM32H7xx/Include/system_stm32h7xx.h</label>
+        <link refid="system__stm32h7xx_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <sectiondef kind="var">
+      <member refid="group__STM32H7xx__System__Exported__types_1gaa3cd3e43291e81e795d642b79b6088e6" kind="variable"><name>SystemCoreClock</name></member>
+      <member refid="group__STM32H7xx__System__Exported__types_1gaa3016e42a01e5655e438fcf76e4ba5b0" kind="variable"><name>SystemD2Clock</name></member>
+      <member refid="group__STM32H7xx__System__Exported__types_1gac0142b24f5548d68accaf0d9b795c9e1" kind="variable"><name>D1CorePrescTable</name></member>
+    </sectiondef>
+    <sectiondef kind="func">
+      <member refid="group__STM32H7xx__System__Exported__Functions_1ga93f514700ccf00d08dbdcff7f1224eb2" kind="function"><name>SystemInit</name></member>
+      <member refid="group__STM32H7xx__System__Exported__Functions_1gae0c36a9591fe6e9c45ecb21a794f0f0f" kind="function"><name>SystemCoreClockUpdate</name></member>
+      <member refid="group__STM32H7xx__System__Exported__Functions_1gad150a6a4fd63fa73f4625b060691238a" kind="function"><name>ExitRun0Mode</name></member>
+    </sectiondef>
+    <briefdescription>
+<para>CMSIS Cortex-Mx Device System Source File for STM32H7xx devices. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>MCD Application Team </para>
+</simplesect>
+<simplesect kind="attention"><para></para>
+</simplesect>
+Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
+<para>This software is licensed under terms that can be found in the LICENSE file in the root directory of this software component. If no LICENSE file comes with this software, it is provided AS-IS. </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>SYSTEM_STM32H7XX_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SYSTEM_STM32H7XX_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>This<sp/>variable<sp/>is<sp/>updated<sp/>in<sp/>three<sp/>ways:</highlight></codeline>
+<codeline lineno="50"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/>1)<sp/>by<sp/>calling<sp/>CMSIS<sp/>function<sp/>SystemCoreClockUpdate()</highlight></codeline>
+<codeline lineno="51"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/>2)<sp/>by<sp/>calling<sp/>HAL<sp/>API<sp/>function<sp/>HAL_RCC_GetSysClockFreq()</highlight></codeline>
+<codeline lineno="52"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/>3)<sp/>each<sp/>time<sp/>HAL_RCC_ClockConfig()<sp/>is<sp/>called<sp/>to<sp/>configure<sp/>the<sp/>system<sp/>clock<sp/>frequency</highlight></codeline>
+<codeline lineno="53"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Note:<sp/>If<sp/>you<sp/>use<sp/>this<sp/>function<sp/>to<sp/>configure<sp/>the<sp/>system<sp/>clock;<sp/>then<sp/>there</highlight></codeline>
+<codeline lineno="54"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>is<sp/>no<sp/>need<sp/>to<sp/>call<sp/>the<sp/>2<sp/>first<sp/>functions<sp/>listed<sp/>above,<sp/>since<sp/>SystemCoreClock</highlight></codeline>
+<codeline lineno="55"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>variable<sp/>is<sp/>updated<sp/>automatically.</highlight></codeline>
+<codeline lineno="56"><highlight class="comment"><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>uint32_t<sp/><ref refid="group__STM32H7xx__System__Exported__types_1gaa3cd3e43291e81e795d642b79b6088e6" kindref="member">SystemCoreClock</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>uint32_t<sp/><ref refid="group__STM32H7xx__System__Exported__types_1gaa3016e42a01e5655e438fcf76e4ba5b0" kindref="member">SystemD2Clock</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="group__STM32H7xx__System__Exported__types_1gac0142b24f5548d68accaf0d9b795c9e1" kindref="member">D1CorePrescTable</ref>[16]<sp/>;<sp/></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__STM32H7xx__System__Exported__Functions_1ga93f514700ccf00d08dbdcff7f1224eb2" kindref="member">SystemInit</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__STM32H7xx__System__Exported__Functions_1gae0c36a9591fe6e9c45ecb21a794f0f0f" kindref="member">SystemCoreClockUpdate</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(__GNUC__)<sp/>&amp;&amp;<sp/>!defined(__ARMCC_VERSION)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__STM32H7xx__System__Exported__Functions_1gad150a6a4fd63fa73f4625b060691238a" kindref="member">ExitRun0Mode</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/><ref refid="group__osusat__slog__types_1gab898071398b359603a35c202e9c65f3b" kindref="member">__attribute__</ref>((optimize(</highlight><highlight class="stringliteral">&quot;Os&quot;</highlight><highlight class="normal">)));</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__STM32H7xx__System__Exported__Functions_1gad150a6a4fd63fa73f4625b060691238a" kindref="member">ExitRun0Mode</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>__GNUC__<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>SYSTEM_STM32H7XX_H<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/CMSIS/Device/ST/STM32H7xx/Include/system_stm32h7xx.h"/>
+  </compounddef>
+</doxygen>

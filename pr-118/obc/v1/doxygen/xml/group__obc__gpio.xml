@@ -1,0 +1,256 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="group__obc__gpio" kind="group">
+    <compoundname>obc_gpio</compoundname>
+    <title>GPIO Driver</title>
+    <innerclass refid="structgpio__pin__t" prot="public">gpio_pin_t</innerclass>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group__obc__gpio_1gaa6522fb9760184b5f293ad42375be160" prot="public" static="no">
+        <type>void(*</type>
+        <definition>gpio_callback_t</definition>
+        <argsstring>)(uint8_t pin, void *ctx)</argsstring>
+        <name>gpio_callback_t</name>
+        <briefdescription>
+<para>Function signature for GPIO interrupt handlers. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">pin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The pin ID that triggered the interrupt. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">ctx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>User context pointer provided at registration. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_gpio.h" line="28" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_gpio.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="group__obc__gpio_1gab5ae6f712980fbf6f16ecb6dc8ae1a36" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void hal_gpio_init</definition>
+        <argsstring>(void)</argsstring>
+        <name>hal_gpio_init</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Initialize the GPIO driver. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_gpio.h" line="47" column="6" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_gpio.c" bodystart="149" bodyend="159" declfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_gpio.h" declline="47" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__obc__gpio_1ga4e1c7c73211d9c5c4a5314453aafed8c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void hal_gpio_set_mode</definition>
+        <argsstring>(uint8_t pin, gpio_mode_t mode)</argsstring>
+        <name>hal_gpio_set_mode</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>pin</declname>
+        </param>
+        <param>
+          <type>gpio_mode_t</type>
+          <declname>mode</declname>
+        </param>
+        <briefdescription>
+<para>Set the mode of a GPIO pin. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">pin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pin identifier. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Operating mode. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_gpio.h" line="55" column="6" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_gpio.c" bodystart="161" bodyend="221" declfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_gpio.h" declline="55" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__obc__gpio_1ga9add8d838aee6a869270f6e5c731d481" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void hal_gpio_register_callback</definition>
+        <argsstring>(uint8_t pin, gpio_callback_t callback, void *ctx)</argsstring>
+        <name>hal_gpio_register_callback</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>pin</declname>
+        </param>
+        <param>
+          <type><ref refid="group__obc__gpio_1gaa6522fb9760184b5f293ad42375be160" kindref="member">gpio_callback_t</ref></type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>ctx</declname>
+        </param>
+        <briefdescription>
+<para>Register a software callback for a GPIO interrupt. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">pin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pin identifier. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Function pointer to trigger. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">ctx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>User context pointer. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_gpio.h" line="64" column="6" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_gpio.c" bodystart="256" bodyend="266" declfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_gpio.h" declline="64" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__obc__gpio_1gaa314f8a9a4b7b51a49361b942b7d2c3b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void hal_gpio_write</definition>
+        <argsstring>(uint8_t pin, gpio_state_t state)</argsstring>
+        <name>hal_gpio_write</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>pin</declname>
+        </param>
+        <param>
+          <type>gpio_state_t</type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+<para>Drive a GPIO pin output state. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">pin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pin identifier. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">state</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>High or Low state. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_gpio.h" line="73" column="6" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_gpio.c" bodystart="223" bodyend="232" declfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_gpio.h" declline="73" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__obc__gpio_1ga6c1cff12f9dda7780aeb06202056d529" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>gpio_state_t</type>
+        <definition>gpio_state_t hal_gpio_read</definition>
+        <argsstring>(uint8_t pin)</argsstring>
+        <name>hal_gpio_read</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>pin</declname>
+        </param>
+        <briefdescription>
+<para>Read the logic state of a GPIO pin. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">pin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pin identifier. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>HAL_GPIO_STATE_HIGH or HAL_GPIO_STATE_LOW. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_gpio.h" line="81" column="14" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_gpio.c" bodystart="244" bodyend="254" declfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_gpio.h" declline="81" declcolumn="14"/>
+      </memberdef>
+      <memberdef kind="function" id="group__obc__gpio_1ga8d567a689867d0c1be8f447cca081242" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void hal_gpio_toggle</definition>
+        <argsstring>(uint8_t pin)</argsstring>
+        <name>hal_gpio_toggle</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>pin</declname>
+        </param>
+        <briefdescription>
+<para>Toggle a GPIO pin output state. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">pin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pin identifier. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_gpio.h" line="88" column="6" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_gpio.c" bodystart="234" bodyend="242" declfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_gpio.h" declline="88" declcolumn="6"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>GPIO controller interface for OBC pins. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

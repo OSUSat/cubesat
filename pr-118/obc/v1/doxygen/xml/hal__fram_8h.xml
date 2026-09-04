@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="hal__fram_8h" kind="file" language="C++">
+    <compoundname>hal_fram.h</compoundname>
+    <includes local="no">stdbool.h</includes>
+    <includes local="no">stddef.h</includes>
+    <includes local="no">stdint.h</includes>
+    <includedby refid="hal__fram_8c" local="yes">/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_fram.c</includedby>
+    <includedby refid="obc_2v1_2firmware_2main_8c" local="yes">/home/runner/work/cubesat/cubesat/obc/v1/firmware/main.c</includedby>
+    <includedby refid="hal__fram__mock_8c" local="yes">/home/runner/work/cubesat/cubesat/obc/v1/firmware/mocks/hal_fram_mock.c</includedby>
+    <includedby refid="logging_8c" local="yes">/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/logging.c</includedby>
+    <includedby refid="sensors_8c" local="yes">/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/sensors.c</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_fram.h</label>
+        <link refid="hal__fram_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>stdbool.h</label>
+      </node>
+      <node id="3">
+        <label>stddef.h</label>
+      </node>
+      <node id="4">
+        <label>stdint.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_fram.c</label>
+        <link refid="hal__fram_8c"/>
+      </node>
+      <node id="1">
+        <label>/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_fram.h</label>
+        <link refid="hal__fram_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>/home/runner/work/cubesat/cubesat/obc/v1/firmware/mocks/hal_fram_mock.c</label>
+        <link refid="hal__fram__mock_8c"/>
+      </node>
+      <node id="4">
+        <label>/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/logging.c</label>
+        <link refid="logging_8c"/>
+      </node>
+      <node id="5">
+        <label>/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/sensors.c</label>
+        <link refid="sensors_8c"/>
+      </node>
+    </invincdepgraph>
+    <sectiondef kind="enum">
+      <member refid="group__obc__fram_1gaa5e4d5aabd6ebd52dfe796cfa23cd97b" kind="enum"><name>hal_fram_status_t</name></member>
+    </sectiondef>
+    <sectiondef kind="typedef">
+      <member refid="group__obc__fram_1ga94cbdb268480e96749778e7745af89ea" kind="typedef"><name>hal_fram_callback_t</name></member>
+    </sectiondef>
+    <sectiondef kind="func">
+      <member refid="group__obc__fram_1ga390f948982f771e2ca9a470275e57168" kind="function"><name>hal_fram_init</name></member>
+      <member refid="group__obc__fram_1ga68a8cc6f68f0647700df1385c0de4a87" kind="function"><name>hal_fram_write</name></member>
+      <member refid="group__obc__fram_1ga9d52df171e03b6f680f93b566dab036e" kind="function"><name>hal_fram_read</name></member>
+      <member refid="group__obc__fram_1ga250114811f28848bfa4a042743dbb3fc" kind="function"><name>hal_fram_write_it</name></member>
+      <member refid="group__obc__fram_1gac68e9b064fc8774c88e6454036c5d46e" kind="function"><name>hal_fram_read_it</name></member>
+      <member refid="group__obc__fram_1ga3ea96795ac90100e81c8d3d51d9c9da8" kind="function"><name>hal_fram_get_mock_buffer</name></member>
+    </sectiondef>
+    <briefdescription>
+<para>FRAM (Ferroelectric RAM) Hardware Abstraction Layer for OBC. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Provides synchronous and interrupt-driven non-blocking read/write functions for FRAM. </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>HAL_FRAM_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HAL_FRAM_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdbool.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stddef.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25" refid="group__obc__fram_1gaa5e4d5aabd6ebd52dfe796cfa23cd97b" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="26" refid="group__obc__fram_1ggaa5e4d5aabd6ebd52dfe796cfa23cd97ba7f3cbc51d028804f10421980d20d9076" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__obc__fram_1ggaa5e4d5aabd6ebd52dfe796cfa23cd97ba7f3cbc51d028804f10421980d20d9076" kindref="member">HAL_FRAM_OK</ref><sp/>=<sp/>0,<sp/></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__obc__fram_1ggaa5e4d5aabd6ebd52dfe796cfa23cd97baffe2e037ff71c5e98bbd893ac1a7cf73" kindref="member">HAL_FRAM_ERROR</ref><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="28" refid="group__obc__fram_1ggaa5e4d5aabd6ebd52dfe796cfa23cd97baffe2e037ff71c5e98bbd893ac1a7cf73" refkind="member"><highlight class="normal">}<sp/><ref refid="group__obc__fram_1gaa5e4d5aabd6ebd52dfe796cfa23cd97b" kindref="member">hal_fram_status_t</ref>;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__obc__fram_1ga390f948982f771e2ca9a470275e57168" kindref="member">hal_fram_init</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><ref refid="group__obc__fram_1gaa5e4d5aabd6ebd52dfe796cfa23cd97b" kindref="member">hal_fram_status_t</ref><sp/><ref refid="group__obc__fram_1ga68a8cc6f68f0647700df1385c0de4a87" kindref="member">hal_fram_write</ref>(uint32_t<sp/>address,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>*data,</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>size);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><ref refid="group__obc__fram_1gaa5e4d5aabd6ebd52dfe796cfa23cd97b" kindref="member">hal_fram_status_t</ref><sp/><ref refid="group__obc__fram_1ga9d52df171e03b6f680f93b566dab036e" kindref="member">hal_fram_read</ref>(uint32_t<sp/>address,<sp/>uint8_t<sp/>*buffer,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>size);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62" refid="group__obc__fram_1ga94cbdb268480e96749778e7745af89ea" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>void<sp/>(*<ref refid="group__obc__fram_1ga94cbdb268480e96749778e7745af89ea" kindref="member">hal_fram_callback_t</ref>)(<ref refid="group__obc__fram_1gaa5e4d5aabd6ebd52dfe796cfa23cd97b" kindref="member">hal_fram_status_t</ref><sp/>status,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*ctx);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><ref refid="group__obc__fram_1gaa5e4d5aabd6ebd52dfe796cfa23cd97b" kindref="member">hal_fram_status_t</ref><sp/><ref refid="group__obc__fram_1ga250114811f28848bfa4a042743dbb3fc" kindref="member">hal_fram_write_it</ref>(uint32_t<sp/>address,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>*data,</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>size,<sp/><ref refid="group__obc__fram_1ga94cbdb268480e96749778e7745af89ea" kindref="member">hal_fram_callback_t</ref><sp/>cb,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*ctx);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><ref refid="group__obc__fram_1gaa5e4d5aabd6ebd52dfe796cfa23cd97b" kindref="member">hal_fram_status_t</ref><sp/><ref refid="group__obc__fram_1gac68e9b064fc8774c88e6454036c5d46e" kindref="member">hal_fram_read_it</ref>(uint32_t<sp/>address,<sp/>uint8_t<sp/>*buffer,</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>size,<sp/><ref refid="group__obc__fram_1ga94cbdb268480e96749778e7745af89ea" kindref="member">hal_fram_callback_t</ref><sp/>cb,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*ctx);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>!defined(__arm__)</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>*<ref refid="group__obc__fram_1ga3ea96795ac90100e81c8d3d51d9c9da8" kindref="member">hal_fram_get_mock_buffer</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>HAL_FRAM_H</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_fram.h"/>
+  </compounddef>
+</doxygen>

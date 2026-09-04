@@ -1,0 +1,153 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="group__STM32H7xx__System__Private__Functions" kind="group">
+    <compoundname>STM32H7xx_System_Private_Functions</compoundname>
+    <title>STM32H7xx_System_Private_Functions</title>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="group__STM32H7xx__System__Private__Functions_1ga93f514700ccf00d08dbdcff7f1224eb2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void SystemInit</definition>
+        <argsstring>(void)</argsstring>
+        <name>SystemInit</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Setup the microcontroller system Initialize the FPU setting and vector table location configuration. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Core/Src/system_stm32h7xx.c" line="178" column="6" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Core/Src/system_stm32h7xx.c" bodystart="178" bodyend="313"/>
+      </memberdef>
+      <memberdef kind="function" id="group__STM32H7xx__System__Private__Functions_1gae0c36a9591fe6e9c45ecb21a794f0f0f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void SystemCoreClockUpdate</definition>
+        <argsstring>(void)</argsstring>
+        <name>SystemCoreClockUpdate</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Update SystemCoreClock variable according to Clock Register Values. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The SystemCoreClock variable contains the core clock , it can be used by the user application to setup the SysTick timer or configure other parameters.</para>
+<para><simplesect kind="note"><para>Each time the core clock changes, this function must be called to update SystemCoreClock variable value. Otherwise, any configuration based on this variable will be incorrect.</para>
+</simplesect>
+<simplesect kind="note"><para>- The system frequency computed by this function is not the real frequency in the chip. It is calculated based on the predefined constant and the selected clock source:</para>
+</simplesect>
+<itemizedlist>
+<listitem><para>If SYSCLK source is CSI, SystemCoreClock will contain the <ref refid="group__STM32H7xx__System__Private__Includes_1ga4dcbff36a4b1cfd045c01d59084255d0" kindref="member">CSI_VALUE(*)</ref></para>
+</listitem><listitem><para>If SYSCLK source is HSI, SystemCoreClock will contain the <ref refid="group__STM32H7xx__System__Private__Includes_1gaaa8c76e274d0f6dd2cefb5d0b17fbc37" kindref="member">HSI_VALUE(**)</ref></para>
+</listitem><listitem><para>If SYSCLK source is HSE, SystemCoreClock will contain the <ref refid="group__STM32H7xx__System__Private__Includes_1gaeafcff4f57440c60e64812dddd13e7cb" kindref="member">HSE_VALUE(***)</ref></para>
+</listitem><listitem><para>If SYSCLK source is PLL, SystemCoreClock will contain the <ref refid="group__STM32H7xx__System__Private__Includes_1ga4dcbff36a4b1cfd045c01d59084255d0" kindref="member">CSI_VALUE(*)</ref>, <ref refid="group__STM32H7xx__System__Private__Includes_1gaaa8c76e274d0f6dd2cefb5d0b17fbc37" kindref="member">HSI_VALUE(**)</ref> or <ref refid="group__STM32H7xx__System__Private__Includes_1gaeafcff4f57440c60e64812dddd13e7cb" kindref="member">HSE_VALUE(***)</ref> multiplied/divided by the PLL factors.</para>
+</listitem></itemizedlist>
+</para>
+<para>(*) CSI_VALUE is a constant defined in stm32h7xx_hal.h file (default value 4 MHz) but the real value may vary depending on the variations in voltage and temperature. (**) HSI_VALUE is a constant defined in stm32h7xx_hal.h file (default value 64 MHz) but the real value may vary depending on the variations in voltage and temperature.</para>
+<para>(***)HSE_VALUE is a constant defined in stm32h7xx_hal.h file (default value 25 MHz), user has to ensure that HSE_VALUE is same as the real frequency of the crystal used. Otherwise, this function may have wrong result.</para>
+<para><itemizedlist>
+<listitem><para>The result of this function could be not correct when using fractional value for HSE crystal. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+</listitem></itemizedlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Core/Src/system_stm32h7xx.c" line="352" column="6" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Core/Src/system_stm32h7xx.c" bodystart="352" bodyend="449"/>
+      </memberdef>
+      <memberdef kind="function" id="group__STM32H7xx__System__Private__Functions_1gad150a6a4fd63fa73f4625b060691238a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ExitRun0Mode</definition>
+        <argsstring>(void)</argsstring>
+        <name>ExitRun0Mode</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Exit Run* mode and Configure the system Power Supply. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>This function exits the Run* mode and configures the system power supply according to the definition to be used at compilation preprocessing level. The application shall set one of the following configuration option:<itemizedlist>
+<listitem><para>PWR_LDO_SUPPLY</para>
+</listitem><listitem><para>PWR_DIRECT_SMPS_SUPPLY</para>
+</listitem><listitem><para>PWR_EXTERNAL_SOURCE_SUPPLY</para>
+</listitem><listitem><para>PWR_SMPS_1V8_SUPPLIES_LDO</para>
+</listitem><listitem><para>PWR_SMPS_2V5_SUPPLIES_LDO</para>
+</listitem><listitem><para>PWR_SMPS_1V8_SUPPLIES_EXT_AND_LDO</para>
+</listitem><listitem><para>PWR_SMPS_2V5_SUPPLIES_EXT_AND_LDO</para>
+</listitem><listitem><para>PWR_SMPS_1V8_SUPPLIES_EXT</para>
+</listitem><listitem><para>PWR_SMPS_2V5_SUPPLIES_EXT</para>
+</listitem></itemizedlist>
+</para>
+</simplesect>
+<simplesect kind="note"><para>The function modifies the PWR-&gt;CR3 register to enable or disable specific power supply modes and waits until the voltage level flag is set, indicating that the power supply configuration is stable.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Core/Src/system_stm32h7xx.c" line="474" column="6" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Core/Src/system_stm32h7xx.c" bodystart="474" bodyend="542"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

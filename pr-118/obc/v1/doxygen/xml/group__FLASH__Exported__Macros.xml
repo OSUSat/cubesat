@@ -1,0 +1,532 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="group__FLASH__Exported__Macros" kind="group">
+    <compoundname>FLASH_Exported_Macros</compoundname>
+    <title>FLASH Exported Macros</title>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="group__FLASH__Exported__Macros_1gac1c9f459b798cc3700b90a6245df5a1a" prot="public" static="no">
+        <name>__HAL_FLASH_SET_LATENCY</name>
+        <param><defname>__LATENCY__</defname></param>
+        <initializer>                  MODIFY_REG(FLASH-&gt;ACR, <ref refid="group__Peripheral__Registers__Bits__Definition_1gaef5e44cbb084160a6004ca9951ec7318" kindref="member">FLASH_ACR_LATENCY</ref>, (uint32_t)(__LATENCY__))</initializer>
+        <briefdescription>
+<para>Set the FLASH Latency. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__LATENCY__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>FLASH Latency The value of this parameter depend on device used within the same series </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>none</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash.h" line="496" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash.h" bodystart="496" bodyend="497"/>
+      </memberdef>
+      <memberdef kind="define" id="group__FLASH__Exported__Macros_1gaa537e44d74ce35ff5bfef80edf03f895" prot="public" static="no">
+        <name>__HAL_FLASH_GET_LATENCY</name>
+        <param></param>
+        <initializer>(READ_BIT((FLASH-&gt;ACR), <ref refid="group__Peripheral__Registers__Bits__Definition_1gaef5e44cbb084160a6004ca9951ec7318" kindref="member">FLASH_ACR_LATENCY</ref>))</initializer>
+        <briefdescription>
+<para>Get the FLASH Latency. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>FLASH</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Latency The value of this parameter depend on device used within the same series </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash.h" line="504" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash.h" bodystart="504" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__FLASH__Exported__Macros_1ga009e02a77f26c5b8ca6b81aff1b1794a" prot="public" static="no">
+        <name>__HAL_FLASH_ENABLE_IT_BANK1</name>
+        <param><defname>__INTERRUPT__</defname></param>
+        <initializer>(FLASH-&gt;CR1 |= (__INTERRUPT__))</initializer>
+        <briefdescription>
+<para>Enable the specified FLASH interrupt. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__INTERRUPT__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>: FLASH interrupt In case of Bank 1 This parameter can be any combination of the following values: <itemizedlist>
+<listitem><para>FLASH_IT_EOP_BANK1 : End of FLASH Bank 1 Operation Interrupt source </para>
+</listitem>
+<listitem><para>FLASH_IT_WRPERR_BANK1 : Write Protection Error on Bank 1 Interrupt source </para>
+</listitem>
+<listitem><para>FLASH_IT_PGSERR_BANK1 : Program Sequence Error on Bank 1 Interrupt source </para>
+</listitem>
+<listitem><para>FLASH_IT_STRBERR_BANK1 : Strobe Error on Bank 1 Interrupt source </para>
+</listitem>
+<listitem><para>FLASH_IT_INCERR_BANK1 : Inconsistency Error on Bank 1 Interrupt source </para>
+</listitem>
+<listitem><para>FLASH_IT_OPERR_BANK1 : Operation Error on Bank 1 Interrupt source </para>
+</listitem>
+<listitem><para>FLASH_IT_RDPERR_BANK1 : Read protection Error on Bank 1 Interrupt source </para>
+</listitem>
+<listitem><para>FLASH_IT_RDSERR_BANK1 : Read secure Error on Bank 1 Interrupt source </para>
+</listitem>
+<listitem><para>FLASH_IT_SNECCERR_BANK1 : Single ECC Error Correction on Bank 1 Interrupt source </para>
+</listitem>
+<listitem><para>FLASH_IT_DBECCERR_BANK1 : Double Detection ECC Error on Bank 1 Interrupt source </para>
+</listitem>
+<listitem><para>FLASH_IT_CRCEND_BANK1 : CRC End on Bank 1 Interrupt source </para>
+</listitem>
+<listitem><para>FLASH_IT_CRCRDERR_BANK1 : CRC Read error on Bank 1 Interrupt source </para>
+</listitem>
+<listitem><para>FLASH_IT_ALL_BANK1 : All Bank 1 Interrupt sources</para>
+</listitem>
+</itemizedlist>
+In case of Bank 2, this parameter can be any combination of the following values: <itemizedlist>
+<listitem><para>FLASH_IT_EOP_BANK2 : End of FLASH Bank 2 Operation Interrupt source </para>
+</listitem>
+<listitem><para>FLASH_IT_WRPERR_BANK2 : Write Protection Error on Bank 2 Interrupt source </para>
+</listitem>
+<listitem><para>FLASH_IT_PGSERR_BANK2 : Program Sequence Error on Bank 2 Interrupt source </para>
+</listitem>
+<listitem><para>FLASH_IT_STRBERR_BANK2 : Strobe Error on Bank 2 Interrupt source </para>
+</listitem>
+<listitem><para>FLASH_IT_INCERR_BANK2 : Inconsistency Error on Bank 2 Interrupt source </para>
+</listitem>
+<listitem><para>FLASH_IT_OPERR_BANK2 : Operation Error on Bank 2 Interrupt source </para>
+</listitem>
+<listitem><para>FLASH_IT_RDPERR_BANK2 : Read protection Error on Bank 2 Interrupt source </para>
+</listitem>
+<listitem><para>FLASH_IT_RDSERR_BANK2 : Read secure Error on Bank 2 Interrupt source </para>
+</listitem>
+<listitem><para>FLASH_IT_SNECCERR_BANK2 : Single ECC Error Correction on Bank 2 Interrupt source </para>
+</listitem>
+<listitem><para>FLASH_IT_DBECCERR_BANK2 : Double Detection ECC Error on Bank 2 Interrupt source </para>
+</listitem>
+<listitem><para>FLASH_IT_CRCEND_BANK2 : CRC End on Bank 2 Interrupt source </para>
+</listitem>
+<listitem><para>FLASH_IT_CRCRDERR_BANK2 : CRC Read error on Bank 2 Interrupt source </para>
+</listitem>
+<listitem><para>FLASH_IT_ALL_BANK2 : All Bank 2 Interrupt sources </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>none</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash.h" line="541" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash.h" bodystart="541" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__FLASH__Exported__Macros_1ga0115393daf5e17fec58db2017a13784e" prot="public" static="no">
+        <name>__HAL_FLASH_ENABLE_IT_BANK2</name>
+        <param><defname>__INTERRUPT__</defname></param>
+        <initializer>(FLASH-&gt;CR2 |= ((__INTERRUPT__) &amp; 0x7FFFFFFFU))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash.h" line="543" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash.h" bodystart="543" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__FLASH__Exported__Macros_1ga13fa137a911f02a2f94fb9fb0762a340" prot="public" static="no">
+        <name>__HAL_FLASH_ENABLE_IT</name>
+        <param><defname>__INTERRUPT__</defname></param>
+        <initializer><ref refid="group__FLASH__Exported__Macros_1ga009e02a77f26c5b8ca6b81aff1b1794a" kindref="member">__HAL_FLASH_ENABLE_IT_BANK1</ref>(__INTERRUPT__)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash.h" line="550" column="10" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash.h" bodystart="550" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__FLASH__Exported__Macros_1gac0ea4e89204dec265c2810520948df81" prot="public" static="no">
+        <name>__HAL_FLASH_DISABLE_IT_BANK1</name>
+        <param><defname>__INTERRUPT__</defname></param>
+        <initializer>(FLASH-&gt;CR1 &amp;= ~(uint32_t)(__INTERRUPT__))</initializer>
+        <briefdescription>
+<para>Disable the specified FLASH interrupt. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__INTERRUPT__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>: FLASH interrupt In case of Bank 1 This parameter can be any combination of the following values: <itemizedlist>
+<listitem><para>FLASH_IT_EOP_BANK1 : End of FLASH Bank 1 Operation Interrupt source </para>
+</listitem>
+<listitem><para>FLASH_IT_WRPERR_BANK1 : Write Protection Error on Bank 1 Interrupt source </para>
+</listitem>
+<listitem><para>FLASH_IT_PGSERR_BANK1 : Program Sequence Error on Bank 1 Interrupt source </para>
+</listitem>
+<listitem><para>FLASH_IT_STRBERR_BANK1 : Strobe Error on Bank 1 Interrupt source </para>
+</listitem>
+<listitem><para>FLASH_IT_INCERR_BANK1 : Inconsistency Error on Bank 1 Interrupt source </para>
+</listitem>
+<listitem><para>FLASH_IT_OPERR_BANK1 : Operation Error on Bank 1 Interrupt source </para>
+</listitem>
+<listitem><para>FLASH_IT_RDPERR_BANK1 : Read protection Error on Bank 1 Interrupt source </para>
+</listitem>
+<listitem><para>FLASH_IT_RDSERR_BANK1 : Read secure Error on Bank 1 Interrupt source </para>
+</listitem>
+<listitem><para>FLASH_IT_SNECCERR_BANK1 : Single ECC Error Correction on Bank 1 Interrupt source </para>
+</listitem>
+<listitem><para>FLASH_IT_DBECCERR_BANK1 : Double Detection ECC Error on Bank 1 Interrupt source </para>
+</listitem>
+<listitem><para>FLASH_IT_CRCEND_BANK1 : CRC End on Bank 1 Interrupt source </para>
+</listitem>
+<listitem><para>FLASH_IT_CRCRDERR_BANK1 : CRC Read error on Bank 1 Interrupt source </para>
+</listitem>
+<listitem><para>FLASH_IT_ALL_BANK1 : All Bank 1 Interrupt sources</para>
+</listitem>
+</itemizedlist>
+In case of Bank 2, this parameter can be any combination of the following values: <itemizedlist>
+<listitem><para>FLASH_IT_EOP_BANK2 : End of FLASH Bank 2 Operation Interrupt source </para>
+</listitem>
+<listitem><para>FLASH_IT_WRPERR_BANK2 : Write Protection Error on Bank 2 Interrupt source </para>
+</listitem>
+<listitem><para>FLASH_IT_PGSERR_BANK2 : Program Sequence Error on Bank 2 Interrupt source </para>
+</listitem>
+<listitem><para>FLASH_IT_STRBERR_BANK2 : Strobe Error on Bank 2 Interrupt source </para>
+</listitem>
+<listitem><para>FLASH_IT_INCERR_BANK2 : Inconsistency Error on Bank 2 Interrupt source </para>
+</listitem>
+<listitem><para>FLASH_IT_OPERR_BANK2 : Operation Error on Bank 2 Interrupt source </para>
+</listitem>
+<listitem><para>FLASH_IT_RDPERR_BANK2 : Read protection Error on Bank 2 Interrupt source </para>
+</listitem>
+<listitem><para>FLASH_IT_RDSERR_BANK2 : Read secure Error on Bank 2 Interrupt source </para>
+</listitem>
+<listitem><para>FLASH_IT_SNECCERR_BANK2 : Single ECC Error Correction on Bank 2 Interrupt source </para>
+</listitem>
+<listitem><para>FLASH_IT_DBECCERR_BANK2 : Double Detection ECC Error on Bank 2 Interrupt source </para>
+</listitem>
+<listitem><para>FLASH_IT_CRCEND_BANK2 : CRC End on Bank 2 Interrupt source </para>
+</listitem>
+<listitem><para>FLASH_IT_CRCRDERR_BANK2 : CRC Read error on Bank 2 Interrupt source </para>
+</listitem>
+<listitem><para>FLASH_IT_ALL_BANK2 : All Bank 2 Interrupt sources </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>none</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash.h" line="589" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash.h" bodystart="589" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__FLASH__Exported__Macros_1ga0f6246e5e0b50f7cade3883eba4d3978" prot="public" static="no">
+        <name>__HAL_FLASH_DISABLE_IT_BANK2</name>
+        <param><defname>__INTERRUPT__</defname></param>
+        <initializer>(FLASH-&gt;CR2 &amp;= ~(uint32_t)((__INTERRUPT__) &amp; 0x7FFFFFFFU))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash.h" line="591" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash.h" bodystart="591" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__FLASH__Exported__Macros_1ga1f40f507b5d4b3a4da68e4244a1097ee" prot="public" static="no">
+        <name>__HAL_FLASH_DISABLE_IT</name>
+        <param><defname>__INTERRUPT__</defname></param>
+        <initializer><ref refid="group__FLASH__Exported__Macros_1gac0ea4e89204dec265c2810520948df81" kindref="member">__HAL_FLASH_DISABLE_IT_BANK1</ref>(__INTERRUPT__)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash.h" line="598" column="10" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash.h" bodystart="598" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__FLASH__Exported__Macros_1ga05f963e88e8746c33d403ef5a8ec3d17" prot="public" static="no">
+        <name>__HAL_FLASH_GET_FLAG_BANK1</name>
+        <param><defname>__FLAG__</defname></param>
+        <initializer>(READ_BIT(FLASH-&gt;SR1, (__FLAG__)) == (__FLAG__))</initializer>
+        <briefdescription>
+<para>Checks whether the specified FLASH flag is set or not. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__FLAG__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the FLASH flag to check. In case of Bank 1 This parameter can be one of the following values : <itemizedlist>
+<listitem><para>FLASH_FLAG_BSY_BANK1 : FLASH Bank 1 Busy flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_WBNE_BANK1 : Write Buffer Not Empty on Bank 1 flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_QW_BANK1 : Wait Queue on Bank 1 flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_CRC_BUSY_BANK1 : CRC module is working on Bank 1 flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_EOP_BANK1 : End Of Program on Bank 1 flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_WRPERR_BANK1 : Write Protection Error on Bank 1 flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_PGSERR_BANK1 : Program Sequence Error on Bank 1 flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_STRBER_BANK1 : Program Alignment Error on Bank 1 flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_INCERR_BANK1 : Inconsistency Error on Bank 1 flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_OPERR_BANK1 : Operation Error on Bank 1 flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_RDPERR_BANK1 : Read Protection Error on Bank 1 flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_RDSERR_BANK1 : Read secure Error on Bank 1 flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_SNECCE_BANK1 : Single ECC Error Correction on Bank 1 flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_DBECCE_BANK1 : Double Detection ECC Error on Bank 1 flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_CRCEND_BANK1 : CRC End on Bank 1 flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_CRCRDERR_BANK1 : CRC Read error on Bank 1 flag</para>
+</listitem>
+</itemizedlist>
+In case of Bank 2 This parameter can be one of the following values : <itemizedlist>
+<listitem><para>FLASH_FLAG_BSY_BANK2 : FLASH Bank 2 Busy flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_WBNE_BANK2 : Write Buffer Not Empty on Bank 2 flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_QW_BANK2 : Wait Queue on Bank 2 flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_CRC_BUSY_BANK2 : CRC module is working on Bank 2 flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_EOP_BANK2 : End Of Program on Bank 2 flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_WRPERR_BANK2 : Write Protection Error on Bank 2 flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_PGSERR_BANK2 : Program Sequence Error on Bank 2 flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_STRBER_BANK2 : Program Alignment Error on Bank 2 flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_INCERR_BANK2 : Inconsistency Error on Bank 2 flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_OPERR_BANK2 : Operation Error on Bank 2 flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_RDPERR_BANK2 : Read Protection Error on Bank 2 flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_RDSERR_BANK2 : Read secure Error on Bank 2 flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_SNECCE_BANK2 : Single ECC Error Correction on Bank 2 flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_DBECCE_BANK2 : Double Detection ECC Error on Bank 2 flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_CRCEND_BANK2 : CRC End on Bank 2 flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_CRCRDERR_BANK2 : CRC Read error on Bank 2 flag </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>The</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>new state of FLASH_FLAG (SET or RESET). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash.h" line="642" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash.h" bodystart="642" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__FLASH__Exported__Macros_1gaa4f7e481b5cdc24a05d685e75ea605e9" prot="public" static="no">
+        <name>__HAL_FLASH_GET_FLAG_BANK2</name>
+        <param><defname>__FLAG__</defname></param>
+        <initializer>(READ_BIT(FLASH-&gt;SR2, ((__FLAG__) &amp; 0x7FFFFFFFU)) == (((__FLAG__) &amp; 0x7FFFFFFFU)))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash.h" line="644" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash.h" bodystart="644" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__FLASH__Exported__Macros_1ga0d3dd161fecc0e47c9e109c7c28672c1" prot="public" static="no">
+        <name>__HAL_FLASH_GET_FLAG</name>
+        <param><defname>__FLAG__</defname></param>
+        <initializer><ref refid="group__FLASH__Exported__Macros_1ga05f963e88e8746c33d403ef5a8ec3d17" kindref="member">__HAL_FLASH_GET_FLAG_BANK1</ref>(__FLAG__)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash.h" line="650" column="10" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash.h" bodystart="650" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__FLASH__Exported__Macros_1gaee16e3dcaf19b900ffd24f2d572318d3" prot="public" static="no">
+        <name>__HAL_FLASH_CLEAR_FLAG_BANK1</name>
+        <param><defname>__FLAG__</defname></param>
+        <initializer>WRITE_REG(FLASH-&gt;CCR1, (__FLAG__))</initializer>
+        <briefdescription>
+<para>Clear the specified FLASH flag. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__FLAG__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the FLASH flags to clear. In case of Bank 1, this parameter can be any combination of the following values: <itemizedlist>
+<listitem><para>FLASH_FLAG_EOP_BANK1 : End Of Program on Bank 1 flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_WRPERR_BANK1 : Write Protection Error on Bank 1 flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_PGSERR_BANK1 : Program Sequence Error on Bank 1 flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_STRBER_BANK1 : Program Alignment Error on Bank 1 flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_INCERR_BANK1 : Inconsistency Error on Bank 1 flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_OPERR_BANK1 : Operation Error on Bank 1 flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_RDPERR_BANK1 : Read Protection Error on Bank 1 flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_RDSERR_BANK1 : Read secure Error on Bank 1 flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_SNECCE_BANK1 : Single ECC Error Correction on Bank 1 flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_DBECCE_BANK1 : Double Detection ECC Error on Bank 1 flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_CRCEND_BANK1 : CRC End on Bank 1 flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_CRCRDERR_BANK1 : CRC Read error on Bank 1 flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_ALL_ERRORS_BANK1 : All Bank 1 error flags </para>
+</listitem>
+<listitem><para>FLASH_FLAG_ALL_BANK1 : All Bank 1 flags</para>
+</listitem>
+</itemizedlist>
+In case of Bank 2, this parameter can be any combination of the following values : <itemizedlist>
+<listitem><para>FLASH_FLAG_EOP_BANK2 : End Of Program on Bank 2 flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_WRPERR_BANK2 : Write Protection Error on Bank 2 flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_PGSERR_BANK2 : Program Sequence Error on Bank 2 flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_STRBER_BANK2 : Program Alignment Error on Bank 2 flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_INCERR_BANK2 : Inconsistency Error on Bank 2 flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_OPERR_BANK2 : Operation Error on Bank 2 flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_RDPERR_BANK2 : Read Protection Error on Bank 2 flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_RDSERR_BANK2 : Read secure Error on Bank 2 flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_SNECCE_BANK2 : Single ECC Error Correction on Bank 2 flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_DBECCE_BANK2 : Double Detection ECC Error on Bank 2 flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_CRCEND_BANK2 : CRC End on Bank 2 flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_CRCRDERR_BANK2 : CRC Read error on Bank 2 flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_ALL_ERRORS_BANK2 : All Bank 2 error flags </para>
+</listitem>
+<listitem><para>FLASH_FLAG_ALL_BANK2 : All Bank 2 flags </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>none</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash.h" line="691" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash.h" bodystart="691" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__FLASH__Exported__Macros_1ga74861e4cf29906ef2b2c4c589d540171" prot="public" static="no">
+        <name>__HAL_FLASH_CLEAR_FLAG_BANK2</name>
+        <param><defname>__FLAG__</defname></param>
+        <initializer>WRITE_REG(FLASH-&gt;CCR2, ((__FLAG__) &amp; 0x7FFFFFFFU))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash.h" line="693" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash.h" bodystart="693" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__FLASH__Exported__Macros_1ga68e49c4675761e2ec35153e747de7622" prot="public" static="no">
+        <name>__HAL_FLASH_CLEAR_FLAG</name>
+        <param><defname>__FLAG__</defname></param>
+        <initializer><ref refid="group__FLASH__Exported__Macros_1gaee16e3dcaf19b900ffd24f2d572318d3" kindref="member">__HAL_FLASH_CLEAR_FLAG_BANK1</ref>(__FLAG__)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash.h" line="699" column="10" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash.h" bodystart="699" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

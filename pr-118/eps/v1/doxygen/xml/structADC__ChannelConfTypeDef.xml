@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="structADC__ChannelConfTypeDef" kind="struct" language="C++" prot="public">
+    <compoundname>ADC_ChannelConfTypeDef</compoundname>
+    <includes refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__adc_8h" local="no">stm32l4xx_hal_adc.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structADC__ChannelConfTypeDef_1a771e64a3695f61cb1cce4fd65e956f6b" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t ADC_ChannelConfTypeDef::Channel</definition>
+        <argsstring></argsstring>
+        <name>Channel</name>
+        <qualifiedname>ADC_ChannelConfTypeDef::Channel</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Specify the channel to configure into ADC regular group. This parameter can be a value of <ref refid="group__ADC__HAL__EC__CHANNEL" kindref="compound">ADC instance - Channel number</ref> Note: Depending on devices and ADC instances, some channels may not be available on device package pins. Refer to device datasheet for channels availability. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" line="260" column="12" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" bodystart="260" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structADC__ChannelConfTypeDef_1a106e52a928aefb7778802bac0b75cf2d" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t ADC_ChannelConfTypeDef::Rank</definition>
+        <argsstring></argsstring>
+        <name>Rank</name>
+        <qualifiedname>ADC_ChannelConfTypeDef::Rank</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Specify the rank in the regular group sequencer. This parameter can be a value of <ref refid="group__ADC__HAL__EC__REG__SEQ__RANKS" kindref="compound">ADC group regular - Sequencer ranks</ref> Note: to disable a channel or change order of conversion sequencer, rank containing a previous channel setting can be overwritten by the new channel setting (or parameter number of conversions adjusted) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" line="266" column="12" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" bodystart="266" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structADC__ChannelConfTypeDef_1ae9486a657d515b87e2c2853db59afaaa" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t ADC_ChannelConfTypeDef::SamplingTime</definition>
+        <argsstring></argsstring>
+        <name>SamplingTime</name>
+        <qualifiedname>ADC_ChannelConfTypeDef::SamplingTime</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sampling time value to be set for the selected channel. Unit: ADC clock cycles Conversion time is the addition of sampling time and processing time (12.5 ADC clock cycles at ADC resolution 12 bits, 10.5 cycles at 10 bits, 8.5 cycles at 8 bits, 6.5 cycles at 6 bits). This parameter can be a value of <ref refid="group__ADC__HAL__EC__CHANNEL__SAMPLINGTIME" kindref="compound">Channel - Sampling time</ref> Caution: This parameter applies to a channel that can be used into regular and/or injected group. It overwrites the last setting. Note: In case of usage of internal measurement channels (VrefInt, Vbat, ...), sampling time constraints must be respected (sampling time can be adjusted in function of ADC clock frequency and sampling time setting). Refer to device datasheet for timings values. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" line="272" column="12" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" bodystart="272" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structADC__ChannelConfTypeDef_1a3fee38811871e44b45f2a2774048c586" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t ADC_ChannelConfTypeDef::SingleDiff</definition>
+        <argsstring></argsstring>
+        <name>SingleDiff</name>
+        <qualifiedname>ADC_ChannelConfTypeDef::SingleDiff</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Select single-ended or differential input. In differential mode: Differential measurement is carried out between the selected channel &apos;i&apos; (positive input) and channel &apos;i+1&apos; (negative input). Only channel &apos;i&apos; has to be configured, channel &apos;i+1&apos; is configured automatically This parameter must be a value of <ref refid="group__ADC__HAL__EC__CHANNEL__SINGLE__DIFF__ENDING" kindref="compound">Channel - Single or differential ending</ref> Caution: This parameter applies to a channel that can be used in a regular and/or injected group. It overwrites the last setting. Note: Refer to Reference Manual to ensure the selected channel is available in differential mode. Note: When configuring a channel &apos;i&apos; in differential mode, the channel &apos;i+1&apos; is not usable separately. Note: This parameter must be modified when ADC is disabled (before ADC start conversion or after ADC stop conversion). If ADC is enabled, this parameter setting is bypassed without error reporting (as it can be the expected behavior in case of another parameter update on the fly) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" line="285" column="12" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" bodystart="285" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structADC__ChannelConfTypeDef_1aea936c2727227a3716645957e699b26e" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t ADC_ChannelConfTypeDef::OffsetNumber</definition>
+        <argsstring></argsstring>
+        <name>OffsetNumber</name>
+        <qualifiedname>ADC_ChannelConfTypeDef::OffsetNumber</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Select the offset number This parameter can be a value of <ref refid="group__ADC__HAL__EC__OFFSET__NB" kindref="compound">ADC instance - Offset number</ref> Caution: Only one offset is allowed per channel. This parameter overwrites the last setting. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" line="303" column="12" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" bodystart="303" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structADC__ChannelConfTypeDef_1a481e92707be00870f495e8a63c6cc788" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t ADC_ChannelConfTypeDef::Offset</definition>
+        <argsstring></argsstring>
+        <name>Offset</name>
+        <qualifiedname>ADC_ChannelConfTypeDef::Offset</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Define the offset to be subtracted from the raw converted data. Offset value must be a positive number. Depending of ADC resolution selected (12, 10, 8 or 6 bits), this parameter must be a number between Min_Data = 0x000 and Max_Data = 0xFFF, 0x3FF, 0xFF or 0x3F respectively. Note: This parameter must be modified when no conversion is on going on both regular and injected groups (ADC disabled, or ADC enabled without continuous mode or external trigger that could launch a conversion). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" line="308" column="12" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" bodystart="308" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Structure definition of ADC channel for regular group. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="note"><para>The setting of these parameters by function <ref refid="group__ADC__Exported__Functions__Group3_1ga96f4317420984bec9226f7d93cb36f1b" kindref="member">HAL_ADC_ConfigChannel()</ref> is conditioned to ADC state. ADC state can be either:<itemizedlist>
+<listitem><para>For all parameters: ADC disabled (this is the only possible ADC state to modify parameter &apos;SingleDiff&apos;)</para>
+</listitem><listitem><para>For all except parameters &apos;SamplingTime&apos;, &apos;Offset&apos;, &apos;OffsetNumber&apos;: ADC enabled without conversion on going on regular group.</para>
+</listitem><listitem><para>For parameters &apos;SamplingTime&apos;, &apos;Offset&apos;, &apos;OffsetNumber&apos;: ADC enabled without conversion on going on regular and injected groups. If ADC is not in the appropriate state to modify some parameters, these parameters setting is bypassed without error reporting (as it can be the expected behavior in case of intended action to update another parameter (which fulfills the ADC state condition) on the fly). </para>
+</listitem></itemizedlist>
+</para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" line="258" column="1" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" bodystart="259" bodyend="317"/>
+    <listofallmembers>
+      <member refid="structADC__ChannelConfTypeDef_1a771e64a3695f61cb1cce4fd65e956f6b" prot="public" virt="non-virtual"><scope>ADC_ChannelConfTypeDef</scope><name>Channel</name></member>
+      <member refid="structADC__ChannelConfTypeDef_1a481e92707be00870f495e8a63c6cc788" prot="public" virt="non-virtual"><scope>ADC_ChannelConfTypeDef</scope><name>Offset</name></member>
+      <member refid="structADC__ChannelConfTypeDef_1aea936c2727227a3716645957e699b26e" prot="public" virt="non-virtual"><scope>ADC_ChannelConfTypeDef</scope><name>OffsetNumber</name></member>
+      <member refid="structADC__ChannelConfTypeDef_1a106e52a928aefb7778802bac0b75cf2d" prot="public" virt="non-virtual"><scope>ADC_ChannelConfTypeDef</scope><name>Rank</name></member>
+      <member refid="structADC__ChannelConfTypeDef_1ae9486a657d515b87e2c2853db59afaaa" prot="public" virt="non-virtual"><scope>ADC_ChannelConfTypeDef</scope><name>SamplingTime</name></member>
+      <member refid="structADC__ChannelConfTypeDef_1a3fee38811871e44b45f2a2774048c586" prot="public" virt="non-virtual"><scope>ADC_ChannelConfTypeDef</scope><name>SingleDiff</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

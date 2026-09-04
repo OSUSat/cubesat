@@ -1,0 +1,131 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="clock_8c" kind="file" language="C++">
+    <compoundname>clock.c</compoundname>
+    <includes refid="bsp_2system_2clock_8h" local="yes">clock.h</includes>
+    <includes refid="error_8h" local="yes">error.h</includes>
+    <includes local="yes">stm32h7xx_hal.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>/home/runner/work/cubesat/cubesat/obc/v1/firmware/bsp/system/clock.c</label>
+        <link refid="clock_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>clock.h</label>
+        <link refid="bsp_2system_2clock_8h_source"/>
+      </node>
+      <node id="3">
+        <label>error.h</label>
+        <link refid="error_8h_source"/>
+      </node>
+      <node id="4">
+        <label>stm32h7xx_hal.h</label>
+      </node>
+    </incdepgraph>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="clock_8c_1ac24d476ad05a73d0f06801505c0ddf33" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void bsp_clock_init</definition>
+        <argsstring>(void)</argsstring>
+        <name>bsp_clock_init</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+<para>Supply configuration update enable</para>
+<para>Configure the main internal regulator output voltage</para>
+<para>Initializes the RCC Oscillators according to the specified parameters in the <ref refid="structRCC__OscInitTypeDef" kindref="compound">RCC_OscInitTypeDef</ref> structure.</para>
+<para>Initializes the CPU, AHB and APB buses clocks</para>
+<para>Initializes the peripherals clock</para>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bsp/system/clock.c" line="5" column="6" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bsp/system/clock.c" bodystart="5" bodyend="80"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;clock.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;error.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;stm32h7xx_hal.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>bsp_clock_init(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="6"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/><ref refid="structRCC__OscInitTypeDef" kindref="compound">RCC_OscInitTypeDef</ref><sp/>RCC_OscInitStruct<sp/>=<sp/>{0};</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/><ref refid="structRCC__ClkInitTypeDef" kindref="compound">RCC_ClkInitTypeDef</ref><sp/>RCC_ClkInitStruct<sp/>=<sp/>{0};</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/>HAL_PWREx_ConfigSupply(<ref refid="group__PWREx__Supply__configuration_1gaf26cc2eab346d2209674dd59da2f69d6" kindref="member">PWR_LDO_SUPPLY</ref>);</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><ref refid="group__PWR__Exported__Macro_1ga1ee778f7ff494723bd0ef04ec44b0f77" kindref="member">__HAL_PWR_VOLTAGESCALING_CONFIG</ref>(PWR_REGULATOR_VOLTAGE_SCALE1);</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal">(!<ref refid="group__PWR__Exported__Macro_1ga2977135bbea35b786805eea640d1c884" kindref="member">__HAL_PWR_GET_FLAG</ref>(PWR_FLAG_VOSRDY))<sp/>{}</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/>RCC_OscInitStruct.<ref refid="structRCC__OscInitTypeDef_1af9e7bc89cab81c1705d94c74c7a81088" kindref="member">OscillatorType</ref><sp/>=<sp/>RCC_OSCILLATORTYPE_HSE<sp/>|<sp/>RCC_OSCILLATORTYPE_HSI;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/>RCC_OscInitStruct.<ref refid="structRCC__OscInitTypeDef_1a7e05d6eec98ed8cdaba00ca3d167ff72" kindref="member">HSEState</ref><sp/>=<sp/>RCC_HSE_ON;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/>RCC_OscInitStruct.<ref refid="structRCC__OscInitTypeDef_1a39b62cae65fe7a251000354e5bba8cb6" kindref="member">HSIState</ref><sp/>=<sp/><ref refid="group__RCC__HSI__Config_1ga0bf09ef9e46d5da25cced7b3122f92f5" kindref="member">RCC_HSI_ON</ref>;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/>RCC_OscInitStruct.<ref refid="structRCC__OscInitTypeDef_1a9b2e48e452d0c334f2b9473216064560" kindref="member">HSICalibrationValue</ref><sp/>=<sp/>RCC_HSICALIBRATION_DEFAULT;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/>RCC_OscInitStruct.<ref refid="structRCC__OscInitTypeDef_1af76de5ee86798f0c3a4c83c84dfa58be" kindref="member">PLL</ref>.<ref refid="structRCC__PLLInitTypeDef_1a6cbaf84f6566af15e6e4f97a339d5759" kindref="member">PLLState</ref><sp/>=<sp/>RCC_PLL_ON;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/>RCC_OscInitStruct.<ref refid="structRCC__OscInitTypeDef_1af76de5ee86798f0c3a4c83c84dfa58be" kindref="member">PLL</ref>.<ref refid="structRCC__PLLInitTypeDef_1a72806832a179af8756b9330de7f7c6a8" kindref="member">PLLSource</ref><sp/>=<sp/>RCC_PLLSOURCE_HSE;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/>RCC_OscInitStruct.<ref refid="structRCC__OscInitTypeDef_1af76de5ee86798f0c3a4c83c84dfa58be" kindref="member">PLL</ref>.<ref refid="structRCC__PLLInitTypeDef_1af8ae37696b35fd358c1ec1f6391158a4" kindref="member">PLLM</ref><sp/>=<sp/>2;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/>RCC_OscInitStruct.<ref refid="structRCC__OscInitTypeDef_1af76de5ee86798f0c3a4c83c84dfa58be" kindref="member">PLL</ref>.<ref refid="structRCC__PLLInitTypeDef_1a2482608639ebfffc51a41135c979369b" kindref="member">PLLN</ref><sp/>=<sp/>64;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/>RCC_OscInitStruct.<ref refid="structRCC__OscInitTypeDef_1af76de5ee86798f0c3a4c83c84dfa58be" kindref="member">PLL</ref>.<ref refid="structRCC__PLLInitTypeDef_1a4ecedf3ef401fa564aa636824fc3ded0" kindref="member">PLLP</ref><sp/>=<sp/>16;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/>RCC_OscInitStruct.<ref refid="structRCC__OscInitTypeDef_1af76de5ee86798f0c3a4c83c84dfa58be" kindref="member">PLL</ref>.<ref refid="structRCC__PLLInitTypeDef_1a2b69dfec4b8ab52d649a71d141892691" kindref="member">PLLQ</ref><sp/>=<sp/>4;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/>RCC_OscInitStruct.<ref refid="structRCC__OscInitTypeDef_1af76de5ee86798f0c3a4c83c84dfa58be" kindref="member">PLL</ref>.<ref refid="structRCC__PLLInitTypeDef_1a41208d1f84fc268f14fed2c825d07fbc" kindref="member">PLLR</ref><sp/>=<sp/>2;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/>RCC_OscInitStruct.<ref refid="structRCC__OscInitTypeDef_1af76de5ee86798f0c3a4c83c84dfa58be" kindref="member">PLL</ref>.<ref refid="structRCC__PLLInitTypeDef_1af20c4077f568f28ef35457a6a5d1cf99" kindref="member">PLLRGE</ref><sp/>=<sp/><ref refid="group__RCC__PLL1__VCI__Range_1ga60ae9f766f7d9b9b24edf031d02e3927" kindref="member">RCC_PLL1VCIRANGE_3</ref>;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/>RCC_OscInitStruct.<ref refid="structRCC__OscInitTypeDef_1af76de5ee86798f0c3a4c83c84dfa58be" kindref="member">PLL</ref>.<ref refid="structRCC__PLLInitTypeDef_1a3f9f8f621863b38c1fca3328280f9d1f" kindref="member">PLLVCOSEL</ref><sp/>=<sp/>RCC_PLL1VCOWIDE;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/>RCC_OscInitStruct.<ref refid="structRCC__OscInitTypeDef_1af76de5ee86798f0c3a4c83c84dfa58be" kindref="member">PLL</ref>.<ref refid="structRCC__PLLInitTypeDef_1a05da50ae75159764976992531612ee90" kindref="member">PLLFRACN</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(HAL_RCC_OscConfig(&amp;RCC_OscInitStruct)<sp/>!=<sp/>HAL_OK)</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>bsp_error_trap();</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/>RCC_ClkInitStruct.<ref refid="structRCC__ClkInitTypeDef_1a93a53676a1cfc5b55b8b990e7ff4dac5" kindref="member">ClockType</ref><sp/>=<sp/>RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|RCC_CLOCKTYPE_D3PCLK1|RCC_CLOCKTYPE_D1PCLK1;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/>RCC_ClkInitStruct.<ref refid="structRCC__ClkInitTypeDef_1a4ceff1fdbf423e347c63052ca2c1d7e1" kindref="member">SYSCLKSource</ref><sp/>=<sp/>RCC_SYSCLKSOURCE_PLLCLK;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/>RCC_ClkInitStruct.<ref refid="structRCC__ClkInitTypeDef_1aa49663a5d76af14424c7d1c3525b9381" kindref="member">SYSCLKDivider</ref><sp/>=<sp/>RCC_SYSCLK_DIV1;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/>RCC_ClkInitStruct.<ref refid="structRCC__ClkInitTypeDef_1abd9bcaa8dcf4b816462ee2930ab3e993" kindref="member">AHBCLKDivider</ref><sp/>=<sp/>RCC_HCLK_DIV2;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/>RCC_ClkInitStruct.<ref refid="structRCC__ClkInitTypeDef_1aabb6ee5533a966785511f3d09bcf255d" kindref="member">APB3CLKDivider</ref><sp/>=<sp/>RCC_APB3_DIV2;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/>RCC_ClkInitStruct.<ref refid="structRCC__ClkInitTypeDef_1a21ceb024102adc3c4dc7eb270cf02ebd" kindref="member">APB1CLKDivider</ref><sp/>=<sp/>RCC_APB1_DIV2;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/>RCC_ClkInitStruct.<ref refid="structRCC__ClkInitTypeDef_1aa75c110cd93855d49249f38da8cf94f7" kindref="member">APB2CLKDivider</ref><sp/>=<sp/>RCC_APB2_DIV2;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/>RCC_ClkInitStruct.<ref refid="structRCC__ClkInitTypeDef_1a2ad661dc89d2d18b5e31d7d2c8d33de8" kindref="member">APB4CLKDivider</ref><sp/>=<sp/>RCC_APB4_DIV2;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(HAL_RCC_ClockConfig(&amp;RCC_ClkInitStruct,<sp/><ref refid="group__FLASH__Latency_1ga69d209f9cb4f625010d72555c8dceb03" kindref="member">FLASH_LATENCY_2</ref>)<sp/>!=<sp/>HAL_OK)</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>bsp_error_trap();</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Configure<sp/>common<sp/>peripheral<sp/>clocks</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><ref refid="structRCC__PeriphCLKInitTypeDef" kindref="compound">RCC_PeriphCLKInitTypeDef</ref><sp/>PeriphClkInitStruct<sp/>=<sp/>{0};</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/>PeriphClkInitStruct.<ref refid="structRCC__PeriphCLKInitTypeDef_1a3f0accdf1e237252f6e4292863a16399" kindref="member">PeriphClockSelection</ref><sp/>=<sp/>RCC_PERIPHCLK_FDCAN<sp/>|<sp/>RCC_PERIPHCLK_I2C123;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/>PeriphClkInitStruct.<ref refid="structRCC__PeriphCLKInitTypeDef_1a97b712e17d24379def40bb63a0bc6ebe" kindref="member">PLL2</ref>.<ref refid="structRCC__PLL2InitTypeDef_1a3ad5fd858d8ed0ac9f755f7c695ffb31" kindref="member">PLL2M</ref><sp/>=<sp/>2;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/>PeriphClkInitStruct.<ref refid="structRCC__PeriphCLKInitTypeDef_1a97b712e17d24379def40bb63a0bc6ebe" kindref="member">PLL2</ref>.<ref refid="structRCC__PLL2InitTypeDef_1a671c143593021bcbee5b2817e67bc297" kindref="member">PLL2N</ref><sp/>=<sp/>64;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/>PeriphClkInitStruct.<ref refid="structRCC__PeriphCLKInitTypeDef_1a97b712e17d24379def40bb63a0bc6ebe" kindref="member">PLL2</ref>.<ref refid="structRCC__PLL2InitTypeDef_1ad008f3ff2c131bbe35eae73a3942aa16" kindref="member">PLL2P</ref><sp/>=<sp/>2;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/>PeriphClkInitStruct.<ref refid="structRCC__PeriphCLKInitTypeDef_1a97b712e17d24379def40bb63a0bc6ebe" kindref="member">PLL2</ref>.<ref refid="structRCC__PLL2InitTypeDef_1ad94606003e7cf43fcc864776ee61341d" kindref="member">PLL2Q</ref><sp/>=<sp/>8;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/>PeriphClkInitStruct.<ref refid="structRCC__PeriphCLKInitTypeDef_1a97b712e17d24379def40bb63a0bc6ebe" kindref="member">PLL2</ref>.<ref refid="structRCC__PLL2InitTypeDef_1a3871c154ba3986c590adeca367edd766" kindref="member">PLL2R</ref><sp/>=<sp/>8;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/>PeriphClkInitStruct.<ref refid="structRCC__PeriphCLKInitTypeDef_1a97b712e17d24379def40bb63a0bc6ebe" kindref="member">PLL2</ref>.<ref refid="structRCC__PLL2InitTypeDef_1a64be6eb14e50c40fa0e8133de46d1972" kindref="member">PLL2RGE</ref><sp/>=<sp/><ref refid="group__RCC__PLL2__VCI__Range_1ga22d1f970359251ef7b90c78ec08824c4" kindref="member">RCC_PLL2VCIRANGE_3</ref>;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/>PeriphClkInitStruct.<ref refid="structRCC__PeriphCLKInitTypeDef_1a97b712e17d24379def40bb63a0bc6ebe" kindref="member">PLL2</ref>.<ref refid="structRCC__PLL2InitTypeDef_1ac30edcebfff52e53c3619688c5a0680d" kindref="member">PLL2VCOSEL</ref><sp/>=<sp/>RCC_PLL2VCOWIDE;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/>PeriphClkInitStruct.<ref refid="structRCC__PeriphCLKInitTypeDef_1a97b712e17d24379def40bb63a0bc6ebe" kindref="member">PLL2</ref>.<ref refid="structRCC__PLL2InitTypeDef_1a7e47d1e68b48413a84a0991ed684b5cd" kindref="member">PLL2FRACN</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/>PeriphClkInitStruct.FdcanClockSelection<sp/>=<sp/>RCC_FDCANCLKSOURCE_PLL2;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/>PeriphClkInitStruct.<ref refid="structRCC__PeriphCLKInitTypeDef_1a09ccb6eb126aafbac56224cdbbb8d241" kindref="member">I2c123ClockSelection</ref><sp/>=<sp/>RCC_I2C123CLKSOURCE_HSI;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(HAL_RCCEx_PeriphCLKConfig(&amp;PeriphClkInitStruct)<sp/>!=<sp/>HAL_OK)</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>bsp_error_trap();</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="80"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bsp/system/clock.c"/>
+  </compounddef>
+</doxygen>

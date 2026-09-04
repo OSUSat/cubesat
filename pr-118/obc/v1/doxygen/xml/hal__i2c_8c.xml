@@ -1,0 +1,364 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="hal__i2c_8c" kind="file" language="C++">
+    <compoundname>hal_i2c.c</compoundname>
+    <includes refid="hal__i2c_8h" local="yes">hal_i2c.h</includes>
+    <includes local="yes">stm32h7xx_hal.h</includes>
+    <includes local="no">stdbool.h</includes>
+    <includes local="no">stdint.h</includes>
+    <includes local="no">stdio.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_i2c.c</label>
+        <link refid="hal__i2c_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>hal_i2c.h</label>
+        <link refid="hal__i2c_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>stdbool.h</label>
+      </node>
+      <node id="4">
+        <label>stdint.h</label>
+      </node>
+      <node id="6">
+        <label>stdio.h</label>
+      </node>
+      <node id="5">
+        <label>stm32h7xx_hal.h</label>
+      </node>
+    </incdepgraph>
+    <innerclass refid="structi2c__bus__state__t" prot="public">i2c_bus_state_t</innerclass>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="hal__i2c_8c_1ac379bcc152d860f08b1279fd3e232295" prot="public" static="no" extern="yes" mutable="no">
+        <type><ref refid="structI2C__HandleTypeDef" kindref="compound">I2C_HandleTypeDef</ref></type>
+        <definition>I2C_HandleTypeDef hi2c2</definition>
+        <argsstring></argsstring>
+        <name>hi2c2</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_i2c.c" line="12" column="26" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Core/Src/main.c" bodystart="47" bodyend="-1" declfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_i2c.c" declline="12" declcolumn="26"/>
+      </memberdef>
+      <memberdef kind="variable" id="hal__i2c_8c_1a6863aa2103429202336ed604d776b46c" prot="public" static="yes" mutable="no">
+        <type><ref refid="structi2c__bus__state__t" kindref="compound">i2c_bus_state_t</ref></type>
+        <definition>i2c_bus_state_t g_i2c_state[I2C_BUS_COUNT]</definition>
+        <argsstring>[I2C_BUS_COUNT]</argsstring>
+        <name>g_i2c_state</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_i2c.c" line="21" column="24" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_i2c.c" bodystart="21" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="hal__i2c_8c_1a48125e917c424fa45d3b837e69ab6b9f" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structI2C__HandleTypeDef" kindref="compound">I2C_HandleTypeDef</ref> *</type>
+        <definition>static I2C_HandleTypeDef * get_hal_handle</definition>
+        <argsstring>(i2c_bus_t bus)</argsstring>
+        <name>get_hal_handle</name>
+        <param>
+          <type><ref refid="group__obc__i2c_1ga29c2ef19c960dcf416306806f97d1250" kindref="member">i2c_bus_t</ref></type>
+          <declname>bus</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_i2c.c" line="23" column="26" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_i2c.c" bodystart="23" bodyend="30"/>
+      </memberdef>
+      <member refid="group__obc__i2c_1ga9883371a45c5f264b1924250f2186ea8" kind="function"><name>hal_i2c_init</name></member>
+      <member refid="group__obc__i2c_1gadfa9915830eb6c75a08aec4f316a2afd" kind="function"><name>hal_i2c_write</name></member>
+      <member refid="group__obc__i2c_1ga4c8684bd894c0b2e8e98770f9d4441b2" kind="function"><name>hal_i2c_mem_write</name></member>
+      <member refid="group__obc__i2c_1ga4096fcca633c30375f7eb6498b0c5349" kind="function"><name>hal_i2c_read</name></member>
+      <member refid="group__obc__i2c_1ga261b1117be4ef49aed7919ca80f4f93a" kind="function"><name>hal_i2c_mem_read</name></member>
+      <member refid="group__obc__i2c_1gae01bf06db1ae22542c580edf46b633b8" kind="function"><name>hal_i2c_isr_handler</name></member>
+      <member refid="group__I2C__IRQ__Handler__and__Callbacks_1gaa258e0eb52bbc34002a46dc2db89a84b" kind="function"><name>HAL_I2C_MasterTxCpltCallback</name></member>
+      <member refid="group__I2C__IRQ__Handler__and__Callbacks_1ga5782358f977ddf450b203fc075833a1d" kind="function"><name>HAL_I2C_MasterRxCpltCallback</name></member>
+      <member refid="group__I2C__IRQ__Handler__and__Callbacks_1ga874f6104d2cdbced9f2ab6e941ec58f0" kind="function"><name>HAL_I2C_MemTxCpltCallback</name></member>
+      <member refid="group__I2C__IRQ__Handler__and__Callbacks_1gac16a95413b35f05c5ce725fefd8531a5" kind="function"><name>HAL_I2C_MemRxCpltCallback</name></member>
+      <member refid="group__I2C__IRQ__Handler__and__Callbacks_1ga4d5338cd64a656dfdc4154773bc4f05d" kind="function"><name>HAL_I2C_ErrorCallback</name></member>
+    </sectiondef>
+    <briefdescription>
+<para>I2C hardware abstraction implementation for STM32H7. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="hal__i2c_8h" kindref="compound">hal_i2c.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;stm32h7xx_hal.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdbool.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdio.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="structI2C__HandleTypeDef" kindref="compound">I2C_HandleTypeDef</ref><sp/>hi2c2;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="structi2c__bus__state__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__obc__i2c_1gac2d88f9efda78f33b98be08bfb51efb6" kindref="member">i2c_tx_callback_t</ref><sp/>tx_cb;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__obc__i2c_1gac79efc826177e385f296336ca66522bd" kindref="member">i2c_rx_callback_t</ref><sp/>rx_cb;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__obc__i2c_1ga9de1a575fb98bd4f4333b8c24922cf33" kindref="member">i2c_error_cb_t</ref><sp/>err_cb;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*ctx;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal">}<sp/><ref refid="structi2c__bus__state__t" kindref="compound">i2c_bus_state_t</ref>;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structi2c__bus__state__t" kindref="compound">i2c_bus_state_t</ref><sp/>g_i2c_state[<ref refid="group__obc__i2c_1gga29c2ef19c960dcf416306806f97d1250ad42f860e750a71008a9d2d5813015839" kindref="member">I2C_BUS_COUNT</ref>];</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structI2C__HandleTypeDef" kindref="compound">I2C_HandleTypeDef</ref><sp/>*get_hal_handle(<ref refid="group__obc__i2c_1ga29c2ef19c960dcf416306806f97d1250" kindref="member">i2c_bus_t</ref><sp/>bus)<sp/>{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(bus)<sp/>{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="group__obc__i2c_1gga29c2ef19c960dcf416306806f97d1250a3abbf3238dc4cd408421ae3c47512a60" kindref="member">I2C_BUS_2</ref>:</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>&amp;hi2c2;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="30"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__obc__i2c_1ga9883371a45c5f264b1924250f2186ea8" kindref="member">hal_i2c_init</ref>(<ref refid="group__obc__i2c_1ga29c2ef19c960dcf416306806f97d1250" kindref="member">i2c_bus_t</ref><sp/>bus)<sp/>{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>already<sp/>initialized<sp/>in<sp/>main.c</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><ref refid="group__obc__i2c_1ga4e07871ca4ae83f158fa20d135b309b2" kindref="member">i2c_error_t</ref><sp/><ref refid="group__obc__i2c_1gadfa9915830eb6c75a08aec4f316a2afd" kindref="member">hal_i2c_write</ref>(<ref refid="group__obc__i2c_1ga29c2ef19c960dcf416306806f97d1250" kindref="member">i2c_bus_t</ref><sp/>bus,<sp/>uint8_t<sp/>addr,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>*data,</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint16_t<sp/>len,<sp/><ref refid="group__obc__i2c_1gac2d88f9efda78f33b98be08bfb51efb6" kindref="member">i2c_tx_callback_t</ref><sp/>cb,</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__obc__i2c_1ga9de1a575fb98bd4f4333b8c24922cf33" kindref="member">i2c_error_cb_t</ref><sp/>err_cb,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*ctx)<sp/>{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structI2C__HandleTypeDef" kindref="compound">I2C_HandleTypeDef</ref><sp/>*hi2c<sp/>=<sp/>get_hal_handle(bus);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(hi2c<sp/>==<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__obc__i2c_1gga4e07871ca4ae83f158fa20d135b309b2ae47984b590895353d65473ef35c79d89" kindref="member">I2C_HAL_ERR_UNKNOWN</ref>;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(hi2c-&gt;State<sp/>!=<sp/><ref refid="group__HAL__state__structure__definition_1ggaef355af8eab251ae2a19ee164ad81c37af859ce60c5e462b0bfde3a5010bc72d1" kindref="member">HAL_I2C_STATE_READY</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__obc__i2c_1gga4e07871ca4ae83f158fa20d135b309b2aac6a14c5dd65d7af54b45190d535846d" kindref="member">I2C_HAL_ERR_BUSY</ref>;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cb<sp/>==<sp/>NULL<sp/>&amp;&amp;<sp/>err_cb<sp/>==<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="stm32h7xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/>status<sp/>=</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HAL_I2C_Master_Transmit(hi2c,<sp/>addr<sp/>&lt;&lt;<sp/>1,<sp/>(uint8_t<sp/>*)data,<sp/>len,<sp/>100);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(status<sp/>==<sp/>HAL_OK)<sp/>?<sp/><ref refid="group__obc__i2c_1gga4e07871ca4ae83f158fa20d135b309b2a6970ddd5df03ea81e4f4f5ce96bfe8f5" kindref="member">I2C_HAL_ERR_NONE</ref><sp/>:<sp/><ref refid="group__obc__i2c_1gga4e07871ca4ae83f158fa20d135b309b2ae47984b590895353d65473ef35c79d89" kindref="member">I2C_HAL_ERR_UNKNOWN</ref>;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>g_i2c_state[bus].tx_cb<sp/>=<sp/>cb;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>g_i2c_state[bus].err_cb<sp/>=<sp/>err_cb;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>g_i2c_state[bus].ctx<sp/>=<sp/>ctx;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="stm32h7xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/>status<sp/>=</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HAL_I2C_Master_Transmit_IT(hi2c,<sp/>addr<sp/>&lt;&lt;<sp/>1,<sp/>(uint8_t<sp/>*)data,<sp/>len);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(status<sp/>==<sp/>HAL_OK)<sp/>{</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__obc__i2c_1gga4e07871ca4ae83f158fa20d135b309b2a6970ddd5df03ea81e4f4f5ce96bfe8f5" kindref="member">I2C_HAL_ERR_NONE</ref>;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(status<sp/>==<sp/>HAL_BUSY)<sp/>{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__obc__i2c_1gga4e07871ca4ae83f158fa20d135b309b2aac6a14c5dd65d7af54b45190d535846d" kindref="member">I2C_HAL_ERR_BUSY</ref>;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__obc__i2c_1gga4e07871ca4ae83f158fa20d135b309b2ae47984b590895353d65473ef35c79d89" kindref="member">I2C_HAL_ERR_UNKNOWN</ref>;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="67"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><ref refid="group__obc__i2c_1ga4e07871ca4ae83f158fa20d135b309b2" kindref="member">i2c_error_t</ref><sp/><ref refid="group__obc__i2c_1ga4c8684bd894c0b2e8e98770f9d4441b2" kindref="member">hal_i2c_mem_write</ref>(<ref refid="group__obc__i2c_1ga29c2ef19c960dcf416306806f97d1250" kindref="member">i2c_bus_t</ref><sp/>bus,<sp/>uint8_t<sp/>addr,<sp/>uint8_t<sp/>reg,</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>*data,<sp/>uint16_t<sp/>len,<sp/><ref refid="group__obc__i2c_1gac2d88f9efda78f33b98be08bfb51efb6" kindref="member">i2c_tx_callback_t</ref><sp/>cb,</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__obc__i2c_1ga9de1a575fb98bd4f4333b8c24922cf33" kindref="member">i2c_error_cb_t</ref><sp/>err_cb,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*ctx)<sp/>{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structI2C__HandleTypeDef" kindref="compound">I2C_HandleTypeDef</ref><sp/>*hi2c<sp/>=<sp/>get_hal_handle(bus);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(hi2c<sp/>==<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__obc__i2c_1gga4e07871ca4ae83f158fa20d135b309b2ae47984b590895353d65473ef35c79d89" kindref="member">I2C_HAL_ERR_UNKNOWN</ref>;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(hi2c-&gt;State<sp/>!=<sp/><ref refid="group__HAL__state__structure__definition_1ggaef355af8eab251ae2a19ee164ad81c37af859ce60c5e462b0bfde3a5010bc72d1" kindref="member">HAL_I2C_STATE_READY</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__obc__i2c_1gga4e07871ca4ae83f158fa20d135b309b2aac6a14c5dd65d7af54b45190d535846d" kindref="member">I2C_HAL_ERR_BUSY</ref>;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cb<sp/>==<sp/>NULL<sp/>&amp;&amp;<sp/>err_cb<sp/>==<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="stm32h7xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/>status<sp/>=<sp/>HAL_I2C_Mem_Write(</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>hi2c,<sp/>addr<sp/>&lt;&lt;<sp/>1,<sp/>reg,<sp/>I2C_MEMADD_SIZE_8BIT,<sp/>data,<sp/>len,<sp/>100);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(status<sp/>==<sp/>HAL_OK)<sp/>?<sp/><ref refid="group__obc__i2c_1gga4e07871ca4ae83f158fa20d135b309b2a6970ddd5df03ea81e4f4f5ce96bfe8f5" kindref="member">I2C_HAL_ERR_NONE</ref><sp/>:<sp/><ref refid="group__obc__i2c_1gga4e07871ca4ae83f158fa20d135b309b2ae47984b590895353d65473ef35c79d89" kindref="member">I2C_HAL_ERR_UNKNOWN</ref>;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>g_i2c_state[bus].tx_cb<sp/>=<sp/>cb;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>g_i2c_state[bus].err_cb<sp/>=<sp/>err_cb;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>g_i2c_state[bus].ctx<sp/>=<sp/>ctx;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="stm32h7xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/>status<sp/>=<sp/>HAL_I2C_Mem_Write_IT(</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>hi2c,<sp/>addr<sp/>&lt;&lt;<sp/>1,<sp/>reg,<sp/>I2C_MEMADD_SIZE_8BIT,<sp/>data,<sp/>len);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(status<sp/>==<sp/>HAL_OK)<sp/>{</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__obc__i2c_1gga4e07871ca4ae83f158fa20d135b309b2a6970ddd5df03ea81e4f4f5ce96bfe8f5" kindref="member">I2C_HAL_ERR_NONE</ref>;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(status<sp/>==<sp/>HAL_BUSY)<sp/>{</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__obc__i2c_1gga4e07871ca4ae83f158fa20d135b309b2aac6a14c5dd65d7af54b45190d535846d" kindref="member">I2C_HAL_ERR_BUSY</ref>;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__obc__i2c_1gga4e07871ca4ae83f158fa20d135b309b2ae47984b590895353d65473ef35c79d89" kindref="member">I2C_HAL_ERR_UNKNOWN</ref>;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="100"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><ref refid="group__obc__i2c_1ga4e07871ca4ae83f158fa20d135b309b2" kindref="member">i2c_error_t</ref><sp/><ref refid="group__obc__i2c_1ga4096fcca633c30375f7eb6498b0c5349" kindref="member">hal_i2c_read</ref>(<ref refid="group__obc__i2c_1ga29c2ef19c960dcf416306806f97d1250" kindref="member">i2c_bus_t</ref><sp/>bus,<sp/>uint8_t<sp/>addr,<sp/>uint8_t<sp/>*data,</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint16_t<sp/>len,<sp/><ref refid="group__obc__i2c_1gac79efc826177e385f296336ca66522bd" kindref="member">i2c_rx_callback_t</ref><sp/>cb,</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__obc__i2c_1ga9de1a575fb98bd4f4333b8c24922cf33" kindref="member">i2c_error_cb_t</ref><sp/>err_cb,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*ctx)<sp/>{</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structI2C__HandleTypeDef" kindref="compound">I2C_HandleTypeDef</ref><sp/>*hi2c<sp/>=<sp/>get_hal_handle(bus);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(hi2c<sp/>==<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__obc__i2c_1gga4e07871ca4ae83f158fa20d135b309b2ae47984b590895353d65473ef35c79d89" kindref="member">I2C_HAL_ERR_UNKNOWN</ref>;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(hi2c-&gt;State<sp/>!=<sp/><ref refid="group__HAL__state__structure__definition_1ggaef355af8eab251ae2a19ee164ad81c37af859ce60c5e462b0bfde3a5010bc72d1" kindref="member">HAL_I2C_STATE_READY</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__obc__i2c_1gga4e07871ca4ae83f158fa20d135b309b2aac6a14c5dd65d7af54b45190d535846d" kindref="member">I2C_HAL_ERR_BUSY</ref>;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cb<sp/>==<sp/>NULL<sp/>&amp;&amp;<sp/>err_cb<sp/>==<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="stm32h7xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/>status<sp/>=</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HAL_I2C_Master_Receive(hi2c,<sp/>addr<sp/>&lt;&lt;<sp/>1,<sp/>data,<sp/>len,<sp/>100);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(status<sp/>==<sp/>HAL_OK)<sp/>?<sp/><ref refid="group__obc__i2c_1gga4e07871ca4ae83f158fa20d135b309b2a6970ddd5df03ea81e4f4f5ce96bfe8f5" kindref="member">I2C_HAL_ERR_NONE</ref><sp/>:<sp/><ref refid="group__obc__i2c_1gga4e07871ca4ae83f158fa20d135b309b2ae47984b590895353d65473ef35c79d89" kindref="member">I2C_HAL_ERR_UNKNOWN</ref>;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>g_i2c_state[bus].rx_cb<sp/>=<sp/>cb;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/>g_i2c_state[bus].err_cb<sp/>=<sp/>err_cb;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/>g_i2c_state[bus].ctx<sp/>=<sp/>ctx;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="stm32h7xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/>status<sp/>=</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HAL_I2C_Master_Receive_IT(hi2c,<sp/>addr<sp/>&lt;&lt;<sp/>1,<sp/>data,<sp/>len);</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(status<sp/>==<sp/>HAL_OK)<sp/>{</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__obc__i2c_1gga4e07871ca4ae83f158fa20d135b309b2a6970ddd5df03ea81e4f4f5ce96bfe8f5" kindref="member">I2C_HAL_ERR_NONE</ref>;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(status<sp/>==<sp/>HAL_BUSY)<sp/>{</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__obc__i2c_1gga4e07871ca4ae83f158fa20d135b309b2aac6a14c5dd65d7af54b45190d535846d" kindref="member">I2C_HAL_ERR_BUSY</ref>;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__obc__i2c_1gga4e07871ca4ae83f158fa20d135b309b2ae47984b590895353d65473ef35c79d89" kindref="member">I2C_HAL_ERR_UNKNOWN</ref>;</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="133"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><ref refid="group__obc__i2c_1ga4e07871ca4ae83f158fa20d135b309b2" kindref="member">i2c_error_t</ref><sp/><ref refid="group__obc__i2c_1ga261b1117be4ef49aed7919ca80f4f93a" kindref="member">hal_i2c_mem_read</ref>(<ref refid="group__obc__i2c_1ga29c2ef19c960dcf416306806f97d1250" kindref="member">i2c_bus_t</ref><sp/>bus,<sp/>uint8_t<sp/>addr,<sp/>uint8_t<sp/>reg,</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>*data,<sp/>uint16_t<sp/>len,<sp/><ref refid="group__obc__i2c_1gac79efc826177e385f296336ca66522bd" kindref="member">i2c_rx_callback_t</ref><sp/>cb,</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__obc__i2c_1ga9de1a575fb98bd4f4333b8c24922cf33" kindref="member">i2c_error_cb_t</ref><sp/>err_cb,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*ctx)<sp/>{</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structI2C__HandleTypeDef" kindref="compound">I2C_HandleTypeDef</ref><sp/>*hi2c<sp/>=<sp/>get_hal_handle(bus);</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(hi2c<sp/>==<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__obc__i2c_1gga4e07871ca4ae83f158fa20d135b309b2ae47984b590895353d65473ef35c79d89" kindref="member">I2C_HAL_ERR_UNKNOWN</ref>;</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(hi2c-&gt;State<sp/>!=<sp/><ref refid="group__HAL__state__structure__definition_1ggaef355af8eab251ae2a19ee164ad81c37af859ce60c5e462b0bfde3a5010bc72d1" kindref="member">HAL_I2C_STATE_READY</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__obc__i2c_1gga4e07871ca4ae83f158fa20d135b309b2aac6a14c5dd65d7af54b45190d535846d" kindref="member">I2C_HAL_ERR_BUSY</ref>;</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cb<sp/>==<sp/>NULL<sp/>&amp;&amp;<sp/>err_cb<sp/>==<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="stm32h7xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/>status<sp/>=<sp/>HAL_I2C_Mem_Read(</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>hi2c,<sp/>addr<sp/>&lt;&lt;<sp/>1,<sp/>reg,<sp/>I2C_MEMADD_SIZE_8BIT,<sp/>data,<sp/>len,<sp/>100);</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(status<sp/>==<sp/>HAL_OK)<sp/>?<sp/><ref refid="group__obc__i2c_1gga4e07871ca4ae83f158fa20d135b309b2a6970ddd5df03ea81e4f4f5ce96bfe8f5" kindref="member">I2C_HAL_ERR_NONE</ref><sp/>:<sp/><ref refid="group__obc__i2c_1gga4e07871ca4ae83f158fa20d135b309b2ae47984b590895353d65473ef35c79d89" kindref="member">I2C_HAL_ERR_UNKNOWN</ref>;</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/>g_i2c_state[bus].rx_cb<sp/>=<sp/>cb;</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/>g_i2c_state[bus].err_cb<sp/>=<sp/>err_cb;</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/>g_i2c_state[bus].ctx<sp/>=<sp/>ctx;</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="stm32h7xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/>status<sp/>=<sp/>HAL_I2C_Mem_Read_IT(</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>hi2c,<sp/>addr<sp/>&lt;&lt;<sp/>1,<sp/>reg,<sp/>I2C_MEMADD_SIZE_8BIT,<sp/>data,<sp/>len);</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(status<sp/>==<sp/>HAL_OK)<sp/>{</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__obc__i2c_1gga4e07871ca4ae83f158fa20d135b309b2a6970ddd5df03ea81e4f4f5ce96bfe8f5" kindref="member">I2C_HAL_ERR_NONE</ref>;</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(status<sp/>==<sp/>HAL_BUSY)<sp/>{</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__obc__i2c_1gga4e07871ca4ae83f158fa20d135b309b2aac6a14c5dd65d7af54b45190d535846d" kindref="member">I2C_HAL_ERR_BUSY</ref>;</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__obc__i2c_1gga4e07871ca4ae83f158fa20d135b309b2ae47984b590895353d65473ef35c79d89" kindref="member">I2C_HAL_ERR_UNKNOWN</ref>;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="166"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__obc__i2c_1gae01bf06db1ae22542c580edf46b633b8" kindref="member">hal_i2c_isr_handler</ref>(<ref refid="group__obc__i2c_1ga29c2ef19c960dcf416306806f97d1250" kindref="member">i2c_bus_t</ref><sp/>bus)<sp/>{</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structI2C__HandleTypeDef" kindref="compound">I2C_HandleTypeDef</ref><sp/>*hi2c<sp/>=<sp/>get_hal_handle(bus);</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(hi2c<sp/>!=<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HAL_I2C_EV_IRQHandler(hi2c);</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HAL_I2C_ER_IRQHandler(hi2c);</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="175"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>HAL_I2C_MasterTxCpltCallback(<ref refid="structI2C__HandleTypeDef" kindref="compound">I2C_HandleTypeDef</ref><sp/>*hi2c)<sp/>{</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__obc__i2c_1ga29c2ef19c960dcf416306806f97d1250" kindref="member">i2c_bus_t</ref><sp/>bus<sp/>=<sp/><ref refid="group__obc__i2c_1gga29c2ef19c960dcf416306806f97d1250ad42f860e750a71008a9d2d5813015839" kindref="member">I2C_BUS_COUNT</ref>;</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(hi2c<sp/>==<sp/>&amp;hi2c2)<sp/>{</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bus<sp/>=<sp/><ref refid="group__obc__i2c_1gga29c2ef19c960dcf416306806f97d1250a3abbf3238dc4cd408421ae3c47512a60" kindref="member">I2C_BUS_2</ref>;</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(bus<sp/>&lt;<sp/><ref refid="group__obc__i2c_1gga29c2ef19c960dcf416306806f97d1250ad42f860e750a71008a9d2d5813015839" kindref="member">I2C_BUS_COUNT</ref><sp/>&amp;&amp;<sp/>g_i2c_state[bus].tx_cb<sp/>!=<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__obc__i2c_1gac2d88f9efda78f33b98be08bfb51efb6" kindref="member">i2c_tx_callback_t</ref><sp/>cb<sp/>=<sp/>g_i2c_state[bus].tx_cb;</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*ctx<sp/>=<sp/>g_i2c_state[bus].ctx;</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>g_i2c_state[bus].tx_cb<sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>g_i2c_state[bus].ctx<sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cb(bus,<sp/>ctx);</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="189"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>HAL_I2C_MasterRxCpltCallback(<ref refid="structI2C__HandleTypeDef" kindref="compound">I2C_HandleTypeDef</ref><sp/>*hi2c)<sp/>{</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__obc__i2c_1ga29c2ef19c960dcf416306806f97d1250" kindref="member">i2c_bus_t</ref><sp/>bus<sp/>=<sp/><ref refid="group__obc__i2c_1gga29c2ef19c960dcf416306806f97d1250ad42f860e750a71008a9d2d5813015839" kindref="member">I2C_BUS_COUNT</ref>;</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(hi2c<sp/>==<sp/>&amp;hi2c2)<sp/>{</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bus<sp/>=<sp/><ref refid="group__obc__i2c_1gga29c2ef19c960dcf416306806f97d1250a3abbf3238dc4cd408421ae3c47512a60" kindref="member">I2C_BUS_2</ref>;</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(bus<sp/>&lt;<sp/><ref refid="group__obc__i2c_1gga29c2ef19c960dcf416306806f97d1250ad42f860e750a71008a9d2d5813015839" kindref="member">I2C_BUS_COUNT</ref><sp/>&amp;&amp;<sp/>g_i2c_state[bus].rx_cb<sp/>!=<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__obc__i2c_1gac79efc826177e385f296336ca66522bd" kindref="member">i2c_rx_callback_t</ref><sp/>cb<sp/>=<sp/>g_i2c_state[bus].rx_cb;</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*ctx<sp/>=<sp/>g_i2c_state[bus].ctx;</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>g_i2c_state[bus].rx_cb<sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>g_i2c_state[bus].ctx<sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cb(bus,<sp/>ctx);</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="203"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>HAL_I2C_MemTxCpltCallback(<ref refid="structI2C__HandleTypeDef" kindref="compound">I2C_HandleTypeDef</ref><sp/>*hi2c)<sp/>{</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__obc__i2c_1ga29c2ef19c960dcf416306806f97d1250" kindref="member">i2c_bus_t</ref><sp/>bus<sp/>=<sp/><ref refid="group__obc__i2c_1gga29c2ef19c960dcf416306806f97d1250ad42f860e750a71008a9d2d5813015839" kindref="member">I2C_BUS_COUNT</ref>;</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(hi2c<sp/>==<sp/>&amp;hi2c2)<sp/>{</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bus<sp/>=<sp/><ref refid="group__obc__i2c_1gga29c2ef19c960dcf416306806f97d1250a3abbf3238dc4cd408421ae3c47512a60" kindref="member">I2C_BUS_2</ref>;</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(bus<sp/>&lt;<sp/><ref refid="group__obc__i2c_1gga29c2ef19c960dcf416306806f97d1250ad42f860e750a71008a9d2d5813015839" kindref="member">I2C_BUS_COUNT</ref><sp/>&amp;&amp;<sp/>g_i2c_state[bus].tx_cb<sp/>!=<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__obc__i2c_1gac2d88f9efda78f33b98be08bfb51efb6" kindref="member">i2c_tx_callback_t</ref><sp/>cb<sp/>=<sp/>g_i2c_state[bus].tx_cb;</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*ctx<sp/>=<sp/>g_i2c_state[bus].ctx;</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>g_i2c_state[bus].tx_cb<sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>g_i2c_state[bus].ctx<sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cb(bus,<sp/>ctx);</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="217"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"></highlight></codeline>
+<codeline lineno="219"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>HAL_I2C_MemRxCpltCallback(<ref refid="structI2C__HandleTypeDef" kindref="compound">I2C_HandleTypeDef</ref><sp/>*hi2c)<sp/>{</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__obc__i2c_1ga29c2ef19c960dcf416306806f97d1250" kindref="member">i2c_bus_t</ref><sp/>bus<sp/>=<sp/><ref refid="group__obc__i2c_1gga29c2ef19c960dcf416306806f97d1250ad42f860e750a71008a9d2d5813015839" kindref="member">I2C_BUS_COUNT</ref>;</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(hi2c<sp/>==<sp/>&amp;hi2c2)<sp/>{</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bus<sp/>=<sp/><ref refid="group__obc__i2c_1gga29c2ef19c960dcf416306806f97d1250a3abbf3238dc4cd408421ae3c47512a60" kindref="member">I2C_BUS_2</ref>;</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(bus<sp/>&lt;<sp/><ref refid="group__obc__i2c_1gga29c2ef19c960dcf416306806f97d1250ad42f860e750a71008a9d2d5813015839" kindref="member">I2C_BUS_COUNT</ref><sp/>&amp;&amp;<sp/>g_i2c_state[bus].rx_cb<sp/>!=<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__obc__i2c_1gac79efc826177e385f296336ca66522bd" kindref="member">i2c_rx_callback_t</ref><sp/>cb<sp/>=<sp/>g_i2c_state[bus].rx_cb;</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*ctx<sp/>=<sp/>g_i2c_state[bus].ctx;</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>g_i2c_state[bus].rx_cb<sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>g_i2c_state[bus].ctx<sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cb(bus,<sp/>ctx);</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="231"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"></highlight></codeline>
+<codeline lineno="233"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>HAL_I2C_ErrorCallback(<ref refid="structI2C__HandleTypeDef" kindref="compound">I2C_HandleTypeDef</ref><sp/>*hi2c)<sp/>{</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__obc__i2c_1ga29c2ef19c960dcf416306806f97d1250" kindref="member">i2c_bus_t</ref><sp/>bus<sp/>=<sp/><ref refid="group__obc__i2c_1gga29c2ef19c960dcf416306806f97d1250ad42f860e750a71008a9d2d5813015839" kindref="member">I2C_BUS_COUNT</ref>;</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(hi2c<sp/>==<sp/>&amp;hi2c2)<sp/>{</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bus<sp/>=<sp/><ref refid="group__obc__i2c_1gga29c2ef19c960dcf416306806f97d1250a3abbf3238dc4cd408421ae3c47512a60" kindref="member">I2C_BUS_2</ref>;</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(bus<sp/>&lt;<sp/><ref refid="group__obc__i2c_1gga29c2ef19c960dcf416306806f97d1250ad42f860e750a71008a9d2d5813015839" kindref="member">I2C_BUS_COUNT</ref><sp/>&amp;&amp;<sp/>g_i2c_state[bus].err_cb<sp/>!=<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__obc__i2c_1ga9de1a575fb98bd4f4333b8c24922cf33" kindref="member">i2c_error_cb_t</ref><sp/>err_cb<sp/>=<sp/>g_i2c_state[bus].err_cb;</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*ctx<sp/>=<sp/>g_i2c_state[bus].ctx;</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>g_i2c_state[bus].err_cb<sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>g_i2c_state[bus].ctx<sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>hal_err<sp/>=<sp/>HAL_I2C_GetError(hi2c);</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__obc__i2c_1ga4e07871ca4ae83f158fa20d135b309b2" kindref="member">i2c_error_t</ref><sp/>err<sp/>=<sp/><ref refid="group__obc__i2c_1gga4e07871ca4ae83f158fa20d135b309b2ae47984b590895353d65473ef35c79d89" kindref="member">I2C_HAL_ERR_UNKNOWN</ref>;</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(hal_err<sp/>&amp;<sp/><ref refid="group__I2C__Error__Code__definition_1gab9f6e39431ee764ada50fd63f0ad2fbf" kindref="member">HAL_I2C_ERROR_BERR</ref>)<sp/>err<sp/>=<sp/><ref refid="group__obc__i2c_1gga4e07871ca4ae83f158fa20d135b309b2a5a55f611028ff20051febdad13c4a857" kindref="member">I2C_HAL_ERR_BUS</ref>;</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(hal_err<sp/>&amp;<sp/><ref refid="group__I2C__Error__Code__definition_1ga048b36222884bfe80ce2d37fa868690b" kindref="member">HAL_I2C_ERROR_ARLO</ref>)<sp/>err<sp/>=<sp/><ref refid="group__obc__i2c_1gga4e07871ca4ae83f158fa20d135b309b2a7e7c51f13149b843e8f63684922f4516" kindref="member">I2C_HAL_ERR_ARBITRATION</ref>;</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(hal_err<sp/>&amp;<sp/><ref refid="group__I2C__Error__Code__definition_1gad1cc236ad6ba5cafe66aecb0dbedc65a" kindref="member">HAL_I2C_ERROR_AF</ref>)<sp/>err<sp/>=<sp/><ref refid="group__obc__i2c_1gga4e07871ca4ae83f158fa20d135b309b2a3fabcd7b50395ce72b9472b518ef7ac7" kindref="member">I2C_HAL_ERR_NACK</ref>;</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(hal_err<sp/>&amp;<sp/><ref refid="group__I2C__Error__Code__definition_1ga38d8f9beb4c681eba786f6154d4f594a" kindref="member">HAL_I2C_ERROR_OVR</ref>)<sp/>err<sp/>=<sp/><ref refid="group__obc__i2c_1gga4e07871ca4ae83f158fa20d135b309b2ad56b4fd6ff581a5221d42a3ee6734d9f" kindref="member">I2C_HAL_ERR_OVERRUN</ref>;</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(hal_err<sp/>&amp;<sp/><ref refid="group__I2C__Error__Code__definition_1gaeb3bedf36d78ddf3284a68494ab9d089" kindref="member">HAL_I2C_ERROR_TIMEOUT</ref>)<sp/>err<sp/>=<sp/><ref refid="group__obc__i2c_1gga4e07871ca4ae83f158fa20d135b309b2a188c7598674e04cf753964c3383d82ca" kindref="member">I2C_HAL_ERR_TIMEOUT</ref>;</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>err_cb(bus,<sp/>err,<sp/>ctx);</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="254"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_i2c.c"/>
+  </compounddef>
+</doxygen>

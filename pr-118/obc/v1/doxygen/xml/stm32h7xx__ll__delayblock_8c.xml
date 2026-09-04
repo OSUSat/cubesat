@@ -1,0 +1,157 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="stm32h7xx__ll__delayblock_8c" kind="file" language="C++">
+    <compoundname>stm32h7xx_ll_delayblock.c</compoundname>
+    <includes local="yes">stm32h7xx_hal.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_ll_delayblock.c</label>
+        <link refid="stm32h7xx__ll__delayblock_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>stm32h7xx_hal.h</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+<para>DelayBlock Low Layer HAL module driver. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>MCD Application Team <verbatim>     This file provides firmware functions to manage the following 
+     functionalities of the Delay Block peripheral:
+      + input clock frequency range 25MHz to 208MHz
+      + up to 12 oversampling phases
+</verbatim></para>
+</simplesect>
+<simplesect kind="attention"><para></para>
+</simplesect>
+Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
+<para>This software is licensed under terms that can be found in the LICENSE file in the root directory of this software component. If no LICENSE file comes with this software, it is provided AS-IS.</para>
+<para><verbatim>==============================================================================
+                     ##### DelayBlock peripheral features #####
+==============================================================================        
+  [..] The Delay block is used to generate an Output clock which is de-phased from the Input
+        clock. The phase of the Output clock is programmed by FW. The Output clock is then used
+        to clock the receive data in i.e. a SDMMC or QSPI interface.
+       The delay is Voltage and Temperature dependent, which may require FW to do re-tuning
+        and recenter the Output clock phase to the receive data.
+  
+  [..] The Delay Block features include the following:
+       (+) Input clock frequency range 25MHz to 208MHz.
+       (+) Up to 12 oversampling phases.
+       
+                         ##### How to use this driver #####
+==============================================================================
+  [..]
+    This driver is a considered as a driver of service for external devices drivers
+    that interfaces with the DELAY peripheral.
+    The DelayBlock_Enable() function, enables the DelayBlock instance, configure the delay line length
+    and configure the Output clock phase.
+    The DelayBlock_Disable() function, disables the DelayBlock instance by setting DEN flag to 0.</verbatim> </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Includes<sp/>------------------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;stm32h7xx_hal.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(HAL_SD_MODULE_ENABLED)<sp/>||<sp/>defined(HAL_QSPI_MODULE_ENABLED)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>typedef<sp/>-----------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>define<sp/>------------------------------------------------------------*/</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DLYB_TIMEOUT<sp/>0xFFU</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>macro<sp/>-------------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>variables<sp/>---------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>function<sp/>prototypes<sp/>-----------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Exported<sp/>functions<sp/>--------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><ref refid="stm32h7xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/>DelayBlock_Enable(<ref refid="structDLYB__TypeDef" kindref="compound">DLYB_TypeDef</ref><sp/>*DLYBx)</highlight></codeline>
+<codeline lineno="102"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/>uint32_t<sp/>unit<sp/>=<sp/>0U;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/>uint32_t<sp/>sel<sp/>=<sp/>0U;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/>uint32_t<sp/>sel_current;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/>uint32_t<sp/>unit_current;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/>uint32_t<sp/>tuning;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/>uint32_t<sp/>lng_mask;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/>uint32_t<sp/>tickstart;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/>DLYBx-&gt;<ref refid="structDLYB__TypeDef_1a3375fa4f55a9be87b27cd2c5f45b892e" kindref="member">CR</ref><sp/>=<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1ga591d50345b0a24a6a8304bb0c47265bc" kindref="member">DLYB_CR_DEN</ref><sp/>|<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1ga1a85d55e95dbc675b9f2e41a31c85441" kindref="member">DLYB_CR_SEN</ref>;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(sel_current<sp/>=<sp/>0U;<sp/>sel_current<sp/>&lt;<sp/><ref refid="group__DLYB__Exported__Constants_1gacc736e6f22cfdb4e4b0d3b6be2f74d52" kindref="member">DLYB_MAX_SELECT</ref>;<sp/>sel_current++)</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>lng_mask<sp/>is<sp/>the<sp/>mask<sp/>bit<sp/>for<sp/>the<sp/>LNG<sp/>field<sp/>to<sp/>check<sp/>the<sp/>output<sp/>of<sp/>the<sp/>UNITx*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>lng_mask<sp/>=<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1ga770fb1296fcbf46edc06e8fabdf06b56" kindref="member">DLYB_CFGR_LNG_0</ref><sp/>&lt;&lt;<sp/>sel_current;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>tuning<sp/>=<sp/>0U;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(unit_current<sp/>=<sp/>0U;<sp/>unit_current<sp/>&lt;<sp/><ref refid="group__DLYB__Exported__Constants_1ga23e814c5409392d461706691d983a648" kindref="member">DLYB_MAX_UNIT</ref>;<sp/>unit_current++)</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Set<sp/>the<sp/>Delay<sp/>of<sp/>the<sp/>UNIT(s)*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>DLYBx-&gt;<ref refid="structDLYB__TypeDef_1a8429c65c78d2861923cd29025603c5a7" kindref="member">CFGR</ref><sp/>=<sp/><ref refid="group__DLYB__Exported__Constants_1gacc736e6f22cfdb4e4b0d3b6be2f74d52" kindref="member">DLYB_MAX_SELECT</ref><sp/>|<sp/>(unit_current<sp/>&lt;&lt;<sp/>DLYB_CFGR_UNIT_Pos);</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Waiting<sp/>for<sp/>a<sp/>LNG<sp/>valid<sp/>value<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>tickstart<sp/>=<sp/><sp/><ref refid="group__HAL__Exported__Functions_1gaf2c4f03d53e997a54e1fd5e80daa55c4" kindref="member">HAL_GetTick</ref>();</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>((DLYBx-&gt;<ref refid="structDLYB__TypeDef_1a8429c65c78d2861923cd29025603c5a7" kindref="member">CFGR</ref><sp/>&amp;<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1gaf58de4ad7d082f0f165ba8284bac5627" kindref="member">DLYB_CFGR_LNGF</ref>)<sp/>==<sp/>0U)</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">((<ref refid="group__HAL__Exported__Functions_1gaf2c4f03d53e997a54e1fd5e80daa55c4" kindref="member">HAL_GetTick</ref>()<sp/>-<sp/>tickstart)<sp/>&gt;=<sp/><sp/>DLYB_TIMEOUT)</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>HAL_TIMEOUT;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(tuning<sp/>==<sp/>0U)</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((DLYBx-&gt;<ref refid="structDLYB__TypeDef_1a8429c65c78d2861923cd29025603c5a7" kindref="member">CFGR</ref><sp/>&amp;<sp/>lng_mask)<sp/>!=<sp/>0U)</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>1/2<sp/>period<sp/>HIGH<sp/>is<sp/>detected<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tuning<sp/>=<sp/>1U;</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>1/2<sp/>period<sp/>LOW<sp/>detected<sp/>after<sp/>the<sp/>HIGH<sp/>1/2<sp/>period<sp/>=&gt;<sp/>FULL<sp/>PERIOD<sp/>passed*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">((DLYBx-&gt;<ref refid="structDLYB__TypeDef_1a8429c65c78d2861923cd29025603c5a7" kindref="member">CFGR</ref><sp/>&amp;<sp/>lng_mask<sp/>)<sp/>==<sp/>0U)</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Save<sp/>the<sp/>first<sp/>result<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<sp/>unit<sp/>==<sp/>0U<sp/>)</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>unit<sp/>=<sp/>unit_current;</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sel<sp/><sp/>=<sp/>sel_current<sp/>+<sp/>1U;</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Apply<sp/>the<sp/>Tuning<sp/>settings<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/>DLYBx-&gt;<ref refid="structDLYB__TypeDef_1a3375fa4f55a9be87b27cd2c5f45b892e" kindref="member">CR</ref><sp/><sp/><sp/>=<sp/>0U;</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/>DLYBx-&gt;<ref refid="structDLYB__TypeDef_1a3375fa4f55a9be87b27cd2c5f45b892e" kindref="member">CR</ref><sp/><sp/><sp/>=<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1ga591d50345b0a24a6a8304bb0c47265bc" kindref="member">DLYB_CR_DEN</ref><sp/>|<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1ga1a85d55e95dbc675b9f2e41a31c85441" kindref="member">DLYB_CR_SEN</ref>;</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/>DLYBx-&gt;<ref refid="structDLYB__TypeDef_1a8429c65c78d2861923cd29025603c5a7" kindref="member">CFGR</ref><sp/>=<sp/>sel<sp/>|<sp/>(unit<sp/>&lt;&lt;<sp/>DLYB_CFGR_UNIT_Pos);</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/>DLYBx-&gt;<ref refid="structDLYB__TypeDef_1a3375fa4f55a9be87b27cd2c5f45b892e" kindref="member">CR</ref><sp/><sp/><sp/>=<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1ga591d50345b0a24a6a8304bb0c47265bc" kindref="member">DLYB_CR_DEN</ref>;</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>HAL_OK;</highlight></codeline>
+<codeline lineno="164"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><ref refid="stm32h7xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/>DelayBlock_Disable(<ref refid="structDLYB__TypeDef" kindref="compound">DLYB_TypeDef</ref><sp/>*DLYBx)</highlight></codeline>
+<codeline lineno="172"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Disable<sp/>DLYB<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/>DLYBx-&gt;<ref refid="structDLYB__TypeDef_1a3375fa4f55a9be87b27cd2c5f45b892e" kindref="member">CR</ref><sp/>=<sp/>0U;</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>HAL_OK;</highlight></codeline>
+<codeline lineno="176"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><ref refid="stm32h7xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/>DelayBlock_Configure(<ref refid="structDLYB__TypeDef" kindref="compound">DLYB_TypeDef</ref><sp/>*DLYBx,uint32_t<sp/>PhaseSel,<sp/>uint32_t<sp/>Units<sp/>)</highlight></codeline>
+<codeline lineno="186"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Apply<sp/>the<sp/>delay<sp/>settings<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/>DLYBx-&gt;<ref refid="structDLYB__TypeDef_1a3375fa4f55a9be87b27cd2c5f45b892e" kindref="member">CR</ref><sp/><sp/><sp/>=<sp/>0U;</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/>DLYBx-&gt;<ref refid="structDLYB__TypeDef_1a3375fa4f55a9be87b27cd2c5f45b892e" kindref="member">CR</ref><sp/><sp/><sp/>=<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1ga591d50345b0a24a6a8304bb0c47265bc" kindref="member">DLYB_CR_DEN</ref><sp/>|<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1ga1a85d55e95dbc675b9f2e41a31c85441" kindref="member">DLYB_CR_SEN</ref>;</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/>DLYBx-&gt;<ref refid="structDLYB__TypeDef_1a8429c65c78d2861923cd29025603c5a7" kindref="member">CFGR</ref><sp/>=<sp/>PhaseSel<sp/>|<sp/>(Units<sp/>&lt;&lt;<sp/>DLYB_CFGR_UNIT_Pos);</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/>DLYBx-&gt;<ref refid="structDLYB__TypeDef_1a3375fa4f55a9be87b27cd2c5f45b892e" kindref="member">CR</ref><sp/><sp/><sp/>=<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1ga591d50345b0a24a6a8304bb0c47265bc" kindref="member">DLYB_CR_DEN</ref>;</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>HAL_OK;</highlight></codeline>
+<codeline lineno="195"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>(HAL_SD_MODULE_ENABLED)<sp/>&amp;<sp/>(HAL_QSPI_MODULE_ENABLED)*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_ll_delayblock.c"/>
+  </compounddef>
+</doxygen>

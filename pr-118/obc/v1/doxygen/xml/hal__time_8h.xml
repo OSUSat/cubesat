@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="hal__time_8h" kind="file" language="C++">
+    <compoundname>hal_time.h</compoundname>
+    <includes local="no">stdint.h</includes>
+    <includedby refid="hal__time_8c" local="yes">/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_time.c</includedby>
+    <includedby refid="obc_2v1_2firmware_2main_8c" local="yes">/home/runner/work/cubesat/cubesat/obc/v1/firmware/main.c</includedby>
+    <includedby refid="hal__time__mock_8c" local="yes">/home/runner/work/cubesat/cubesat/obc/v1/firmware/mocks/hal_time_mock.c</includedby>
+    <includedby refid="logging_8c" local="yes">/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/logging.c</includedby>
+    <includedby refid="sensors_8c" local="yes">/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/sensors.c</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_time.h</label>
+        <link refid="hal__time_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>stdint.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_time.c</label>
+        <link refid="hal__time_8c"/>
+      </node>
+      <node id="1">
+        <label>/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_time.h</label>
+        <link refid="hal__time_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>/home/runner/work/cubesat/cubesat/obc/v1/firmware/mocks/hal_time_mock.c</label>
+        <link refid="hal__time__mock_8c"/>
+      </node>
+      <node id="4">
+        <label>/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/logging.c</label>
+        <link refid="logging_8c"/>
+      </node>
+      <node id="5">
+        <label>/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/sensors.c</label>
+        <link refid="sensors_8c"/>
+      </node>
+    </invincdepgraph>
+    <sectiondef kind="func">
+      <member refid="group__obc__time_1gaf754b59b56d2a344d9c868bdec1137c5" kind="function"><name>hal_time_init</name></member>
+      <member refid="group__obc__time_1ga697ad15eedc3e4ef194c93f24734e0a2" kind="function"><name>hal_time_get_ms</name></member>
+      <member refid="group__obc__time_1gad6a662d31edaabf00acdd55856a7d45a" kind="function"><name>hal_time_get_us</name></member>
+    </sectiondef>
+    <briefdescription>
+<para>System Time &amp; Millisecond/Microsecond Timer HAL for OBC. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Provides functions for obtaining high-precision timestamps since boot. </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>HAL_TIME_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HAL_TIME_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__obc__time_1gaf754b59b56d2a344d9c868bdec1137c5" kindref="member">hal_time_init</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal">uint32_t<sp/><ref refid="group__obc__time_1ga697ad15eedc3e4ef194c93f24734e0a2" kindref="member">hal_time_get_ms</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal">uint64_t<sp/><ref refid="group__obc__time_1gad6a662d31edaabf00acdd55856a7d45a" kindref="member">hal_time_get_us</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>HAL_TIME_H</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_time.h"/>
+  </compounddef>
+</doxygen>

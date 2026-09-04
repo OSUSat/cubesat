@@ -1,0 +1,192 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="group__HAL__Group1" kind="group">
+    <compoundname>HAL_Group1</compoundname>
+    <title>Initialization and de-initialization Functions</title>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="group__HAL__Group1_1gaecac54d350c3730e6831eb404e557dc4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="stm32h7xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref></type>
+        <definition>HAL_StatusTypeDef HAL_Init</definition>
+        <argsstring>(void)</argsstring>
+        <name>HAL_Init</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>This function is used to initialize the HAL Library; it must be the first instruction to be executed in the main program (before to call any other HAL function), it performs the following: Configures the SysTick to generate an interrupt each 1 millisecond, which is clocked by the HSI (at this stage, the clock is not yet configured and thus the system is running from the internal HSI at 16 MHz). </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Set NVIC Group Priority to 4. Calls the <ref refid="bootstrap_2Core_2Src_2stm32h7xx__hal__msp_8c_1ae4fb8e66865c87d0ebab74a726a6891f" kindref="member">HAL_MspInit()</ref> callback function defined in user file &quot;stm32h7xx_hal_msp.c&quot; to do the global low level hardware initialization</para>
+<para><simplesect kind="note"><para>SysTick is used as time base for the <ref refid="group__HAL__Group2_1gab1dc1e6b438daacfe38a312a90221330" kindref="member">HAL_Delay()</ref> function, the application need to ensure that the SysTick time base is always set to 1 millisecond to have correct HAL operation. </para>
+</simplesect>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>HAL</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>status </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c" line="134" column="19" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c" bodystart="134" bodyend="180" declfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h" declline="1065" declcolumn="19"/>
+      </memberdef>
+      <memberdef kind="function" id="group__HAL__Group1_1ga95911129a26afb05232caaaefa31956f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="stm32h7xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref></type>
+        <definition>HAL_StatusTypeDef HAL_DeInit</definition>
+        <argsstring>(void)</argsstring>
+        <name>HAL_DeInit</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>This function de-Initializes common part of the HAL and stops the systick. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function is optional. <parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>HAL</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>status </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c" line="187" column="19" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c" bodystart="187" bodyend="222" declfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h" declline="1066" declcolumn="19"/>
+      </memberdef>
+      <memberdef kind="function" id="group__HAL__Group1_1ga07e099a69ab23e79be8b7a80505de519" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>__weak void HAL_MspInit</definition>
+        <argsstring>(void)</argsstring>
+        <name>HAL_MspInit</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Initializes the MSP. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c" line="228" column="13" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c" bodystart="228" bodyend="233" declfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h" declline="1067" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__HAL__Group1_1gaa2d4540edcb9dacec34edb77f3455bf0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>__weak void HAL_MspDeInit</definition>
+        <argsstring>(void)</argsstring>
+        <name>HAL_MspDeInit</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>DeInitializes the MSP. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c" line="239" column="13" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c" bodystart="239" bodyend="244" declfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h" declline="1068" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__HAL__Group1_1ga44d1542f9985b2243b14a41070cc41cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="stm32h7xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref></type>
+        <definition>__weak HAL_StatusTypeDef HAL_InitTick</definition>
+        <argsstring>(uint32_t TickPriority)</argsstring>
+        <name>HAL_InitTick</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>TickPriority</declname>
+        </param>
+        <briefdescription>
+<para>This function configures the source of the time base. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The time source is configured to have 1ms time base with a dedicated Tick interrupt priority. <simplesect kind="note"><para>This function is called automatically at the beginning of program after reset by <ref refid="group__HAL__Group1_1gaecac54d350c3730e6831eb404e557dc4" kindref="member">HAL_Init()</ref> or at any time when clock is reconfigured by HAL_RCC_ClockConfig(). </para>
+</simplesect>
+<simplesect kind="note"><para>In the default implementation, SysTick timer is the source of time base. It is used to generate interrupts at regular time intervals. Care must be taken if <ref refid="group__HAL__Group2_1gab1dc1e6b438daacfe38a312a90221330" kindref="member">HAL_Delay()</ref> is called from a peripheral ISR process, the SysTick interrupt must have higher priority (numerically lower) than the peripheral interrupt. Otherwise the caller ISR process will be blocked. The function is declared as __weak to be overwritten in case of other implementation in user file. </para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>TickPriority</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Tick interrupt priority. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>HAL</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>status </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c" line="262" column="26" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c" bodystart="262" bodyend="289" declfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h" declline="1069" declcolumn="19"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Initialization and de-initialization functions. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><verbatim> ===============================================================================
+              ##### Initialization and de-initialization functions #####
+ ===============================================================================
+    [..]  This section provides functions allowing to:
+      (+) Initializes the Flash interface the NVIC allocation and initial clock
+          configuration. It initializes the systick also when timeout is needed
+          and the backup domain when enabled.
+      (+) De-Initializes common part of the HAL.
+      (+) Configure The time base source to have 1ms time base with a dedicated
+          Tick interrupt priority.
+        (++) SysTick timer is used by default as source of time base, but user
+             can eventually implement his proper time base source (a general purpose
+             timer for example or other time source), keeping in mind that Time base
+             duration should be kept 1ms since PPP_TIMEOUT_VALUEs are defined and
+             handled in milliseconds basis.
+        (++) Time base configuration function (HAL_InitTick ()) is called automatically
+             at the beginning of the program after reset by HAL_Init() or at any time
+             when clock is configured, by HAL_RCC_ClockConfig().
+        (++) Source of time base is configured  to generate interrupts at regular
+             time intervals. Care must be taken if HAL_Delay() is called from a
+             peripheral ISR process, the Tick interrupt line must have higher priority
+            (numerically lower) than the peripheral interrupt. Otherwise the caller
+            ISR process will be blocked.
+       (++) functions affecting time base configurations are declared as __weak
+             to make  override possible  in case of other  implementations in user file.
+</verbatim> </para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

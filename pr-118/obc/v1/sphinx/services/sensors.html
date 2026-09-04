@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Sensors Service &#8212; OSUSat OBC Firmware  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Logging Service" href="logging.html" />
+    <link rel="prev" title="OSUSat OBC Firmware Documentation" href="../index.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="sensors-service">
+<h1>Sensors Service<a class="headerlink" href="#sensors-service" title="Link to this heading">¶</a></h1>
+<p>Sensor reading &amp; logging service. </p>
+<p>Adds support for several sensors including the MS5607-02BA </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SENSORS_SERVICE_ID">
+<span class="target" id="sensors_8h_1a33a1efdbaa456dd817ebe7344421fe6d"></span><span class="sig-name descname"><span class="n"><span class="pre">SENSORS_SERVICE_ID</span></span></span><a class="headerlink" href="#c.SENSORS_SERVICE_ID" title="Link to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SENSORS_EVENT_DATA_RECEIVED">
+<span class="target" id="sensors_8h_1aad1eb35182fdc048731b184965415c9d"></span><span class="sig-name descname"><span class="n"><span class="pre">SENSORS_EVENT_DATA_RECEIVED</span></span></span><a class="headerlink" href="#c.SENSORS_EVENT_DATA_RECEIVED" title="Link to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-enums">Enums</p>
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv418sensors_event_id_t">
+<span id="_CPPv318sensors_event_id_t"></span><span id="_CPPv218sensors_event_id_t"></span><span class="target" id="sensors_8h_1ae5c860e2eaa6e76e182b52ce5466ee01"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sensors_event_id_t</span></span></span><a class="headerlink" href="#_CPPv418sensors_event_id_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18sensors_event_id_t20SENSOR_DATA_RECEIVEDE">
+<span id="_CPPv3N18sensors_event_id_t20SENSOR_DATA_RECEIVEDE"></span><span id="_CPPv2N18sensors_event_id_t20SENSOR_DATA_RECEIVEDE"></span><span class="target" id="sensors_8h_1ae5c860e2eaa6e76e182b52ce5466ee01a2d54e64463c83b7300108e3137edd6d5"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SENSOR_DATA_RECEIVED</span></span></span><a class="headerlink" href="#_CPPv4N18sensors_event_id_t20SENSOR_DATA_RECEIVEDE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Published when valid sensor data is read from one or more sensors Payload: <a class="reference internal" href="#structsensor__data__t"><span class="std std-ref">sensor_data_t</span></a>. </p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv412sensors_initv">
+<span id="_CPPv312sensors_initv"></span><span id="_CPPv212sensors_initv"></span><span id="sensors_init__void"></span><span class="target" id="sensors_8h_1ac5ec1d578591899e43c3515d05e573b7"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sensors_init</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv412sensors_initv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Initialize the sensors service and MS5607-02BA sensor. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv423sensors_flush_telemetryv">
+<span id="_CPPv323sensors_flush_telemetryv"></span><span id="_CPPv223sensors_flush_telemetryv"></span><span id="sensors_flush_telemetry__void"></span><span class="target" id="sensors_8h_1ad4a02281f9da37c1ac82fa56d16c798c"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sensors_flush_telemetry</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv423sensors_flush_telemetryv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Flush any pending telemetry samples to Flash before entering deep sleep. </p>
+</dd></dl>
+
+</div>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv411barometer_t">
+<span id="_CPPv311barometer_t"></span><span id="_CPPv211barometer_t"></span><span id="barometer_t"></span><span class="target" id="structbarometer__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">barometer_t</span></span></span><a class="headerlink" href="#_CPPv411barometer_t" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N11barometer_t8pressureE">
+<span id="_CPPv3N11barometer_t8pressureE"></span><span id="_CPPv2N11barometer_t8pressureE"></span><span id="barometer_t::pressure__int64_t"></span><span class="target" id="structbarometer__t_1aa8c9a542cd3b64e1e46369b42938e0d2"></span><span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pressure</span></span></span><a class="headerlink" href="#_CPPv4N11barometer_t8pressureE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Pressure data read from barometer in mbar. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N11barometer_t11temperatureE">
+<span id="_CPPv3N11barometer_t11temperatureE"></span><span id="_CPPv2N11barometer_t11temperatureE"></span><span id="barometer_t::temperature__int64_t"></span><span class="target" id="structbarometer__t_1a8ffc854cf2c86b994ceb3420e1d5f254"></span><span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">temperature</span></span></span><a class="headerlink" href="#_CPPv4N11barometer_t11temperatureE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Temperature reading. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv413sensor_data_t">
+<span id="_CPPv313sensor_data_t"></span><span id="_CPPv213sensor_data_t"></span><span id="sensor_data_t"></span><span class="target" id="structsensor__data__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sensor_data_t</span></span></span><a class="headerlink" href="#_CPPv413sensor_data_t" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N13sensor_data_t9barometerE">
+<span id="_CPPv3N13sensor_data_t9barometerE"></span><span id="_CPPv2N13sensor_data_t9barometerE"></span><span id="sensor_data_t::barometer__barometer_t"></span><span class="target" id="structsensor__data__t_1a56282a6ca45ed54ca73ecd5ba3e4ee41"></span><a class="reference internal" href="#_CPPv411barometer_t" title="barometer_t"><span class="n"><span class="pre">barometer_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">barometer</span></span></span><a class="headerlink" href="#_CPPv4N13sensor_data_t9barometerE" title="Link to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">OSUSat OBC Firmware</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Services:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Sensors Service</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#c.SENSORS_SERVICE_ID"><code class="docutils literal notranslate"><span class="pre">SENSORS_SERVICE_ID</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.SENSORS_EVENT_DATA_RECEIVED"><code class="docutils literal notranslate"><span class="pre">SENSORS_EVENT_DATA_RECEIVED</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv418sensors_event_id_t"><code class="docutils literal notranslate"><span class="pre">sensors_event_id_t</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv412sensors_initv"><code class="docutils literal notranslate"><span class="pre">sensors_init()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv423sensors_flush_telemetryv"><code class="docutils literal notranslate"><span class="pre">sensors_flush_telemetry()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv411barometer_t"><code class="docutils literal notranslate"><span class="pre">barometer_t</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv413sensor_data_t"><code class="docutils literal notranslate"><span class="pre">sensor_data_t</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">Logging Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="can_events.html">CAN Events Service</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../index.html" title="previous chapter">OSUSat OBC Firmware Documentation</a></li>
+      <li>Next: <a href="logging.html" title="next chapter">Logging Service</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2025, OSUSat.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.1.0</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/services/sensors.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

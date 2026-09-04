@@ -1,0 +1,417 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="group__MDMA__Exported__Macros" kind="group">
+    <compoundname>MDMA_Exported_Macros</compoundname>
+    <title>MDMA Exported Macros</title>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="group__MDMA__Exported__Macros_1gad30da19e61d20a68a2042ce6d3e279cb" prot="public" static="no">
+        <name>__HAL_MDMA_ENABLE</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer>((__HANDLE__)-&gt;Instance-&gt;CCR |=  <ref refid="group__Peripheral__Registers__Bits__Definition_1ga7a3a8b196868241058a5e099e9cda1ef" kindref="member">MDMA_CCR_EN</ref>)</initializer>
+        <briefdescription>
+<para>Enable the specified MDMA Channel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>MDMA handle </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_mdma.h" line="532" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_mdma.h" bodystart="532" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__MDMA__Exported__Macros_1gad2ac8ed9c01bcf349eb8add659be6eb8" prot="public" static="no">
+        <name>__HAL_MDMA_DISABLE</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer>((__HANDLE__)-&gt;Instance-&gt;CCR &amp;=  ~<ref refid="group__Peripheral__Registers__Bits__Definition_1ga7a3a8b196868241058a5e099e9cda1ef" kindref="member">MDMA_CCR_EN</ref>)</initializer>
+        <briefdescription>
+<para>Disable the specified MDMA Channel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>MDMA handle </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_mdma.h" line="539" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_mdma.h" bodystart="539" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__MDMA__Exported__Macros_1gaaf946c0dd2867f0dc7fd2148a0d9a3d5" prot="public" static="no">
+        <name>__HAL_MDMA_GET_FLAG</name>
+        <param><defname>__HANDLE__</defname></param>
+        <param><defname>__FLAG__</defname></param>
+        <initializer>((__HANDLE__)-&gt;Instance-&gt;CISR &amp; (__FLAG__))</initializer>
+        <briefdescription>
+<para>Get the MDMA Channel pending flags. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>MDMA handle </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>__FLAG__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Get the specified flag. This parameter can be any combination of the following values: <itemizedlist>
+<listitem><para>MDMA_FLAG_TE : Transfer Error flag. </para>
+</listitem>
+<listitem><para>MDMA_FLAG_CTC : Channel Transfer Complete flag. </para>
+</listitem>
+<listitem><para>MDMA_FLAG_BRT : Block Repeat Transfer flag. </para>
+</listitem>
+<listitem><para>MDMA_FLAG_BT : Block Transfer complete flag. </para>
+</listitem>
+<listitem><para>MDMA_FLAG_BFTC : BuFfer Transfer Complete flag. </para>
+</listitem>
+<listitem><para>MDMA_FLAG_CRQA : Channel request Active flag. </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>The</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>state of FLAG (SET or RESET). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_mdma.h" line="554" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_mdma.h" bodystart="554" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__MDMA__Exported__Macros_1ga38421dfadb7647e35c8cc4dbf8473577" prot="public" static="no">
+        <name>__HAL_MDMA_CLEAR_FLAG</name>
+        <param><defname>__HANDLE__</defname></param>
+        <param><defname>__FLAG__</defname></param>
+        <initializer>((__HANDLE__)-&gt;Instance-&gt;CIFCR = (__FLAG__))</initializer>
+        <briefdescription>
+<para>Clear the MDMA Stream pending flags. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>MDMA handle </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>__FLAG__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the flag to clear. This parameter can be any combination of the following values: <itemizedlist>
+<listitem><para>MDMA_FLAG_TE : Transfer Error flag. </para>
+</listitem>
+<listitem><para>MDMA_FLAG_CTC : Channel Transfer Complete flag. </para>
+</listitem>
+<listitem><para>MDMA_FLAG_BRT : Block Repeat Transfer flag. </para>
+</listitem>
+<listitem><para>MDMA_FLAG_BT : Block Transfer complete flag. </para>
+</listitem>
+<listitem><para>MDMA_FLAG_BFTC : BuFfer Transfer Complete flag. </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_mdma.h" line="568" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_mdma.h" bodystart="568" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__MDMA__Exported__Macros_1ga37da617c45501f5276f4142cb78f0010" prot="public" static="no">
+        <name>__HAL_MDMA_ENABLE_IT</name>
+        <param><defname>__HANDLE__</defname></param>
+        <param><defname>__INTERRUPT__</defname></param>
+        <initializer>((__HANDLE__)-&gt;Instance-&gt;CCR |= (__INTERRUPT__))</initializer>
+        <briefdescription>
+<para>Enables the specified MDMA Channel interrupts. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>MDMA handle </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>__INTERRUPT__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the DMA interrupt sources to be enabled or disabled. This parameter can be any combination of the following values: <itemizedlist>
+<listitem><para>MDMA_IT_TE : Transfer Error interrupt mask </para>
+</listitem>
+<listitem><para>MDMA_IT_CTC : Channel Transfer Complete interrupt mask </para>
+</listitem>
+<listitem><para>MDMA_IT_BRT : Block Repeat Transfer interrupt mask </para>
+</listitem>
+<listitem><para>MDMA_IT_BT : Block Transfer interrupt mask </para>
+</listitem>
+<listitem><para>MDMA_IT_BFTC : BuFfer Transfer Complete interrupt mask </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_mdma.h" line="582" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_mdma.h" bodystart="582" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__MDMA__Exported__Macros_1gacd4f04feebf750c9c5507af35c13f1ab" prot="public" static="no">
+        <name>__HAL_MDMA_DISABLE_IT</name>
+        <param><defname>__HANDLE__</defname></param>
+        <param><defname>__INTERRUPT__</defname></param>
+        <initializer>((__HANDLE__)-&gt;Instance-&gt;CCR &amp;= ~(__INTERRUPT__))</initializer>
+        <briefdescription>
+<para>Disables the specified MDMA Channel interrupts. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>MDMA handle </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>__INTERRUPT__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the MDMA interrupt sources to be enabled or disabled. This parameter can be any combination of the following values: <itemizedlist>
+<listitem><para>MDMA_IT_TE : Transfer Error interrupt mask </para>
+</listitem>
+<listitem><para>MDMA_IT_CTC : Channel Transfer Complete interrupt mask </para>
+</listitem>
+<listitem><para>MDMA_IT_BRT : Block Repeat Transfer interrupt mask </para>
+</listitem>
+<listitem><para>MDMA_IT_BT : Block Transfer interrupt mask </para>
+</listitem>
+<listitem><para>MDMA_IT_BFTC : BuFfer Transfer Complete interrupt mask </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_mdma.h" line="596" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_mdma.h" bodystart="596" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__MDMA__Exported__Macros_1ga474bb60ada428a8409bbb0a16637eed8" prot="public" static="no">
+        <name>__HAL_MDMA_GET_IT_SOURCE</name>
+        <param><defname>__HANDLE__</defname></param>
+        <param><defname>__INTERRUPT__</defname></param>
+        <initializer>(((__HANDLE__)-&gt;Instance-&gt;CCR &amp; (__INTERRUPT__)))</initializer>
+        <briefdescription>
+<para>Checks whether the specified MDMA Channel interrupt is enabled or not. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>MDMA handle </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>__INTERRUPT__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the MDMA interrupt source to check. <itemizedlist>
+<listitem><para>MDMA_IT_TE : Transfer Error interrupt mask </para>
+</listitem>
+<listitem><para>MDMA_IT_CTC : Channel Transfer Complete interrupt mask </para>
+</listitem>
+<listitem><para>MDMA_IT_BRT : Block Repeat Transfer interrupt mask </para>
+</listitem>
+<listitem><para>MDMA_IT_BT : Block Transfer interrupt mask </para>
+</listitem>
+<listitem><para>MDMA_IT_BFTC : BuFfer Transfer Complete interrupt mask </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>The</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>state of MDMA_IT (SET or RESET). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_mdma.h" line="609" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_mdma.h" bodystart="609" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__MDMA__Exported__Macros_1ga74127222885888d75a35a24fe6ae38b9" prot="public" static="no">
+        <name>__HAL_MDMA_SET_COUNTER</name>
+        <param><defname>__HANDLE__</defname></param>
+        <param><defname>__COUNTER__</defname></param>
+        <initializer>((__HANDLE__)-&gt;Instance-&gt;CBNDTR |= ((__COUNTER__) &amp; <ref refid="group__Peripheral__Registers__Bits__Definition_1gae96b367fad972829944458d72e7f445e" kindref="member">MDMA_CBNDTR_BNDT</ref>))</initializer>
+        <briefdescription>
+<para>Writes the number of data in bytes to be transferred on the MDMA Channelx. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>: MDMA handle </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>__COUNTER__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of data in bytes to be transferred. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_mdma.h" line="617" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_mdma.h" bodystart="617" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__MDMA__Exported__Macros_1ga12a0d1d4b2f117ec26ef436b905b64e1" prot="public" static="no">
+        <name>__HAL_MDMA_GET_COUNTER</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer>((__HANDLE__)-&gt;Instance-&gt;CBNDTR &amp; <ref refid="group__Peripheral__Registers__Bits__Definition_1gae96b367fad972829944458d72e7f445e" kindref="member">MDMA_CBNDTR_BNDT</ref>)</initializer>
+        <briefdescription>
+<para>Returns the number of remaining data in bytes in the current MDMA Channelx transfer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>: MDMA handle </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>The</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>number of remaining data in bytes in the current MDMA Channelx transfer. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_mdma.h" line="624" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_mdma.h" bodystart="624" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

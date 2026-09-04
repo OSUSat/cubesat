@@ -1,0 +1,471 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="stm32h7xx__hal__pwr_8c" kind="file" language="C++">
+    <compoundname>stm32h7xx_hal_pwr.c</compoundname>
+    <includes local="yes">stm32h7xx_hal.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr.c</label>
+        <link refid="stm32h7xx__hal__pwr_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>stm32h7xx_hal.h</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+<para>PWR HAL module driver. This file provides firmware functions to manage the following functionalities of the Power Controller (PWR) peripheral: </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>MCD Application Team<itemizedlist>
+<listitem><para>Initialization and de-initialization functions.</para>
+</listitem><listitem><para>Peripheral Control functions.</para>
+</listitem><listitem><para>Interrupt Handling functions.</para>
+</listitem></itemizedlist>
+</para>
+</simplesect>
+<simplesect kind="attention"><para></para>
+</simplesect>
+Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
+<para>This software is licensed under terms that can be found in the LICENSE file in the root directory of this software component. If no LICENSE file comes with this software, it is provided AS-IS.</para>
+<para><verbatim>==============================================================================
+                      ##### PWR peripheral overview #####
+==============================================================================
+[..]
+ (#) The Power control (PWR) provides an overview of the supply architecture
+     for the different power domains and of the supply configuration
+     controller.
+     In the H7 family, the number of power domains is different between
+     device lines. This difference is due to characteristics of each device.
+
+ (#) Domain architecture overview for the different H7 lines:
+    (+) Dual core lines are STM32H745, STM32H747, STM32H755 and STM32H757.
+        These devices have 3 power domains (D1, D2 and D3).
+        The domain D1 contains a CPU (Cortex-M7), a Flash memory and some
+        peripherals. The D2 domain contains peripherals and a CPU
+        (Cortex-M4). The D3 domain contains the system control, I/O logic
+        and low-power peripherals.
+    (+) STM32H72x, STM32H73x, STM32H742, STM32H743, STM32H750 and STM32H753 
+        devices have 3 power domains (D1, D2 and D3).
+        The domain D1 contains a CPU (Cortex-M7), a Flash memory and some
+        peripherals. The D2 domain contains peripherals. The D3 domains
+        contains the system control, I/O logic and low-power peripherals.
+    (+) STM32H7Axxx and STM32H7Bxxx devices have 2 power domains (CD and SRD).
+        The core domain (CD) contains a CPU (Cortex-M7), a Flash
+        memory and peripherals. The SmartRun domain contains the system
+        control, I/O logic and low-power peripherals.
+
+ (#) Every entity have low power mode as described below :
+ (#) The CPU low power modes are :
+    (+) CPU CRUN.
+    (+) CPU CSLEEP.
+    (+) CPU CSTOP.
+ (#) The domain low power modes are :
+    (+) DRUN.
+    (+) DSTOP.
+    (+) DSTANDBY.
+ (#) The SYSTEM low power modes are :
+    (+) RUN* : The Run* mode is entered after a POR reset and a wakeup from
+               Standby. In Run* mode, the performance is limited and the
+               system supply configuration shall be programmed. The system
+               enters Run mode only when the ACTVOSRDY bit in PWR control
+               status register 1 (PWR_CSR1) is set to 1.
+    (+) RUN.
+    (+) STOP.
+    (+) STANDBY.
+
+==============================================================================
+                      ##### How to use this driver #####
+==============================================================================
+[..]
+ (#) Power management peripheral is active by default at startup level in
+     STM32h7xx lines.
+
+ (#) Call HAL_PWR_EnableBkUpAccess() and HAL_PWR_DisableBkUpAccess() functions
+     to enable/disable access to the backup domain (RTC registers, RTC backup
+     data registers and backup SRAM).
+
+ (#) Call HAL_PWR_ConfigPVD() after setting parameters to be configured (event
+     mode and voltage threshold) in order to set up the Power Voltage Detector,
+     then use HAL_PWR_EnablePVD() and  HAL_PWR_DisablePVD() functions to start
+     and stop the PVD detection.
+     (+) PVD level could be one of the following values :
+           (++) 1V95
+           (++) 2V1
+           (++) 2V25
+           (++) 2V4
+           (++) 2V55
+           (++) 2V7
+           (++) 2V85
+           (++) External voltage level
+
+ (#) Call HAL_PWR_EnableWakeUpPin() and HAL_PWR_DisableWakeUpPin() functions
+     with the right parameter to configure the wake up pin polarity (Low or
+     High) and to enable and disable it.
+
+ (#) Call HAL_PWR_EnterSLEEPMode() function to enter the current Core in SLEEP
+     mode. Wake-up from SLEEP mode could be following to an event or an
+     interrupt according to low power mode intrinsic request called (__WFI()
+     or __WFE()).
+     Please ensure to clear all CPU pending events by calling
+     HAL_PWREx_ClearPendingEvent() function when trying to enter the Cortex-Mx
+     in SLEEP mode with __WFE() entry.
+
+ (#) Call HAL_PWR_EnterSTOPMode() function to enter the whole system to Stop 0
+     mode for single core devices. For dual core devices, this API will enter
+     the domain (containing Cortex-Mx that executing this function) in DSTOP
+     mode. According to the used parameter, user could select the regulator to
+     be kept actif in low power mode and wake-up event type.
+     Please ensure to clear all CPU pending events by calling
+     HAL_PWREx_ClearPendingEvent() function when trying to enter the Cortex-Mx
+     in CSTOP mode with __WFE() entry.
+
+ (#) Call HAL_PWR_EnterSTANDBYMode() function to enter the whole system in
+     STANDBY mode for single core devices. For dual core devices, this API
+     will enter the domain (containing Cortex-Mx that executing this function)
+     in DSTANDBY mode.
+
+ (#) Call HAL_PWR_EnableSleepOnExit() and HAL_PWR_DisableSleepOnExit() APIs to
+     enable and disable the Cortex-Mx re-entring in SLEEP mode after an
+     interruption handling is over.
+
+ (#) Call HAL_PWR_EnableSEVOnPend() and HAL_PWR_DisableSEVOnPend() functions
+     to configure the Cortex-Mx to wake-up after any pending event / interrupt
+     even if it&apos;s disabled or has insufficient priority to cause exception
+     entry.
+
+ (#) Call HAL_PWR_PVD_IRQHandler() function to handle the PWR PVD interrupt
+     request.
+
+   *** PWR HAL driver macros list ***
+   =============================================
+   [..]
+     Below the list of most used macros in PWR HAL driver.
+
+    (+) __HAL_PWR_VOLTAGESCALING_CONFIG() : Configure the main internal
+                                            regulator output voltage.
+    (+) __HAL_PWR_GET_FLAG()              : Get the PWR pending flags.
+    (+) __HAL_PWR_CLEAR_FLAG()            : Clear the PWR pending flags.</verbatim> </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Includes<sp/>------------------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;stm32h7xx_hal.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>HAL_PWR_MODULE_ENABLED</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>typedef<sp/>-----------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>define<sp/>------------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>!defined<sp/>(DUAL_CORE)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PVD_MODE_IT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0x00010000U)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PVD_MODE_EVT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0x00020000U)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>!defined<sp/>(DUAL_CORE)<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PVD_RISING_EDGE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0x00000001U)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PVD_FALLING_EDGE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0x00000002U)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PVD_RISING_FALLING_EDGE<sp/><sp/>(0x00000003U)</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>macro<sp/>-------------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>variables<sp/>---------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>function<sp/>prototypes<sp/>-----------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>functions<sp/>---------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>HAL_PWR_DeInit<sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="226"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="227"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"></highlight></codeline>
+<codeline lineno="236"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>HAL_PWR_EnableBkUpAccess<sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="237"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Enable<sp/>access<sp/>to<sp/>RTC<sp/>and<sp/>backup<sp/>registers<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/>SET_BIT<sp/>(PWR-&gt;CR1,<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1ga09950f76d292eb9d01f72dd825082f1b" kindref="member">PWR_CR1_DBP</ref>);</highlight></codeline>
+<codeline lineno="240"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"></highlight></codeline>
+<codeline lineno="249"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>HAL_PWR_DisableBkUpAccess<sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="250"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Disable<sp/>access<sp/>to<sp/>RTC<sp/>and<sp/>backup<sp/>registers<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/>CLEAR_BIT<sp/>(PWR-&gt;CR1,<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1ga09950f76d292eb9d01f72dd825082f1b" kindref="member">PWR_CR1_DBP</ref>);</highlight></codeline>
+<codeline lineno="253"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="415"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>HAL_PWR_ConfigPVD<sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structPWR__PVDTypeDef" kindref="compound">PWR_PVDTypeDef</ref><sp/>*sConfigPVD)</highlight></codeline>
+<codeline lineno="416"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="417"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>the<sp/>PVD<sp/>configuration<sp/>parameter<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="418"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(sConfigPVD<sp/>==<sp/>NULL)</highlight></codeline>
+<codeline lineno="419"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="420"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="421"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="422"><highlight class="normal"></highlight></codeline>
+<codeline lineno="423"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>the<sp/>parameters<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="424"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32h7xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref><sp/>(IS_PWR_PVD_LEVEL<sp/>(sConfigPVD-&gt;<ref refid="structPWR__PVDTypeDef_1a540471bc6ac947fd8bc2c87f61d9faab" kindref="member">PVDLevel</ref>));</highlight></codeline>
+<codeline lineno="425"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32h7xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref><sp/>(IS_PWR_PVD_MODE<sp/>(sConfigPVD-&gt;<ref refid="structPWR__PVDTypeDef_1af692d691f0cb5871b319fd371fab34d8" kindref="member">Mode</ref>));</highlight></codeline>
+<codeline lineno="426"><highlight class="normal"></highlight></codeline>
+<codeline lineno="427"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Set<sp/>PLS[7:5]<sp/>bits<sp/>according<sp/>to<sp/>PVDLevel<sp/>value<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="428"><highlight class="normal"><sp/><sp/>MODIFY_REG<sp/>(PWR-&gt;CR1,<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1gaf8de82702acc1034f6061ed9d70ec67f" kindref="member">PWR_CR1_PLS</ref>,<sp/>sConfigPVD-&gt;<ref refid="structPWR__PVDTypeDef_1a540471bc6ac947fd8bc2c87f61d9faab" kindref="member">PVDLevel</ref>);</highlight></codeline>
+<codeline lineno="429"><highlight class="normal"></highlight></codeline>
+<codeline lineno="430"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Clear<sp/>previous<sp/>config<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="431"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>!defined<sp/>(DUAL_CORE)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="432"><highlight class="normal"><sp/><sp/><ref refid="group__PWR__Exported__Macro_1ga8bd379e960497722450c7cea474a7e7a" kindref="member">__HAL_PWR_PVD_EXTI_DISABLE_EVENT</ref><sp/>();</highlight></codeline>
+<codeline lineno="433"><highlight class="normal"><sp/><sp/><ref refid="group__PWR__Exported__Macro_1gad240d7bf8f15191b068497b9aead1f1f" kindref="member">__HAL_PWR_PVD_EXTI_DISABLE_IT</ref><sp/>();</highlight></codeline>
+<codeline lineno="434"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>!defined<sp/>(DUAL_CORE)<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="435"><highlight class="normal"></highlight></codeline>
+<codeline lineno="436"><highlight class="normal"><sp/><sp/><ref refid="group__PWR__Exported__Macro_1ga1ca8fd7f3286a176f6be540c75a004c6" kindref="member">__HAL_PWR_PVD_EXTI_DISABLE_RISING_EDGE</ref><sp/>();</highlight></codeline>
+<codeline lineno="437"><highlight class="normal"><sp/><sp/><ref refid="group__PWR__Exported__Macro_1ga1ca57168205f8cd8d1014e6eb9465f2d" kindref="member">__HAL_PWR_PVD_EXTI_DISABLE_FALLING_EDGE</ref><sp/>();</highlight></codeline>
+<codeline lineno="438"><highlight class="normal"></highlight></codeline>
+<codeline lineno="439"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>!defined<sp/>(DUAL_CORE)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="440"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Interrupt<sp/>mode<sp/>configuration<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="441"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((sConfigPVD-&gt;<ref refid="structPWR__PVDTypeDef_1af692d691f0cb5871b319fd371fab34d8" kindref="member">Mode</ref><sp/>&amp;<sp/>PVD_MODE_IT)<sp/>==<sp/>PVD_MODE_IT)</highlight></codeline>
+<codeline lineno="442"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="443"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__PWR__Exported__Macro_1ga3180f039cf14ef78a64089f387f8f9c2" kindref="member">__HAL_PWR_PVD_EXTI_ENABLE_IT</ref><sp/>();</highlight></codeline>
+<codeline lineno="444"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="445"><highlight class="normal"></highlight></codeline>
+<codeline lineno="446"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Event<sp/>mode<sp/>configuration<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="447"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((sConfigPVD-&gt;<ref refid="structPWR__PVDTypeDef_1af692d691f0cb5871b319fd371fab34d8" kindref="member">Mode</ref><sp/>&amp;<sp/>PVD_MODE_EVT)<sp/>==<sp/>PVD_MODE_EVT)</highlight></codeline>
+<codeline lineno="448"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="449"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__PWR__Exported__Macro_1gae5ba5672fe8cb7c1686c7f2cc211b128" kindref="member">__HAL_PWR_PVD_EXTI_ENABLE_EVENT</ref><sp/>();</highlight></codeline>
+<codeline lineno="450"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="451"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>!defined<sp/>(DUAL_CORE)<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="452"><highlight class="normal"></highlight></codeline>
+<codeline lineno="453"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Rising<sp/>edge<sp/>configuration<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="454"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((sConfigPVD-&gt;<ref refid="structPWR__PVDTypeDef_1af692d691f0cb5871b319fd371fab34d8" kindref="member">Mode</ref><sp/>&amp;<sp/>PVD_RISING_EDGE)<sp/>==<sp/>PVD_RISING_EDGE)</highlight></codeline>
+<codeline lineno="455"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="456"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__PWR__Exported__Macro_1ga7bef3f30c9fe267c99d5240fbf3f878c" kindref="member">__HAL_PWR_PVD_EXTI_ENABLE_RISING_EDGE</ref><sp/>();</highlight></codeline>
+<codeline lineno="457"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="458"><highlight class="normal"></highlight></codeline>
+<codeline lineno="459"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Falling<sp/>edge<sp/>configuration<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="460"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((sConfigPVD-&gt;<ref refid="structPWR__PVDTypeDef_1af692d691f0cb5871b319fd371fab34d8" kindref="member">Mode</ref><sp/>&amp;<sp/>PVD_FALLING_EDGE)<sp/>==<sp/>PVD_FALLING_EDGE)</highlight></codeline>
+<codeline lineno="461"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="462"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__PWR__Exported__Macro_1ga5b971478563a00e1ee1a9d8ca8054e08" kindref="member">__HAL_PWR_PVD_EXTI_ENABLE_FALLING_EDGE</ref><sp/>();</highlight></codeline>
+<codeline lineno="463"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="464"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="465"><highlight class="normal"></highlight></codeline>
+<codeline lineno="470"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>HAL_PWR_EnablePVD<sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="471"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="472"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Enable<sp/>the<sp/>power<sp/>voltage<sp/>detector<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="473"><highlight class="normal"><sp/><sp/>SET_BIT<sp/>(PWR-&gt;CR1,<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1gac8d2a44a38ed8ca33fdf883344065bd2" kindref="member">PWR_CR1_PVDEN</ref>);</highlight></codeline>
+<codeline lineno="474"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="475"><highlight class="normal"></highlight></codeline>
+<codeline lineno="480"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>HAL_PWR_DisablePVD<sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="481"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="482"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Disable<sp/>the<sp/>power<sp/>voltage<sp/>detector<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="483"><highlight class="normal"><sp/><sp/>CLEAR_BIT<sp/>(PWR-&gt;CR1,<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1gac8d2a44a38ed8ca33fdf883344065bd2" kindref="member">PWR_CR1_PVDEN</ref>);</highlight></codeline>
+<codeline lineno="484"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="485"><highlight class="normal"></highlight></codeline>
+<codeline lineno="507"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>HAL_PWR_EnableWakeUpPin<sp/>(uint32_t<sp/>WakeUpPinPolarity)</highlight></codeline>
+<codeline lineno="508"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="509"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>the<sp/>parameters<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="510"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32h7xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref><sp/>(IS_PWR_WAKEUP_PIN<sp/>(WakeUpPinPolarity));</highlight></codeline>
+<codeline lineno="511"><highlight class="normal"></highlight></codeline>
+<codeline lineno="512"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="513"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>Enable<sp/>and<sp/>Specify<sp/>the<sp/>Wake-Up<sp/>pin<sp/>polarity<sp/>and<sp/>the<sp/>pull<sp/>configuration</highlight></codeline>
+<codeline lineno="514"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>for<sp/>the<sp/>event<sp/>detection<sp/>(rising<sp/>or<sp/>falling<sp/>edge).</highlight></codeline>
+<codeline lineno="515"><highlight class="comment"><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="516"><highlight class="normal"><sp/><sp/>MODIFY_REG<sp/>(PWR-&gt;WKUPEPR,<sp/>PWR_EWUP_MASK,<sp/>WakeUpPinPolarity);</highlight></codeline>
+<codeline lineno="517"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="518"><highlight class="normal"></highlight></codeline>
+<codeline lineno="536"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>HAL_PWR_DisableWakeUpPin<sp/>(uint32_t<sp/>WakeUpPinx)</highlight></codeline>
+<codeline lineno="537"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="538"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>the<sp/>parameters<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="539"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32h7xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref><sp/>(IS_PWR_WAKEUP_PIN<sp/>(WakeUpPinx));</highlight></codeline>
+<codeline lineno="540"><highlight class="normal"></highlight></codeline>
+<codeline lineno="541"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Disable<sp/>the<sp/>wake<sp/>up<sp/>pin<sp/>selected<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="542"><highlight class="normal"><sp/><sp/>CLEAR_BIT<sp/>(PWR-&gt;WKUPEPR,<sp/>(<ref refid="group__Peripheral__Registers__Bits__Definition_1ga51971fa9a6969571e2a0279398f9ba3b" kindref="member">PWR_WKUPEPR_WKUPEN</ref><sp/>&amp;<sp/>WakeUpPinx));</highlight></codeline>
+<codeline lineno="543"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="544"><highlight class="normal"></highlight></codeline>
+<codeline lineno="564"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>HAL_PWR_EnterSLEEPMode<sp/>(uint32_t<sp/>Regulator,<sp/>uint8_t<sp/>SLEEPEntry)</highlight></codeline>
+<codeline lineno="565"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="566"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>the<sp/>parameters<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="567"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32h7xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref><sp/>(IS_PWR_REGULATOR<sp/>(Regulator));</highlight></codeline>
+<codeline lineno="568"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32h7xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref><sp/>(IS_PWR_SLEEP_ENTRY<sp/>(SLEEPEntry));</highlight></codeline>
+<codeline lineno="569"><highlight class="normal"></highlight></codeline>
+<codeline lineno="570"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Prevent<sp/>unused<sp/>argument(s)<sp/>compilation<sp/>warning<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="571"><highlight class="normal"><sp/><sp/>UNUSED(Regulator);</highlight></codeline>
+<codeline lineno="572"><highlight class="normal"></highlight></codeline>
+<codeline lineno="573"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Clear<sp/>SLEEPDEEP<sp/>bit<sp/>of<sp/>Cortex<sp/>System<sp/>Control<sp/>Register<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="574"><highlight class="normal"><sp/><sp/>CLEAR_BIT<sp/>(<ref refid="group__CMSIS__CORE_1gaaaf6477c2bde2f00f99e3c2fd1060b01" kindref="member">SCB</ref>-&gt;SCR,<sp/><ref refid="group__CMSIS__CORE_1ga77c06a69c63f4b3f6ec1032e911e18e7" kindref="member">SCB_SCR_SLEEPDEEP_Msk</ref>);</highlight></codeline>
+<codeline lineno="575"><highlight class="normal"></highlight></codeline>
+<codeline lineno="576"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Select<sp/>SLEEP<sp/>mode<sp/>entry<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="577"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(SLEEPEntry<sp/>==<sp/>PWR_SLEEPENTRY_WFI)</highlight></codeline>
+<codeline lineno="578"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="579"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Request<sp/>Wait<sp/>For<sp/>Interrupt<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="580"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__CMSIS__Core__InstructionInterface_1gad23bf2b78a9a4524157c9de0d30b7448" kindref="member">__WFI</ref><sp/>();</highlight></codeline>
+<codeline lineno="581"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="582"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="583"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="584"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Request<sp/>Wait<sp/>For<sp/>Event<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="585"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__CMSIS__Core__InstructionInterface_1gaac6cc7dd4325d9cb40d3290fa5244b3d" kindref="member">__WFE</ref><sp/>();</highlight></codeline>
+<codeline lineno="586"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="587"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="588"><highlight class="normal"></highlight></codeline>
+<codeline lineno="618"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>HAL_PWR_EnterSTOPMode<sp/>(uint32_t<sp/>Regulator,<sp/>uint8_t<sp/>STOPEntry)</highlight></codeline>
+<codeline lineno="619"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="620"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>the<sp/>parameters<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="621"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32h7xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref><sp/>(IS_PWR_REGULATOR<sp/>(Regulator));</highlight></codeline>
+<codeline lineno="622"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32h7xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref><sp/>(IS_PWR_STOP_ENTRY<sp/>(STOPEntry));</highlight></codeline>
+<codeline lineno="623"><highlight class="normal"></highlight></codeline>
+<codeline lineno="624"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Select<sp/>the<sp/>regulator<sp/>state<sp/>in<sp/>STOP<sp/>mode<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="625"><highlight class="normal"><sp/><sp/>MODIFY_REG<sp/>(PWR-&gt;CR1,<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1gacc60f674740c4000a25b0e3e50ede47d" kindref="member">PWR_CR1_LPDS</ref>,<sp/>Regulator);</highlight></codeline>
+<codeline lineno="626"><highlight class="normal"></highlight></codeline>
+<codeline lineno="627"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Configure<sp/>the<sp/>PWR<sp/>mode<sp/>for<sp/>the<sp/>different<sp/>Domains<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="628"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined<sp/>(DUAL_CORE)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="629"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>CPU<sp/>ID<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="630"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(HAL_GetCurrentCPUID<sp/>()<sp/>==<sp/>CM7_CPUID)</highlight></codeline>
+<codeline lineno="631"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="632"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Keep<sp/>DSTOP<sp/>mode<sp/>when<sp/>Cortex-M7<sp/>enters<sp/>DEEP-SLEEP<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="633"><highlight class="normal"><sp/><sp/><sp/><sp/>CLEAR_BIT<sp/>(PWR-&gt;CPUCR,<sp/>(<ref refid="group__Peripheral__Registers__Bits__Definition_1ga49eefe139ecdaf7012ae122292f9f2b2" kindref="member">PWR_CPUCR_PDDS_D1</ref><sp/>|<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1ga7939570e266aa5f257e8314f14154bb7" kindref="member">PWR_CPUCR_PDDS_D3</ref>));</highlight></codeline>
+<codeline lineno="634"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="635"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="636"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="637"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Keep<sp/>DSTOP<sp/>mode<sp/>when<sp/>Cortex-M4<sp/>enters<sp/>DEEP-SLEEP<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="638"><highlight class="normal"><sp/><sp/><sp/><sp/>CLEAR_BIT<sp/>(PWR-&gt;CPUCR,<sp/>(<ref refid="group__Peripheral__Registers__Bits__Definition_1ga1d847c56f1d197f0f0520b432a90ffb9" kindref="member">PWR_CPUCR_PDDS_D2</ref><sp/>|<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1ga7939570e266aa5f257e8314f14154bb7" kindref="member">PWR_CPUCR_PDDS_D3</ref>));</highlight></codeline>
+<codeline lineno="639"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="640"><highlight class="normal"></highlight><highlight class="preprocessor">#else<sp/></highlight><highlight class="comment">/*<sp/>Single<sp/>core<sp/>devices<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="641"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Keep<sp/>DSTOP<sp/>mode<sp/>when<sp/>Cortex-M7<sp/>enter<sp/>in<sp/>DEEP-SLEEP<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="642"><highlight class="normal"><sp/><sp/>CLEAR_BIT<sp/>(PWR-&gt;CPUCR,<sp/>(<ref refid="group__Peripheral__Registers__Bits__Definition_1ga49eefe139ecdaf7012ae122292f9f2b2" kindref="member">PWR_CPUCR_PDDS_D1</ref><sp/>|<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1ga7939570e266aa5f257e8314f14154bb7" kindref="member">PWR_CPUCR_PDDS_D3</ref>));</highlight></codeline>
+<codeline lineno="643"><highlight class="normal"></highlight></codeline>
+<codeline lineno="644"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined<sp/>(PWR_CPUCR_PDDS_D2)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="645"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Keep<sp/>DSTOP<sp/>mode<sp/>when<sp/>Cortex-M7<sp/>enter<sp/>in<sp/>DEEP-SLEEP<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="646"><highlight class="normal"><sp/><sp/>CLEAR_BIT<sp/>(PWR-&gt;CPUCR,<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1ga1d847c56f1d197f0f0520b432a90ffb9" kindref="member">PWR_CPUCR_PDDS_D2</ref>);</highlight></codeline>
+<codeline lineno="647"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>PWR_CPUCR_PDDS_D2<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="648"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>defined<sp/>(DUAL_CORE)<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="649"><highlight class="normal"></highlight></codeline>
+<codeline lineno="650"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Set<sp/>SLEEPDEEP<sp/>bit<sp/>of<sp/>Cortex<sp/>System<sp/>Control<sp/>Register<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="651"><highlight class="normal"><sp/><sp/>SET_BIT<sp/>(<ref refid="group__CMSIS__CORE_1gaaaf6477c2bde2f00f99e3c2fd1060b01" kindref="member">SCB</ref>-&gt;SCR,<sp/><ref refid="group__CMSIS__CORE_1ga77c06a69c63f4b3f6ec1032e911e18e7" kindref="member">SCB_SCR_SLEEPDEEP_Msk</ref>);</highlight></codeline>
+<codeline lineno="652"><highlight class="normal"></highlight></codeline>
+<codeline lineno="653"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Ensure<sp/>that<sp/>all<sp/>instructions<sp/>are<sp/>done<sp/>before<sp/>entering<sp/>STOP<sp/>mode<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="654"><highlight class="normal"><sp/><sp/><ref refid="group__CMSIS__Core__InstructionInterface_1ga067d257a2b34565410acefb5afef2203" kindref="member">__DSB</ref><sp/>();</highlight></codeline>
+<codeline lineno="655"><highlight class="normal"><sp/><sp/><ref refid="group__CMSIS__Core__InstructionInterface_1gaad233022e850a009fc6f7602be1182f6" kindref="member">__ISB</ref><sp/>();</highlight></codeline>
+<codeline lineno="656"><highlight class="normal"></highlight></codeline>
+<codeline lineno="657"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Select<sp/>STOP<sp/>mode<sp/>entry<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="658"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(STOPEntry<sp/>==<sp/>PWR_STOPENTRY_WFI)</highlight></codeline>
+<codeline lineno="659"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="660"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Request<sp/>Wait<sp/>For<sp/>Interrupt<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="661"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__CMSIS__Core__InstructionInterface_1gad23bf2b78a9a4524157c9de0d30b7448" kindref="member">__WFI</ref><sp/>();</highlight></codeline>
+<codeline lineno="662"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="663"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="664"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="665"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Request<sp/>Wait<sp/>For<sp/>Event<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="666"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__CMSIS__Core__InstructionInterface_1gaac6cc7dd4325d9cb40d3290fa5244b3d" kindref="member">__WFE</ref><sp/>();</highlight></codeline>
+<codeline lineno="667"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="668"><highlight class="normal"></highlight></codeline>
+<codeline lineno="669"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Clear<sp/>SLEEPDEEP<sp/>bit<sp/>of<sp/>Cortex-Mx<sp/>in<sp/>the<sp/>System<sp/>Control<sp/>Register<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="670"><highlight class="normal"><sp/><sp/>CLEAR_BIT<sp/>(<ref refid="group__CMSIS__CORE_1gaaaf6477c2bde2f00f99e3c2fd1060b01" kindref="member">SCB</ref>-&gt;SCR,<sp/><ref refid="group__CMSIS__CORE_1ga77c06a69c63f4b3f6ec1032e911e18e7" kindref="member">SCB_SCR_SLEEPDEEP_Msk</ref>);</highlight></codeline>
+<codeline lineno="671"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="672"><highlight class="normal"></highlight></codeline>
+<codeline lineno="689"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>HAL_PWR_EnterSTANDBYMode<sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="690"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="691"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Configure<sp/>the<sp/>PWR<sp/>mode<sp/>for<sp/>the<sp/>different<sp/>Domains<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="692"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined<sp/>(DUAL_CORE)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="693"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>CPU<sp/>ID<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="694"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(HAL_GetCurrentCPUID<sp/>()<sp/>==<sp/>CM7_CPUID)</highlight></codeline>
+<codeline lineno="695"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="696"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Enter<sp/>DSTANDBY<sp/>mode<sp/>when<sp/>Cortex-M7<sp/>enters<sp/>DEEP-SLEEP<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="697"><highlight class="normal"><sp/><sp/><sp/><sp/>SET_BIT<sp/>(PWR-&gt;CPUCR,<sp/>(<ref refid="group__Peripheral__Registers__Bits__Definition_1ga49eefe139ecdaf7012ae122292f9f2b2" kindref="member">PWR_CPUCR_PDDS_D1</ref><sp/>|<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1ga7939570e266aa5f257e8314f14154bb7" kindref="member">PWR_CPUCR_PDDS_D3</ref>));</highlight></codeline>
+<codeline lineno="698"><highlight class="normal"><sp/><sp/><sp/><sp/>SET_BIT<sp/>(PWR-&gt;CPU2CR,<sp/>(PWR_CPU2CR_PDDS_D1<sp/>|<sp/>PWR_CPU2CR_PDDS_D3));</highlight></codeline>
+<codeline lineno="699"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="700"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="701"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="702"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Enter<sp/>DSTANDBY<sp/>mode<sp/>when<sp/>Cortex-M4<sp/>enters<sp/>DEEP-SLEEP<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="703"><highlight class="normal"><sp/><sp/><sp/><sp/>SET_BIT<sp/>(PWR-&gt;CPUCR,<sp/>(<ref refid="group__Peripheral__Registers__Bits__Definition_1ga1d847c56f1d197f0f0520b432a90ffb9" kindref="member">PWR_CPUCR_PDDS_D2</ref><sp/>|<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1ga7939570e266aa5f257e8314f14154bb7" kindref="member">PWR_CPUCR_PDDS_D3</ref>));</highlight></codeline>
+<codeline lineno="704"><highlight class="normal"><sp/><sp/><sp/><sp/>SET_BIT<sp/>(PWR-&gt;CPU2CR,<sp/>(PWR_CPU2CR_PDDS_D2<sp/>|<sp/>PWR_CPU2CR_PDDS_D3));</highlight></codeline>
+<codeline lineno="705"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="706"><highlight class="normal"></highlight><highlight class="preprocessor">#else<sp/></highlight><highlight class="comment">/*<sp/>Single<sp/>core<sp/>devices<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="707"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Enter<sp/>DSTANDBY<sp/>mode<sp/>when<sp/>Cortex-M7<sp/>enters<sp/>DEEP-SLEEP<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="708"><highlight class="normal"><sp/><sp/>SET_BIT<sp/>(PWR-&gt;CPUCR,<sp/>(<ref refid="group__Peripheral__Registers__Bits__Definition_1ga49eefe139ecdaf7012ae122292f9f2b2" kindref="member">PWR_CPUCR_PDDS_D1</ref><sp/>|<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1ga7939570e266aa5f257e8314f14154bb7" kindref="member">PWR_CPUCR_PDDS_D3</ref>));</highlight></codeline>
+<codeline lineno="709"><highlight class="normal"></highlight></codeline>
+<codeline lineno="710"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined<sp/>(PWR_CPUCR_PDDS_D2)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="711"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Enter<sp/>DSTANDBY<sp/>mode<sp/>when<sp/>Cortex-M7<sp/>enters<sp/>DEEP-SLEEP<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="712"><highlight class="normal"><sp/><sp/>SET_BIT<sp/>(PWR-&gt;CPUCR,<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1ga1d847c56f1d197f0f0520b432a90ffb9" kindref="member">PWR_CPUCR_PDDS_D2</ref>);</highlight></codeline>
+<codeline lineno="713"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>PWR_CPUCR_PDDS_D2<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="714"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>defined<sp/>(DUAL_CORE)<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="715"><highlight class="normal"></highlight></codeline>
+<codeline lineno="716"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Set<sp/>SLEEPDEEP<sp/>bit<sp/>of<sp/>Cortex<sp/>System<sp/>Control<sp/>Register<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="717"><highlight class="normal"><sp/><sp/>SET_BIT<sp/>(<ref refid="group__CMSIS__CORE_1gaaaf6477c2bde2f00f99e3c2fd1060b01" kindref="member">SCB</ref>-&gt;SCR,<sp/><ref refid="group__CMSIS__CORE_1ga77c06a69c63f4b3f6ec1032e911e18e7" kindref="member">SCB_SCR_SLEEPDEEP_Msk</ref>);</highlight></codeline>
+<codeline lineno="718"><highlight class="normal"></highlight></codeline>
+<codeline lineno="719"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Ensure<sp/>that<sp/>all<sp/>instructions<sp/>are<sp/>done<sp/>before<sp/>entering<sp/>STOP<sp/>mode<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="720"><highlight class="normal"><sp/><sp/><ref refid="group__CMSIS__Core__InstructionInterface_1ga067d257a2b34565410acefb5afef2203" kindref="member">__DSB</ref><sp/>();</highlight></codeline>
+<codeline lineno="721"><highlight class="normal"><sp/><sp/><ref refid="group__CMSIS__Core__InstructionInterface_1gaad233022e850a009fc6f7602be1182f6" kindref="member">__ISB</ref><sp/>();</highlight></codeline>
+<codeline lineno="722"><highlight class="normal"></highlight></codeline>
+<codeline lineno="723"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>This<sp/>option<sp/>is<sp/>used<sp/>to<sp/>ensure<sp/>that<sp/>store<sp/>operations<sp/>are<sp/>completed<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="724"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined<sp/>(__CC_ARM)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="725"><highlight class="normal"><sp/><sp/>__force_stores();</highlight></codeline>
+<codeline lineno="726"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>defined<sp/>(__CC_ARM)<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="727"><highlight class="normal"></highlight></codeline>
+<codeline lineno="728"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Request<sp/>Wait<sp/>For<sp/>Interrupt<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="729"><highlight class="normal"><sp/><sp/><ref refid="group__CMSIS__Core__InstructionInterface_1gad23bf2b78a9a4524157c9de0d30b7448" kindref="member">__WFI</ref><sp/>();</highlight></codeline>
+<codeline lineno="730"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="731"><highlight class="normal"></highlight></codeline>
+<codeline lineno="741"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>HAL_PWR_EnableSleepOnExit<sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="742"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="743"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Set<sp/>SLEEPONEXIT<sp/>bit<sp/>of<sp/>Cortex-Mx<sp/>System<sp/>Control<sp/>Register<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="744"><highlight class="normal"><sp/><sp/>SET_BIT<sp/>(<ref refid="group__CMSIS__CORE_1gaaaf6477c2bde2f00f99e3c2fd1060b01" kindref="member">SCB</ref>-&gt;SCR,<sp/><ref refid="group__CMSIS__CORE_1ga50a243e317b9a70781b02758d45b05ee" kindref="member">SCB_SCR_SLEEPONEXIT_Msk</ref>);</highlight></codeline>
+<codeline lineno="745"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="746"><highlight class="normal"></highlight></codeline>
+<codeline lineno="754"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>HAL_PWR_DisableSleepOnExit<sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="755"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="756"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Clear<sp/>SLEEPONEXIT<sp/>bit<sp/>of<sp/>Cortex-Mx<sp/>System<sp/>Control<sp/>Register<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="757"><highlight class="normal"><sp/><sp/>CLEAR_BIT<sp/>(<ref refid="group__CMSIS__CORE_1gaaaf6477c2bde2f00f99e3c2fd1060b01" kindref="member">SCB</ref>-&gt;SCR,<sp/><ref refid="group__CMSIS__CORE_1ga50a243e317b9a70781b02758d45b05ee" kindref="member">SCB_SCR_SLEEPONEXIT_Msk</ref>);</highlight></codeline>
+<codeline lineno="758"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="759"><highlight class="normal"></highlight></codeline>
+<codeline lineno="767"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>HAL_PWR_EnableSEVOnPend<sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="768"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="769"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Set<sp/>SEVONPEND<sp/>bit<sp/>of<sp/>Cortex-Mx<sp/>System<sp/>Control<sp/>Register<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="770"><highlight class="normal"><sp/><sp/>SET_BIT<sp/>(<ref refid="group__CMSIS__CORE_1gaaaf6477c2bde2f00f99e3c2fd1060b01" kindref="member">SCB</ref>-&gt;SCR,<sp/><ref refid="group__CMSIS__CORE_1gafb98656644a14342e467505f69a997c9" kindref="member">SCB_SCR_SEVONPEND_Msk</ref>);</highlight></codeline>
+<codeline lineno="771"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="772"><highlight class="normal"></highlight></codeline>
+<codeline lineno="779"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>HAL_PWR_DisableSEVOnPend<sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="780"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="781"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Clear<sp/>SEVONPEND<sp/>bit<sp/>of<sp/>Cortex<sp/>System<sp/>Control<sp/>Register<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="782"><highlight class="normal"><sp/><sp/>CLEAR_BIT<sp/>(<ref refid="group__CMSIS__CORE_1gaaaf6477c2bde2f00f99e3c2fd1060b01" kindref="member">SCB</ref>-&gt;SCR,<sp/><ref refid="group__CMSIS__CORE_1gafb98656644a14342e467505f69a997c9" kindref="member">SCB_SCR_SEVONPEND_Msk</ref>);</highlight></codeline>
+<codeline lineno="783"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="808"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>HAL_PWR_PVD_IRQHandler<sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="809"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="810"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined<sp/>(DUAL_CORE)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="811"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>Cortex-Mx<sp/>ID<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="812"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(HAL_GetCurrentCPUID<sp/>()<sp/>==<sp/>CM7_CPUID)</highlight></codeline>
+<codeline lineno="813"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="814"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>PWR<sp/>EXTI<sp/>D1<sp/>flag<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="815"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="group__PWR__Exported__Macro_1ga5e66fa75359b51066e0731ac1e5ae438" kindref="member">__HAL_PWR_PVD_EXTI_GET_FLAG</ref><sp/>()<sp/>!=<sp/>0U)</highlight></codeline>
+<codeline lineno="816"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="817"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Clear<sp/>PWR<sp/>EXTI<sp/>D1<sp/>pending<sp/>bit<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="818"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__PWR__Exported__Macro_1gac0fb2218bc050f5d8fdb1a3f28590352" kindref="member">__HAL_PWR_PVD_EXTI_CLEAR_FLAG</ref><sp/>();</highlight></codeline>
+<codeline lineno="819"><highlight class="normal"></highlight></codeline>
+<codeline lineno="820"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>PWR<sp/>PVD<sp/>interrupt<sp/>user<sp/>callback<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="821"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>HAL_PWR_PVDCallback<sp/>();</highlight></codeline>
+<codeline lineno="822"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="823"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="824"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="825"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="826"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>PWR<sp/>EXTI<sp/>D2<sp/>flag<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="827"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(__HAL_PWR_PVD_EXTID2_GET_FLAG<sp/>()<sp/>!=<sp/>0U)</highlight></codeline>
+<codeline lineno="828"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="829"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Clear<sp/>PWR<sp/>EXTI<sp/>D2<sp/>pending<sp/>bit<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="830"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>__HAL_PWR_PVD_EXTID2_CLEAR_FLAG<sp/>();</highlight></codeline>
+<codeline lineno="831"><highlight class="normal"></highlight></codeline>
+<codeline lineno="832"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>PWR<sp/>PVD<sp/>interrupt<sp/>user<sp/>callback<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="833"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>HAL_PWR_PVDCallback<sp/>();</highlight></codeline>
+<codeline lineno="834"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="835"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="836"><highlight class="normal"></highlight><highlight class="preprocessor">#else<sp/></highlight><highlight class="comment">/*<sp/>Single<sp/>core<sp/>devices<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="837"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>PVD<sp/>EXTI<sp/>line<sp/>interrupt<sp/>detected<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="838"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="group__PWR__Exported__Macro_1ga5e66fa75359b51066e0731ac1e5ae438" kindref="member">__HAL_PWR_PVD_EXTI_GET_FLAG</ref><sp/>()<sp/>!=<sp/>0U)</highlight></codeline>
+<codeline lineno="839"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="840"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Clear<sp/>PWR<sp/>EXTI<sp/>pending<sp/>bit<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="841"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__PWR__Exported__Macro_1gac0fb2218bc050f5d8fdb1a3f28590352" kindref="member">__HAL_PWR_PVD_EXTI_CLEAR_FLAG</ref><sp/>();</highlight></codeline>
+<codeline lineno="842"><highlight class="normal"></highlight></codeline>
+<codeline lineno="843"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>PWR<sp/>PVD<sp/>interrupt<sp/>user<sp/>callback<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="844"><highlight class="normal"><sp/><sp/><sp/><sp/>HAL_PWR_PVDCallback<sp/>();</highlight></codeline>
+<codeline lineno="845"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="846"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>defined<sp/>(DUAL_CORE)<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="847"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="848"><highlight class="normal"></highlight></codeline>
+<codeline lineno="853"><highlight class="normal">__weak<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>HAL_PWR_PVDCallback<sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="854"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="855"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>NOTE<sp/>:<sp/>This<sp/>function<sp/>should<sp/>not<sp/>be<sp/>modified,<sp/>when<sp/>the<sp/>callback<sp/>is<sp/>needed,</highlight></codeline>
+<codeline lineno="856"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>the<sp/>HAL_PWR_PVDCallback<sp/>can<sp/>be<sp/>implemented<sp/>in<sp/>the<sp/>user<sp/>file</highlight></codeline>
+<codeline lineno="857"><highlight class="comment"><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="858"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="859"><highlight class="normal"></highlight></codeline>
+<codeline lineno="868"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>HAL_PWR_MODULE_ENABLED<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr.c"/>
+  </compounddef>
+</doxygen>

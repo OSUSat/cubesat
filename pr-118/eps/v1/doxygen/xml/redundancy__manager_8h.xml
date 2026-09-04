@@ -1,0 +1,335 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="redundancy__manager_8h" kind="file" language="C++">
+    <compoundname>redundancy_manager.h</compoundname>
+    <includes refid="event__bus_8h" local="yes">osusat/event_bus.h</includes>
+    <includes local="no">stdbool.h</includes>
+    <includes local="no">stdint.h</includes>
+    <includedby refid="power__policies_8c" local="yes">/home/runner/work/cubesat/cubesat/eps/v1/firmware/app/power_policies.c</includedby>
+    <includedby refid="main_8c" local="yes">/home/runner/work/cubesat/cubesat/eps/v1/firmware/main.c</includedby>
+    <includedby refid="can__events_8c" local="yes">/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/can_events.c</includedby>
+    <includedby refid="logging_8c" local="yes">/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/logging.c</includedby>
+    <includedby refid="redundancy__manager_8c" local="yes">/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/redundancy_manager.c</includedby>
+    <includedby refid="telemetry_8h" local="yes">/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/telemetry.h</includedby>
+    <includedby refid="uart__events_8c" local="yes">/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/uart_events.c</includedby>
+    <incdepgraph>
+      <node id="2">
+        <label>osusat/event_bus.h</label>
+        <link refid="event__bus_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/redundancy_manager.h</label>
+        <link refid="redundancy__manager_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>stdbool.h</label>
+      </node>
+      <node id="4">
+        <label>stddef.h</label>
+      </node>
+      <node id="5">
+        <label>stdint.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/app/power_policies.c</label>
+        <link refid="power__policies_8c"/>
+      </node>
+      <node id="3">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/main.c</label>
+        <link refid="main_8c"/>
+      </node>
+      <node id="4">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/can_events.c</label>
+        <link refid="can__events_8c"/>
+      </node>
+      <node id="5">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/logging.c</label>
+        <link refid="logging_8c"/>
+      </node>
+      <node id="6">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/redundancy_manager.c</label>
+        <link refid="redundancy__manager_8c"/>
+      </node>
+      <node id="1">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/redundancy_manager.h</label>
+        <link refid="redundancy__manager_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/telemetry.c</label>
+        <link refid="telemetry_8c"/>
+      </node>
+      <node id="7">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/telemetry.h</label>
+        <link refid="telemetry_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/uart_events.c</label>
+        <link refid="uart__events_8c"/>
+      </node>
+      <node id="9">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/tests/test_telemetry.c</label>
+        <link refid="test__telemetry_8c"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structfault__t" prot="public">fault_t</innerclass>
+    <innerclass refid="structcomponent__degradation__t" prot="public">component_degradation_t</innerclass>
+    <innerclass refid="structhealth__response__t" prot="public">health_response_t</innerclass>
+    <innerclass refid="structcomponent__status__request__t" prot="public">component_status_request_t</innerclass>
+    <innerclass refid="structcomponent__status__response__t" prot="public">component_status_response_t</innerclass>
+    <innerclass refid="structfault__list__response__t" prot="public">fault_list_response_t</innerclass>
+    <innerclass refid="structredundancy__telemetry__t" prot="public">redundancy_telemetry_t</innerclass>
+    <innerclass refid="structredundancy__manager__t" prot="public">redundancy_manager_t</innerclass>
+    <sectiondef kind="define">
+      <member refid="group__redundancy__manager__types_1gaf614f70344df01b701e0f3e20e5eac72" kind="define"><name>REDUNDANCY_MANAGER_MAX_FAULTS</name></member>
+      <member refid="group__redundancy__manager__types_1ga35fa18a9fe2fed2607e28574ccba5e94" kind="define"><name>REDUNDANCY_MANAGER_SERVICE_UID</name></member>
+      <member refid="group__redundancy__manager__types_1gad1cf7a8c70f1567a5639c1b6b5657e1b" kind="define"><name>REDUNDANCY_EVENT_CRITICAL_HEALTH</name></member>
+      <member refid="group__redundancy__manager__types_1ga8ee8d7a92214b4ad2fca804a49f0828e" kind="define"><name>REDUNDANCY_EVENT_HEALTH_DEGRADED</name></member>
+      <member refid="group__redundancy__manager__types_1ga7d31ffd6c8f4bb9281cc976808212d38" kind="define"><name>REDUNDANCY_EVENT_HEALTH_RECOVERED</name></member>
+      <member refid="group__redundancy__manager__types_1ga0703a5d8b01d91c047750772fa7b4f7e" kind="define"><name>REDUNDANCY_EVENT_COMPONENT_DEGRADED</name></member>
+      <member refid="group__redundancy__manager__types_1ga6fd0a894e1c636d95d6b39883dd032bc" kind="define"><name>REDUNDANCY_EVENT_COMPONENT_RECOVERED</name></member>
+      <member refid="group__redundancy__manager__types_1ga8ae6a65ed084c4202f77f0c32c23d37f" kind="define"><name>REDUNDANCY_EVENT_HEALTH_RESPONSE</name></member>
+      <member refid="group__redundancy__manager__types_1ga9ab400321dc14e375139c72c0e29e765" kind="define"><name>REDUNDANCY_EVENT_COMPONENT_STATUS_RESPONSE</name></member>
+      <member refid="group__redundancy__manager__types_1ga9fba97d6fffe96ad05c926d9b9a4c884" kind="define"><name>REDUNDANCY_EVENT_FAULT_LIST_RESPONSE</name></member>
+      <member refid="group__redundancy__manager__types_1gacd49e06c78402e31c5c5615522682d45" kind="define"><name>REDUNDANCY_EVENT_TELEMETRY</name></member>
+    </sectiondef>
+    <sectiondef kind="enum">
+      <member refid="group__redundancy__manager__types_1ga88dbce3650b91fe162147fa11d03c50d" kind="enum"><name>redundancy_manager_event_id_t</name></member>
+      <member refid="group__redundancy__manager__types_1ga4f4a3b75aaca29d932cb4e0c4153f78a" kind="enum"><name>fault_source_t</name></member>
+      <member refid="group__redundancy__manager__types_1ga6b28c58c34989f0b268f274421ecd0fb" kind="enum"><name>fault_severity_t</name></member>
+      <member refid="group__redundancy__manager__types_1ga0e80690e3278646a3c63a266cbd9269d" kind="enum"><name>system_health_t</name></member>
+      <member refid="group__redundancy__manager__types_1ga7c14751f737d5413dc48d18c920c8053" kind="enum"><name>component_id_t</name></member>
+    </sectiondef>
+    <sectiondef kind="typedef">
+      <member refid="group__redundancy__manager__types_1gae3f1b00192fdb0e53f5e0058986de5e8" kind="typedef"><name>fault_code_t</name></member>
+    </sectiondef>
+    <sectiondef kind="func">
+      <member refid="group__redundancy__manager__api_1gadd9a3bd1c1926239b7616532cc18b449" kind="function"><name>redundancy_manager_init</name></member>
+    </sectiondef>
+    <briefdescription>
+<para>Centralized fault aggregation and system health monitoring. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>The Redundancy Manager subscribes to fault events from all EPS services and aggregates them to determine overall system health. It acts as the single source of truth for whether the satellite should enter Safe Mode or handle component degradation.</para>
+<para>Architecture:<itemizedlist>
+<listitem><para>Services publish specific fault events (e.g., BATTERY_FAULT_DETECTED)</para>
+</listitem><listitem><para>Redundancy Manager subscribes to these events</para>
+</listitem><listitem><para>Aggregates faults and evaluates system health</para>
+</listitem><listitem><para>Publishes high-level health state changes</para>
+</listitem><listitem><para>Applications monitor health events to trigger state transitions</para>
+</listitem></itemizedlist>
+</para>
+<para>This eliminates the need for services to directly call redundancy manager functions, maintaining loose coupling through the event bus. </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>REDUNDANCY_MANAGER_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REDUNDANCY_MANAGER_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="event__bus_8h" kindref="compound">osusat/event_bus.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdbool.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50" refid="group__redundancy__manager__types_1gaf614f70344df01b701e0f3e20e5eac72" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REDUNDANCY_MANAGER_MAX_FAULTS<sp/>16</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57" refid="group__redundancy__manager__types_1ga35fa18a9fe2fed2607e28574ccba5e94" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REDUNDANCY_MANAGER_SERVICE_UID<sp/>0x5366</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63" refid="group__redundancy__manager__types_1ga88dbce3650b91fe162147fa11d03c50d" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="71" refid="group__redundancy__manager__types_1gga88dbce3650b91fe162147fa11d03c50da1f6b5397fa23ebba81aa4ff7c9e41733" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__redundancy__manager__types_1gad1cf7a8c70f1567a5639c1b6b5657e1b" kindref="member">REDUNDANCY_EVENT_CRITICAL_HEALTH</ref><sp/>=<sp/>0x10,</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81" refid="group__redundancy__manager__types_1gga88dbce3650b91fe162147fa11d03c50da8e12e4458b810b4fa6c4f7b1a4f23dca" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__redundancy__manager__types_1ga8ee8d7a92214b4ad2fca804a49f0828e" kindref="member">REDUNDANCY_EVENT_HEALTH_DEGRADED</ref>,</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90" refid="group__redundancy__manager__types_1gga88dbce3650b91fe162147fa11d03c50da8a44504bc25e771803f2ccc78222f6a5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__redundancy__manager__types_1ga7d31ffd6c8f4bb9281cc976808212d38" kindref="member">REDUNDANCY_EVENT_HEALTH_RECOVERED</ref>,</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102" refid="group__redundancy__manager__types_1gga88dbce3650b91fe162147fa11d03c50da38cc2206b60033af1cbec7efa14142cc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__redundancy__manager__types_1ga0703a5d8b01d91c047750772fa7b4f7e" kindref="member">REDUNDANCY_EVENT_COMPONENT_DEGRADED</ref>,</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111" refid="group__redundancy__manager__types_1gga88dbce3650b91fe162147fa11d03c50da0c7a31bad4666871ab004f94b96e3f9c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__redundancy__manager__types_1ga6fd0a894e1c636d95d6b39883dd032bc" kindref="member">REDUNDANCY_EVENT_COMPONENT_RECOVERED</ref>,</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118" refid="group__redundancy__manager__types_1gga88dbce3650b91fe162147fa11d03c50da8ac58c81eb6c8e3e5b1fa7969fa63938" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__redundancy__manager__types_1ga8ae6a65ed084c4202f77f0c32c23d37f" kindref="member">REDUNDANCY_EVENT_HEALTH_RESPONSE</ref>,</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126" refid="group__redundancy__manager__types_1gga88dbce3650b91fe162147fa11d03c50da192670d611aff778affe0632a42fbac1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__redundancy__manager__types_1ga9ab400321dc14e375139c72c0e29e765" kindref="member">REDUNDANCY_EVENT_COMPONENT_STATUS_RESPONSE</ref>,</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135" refid="group__redundancy__manager__types_1gga88dbce3650b91fe162147fa11d03c50da3e6db82d4e45f7aa21b52f7d98dc7807" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__redundancy__manager__types_1ga9fba97d6fffe96ad05c926d9b9a4c884" kindref="member">REDUNDANCY_EVENT_FAULT_LIST_RESPONSE</ref>,</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144" refid="group__redundancy__manager__types_1gga88dbce3650b91fe162147fa11d03c50da136fa9c2702bcefcd52faa5b5af29063" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__redundancy__manager__types_1gacd49e06c78402e31c5c5615522682d45" kindref="member">REDUNDANCY_EVENT_TELEMETRY</ref>,</highlight></codeline>
+<codeline lineno="145"><highlight class="normal">}<sp/><ref refid="group__redundancy__manager__types_1ga88dbce3650b91fe162147fa11d03c50d" kindref="member">redundancy_manager_event_id_t</ref>;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147" refid="group__redundancy__manager__types_1gad1cf7a8c70f1567a5639c1b6b5657e1b" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REDUNDANCY_EVENT_CRITICAL_HEALTH<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="148"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>OSUSAT_BUILD_EVENT_ID(REDUNDANCY_MANAGER_SERVICE_UID,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="149"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>REDUNDANCY_EVENT_CRITICAL_HEALTH)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="150" refid="group__redundancy__manager__types_1ga8ee8d7a92214b4ad2fca804a49f0828e" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REDUNDANCY_EVENT_HEALTH_DEGRADED<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="151"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>OSUSAT_BUILD_EVENT_ID(REDUNDANCY_MANAGER_SERVICE_UID,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="152"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>REDUNDANCY_EVENT_HEALTH_DEGRADED)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="153" refid="group__redundancy__manager__types_1ga7d31ffd6c8f4bb9281cc976808212d38" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REDUNDANCY_EVENT_HEALTH_RECOVERED<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="154"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>OSUSAT_BUILD_EVENT_ID(REDUNDANCY_MANAGER_SERVICE_UID,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="155"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>REDUNDANCY_EVENT_HEALTH_RECOVERED)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="156" refid="group__redundancy__manager__types_1ga0703a5d8b01d91c047750772fa7b4f7e" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REDUNDANCY_EVENT_COMPONENT_DEGRADED<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="157"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>OSUSAT_BUILD_EVENT_ID(REDUNDANCY_MANAGER_SERVICE_UID,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="158"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>REDUNDANCY_EVENT_COMPONENT_DEGRADED)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="159" refid="group__redundancy__manager__types_1ga6fd0a894e1c636d95d6b39883dd032bc" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REDUNDANCY_EVENT_COMPONENT_RECOVERED<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="160"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>OSUSAT_BUILD_EVENT_ID(REDUNDANCY_MANAGER_SERVICE_UID,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="161"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>REDUNDANCY_EVENT_COMPONENT_RECOVERED)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="162" refid="group__redundancy__manager__types_1ga8ae6a65ed084c4202f77f0c32c23d37f" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REDUNDANCY_EVENT_HEALTH_RESPONSE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="163"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>OSUSAT_BUILD_EVENT_ID(REDUNDANCY_MANAGER_SERVICE_UID,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="164"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>REDUNDANCY_EVENT_HEALTH_RESPONSE)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="165" refid="group__redundancy__manager__types_1ga9ab400321dc14e375139c72c0e29e765" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REDUNDANCY_EVENT_COMPONENT_STATUS_RESPONSE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="166"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>OSUSAT_BUILD_EVENT_ID(REDUNDANCY_MANAGER_SERVICE_UID,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="167"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>REDUNDANCY_EVENT_COMPONENT_STATUS_RESPONSE)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="168" refid="group__redundancy__manager__types_1ga9fba97d6fffe96ad05c926d9b9a4c884" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REDUNDANCY_EVENT_FAULT_LIST_RESPONSE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="169"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>OSUSAT_BUILD_EVENT_ID(REDUNDANCY_MANAGER_SERVICE_UID,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="170"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>REDUNDANCY_EVENT_FAULT_LIST_RESPONSE)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="171" refid="group__redundancy__manager__types_1gacd49e06c78402e31c5c5615522682d45" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REDUNDANCY_EVENT_TELEMETRY<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="172"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>OSUSAT_BUILD_EVENT_ID(REDUNDANCY_MANAGER_SERVICE_UID,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="173"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>REDUNDANCY_EVENT_TELEMETRY)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight></codeline>
+<codeline lineno="179" refid="group__redundancy__manager__types_1ga4f4a3b75aaca29d932cb4e0c4153f78a" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="180" refid="group__redundancy__manager__types_1gga4f4a3b75aaca29d932cb4e0c4153f78aa14152b8c6d5aef9e1e6ec3bbdabb89ed" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__redundancy__manager__types_1gga4f4a3b75aaca29d932cb4e0c4153f78aa14152b8c6d5aef9e1e6ec3bbdabb89ed" kindref="member">FAULT_SOURCE_BATTERY</ref>,<sp/></highlight></codeline>
+<codeline lineno="181" refid="group__redundancy__manager__types_1gga4f4a3b75aaca29d932cb4e0c4153f78aa027341fd026034b1fd35adf0bef2a936" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__redundancy__manager__types_1gga4f4a3b75aaca29d932cb4e0c4153f78aa027341fd026034b1fd35adf0bef2a936" kindref="member">FAULT_SOURCE_MPPT</ref>,<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="182" refid="group__redundancy__manager__types_1gga4f4a3b75aaca29d932cb4e0c4153f78aac5b6371520a80a1c00485d3c8a72e190" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__redundancy__manager__types_1gga4f4a3b75aaca29d932cb4e0c4153f78aac5b6371520a80a1c00485d3c8a72e190" kindref="member">FAULT_SOURCE_RAIL</ref>,<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="183" refid="group__redundancy__manager__types_1gga4f4a3b75aaca29d932cb4e0c4153f78aa459a409859262ba490b7cdf6de3241e9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__redundancy__manager__types_1gga4f4a3b75aaca29d932cb4e0c4153f78aa459a409859262ba490b7cdf6de3241e9" kindref="member">FAULT_SOURCE_SENSOR</ref>,<sp/><sp/></highlight></codeline>
+<codeline lineno="184" refid="group__redundancy__manager__types_1gga4f4a3b75aaca29d932cb4e0c4153f78aa5701f743715c4bdbd4771346ba7aea9a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__redundancy__manager__types_1gga4f4a3b75aaca29d932cb4e0c4153f78aa5701f743715c4bdbd4771346ba7aea9a" kindref="member">FAULT_SOURCE_UART</ref>,<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="185" refid="group__redundancy__manager__types_1gga4f4a3b75aaca29d932cb4e0c4153f78aa6cfc60c7131eb7014e227f7140e4e3d7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__redundancy__manager__types_1gga4f4a3b75aaca29d932cb4e0c4153f78aa6cfc60c7131eb7014e227f7140e4e3d7" kindref="member">FAULT_SOURCE_CAN</ref>,<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="186" refid="group__redundancy__manager__types_1gga4f4a3b75aaca29d932cb4e0c4153f78aa8dfcd9f77f6f4a2652c2b158edd00675" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__redundancy__manager__types_1gga4f4a3b75aaca29d932cb4e0c4153f78aa8dfcd9f77f6f4a2652c2b158edd00675" kindref="member">FAULT_SOURCE_WATCHDOG</ref>,<sp/></highlight></codeline>
+<codeline lineno="187" refid="group__redundancy__manager__types_1gga4f4a3b75aaca29d932cb4e0c4153f78aa36420a9c23ade08c294e4ec9628811d9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__redundancy__manager__types_1gga4f4a3b75aaca29d932cb4e0c4153f78aa36420a9c23ade08c294e4ec9628811d9" kindref="member">FAULT_SOURCE_MEMORY</ref>,<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__redundancy__manager__types_1gga4f4a3b75aaca29d932cb4e0c4153f78aa7eb91ab07ab9b46ccaed2da541909ce5" kindref="member">FAULT_SOURCE_COUNT</ref><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="189" refid="group__redundancy__manager__types_1gga4f4a3b75aaca29d932cb4e0c4153f78aa7eb91ab07ab9b46ccaed2da541909ce5" refkind="member"><highlight class="normal">}<sp/><ref refid="group__redundancy__manager__types_1ga4f4a3b75aaca29d932cb4e0c4153f78a" kindref="member">fault_source_t</ref>;</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight></codeline>
+<codeline lineno="198" refid="group__redundancy__manager__types_1gae3f1b00192fdb0e53f5e0058986de5e8" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>uint32_t<sp/><ref refid="group__redundancy__manager__types_1gae3f1b00192fdb0e53f5e0058986de5e8" kindref="member">fault_code_t</ref>;</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight></codeline>
+<codeline lineno="204" refid="group__redundancy__manager__types_1ga6b28c58c34989f0b268f274421ecd0fb" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="205" refid="group__redundancy__manager__types_1gga6b28c58c34989f0b268f274421ecd0fbaddaf53e458153663592f6f3a912497fd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__redundancy__manager__types_1gga6b28c58c34989f0b268f274421ecd0fbaddaf53e458153663592f6f3a912497fd" kindref="member">FAULT_SEVERITY_INFO</ref>,<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="206" refid="group__redundancy__manager__types_1gga6b28c58c34989f0b268f274421ecd0fbaab84fc586f34534c5305214192ff7826" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__redundancy__manager__types_1gga6b28c58c34989f0b268f274421ecd0fbaab84fc586f34534c5305214192ff7826" kindref="member">FAULT_SEVERITY_WARNING</ref>,<sp/><sp/></highlight></codeline>
+<codeline lineno="207" refid="group__redundancy__manager__types_1gga6b28c58c34989f0b268f274421ecd0fba74c24ab20c9b59d0420832a0c3919c14" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__redundancy__manager__types_1gga6b28c58c34989f0b268f274421ecd0fba74c24ab20c9b59d0420832a0c3919c14" kindref="member">FAULT_SEVERITY_DEGRADED</ref>,<sp/></highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__redundancy__manager__types_1gga6b28c58c34989f0b268f274421ecd0fbaade5d77e601d06be284fac305c3787b4" kindref="member">FAULT_SEVERITY_CRITICAL</ref><sp/><sp/></highlight></codeline>
+<codeline lineno="209" refid="group__redundancy__manager__types_1gga6b28c58c34989f0b268f274421ecd0fbaade5d77e601d06be284fac305c3787b4" refkind="member"><highlight class="normal">}<sp/><ref refid="group__redundancy__manager__types_1ga6b28c58c34989f0b268f274421ecd0fb" kindref="member">fault_severity_t</ref>;</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"></highlight></codeline>
+<codeline lineno="217" refid="group__redundancy__manager__types_1ga0e80690e3278646a3c63a266cbd9269d" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="218" refid="group__redundancy__manager__types_1gga0e80690e3278646a3c63a266cbd9269da360de3d607746c5dd7896c63bf872782" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__redundancy__manager__types_1gga0e80690e3278646a3c63a266cbd9269da360de3d607746c5dd7896c63bf872782" kindref="member">SYSTEM_HEALTH_OK</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="219" refid="group__redundancy__manager__types_1gga0e80690e3278646a3c63a266cbd9269daf77b2e1057865c8995d84a139d27feae" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__redundancy__manager__types_1gga0e80690e3278646a3c63a266cbd9269daf77b2e1057865c8995d84a139d27feae" kindref="member">SYSTEM_HEALTH_DEGRADED</ref>,<sp/></highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__redundancy__manager__types_1gga0e80690e3278646a3c63a266cbd9269da53eff3058895568141e582b9034798d8" kindref="member">SYSTEM_HEALTH_FAULT</ref><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="221" refid="group__redundancy__manager__types_1gga0e80690e3278646a3c63a266cbd9269da53eff3058895568141e582b9034798d8" refkind="member"><highlight class="normal">}<sp/><ref refid="group__redundancy__manager__types_1ga0e80690e3278646a3c63a266cbd9269d" kindref="member">system_health_t</ref>;</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"></highlight></codeline>
+<codeline lineno="227" refid="group__redundancy__manager__types_1ga7c14751f737d5413dc48d18c920c8053" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="228" refid="group__redundancy__manager__types_1gga7c14751f737d5413dc48d18c920c8053a086fb8e4b7319cdb4596ba9294fd72a9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__redundancy__manager__types_1gga7c14751f737d5413dc48d18c920c8053a086fb8e4b7319cdb4596ba9294fd72a9" kindref="member">COMPONENT_UART_PRIMARY</ref>,<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="229" refid="group__redundancy__manager__types_1gga7c14751f737d5413dc48d18c920c8053abfaa7c036c8099afcc7f7c733f390b95" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__redundancy__manager__types_1gga7c14751f737d5413dc48d18c920c8053abfaa7c036c8099afcc7f7c733f390b95" kindref="member">COMPONENT_UART_SECONDARY</ref>,<sp/></highlight></codeline>
+<codeline lineno="230" refid="group__redundancy__manager__types_1gga7c14751f737d5413dc48d18c920c8053a81d8a8f2cd5c302bdffda6db95e72957" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__redundancy__manager__types_1gga7c14751f737d5413dc48d18c920c8053a81d8a8f2cd5c302bdffda6db95e72957" kindref="member">COMPONENT_I2C_BUS_1</ref>,<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="231" refid="group__redundancy__manager__types_1gga7c14751f737d5413dc48d18c920c8053aca0ca1dec3e7172aba83d1f4e85bcff0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__redundancy__manager__types_1gga7c14751f737d5413dc48d18c920c8053aca0ca1dec3e7172aba83d1f4e85bcff0" kindref="member">COMPONENT_I2C_BUS_2</ref>,<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="232" refid="group__redundancy__manager__types_1gga7c14751f737d5413dc48d18c920c8053ab56dcd20835ac7a08cbab422f064027e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__redundancy__manager__types_1gga7c14751f737d5413dc48d18c920c8053ab56dcd20835ac7a08cbab422f064027e" kindref="member">COMPONENT_I2C_BUS_3</ref>,<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="233" refid="group__redundancy__manager__types_1gga7c14751f737d5413dc48d18c920c8053a27bd853d2263651006d16e74e7e4cde9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__redundancy__manager__types_1gga7c14751f737d5413dc48d18c920c8053a27bd853d2263651006d16e74e7e4cde9" kindref="member">COMPONENT_I2C_BUS_4</ref>,<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="234" refid="group__redundancy__manager__types_1gga7c14751f737d5413dc48d18c920c8053aa2f7f5642d9fc84c6952d43ac1944ffd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__redundancy__manager__types_1gga7c14751f737d5413dc48d18c920c8053aa2f7f5642d9fc84c6952d43ac1944ffd" kindref="member">COMPONENT_SOLAR_STRING_1</ref>,<sp/></highlight></codeline>
+<codeline lineno="235" refid="group__redundancy__manager__types_1gga7c14751f737d5413dc48d18c920c8053a967c6ef5003243ba11d45b13a380c680" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__redundancy__manager__types_1gga7c14751f737d5413dc48d18c920c8053a967c6ef5003243ba11d45b13a380c680" kindref="member">COMPONENT_SOLAR_STRING_2</ref>,<sp/></highlight></codeline>
+<codeline lineno="236" refid="group__redundancy__manager__types_1gga7c14751f737d5413dc48d18c920c8053a2ebd1d5067621539fbb34af449f73d89" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__redundancy__manager__types_1gga7c14751f737d5413dc48d18c920c8053a2ebd1d5067621539fbb34af449f73d89" kindref="member">COMPONENT_SOLAR_STRING_3</ref>,<sp/></highlight></codeline>
+<codeline lineno="237" refid="group__redundancy__manager__types_1gga7c14751f737d5413dc48d18c920c8053a219c6a85901372d1e438fe91c8a10282" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__redundancy__manager__types_1gga7c14751f737d5413dc48d18c920c8053a219c6a85901372d1e438fe91c8a10282" kindref="member">COMPONENT_SOLAR_STRING_4</ref>,<sp/></highlight></codeline>
+<codeline lineno="238" refid="group__redundancy__manager__types_1gga7c14751f737d5413dc48d18c920c8053ac1ba1e68de086845c6616800c13f2711" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__redundancy__manager__types_1gga7c14751f737d5413dc48d18c920c8053ac1ba1e68de086845c6616800c13f2711" kindref="member">COMPONENT_SOLAR_STRING_5</ref>,<sp/></highlight></codeline>
+<codeline lineno="239" refid="group__redundancy__manager__types_1gga7c14751f737d5413dc48d18c920c8053a9910333463cb228616e2e2bf251685a2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__redundancy__manager__types_1gga7c14751f737d5413dc48d18c920c8053a9910333463cb228616e2e2bf251685a2" kindref="member">COMPONENT_SOLAR_STRING_6</ref>,<sp/></highlight></codeline>
+<codeline lineno="240" refid="group__redundancy__manager__types_1gga7c14751f737d5413dc48d18c920c8053a55ea94a848354cdad8ac11a24646c1c7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__redundancy__manager__types_1gga7c14751f737d5413dc48d18c920c8053a55ea94a848354cdad8ac11a24646c1c7" kindref="member">COMPONENT_CAN_PRIMARY</ref>,<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="241" refid="group__redundancy__manager__types_1gga7c14751f737d5413dc48d18c920c8053a2fb2b429a2821302190a347900a0b5ac" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__redundancy__manager__types_1gga7c14751f737d5413dc48d18c920c8053a2fb2b429a2821302190a347900a0b5ac" kindref="member">COMPONENT_CAN_SECONDARY</ref>,<sp/><sp/></highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__redundancy__manager__types_1gga7c14751f737d5413dc48d18c920c8053afeab75e995867b121186c2050ac7c442" kindref="member">COMPONENT_COUNT</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="243" refid="group__redundancy__manager__types_1gga7c14751f737d5413dc48d18c920c8053afeab75e995867b121186c2050ac7c442" refkind="member"><highlight class="normal">}<sp/><ref refid="group__redundancy__manager__types_1ga7c14751f737d5413dc48d18c920c8053" kindref="member">component_id_t</ref>;</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"></highlight></codeline>
+<codeline lineno="249" refid="structfault__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="250" refid="structfault__t_1a8628271dd7037e2bac9ea675c257f698" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__redundancy__manager__types_1ga4f4a3b75aaca29d932cb4e0c4153f78a" kindref="member">fault_source_t</ref><sp/><ref refid="structfault__t_1a8628271dd7037e2bac9ea675c257f698" kindref="member">source</ref>;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="251" refid="structfault__t_1a5d3a64986ec90ff23216938bab952456" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__redundancy__manager__types_1gae3f1b00192fdb0e53f5e0058986de5e8" kindref="member">fault_code_t</ref><sp/><ref refid="structfault__t_1a5d3a64986ec90ff23216938bab952456" kindref="member">code</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="252" refid="structfault__t_1a4de7f3a13e81b14558e904573b667402" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__redundancy__manager__types_1ga6b28c58c34989f0b268f274421ecd0fb" kindref="member">fault_severity_t</ref><sp/><ref refid="structfault__t_1a4de7f3a13e81b14558e904573b667402" kindref="member">severity</ref>;<sp/></highlight></codeline>
+<codeline lineno="253" refid="structfault__t_1a163b5be7f4baaf5fe7f69367b86b45c8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structfault__t_1a163b5be7f4baaf5fe7f69367b86b45c8" kindref="member">timestamp_ms</ref>;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="254" refid="structfault__t_1a74538049f552beb9a4c71f060b4907aa" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structfault__t_1a74538049f552beb9a4c71f060b4907aa" kindref="member">count</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="255" refid="structfault__t_1ace7c7dd1182cdb4c5e962954c3d62aad" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structfault__t_1ace7c7dd1182cdb4c5e962954c3d62aad" kindref="member">active</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="256"><highlight class="normal">}<sp/><ref refid="structfault__t" kindref="compound">fault_t</ref>;</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"></highlight></codeline>
+<codeline lineno="262" refid="structcomponent__degradation__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="263" refid="structcomponent__degradation__t_1a87a8add73efa83c6504eb00950fb2b3f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__redundancy__manager__types_1ga7c14751f737d5413dc48d18c920c8053" kindref="member">component_id_t</ref><sp/><ref refid="structcomponent__degradation__t_1a87a8add73efa83c6504eb00950fb2b3f" kindref="member">component</ref>;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="264" refid="structcomponent__degradation__t_1aa79067edc7c7fb4d0406795c4689f9fb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__redundancy__manager__types_1ga4f4a3b75aaca29d932cb4e0c4153f78a" kindref="member">fault_source_t</ref><sp/><ref refid="structcomponent__degradation__t_1aa79067edc7c7fb4d0406795c4689f9fb" kindref="member">fault_source</ref>;<sp/></highlight></codeline>
+<codeline lineno="265" refid="structcomponent__degradation__t_1aa97b1fc17242d56ed0148ca4a94a1b40" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structcomponent__degradation__t_1aa97b1fc17242d56ed0148ca4a94a1b40" kindref="member">fallback_available</ref>;<sp/></highlight></codeline>
+<codeline lineno="266"><highlight class="normal">}<sp/><ref refid="structcomponent__degradation__t" kindref="compound">component_degradation_t</ref>;</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"></highlight></codeline>
+<codeline lineno="272" refid="structhealth__response__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="273" refid="structhealth__response__t_1a66a141ceb041c331e0cdfd81de721c6f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__redundancy__manager__types_1ga0e80690e3278646a3c63a266cbd9269d" kindref="member">system_health_t</ref><sp/><ref refid="structhealth__response__t_1a66a141ceb041c331e0cdfd81de721c6f" kindref="member">health</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="274" refid="structhealth__response__t_1ab36254499b20aac8af905c92bed4b8c7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structhealth__response__t_1ab36254499b20aac8af905c92bed4b8c7" kindref="member">active_fault_count</ref>;<sp/></highlight></codeline>
+<codeline lineno="275" refid="structhealth__response__t_1a6cc6a9270695e66f62222999c820c055" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structhealth__response__t_1a6cc6a9270695e66f62222999c820c055" kindref="member">timestamp_ms</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="276"><highlight class="normal">}<sp/><ref refid="structhealth__response__t" kindref="compound">health_response_t</ref>;</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"></highlight></codeline>
+<codeline lineno="282" refid="structcomponent__status__request__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="283" refid="structcomponent__status__request__t_1a252843693d35caaa6286e9f016bb1218" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__redundancy__manager__types_1ga7c14751f737d5413dc48d18c920c8053" kindref="member">component_id_t</ref><sp/><ref refid="structcomponent__status__request__t_1a252843693d35caaa6286e9f016bb1218" kindref="member">component</ref>;<sp/></highlight></codeline>
+<codeline lineno="284"><highlight class="normal">}<sp/><ref refid="structcomponent__status__request__t" kindref="compound">component_status_request_t</ref>;</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"></highlight></codeline>
+<codeline lineno="290" refid="structcomponent__status__response__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="291" refid="structcomponent__status__response__t_1a43929438649c808d635f30eb2727c57a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__redundancy__manager__types_1ga7c14751f737d5413dc48d18c920c8053" kindref="member">component_id_t</ref><sp/><ref refid="structcomponent__status__response__t_1a43929438649c808d635f30eb2727c57a" kindref="member">component</ref>;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="292" refid="structcomponent__status__response__t_1ac0d1107e5844295f62bf0ea3531c18b0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structcomponent__status__response__t_1ac0d1107e5844295f62bf0ea3531c18b0" kindref="member">is_ok</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="293" refid="structcomponent__status__response__t_1a7df33d26b37660d6a9a8c12bdbc2d857" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__redundancy__manager__types_1ga4f4a3b75aaca29d932cb4e0c4153f78a" kindref="member">fault_source_t</ref><sp/><ref refid="structcomponent__status__response__t_1a7df33d26b37660d6a9a8c12bdbc2d857" kindref="member">fault_source</ref>;<sp/></highlight></codeline>
+<codeline lineno="294" refid="structcomponent__status__response__t_1abb2db5249d3b6af9f2a58b2c6c597b6e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structcomponent__status__response__t_1abb2db5249d3b6af9f2a58b2c6c597b6e" kindref="member">timestamp_ms</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="295"><highlight class="normal">}<sp/><ref refid="structcomponent__status__response__t" kindref="compound">component_status_response_t</ref>;</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"></highlight></codeline>
+<codeline lineno="304" refid="structfault__list__response__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="305" refid="structfault__list__response__t_1a260b01639e4de9779a8bb8fc9ca1ea6c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structfault__list__response__t_1a260b01639e4de9779a8bb8fc9ca1ea6c" kindref="member">total_faults</ref>;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="306" refid="structfault__list__response__t_1a46d40627c96d16453db7b4fd66310d35" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structfault__list__response__t_1a46d40627c96d16453db7b4fd66310d35" kindref="member">chunk_index</ref>;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="307" refid="structfault__list__response__t_1a8162f6ba3904cf2a7950bb51c4ccc527" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structfault__list__response__t_1a8162f6ba3904cf2a7950bb51c4ccc527" kindref="member">faults_in_chunk</ref>;<sp/></highlight></codeline>
+<codeline lineno="308" refid="structfault__list__response__t_1a88481254312f7c82ce7960bb7038d2a4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structfault__t" kindref="compound">fault_t</ref><sp/>faults[4];<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="309"><highlight class="normal">}<sp/><ref refid="structfault__list__response__t" kindref="compound">fault_list_response_t</ref>;</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"></highlight></codeline>
+<codeline lineno="315" refid="structredundancy__telemetry__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="316" refid="structredundancy__telemetry__t_1a7cdeefb9e0a772bd8b5902ee83352150" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__redundancy__manager__types_1ga0e80690e3278646a3c63a266cbd9269d" kindref="member">system_health_t</ref><sp/><ref refid="structredundancy__telemetry__t_1a7cdeefb9e0a772bd8b5902ee83352150" kindref="member">health</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="317" refid="structredundancy__telemetry__t_1a5f1bcfd1cf71d545d29360e8a5ff2f25" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structredundancy__telemetry__t_1a5f1bcfd1cf71d545d29360e8a5ff2f25" kindref="member">active_fault_count</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="318" refid="structredundancy__telemetry__t_1ab157e7b8d360169e546f9550e579b0b4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structredundancy__telemetry__t_1ab157e7b8d360169e546f9550e579b0b4" kindref="member">total_faults_since_boot</ref>;<sp/></highlight></codeline>
+<codeline lineno="319" refid="structredundancy__telemetry__t_1ad06c232ce4ecb5b262bbee0e7713d585" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structredundancy__telemetry__t_1ad06c232ce4ecb5b262bbee0e7713d585" kindref="member">degraded_components</ref>;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="320" refid="structredundancy__telemetry__t_1ab22c6bef5cf89f4920ce3a4a81ada10a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structredundancy__telemetry__t_1ab22c6bef5cf89f4920ce3a4a81ada10a" kindref="member">timestamp_ms</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="321"><highlight class="normal">}<sp/><ref refid="structredundancy__telemetry__t" kindref="compound">redundancy_telemetry_t</ref>;</highlight></codeline>
+<codeline lineno="322"><highlight class="normal"></highlight></codeline>
+<codeline lineno="327" refid="structredundancy__manager__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="328" refid="structredundancy__manager__t_1a589af13f7ecec44c2f6d4db51b9ed17a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structfault__t" kindref="compound">fault_t</ref><sp/>faults[<ref refid="group__redundancy__manager__types_1gaf614f70344df01b701e0f3e20e5eac72" kindref="member">REDUNDANCY_MANAGER_MAX_FAULTS</ref>];<sp/></highlight></codeline>
+<codeline lineno="329" refid="structredundancy__manager__t_1a6cf5da91c447225d5371f7505df99c96" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__redundancy__manager__types_1ga0e80690e3278646a3c63a266cbd9269d" kindref="member">system_health_t</ref><sp/><ref refid="structredundancy__manager__t_1a6cf5da91c447225d5371f7505df99c96" kindref="member">health</ref>;<sp/></highlight></codeline>
+<codeline lineno="330" refid="structredundancy__manager__t_1a4d78e19f4df32319a1617403b65dfba6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>component_status[<ref refid="group__redundancy__manager__types_1gga7c14751f737d5413dc48d18c920c8053afeab75e995867b121186c2050ac7c442" kindref="member">COMPONENT_COUNT</ref>];<sp/></highlight></codeline>
+<codeline lineno="331" refid="structredundancy__manager__t_1aca83c71976df88fa779d9d732f53bcb1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structredundancy__manager__t_1aca83c71976df88fa779d9d732f53bcb1" kindref="member">total_fault_count</ref>;<sp/></highlight></codeline>
+<codeline lineno="332" refid="structredundancy__manager__t_1a7b00f05e448e0923730c43cf08fbe0f7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structredundancy__manager__t_1a7b00f05e448e0923730c43cf08fbe0f7" kindref="member">initialized</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="333"><highlight class="normal">}<sp/><ref refid="structredundancy__manager__t" kindref="compound">redundancy_manager_t</ref>;</highlight></codeline>
+<codeline lineno="334"><highlight class="normal"></highlight></codeline>
+<sp/><highlight class="comment">//<sp/>end<sp/>redundancy_manager_types</highlight><codeline lineno="336"><highlight class="normal"></highlight></codeline>
+<codeline lineno="362"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__redundancy__manager__api_1gadd9a3bd1c1926239b7616532cc18b449" kindref="member">redundancy_manager_init</ref>(<ref refid="structredundancy__manager__t" kindref="compound">redundancy_manager_t</ref><sp/>*manager);</highlight></codeline>
+<codeline lineno="363"><highlight class="normal"></highlight></codeline>
+<sp/><highlight class="comment">//<sp/>end<sp/>redundancy_manager_api</highlight><codeline lineno="365"><highlight class="normal"></highlight></codeline>
+<sp/><highlight class="comment">//<sp/>end<sp/>redundancy_manager</highlight><codeline lineno="367"><highlight class="normal"></highlight></codeline>
+<codeline lineno="368"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="369"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="370"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="371"><highlight class="normal"></highlight></codeline>
+<codeline lineno="372"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>REDUNDANCY_MANAGER_H</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/redundancy_manager.h"/>
+  </compounddef>
+</doxygen>

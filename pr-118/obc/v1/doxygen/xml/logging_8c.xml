@@ -1,0 +1,557 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="logging_8c" kind="file" language="C++">
+    <compoundname>logging.c</compoundname>
+    <includes refid="logging_8h" local="yes">logging.h</includes>
+    <includes refid="hal__time_8h" local="yes">hal_time.h</includes>
+    <includes refid="hal__uart_8h" local="yes">hal_uart.h</includes>
+    <includes refid="hal__fram_8h" local="yes">hal_fram.h</includes>
+    <includes refid="event__bus_8h" local="yes">osusat/event_bus.h</includes>
+    <includes refid="ring__buffer_8h" local="yes">osusat/ring_buffer.h</includes>
+    <includes local="no">stddef.h</includes>
+    <includes local="no">stdint.h</includes>
+    <includes local="no">stdio.h</includes>
+    <includes local="no">string.h</includes>
+    <incdepgraph>
+      <node id="12">
+        <label>osusat/event_bus.h</label>
+        <link refid="event__bus_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>ring_buffer.h</label>
+        <link refid="ring__buffer_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>osusat/slog.h</label>
+        <link refid="slog_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>hal_fram.h</label>
+        <link refid="hal__fram_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>hal_time.h</label>
+        <link refid="hal__time_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>hal_uart.h</label>
+        <link refid="hal__uart_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/logging.c</label>
+        <link refid="logging_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>logging.h</label>
+        <link refid="logging_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>stdarg.h</label>
+      </node>
+      <node id="5">
+        <label>stdbool.h</label>
+      </node>
+      <node id="6">
+        <label>stddef.h</label>
+      </node>
+      <node id="7">
+        <label>stdint.h</label>
+      </node>
+      <node id="13">
+        <label>stdio.h</label>
+      </node>
+      <node id="14">
+        <label>string.h</label>
+      </node>
+    </incdepgraph>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="logging_8c_1a85c7ebc840d55bb1c48d81cfca9ba1b8" prot="public" static="no">
+        <name>LOG_STORAGE_SIZE</name>
+        <initializer>4096</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/logging.c" line="17" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/logging.c" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="logging_8c_1a98ef9b5aa009c56edf0df1d8c6c0a8a1" prot="public" static="no">
+        <name>LOG_FLUSH_INTERVAL_CYCLES</name>
+        <initializer>100</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/logging.c" line="21" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/logging.c" bodystart="21" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="logging_8c_1a254facfb4dba42e4cb579529697a556b" prot="public" static="yes" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t log_storage[LOG_STORAGE_SIZE]</definition>
+        <argsstring>[LOG_STORAGE_SIZE]</argsstring>
+        <name>log_storage</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/logging.c" line="18" column="16" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/logging.c" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="logging_8c_1aec553e2c6fc2a5f160cce74f3c352c55" prot="public" static="yes" mutable="no">
+        <type><ref refid="structosusat__ring__buffer__t" kindref="compound">osusat_ring_buffer_t</ref></type>
+        <definition>osusat_ring_buffer_t log_ring_buffer</definition>
+        <argsstring></argsstring>
+        <name>log_ring_buffer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/logging.c" line="19" column="29" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/logging.c" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="logging_8c_1a2ea47e205862c99064b47464b3fbf262" prot="public" static="yes" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t tick_counter</definition>
+        <argsstring></argsstring>
+        <name>tick_counter</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/logging.c" line="20" column="17" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/logging.c" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="logging_8c_1a05a9ae8f836e4ad368603046bf5f1db4" prot="public" static="yes" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t g_fram_log_write_ptr</definition>
+        <argsstring></argsstring>
+        <name>g_fram_log_write_ptr</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/logging.c" line="23" column="17" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/logging.c" bodystart="23" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="logging_8c_1ab59fbeacc77703560b5c49be16bc8899" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void logging_handle_tick</definition>
+        <argsstring>(const osusat_event_t *e, void *ctx)</argsstring>
+        <name>logging_handle_tick</name>
+        <param>
+          <type>const <ref refid="structosusat__event__t" kindref="compound">osusat_event_t</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>ctx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/logging.c" line="184" column="13" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/logging.c" bodystart="184" bodyend="194" declfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/logging.c" declline="25" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="logging_8c_1ad8500589bddfb3b89b20cf314ecef43e" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void write_to_fram</definition>
+        <argsstring>(const uint8_t *data, size_t size)</argsstring>
+        <name>write_to_fram</name>
+        <param>
+          <type>const uint8_t *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/logging.c" line="118" column="13" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/logging.c" bodystart="118" bodyend="125" declfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/logging.c" declline="26" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="logging_8c_1a70751c177368f0d679519e61e9b2be7b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const char *</type>
+        <definition>static const char * slog_level_str</definition>
+        <argsstring>(uint8_t level)</argsstring>
+        <name>slog_level_str</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>level</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/logging.c" line="127" column="19" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/logging.c" bodystart="127" bodyend="142" declfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/logging.c" declline="27" declcolumn="19"/>
+      </memberdef>
+      <memberdef kind="function" id="logging_8c_1a65474fa7dce8e323d550fa13e1cf42c1" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void semihosting_write_str</definition>
+        <argsstring>(const char *str, size_t len)</argsstring>
+        <name>semihosting_write_str</name>
+        <param>
+          <type>const char *</type>
+          <declname>str</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>len</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/logging.c" line="29" column="13" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/logging.c" bodystart="29" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="logging_8c_1aa025a12d45f60c7d0eae249e61f0c7f9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int _write</definition>
+        <argsstring>(int file, char *ptr, int len)</argsstring>
+        <name>_write</name>
+        <param>
+          <type>int</type>
+          <declname>file</declname>
+        </param>
+        <param>
+          <type>char *</type>
+          <declname>ptr</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>len</declname>
+        </param>
+        <briefdescription>
+<para>Strong override of syscalls.c _write to redirect all printf/stdout. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Falls back to physical hardware UART when SEMIHOSTING is not explicitly compiled in. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/logging.c" line="58" column="5" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/logging.c" bodystart="58" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="function" id="logging_8c_1abc513dd972081ae765b6949a62872eb7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int __io_putchar</definition>
+        <argsstring>(int ch)</argsstring>
+        <name>__io_putchar</name>
+        <param>
+          <type>int</type>
+          <declname>ch</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/logging.c" line="73" column="5" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/logging.c" bodystart="73" bodyend="77"/>
+      </memberdef>
+      <member refid="group__logging__api_1gab472c7887dc39c12bba0022d7a0ac99f" kind="function"><name>logging_init</name></member>
+      <member refid="group__logging__api_1gae4adb3779250b040d37537491856dad5" kind="function"><name>logging_write_external_log</name></member>
+      <memberdef kind="function" id="logging_8c_1aa4b4a3505cf5e8dcda51e7c988580217" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void log_flush_callback</definition>
+        <argsstring>(const osusat_slog_entry_t *entry, const char *message, void *user_ctx)</argsstring>
+        <name>log_flush_callback</name>
+        <param>
+          <type>const <ref refid="structosusat__slog__entry__t" kindref="compound">osusat_slog_entry_t</ref> *</type>
+          <declname>entry</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>message</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>user_ctx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/logging.c" line="144" column="13" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/logging.c" bodystart="144" bodyend="157"/>
+      </memberdef>
+      <member refid="group__logging__api_1gae344a717b3119e6abed5c4b75737a337" kind="function"><name>logging_flush</name></member>
+      <member refid="group__logging__api_1gac5d48d0826af20ccbcfefcae52dab9df" kind="function"><name>logging_set_level</name></member>
+      <member refid="group__logging__api_1ga68313b2800456508351fdf21c8685fbf" kind="function"><name>logging_pending_count</name></member>
+      <member refid="group__logging__api_1ga7595483af83ec7a5305c9d3777a81997" kind="function"><name>logging_get_fram_buffer</name></member>
+      <member refid="group__logging__api_1gac902fb1bf52b4fb79abcac5a66ad527c" kind="function"><name>logging_get_fram_write_ptr</name></member>
+    </sectiondef>
+    <briefdescription>
+<para>OBC Logging Service Implementation. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="logging_8h" kindref="compound">logging.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="hal__time_8h" kindref="compound">hal_time.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="hal__uart_8h" kindref="compound">hal_uart.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="hal__fram_8h" kindref="compound">hal_fram.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="event__bus_8h" kindref="compound">osusat/event_bus.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;osusat/ring_buffer.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stddef.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdio.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOG_STORAGE_SIZE<sp/>4096</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>uint8_t<sp/>log_storage[LOG_STORAGE_SIZE];</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structosusat__ring__buffer__t" kindref="compound">osusat_ring_buffer_t</ref><sp/>log_ring_buffer;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>uint32_t<sp/>tick_counter<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOG_FLUSH_INTERVAL_CYCLES<sp/>100</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>uint32_t<sp/>g_fram_log_write_ptr<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>logging_handle_tick(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structosusat__event__t" kindref="compound">osusat_event_t</ref><sp/>*e,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*ctx);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>write_to_fram(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>*data,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>size);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*slog_level_str(uint8_t<sp/>level);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>semihosting_write_str(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*str,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>len)<sp/>{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(__arm__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>SYS_WRITE<sp/>(0x05)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>r0<sp/>=<sp/>0x05</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>r1<sp/>=<sp/>pointer<sp/>to<sp/>3-word<sp/>argument<sp/>block:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/>word<sp/>0:<sp/>file<sp/>handle<sp/>(1<sp/>for<sp/>stdout)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/>word<sp/>1:<sp/>pointer<sp/>to<sp/>string</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/>word<sp/>2:<sp/>length<sp/>of<sp/>string</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>args[3];</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>args[0]<sp/>=<sp/>1;<sp/></highlight><highlight class="comment">//<sp/>stdout</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>args[1]<sp/>=<sp/>(uint32_t)str;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>args[2]<sp/>=<sp/>(uint32_t)len;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>__asm<sp/></highlight><highlight class="keyword">volatile</highlight><highlight class="normal">(</highlight><highlight class="stringliteral">&quot;mov<sp/>r0,<sp/>#5\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;mov<sp/>r1,<sp/>%0\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;bkpt<sp/>0xAB\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/></highlight><highlight class="stringliteral">&quot;r&quot;</highlight><highlight class="normal">(args)</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/></highlight><highlight class="stringliteral">&quot;r0&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;r1&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;memory&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>(void)str;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>(void)len;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="logging_8c_1aa025a12d45f60c7d0eae249e61f0c7f9" kindref="member">_write</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>file,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*ptr,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>len)<sp/>{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>(void)file;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(__arm__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(USE_SEMIHOSTING)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>semihosting_write_str(ptr,<sp/>len);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__obc__uart_1ga4483e54b3d76f3f0b2bb91f2d28ccd62" kindref="member">hal_uart_write</ref>(<ref refid="group__obc__uart_1gga7f28644638bd57536eb5260695e83de9a4214053499c9bf408d20f9617812c0f5" kindref="member">UART_PORT_1</ref>,<sp/>(uint8_t<sp/>*)ptr,<sp/>len);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>fwrite(ptr,<sp/>1,<sp/>len,<sp/>stdout);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>fflush(stdout);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>len;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>__io_putchar(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ch)<sp/>{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>c<sp/>=<sp/>(char)ch;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="logging_8c_1aa025a12d45f60c7d0eae249e61f0c7f9" kindref="member">_write</ref>(1,<sp/>&amp;c,<sp/>1);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ch;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__logging__api_1gab472c7887dc39c12bba0022d7a0ac99f" kindref="member">logging_init</ref>(<ref refid="group__osusat__slog__types_1gafe0f1801f6e3827f06165e284313814b" kindref="member">osusat_slog_level_t</ref><sp/>min_level)<sp/>{</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>initialize<sp/>FRAM<sp/>HAL</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__obc__fram_1ga390f948982f771e2ca9a470275e57168" kindref="member">hal_fram_init</ref>();</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>!defined(__arm__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>clear<sp/>mock<sp/>FRAM<sp/>on<sp/>host<sp/>to<sp/>start<sp/>clean</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>zero_buf[FRAM_LOG_SIZE]<sp/>=<sp/>{0};</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__obc__fram_1ga68a8cc6f68f0647700df1385c0de4a87" kindref="member">hal_fram_write</ref>(0,<sp/>zero_buf,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(zero_buf));</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>g_fram_log_write_ptr<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>initialize<sp/>the<sp/>ring<sp/>buffer<sp/>used<sp/>by<sp/>slog</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__osusat__ring__buffer__api_1ga0042234225cbcdf0809fb285062ec630" kindref="member">osusat_ring_buffer_init</ref>(&amp;log_ring_buffer,<sp/>log_storage,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(log_storage),</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>initialize<sp/>osusat<sp/>structured<sp/>logging<sp/>library</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__osusat__slog__api_1ga82f8335121202a3fd24d6b96e3eb1f4e" kindref="member">osusat_slog_init</ref>(&amp;log_ring_buffer,<sp/><ref refid="group__obc__time_1ga697ad15eedc3e4ef194c93f24734e0a2" kindref="member">hal_time_get_ms</ref>,<sp/>min_level);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>subscribe<sp/>to<sp/>Systick<sp/>events<sp/>for<sp/>periodic<sp/>flushing</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__osusat__event__bus__api_1gae83611a56e85f92a045e85cb804a4fde" kindref="member">osusat_event_bus_subscribe</ref>(EVENT_SYSTICK,<sp/>logging_handle_tick,<sp/>NULL);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__osusat__slog__api_1ga7bbefdd3b087c6a39b6f677b63f25d94" kindref="member">LOG_INFO</ref>(<ref refid="group__logging__types_1ga28e07e65eb1b11b6dfb0589247fb6e00" kindref="member">OBC_COMPONENT_LOGGING</ref>,</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;OBC<sp/>Logging<sp/>service<sp/>initialized<sp/>(FRAM<sp/>size:<sp/>%d<sp/>bytes)&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FRAM_LOG_SIZE);</highlight></codeline>
+<codeline lineno="103"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__logging__api_1gae4adb3779250b040d37537491856dad5" kindref="member">logging_write_external_log</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structosusat__slog__entry__t" kindref="compound">osusat_slog_entry_t</ref><sp/>*entry,</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*message)<sp/>{</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>write<sp/>the<sp/>structured<sp/>log<sp/>to<sp/>mock<sp/>FRAM</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>msg_len_with_null<sp/>=<sp/>entry-&gt;message_len<sp/>+<sp/>1;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>write_to_fram((</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>*)entry,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(*entry));</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/>write_to_fram((</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>*)message,<sp/>msg_len_with_null);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>also<sp/>print<sp/>to<sp/>debug<sp/>console<sp/>(semihosting<sp/>via<sp/>printf)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;[EPS]<sp/>[%6lu]<sp/>[%s]<sp/>[Comp:<sp/>0x%02X]<sp/>[Line:<sp/>%u]<sp/>%s\r\n&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal">)entry-&gt;timestamp_ms,<sp/>slog_level_str(entry-&gt;level),</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>entry-&gt;component_id,<sp/>entry-&gt;line,<sp/>message);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>write_to_fram(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>*data,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>size)<sp/>{</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(g_fram_log_write_ptr<sp/>+<sp/>size<sp/>&gt;<sp/>FRAM_LOG_SIZE)<sp/>{</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>g_fram_log_write_ptr<sp/>=<sp/>0;<sp/></highlight><highlight class="comment">//<sp/>Wrap<sp/>around<sp/>to<sp/>the<sp/>beginning</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__obc__fram_1ga250114811f28848bfa4a042743dbb3fc" kindref="member">hal_fram_write_it</ref>(g_fram_log_write_ptr,<sp/>data,<sp/>size,<sp/>NULL,<sp/>NULL);</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/>g_fram_log_write_ptr<sp/>+=<sp/>size;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*slog_level_str(uint8_t<sp/>level)<sp/>{</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(level)<sp/>{</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="group__osusat__slog__types_1ggafe0f1801f6e3827f06165e284313814ba3416b48f12ae3f2061aa0be0f9f6628e" kindref="member">OSUSAT_SLOG_DEBUG</ref>:</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;DEBUG&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="group__osusat__slog__types_1ggafe0f1801f6e3827f06165e284313814ba0910e0bc044406b4a8be8fbd9198bb24" kindref="member">OSUSAT_SLOG_INFO</ref>:</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;INFO&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="group__osusat__slog__types_1ggafe0f1801f6e3827f06165e284313814ba4331435d3b641ebbb3a79f5dde6f3d6e" kindref="member">OSUSAT_SLOG_WARN</ref>:</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;WARN&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="group__osusat__slog__types_1ggafe0f1801f6e3827f06165e284313814baaaae4bb5016bcadcae7bf6d772e3f193" kindref="member">OSUSAT_SLOG_ERROR</ref>:</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;ERROR&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="group__osusat__slog__types_1ggafe0f1801f6e3827f06165e284313814ba02b6fdc266af82fa9d529477846cab24" kindref="member">OSUSAT_SLOG_CRITICAL</ref>:</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;CRITICAL&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;UNKNOWN&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="142"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>log_flush_callback(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structosusat__slog__entry__t" kindref="compound">osusat_slog_entry_t</ref><sp/>*entry,</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*message,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*user_ctx)<sp/>{</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/>(void)user_ctx;</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>write<sp/>the<sp/>structured<sp/>log<sp/>to<sp/>mock<sp/>FRAM</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>msg_len_with_null<sp/>=<sp/>entry-&gt;message_len<sp/>+<sp/>1;</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/>write_to_fram((</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>*)entry,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(*entry));</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/>write_to_fram((</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>*)message,<sp/>msg_len_with_null);</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>also<sp/>print<sp/>to<sp/>debug<sp/>console<sp/>(UART)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;[%6lu]<sp/>[%s]<sp/>[Comp:<sp/>0x%02X]<sp/>[Line:<sp/>%u]<sp/>%s\r\n&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal">)entry-&gt;timestamp_ms,<sp/>slog_level_str(entry-&gt;level),</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>entry-&gt;component_id,<sp/>entry-&gt;line,<sp/>message);</highlight></codeline>
+<codeline lineno="157"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="group__logging__api_1gae344a717b3119e6abed5c4b75737a337" kindref="member">logging_flush</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="group__osusat__slog__api_1gaa1dbfea471aa1425ac6e67a1a7ff7768" kindref="member">osusat_slog_pending_count</ref>()<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__osusat__slog__api_1gac76adcb9d644cb6c538e4e18a92bd133" kindref="member">osusat_slog_flush</ref>(log_flush_callback,<sp/>NULL);</highlight></codeline>
+<codeline lineno="165"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__logging__api_1gac5d48d0826af20ccbcfefcae52dab9df" kindref="member">logging_set_level</ref>(<ref refid="group__osusat__slog__types_1gafe0f1801f6e3827f06165e284313814b" kindref="member">osusat_slog_level_t</ref><sp/>level)<sp/>{</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__osusat__slog__api_1ga3209a10ca8341d16f791faa4ebb4483d" kindref="member">osusat_slog_change_min_log_level</ref>(level);</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__osusat__slog__api_1ga7bbefdd3b087c6a39b6f677b63f25d94" kindref="member">LOG_INFO</ref>(<ref refid="group__logging__types_1ga28e07e65eb1b11b6dfb0589247fb6e00" kindref="member">OBC_COMPONENT_LOGGING</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Min<sp/>log<sp/>level<sp/>changed<sp/>to<sp/>%d&quot;</highlight><highlight class="normal">,<sp/>level);</highlight></codeline>
+<codeline lineno="170"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="group__logging__api_1ga68313b2800456508351fdf21c8685fbf" kindref="member">logging_pending_count</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__osusat__slog__api_1gaa1dbfea471aa1425ac6e67a1a7ff7768" kindref="member">osusat_slog_pending_count</ref>();<sp/>}</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>*<ref refid="group__logging__api_1ga7595483af83ec7a5305c9d3777a81997" kindref="member">logging_get_fram_buffer</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(__arm__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__obc__fram_1ga3ea96795ac90100e81c8d3d51d9c9da8" kindref="member">hal_fram_get_mock_buffer</ref>();</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal">uint32_t<sp/><ref refid="group__logging__api_1gac902fb1bf52b4fb79abcac5a66ad527c" kindref="member">logging_get_fram_write_ptr</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>g_fram_log_write_ptr;<sp/>}</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>logging_handle_tick(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structosusat__event__t" kindref="compound">osusat_event_t</ref><sp/>*e,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*ctx)<sp/>{</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/>(void)ctx;</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/>(void)e;</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/>tick_counter++;</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(tick_counter<sp/>&gt;=<sp/>LOG_FLUSH_INTERVAL_CYCLES)<sp/>{</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tick_counter<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__logging__api_1gae344a717b3119e6abed5c4b75737a337" kindref="member">logging_flush</ref>();</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="194"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/logging.c"/>
+  </compounddef>
+</doxygen>

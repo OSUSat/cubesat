@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="group__RCC__LSE__Configuration" kind="group">
+    <compoundname>RCC_LSE_Configuration</compoundname>
+    <title>LSE Configuration</title>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="group__RCC__LSE__Configuration_1ga6b2b48f429e347c1c9c469122c64798b" prot="public" static="no">
+        <name>__HAL_RCC_LSE_CONFIG</name>
+        <param><defname>__STATE__</defname></param>
+        <initializer>                    do {                                       \
+                      if((__STATE__) == RCC_LSE_ON)            \
+                      {                                        \
+                        SET_BIT(RCC-&gt;BDCR, RCC_BDCR_LSEON);    \
+                      }                                        \
+                      else if((__STATE__) == RCC_LSE_OFF)      \
+                      {                                        \
+                        CLEAR_BIT(RCC-&gt;BDCR, RCC_BDCR_LSEON);  \
+                        CLEAR_BIT(RCC-&gt;BDCR, RCC_BDCR_LSEBYP); \
+                      }                                        \
+                      else if((__STATE__) == RCC_LSE_BYPASS)   \
+                      {                                        \
+                        SET_BIT(RCC-&gt;BDCR, RCC_BDCR_LSEBYP);   \
+                        SET_BIT(RCC-&gt;BDCR, RCC_BDCR_LSEON);    \
+                      }                                        \
+                      else                                     \
+                      {                                        \
+                        CLEAR_BIT(RCC-&gt;BDCR, RCC_BDCR_LSEON);  \
+                        CLEAR_BIT(RCC-&gt;BDCR, RCC_BDCR_LSEBYP); \
+                      }                                        \
+                    } while(0)</initializer>
+        <briefdescription>
+<para>Macro to configure the External Low Speed oscillator (LSE). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>Transition LSE Bypass to LSE On and LSE On to LSE Bypass are not supported by this macro. User should request a transition to LSE Off first and then LSE On or LSE Bypass. </para>
+</simplesect>
+<simplesect kind="note"><para>The external input clock can have a frequency up to 1 MHz and be low swing (analog) or digital(*). A duty cycle close to 50% is recommended. </para>
+</simplesect>
+<simplesect kind="note"><para>As the LSE is in the Backup domain and write access is denied to this domain after reset, you have to enable write access using HAL_PWR_EnableBkUpAccess() function before to configure the LSE (to be done once after reset). </para>
+</simplesect>
+<simplesect kind="note"><para>After enabling the LSE (RCC_LSE_ON, RCC_LSE_BYPASS or RCC_LSE_BYPASS_DIGITAL*), the application software should wait on LSERDY flag to be set indicating that LSE clock is stable and can be used to clock the RTC. </para>
+</simplesect>
+<simplesect kind="note"><para>If the RTC is used, the LSE bypass must not be configured in digital mode but in low swing analog mode (*) </para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__STATE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the new state of the LSE. This parameter can be one of the following values: <itemizedlist>
+<listitem><para>RCC_LSE_OFF: turn OFF the LSE oscillator, LSERDY flag goes low after 6 LSE oscillator clock cycles. </para>
+</listitem>
+<listitem><para>RCC_LSE_ON: turn ON the LSE oscillator. </para>
+</listitem>
+<listitem><para>RCC_LSE_BYPASS: LSE oscillator bypassed with external clock. </para>
+</listitem>
+<listitem><para>RCC_LSE_BYPASS_DIGITAL: LSE oscillator bypassed with external digital clock. (*)</para>
+</listitem>
+</itemizedlist>
+(*) Available on some STM32H7 lines only. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h" line="7435" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h" bodystart="7435" bodyend="7456"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

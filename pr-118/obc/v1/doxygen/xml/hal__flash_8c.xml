@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="hal__flash_8c" kind="file" language="C++">
+    <compoundname>hal_flash.c</compoundname>
+    <includes refid="hal__flash_8h" local="yes">hal_flash.h</includes>
+    <includes local="no">string.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_flash.c</label>
+        <link refid="hal__flash_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>hal_flash.h</label>
+        <link refid="hal__flash_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>stdbool.h</label>
+      </node>
+      <node id="4">
+        <label>stddef.h</label>
+      </node>
+      <node id="5">
+        <label>stdint.h</label>
+      </node>
+      <node id="6">
+        <label>string.h</label>
+      </node>
+    </incdepgraph>
+    <sectiondef kind="func">
+      <member refid="group__obc__flash_1ga6d1bc234d5c14adc798f1197afd2c0a8" kind="function"><name>hal_flash_init</name></member>
+      <member refid="group__obc__flash_1gabf5c5b65a57e51e24bcbe72ba9743773" kind="function"><name>hal_flash_write</name></member>
+      <member refid="group__obc__flash_1ga8c13713f405a05fee337edaea8397089" kind="function"><name>hal_flash_read</name></member>
+      <member refid="group__obc__flash_1ga498d2d995b8c58347b7d9cfc5040d808" kind="function"><name>hal_flash_erase_sector</name></member>
+    </sectiondef>
+    <briefdescription>
+<para>Flash memory hardware abstraction implementation skeleton for STM32H7. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="hal__flash_8h" kindref="compound">hal_flash.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(__arm__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;stm32h7xx_hal.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__obc__flash_1ga6d1bc234d5c14adc798f1197afd2c0a8" kindref="member">hal_flash_init</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>no-op</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><ref refid="group__obc__flash_1ga0ed7423bb156b37296817ff0cb40b389" kindref="member">hal_flash_status_t</ref><sp/><ref refid="group__obc__flash_1gabf5c5b65a57e51e24bcbe72ba9743773" kindref="member">hal_flash_write</ref>(uint32_t<sp/>address,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>*data,</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>size)<sp/>{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(__arm__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>HAL_FLASH_Unlock();</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>H7<sp/>programming<sp/>is<sp/>typically<sp/>done<sp/>in<sp/>256-bit<sp/>(32<sp/>bytes)<sp/>blocks<sp/>using</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>FLASH_TYPEPROGRAM_FLASHWORD<sp/>we<sp/>will<sp/>stub<sp/>this<sp/>or<sp/>implement<sp/>minimal<sp/>write</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>protection.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="stm32h7xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/>status<sp/>=<sp/>HAL_OK;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>for<sp/>now,<sp/>return<sp/>OK<sp/>as<sp/>a<sp/>placeholder</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>HAL_FLASH_Lock();</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(status<sp/>==<sp/>HAL_OK)<sp/>?<sp/><ref refid="group__obc__flash_1gga0ed7423bb156b37296817ff0cb40b389a25768ec235345dc9de44bc2747af9e69" kindref="member">HAL_FLASH_OK</ref><sp/>:<sp/><ref refid="group__obc__flash_1gga0ed7423bb156b37296817ff0cb40b389af1042c0ccfcbe1290ca1947e036a09e6" kindref="member">HAL_FLASH_ERROR</ref>;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__obc__flash_1gga0ed7423bb156b37296817ff0cb40b389a25768ec235345dc9de44bc2747af9e69" kindref="member">HAL_FLASH_OK</ref>;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><ref refid="group__obc__flash_1ga0ed7423bb156b37296817ff0cb40b389" kindref="member">hal_flash_status_t</ref><sp/><ref refid="group__obc__flash_1ga8c13713f405a05fee337edaea8397089" kindref="member">hal_flash_read</ref>(uint32_t<sp/>address,<sp/>uint8_t<sp/>*buffer,</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>size)<sp/>{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>direct<sp/>memory-mapped<sp/>read<sp/>for<sp/>internal<sp/>Flash</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>memcpy(buffer,<sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)(uintptr_t)address,<sp/>size);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__obc__flash_1gga0ed7423bb156b37296817ff0cb40b389a25768ec235345dc9de44bc2747af9e69" kindref="member">HAL_FLASH_OK</ref>;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><ref refid="group__obc__flash_1ga0ed7423bb156b37296817ff0cb40b389" kindref="member">hal_flash_status_t</ref><sp/><ref refid="group__obc__flash_1ga498d2d995b8c58347b7d9cfc5040d808" kindref="member">hal_flash_erase_sector</ref>(uint32_t<sp/>sector_address)<sp/>{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(__arm__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>HAL_FLASH_Unlock();</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>stubbed<sp/>erase<sp/>sector<sp/>for<sp/>H7</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>HAL_FLASH_Lock();</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__obc__flash_1gga0ed7423bb156b37296817ff0cb40b389a25768ec235345dc9de44bc2747af9e69" kindref="member">HAL_FLASH_OK</ref>;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__obc__flash_1gga0ed7423bb156b37296817ff0cb40b389a25768ec235345dc9de44bc2747af9e69" kindref="member">HAL_FLASH_OK</ref>;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_flash.c"/>
+  </compounddef>
+</doxygen>

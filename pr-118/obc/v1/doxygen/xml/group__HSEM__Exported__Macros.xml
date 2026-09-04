@@ -1,0 +1,205 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="group__HSEM__Exported__Macros" kind="group">
+    <compoundname>HSEM_Exported_Macros</compoundname>
+    <title>HSEM Exported Macros</title>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="group__HSEM__Exported__Macros_1gabadef2e6fddb0bb11e9e9c6930b12ffa" prot="public" static="no">
+        <name>__HAL_HSEM_SEMID_TO_MASK</name>
+        <param><defname>__SEMID__</defname></param>
+        <initializer>(1 &lt;&lt; (__SEMID__))</initializer>
+        <briefdescription>
+<para>SemID to mask helper Macro. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__SEMID__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>semaphore ID from 0 to 31 </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>Semaphore</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Mask. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_hsem.h" line="48" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_hsem.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__HSEM__Exported__Macros_1gaa21d53e6c4d6d35e9047b5c74fb78c8f" prot="public" static="no">
+        <name>__HAL_HSEM_ENABLE_IT</name>
+        <param><defname>__SEM_MASK__</defname></param>
+        <initializer>(HSEM-&gt;C1IER |= (__SEM_MASK__))</initializer>
+        <briefdescription>
+<para>Enables the specified HSEM interrupts. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__SEM_MASK__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>semaphores Mask </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None.</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_hsem.h" line="60" column="10" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_hsem.h" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__HSEM__Exported__Macros_1ga36496851508be9cace265482a7d18e53" prot="public" static="no">
+        <name>__HAL_HSEM_DISABLE_IT</name>
+        <param><defname>__SEM_MASK__</defname></param>
+        <initializer>(HSEM-&gt;C1IER &amp;= ~(__SEM_MASK__))</initializer>
+        <briefdescription>
+<para>Disables the specified HSEM interrupts. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__SEM_MASK__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>semaphores Mask </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None.</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_hsem.h" line="72" column="10" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_hsem.h" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__HSEM__Exported__Macros_1gacba979398283173d1ee412b5edbdd108" prot="public" static="no">
+        <name>__HAL_HSEM_GET_IT</name>
+        <param><defname>__SEM_MASK__</defname></param>
+        <initializer>((__SEM_MASK__) &amp; HSEM-&gt;C1MISR)</initializer>
+        <briefdescription>
+<para>Checks whether interrupt has occurred or not for semaphores specified by a mask. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__SEM_MASK__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>semaphores Mask </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>semaphores</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Mask : Semaphores where an interrupt occurred. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_hsem.h" line="85" column="10" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_hsem.h" bodystart="85" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__HSEM__Exported__Macros_1gadb48c4b1d695a3dc4f3b72fdfc11d807" prot="public" static="no">
+        <name>__HAL_HSEM_GET_FLAG</name>
+        <param><defname>__SEM_MASK__</defname></param>
+        <initializer>((__SEM_MASK__) &amp; HSEM-&gt;C1ISR)</initializer>
+        <briefdescription>
+<para>Get the semaphores release status flags. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__SEM_MASK__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>semaphores Mask </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>semaphores</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Mask : Semaphores where Release flags rise. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_hsem.h" line="98" column="10" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_hsem.h" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__HSEM__Exported__Macros_1ga0b123be50de8a360f3eb103b56cf3c39" prot="public" static="no">
+        <name>__HAL_HSEM_CLEAR_FLAG</name>
+        <param><defname>__SEM_MASK__</defname></param>
+        <initializer>(HSEM-&gt;C1ICR |= (__SEM_MASK__))</initializer>
+        <briefdescription>
+<para>Clears the HSEM Interrupt flags. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__SEM_MASK__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>semaphores Mask </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None.</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_hsem.h" line="111" column="10" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_hsem.h" bodystart="111" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

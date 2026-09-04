@@ -1,0 +1,200 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="group__obc__flash" kind="group">
+    <compoundname>obc_flash</compoundname>
+    <title>Flash Driver</title>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="group__obc__flash_1ga0ed7423bb156b37296817ff0cb40b389" prot="public" static="no" strong="no">
+        <type></type>
+        <name>hal_flash_status_t</name>
+        <enumvalue id="group__obc__flash_1gga0ed7423bb156b37296817ff0cb40b389a25768ec235345dc9de44bc2747af9e69" prot="public">
+          <name>HAL_FLASH_OK</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>Operation succeeded. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__obc__flash_1gga0ed7423bb156b37296817ff0cb40b389af1042c0ccfcbe1290ca1947e036a09e6" prot="public">
+          <name>HAL_FLASH_ERROR</name>
+          <briefdescription>
+<para>Operation failed. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Flash operation status codes. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_flash.h" line="25" column="1" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_flash.h" bodystart="25" bodyend="28"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="group__obc__flash_1ga6d1bc234d5c14adc798f1197afd2c0a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void hal_flash_init</definition>
+        <argsstring>(void)</argsstring>
+        <name>hal_flash_init</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Initialize Flash HAL interface. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_flash.h" line="33" column="6" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_flash.c" bodystart="13" bodyend="15" declfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_flash.h" declline="33" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__obc__flash_1gabf5c5b65a57e51e24bcbe72ba9743773" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__obc__flash_1ga0ed7423bb156b37296817ff0cb40b389" kindref="member">hal_flash_status_t</ref></type>
+        <definition>hal_flash_status_t hal_flash_write</definition>
+        <argsstring>(uint32_t address, const uint8_t *data, size_t size)</argsstring>
+        <name>hal_flash_write</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>address</declname>
+        </param>
+        <param>
+          <type>const uint8_t *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+<para>Write data to Flash memory. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">address</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Destination address in Flash. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to source data buffer. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of bytes to write. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>HAL_FLASH_OK on success, HAL_FLASH_ERROR on failure. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_flash.h" line="43" column="20" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_flash.c" bodystart="17" bodyend="31" declfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_flash.h" declline="43" declcolumn="20"/>
+      </memberdef>
+      <memberdef kind="function" id="group__obc__flash_1ga8c13713f405a05fee337edaea8397089" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__obc__flash_1ga0ed7423bb156b37296817ff0cb40b389" kindref="member">hal_flash_status_t</ref></type>
+        <definition>hal_flash_status_t hal_flash_read</definition>
+        <argsstring>(uint32_t address, uint8_t *buffer, size_t size)</argsstring>
+        <name>hal_flash_read</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>address</declname>
+        </param>
+        <param>
+          <type>uint8_t *</type>
+          <declname>buffer</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+<para>Read data from Flash memory. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">address</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Source address in Flash. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">buffer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to destination output buffer. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of bytes to read. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>HAL_FLASH_OK on success, HAL_FLASH_ERROR on failure. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_flash.h" line="54" column="20" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_flash.c" bodystart="33" bodyend="38" declfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_flash.h" declline="54" declcolumn="20"/>
+      </memberdef>
+      <memberdef kind="function" id="group__obc__flash_1ga498d2d995b8c58347b7d9cfc5040d808" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__obc__flash_1ga0ed7423bb156b37296817ff0cb40b389" kindref="member">hal_flash_status_t</ref></type>
+        <definition>hal_flash_status_t hal_flash_erase_sector</definition>
+        <argsstring>(uint32_t sector_address)</argsstring>
+        <name>hal_flash_erase_sector</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>sector_address</declname>
+        </param>
+        <briefdescription>
+<para>Erase a sector in Flash memory. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">sector_address</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Base address of sector to erase. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>HAL_FLASH_OK on success, HAL_FLASH_ERROR on failure. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_flash.h" line="63" column="20" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_flash.c" bodystart="40" bodyend="49" declfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_flash.h" declline="63" declcolumn="20"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Non-volatile Flash memory storage interface. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

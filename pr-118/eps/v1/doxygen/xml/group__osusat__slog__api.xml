@@ -1,0 +1,496 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="group__osusat__slog__api" kind="group">
+    <compoundname>osusat_slog_api</compoundname>
+    <title>Public API</title>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="group__osusat__slog__api_1ga82f8335121202a3fd24d6b96e3eb1f4e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void osusat_slog_init</definition>
+        <argsstring>(osusat_ring_buffer_t *log_buf, osusat_slog_timestamp_fn_t timestamp_fn, osusat_slog_level_t min_level)</argsstring>
+        <name>osusat_slog_init</name>
+        <param>
+          <type><ref refid="structosusat__ring__buffer__t" kindref="compound">osusat_ring_buffer_t</ref> *</type>
+          <declname>log_buf</declname>
+        </param>
+        <param>
+          <type><ref refid="group__osusat__slog__types_1ga39b7ea30f55831ceddb5ab6bc8f316c3" kindref="member">osusat_slog_timestamp_fn_t</ref></type>
+          <declname>timestamp_fn</declname>
+        </param>
+        <param>
+          <type><ref refid="group__osusat__slog__types_1gafe0f1801f6e3827f06165e284313814b" kindref="member">osusat_slog_level_t</ref></type>
+          <declname>min_level</declname>
+        </param>
+        <briefdescription>
+<para>Initialize the logging subsystem. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Sets up the log storage buffer and configures timestamp and filtering.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">log_buf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Ring buffer for storing log entries. Should be initialized with overwrite mode enabled. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">timestamp_fn</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Function to get current timestamp in milliseconds (e.g., HAL_GetTick). Can be NULL if timestamps are not needed. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">min_level</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Minimum log level to record. Logs below this level are silently discarded. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/slog.h" line="128" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/src/slog.c" bodystart="43" bodyend="49" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/slog.h" declline="128" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__osusat__slog__api_1ga3209a10ca8341d16f791faa4ebb4483d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void osusat_slog_change_min_log_level</definition>
+        <argsstring>(osusat_slog_level_t min_level)</argsstring>
+        <name>osusat_slog_change_min_log_level</name>
+        <param>
+          <type><ref refid="group__osusat__slog__types_1gafe0f1801f6e3827f06165e284313814b" kindref="member">osusat_slog_level_t</ref></type>
+          <declname>min_level</declname>
+        </param>
+        <briefdescription>
+<para>Change the minimum logging level. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Modifies the minimum log level to record during runtime. Useful for maintenance mode</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">min_level</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Minimum log level to record. Logs below this level are silently discarded. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/slog.h" line="141" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/src/slog.c" bodystart="107" bodyend="109" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/slog.h" declline="141" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__osusat__slog__api_1ga7ecbf1b2139a09090c304f53d9c3c0bc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void osusat_slog_write_internal</definition>
+        <argsstring>(osusat_slog_level_t level, uint8_t component_id, uint16_t line, const char *fmt,...)</argsstring>
+        <name>osusat_slog_write_internal</name>
+        <param>
+          <type><ref refid="group__osusat__slog__types_1gafe0f1801f6e3827f06165e284313814b" kindref="member">osusat_slog_level_t</ref></type>
+          <declname>level</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>component_id</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>line</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>fmt</declname>
+        </param>
+        <param>
+          <type>...</type>
+        </param>
+        <briefdescription>
+<para>Write a log entry (internal function). </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Formats the log message and stores it in the ring buffer along with metadata. Use the osusat_slog() macro instead of calling this directly.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">level</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Severity level of the log. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">component_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Component/subsystem identifier. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">line</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Source code line number. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">fmt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Printf-style format string. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">...</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Variable arguments for format string. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/slog.h" line="155" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/src/slog.c" bodystart="51" bodyend="105" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/slog.h" declline="155" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__osusat__slog__api_1gac76adcb9d644cb6c538e4e18a92bd133" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t osusat_slog_flush</definition>
+        <argsstring>(osusat_slog_flush_fn_t flush_fn, void *ctx)</argsstring>
+        <name>osusat_slog_flush</name>
+        <param>
+          <type><ref refid="group__osusat__slog__types_1ga920f6ea1f2d1a7ff05e2e926cdaa2afa" kindref="member">osusat_slog_flush_fn_t</ref></type>
+          <declname>flush_fn</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>ctx</declname>
+        </param>
+        <briefdescription>
+<para>Flush all pending log entries. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Drains the ring buffer and calls the provided callback for each log entry. The callback is responsible for transmission/packetization.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">flush_fn</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Callback function to handle each log entry. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">ctx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>User context passed to callback. Can be NULL.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Number of log entries flushed. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/slog.h" line="169" column="8" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/src/slog.c" bodystart="111" bodyend="169" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/slog.h" declline="169" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="group__osusat__slog__api_1gaa1dbfea471aa1425ac6e67a1a7ff7768" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t osusat_slog_pending_count</definition>
+        <argsstring>(void)</argsstring>
+        <name>osusat_slog_pending_count</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Get number of log entries currently buffered. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Approximate count of pending log entries.</para>
+</simplesect>
+<simplesect kind="note"><para>This is an estimate based on buffer usage and average entry size. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/slog.h" line="178" column="8" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/src/slog.c" bodystart="171" bodyend="181" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/slog.h" declline="178" declcolumn="8"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="group__osusat__slog__api_1gadd8bb61f2206ccb79ae3ee4e157a77de" prot="public" static="no">
+        <name>OSUSAT_SLOG</name>
+        <param><defname>level</defname></param>
+        <param><defname>component</defname></param>
+        <param><defname>fmt</defname></param>
+        <param><defname>...</defname></param>
+        <initializer>    <ref refid="group__osusat__slog__api_1ga7ecbf1b2139a09090c304f53d9c3c0bc" kindref="member">osusat_slog_write_internal</ref>(level, component, __LINE__, fmt, ##__VA_ARGS__)</initializer>
+        <briefdescription>
+<para>Main logging macro. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Automatically captures the source line number and formats the message.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">level</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Severity level (osusat_slog_level_t). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">component</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Component identifier (uint8_t). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">fmt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Printf-style format string. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">...</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Variable arguments for format string.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+Example: <programlisting><codeline><highlight class="normal">OSUSAT_SLOG(OSUSAT_SLOG_WARN,<sp/>EPS_BATTERY,<sp/>&quot;Voltage<sp/>low:<sp/>%dmV&quot;,<sp/>voltage);</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/slog.h" line="195" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/slog.h" bodystart="195" bodyend="196"/>
+      </memberdef>
+      <memberdef kind="define" id="group__osusat__slog__api_1gacd4baf6ed5cebb00af5df11e7c289e33" prot="public" static="no">
+        <name>LOG_DEBUG</name>
+        <param><defname>component</defname></param>
+        <param><defname>fmt</defname></param>
+        <param><defname>...</defname></param>
+        <initializer>    <ref refid="group__osusat__slog__api_1gadd8bb61f2206ccb79ae3ee4e157a77de" kindref="member">OSUSAT_SLOG</ref>(<ref refid="group__osusat__slog__types_1ggafe0f1801f6e3827f06165e284313814ba3416b48f12ae3f2061aa0be0f9f6628e" kindref="member">OSUSAT_SLOG_DEBUG</ref>, component, fmt, ##__VA_ARGS__)</initializer>
+        <briefdescription>
+<para>Log a DEBUG level message. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">component</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Component identifier. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">fmt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Printf-style format string. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">...</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Variable arguments. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/slog.h" line="205" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/slog.h" bodystart="205" bodyend="206"/>
+      </memberdef>
+      <memberdef kind="define" id="group__osusat__slog__api_1ga7bbefdd3b087c6a39b6f677b63f25d94" prot="public" static="no">
+        <name>LOG_INFO</name>
+        <param><defname>component</defname></param>
+        <param><defname>fmt</defname></param>
+        <param><defname>...</defname></param>
+        <initializer>    <ref refid="group__osusat__slog__api_1gadd8bb61f2206ccb79ae3ee4e157a77de" kindref="member">OSUSAT_SLOG</ref>(<ref refid="group__osusat__slog__types_1ggafe0f1801f6e3827f06165e284313814ba0910e0bc044406b4a8be8fbd9198bb24" kindref="member">OSUSAT_SLOG_INFO</ref>, component, fmt, ##__VA_ARGS__)</initializer>
+        <briefdescription>
+<para>Log an INFO level message. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">component</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Component identifier. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">fmt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Printf-style format string. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">...</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Variable arguments. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/slog.h" line="215" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/slog.h" bodystart="215" bodyend="216"/>
+      </memberdef>
+      <memberdef kind="define" id="group__osusat__slog__api_1ga6f4ae2de6e3a56df741f6213ab6ad72f" prot="public" static="no">
+        <name>LOG_WARN</name>
+        <param><defname>component</defname></param>
+        <param><defname>fmt</defname></param>
+        <param><defname>...</defname></param>
+        <initializer>    <ref refid="group__osusat__slog__api_1gadd8bb61f2206ccb79ae3ee4e157a77de" kindref="member">OSUSAT_SLOG</ref>(<ref refid="group__osusat__slog__types_1ggafe0f1801f6e3827f06165e284313814ba4331435d3b641ebbb3a79f5dde6f3d6e" kindref="member">OSUSAT_SLOG_WARN</ref>, component, fmt, ##__VA_ARGS__)</initializer>
+        <briefdescription>
+<para>Log a WARN level message. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">component</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Component identifier. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">fmt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Printf-style format string. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">...</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Variable arguments. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/slog.h" line="225" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/slog.h" bodystart="225" bodyend="226"/>
+      </memberdef>
+      <memberdef kind="define" id="group__osusat__slog__api_1gac0e47ba70b120fad351ebed1c2f3d848" prot="public" static="no">
+        <name>LOG_ERROR</name>
+        <param><defname>component</defname></param>
+        <param><defname>fmt</defname></param>
+        <param><defname>...</defname></param>
+        <initializer>    <ref refid="group__osusat__slog__api_1gadd8bb61f2206ccb79ae3ee4e157a77de" kindref="member">OSUSAT_SLOG</ref>(<ref refid="group__osusat__slog__types_1ggafe0f1801f6e3827f06165e284313814baaaae4bb5016bcadcae7bf6d772e3f193" kindref="member">OSUSAT_SLOG_ERROR</ref>, component, fmt, ##__VA_ARGS__)</initializer>
+        <briefdescription>
+<para>Log an ERROR level message. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">component</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Component identifier. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">fmt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Printf-style format string. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">...</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Variable arguments. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/slog.h" line="235" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/slog.h" bodystart="235" bodyend="236"/>
+      </memberdef>
+      <memberdef kind="define" id="group__osusat__slog__api_1ga721347567e0cfddaedf2c2229682f665" prot="public" static="no">
+        <name>LOG_CRITICAL</name>
+        <param><defname>component</defname></param>
+        <param><defname>fmt</defname></param>
+        <param><defname>...</defname></param>
+        <initializer>    <ref refid="group__osusat__slog__api_1gadd8bb61f2206ccb79ae3ee4e157a77de" kindref="member">OSUSAT_SLOG</ref>(<ref refid="group__osusat__slog__types_1ggafe0f1801f6e3827f06165e284313814ba02b6fdc266af82fa9d529477846cab24" kindref="member">OSUSAT_SLOG_CRITICAL</ref>, component, fmt, ##__VA_ARGS__)</initializer>
+        <briefdescription>
+<para>Log a CRITICAL level message. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">component</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Component identifier. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">fmt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Printf-style format string. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">...</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Variable arguments. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/slog.h" line="245" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/slog.h" bodystart="245" bodyend="246"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>External interface for interacting with the Logging System. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

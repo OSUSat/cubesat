@@ -1,0 +1,203 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="group__logging__api" kind="group">
+    <compoundname>logging_api</compoundname>
+    <title>Public API</title>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="group__logging__api_1gab472c7887dc39c12bba0022d7a0ac99f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void logging_init</definition>
+        <argsstring>(osusat_slog_level_t min_level)</argsstring>
+        <name>logging_init</name>
+        <param>
+          <type><ref refid="group__osusat__slog__types_1gafe0f1801f6e3827f06165e284313814b" kindref="member">osusat_slog_level_t</ref></type>
+          <declname>min_level</declname>
+        </param>
+        <briefdescription>
+<para>Initialize the logging service. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">min_level</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Minimum log level to record. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/logging.h" line="55" column="6" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/logging.c" bodystart="79" bodyend="103" declfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/logging.h" declline="55" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__logging__api_1gae4adb3779250b040d37537491856dad5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void logging_write_external_log</definition>
+        <argsstring>(const osusat_slog_entry_t *entry, const char *message)</argsstring>
+        <name>logging_write_external_log</name>
+        <param>
+          <type>const <ref refid="structosusat__slog__entry__t" kindref="compound">osusat_slog_entry_t</ref> *</type>
+          <declname>entry</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+<para>Write an external log entry (e.g., from EPS) to mock FRAM and print it. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">entry</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the log entry header. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the log message string. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/logging.h" line="63" column="6" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/logging.c" bodystart="105" bodyend="116" declfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/logging.h" declline="63" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__logging__api_1gae344a717b3119e6abed5c4b75737a337" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t logging_flush</definition>
+        <argsstring>(void)</argsstring>
+        <name>logging_flush</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Flush pending logs to the local mock FRAM. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Number of log entries flushed. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/logging.h" line="70" column="8" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/logging.c" bodystart="159" bodyend="165" declfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/logging.h" declline="70" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="group__logging__api_1gac5d48d0826af20ccbcfefcae52dab9df" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void logging_set_level</definition>
+        <argsstring>(osusat_slog_level_t level)</argsstring>
+        <name>logging_set_level</name>
+        <param>
+          <type><ref refid="group__osusat__slog__types_1gafe0f1801f6e3827f06165e284313814b" kindref="member">osusat_slog_level_t</ref></type>
+          <declname>level</declname>
+        </param>
+        <briefdescription>
+<para>Change the minimum log level at runtime. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">level</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>New minimum log level. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/logging.h" line="77" column="6" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/logging.c" bodystart="167" bodyend="170" declfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/logging.h" declline="77" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__logging__api_1ga68313b2800456508351fdf21c8685fbf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t logging_pending_count</definition>
+        <argsstring>(void)</argsstring>
+        <name>logging_pending_count</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Get number of pending log entries. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Approximate count of buffered logs. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/logging.h" line="84" column="8" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/logging.c" bodystart="172" bodyend="172" declfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/logging.h" declline="84" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="group__logging__api_1ga7595483af83ec7a5305c9d3777a81997" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const uint8_t *</type>
+        <definition>const uint8_t * logging_get_fram_buffer</definition>
+        <argsstring>(void)</argsstring>
+        <name>logging_get_fram_buffer</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Get a pointer to the mock FRAM buffer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Pointer to the FRAM log buffer. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/logging.h" line="91" column="15" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/logging.c" bodystart="174" bodyend="180" declfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/logging.h" declline="91" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="function" id="group__logging__api_1gac902fb1bf52b4fb79abcac5a66ad527c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>uint32_t logging_get_fram_write_ptr</definition>
+        <argsstring>(void)</argsstring>
+        <name>logging_get_fram_write_ptr</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Get the current write pointer in the mock FRAM. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Write pointer offset. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/logging.h" line="98" column="10" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/logging.c" bodystart="182" bodyend="182" declfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/logging.h" declline="98" declcolumn="10"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="group__logging__api_1ga173fe71e335a20eddb1a39870744429e" prot="public" static="no">
+        <name>FRAM_LOG_SIZE</name>
+        <initializer>1024</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/logging.h" line="48" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/services/logging.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>External interface for the logging service. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

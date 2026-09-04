@@ -1,0 +1,596 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="group__PWR__Exported__Macro" kind="group">
+    <compoundname>PWR_Exported_Macro</compoundname>
+    <title>PWR Exported Macro</title>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="group__PWR__Exported__Macro_1ga1ee778f7ff494723bd0ef04ec44b0f77" prot="public" static="no">
+        <name>__HAL_PWR_VOLTAGESCALING_CONFIG</name>
+        <param><defname>__REGULATOR__</defname></param>
+        <initializer>do {                                                                           \
+      <ref refid="core__armv81mml_8h_1aec43007d9998a0a0e01faede4133d6be" kindref="member">__IO</ref> uint32_t tmpreg = 0x00;                                             \
+      /* Configure the Voltage Scaling */                                      \
+      MODIFY_REG (PWR-&gt;D3CR, <ref refid="group__Peripheral__Registers__Bits__Definition_1ga5566cb64c9ef928873024d23f3721050" kindref="member">PWR_D3CR_VOS</ref>, (__REGULATOR__));                   \
+      /* Delay after setting the voltage scaling */                            \
+      tmpreg = READ_BIT(PWR-&gt;D3CR, <ref refid="group__Peripheral__Registers__Bits__Definition_1ga5566cb64c9ef928873024d23f3721050" kindref="member">PWR_D3CR_VOS</ref>);                              \
+      UNUSED(tmpreg);                                                          \
+} while(0)</initializer>
+        <briefdescription>
+<para>Configure the main internal regulator output voltage. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__REGULATOR__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>: Specifies the regulator output voltage to achieve a trade-off between performance and power consumption when the device does not operate at the maximum frequency (refer to the datasheet for more details). This parameter can be one of the following values: <itemizedlist>
+<listitem><para>PWR_REGULATOR_VOLTAGE_SCALE0 : Regulator voltage output Scale 0 mode. </para>
+</listitem>
+<listitem><para>PWR_REGULATOR_VOLTAGE_SCALE1 : Regulator voltage output Scale 1 mode. </para>
+</listitem>
+<listitem><para>PWR_REGULATOR_VOLTAGE_SCALE2 : Regulator voltage output Scale 2 mode. </para>
+</listitem>
+<listitem><para>PWR_REGULATOR_VOLTAGE_SCALE3 : Regulator voltage output Scale 3 mode. </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>For STM32H74x and STM32H75x lines, configuring Voltage Scale 0 is only possible when Vcore is supplied from LDO (Low DropOut). The SYSCFG Clock must be enabled through <ref refid="group__RCC__Exported__Macros_1gafc3ffcbb86e4913ae336ba094ca199e1" kindref="member">__HAL_RCC_SYSCFG_CLK_ENABLE()</ref> macro before configuring Voltage Scale 0 using <ref refid="group__PWR__Exported__Macro_1ga1ee778f7ff494723bd0ef04ec44b0f77" kindref="member">__HAL_PWR_VOLTAGESCALING_CONFIG()</ref>. Transition to Voltage Scale 0 is only possible when the system is already in Voltage Scale 1. Transition from Voltage Scale 0 is only possible to Voltage Scale 1 then once in Voltage Scale 1 it is possible to switch to another voltage scale. After each regulator voltage setting, wait on VOSRDY flag to be set using macro <ref refid="group__PWR__Exported__Macro_1ga2977135bbea35b786805eea640d1c884" kindref="member">__HAL_PWR_GET_FLAG()</ref>. To enter low power mode , and if current regulator voltage is Voltage Scale 0 then first switch to Voltage Scale 1 before entering low power mode. </para>
+</simplesect>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None.</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h" line="288" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h" bodystart="288" bodyend="296"/>
+      </memberdef>
+      <memberdef kind="define" id="group__PWR__Exported__Macro_1ga2977135bbea35b786805eea640d1c884" prot="public" static="no">
+        <name>__HAL_PWR_GET_FLAG</name>
+        <param><defname>__FLAG__</defname></param>
+        <initializer>(((__FLAG__) == PWR_FLAG_PVDO)      ? ((PWR-&gt;CSR1 &amp; <ref refid="group__Peripheral__Registers__Bits__Definition_1gaf3e9a5812547f32576265e00802de3d0" kindref="member">PWR_CSR1_PVDO</ref>)      == <ref refid="group__Peripheral__Registers__Bits__Definition_1gaf3e9a5812547f32576265e00802de3d0" kindref="member">PWR_CSR1_PVDO</ref>)      :\
+ ((__FLAG__) == PWR_FLAG_AVDO)      ? ((PWR-&gt;CSR1 &amp; <ref refid="group__Peripheral__Registers__Bits__Definition_1ga0839931d400544985c1955ed9eeb55e9" kindref="member">PWR_CSR1_AVDO</ref>)      == <ref refid="group__Peripheral__Registers__Bits__Definition_1ga0839931d400544985c1955ed9eeb55e9" kindref="member">PWR_CSR1_AVDO</ref>)      :\
+ ((__FLAG__) == PWR_FLAG_ACTVOSRDY) ? ((PWR-&gt;CSR1 &amp; <ref refid="group__Peripheral__Registers__Bits__Definition_1ga6c8845e351ae1b92d1e6ec45395102f3" kindref="member">PWR_CSR1_ACTVOSRDY</ref>) == <ref refid="group__Peripheral__Registers__Bits__Definition_1ga6c8845e351ae1b92d1e6ec45395102f3" kindref="member">PWR_CSR1_ACTVOSRDY</ref>) :\
+ ((__FLAG__) == PWR_FLAG_BRR)       ? ((PWR-&gt;CR2 &amp; <ref refid="group__Peripheral__Registers__Bits__Definition_1gae3552758eb3c4985410fe8911560f298" kindref="member">PWR_CR2_BRRDY</ref>)       == <ref refid="group__Peripheral__Registers__Bits__Definition_1gae3552758eb3c4985410fe8911560f298" kindref="member">PWR_CR2_BRRDY</ref>)      :\
+ ((__FLAG__) == PWR_FLAG_VOSRDY)    ? ((PWR-&gt;SRDCR &amp; PWR_SRDCR_VOSRDY)  == PWR_SRDCR_VOSRDY)   :\
+ ((__FLAG__) == PWR_FLAG_SCUEN)     ? ((PWR-&gt;CR3 &amp; <ref refid="group__Peripheral__Registers__Bits__Definition_1gaf5a8423dbc59c5572057861d59115222" kindref="member">PWR_CR3_SCUEN</ref>)       == <ref refid="group__Peripheral__Registers__Bits__Definition_1gaf5a8423dbc59c5572057861d59115222" kindref="member">PWR_CR3_SCUEN</ref>)      :\
+ ((__FLAG__) == PWR_FLAG_STOP)      ? ((PWR-&gt;CPUCR &amp; <ref refid="group__Peripheral__Registers__Bits__Definition_1ga3e53d09fb0c22170ff5b37f7587762ec" kindref="member">PWR_CPUCR_STOPF</ref>)   == <ref refid="group__Peripheral__Registers__Bits__Definition_1ga3e53d09fb0c22170ff5b37f7587762ec" kindref="member">PWR_CPUCR_STOPF</ref>)    :\
+ ((__FLAG__) == PWR_FLAG_SB)        ? ((PWR-&gt;CPUCR &amp; <ref refid="group__Peripheral__Registers__Bits__Definition_1ga4d4e251da597e8edc8374d3c7bf48c28" kindref="member">PWR_CPUCR_SBF</ref>)     == <ref refid="group__Peripheral__Registers__Bits__Definition_1ga4d4e251da597e8edc8374d3c7bf48c28" kindref="member">PWR_CPUCR_SBF</ref>)      :\
+ ((__FLAG__) == PWR_FLAG_MMCVDO)    ? ((PWR-&gt;CSR1 &amp; PWR_CSR1_MMCVDO)    == PWR_CSR1_MMCVDO)    :\
+ ((__FLAG__) == PWR_FLAG_USB33RDY)  ? ((PWR-&gt;CR3 &amp; <ref refid="group__Peripheral__Registers__Bits__Definition_1ga64e25571a035b217eee2f8d99f5ca20d" kindref="member">PWR_CR3_USB33RDY</ref>)    == <ref refid="group__Peripheral__Registers__Bits__Definition_1ga64e25571a035b217eee2f8d99f5ca20d" kindref="member">PWR_CR3_USB33RDY</ref>)   :\
+ ((__FLAG__) == PWR_FLAG_TEMPH)     ? ((PWR-&gt;CR2 &amp; <ref refid="group__Peripheral__Registers__Bits__Definition_1gab519388ffad6698f98ada73c4bf81248" kindref="member">PWR_CR2_TEMPH</ref>)       == <ref refid="group__Peripheral__Registers__Bits__Definition_1gab519388ffad6698f98ada73c4bf81248" kindref="member">PWR_CR2_TEMPH</ref>)      :\
+ ((__FLAG__) == PWR_FLAG_TEMPL)     ? ((PWR-&gt;CR2 &amp; <ref refid="group__Peripheral__Registers__Bits__Definition_1ga186c016996c65b07e913e83155082865" kindref="member">PWR_CR2_TEMPL</ref>)       == <ref refid="group__Peripheral__Registers__Bits__Definition_1ga186c016996c65b07e913e83155082865" kindref="member">PWR_CR2_TEMPL</ref>)      :\
+ ((__FLAG__) == PWR_FLAG_VBATH)     ? ((PWR-&gt;CR2 &amp; <ref refid="group__Peripheral__Registers__Bits__Definition_1gaac411ccef055ec95447cd8b736221e06" kindref="member">PWR_CR2_VBATH</ref>)       == <ref refid="group__Peripheral__Registers__Bits__Definition_1gaac411ccef055ec95447cd8b736221e06" kindref="member">PWR_CR2_VBATH</ref>)      :\
+ ((PWR-&gt;CR2 &amp; <ref refid="group__Peripheral__Registers__Bits__Definition_1ga36dd5dc04502cb2bcfbbbad9247d47da" kindref="member">PWR_CR2_VBATL</ref>) == <ref refid="group__Peripheral__Registers__Bits__Definition_1ga36dd5dc04502cb2bcfbbbad9247d47da" kindref="member">PWR_CR2_VBATL</ref>))</initializer>
+        <briefdescription>
+<para>Check PWR flags are set or not. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__FLAG__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>: Specifies the flag to check. This parameter can be one of the following values: <itemizedlist>
+<listitem><para>PWR_FLAG_PVDO : PVD Output. This flag is valid only if PVD is enabled by the HAL_PWR_EnablePVD() function. The PVD is stopped by STANDBY mode. For this reason, this bit is equal to 0 after STANDBY or reset until the PVDE bit is set. </para>
+</listitem>
+<listitem><para>PWR_FLAG_AVDO : AVD Output. This flag is valid only if AVD is enabled by the HAL_PWREx_EnableAVD() function. The AVD is stopped by STANDBY mode. For this reason, this bit is equal to 0 after STANDBY or reset until the AVDE bit is set. </para>
+</listitem>
+<listitem><para>PWR_FLAG_ACTVOSRDY : This flag indicates that the Regulator voltage scaling output selection is ready. </para>
+</listitem>
+<listitem><para>PWR_FLAG_BRR : Backup regulator ready flag. This bit is not reset when the device wakes up from STANDBY mode or by a system reset or power-on reset. </para>
+</listitem>
+<listitem><para>PWR_FLAG_VOSRDY : This flag indicates that the Regulator voltage scaling output selection is ready. mode or by a system reset or power-on reset. </para>
+</listitem>
+<listitem><para>PWR_FLAG_USB33RDY : This flag indicates that the USB supply from regulator is ready. </para>
+</listitem>
+<listitem><para>PWR_FLAG_TEMPH : This flag indicates that the temperature equal or above high threshold level. </para>
+</listitem>
+<listitem><para>PWR_FLAG_TEMPL : This flag indicates that the temperature equal or below low threshold level. </para>
+</listitem>
+<listitem><para>PWR_FLAG_VBATH : This flag indicates that VBAT level equal or above high threshold level. </para>
+</listitem>
+<listitem><para>PWR_FLAG_VBATL : This flag indicates that VBAT level equal or below low threshold level. </para>
+</listitem>
+<listitem><para>PWR_FLAG_STOP : This flag indicates that the system entered in STOP mode. </para>
+</listitem>
+<listitem><para>PWR_FLAG_SB : This flag indicates that the system entered in STANDBY mode. </para>
+</listitem>
+<listitem><para>PWR_FLAG_SB_D1 : This flag indicates that the D1 domain entered in STANDBY mode. </para>
+</listitem>
+<listitem><para>PWR_FLAG_SB_D2 : This flag indicates that the D2 domain entered in STANDBY mode. </para>
+</listitem>
+<listitem><para>PWR_FLAG2_STOP : This flag indicates that the system entered in STOP mode. </para>
+</listitem>
+<listitem><para>PWR_FLAG2_SB : This flag indicates that the system entered in STANDBY mode. </para>
+</listitem>
+<listitem><para>PWR_FLAG2_SB_D1 : This flag indicates that the D1 domain entered in STANDBY mode. </para>
+</listitem>
+<listitem><para>PWR_FLAG2_SB_D2 : This flag indicates that the D2 domain entered in STANDBY mode. </para>
+</listitem>
+<listitem><para>PWR_FLAG_CPU_HOLD : This flag indicates that the CPU1 wakes up with hold. </para>
+</listitem>
+<listitem><para>PWR_FLAG_CPU2_HOLD : This flag indicates that the CPU2 wakes up with hold. </para>
+</listitem>
+<listitem><para>PWR_FLAG_SMPSEXTRDY : This flag indicates that the SMPS External supply is sready. </para>
+</listitem>
+<listitem><para>PWR_FLAG_SCUEN : This flag indicates that the supply configuration update is enabled. </para>
+</listitem>
+<listitem><para>PWR_FLAG_MMCVDO : This flag indicates that the VDDMMC is above or equal to 1.2 V. </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>The PWR_FLAG_PVDO, PWR_FLAG_AVDO, PWR_FLAG_ACTVOSRDY, PWR_FLAG_BRR, PWR_FLAG_VOSRDY, PWR_FLAG_USB33RDY, PWR_FLAG_TEMPH, PWR_FLAG_TEMPL, PWR_FLAG_VBATH, PWR_FLAG_VBATL, PWR_FLAG_STOP and PWR_FLAG_SB flags are used for all H7 family lines. The PWR_FLAG2_STOP, PWR_FLAG2_SB, PWR_FLAG2_SB_D1, PWR_FLAG2_SB_D2, PWR_FLAG_CPU_HOLD and PWR_FLAG_CPU2_HOLD flags are used only for H7 dual core lines. The PWR_FLAG_SB_D1 and PWR_FLAG_SB_D2 flags are used for all H7 family except STM32H7Axxx and STM32H7Bxxx lines. The PWR_FLAG_MMCVDO flag is used only for STM32H7Axxx and STM32H7Bxxx lines. The PWR_FLAG_SCUEN flag is used for devices that support only LDO regulator. The PWR_FLAG_SMPSEXTRDY flag is used for devices that support LDO and SMPS regulators. </para>
+</simplesect>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>The</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>FLAG</bold>) state (TRUE or FALSE). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h" line="455" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h" bodystart="455" bodyend="469"/>
+      </memberdef>
+      <memberdef kind="define" id="group__PWR__Exported__Macro_1ga8e3eb6bbc85beee17d213d64e99e8eed" prot="public" static="no">
+        <name>__HAL_PWR_GET_WAKEUPFLAG</name>
+        <param><defname>__FLAG__</defname></param>
+        <initializer>((PWR-&gt;WKUPFR &amp; (__FLAG__)) ? 0 : 1)</initializer>
+        <briefdescription>
+<para>Check PWR wake up flags are set or not. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__FLAG__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the wake up flag to check. This parameter can be one of the following values: <itemizedlist>
+<listitem><para>PWR_FLAG_WKUP1 : This parameter clear Wake up line 1 flag. </para>
+</listitem>
+<listitem><para>PWR_FLAG_WKUP2 : This parameter clear Wake up line 2 flag. </para>
+</listitem>
+<listitem><para>PWR_FLAG_WKUP3 : This parameter clear Wake up line 3 flag. </para>
+</listitem>
+<listitem><para>PWR_FLAG_WKUP4 : This parameter clear Wake up line 4 flag. </para>
+</listitem>
+<listitem><para>PWR_FLAG_WKUP5 : This parameter clear Wake up line 5 flag. </para>
+</listitem>
+<listitem><para>PWR_FLAG_WKUP6 : This parameter clear Wake up line 6 flag. </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>The PWR_FLAG_WKUP3 and PWR_FLAG_WKUP5 are available only for devices that support GPIOI port. </para>
+</simplesect>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>The</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>FLAG</bold>) state (TRUE or FALSE). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h" line="487" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h" bodystart="487" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__PWR__Exported__Macro_1ga96f24bf4b16c9f944cd829100bf746e5" prot="public" static="no">
+        <name>__HAL_PWR_CLEAR_FLAG</name>
+        <param><defname>__FLAG__</defname></param>
+        <initializer>SET_BIT(PWR-&gt;CPUCR, <ref refid="group__Peripheral__Registers__Bits__Definition_1ga852ddeb6ccda1c58d5674b856b122b17" kindref="member">PWR_CPUCR_CSSF</ref>)</initializer>
+        <briefdescription>
+<para>Clear CPU PWR flags. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__FLAG__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>: Specifies the flag to clear. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>This parameter is not used for the STM32H7 family and is kept as parameter just to maintain compatibility with other families. </para>
+</simplesect>
+<simplesect kind="note"><para>This macro clear all CPU flags. For single core devices except STM32H7Axxx and STM32H7Bxxx, CPU flags are STOPF, SBF, SBF_D1 and SBF_D2. For STM32H7Axxx and STM32H7Bxxx lines, CPU flags are STOPF and SBF. </para>
+</simplesect>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None.</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h" line="516" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h" bodystart="516" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__PWR__Exported__Macro_1ga21189c3a699027e3e932dff6985b2516" prot="public" static="no">
+        <name>__HAL_PWR_CLEAR_WAKEUPFLAG</name>
+        <param><defname>__FLAG__</defname></param>
+        <initializer>SET_BIT(PWR-&gt;WKUPCR, (__FLAG__))</initializer>
+        <briefdescription>
+<para>Clear PWR wake up flags. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__FLAG__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>: Specifies the wake up flag to be cleared. This parameter can be one of the following values : <itemizedlist>
+<listitem><para>PWR_FLAG_WKUP1 : This parameter clear Wake up line 1 flag. </para>
+</listitem>
+<listitem><para>PWR_FLAG_WKUP2 : This parameter clear Wake up line 2 flag. </para>
+</listitem>
+<listitem><para>PWR_FLAG_WKUP3 : This parameter clear Wake up line 3 flag. </para>
+</listitem>
+<listitem><para>PWR_FLAG_WKUP4 : This parameter clear Wake up line 4 flag. </para>
+</listitem>
+<listitem><para>PWR_FLAG_WKUP5 : This parameter clear Wake up line 5 flag. </para>
+</listitem>
+<listitem><para>PWR_FLAG_WKUP6 : This parameter clear Wake up line 6 flag. </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>The PWR_FLAG_WKUP3 and PWR_FLAG_WKUP5 are available only for devices that support GPIOI port. </para>
+</simplesect>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None.</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h" line="532" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h" bodystart="532" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__PWR__Exported__Macro_1ga3180f039cf14ef78a64089f387f8f9c2" prot="public" static="no">
+        <name>__HAL_PWR_PVD_EXTI_ENABLE_IT</name>
+        <param></param>
+        <initializer>SET_BIT(EXTI-&gt;IMR1, <ref refid="group__PWR__PVD__EXTI__Line_1ga43a49255649e03d2d2b6b12c5c379d2b" kindref="member">PWR_EXTI_LINE_PVD</ref>)</initializer>
+        <briefdescription>
+<para>Enable the PVD EXTI Line 16. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None.</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h" line="538" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h" bodystart="538" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__PWR__Exported__Macro_1gad240d7bf8f15191b068497b9aead1f1f" prot="public" static="no">
+        <name>__HAL_PWR_PVD_EXTI_DISABLE_IT</name>
+        <param></param>
+        <initializer>CLEAR_BIT(EXTI-&gt;IMR1, <ref refid="group__PWR__PVD__EXTI__Line_1ga43a49255649e03d2d2b6b12c5c379d2b" kindref="member">PWR_EXTI_LINE_PVD</ref>)</initializer>
+        <briefdescription>
+<para>Disable the PVD EXTI Line 16. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None.</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h" line="552" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h" bodystart="552" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__PWR__Exported__Macro_1gae5ba5672fe8cb7c1686c7f2cc211b128" prot="public" static="no">
+        <name>__HAL_PWR_PVD_EXTI_ENABLE_EVENT</name>
+        <param></param>
+        <initializer>SET_BIT(EXTI-&gt;EMR1, <ref refid="group__PWR__PVD__EXTI__Line_1ga43a49255649e03d2d2b6b12c5c379d2b" kindref="member">PWR_EXTI_LINE_PVD</ref>)</initializer>
+        <briefdescription>
+<para>Enable event on PVD EXTI Line 16. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None.</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h" line="566" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h" bodystart="566" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__PWR__Exported__Macro_1ga8bd379e960497722450c7cea474a7e7a" prot="public" static="no">
+        <name>__HAL_PWR_PVD_EXTI_DISABLE_EVENT</name>
+        <param></param>
+        <initializer>CLEAR_BIT(EXTI-&gt;EMR1, <ref refid="group__PWR__PVD__EXTI__Line_1ga43a49255649e03d2d2b6b12c5c379d2b" kindref="member">PWR_EXTI_LINE_PVD</ref>)</initializer>
+        <briefdescription>
+<para>Disable event on PVD EXTI Line 16. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None.</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h" line="580" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h" bodystart="580" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__PWR__Exported__Macro_1ga7bef3f30c9fe267c99d5240fbf3f878c" prot="public" static="no">
+        <name>__HAL_PWR_PVD_EXTI_ENABLE_RISING_EDGE</name>
+        <param></param>
+        <initializer>SET_BIT(EXTI-&gt;RTSR1, <ref refid="group__PWR__PVD__EXTI__Line_1ga43a49255649e03d2d2b6b12c5c379d2b" kindref="member">PWR_EXTI_LINE_PVD</ref>)</initializer>
+        <briefdescription>
+<para>Enable the PVD Rising Interrupt Trigger. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None.</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h" line="594" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h" bodystart="594" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__PWR__Exported__Macro_1ga1ca8fd7f3286a176f6be540c75a004c6" prot="public" static="no">
+        <name>__HAL_PWR_PVD_EXTI_DISABLE_RISING_EDGE</name>
+        <param></param>
+        <initializer>CLEAR_BIT(EXTI-&gt;RTSR1, <ref refid="group__PWR__PVD__EXTI__Line_1ga43a49255649e03d2d2b6b12c5c379d2b" kindref="member">PWR_EXTI_LINE_PVD</ref>)</initializer>
+        <briefdescription>
+<para>Disable the PVD Rising Interrupt Trigger. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None.</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h" line="600" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h" bodystart="600" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__PWR__Exported__Macro_1ga5b971478563a00e1ee1a9d8ca8054e08" prot="public" static="no">
+        <name>__HAL_PWR_PVD_EXTI_ENABLE_FALLING_EDGE</name>
+        <param></param>
+        <initializer>SET_BIT(EXTI-&gt;FTSR1, <ref refid="group__PWR__PVD__EXTI__Line_1ga43a49255649e03d2d2b6b12c5c379d2b" kindref="member">PWR_EXTI_LINE_PVD</ref>)</initializer>
+        <briefdescription>
+<para>Enable the PVD Falling Interrupt Trigger. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None.</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h" line="606" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h" bodystart="606" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__PWR__Exported__Macro_1ga1ca57168205f8cd8d1014e6eb9465f2d" prot="public" static="no">
+        <name>__HAL_PWR_PVD_EXTI_DISABLE_FALLING_EDGE</name>
+        <param></param>
+        <initializer>CLEAR_BIT(EXTI-&gt;FTSR1, <ref refid="group__PWR__PVD__EXTI__Line_1ga43a49255649e03d2d2b6b12c5c379d2b" kindref="member">PWR_EXTI_LINE_PVD</ref>)</initializer>
+        <briefdescription>
+<para>Disable the PVD Falling Interrupt Trigger. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None.</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h" line="612" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h" bodystart="612" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__PWR__Exported__Macro_1ga638033d236eb78c1e5ecb9b49c4e7f36" prot="public" static="no">
+        <name>__HAL_PWR_PVD_EXTI_ENABLE_RISING_FALLING_EDGE</name>
+        <param></param>
+        <initializer>do {                                                    \
+      <ref refid="group__PWR__Exported__Macro_1ga7bef3f30c9fe267c99d5240fbf3f878c" kindref="member">__HAL_PWR_PVD_EXTI_ENABLE_RISING_EDGE</ref>();          \
+      <ref refid="group__PWR__Exported__Macro_1ga5b971478563a00e1ee1a9d8ca8054e08" kindref="member">__HAL_PWR_PVD_EXTI_ENABLE_FALLING_EDGE</ref>();         \
+} while(0);</initializer>
+        <briefdescription>
+<para>Enable the PVD Rising &amp; Falling Interrupt Trigger. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None.</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h" line="618" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h" bodystart="618" bodyend="622"/>
+      </memberdef>
+      <memberdef kind="define" id="group__PWR__Exported__Macro_1ga3f66c9c0c214cd08c24674904dcdc4e0" prot="public" static="no">
+        <name>__HAL_PWR_PVD_EXTI_DISABLE_RISING_FALLING_EDGE</name>
+        <param></param>
+        <initializer>do {                                                     \
+      <ref refid="group__PWR__Exported__Macro_1ga1ca8fd7f3286a176f6be540c75a004c6" kindref="member">__HAL_PWR_PVD_EXTI_DISABLE_RISING_EDGE</ref>();          \
+      <ref refid="group__PWR__Exported__Macro_1ga1ca57168205f8cd8d1014e6eb9465f2d" kindref="member">__HAL_PWR_PVD_EXTI_DISABLE_FALLING_EDGE</ref>();         \
+} while(0);</initializer>
+        <briefdescription>
+<para>Disable the PVD Rising &amp; Falling Interrupt Trigger. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None.</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h" line="628" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h" bodystart="628" bodyend="632"/>
+      </memberdef>
+      <memberdef kind="define" id="group__PWR__Exported__Macro_1ga5e66fa75359b51066e0731ac1e5ae438" prot="public" static="no">
+        <name>__HAL_PWR_PVD_EXTI_GET_FLAG</name>
+        <param></param>
+        <initializer>((READ_BIT(EXTI-&gt;PR1, <ref refid="group__PWR__PVD__EXTI__Line_1ga43a49255649e03d2d2b6b12c5c379d2b" kindref="member">PWR_EXTI_LINE_PVD</ref>) == <ref refid="group__PWR__PVD__EXTI__Line_1ga43a49255649e03d2d2b6b12c5c379d2b" kindref="member">PWR_EXTI_LINE_PVD</ref>) ? 1UL : 0UL)</initializer>
+        <briefdescription>
+<para>Check whether the specified PVD EXTI interrupt flag is set or not. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>EXTI</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>PVD Line Status. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h" line="638" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h" bodystart="638" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__PWR__Exported__Macro_1gac0fb2218bc050f5d8fdb1a3f28590352" prot="public" static="no">
+        <name>__HAL_PWR_PVD_EXTI_CLEAR_FLAG</name>
+        <param></param>
+        <initializer>SET_BIT(EXTI-&gt;PR1, <ref refid="group__PWR__PVD__EXTI__Line_1ga43a49255649e03d2d2b6b12c5c379d2b" kindref="member">PWR_EXTI_LINE_PVD</ref>)</initializer>
+        <briefdescription>
+<para>Clear the PVD EXTI flag. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None.</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h" line="652" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h" bodystart="652" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__PWR__Exported__Macro_1gaba4a7968f5c4c4ca6a7047b147ba18d4" prot="public" static="no">
+        <name>__HAL_PWR_PVD_EXTI_GENERATE_SWIT</name>
+        <param></param>
+        <initializer>SET_BIT(EXTI-&gt;SWIER1, <ref refid="group__PWR__PVD__EXTI__Line_1ga43a49255649e03d2d2b6b12c5c379d2b" kindref="member">PWR_EXTI_LINE_PVD</ref>)</initializer>
+        <briefdescription>
+<para>Generates a Software interrupt on PVD EXTI line. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None.</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h" line="666" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h" bodystart="666" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

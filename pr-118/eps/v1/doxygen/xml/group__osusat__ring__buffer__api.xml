@@ -1,0 +1,400 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="group__osusat__ring__buffer__api" kind="group">
+    <compoundname>osusat_ring_buffer_api</compoundname>
+    <title>Public API</title>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="group__osusat__ring__buffer__api_1ga0042234225cbcdf0809fb285062ec630" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void osusat_ring_buffer_init</definition>
+        <argsstring>(osusat_ring_buffer_t *rb, uint8_t *storage, size_t capacity, bool overwrite)</argsstring>
+        <name>osusat_ring_buffer_init</name>
+        <param>
+          <type><ref refid="structosusat__ring__buffer__t" kindref="compound">osusat_ring_buffer_t</ref> *</type>
+          <declname>rb</declname>
+        </param>
+        <param>
+          <type>uint8_t *</type>
+          <declname>storage</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>capacity</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>overwrite</declname>
+        </param>
+        <briefdescription>
+<para>Initialize a ring buffer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Sets up the control structure to point to the provided storage array.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">rb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the ring buffer handle to initialize. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">storage</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the allocated byte array to use as storage. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">capacity</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Size of the storage array in bytes. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">overwrite</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If true, the buffer will overwrite the oldest data when full. If false, it will reject new data when full. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/ring_buffer.h" line="80" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/src/ring_buffer.c" bodystart="3" bodyend="10" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/ring_buffer.h" declline="80" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__osusat__ring__buffer__api_1ga6f508b20f1112d2e279c87219d11a0fb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void osusat_ring_buffer_clear</definition>
+        <argsstring>(osusat_ring_buffer_t *rb)</argsstring>
+        <name>osusat_ring_buffer_clear</name>
+        <param>
+          <type><ref refid="structosusat__ring__buffer__t" kindref="compound">osusat_ring_buffer_t</ref> *</type>
+          <declname>rb</declname>
+        </param>
+        <briefdescription>
+<para>Reset the buffer to empty. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Resets head and tail indices to zero. Does not zero-out the underlying memory.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">rb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The ring buffer handle. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/ring_buffer.h" line="91" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/src/ring_buffer.c" bodystart="12" bodyend="15" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/ring_buffer.h" declline="91" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__osusat__ring__buffer__api_1ga24d294734f61bf4558d82a332060af67" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool osusat_ring_buffer_push</definition>
+        <argsstring>(osusat_ring_buffer_t *rb, uint8_t byte)</argsstring>
+        <name>osusat_ring_buffer_push</name>
+        <param>
+          <type><ref refid="structosusat__ring__buffer__t" kindref="compound">osusat_ring_buffer_t</ref> *</type>
+          <declname>rb</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>byte</declname>
+        </param>
+        <briefdescription>
+<para>Push one byte into the buffer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">rb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The ring buffer handle. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">byte</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The byte to store.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>true</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Successfully added (or overwrote) the byte. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>false</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Buffer was full and overwrite mode is disabled. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/ring_buffer.h" line="102" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/src/ring_buffer.c" bodystart="28" bodyend="45" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/ring_buffer.h" declline="102" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__osusat__ring__buffer__api_1ga5f006e082a5e7caddda22ffd638b12da" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool osusat_ring_buffer_pop</definition>
+        <argsstring>(osusat_ring_buffer_t *rb, uint8_t *out)</argsstring>
+        <name>osusat_ring_buffer_pop</name>
+        <param>
+          <type><ref refid="structosusat__ring__buffer__t" kindref="compound">osusat_ring_buffer_t</ref> *</type>
+          <declname>rb</declname>
+        </param>
+        <param>
+          <type>uint8_t *</type>
+          <declname>out</declname>
+        </param>
+        <briefdescription>
+<para>Pop one byte from the buffer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">rb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The ring buffer handle. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">out</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to where the popped byte will be written.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>true</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Success, byte written to <computeroutput>out</computeroutput>. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>false</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Buffer was empty. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/ring_buffer.h" line="113" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/src/ring_buffer.c" bodystart="47" bodyend="56" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/ring_buffer.h" declline="113" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__osusat__ring__buffer__api_1gaabb268e66845991856ed71bf483fa1c3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool osusat_ring_buffer_peek</definition>
+        <argsstring>(const osusat_ring_buffer_t *rb, uint8_t *out)</argsstring>
+        <name>osusat_ring_buffer_peek</name>
+        <param>
+          <type>const <ref refid="structosusat__ring__buffer__t" kindref="compound">osusat_ring_buffer_t</ref> *</type>
+          <declname>rb</declname>
+        </param>
+        <param>
+          <type>uint8_t *</type>
+          <declname>out</declname>
+        </param>
+        <briefdescription>
+<para>Peek at the next byte without removing it. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Useful for inspecting the next available data packet header without consuming it.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">rb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The ring buffer handle. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">out</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to where the peeked byte will be written.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>true</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Success, byte written to <computeroutput>out</computeroutput>. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>false</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Buffer was empty. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/ring_buffer.h" line="127" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/src/ring_buffer.c" bodystart="58" bodyend="65" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/ring_buffer.h" declline="127" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__osusat__ring__buffer__api_1gafc55cbb6848b390c29b58f22d8a59be0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t osusat_ring_buffer_size</definition>
+        <argsstring>(const osusat_ring_buffer_t *rb)</argsstring>
+        <name>osusat_ring_buffer_size</name>
+        <param>
+          <type>const <ref refid="structosusat__ring__buffer__t" kindref="compound">osusat_ring_buffer_t</ref> *</type>
+          <declname>rb</declname>
+        </param>
+        <briefdescription>
+<para>Get the number of bytes currently stored. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">rb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The ring buffer handle. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Number of bytes active in the buffer. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/ring_buffer.h" line="135" column="8" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/src/ring_buffer.c" bodystart="21" bodyend="26" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/ring_buffer.h" declline="135" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="group__osusat__ring__buffer__api_1gac9d4338fd2f3863229614c8b2bddfd3f" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool osusat_ring_buffer_empty</definition>
+        <argsstring>(const osusat_ring_buffer_t *rb)</argsstring>
+        <name>osusat_ring_buffer_empty</name>
+        <param>
+          <type>const <ref refid="structosusat__ring__buffer__t" kindref="compound">osusat_ring_buffer_t</ref> *</type>
+          <declname>rb</declname>
+        </param>
+        <briefdescription>
+<para>Check if the buffer is empty. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">rb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The ring buffer handle. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>true</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Buffer is empty. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>false</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Buffer contains data. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/ring_buffer.h" line="144" column="20" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/ring_buffer.h" bodystart="144" bodyend="146"/>
+      </memberdef>
+      <memberdef kind="function" id="group__osusat__ring__buffer__api_1gaf165940d440c120602d91c2568570b69" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool osusat_ring_buffer_full</definition>
+        <argsstring>(const osusat_ring_buffer_t *rb)</argsstring>
+        <name>osusat_ring_buffer_full</name>
+        <param>
+          <type>const <ref refid="structosusat__ring__buffer__t" kindref="compound">osusat_ring_buffer_t</ref> *</type>
+          <declname>rb</declname>
+        </param>
+        <briefdescription>
+<para>Check if the buffer is full. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">rb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The ring buffer handle. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>true</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Buffer is full. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>false</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Buffer has space available. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/ring_buffer.h" line="155" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/src/ring_buffer.c" bodystart="17" bodyend="19" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/ring_buffer.h" declline="155" declcolumn="6"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>External interface for interacting with the Ring Buffer. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

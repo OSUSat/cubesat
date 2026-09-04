@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="hal__adc_8c" kind="file" language="C++">
+    <compoundname>hal_adc.c</compoundname>
+    <includes refid="hal__adc_8h" local="yes">hal_adc.h</includes>
+    <includes local="no">stdint.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_adc.c</label>
+        <link refid="hal__adc_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>hal_adc.h</label>
+        <link refid="hal__adc_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>stdint.h</label>
+      </node>
+    </incdepgraph>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="hal__adc_8c_1a57c4a7285c48a694470efbd15394c56c" prot="public" static="yes" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t adc_initialized</definition>
+        <argsstring></argsstring>
+        <name>adc_initialized</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_adc.c" line="9" column="16" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_adc.c" bodystart="9" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <member refid="group__obc__adc_1ga81b32a5bbfb422b51862d59fe2a33ccd" kind="function"><name>hal_adc_init</name></member>
+      <member refid="group__obc__adc_1ga4e6e34bb10795f8866a932879948804c" kind="function"><name>hal_adc_read</name></member>
+    </sectiondef>
+    <briefdescription>
+<para>HAL driver skeleton for ADC on OBC. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="hal__adc_8h" kindref="compound">hal_adc.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>uint8_t<sp/>adc_initialized<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__obc__adc_1ga81b32a5bbfb422b51862d59fe2a33ccd" kindref="member">hal_adc_init</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{<sp/>adc_initialized<sp/>=<sp/>1;<sp/>}</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal">uint16_t<sp/><ref refid="group__obc__adc_1ga4e6e34bb10795f8866a932879948804c" kindref="member">hal_adc_read</ref>(<ref refid="group__obc__adc_1gaafc4060027875f8fe46242b0656d7814" kindref="member">adc_channel_t</ref><sp/>channel)<sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!adc_initialized)<sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__obc__adc_1ga81b32a5bbfb422b51862d59fe2a33ccd" kindref="member">hal_adc_init</ref>();</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(channel<sp/>&gt;=<sp/><ref refid="group__obc__adc_1ggaafc4060027875f8fe46242b0656d7814abfe49e087a8e8e4844dff47acdaf7e97" kindref="member">ADC_CHANNEL_MAX</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>a<sp/>dummy<sp/>value/placeholder<sp/>since<sp/>ADC<sp/>is<sp/>not<sp/>configured<sp/>yet</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>2048;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_adc.c"/>
+  </compounddef>
+</doxygen>

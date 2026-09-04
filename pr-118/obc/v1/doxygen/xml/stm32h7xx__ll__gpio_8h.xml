@@ -1,0 +1,273 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="stm32h7xx__ll__gpio_8h" kind="file" language="C++">
+    <compoundname>stm32h7xx_ll_gpio.h</compoundname>
+    <includes refid="stm32h7xx_8h" local="yes">stm32h7xx.h</includes>
+    <incdepgraph>
+      <node id="2">
+        <label>stm32h7xx.h</label>
+        <link refid="stm32h7xx_8h"/>
+      </node>
+      <node id="1">
+        <label>/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_gpio.h</label>
+        <link refid="stm32h7xx__ll__gpio_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+<para>Header file of GPIO LL module. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>MCD Application Team </para>
+</simplesect>
+<simplesect kind="attention"><para></para>
+</simplesect>
+Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
+<para>This software is licensed under terms that can be found in the LICENSE file in the root directory of this software component. If no LICENSE file comes with this software, it is provided AS-IS. </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Define<sp/>to<sp/>prevent<sp/>recursive<sp/>inclusion<sp/>-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>STM32H7xx_LL_GPIO_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>STM32H7xx_LL_GPIO_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Includes<sp/>------------------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="stm32h7xx_8h" kindref="compound">stm32h7xx.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined<sp/>(GPIOA)<sp/>||<sp/>defined<sp/>(GPIOB)<sp/>||<sp/>defined<sp/>(GPIOC)<sp/>||<sp/>defined<sp/>(GPIOD)<sp/>||<sp/>defined<sp/>(GPIOE)<sp/>||<sp/>defined<sp/>(GPIOF)<sp/>||<sp/>defined<sp/>(GPIOG)<sp/>||<sp/>defined<sp/>(GPIOH)<sp/>||<sp/>defined<sp/>(GPIOI)<sp/>||<sp/>defined<sp/>(GPIOJ)<sp/>||<sp/>defined<sp/>(GPIOK)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>types<sp/>-------------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>variables<sp/>---------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>constants<sp/>---------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>macros<sp/>------------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(USE_FULL_LL_DRIVER)</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*USE_FULL_LL_DRIVER*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Exported<sp/>types<sp/>------------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(USE_FULL_LL_DRIVER)</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/>uint32_t<sp/>Pin;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/>uint32_t<sp/>Mode;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/>uint32_t<sp/>Speed;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/>uint32_t<sp/>OutputType;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/>uint32_t<sp/>Pull;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/>uint32_t<sp/>Alternate;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="92"><highlight class="normal">}<sp/>LL_GPIO_InitTypeDef;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>USE_FULL_LL_DRIVER<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Exported<sp/>constants<sp/>--------------------------------------------------------*/</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_GPIO_PIN_0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>GPIO_BSRR_BS0<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_GPIO_PIN_1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>GPIO_BSRR_BS1<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_GPIO_PIN_2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>GPIO_BSRR_BS2<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_GPIO_PIN_3<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>GPIO_BSRR_BS3<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_GPIO_PIN_4<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>GPIO_BSRR_BS4<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_GPIO_PIN_5<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>GPIO_BSRR_BS5<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_GPIO_PIN_6<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>GPIO_BSRR_BS6<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_GPIO_PIN_7<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>GPIO_BSRR_BS7<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_GPIO_PIN_8<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>GPIO_BSRR_BS8<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_GPIO_PIN_9<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>GPIO_BSRR_BS9<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_GPIO_PIN_10<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>GPIO_BSRR_BS10<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_GPIO_PIN_11<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>GPIO_BSRR_BS11<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_GPIO_PIN_12<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>GPIO_BSRR_BS12<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_GPIO_PIN_13<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>GPIO_BSRR_BS13<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_GPIO_PIN_14<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>GPIO_BSRR_BS14<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_GPIO_PIN_15<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>GPIO_BSRR_BS15<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_GPIO_PIN_ALL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(GPIO_BSRR_BS0<sp/>|<sp/>GPIO_BSRR_BS1<sp/><sp/>|<sp/>GPIO_BSRR_BS2<sp/><sp/>|<sp/>\</highlight></codeline>
+<codeline lineno="124"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>GPIO_BSRR_BS3<sp/><sp/>|<sp/>GPIO_BSRR_BS4<sp/><sp/>|<sp/>GPIO_BSRR_BS5<sp/><sp/>|<sp/>\</highlight></codeline>
+<codeline lineno="125"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>GPIO_BSRR_BS6<sp/><sp/>|<sp/>GPIO_BSRR_BS7<sp/><sp/>|<sp/>GPIO_BSRR_BS8<sp/><sp/>|<sp/>\</highlight></codeline>
+<codeline lineno="126"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>GPIO_BSRR_BS9<sp/><sp/>|<sp/>GPIO_BSRR_BS10<sp/>|<sp/>GPIO_BSRR_BS11<sp/>|<sp/>\</highlight></codeline>
+<codeline lineno="127"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>GPIO_BSRR_BS12<sp/>|<sp/>GPIO_BSRR_BS13<sp/>|<sp/>GPIO_BSRR_BS14<sp/>|<sp/>\</highlight></codeline>
+<codeline lineno="128"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>GPIO_BSRR_BS15)<sp/></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_GPIO_MODE_INPUT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0x00000000U)<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_GPIO_MODE_OUTPUT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>GPIO_MODER_MODE0_0<sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_GPIO_MODE_ALTERNATE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>GPIO_MODER_MODE0_1<sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_GPIO_MODE_ANALOG<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>GPIO_MODER_MODE0<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_GPIO_OUTPUT_PUSHPULL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0x00000000U)<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_GPIO_OUTPUT_OPENDRAIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>GPIO_OTYPER_OT0<sp/></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_GPIO_SPEED_FREQ_LOW<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0x00000000U)<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_GPIO_SPEED_FREQ_MEDIUM<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>GPIO_OSPEEDR_OSPEED0_0<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_GPIO_SPEED_FREQ_HIGH<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>GPIO_OSPEEDR_OSPEED0_1<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_GPIO_SPEED_FREQ_VERY_HIGH<sp/><sp/><sp/><sp/><sp/><sp/><sp/>GPIO_OSPEEDR_OSPEED0<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_GPIO_SPEED_LOW<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LL_GPIO_SPEED_FREQ_LOW</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_GPIO_SPEED_MEDIUM<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LL_GPIO_SPEED_FREQ_MEDIUM</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_GPIO_SPEED_FAST<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LL_GPIO_SPEED_FREQ_HIGH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_GPIO_SPEED_HIGH<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LL_GPIO_SPEED_FREQ_VERY_HIGH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_GPIO_PULL_NO<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0x00000000U)<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_GPIO_PULL_UP<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>GPIO_PUPDR_PUPD0_0<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_GPIO_PULL_DOWN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>GPIO_PUPDR_PUPD0_1<sp/></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_GPIO_AF_0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0x0000000U)<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_GPIO_AF_1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0x0000001U)<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_GPIO_AF_2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0x0000002U)<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_GPIO_AF_3<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0x0000003U)<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_GPIO_AF_4<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0x0000004U)<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_GPIO_AF_5<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0x0000005U)<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_GPIO_AF_6<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0x0000006U)<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_GPIO_AF_7<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0x0000007U)<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_GPIO_AF_8<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0x0000008U)<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_GPIO_AF_9<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0x0000009U)<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_GPIO_AF_10<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0x000000AU)<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_GPIO_AF_11<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0x000000BU)<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_GPIO_AF_12<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0x000000CU)<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_GPIO_AF_13<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0x000000DU)<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_GPIO_AF_14<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0x000000EU)<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_GPIO_AF_15<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0x000000FU)<sp/></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Exported<sp/>macro<sp/>------------------------------------------------------------*/</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_GPIO_WriteReg(__INSTANCE__,<sp/>__REG__,<sp/>__VALUE__)<sp/>WRITE_REG(__INSTANCE__-&gt;__REG__,<sp/>(__VALUE__))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="223"><highlight class="normal"></highlight></codeline>
+<codeline lineno="230"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_GPIO_ReadReg(__INSTANCE__,<sp/>__REG__)<sp/>READ_REG(__INSTANCE__-&gt;__REG__)</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Exported<sp/>functions<sp/>--------------------------------------------------------*/</highlight></codeline>
+<codeline lineno="278"><highlight class="normal">__STATIC_INLINE<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LL_GPIO_SetPinMode(<ref refid="structGPIO__TypeDef" kindref="compound">GPIO_TypeDef</ref><sp/>*GPIOx,<sp/>uint32_t<sp/>Pin,<sp/>uint32_t<sp/>Mode)</highlight></codeline>
+<codeline lineno="279"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/>MODIFY_REG(GPIOx-&gt;<ref refid="structGPIO__TypeDef_1ac2505d096b6b650f1647b8e0ff8b196b" kindref="member">MODER</ref>,<sp/>((Pin<sp/>*<sp/>Pin)<sp/>*<sp/>GPIO_MODER_MODE0),<sp/>((Pin<sp/>*<sp/>Pin)<sp/>*<sp/>Mode));</highlight></codeline>
+<codeline lineno="281"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"></highlight></codeline>
+<codeline lineno="312"><highlight class="normal">__STATIC_INLINE<sp/>uint32_t<sp/>LL_GPIO_GetPinMode(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structGPIO__TypeDef" kindref="compound">GPIO_TypeDef</ref><sp/>*GPIOx,<sp/>uint32_t<sp/>Pin)</highlight></codeline>
+<codeline lineno="313"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(uint32_t)(READ_BIT(GPIOx-&gt;<ref refid="structGPIO__TypeDef_1ac2505d096b6b650f1647b8e0ff8b196b" kindref="member">MODER</ref>,<sp/>((Pin<sp/>*<sp/>Pin)<sp/>*<sp/>GPIO_MODER_MODE0))<sp/>/<sp/>(Pin<sp/>*<sp/>Pin));</highlight></codeline>
+<codeline lineno="315"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"></highlight></codeline>
+<codeline lineno="346"><highlight class="normal">__STATIC_INLINE<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LL_GPIO_SetPinOutputType(<ref refid="structGPIO__TypeDef" kindref="compound">GPIO_TypeDef</ref><sp/>*GPIOx,<sp/>uint32_t<sp/>PinMask,<sp/>uint32_t<sp/>OutputType)</highlight></codeline>
+<codeline lineno="347"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="348"><highlight class="normal"><sp/><sp/>MODIFY_REG(GPIOx-&gt;<ref refid="structGPIO__TypeDef_1a910885e4d881c3a459dd11640237107f" kindref="member">OTYPER</ref>,<sp/>PinMask,<sp/>(PinMask<sp/>*<sp/>OutputType));</highlight></codeline>
+<codeline lineno="349"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="350"><highlight class="normal"></highlight></codeline>
+<codeline lineno="380"><highlight class="normal">__STATIC_INLINE<sp/>uint32_t<sp/>LL_GPIO_GetPinOutputType(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structGPIO__TypeDef" kindref="compound">GPIO_TypeDef</ref><sp/>*GPIOx,<sp/>uint32_t<sp/>Pin)</highlight></codeline>
+<codeline lineno="381"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="382"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(uint32_t)(READ_BIT(GPIOx-&gt;<ref refid="structGPIO__TypeDef_1a910885e4d881c3a459dd11640237107f" kindref="member">OTYPER</ref>,<sp/>Pin)<sp/>/<sp/>Pin);</highlight></codeline>
+<codeline lineno="383"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="384"><highlight class="normal"></highlight></codeline>
+<codeline lineno="417"><highlight class="normal">__STATIC_INLINE<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LL_GPIO_SetPinSpeed(<ref refid="structGPIO__TypeDef" kindref="compound">GPIO_TypeDef</ref><sp/>*GPIOx,<sp/>uint32_t<sp/>Pin,<sp/>uint32_t<sp/><sp/>Speed)</highlight></codeline>
+<codeline lineno="418"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="419"><highlight class="normal"><sp/><sp/>MODIFY_REG(GPIOx-&gt;<ref refid="structGPIO__TypeDef_1a0d233d720f18ae2050f9131fa6faf7c6" kindref="member">OSPEEDR</ref>,<sp/>((Pin<sp/>*<sp/>Pin)<sp/>*<sp/>GPIO_OSPEEDR_OSPEED0),<sp/>((Pin<sp/>*<sp/>Pin)<sp/>*<sp/>Speed));</highlight></codeline>
+<codeline lineno="420"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="421"><highlight class="normal"></highlight></codeline>
+<codeline lineno="453"><highlight class="normal">__STATIC_INLINE<sp/>uint32_t<sp/>LL_GPIO_GetPinSpeed(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structGPIO__TypeDef" kindref="compound">GPIO_TypeDef</ref><sp/>*GPIOx,<sp/>uint32_t<sp/>Pin)</highlight></codeline>
+<codeline lineno="454"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="455"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(uint32_t)(READ_BIT(GPIOx-&gt;<ref refid="structGPIO__TypeDef_1a0d233d720f18ae2050f9131fa6faf7c6" kindref="member">OSPEEDR</ref>,<sp/>((Pin<sp/>*<sp/>Pin)<sp/>*<sp/>GPIO_OSPEEDR_OSPEED0))<sp/>/<sp/>(Pin<sp/>*<sp/>Pin));</highlight></codeline>
+<codeline lineno="456"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="457"><highlight class="normal"></highlight></codeline>
+<codeline lineno="486"><highlight class="normal">__STATIC_INLINE<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LL_GPIO_SetPinPull(<ref refid="structGPIO__TypeDef" kindref="compound">GPIO_TypeDef</ref><sp/>*GPIOx,<sp/>uint32_t<sp/>Pin,<sp/>uint32_t<sp/>Pull)</highlight></codeline>
+<codeline lineno="487"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="488"><highlight class="normal"><sp/><sp/>MODIFY_REG(GPIOx-&gt;<ref refid="structGPIO__TypeDef_1a44ada3bfbe891e2efc1e06bda4c8014e" kindref="member">PUPDR</ref>,<sp/>((Pin<sp/>*<sp/>Pin)<sp/>*<sp/>GPIO_PUPDR_PUPD0),<sp/>((Pin<sp/>*<sp/>Pin)<sp/>*<sp/>Pull));</highlight></codeline>
+<codeline lineno="489"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="490"><highlight class="normal"></highlight></codeline>
+<codeline lineno="518"><highlight class="normal">__STATIC_INLINE<sp/>uint32_t<sp/>LL_GPIO_GetPinPull(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structGPIO__TypeDef" kindref="compound">GPIO_TypeDef</ref><sp/>*GPIOx,<sp/>uint32_t<sp/>Pin)</highlight></codeline>
+<codeline lineno="519"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="520"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(uint32_t)(READ_BIT(GPIOx-&gt;<ref refid="structGPIO__TypeDef_1a44ada3bfbe891e2efc1e06bda4c8014e" kindref="member">PUPDR</ref>,<sp/>((Pin<sp/>*<sp/>Pin)<sp/>*<sp/>GPIO_PUPDR_PUPD0))<sp/>/<sp/>(Pin<sp/>*<sp/>Pin));</highlight></codeline>
+<codeline lineno="521"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="522"><highlight class="normal"></highlight></codeline>
+<codeline lineno="557"><highlight class="normal">__STATIC_INLINE<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LL_GPIO_SetAFPin_0_7(<ref refid="structGPIO__TypeDef" kindref="compound">GPIO_TypeDef</ref><sp/>*GPIOx,<sp/>uint32_t<sp/>Pin,<sp/>uint32_t<sp/>Alternate)</highlight></codeline>
+<codeline lineno="558"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="559"><highlight class="normal"><sp/><sp/>MODIFY_REG(GPIOx-&gt;<ref refid="structGPIO__TypeDef_1a2245603433e102f0fd8a85f7de020755" kindref="member">AFR</ref>[0],<sp/>((((Pin<sp/>*<sp/>Pin)<sp/>*<sp/>Pin)<sp/>*<sp/>Pin)<sp/>*<sp/>GPIO_AFRL_AFSEL0),</highlight></codeline>
+<codeline lineno="560"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((((Pin<sp/>*<sp/>Pin)<sp/>*<sp/>Pin)<sp/>*<sp/>Pin)<sp/>*<sp/>Alternate));</highlight></codeline>
+<codeline lineno="561"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="562"><highlight class="normal"></highlight></codeline>
+<codeline lineno="594"><highlight class="normal">__STATIC_INLINE<sp/>uint32_t<sp/>LL_GPIO_GetAFPin_0_7(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structGPIO__TypeDef" kindref="compound">GPIO_TypeDef</ref><sp/>*GPIOx,<sp/>uint32_t<sp/>Pin)</highlight></codeline>
+<codeline lineno="595"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="596"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(uint32_t)(READ_BIT(GPIOx-&gt;<ref refid="structGPIO__TypeDef_1a2245603433e102f0fd8a85f7de020755" kindref="member">AFR</ref>[0],</highlight></codeline>
+<codeline lineno="597"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((((Pin<sp/>*<sp/>Pin)<sp/>*<sp/>Pin)<sp/>*<sp/>Pin)<sp/>*<sp/>GPIO_AFRL_AFSEL0))<sp/>/<sp/>(((Pin<sp/>*<sp/>Pin)<sp/>*<sp/>Pin)<sp/>*<sp/>Pin));</highlight></codeline>
+<codeline lineno="598"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="599"><highlight class="normal"></highlight></codeline>
+<codeline lineno="634"><highlight class="normal">__STATIC_INLINE<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LL_GPIO_SetAFPin_8_15(<ref refid="structGPIO__TypeDef" kindref="compound">GPIO_TypeDef</ref><sp/>*GPIOx,<sp/>uint32_t<sp/>Pin,<sp/>uint32_t<sp/>Alternate)</highlight></codeline>
+<codeline lineno="635"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="636"><highlight class="normal"><sp/><sp/>MODIFY_REG(GPIOx-&gt;<ref refid="structGPIO__TypeDef_1a2245603433e102f0fd8a85f7de020755" kindref="member">AFR</ref>[1],<sp/>(((((Pin<sp/>&gt;&gt;<sp/>8U)<sp/>*<sp/>(Pin<sp/>&gt;&gt;<sp/>8U))<sp/>*<sp/>(Pin<sp/>&gt;&gt;<sp/>8U))<sp/>*<sp/>(Pin<sp/>&gt;&gt;<sp/>8U))<sp/>*<sp/>GPIO_AFRH_AFSEL8),</highlight></codeline>
+<codeline lineno="637"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(((((Pin<sp/>&gt;&gt;<sp/>8U)<sp/>*<sp/>(Pin<sp/>&gt;&gt;<sp/>8U))<sp/>*<sp/>(Pin<sp/>&gt;&gt;<sp/>8U))<sp/>*<sp/>(Pin<sp/>&gt;&gt;<sp/>8U))<sp/>*<sp/>Alternate));</highlight></codeline>
+<codeline lineno="638"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="639"><highlight class="normal"></highlight></codeline>
+<codeline lineno="672"><highlight class="normal">__STATIC_INLINE<sp/>uint32_t<sp/>LL_GPIO_GetAFPin_8_15(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structGPIO__TypeDef" kindref="compound">GPIO_TypeDef</ref><sp/>*GPIOx,<sp/>uint32_t<sp/>Pin)</highlight></codeline>
+<codeline lineno="673"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="674"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(uint32_t)(READ_BIT(GPIOx-&gt;<ref refid="structGPIO__TypeDef_1a2245603433e102f0fd8a85f7de020755" kindref="member">AFR</ref>[1],</highlight></codeline>
+<codeline lineno="675"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(((((Pin<sp/>&gt;&gt;<sp/>8U)<sp/>*<sp/>(Pin<sp/>&gt;&gt;<sp/>8U))<sp/>*<sp/>(Pin<sp/>&gt;&gt;<sp/>8U))<sp/>*<sp/>(Pin<sp/>&gt;&gt;<sp/>8U))<sp/>*<sp/>GPIO_AFRH_AFSEL8))<sp/>/<sp/>((((Pin<sp/>&gt;&gt;<sp/>8U)<sp/>*</highlight></codeline>
+<codeline lineno="676"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(Pin<sp/>&gt;&gt;<sp/>8U))<sp/>*<sp/>(Pin<sp/>&gt;&gt;<sp/>8U))<sp/>*<sp/>(Pin<sp/>&gt;&gt;<sp/>8U)));</highlight></codeline>
+<codeline lineno="677"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="678"><highlight class="normal"></highlight></codeline>
+<codeline lineno="679"><highlight class="normal"></highlight></codeline>
+<codeline lineno="709"><highlight class="normal">__STATIC_INLINE<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LL_GPIO_LockPin(<ref refid="structGPIO__TypeDef" kindref="compound">GPIO_TypeDef</ref><sp/>*GPIOx,<sp/>uint32_t<sp/>PinMask)</highlight></codeline>
+<codeline lineno="710"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="711"><highlight class="normal"><sp/><sp/><ref refid="core__armv81mml_8h_1aec43007d9998a0a0e01faede4133d6be" kindref="member">__IO</ref><sp/>uint32_t<sp/>temp;</highlight></codeline>
+<codeline lineno="712"><highlight class="normal"><sp/><sp/>WRITE_REG(GPIOx-&gt;<ref refid="structGPIO__TypeDef_1a95a59d4b1d52be521f3246028be32f3e" kindref="member">LCKR</ref>,<sp/>GPIO_LCKR_LCKK<sp/>|<sp/>PinMask);</highlight></codeline>
+<codeline lineno="713"><highlight class="normal"><sp/><sp/>WRITE_REG(GPIOx-&gt;<ref refid="structGPIO__TypeDef_1a95a59d4b1d52be521f3246028be32f3e" kindref="member">LCKR</ref>,<sp/>PinMask);</highlight></codeline>
+<codeline lineno="714"><highlight class="normal"><sp/><sp/>WRITE_REG(GPIOx-&gt;<ref refid="structGPIO__TypeDef_1a95a59d4b1d52be521f3246028be32f3e" kindref="member">LCKR</ref>,<sp/>GPIO_LCKR_LCKK<sp/>|<sp/>PinMask);</highlight></codeline>
+<codeline lineno="715"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Read<sp/>LCKK<sp/>register.<sp/>This<sp/>read<sp/>is<sp/>mandatory<sp/>to<sp/>complete<sp/>key<sp/>lock<sp/>sequence<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="716"><highlight class="normal"><sp/><sp/>temp<sp/>=<sp/>READ_REG(GPIOx-&gt;<ref refid="structGPIO__TypeDef_1a95a59d4b1d52be521f3246028be32f3e" kindref="member">LCKR</ref>);</highlight></codeline>
+<codeline lineno="717"><highlight class="normal"><sp/><sp/>(void)<sp/>temp;</highlight></codeline>
+<codeline lineno="718"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="719"><highlight class="normal"></highlight></codeline>
+<codeline lineno="744"><highlight class="normal">__STATIC_INLINE<sp/>uint32_t<sp/>LL_GPIO_IsPinLocked(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structGPIO__TypeDef" kindref="compound">GPIO_TypeDef</ref><sp/>*GPIOx,<sp/>uint32_t<sp/>PinMask)</highlight></codeline>
+<codeline lineno="745"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="746"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>((READ_BIT(GPIOx-&gt;<ref refid="structGPIO__TypeDef_1a95a59d4b1d52be521f3246028be32f3e" kindref="member">LCKR</ref>,<sp/>PinMask)<sp/>==<sp/>(PinMask))<sp/>?<sp/>1UL<sp/>:<sp/>0UL);</highlight></codeline>
+<codeline lineno="747"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="748"><highlight class="normal"></highlight></codeline>
+<codeline lineno="755"><highlight class="normal">__STATIC_INLINE<sp/>uint32_t<sp/>LL_GPIO_IsAnyPinLocked(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structGPIO__TypeDef" kindref="compound">GPIO_TypeDef</ref><sp/>*GPIOx)</highlight></codeline>
+<codeline lineno="756"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="757"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>((READ_BIT(GPIOx-&gt;<ref refid="structGPIO__TypeDef_1a95a59d4b1d52be521f3246028be32f3e" kindref="member">LCKR</ref>,<sp/>GPIO_LCKR_LCKK)<sp/>==<sp/>(GPIO_LCKR_LCKK))<sp/>?<sp/>1UL<sp/>:<sp/>0UL);</highlight></codeline>
+<codeline lineno="758"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="759"><highlight class="normal"></highlight></codeline>
+<codeline lineno="774"><highlight class="normal">__STATIC_INLINE<sp/>uint32_t<sp/>LL_GPIO_ReadInputPort(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structGPIO__TypeDef" kindref="compound">GPIO_TypeDef</ref><sp/>*GPIOx)</highlight></codeline>
+<codeline lineno="775"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="776"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(uint32_t)(READ_REG(GPIOx-&gt;<ref refid="structGPIO__TypeDef_1acf11156409414ad8841bb0b62959ee96" kindref="member">IDR</ref>));</highlight></codeline>
+<codeline lineno="777"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="778"><highlight class="normal"></highlight></codeline>
+<codeline lineno="803"><highlight class="normal">__STATIC_INLINE<sp/>uint32_t<sp/>LL_GPIO_IsInputPinSet(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structGPIO__TypeDef" kindref="compound">GPIO_TypeDef</ref><sp/>*GPIOx,<sp/>uint32_t<sp/>PinMask)</highlight></codeline>
+<codeline lineno="804"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="805"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>((READ_BIT(GPIOx-&gt;<ref refid="structGPIO__TypeDef_1acf11156409414ad8841bb0b62959ee96" kindref="member">IDR</ref>,<sp/>PinMask)<sp/>==<sp/>(PinMask))<sp/>?<sp/>1UL<sp/>:<sp/>0UL);</highlight></codeline>
+<codeline lineno="806"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="807"><highlight class="normal"></highlight></codeline>
+<codeline lineno="815"><highlight class="normal">__STATIC_INLINE<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LL_GPIO_WriteOutputPort(<ref refid="structGPIO__TypeDef" kindref="compound">GPIO_TypeDef</ref><sp/>*GPIOx,<sp/>uint32_t<sp/>PortValue)</highlight></codeline>
+<codeline lineno="816"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="817"><highlight class="normal"><sp/><sp/>WRITE_REG(GPIOx-&gt;<ref refid="structGPIO__TypeDef_1a6fb78f4a978a36032cdeac93ac3c9c8b" kindref="member">ODR</ref>,<sp/>PortValue);</highlight></codeline>
+<codeline lineno="818"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="819"><highlight class="normal"></highlight></codeline>
+<codeline lineno="826"><highlight class="normal">__STATIC_INLINE<sp/>uint32_t<sp/>LL_GPIO_ReadOutputPort(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structGPIO__TypeDef" kindref="compound">GPIO_TypeDef</ref><sp/>*GPIOx)</highlight></codeline>
+<codeline lineno="827"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="828"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(uint32_t)(READ_REG(GPIOx-&gt;<ref refid="structGPIO__TypeDef_1a6fb78f4a978a36032cdeac93ac3c9c8b" kindref="member">ODR</ref>));</highlight></codeline>
+<codeline lineno="829"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="830"><highlight class="normal"></highlight></codeline>
+<codeline lineno="855"><highlight class="normal">__STATIC_INLINE<sp/>uint32_t<sp/>LL_GPIO_IsOutputPinSet(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structGPIO__TypeDef" kindref="compound">GPIO_TypeDef</ref><sp/>*GPIOx,<sp/>uint32_t<sp/>PinMask)</highlight></codeline>
+<codeline lineno="856"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="857"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>((READ_BIT(GPIOx-&gt;<ref refid="structGPIO__TypeDef_1a6fb78f4a978a36032cdeac93ac3c9c8b" kindref="member">ODR</ref>,<sp/>PinMask)<sp/>==<sp/>(PinMask))<sp/>?<sp/>1UL<sp/>:<sp/>0UL);</highlight></codeline>
+<codeline lineno="858"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="859"><highlight class="normal"></highlight></codeline>
+<codeline lineno="884"><highlight class="normal">__STATIC_INLINE<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LL_GPIO_SetOutputPin(<ref refid="structGPIO__TypeDef" kindref="compound">GPIO_TypeDef</ref><sp/>*GPIOx,<sp/>uint32_t<sp/>PinMask)</highlight></codeline>
+<codeline lineno="885"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="886"><highlight class="normal"><sp/><sp/>WRITE_REG(GPIOx-&gt;<ref refid="structGPIO__TypeDef_1acd6f21e08912b484c030ca8b18e11cd6" kindref="member">BSRR</ref>,<sp/>PinMask);</highlight></codeline>
+<codeline lineno="887"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="888"><highlight class="normal"></highlight></codeline>
+<codeline lineno="913"><highlight class="normal">__STATIC_INLINE<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LL_GPIO_ResetOutputPin(<ref refid="structGPIO__TypeDef" kindref="compound">GPIO_TypeDef</ref><sp/>*GPIOx,<sp/>uint32_t<sp/>PinMask)</highlight></codeline>
+<codeline lineno="914"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="915"><highlight class="normal"><sp/><sp/>WRITE_REG(GPIOx-&gt;<ref refid="structGPIO__TypeDef_1acd6f21e08912b484c030ca8b18e11cd6" kindref="member">BSRR</ref>,<sp/>PinMask<sp/>&lt;&lt;<sp/>16U);</highlight></codeline>
+<codeline lineno="916"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="917"><highlight class="normal"></highlight></codeline>
+<codeline lineno="942"><highlight class="normal">__STATIC_INLINE<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LL_GPIO_TogglePin(<ref refid="structGPIO__TypeDef" kindref="compound">GPIO_TypeDef</ref><sp/>*GPIOx,<sp/>uint32_t<sp/>PinMask)</highlight></codeline>
+<codeline lineno="943"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="944"><highlight class="normal"><sp/><sp/>uint32_t<sp/>odr<sp/>=<sp/>READ_REG(GPIOx-&gt;<ref refid="structGPIO__TypeDef_1a6fb78f4a978a36032cdeac93ac3c9c8b" kindref="member">ODR</ref>);</highlight></codeline>
+<codeline lineno="945"><highlight class="normal"><sp/><sp/>WRITE_REG(GPIOx-&gt;<ref refid="structGPIO__TypeDef_1acd6f21e08912b484c030ca8b18e11cd6" kindref="member">BSRR</ref>,<sp/>((odr<sp/>&amp;<sp/>PinMask)<sp/>&lt;&lt;<sp/>16u)<sp/>|<sp/>(~odr<sp/>&amp;<sp/>PinMask));</highlight></codeline>
+<codeline lineno="946"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="947"><highlight class="normal"></highlight></codeline>
+<codeline lineno="952"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(USE_FULL_LL_DRIVER)</highlight></codeline>
+<codeline lineno="957"><highlight class="normal">ErrorStatus<sp/>LL_GPIO_DeInit(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structGPIO__TypeDef" kindref="compound">GPIO_TypeDef</ref><sp/>*GPIOx);</highlight></codeline>
+<codeline lineno="958"><highlight class="normal">ErrorStatus<sp/>LL_GPIO_Init(<ref refid="structGPIO__TypeDef" kindref="compound">GPIO_TypeDef</ref><sp/>*GPIOx,<sp/>LL_GPIO_InitTypeDef<sp/>*GPIO_InitStruct);</highlight></codeline>
+<codeline lineno="959"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LL_GPIO_StructInit(LL_GPIO_InitTypeDef<sp/>*GPIO_InitStruct);</highlight></codeline>
+<codeline lineno="960"><highlight class="normal"></highlight></codeline>
+<codeline lineno="964"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>USE_FULL_LL_DRIVER<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="965"><highlight class="normal"></highlight></codeline>
+<codeline lineno="974"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*defined<sp/>(GPIOA)<sp/>||<sp/>defined<sp/>(GPIOB)<sp/>||<sp/>defined<sp/>(GPIOC)<sp/>||<sp/>defined<sp/>(GPIOD)<sp/>||<sp/>defined<sp/>(GPIOE)<sp/>||<sp/>defined<sp/>(GPIOF)<sp/>||<sp/>defined<sp/>(GPIOG)<sp/>||<sp/>defined<sp/>(GPIOH)<sp/>||<sp/>defined<sp/>(GPIOI)<sp/>||<sp/>defined<sp/>(GPIOJ)<sp/>||<sp/>defined<sp/>(GPIOK)<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="979"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="980"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="981"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="982"><highlight class="normal"></highlight></codeline>
+<codeline lineno="983"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>STM32H7xx_LL_GPIO_H<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="984"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_gpio.h"/>
+  </compounddef>
+</doxygen>

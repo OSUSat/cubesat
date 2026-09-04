@@ -1,0 +1,738 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="stm32h7xx__ll__exti_8h" kind="file" language="C++">
+    <compoundname>stm32h7xx_ll_exti.h</compoundname>
+    <includes refid="stm32h7xx_8h" local="yes">stm32h7xx.h</includes>
+    <incdepgraph>
+      <node id="2">
+        <label>stm32h7xx.h</label>
+        <link refid="stm32h7xx_8h"/>
+      </node>
+      <node id="1">
+        <label>/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_exti.h</label>
+        <link refid="stm32h7xx__ll__exti_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+<para>Header file of EXTI LL module. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>MCD Application Team </para>
+</simplesect>
+<simplesect kind="attention"><para></para>
+</simplesect>
+Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
+<para>This software is licensed under terms that can be found in the LICENSE file in the root directory of this software component. If no LICENSE file comes with this software, it is provided AS-IS. </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Define<sp/>to<sp/>prevent<sp/>recursive<sp/>inclusion<sp/>-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>__STM32H7xx_LL_EXTI_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__STM32H7xx_LL_EXTI_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Includes<sp/>------------------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="stm32h7xx_8h" kindref="compound">stm32h7xx.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined<sp/>(EXTI)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>types<sp/>-------------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>variables<sp/>---------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>constants<sp/>---------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>Macros<sp/>------------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(USE_FULL_LL_DRIVER)</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*USE_FULL_LL_DRIVER*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Exported<sp/>types<sp/>------------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(USE_FULL_LL_DRIVER)</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/>uint32_t<sp/>Line_0_31;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/>uint32_t<sp/>Line_32_63;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/>uint32_t<sp/>Line_64_95;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/>FunctionalState<sp/>LineCommand;<sp/><sp/></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/>uint8_t<sp/>Mode;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/>uint8_t<sp/>Trigger;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="77"><highlight class="normal">}<sp/>LL_EXTI_InitTypeDef;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*USE_FULL_LL_DRIVER*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Exported<sp/>constants<sp/>--------------------------------------------------------*/</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR1_IM0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR1_IM1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR1_IM2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_3<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR1_IM3<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_4<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR1_IM4<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_5<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR1_IM5<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_6<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR1_IM6<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_7<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR1_IM7<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_8<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR1_IM8<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_9<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR1_IM9<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_10<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR1_IM10<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_11<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR1_IM11<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_12<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR1_IM12<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_13<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR1_IM13<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_14<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR1_IM14<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_15<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR1_IM15<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_16<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR1_IM16<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_17<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR1_IM17<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_18<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR1_IM18<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_19<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR1_IM19<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_20<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR1_IM20<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_21<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR1_IM21<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_22<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR1_IM22<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_23<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR1_IM23<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_24<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR1_IM24<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_25<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR1_IM25<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_26<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR1_IM26<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_27<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR1_IM27<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_28<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR1_IM28<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_29<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR1_IM29<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_30<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR1_IM30<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_31<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR1_IM31<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_ALL_0_31<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR1_IM<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_32<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR2_IM32<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_33<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR2_IM33<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_34<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR2_IM34<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_35<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR2_IM35<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_36<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR2_IM36<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_37<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR2_IM37<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_38<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR2_IM38<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_39<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR2_IM39<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_40<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR2_IM40<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_41<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR2_IM41<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_42<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR2_IM42<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_43<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR2_IM43<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(USB2_OTG_FS)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_44<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR2_IM44<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>USB2_OTG_FS<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(DSI)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_46<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR2_IM46<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>DSI<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_47<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR2_IM47<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_48<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR2_IM48<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_49<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR2_IM49<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_50<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR2_IM50<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_51<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR2_IM51<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_52<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR2_IM52<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_53<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR2_IM53<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_54<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR2_IM54<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_55<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR2_IM55<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_56<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR2_IM56<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(EXTI_IMR2_IM57)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_57<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR2_IM57<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*EXTI_IMR2_IM57*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_58<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR2_IM58<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(EXTI_IMR2_IM59)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_59<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR2_IM59<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*EXTI_IMR2_IM59*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_60<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR2_IM60<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_61<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR2_IM61<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_62<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR2_IM62<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_63<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR2_IM63<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_ALL_32_63<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR2_IM<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_64<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR3_IM64<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_65<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR3_IM65<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_66<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR3_IM66<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_67<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR3_IM67<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_68<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR3_IM68<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_69<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR3_IM69<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_70<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR3_IM70<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_71<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR3_IM71<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_72<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR3_IM72<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_73<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR3_IM73<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_74<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR3_IM74<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(ADC3)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_75<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR3_IM75<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>ADC3<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(SAI4)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_76<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR3_IM76<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>SAI4<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(DUAL_CORE)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_77<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR3_IM77<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_78<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR3_IM78<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_79<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR3_IM79<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_80<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR3_IM80<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_82<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR3_IM82<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_84<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR3_IM84<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>DUAL_CORE<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_85<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR3_IM85<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(ETH)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_86<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR3_IM86<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>ETH<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_87<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR3_IM87<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(DTS)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_88<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR3_IM88<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>DTS<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(EXTI_IMR3_IM89)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="201"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_89<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR3_IM89<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>EXTI_IMR3_IM89<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(EXTI_IMR3_IM90)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_90<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR3_IM90<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>EXTI_IMR3_IM90<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(I2C5)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="207"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_91<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR3_IM91<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="208"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>I2C5<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_ALL_64_95<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR3_IM<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="212"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_ALL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0xFFFFFFFFU)<sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="214"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(USE_FULL_LL_DRIVER)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="215"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_LINE_NONE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0x00000000U)<sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*USE_FULL_LL_DRIVER*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="217"><highlight class="normal"></highlight></codeline>
+<codeline lineno="221"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(USE_FULL_LL_DRIVER)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="222"><highlight class="normal"></highlight></codeline>
+<codeline lineno="226"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_MODE_IT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((uint8_t)0x01U)<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="227"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_MODE_EVENT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((uint8_t)0x02U)<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="228"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_MODE_IT_EVENT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((uint8_t)0x03U)<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="230"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(DUAL_CORE)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="231"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_MODE_C1_IT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LL_EXTI_MODE_IT<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="232"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_MODE_C1_EVENT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LL_EXTI_MODE_EVENT<sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="233"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_MODE_C1_IT_EVENT<sp/><sp/><sp/><sp/><sp/><sp/>LL_EXTI_MODE_IT_EVENT<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="235"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_MODE_C2_IT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((uint8_t)0x10U)<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="236"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_MODE_C2_EVENT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((uint8_t)0x20U)<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="237"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_MODE_C2_IT_EVENT<sp/><sp/><sp/><sp/><sp/><sp/>((uint8_t)0x30U)<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="238"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>DUAL_CORE<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="239"><highlight class="normal"></highlight></codeline>
+<codeline lineno="247"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_TRIGGER_NONE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((uint8_t)0x00U)<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="248"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_TRIGGER_RISING<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((uint8_t)0x01U)<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="249"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_TRIGGER_FALLING<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((uint8_t)0x02U)<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="250"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_TRIGGER_RISING_FALLING<sp/><sp/>((uint8_t)0x03U)<sp/></highlight></codeline>
+<codeline lineno="259"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_D3_PEND_CLR_DMACH6<sp/><sp/><sp/><sp/><sp/><sp/>((uint8_t)0x00U)<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="260"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_D3_PEND_CLR_DMACH7<sp/><sp/><sp/><sp/><sp/><sp/>((uint8_t)0x01U)<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="261"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined<sp/>(LPTIM4)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="262"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_D3_PEND_CLR_LPTIM4<sp/><sp/><sp/><sp/><sp/><sp/>((uint8_t)0x02U)<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="263"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="264"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_D3_PEND_CLR_LPTIM2<sp/><sp/><sp/><sp/><sp/><sp/>((uint8_t)0x02U)<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="265"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*LPTIM4*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="266"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined<sp/>(LPTIM5)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="267"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_D3_PEND_CLR_LPTIM5<sp/><sp/><sp/><sp/><sp/><sp/>((uint8_t)0x03U)<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="268"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="269"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_D3_PEND_CLR_LPTIM3<sp/><sp/><sp/><sp/><sp/><sp/>((uint8_t)0x02U)<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="270"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*LPTIM5*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="276"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*USE_FULL_LL_DRIVER*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="277"><highlight class="normal"></highlight></codeline>
+<codeline lineno="278"><highlight class="normal"></highlight></codeline>
+<codeline lineno="283"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Exported<sp/>macro<sp/>------------------------------------------------------------*/</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_WriteReg(__REG__,<sp/>__VALUE__)<sp/>WRITE_REG(EXTI-&gt;__REG__,<sp/>(__VALUE__))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="299"><highlight class="normal"></highlight></codeline>
+<codeline lineno="305"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LL_EXTI_ReadReg(__REG__)<sp/>READ_REG(EXTI-&gt;__REG__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="306"><highlight class="normal"></highlight></codeline>
+<codeline lineno="318"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Exported<sp/>functions<sp/>--------------------------------------------------------*/</highlight></codeline>
+<codeline lineno="365"><highlight class="normal">__STATIC_INLINE<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LL_EXTI_EnableIT_0_31(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="366"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="367"><highlight class="normal"><sp/><sp/>SET_BIT(EXTI-&gt;IMR1,<sp/>ExtiLine);</highlight></codeline>
+<codeline lineno="368"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="369"><highlight class="normal"></highlight></codeline>
+<codeline lineno="410"><highlight class="normal">__STATIC_INLINE<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LL_EXTI_EnableIT_32_63(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="411"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="412"><highlight class="normal"><sp/><sp/>SET_BIT(EXTI-&gt;IMR2,<sp/>ExtiLine);</highlight></codeline>
+<codeline lineno="413"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="414"><highlight class="normal"></highlight></codeline>
+<codeline lineno="415"><highlight class="normal"></highlight></codeline>
+<codeline lineno="452"><highlight class="normal">__STATIC_INLINE<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LL_EXTI_EnableIT_64_95(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="453"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="454"><highlight class="normal"><sp/><sp/>SET_BIT(EXTI-&gt;IMR3,<sp/>ExtiLine);</highlight></codeline>
+<codeline lineno="455"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="456"><highlight class="normal"></highlight></codeline>
+<codeline lineno="457"><highlight class="normal"></highlight></codeline>
+<codeline lineno="497"><highlight class="normal">__STATIC_INLINE<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LL_EXTI_DisableIT_0_31(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="498"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="499"><highlight class="normal"><sp/><sp/>CLEAR_BIT(EXTI-&gt;IMR1,<sp/>ExtiLine);</highlight></codeline>
+<codeline lineno="500"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="501"><highlight class="normal"></highlight></codeline>
+<codeline lineno="502"><highlight class="normal"></highlight></codeline>
+<codeline lineno="543"><highlight class="normal">__STATIC_INLINE<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LL_EXTI_DisableIT_32_63(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="544"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="545"><highlight class="normal"><sp/><sp/>CLEAR_BIT(EXTI-&gt;IMR2,<sp/>ExtiLine);</highlight></codeline>
+<codeline lineno="546"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="547"><highlight class="normal"></highlight></codeline>
+<codeline lineno="584"><highlight class="normal">__STATIC_INLINE<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LL_EXTI_DisableIT_64_95(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="585"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="586"><highlight class="normal"><sp/><sp/>CLEAR_BIT(EXTI-&gt;IMR3,<sp/>ExtiLine);</highlight></codeline>
+<codeline lineno="587"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="588"><highlight class="normal"></highlight></codeline>
+<codeline lineno="589"><highlight class="normal"></highlight></codeline>
+<codeline lineno="629"><highlight class="normal">__STATIC_INLINE<sp/>uint32_t<sp/>LL_EXTI_IsEnabledIT_0_31(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="630"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="631"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>((READ_BIT(EXTI-&gt;IMR1,<sp/>ExtiLine)<sp/>==<sp/>(ExtiLine))<sp/>?<sp/>1U<sp/>:<sp/>0U);</highlight></codeline>
+<codeline lineno="632"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="633"><highlight class="normal"></highlight></codeline>
+<codeline lineno="634"><highlight class="normal"></highlight></codeline>
+<codeline lineno="675"><highlight class="normal">__STATIC_INLINE<sp/>uint32_t<sp/>LL_EXTI_IsEnabledIT_32_63(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="676"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="677"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>((READ_BIT(EXTI-&gt;IMR2,<sp/>ExtiLine)<sp/>==<sp/>(ExtiLine))<sp/>?<sp/>1U<sp/>:<sp/>0U);</highlight></codeline>
+<codeline lineno="678"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="679"><highlight class="normal"></highlight></codeline>
+<codeline lineno="680"><highlight class="normal"></highlight></codeline>
+<codeline lineno="717"><highlight class="normal">__STATIC_INLINE<sp/>uint32_t<sp/>LL_EXTI_IsEnabledIT_64_95(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="718"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="719"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>((READ_BIT(EXTI-&gt;IMR3,<sp/>ExtiLine)<sp/>==<sp/>(ExtiLine))<sp/>?<sp/>1U<sp/>:<sp/>0U);</highlight></codeline>
+<codeline lineno="720"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="721"><highlight class="normal"></highlight></codeline>
+<codeline lineno="722"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(DUAL_CORE)</highlight></codeline>
+<codeline lineno="762"><highlight class="normal">__STATIC_INLINE<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LL_C2_EXTI_EnableIT_0_31(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="763"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="764"><highlight class="normal"><sp/><sp/>SET_BIT(EXTI-&gt;C2IMR1,<sp/>ExtiLine);</highlight></codeline>
+<codeline lineno="765"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="766"><highlight class="normal"></highlight></codeline>
+<codeline lineno="767"><highlight class="normal"></highlight></codeline>
+<codeline lineno="806"><highlight class="normal">__STATIC_INLINE<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LL_C2_EXTI_EnableIT_32_63(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="807"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="808"><highlight class="normal"><sp/><sp/>SET_BIT(EXTI-&gt;C2IMR2,<sp/>ExtiLine);</highlight></codeline>
+<codeline lineno="809"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="810"><highlight class="normal"></highlight></codeline>
+<codeline lineno="811"><highlight class="normal"></highlight></codeline>
+<codeline lineno="841"><highlight class="normal">__STATIC_INLINE<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LL_C2_EXTI_EnableIT_64_95(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="842"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="843"><highlight class="normal"><sp/><sp/>SET_BIT(EXTI-&gt;C2IMR3,<sp/>ExtiLine);</highlight></codeline>
+<codeline lineno="844"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="845"><highlight class="normal"></highlight></codeline>
+<codeline lineno="846"><highlight class="normal"></highlight></codeline>
+<codeline lineno="886"><highlight class="normal">__STATIC_INLINE<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LL_C2_EXTI_DisableIT_0_31(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="887"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="888"><highlight class="normal"><sp/><sp/>CLEAR_BIT(EXTI-&gt;C2IMR1,<sp/>ExtiLine);</highlight></codeline>
+<codeline lineno="889"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="890"><highlight class="normal"></highlight></codeline>
+<codeline lineno="891"><highlight class="normal"></highlight></codeline>
+<codeline lineno="892"><highlight class="normal"></highlight></codeline>
+<codeline lineno="931"><highlight class="normal">__STATIC_INLINE<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LL_C2_EXTI_DisableIT_32_63(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="932"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="933"><highlight class="normal"><sp/><sp/>CLEAR_BIT(EXTI-&gt;C2IMR2,<sp/>ExtiLine);</highlight></codeline>
+<codeline lineno="934"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="935"><highlight class="normal"></highlight></codeline>
+<codeline lineno="936"><highlight class="normal"></highlight></codeline>
+<codeline lineno="966"><highlight class="normal">__STATIC_INLINE<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LL_C2_EXTI_DisableIT_64_95(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="967"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="968"><highlight class="normal"><sp/><sp/>CLEAR_BIT(EXTI-&gt;C2IMR3,<sp/>ExtiLine);</highlight></codeline>
+<codeline lineno="969"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="970"><highlight class="normal"></highlight></codeline>
+<codeline lineno="971"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1011"><highlight class="normal">__STATIC_INLINE<sp/>uint32_t<sp/>LL_C2_EXTI_IsEnabledIT_0_31(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="1012"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="1013"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>((READ_BIT(EXTI-&gt;C2IMR1,<sp/>ExtiLine)<sp/>==<sp/>(ExtiLine))<sp/>?<sp/>1U<sp/>:<sp/>0U);</highlight></codeline>
+<codeline lineno="1014"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="1015"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1016"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1055"><highlight class="normal">__STATIC_INLINE<sp/>uint32_t<sp/>LL_C2_EXTI_IsEnabledIT_32_63(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="1056"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="1057"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>((READ_BIT(EXTI-&gt;C2IMR2,<sp/>ExtiLine)<sp/>==<sp/>(ExtiLine))?<sp/>1U<sp/>:<sp/>0U);</highlight></codeline>
+<codeline lineno="1058"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="1059"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1060"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1090"><highlight class="normal">__STATIC_INLINE<sp/>uint32_t<sp/>LL_C2_EXTI_IsEnabledIT_64_95(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="1091"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="1092"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>((READ_BIT(EXTI-&gt;C2IMR3,<sp/>ExtiLine)<sp/>==<sp/>(ExtiLine))<sp/>?<sp/>1U<sp/>:<sp/>0U);</highlight></codeline>
+<codeline lineno="1093"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="1094"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1095"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>DUAL_CORE<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1096"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1097"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1145"><highlight class="normal">__STATIC_INLINE<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LL_EXTI_EnableEvent_0_31(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="1146"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="1147"><highlight class="normal"><sp/><sp/>SET_BIT(EXTI-&gt;EMR1,<sp/>ExtiLine);</highlight></codeline>
+<codeline lineno="1148"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="1149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1190"><highlight class="normal">__STATIC_INLINE<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LL_EXTI_EnableEvent_32_63(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="1191"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="1192"><highlight class="normal"><sp/><sp/>SET_BIT(EXTI-&gt;EMR2,<sp/>ExtiLine);</highlight></codeline>
+<codeline lineno="1193"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="1194"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1231"><highlight class="normal">__STATIC_INLINE<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LL_EXTI_EnableEvent_64_95(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="1232"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="1233"><highlight class="normal"><sp/><sp/>SET_BIT(EXTI-&gt;EMR3,<sp/>ExtiLine);</highlight></codeline>
+<codeline lineno="1234"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="1235"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1275"><highlight class="normal">__STATIC_INLINE<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LL_EXTI_DisableEvent_0_31(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="1276"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="1277"><highlight class="normal"><sp/><sp/>CLEAR_BIT(EXTI-&gt;EMR1,<sp/>ExtiLine);</highlight></codeline>
+<codeline lineno="1278"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="1279"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1320"><highlight class="normal">__STATIC_INLINE<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LL_EXTI_DisableEvent_32_63(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="1321"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="1322"><highlight class="normal"><sp/><sp/>CLEAR_BIT(EXTI-&gt;EMR2,<sp/>ExtiLine);</highlight></codeline>
+<codeline lineno="1323"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="1324"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1361"><highlight class="normal">__STATIC_INLINE<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LL_EXTI_DisableEvent_64_95(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="1362"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="1363"><highlight class="normal"><sp/><sp/>CLEAR_BIT(EXTI-&gt;EMR3,<sp/>ExtiLine);</highlight></codeline>
+<codeline lineno="1364"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="1365"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1406"><highlight class="normal">__STATIC_INLINE<sp/>uint32_t<sp/>LL_EXTI_IsEnabledEvent_0_31(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="1407"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="1408"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>((READ_BIT(EXTI-&gt;EMR1,<sp/>ExtiLine)<sp/>==<sp/>(ExtiLine))<sp/>?<sp/>1U<sp/>:<sp/>0U);</highlight></codeline>
+<codeline lineno="1409"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="1410"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1451"><highlight class="normal">__STATIC_INLINE<sp/>uint32_t<sp/>LL_EXTI_IsEnabledEvent_32_63(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="1452"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="1453"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>((READ_BIT(EXTI-&gt;EMR2,<sp/>ExtiLine)<sp/>==<sp/>(ExtiLine))<sp/>?<sp/>1U<sp/>:<sp/>0U);</highlight></codeline>
+<codeline lineno="1454"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="1455"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1492"><highlight class="normal">__STATIC_INLINE<sp/>uint32_t<sp/>LL_EXTI_IsEnabledEvent_64_95(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="1493"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="1494"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>((READ_BIT(EXTI-&gt;EMR3,<sp/>ExtiLine)<sp/>==<sp/>(ExtiLine))<sp/>?<sp/>1U<sp/>:<sp/>0U);</highlight></codeline>
+<codeline lineno="1495"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="1496"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1497"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(DUAL_CORE)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1498"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1538"><highlight class="normal">__STATIC_INLINE<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LL_C2_EXTI_EnableEvent_0_31(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="1539"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="1540"><highlight class="normal"><sp/><sp/>SET_BIT(EXTI-&gt;C2EMR1,<sp/>ExtiLine);</highlight></codeline>
+<codeline lineno="1541"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="1542"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1543"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1582"><highlight class="normal">__STATIC_INLINE<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LL_C2_EXTI_EnableEvent_32_63(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="1583"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="1584"><highlight class="normal"><sp/><sp/>SET_BIT(EXTI-&gt;C2EMR2,<sp/>ExtiLine);</highlight></codeline>
+<codeline lineno="1585"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="1586"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1616"><highlight class="normal">__STATIC_INLINE<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LL_C2_EXTI_EnableEvent_64_95(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="1617"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="1618"><highlight class="normal"><sp/><sp/>SET_BIT(EXTI-&gt;C2EMR3,<sp/>ExtiLine);</highlight></codeline>
+<codeline lineno="1619"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="1620"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1621"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1661"><highlight class="normal">__STATIC_INLINE<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LL_C2_EXTI_DisableEvent_0_31(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="1662"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="1663"><highlight class="normal"><sp/><sp/>CLEAR_BIT(EXTI-&gt;C2EMR1,<sp/>ExtiLine);</highlight></codeline>
+<codeline lineno="1664"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="1665"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1666"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1705"><highlight class="normal">__STATIC_INLINE<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LL_C2_EXTI_DisableEvent_32_63(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="1706"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="1707"><highlight class="normal"><sp/><sp/>CLEAR_BIT(EXTI-&gt;C2EMR2,<sp/>ExtiLine);</highlight></codeline>
+<codeline lineno="1708"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="1709"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1710"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1740"><highlight class="normal">__STATIC_INLINE<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LL_C2_EXTI_DisableEvent_64_95(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="1741"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="1742"><highlight class="normal"><sp/><sp/>CLEAR_BIT(EXTI-&gt;C2EMR3,<sp/>ExtiLine);</highlight></codeline>
+<codeline lineno="1743"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="1744"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1745"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1786"><highlight class="normal">__STATIC_INLINE<sp/>uint32_t<sp/>LL_C2_EXTI_IsEnabledEvent_0_31(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="1787"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="1788"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>((READ_BIT(EXTI-&gt;C2EMR1,<sp/>ExtiLine)<sp/>==<sp/>(ExtiLine))<sp/>?<sp/>1U<sp/>:<sp/>0U);</highlight></codeline>
+<codeline lineno="1789"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="1790"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1791"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1830"><highlight class="normal">__STATIC_INLINE<sp/>uint32_t<sp/>LL_C2_EXTI_IsEnabledEvent_32_63(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="1831"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="1832"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>((READ_BIT(EXTI-&gt;C2EMR2,<sp/>ExtiLine)<sp/>==<sp/>(ExtiLine))<sp/>?<sp/>1U<sp/>:<sp/>0U);</highlight></codeline>
+<codeline lineno="1833"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="1834"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1835"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1865"><highlight class="normal">__STATIC_INLINE<sp/>uint32_t<sp/>LL_C2_EXTI_IsEnabledEvent_64_95(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="1866"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="1867"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>((READ_BIT(EXTI-&gt;C2EMR3,<sp/>ExtiLine)<sp/>==<sp/>(ExtiLine))<sp/>?<sp/>1U<sp/>:<sp/>0U);</highlight></codeline>
+<codeline lineno="1868"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="1869"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1870"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1871"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>DUAL_CORE<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1872"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1916"><highlight class="normal">__STATIC_INLINE<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LL_EXTI_EnableRisingTrig_0_31(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="1917"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="1918"><highlight class="normal"><sp/><sp/>SET_BIT(EXTI-&gt;RTSR1,<sp/>ExtiLine);</highlight></codeline>
+<codeline lineno="1919"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1920"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="1921"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1936"><highlight class="normal">__STATIC_INLINE<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LL_EXTI_EnableRisingTrig_32_63(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="1937"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="1938"><highlight class="normal"><sp/><sp/>SET_BIT(EXTI-&gt;RTSR2,<sp/>ExtiLine);</highlight></codeline>
+<codeline lineno="1939"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="1940"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1960"><highlight class="normal">__STATIC_INLINE<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LL_EXTI_EnableRisingTrig_64_95(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="1961"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="1962"><highlight class="normal"><sp/><sp/>SET_BIT(EXTI-&gt;RTSR3,<sp/>ExtiLine);</highlight></codeline>
+<codeline lineno="1963"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="1964"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2000"><highlight class="normal">__STATIC_INLINE<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LL_EXTI_DisableRisingTrig_0_31(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="2001"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="2002"><highlight class="normal"><sp/><sp/>CLEAR_BIT(EXTI-&gt;RTSR1,<sp/>ExtiLine);</highlight></codeline>
+<codeline lineno="2003"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2004"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="2005"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2021"><highlight class="normal">__STATIC_INLINE<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LL_EXTI_DisableRisingTrig_32_63(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="2022"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="2023"><highlight class="normal"><sp/><sp/>CLEAR_BIT(EXTI-&gt;RTSR2,<sp/>ExtiLine);</highlight></codeline>
+<codeline lineno="2024"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="2025"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2046"><highlight class="normal">__STATIC_INLINE<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LL_EXTI_DisableRisingTrig_64_95(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="2047"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="2048"><highlight class="normal"><sp/><sp/>CLEAR_BIT(EXTI-&gt;RTSR3,<sp/>ExtiLine);</highlight></codeline>
+<codeline lineno="2049"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="2050"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2079"><highlight class="normal">__STATIC_INLINE<sp/>uint32_t<sp/>LL_EXTI_IsEnabledRisingTrig_0_31(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="2080"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="2081"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>((READ_BIT(EXTI-&gt;RTSR1,<sp/>ExtiLine)<sp/>==<sp/>(ExtiLine))<sp/>?<sp/>1U<sp/>:<sp/>0U);</highlight></codeline>
+<codeline lineno="2082"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="2083"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2084"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2093"><highlight class="normal">__STATIC_INLINE<sp/>uint32_t<sp/>LL_EXTI_IsEnabledRisingTrig_32_63(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="2094"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="2095"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>((READ_BIT(EXTI-&gt;RTSR2,<sp/>ExtiLine)<sp/>==<sp/>(ExtiLine))<sp/>?<sp/>1U<sp/>:<sp/>0U);</highlight></codeline>
+<codeline lineno="2096"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="2097"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2111"><highlight class="normal">__STATIC_INLINE<sp/>uint32_t<sp/>LL_EXTI_IsEnabledRisingTrig_64_95(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="2112"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="2113"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>((READ_BIT(EXTI-&gt;RTSR3,<sp/>ExtiLine)<sp/>==<sp/>(ExtiLine))<sp/>?<sp/>1U<sp/>:<sp/>0U);</highlight></codeline>
+<codeline lineno="2114"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="2115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2159"><highlight class="normal">__STATIC_INLINE<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LL_EXTI_EnableFallingTrig_0_31(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="2160"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="2161"><highlight class="normal"><sp/><sp/>SET_BIT(EXTI-&gt;FTSR1,<sp/>ExtiLine);</highlight></codeline>
+<codeline lineno="2162"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="2163"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2179"><highlight class="normal">__STATIC_INLINE<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LL_EXTI_EnableFallingTrig_32_63(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="2180"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="2181"><highlight class="normal"><sp/><sp/>SET_BIT(EXTI-&gt;FTSR2,<sp/>ExtiLine);</highlight></codeline>
+<codeline lineno="2182"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="2183"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2204"><highlight class="normal">__STATIC_INLINE<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LL_EXTI_EnableFallingTrig_64_95(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="2205"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="2206"><highlight class="normal"><sp/><sp/>SET_BIT(EXTI-&gt;FTSR3,<sp/>ExtiLine);</highlight></codeline>
+<codeline lineno="2207"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="2208"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2209"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2244"><highlight class="normal">__STATIC_INLINE<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LL_EXTI_DisableFallingTrig_0_31(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="2245"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="2246"><highlight class="normal"><sp/><sp/>CLEAR_BIT(EXTI-&gt;FTSR1,<sp/>ExtiLine);</highlight></codeline>
+<codeline lineno="2247"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="2248"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2263"><highlight class="normal">__STATIC_INLINE<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LL_EXTI_DisableFallingTrig_32_63(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="2264"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="2265"><highlight class="normal"><sp/><sp/>CLEAR_BIT(EXTI-&gt;FTSR2,<sp/>ExtiLine);</highlight></codeline>
+<codeline lineno="2266"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="2267"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2287"><highlight class="normal">__STATIC_INLINE<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LL_EXTI_DisableFallingTrig_64_95(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="2288"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="2289"><highlight class="normal"><sp/><sp/>CLEAR_BIT(EXTI-&gt;FTSR3,<sp/>ExtiLine);</highlight></codeline>
+<codeline lineno="2290"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="2291"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2292"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2321"><highlight class="normal">__STATIC_INLINE<sp/>uint32_t<sp/>LL_EXTI_IsEnabledFallingTrig_0_31(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="2322"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="2323"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>((READ_BIT(EXTI-&gt;FTSR1,<sp/>ExtiLine)<sp/>==<sp/>(ExtiLine))<sp/>?<sp/>1U<sp/>:<sp/>0U);</highlight></codeline>
+<codeline lineno="2324"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="2325"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2334"><highlight class="normal">__STATIC_INLINE<sp/>uint32_t<sp/>LL_EXTI_IsEnabledFallingTrig_32_63(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="2335"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="2336"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>((READ_BIT(EXTI-&gt;FTSR2,<sp/>ExtiLine)<sp/>==<sp/>(ExtiLine))<sp/>?<sp/>1U<sp/>:<sp/>0U);</highlight></codeline>
+<codeline lineno="2337"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="2338"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2352"><highlight class="normal">__STATIC_INLINE<sp/>uint32_t<sp/>LL_EXTI_IsEnabledFallingTrig_64_95(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="2353"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="2354"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>((READ_BIT(EXTI-&gt;FTSR3,<sp/>ExtiLine)<sp/>==<sp/>(ExtiLine))<sp/>?<sp/>1U<sp/>:<sp/>0U);</highlight></codeline>
+<codeline lineno="2355"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="2356"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2357"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2399"><highlight class="normal">__STATIC_INLINE<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LL_EXTI_GenerateSWI_0_31(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="2400"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="2401"><highlight class="normal"><sp/><sp/>SET_BIT(EXTI-&gt;SWIER1,<sp/>ExtiLine);</highlight></codeline>
+<codeline lineno="2402"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="2403"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2417"><highlight class="normal">__STATIC_INLINE<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LL_EXTI_GenerateSWI_32_63(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="2418"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="2419"><highlight class="normal"><sp/><sp/>SET_BIT(EXTI-&gt;SWIER2,<sp/>ExtiLine);</highlight></codeline>
+<codeline lineno="2420"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="2421"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2440"><highlight class="normal">__STATIC_INLINE<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LL_EXTI_GenerateSWI_64_95(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="2441"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="2442"><highlight class="normal"><sp/><sp/>SET_BIT(EXTI-&gt;SWIER3,<sp/>ExtiLine);</highlight></codeline>
+<codeline lineno="2443"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="2444"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2445"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2485"><highlight class="normal">__STATIC_INLINE<sp/>uint32_t<sp/>LL_EXTI_IsActiveFlag_0_31(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="2486"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="2487"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>((READ_BIT(EXTI-&gt;PR1,<sp/>ExtiLine)<sp/>==<sp/>(ExtiLine))<sp/>?<sp/>1U<sp/>:<sp/>0U);</highlight></codeline>
+<codeline lineno="2488"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="2489"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2501"><highlight class="normal">__STATIC_INLINE<sp/>uint32_t<sp/>LL_EXTI_IsActiveFlag_32_63(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="2502"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="2503"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>((READ_BIT(EXTI-&gt;PR2,<sp/>ExtiLine)<sp/>==<sp/>(ExtiLine))<sp/>?<sp/>1U<sp/>:<sp/>0U);</highlight></codeline>
+<codeline lineno="2504"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="2505"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2521"><highlight class="normal">__STATIC_INLINE<sp/>uint32_t<sp/>LL_EXTI_IsActiveFlag_64_95(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="2522"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="2523"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>((READ_BIT(EXTI-&gt;PR3,<sp/>ExtiLine)<sp/>==<sp/>(ExtiLine))<sp/>?<sp/>1U<sp/>:<sp/>0U);</highlight></codeline>
+<codeline lineno="2524"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="2525"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2526"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2557"><highlight class="normal">__STATIC_INLINE<sp/>uint32_t<sp/>LL_EXTI_ReadFlag_0_31(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="2558"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="2559"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(uint32_t)(READ_BIT(EXTI-&gt;PR1,<sp/>ExtiLine));</highlight></codeline>
+<codeline lineno="2560"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="2561"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2562"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2573"><highlight class="normal">__STATIC_INLINE<sp/>uint32_t<sp/>LL_EXTI_ReadFlag_32_63(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="2574"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="2575"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(uint32_t)(READ_BIT(EXTI-&gt;PR2,<sp/>ExtiLine));</highlight></codeline>
+<codeline lineno="2576"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="2577"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2578"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2594"><highlight class="normal">__STATIC_INLINE<sp/>uint32_t<sp/>LL_EXTI_ReadFlag_64_95(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="2595"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="2596"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(uint32_t)(READ_BIT(EXTI-&gt;PR3,<sp/>ExtiLine));</highlight></codeline>
+<codeline lineno="2597"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="2598"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2629"><highlight class="normal">__STATIC_INLINE<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LL_EXTI_ClearFlag_0_31(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="2630"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="2631"><highlight class="normal"><sp/><sp/>WRITE_REG(EXTI-&gt;PR1,<sp/>ExtiLine);</highlight></codeline>
+<codeline lineno="2632"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="2633"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2644"><highlight class="normal">__STATIC_INLINE<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LL_EXTI_ClearFlag_32_63(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="2645"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="2646"><highlight class="normal"><sp/><sp/>WRITE_REG(EXTI-&gt;PR2,<sp/>ExtiLine);</highlight></codeline>
+<codeline lineno="2647"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="2648"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2664"><highlight class="normal">__STATIC_INLINE<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LL_EXTI_ClearFlag_64_95(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="2665"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="2666"><highlight class="normal"><sp/><sp/>WRITE_REG(EXTI-&gt;PR3,<sp/>ExtiLine);</highlight></codeline>
+<codeline lineno="2667"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="2668"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2669"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(DUAL_CORE)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2670"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2702"><highlight class="normal">__STATIC_INLINE<sp/>uint32_t<sp/>LL_C2_EXTI_IsActiveFlag_0_31(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="2703"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="2704"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>((READ_BIT(EXTI-&gt;C2PR1,<sp/>ExtiLine)<sp/>==<sp/>(ExtiLine))<sp/>?<sp/>1U<sp/>:<sp/>0U);</highlight></codeline>
+<codeline lineno="2705"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="2706"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2718"><highlight class="normal">__STATIC_INLINE<sp/>uint32_t<sp/>LL_C2_EXTI_IsActiveFlag_32_63(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="2719"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="2720"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>((READ_BIT(EXTI-&gt;C2PR2,<sp/>ExtiLine)<sp/>==<sp/>(ExtiLine))<sp/>?<sp/>1U<sp/>:<sp/>0U);</highlight></codeline>
+<codeline lineno="2721"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="2722"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2736"><highlight class="normal">__STATIC_INLINE<sp/>uint32_t<sp/>LL_C2_EXTI_IsActiveFlag_64_95(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="2737"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="2738"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>((READ_BIT(EXTI-&gt;C2PR3,<sp/>ExtiLine)<sp/>==<sp/>(ExtiLine))<sp/>?<sp/>1U<sp/>:<sp/>0U);</highlight></codeline>
+<codeline lineno="2739"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="2740"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2771"><highlight class="normal">__STATIC_INLINE<sp/>uint32_t<sp/>LL_C2_EXTI_ReadFlag_0_31(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="2772"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="2773"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(uint32_t)(READ_BIT(EXTI-&gt;C2PR1,<sp/>ExtiLine));</highlight></codeline>
+<codeline lineno="2774"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="2775"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2786"><highlight class="normal">__STATIC_INLINE<sp/>uint32_t<sp/>LL_C2_EXTI_ReadFlag_32_63(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="2787"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="2788"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(uint32_t)(READ_BIT(EXTI-&gt;C2PR2,<sp/>ExtiLine));</highlight></codeline>
+<codeline lineno="2789"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="2790"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2791"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2804"><highlight class="normal">__STATIC_INLINE<sp/>uint32_t<sp/>LL_C2_EXTI_ReadFlag_64_95(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="2805"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="2806"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(uint32_t)(READ_BIT(EXTI-&gt;C2PR3,<sp/>ExtiLine));</highlight></codeline>
+<codeline lineno="2807"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="2838"><highlight class="normal">__STATIC_INLINE<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LL_C2_EXTI_ClearFlag_0_31(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="2839"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="2840"><highlight class="normal"><sp/><sp/>WRITE_REG(EXTI-&gt;C2PR1,<sp/>ExtiLine);</highlight></codeline>
+<codeline lineno="2841"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="2842"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2853"><highlight class="normal">__STATIC_INLINE<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LL_C2_EXTI_ClearFlag_32_63(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="2854"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="2855"><highlight class="normal"><sp/><sp/>WRITE_REG(EXTI-&gt;C2PR2,<sp/>ExtiLine);</highlight></codeline>
+<codeline lineno="2856"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="2857"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2870"><highlight class="normal">__STATIC_INLINE<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LL_C2_EXTI_ClearFlag_64_95(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="2871"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="2872"><highlight class="normal"><sp/><sp/>WRITE_REG(EXTI-&gt;C2PR3,<sp/>ExtiLine);</highlight></codeline>
+<codeline lineno="2873"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="2874"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2875"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>DUAL_CORE<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2876"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2903"><highlight class="normal">__STATIC_INLINE<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LL_D3_EXTI_EnablePendMask_0_31(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="2904"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="2905"><highlight class="normal"><sp/><sp/>SET_BIT(EXTI-&gt;D3PMR1,<sp/>ExtiLine);</highlight></codeline>
+<codeline lineno="2906"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="2907"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2923"><highlight class="normal">__STATIC_INLINE<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LL_D3_EXTI_EnablePendMask_32_63(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="2924"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="2925"><highlight class="normal"><sp/><sp/>SET_BIT(EXTI-&gt;D3PMR2,<sp/>ExtiLine);</highlight></codeline>
+<codeline lineno="2926"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="2927"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2954"><highlight class="normal">__STATIC_INLINE<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LL_D3_EXTI_DisablePendMask_0_31(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="2955"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="2956"><highlight class="normal"><sp/><sp/>CLEAR_BIT(EXTI-&gt;D3PMR1,<sp/>ExtiLine);</highlight></codeline>
+<codeline lineno="2957"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="2958"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2974"><highlight class="normal">__STATIC_INLINE<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LL_D3_EXTI_DisablePendMask_32_63(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="2975"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="2976"><highlight class="normal"><sp/><sp/>CLEAR_BIT(EXTI-&gt;D3PMR2,<sp/>ExtiLine);</highlight></codeline>
+<codeline lineno="2977"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="2978"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3005"><highlight class="normal">__STATIC_INLINE<sp/>uint32_t<sp/>LL_D3_EXTI_IsEnabledPendMask_0_31(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="3006"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="3007"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>((READ_BIT(EXTI-&gt;D3PMR1,<sp/>ExtiLine)<sp/>==<sp/>(ExtiLine))<sp/>?<sp/>1U<sp/>:<sp/>0U);</highlight></codeline>
+<codeline lineno="3008"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="3009"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3025"><highlight class="normal">__STATIC_INLINE<sp/>uint32_t<sp/>LL_D3_EXTI_IsEnabledPendMask_32_63(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="3026"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="3027"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>((READ_BIT(EXTI-&gt;D3PMR2,<sp/>ExtiLine)<sp/>==<sp/>(ExtiLine))<sp/>?<sp/>1U<sp/>:<sp/>0U);</highlight></codeline>
+<codeline lineno="3028"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="3029"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3061"><highlight class="normal">__STATIC_INLINE<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LL_D3_EXTI_SetPendClearSel_0_15(uint32_t<sp/>ExtiLine,<sp/>uint32_t<sp/>ClrSrc)</highlight></codeline>
+<codeline lineno="3062"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="3063"><highlight class="normal"><sp/><sp/>MODIFY_REG(EXTI-&gt;D3PCR1L,<sp/>((ExtiLine<sp/>*<sp/>ExtiLine)<sp/>*<sp/>3UL),<sp/>((ExtiLine<sp/>*<sp/>ExtiLine)<sp/>*<sp/>ClrSrc));</highlight></codeline>
+<codeline lineno="3064"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="3065"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3085"><highlight class="normal">__STATIC_INLINE<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LL_D3_EXTI_SetPendClearSel_16_31(uint32_t<sp/>ExtiLine,<sp/>uint32_t<sp/>ClrSrc)</highlight></codeline>
+<codeline lineno="3086"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="3087"><highlight class="normal"><sp/><sp/>MODIFY_REG(EXTI-&gt;D3PCR1H,<sp/>(((ExtiLine<sp/>&gt;&gt;<sp/>EXTI_IMR1_IM16_Pos)<sp/>*<sp/>(ExtiLine<sp/>&gt;&gt;<sp/>EXTI_IMR1_IM16_Pos))<sp/>*<sp/>3UL),<sp/>(((ExtiLine<sp/>&gt;&gt;<sp/>EXTI_IMR1_IM16_Pos)<sp/>*<sp/>(ExtiLine<sp/>&gt;&gt;<sp/>EXTI_IMR1_IM16_Pos))<sp/>*<sp/>ClrSrc));</highlight></codeline>
+<codeline lineno="3088"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="3089"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3090"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3109"><highlight class="normal">__STATIC_INLINE<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LL_D3_EXTI_SetPendClearSel_32_47(uint32_t<sp/>ExtiLine,<sp/>uint32_t<sp/>ClrSrc)</highlight></codeline>
+<codeline lineno="3110"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="3111"><highlight class="normal"><sp/><sp/>MODIFY_REG(EXTI-&gt;D3PCR2L,<sp/>((ExtiLine<sp/>*<sp/>ExtiLine)<sp/>*<sp/>3UL),<sp/>((ExtiLine<sp/>*<sp/>ExtiLine)<sp/>*<sp/>ClrSrc));</highlight></codeline>
+<codeline lineno="3112"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="3113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3135"><highlight class="normal">__STATIC_INLINE<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LL_D3_EXTI_SetPendClearSel_48_63(uint32_t<sp/>ExtiLine,<sp/>uint32_t<sp/>ClrSrc)</highlight></codeline>
+<codeline lineno="3136"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="3137"><highlight class="normal"><sp/><sp/>MODIFY_REG(EXTI-&gt;D3PCR2H,<sp/>(((ExtiLine<sp/>&gt;&gt;<sp/>EXTI_IMR2_IM48_Pos)<sp/>*<sp/>(ExtiLine<sp/>&gt;&gt;<sp/>EXTI_IMR2_IM48_Pos))<sp/>*<sp/>3UL),<sp/>(((ExtiLine<sp/>&gt;&gt;<sp/>EXTI_IMR2_IM48_Pos)<sp/>*<sp/>(ExtiLine<sp/>&gt;&gt;<sp/>EXTI_IMR2_IM48_Pos))<sp/>*<sp/>ClrSrc));</highlight></codeline>
+<codeline lineno="3138"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="3139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3170"><highlight class="normal">__STATIC_INLINE<sp/>uint32_t<sp/>LL_D3_EXTI_GetPendClearSel_0_15(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="3171"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="3172"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(uint32_t)(READ_BIT(EXTI-&gt;D3PCR1L,<sp/>((ExtiLine<sp/>*<sp/>ExtiLine)<sp/>*<sp/>3UL))<sp/>/<sp/>(ExtiLine<sp/>*<sp/>ExtiLine));</highlight></codeline>
+<codeline lineno="3173"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="3174"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3193"><highlight class="normal">__STATIC_INLINE<sp/>uint32_t<sp/>LL_D3_EXTI_GetPendClearSel_16_31(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="3194"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="3195"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(uint32_t)(READ_BIT(EXTI-&gt;D3PCR1H,<sp/>(((ExtiLine<sp/>&gt;&gt;<sp/>EXTI_IMR1_IM16_Pos)<sp/>*<sp/>(ExtiLine<sp/>&gt;&gt;<sp/>EXTI_IMR1_IM16_Pos))<sp/>*<sp/>3UL))<sp/>/<sp/>((ExtiLine<sp/>&gt;&gt;<sp/>EXTI_IMR1_IM16_Pos)<sp/>*<sp/>(ExtiLine<sp/>&gt;&gt;<sp/>EXTI_IMR1_IM16_Pos)));</highlight></codeline>
+<codeline lineno="3196"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="3197"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3215"><highlight class="normal">__STATIC_INLINE<sp/>uint32_t<sp/>LL_D3_EXTI_GetPendClearSel_32_47(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="3216"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="3217"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(uint32_t)(READ_BIT(EXTI-&gt;D3PCR2L,<sp/>((ExtiLine<sp/>*<sp/>ExtiLine)<sp/>*<sp/>3UL))<sp/>/<sp/>(ExtiLine<sp/>*<sp/>ExtiLine));</highlight></codeline>
+<codeline lineno="3218"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="3219"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3240"><highlight class="normal">__STATIC_INLINE<sp/>uint32_t<sp/>LL_D3_EXTI_GetPendClearSel_48_63(uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="3241"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="3242"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(uint32_t)(READ_BIT(EXTI-&gt;D3PCR2H,<sp/>(((ExtiLine<sp/>&gt;&gt;<sp/>EXTI_IMR2_IM48_Pos)<sp/>*<sp/>(ExtiLine<sp/>&gt;&gt;<sp/>EXTI_IMR2_IM48_Pos))<sp/>*<sp/>3UL))<sp/>/<sp/>((ExtiLine<sp/>&gt;&gt;<sp/>EXTI_IMR2_IM48_Pos)<sp/>*<sp/>(ExtiLine<sp/>&gt;&gt;<sp/>EXTI_IMR2_IM48_Pos)));</highlight></codeline>
+<codeline lineno="3243"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="3244"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3245"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3246"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3251"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(USE_FULL_LL_DRIVER)</highlight></codeline>
+<codeline lineno="3256"><highlight class="normal">ErrorStatus<sp/>LL_EXTI_Init(LL_EXTI_InitTypeDef<sp/>*EXTI_InitStruct);</highlight></codeline>
+<codeline lineno="3257"><highlight class="normal">ErrorStatus<sp/>LL_EXTI_DeInit(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="3258"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LL_EXTI_StructInit(LL_EXTI_InitTypeDef<sp/>*EXTI_InitStruct);</highlight></codeline>
+<codeline lineno="3259"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3260"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3264"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>USE_FULL_LL_DRIVER<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3265"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3274"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>EXTI<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3275"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3280"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3281"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="3282"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3283"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3284"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>__STM32H7xx_LL_EXTI_H<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3285"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_exti.h"/>
+  </compounddef>
+</doxygen>

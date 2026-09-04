@@ -1,0 +1,320 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="group__RCC__Flags__Interrupts__Management" kind="group">
+    <compoundname>RCC_Flags_Interrupts_Management</compoundname>
+    <title>Flags Interrupts Management</title>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="group__RCC__Flags__Interrupts__Management_1ga180fb20a37b31a6e4f7e59213a6c0405" prot="public" static="no">
+        <name>__HAL_RCC_ENABLE_IT</name>
+        <param><defname>__INTERRUPT__</defname></param>
+        <initializer>SET_BIT(RCC-&gt;CIER, (__INTERRUPT__))</initializer>
+        <briefdescription>
+<para>Enable RCC interrupt. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__INTERRUPT__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the RCC interrupt sources to be enabled. This parameter can be any combination of the following values: <itemizedlist>
+<listitem><para>RCC_IT_LSIRDY: LSI ready interrupt </para>
+</listitem>
+<listitem><para>RCC_IT_LSERDY: LSE ready interrupt </para>
+</listitem>
+<listitem><para>RCC_IT_CSIRDY: HSI ready interrupt </para>
+</listitem>
+<listitem><para>RCC_IT_HSIRDY: HSI ready interrupt </para>
+</listitem>
+<listitem><para>RCC_IT_HSERDY: HSE ready interrupt </para>
+</listitem>
+<listitem><para>RCC_IT_HSI48RDY: HSI48 ready interrupt </para>
+</listitem>
+<listitem><para>RCC_IT_PLLRDY: main PLL ready interrupt </para>
+</listitem>
+<listitem><para>RCC_IT_PLL2RDY: PLL2 ready interrupt </para>
+</listitem>
+<listitem><para>RCC_IT_PLL3RDY: PLL3 ready interrupt </para>
+</listitem>
+<listitem><para>RCC_IT_LSECSS: Clock security system interrupt </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h" line="7799" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h" bodystart="7799" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Flags__Interrupts__Management_1gafc4df8cd4df0a529d11f18bf1f7e9f50" prot="public" static="no">
+        <name>__HAL_RCC_DISABLE_IT</name>
+        <param><defname>__INTERRUPT__</defname></param>
+        <initializer>CLEAR_BIT(RCC-&gt;CIER, (__INTERRUPT__))</initializer>
+        <briefdescription>
+<para>Disable RCC interrupt. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__INTERRUPT__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the RCC interrupt sources to be disabled. This parameter can be any combination of the following values: <itemizedlist>
+<listitem><para>RCC_IT_LSIRDY: LSI ready interrupt </para>
+</listitem>
+<listitem><para>RCC_IT_LSERDY: LSE ready interrupt </para>
+</listitem>
+<listitem><para>RCC_IT_CSIRDY: HSI ready interrupt </para>
+</listitem>
+<listitem><para>RCC_IT_HSIRDY: HSI ready interrupt </para>
+</listitem>
+<listitem><para>RCC_IT_HSERDY: HSE ready interrupt </para>
+</listitem>
+<listitem><para>RCC_IT_HSI48RDY: HSI48 ready interrupt </para>
+</listitem>
+<listitem><para>RCC_IT_PLLRDY: main PLL ready interrupt </para>
+</listitem>
+<listitem><para>RCC_IT_PLL2RDY: PLL2 ready interrupt </para>
+</listitem>
+<listitem><para>RCC_IT_PLL3RDY: PLL3 ready interrupt </para>
+</listitem>
+<listitem><para>RCC_IT_LSECSS: Clock security system interrupt </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h" line="7815" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h" bodystart="7815" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Flags__Interrupts__Management_1ga9d8ab157f58045b8daf8136bee54f139" prot="public" static="no">
+        <name>__HAL_RCC_CLEAR_IT</name>
+        <param><defname>__INTERRUPT__</defname></param>
+        <initializer>(RCC-&gt;CICR = (__INTERRUPT__))</initializer>
+        <briefdescription>
+<para>Clear the RCC&apos;s interrupt pending bits. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__INTERRUPT__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the interrupt pending bit to clear. This parameter can be any combination of the following values: <itemizedlist>
+<listitem><para>RCC_IT_LSIRDY: LSI ready interrupt </para>
+</listitem>
+<listitem><para>RCC_IT_LSERDY: LSE ready interrupt </para>
+</listitem>
+<listitem><para>RCC_IT_CSIRDY: CSI ready interrupt </para>
+</listitem>
+<listitem><para>RCC_IT_HSIRDY: HSI ready interrupt </para>
+</listitem>
+<listitem><para>RCC_IT_HSERDY: HSE ready interrupt </para>
+</listitem>
+<listitem><para>RCC_IT_HSI48RDY: HSI48 ready interrupt </para>
+</listitem>
+<listitem><para>RCC_IT_PLLRDY: main PLL ready interrupt </para>
+</listitem>
+<listitem><para>RCC_IT_PLL2RDY: PLL2 ready interrupt </para>
+</listitem>
+<listitem><para>RCC_IT_PLL3RDY: PLL3 ready interrupt </para>
+</listitem>
+<listitem><para>RCC_IT_HSECSS: HSE Clock Security interrupt </para>
+</listitem>
+<listitem><para>RCC_IT_LSECSS: Clock security system interrupt </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h" line="7832" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h" bodystart="7832" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Flags__Interrupts__Management_1ga134af980b892f362c05ae21922cd828d" prot="public" static="no">
+        <name>__HAL_RCC_GET_IT</name>
+        <param><defname>__INTERRUPT__</defname></param>
+        <initializer>((RCC-&gt;CIFR &amp; (__INTERRUPT__)) == (__INTERRUPT__))</initializer>
+        <briefdescription>
+<para>Check the RCC&apos;s interrupt has occurred or not. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__INTERRUPT__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the RCC interrupt source to check. This parameter can be any combination of the following values: <itemizedlist>
+<listitem><para>RCC_IT_LSIRDY: LSI ready interrupt </para>
+</listitem>
+<listitem><para>RCC_IT_LSERDY: LSE ready interrupt </para>
+</listitem>
+<listitem><para>RCC_IT_CSIRDY: CSI ready interrupt </para>
+</listitem>
+<listitem><para>RCC_IT_HSIRDY: HSI ready interrupt </para>
+</listitem>
+<listitem><para>RCC_IT_HSERDY: HSE ready interrupt </para>
+</listitem>
+<listitem><para>RCC_IT_HSI48RDY: HSI48 ready interrupt </para>
+</listitem>
+<listitem><para>RCC_IT_PLLRDY: main PLL ready interrupt </para>
+</listitem>
+<listitem><para>RCC_IT_PLL2RDY: PLL2 ready interrupt </para>
+</listitem>
+<listitem><para>RCC_IT_PLL3RDY: PLL3 ready interrupt </para>
+</listitem>
+<listitem><para>RCC_IT_HSECSS: HSE Clock Security interrupt </para>
+</listitem>
+<listitem><para>RCC_IT_LSECSS: Clock security system interrupt </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>The</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>new state of <bold>INTERRUPT</bold> (TRUE or FALSE). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h" line="7850" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h" bodystart="7850" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Flags__Interrupts__Management_1gaf28c11b36035ef1e27883ff7ee2c46b0" prot="public" static="no">
+        <name>__HAL_RCC_CLEAR_RESET_FLAGS</name>
+        <param></param>
+        <initializer>(RCC-&gt;RSR |= RCC_RSR_RMVF)</initializer>
+        <briefdescription>
+<para>Set RMVF bit to clear the reset flags. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h" line="7854" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h" bodystart="7854" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Flags__Interrupts__Management_1ga80017c6bf8a5c6f53a1a21bb8db93a82" prot="public" static="no">
+        <name>RCC_FLAG_MASK</name>
+        <initializer>((uint8_t)0x1F)</initializer>
+        <briefdescription>
+<para>Check RCC flag is set or not. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__FLAG__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the flag to check. This parameter can be one of the following values: <itemizedlist>
+<listitem><para>RCC_FLAG_HSIRDY: HSI oscillator clock ready </para>
+</listitem>
+<listitem><para>RCC_FLAG_HSIDIV: HSI divider flag </para>
+</listitem>
+<listitem><para>RCC_FLAG_CSIRDY: CSI oscillator clock ready </para>
+</listitem>
+<listitem><para>RCC_FLAG_HSI48RDY: HSI48 oscillator clock ready </para>
+</listitem>
+<listitem><para>RCC_FLAG_HSERDY: HSE oscillator clock ready </para>
+</listitem>
+<listitem><para>RCC_FLAG_D1CKRDY: Domain1 clock ready (*) </para>
+</listitem>
+<listitem><para>RCC_FLAG_D2CKRDY: Domain2 clock ready (*) </para>
+</listitem>
+<listitem><para>RCC_FLAG_CPUCKRDY: CPU Domain clock ready (CPU, APB3, bus matrix1 and related memories) (*) </para>
+</listitem>
+<listitem><para>RCC_FLAG_CDCKRDY: CPU Domain clock ready (*) </para>
+</listitem>
+<listitem><para>RCC_FLAG_PLLRDY: PLL1 clock ready </para>
+</listitem>
+<listitem><para>RCC_FLAG_PLL2RDY: PLL2 clock ready </para>
+</listitem>
+<listitem><para>RCC_FLAG_PLL3RDY: PLL3 clock ready </para>
+</listitem>
+<listitem><para>RCC_FLAG_LSERDY: LSE oscillator clock ready </para>
+</listitem>
+<listitem><para>RCC_FLAG_LSIRDY: LSI oscillator clock ready </para>
+</listitem>
+<listitem><para>RCC_FLAG_CPURST: CPU reset flag </para>
+</listitem>
+<listitem><para>RCC_FLAG_D1RST: D1 domain power switch reset flag (*) </para>
+</listitem>
+<listitem><para>RCC_FLAG_D2RST: D2 domain power switch reset flag (*) </para>
+</listitem>
+<listitem><para>RCC_FLAG_CDRST: CD domain power switch reset flag (*) </para>
+</listitem>
+<listitem><para>RCC_FLAG_BORRST: BOR reset flag </para>
+</listitem>
+<listitem><para>RCC_FLAG_PINRST: Pin reset </para>
+</listitem>
+<listitem><para>RCC_FLAG_PORRST: POR/PDR reset </para>
+</listitem>
+<listitem><para>RCC_FLAG_SFTRST: System reset from CPU reset flag </para>
+</listitem>
+<listitem><para>RCC_FLAG_BORRST: D2 domain power switch reset flag </para>
+</listitem>
+<listitem><para>RCC_FLAG_IWDG1RST: CPU Independent Watchdog reset </para>
+</listitem>
+<listitem><para>RCC_FLAG_WWDG1RST: Window Watchdog1 reset </para>
+</listitem>
+<listitem><para>RCC_FLAG_LPWR1RST: Reset due to illegal D1 DSTANDBY or CPU CSTOP flag </para>
+</listitem>
+<listitem><para>RCC_FLAG_LPWR2RST: Reset due to illegal D2 DSTANDBY flag </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>The</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>new state of <bold>FLAG</bold> (TRUE or FALSE).</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+(*) Available on some STM32H7 lines only. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h" line="7942" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h" bodystart="7942" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__RCC__Flags__Interrupts__Management_1gae2d7d461630562bf2a2ddb31b1f96449" prot="public" static="no">
+        <name>__HAL_RCC_GET_FLAG</name>
+        <param><defname>__FLAG__</defname></param>
+        <initializer>(((((((__FLAG__) &gt;&gt; 5U) == 1U)? RCC-&gt;CR :((((__FLAG__) &gt;&gt; 5U) == 2U) ? RCC-&gt;BDCR : \
+((((__FLAG__) &gt;&gt; 5U) == 3U)? RCC-&gt;CSR : ((((__FLAG__) &gt;&gt; 5U) == 4U)? RCC-&gt;RSR :RCC-&gt;CIFR))))  &amp; (1UL &lt;&lt; ((__FLAG__) &amp; <ref refid="group__RCC__Flags__Interrupts__Management_1ga80017c6bf8a5c6f53a1a21bb8db93a82" kindref="member">RCC_FLAG_MASK</ref>)))!= 0U)? 1U : 0U)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h" line="7943" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/bootstrap/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h" bodystart="7943" bodyend="7944"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>macros to manage the specified RCC Flags and interrupts. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

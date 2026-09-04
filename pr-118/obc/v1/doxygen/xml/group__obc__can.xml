@@ -1,0 +1,468 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="group__obc__can" kind="group">
+    <compoundname>obc_can</compoundname>
+    <title>CAN Driver</title>
+    <innerclass refid="structhal__can__msg__t" prot="public">hal_can_msg_t</innerclass>
+    <innerclass refid="structhal__can__config__t" prot="public">hal_can_config_t</innerclass>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="group__obc__can_1ga83a77f224d5e726b32e0c7e7acff1163" prot="public" static="no" strong="no">
+        <type></type>
+        <name>hal_can_port_t</name>
+        <enumvalue id="group__obc__can_1gga83a77f224d5e726b32e0c7e7acff1163aac46ad8f66070ccf930a4b21f5512039" prot="public">
+          <name>HAL_CAN_PORT_1</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>FDCAN1 Port. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__obc__can_1gga83a77f224d5e726b32e0c7e7acff1163a2428504723e2f469d58bc3bbade475a9" prot="public">
+          <name>HAL_CAN_PORT_2</name>
+          <briefdescription>
+<para>FDCAN2 Port. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__obc__can_1gga83a77f224d5e726b32e0c7e7acff1163a47b1cb98c87de850be1f916c23a4a0de" prot="public">
+          <name>HAL_CAN_PORT_MAX</name>
+          <briefdescription>
+<para>Maximum CAN port count. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>CAN hardware port identifiers. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_can.h" line="24" column="1" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_can.h" bodystart="24" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__obc__can_1gaeb6a2f8beecd9def75dff7fa7c2f0d00" prot="public" static="no" strong="no">
+        <type></type>
+        <name>hal_can_status_t</name>
+        <enumvalue id="group__obc__can_1ggaeb6a2f8beecd9def75dff7fa7c2f0d00af8abc9c057afe8b767acd0aab294c278" prot="public">
+          <name>HAL_CAN_OK</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>Operation completed successfully. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__obc__can_1ggaeb6a2f8beecd9def75dff7fa7c2f0d00a7491e6002bd789ec1fb36a3e20e6eaa7" prot="public">
+          <name>HAL_CAN_ERROR</name>
+          <briefdescription>
+<para>Hardware or driver error. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__obc__can_1ggaeb6a2f8beecd9def75dff7fa7c2f0d00ada2eff86f3d4b0747e4bac54486b03d0" prot="public">
+          <name>HAL_CAN_BUSY</name>
+          <briefdescription>
+<para>Peripheral busy. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__obc__can_1ggaeb6a2f8beecd9def75dff7fa7c2f0d00a123c5b5509a413a20e6870e3d98c57ac" prot="public">
+          <name>HAL_CAN_TIMEOUT</name>
+          <briefdescription>
+<para>Operation timed out. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Return status codes for CAN operations. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_can.h" line="34" column="1" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_can.h" bodystart="34" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__obc__can_1ga82e327fd51718fe7488208d31bcd0970" prot="public" static="no" strong="no">
+        <type></type>
+        <name>hal_can_id_type_t</name>
+        <enumvalue id="group__obc__can_1gga82e327fd51718fe7488208d31bcd0970a6c2ef9ad99f769274b09e4908049e78d" prot="public">
+          <name>HAL_CAN_ID_STD</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>Standard 11-bit identifier. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__obc__can_1gga82e327fd51718fe7488208d31bcd0970af091582bbb83bc3f1512530256f1241b" prot="public">
+          <name>HAL_CAN_ID_EXT</name>
+          <briefdescription>
+<para>Extended 29-bit identifier. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>CAN identifier format. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_can.h" line="45" column="1" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_can.h" bodystart="45" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__obc__can_1gaf102438ea18694f7a9339683b50a19d3" prot="public" static="no" strong="no">
+        <type></type>
+        <name>hal_can_rtr_t</name>
+        <enumvalue id="group__obc__can_1ggaf102438ea18694f7a9339683b50a19d3adbc763834c27abea9956a905811b4a90" prot="public">
+          <name>HAL_CAN_RTR_DATA</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>Data frame. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__obc__can_1ggaf102438ea18694f7a9339683b50a19d3a4e328a101c6995bb3ff209802699bb03" prot="public">
+          <name>HAL_CAN_RTR_REMOTE</name>
+          <briefdescription>
+<para>Remote transmission frame. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>CAN remote transmission request flag. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_can.h" line="54" column="1" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_can.h" bodystart="54" bodyend="57"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group__obc__can_1ga6a4873f0aefa6b5c891174d24dc89523" prot="public" static="no">
+        <type>void(*</type>
+        <definition>typedef void(* hal_can_rx_cb_t) (hal_can_port_t port, const hal_can_msg_t *msg, void *ctx)</definition>
+        <argsstring>)(hal_can_port_t port, const hal_can_msg_t *msg, void *ctx)</argsstring>
+        <name>hal_can_rx_cb_t</name>
+        <briefdescription>
+<para>Callback function type for received CAN messages. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_can.h" line="82" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_can.h" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__obc__can_1gaa1855c6c62ad7361ec91e6872e92acdd" prot="public" static="no">
+        <type>void(*</type>
+        <definition>typedef void(* hal_can_tx_cb_t) (hal_can_port_t port, void *ctx)</definition>
+        <argsstring>)(hal_can_port_t port, void *ctx)</argsstring>
+        <name>hal_can_tx_cb_t</name>
+        <briefdescription>
+<para>Callback function type for completed CAN transmissions. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_can.h" line="88" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_can.h" bodystart="88" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__obc__can_1ga27842fc8e60ca805f6daf1fd815564b6" prot="public" static="no">
+        <type>void(*</type>
+        <definition>typedef void(* hal_can_error_cb_t) (hal_can_port_t port, uint32_t error, void *ctx)</definition>
+        <argsstring>)(hal_can_port_t port, uint32_t error, void *ctx)</argsstring>
+        <name>hal_can_error_cb_t</name>
+        <briefdescription>
+<para>Callback function type for CAN bus errors. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_can.h" line="93" column="9" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_can.h" bodystart="93" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="group__obc__can_1gaee75487bc1a6b3c93fc347d818d5fd18" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void hal_can_init</definition>
+        <argsstring>(hal_can_port_t port, const hal_can_config_t *config)</argsstring>
+        <name>hal_can_init</name>
+        <param>
+          <type><ref refid="group__obc__can_1ga83a77f224d5e726b32e0c7e7acff1163" kindref="member">hal_can_port_t</ref></type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structhal__can__config__t" kindref="compound">hal_can_config_t</ref> *</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+<para>Initialize a CAN hardware port. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Physical CAN port index. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">config</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Configuration pointer containing baudrate settings. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_can.h" line="102" column="6" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_can.c" bodystart="37" bodyend="54" declfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_can.h" declline="102" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__obc__can_1ga8a524c5e1b426d9222656f692ed92c03" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__obc__can_1gaeb6a2f8beecd9def75dff7fa7c2f0d00" kindref="member">hal_can_status_t</ref></type>
+        <definition>hal_can_status_t hal_can_write</definition>
+        <argsstring>(hal_can_port_t port, const hal_can_msg_t *msg)</argsstring>
+        <name>hal_can_write</name>
+        <param>
+          <type><ref refid="group__obc__can_1ga83a77f224d5e726b32e0c7e7acff1163" kindref="member">hal_can_port_t</ref></type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structhal__can__msg__t" kindref="compound">hal_can_msg_t</ref> *</type>
+          <declname>msg</declname>
+        </param>
+        <briefdescription>
+<para>Transmit a CAN message frame over the specified port. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Physical CAN port index. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">msg</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to CAN message structure to transmit. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>HAL_CAN_OK on success, or appropriate error code. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_can.h" line="111" column="18" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_can.c" bodystart="56" bodyend="123" declfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_can.h" declline="111" declcolumn="18"/>
+      </memberdef>
+      <memberdef kind="function" id="group__obc__can_1ga4dd37d5795d680815722a43124c64c8b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void hal_can_register_rx_callback</definition>
+        <argsstring>(hal_can_port_t port, hal_can_rx_cb_t cb, void *ctx)</argsstring>
+        <name>hal_can_register_rx_callback</name>
+        <param>
+          <type><ref refid="group__obc__can_1ga83a77f224d5e726b32e0c7e7acff1163" kindref="member">hal_can_port_t</ref></type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type><ref refid="group__obc__can_1ga6a4873f0aefa6b5c891174d24dc89523" kindref="member">hal_can_rx_cb_t</ref></type>
+          <declname>cb</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>ctx</declname>
+        </param>
+        <briefdescription>
+<para>Register a callback for received CAN frames. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Physical CAN port index. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">cb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Callback handler function. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">ctx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>User context pointer. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_can.h" line="120" column="6" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_can.c" bodystart="125" bodyend="131" declfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_can.h" declline="120" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__obc__can_1ga72caff0e5a7fe741fb1546fd7c7587f6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void hal_can_register_tx_callback</definition>
+        <argsstring>(hal_can_port_t port, hal_can_tx_cb_t cb, void *ctx)</argsstring>
+        <name>hal_can_register_tx_callback</name>
+        <param>
+          <type><ref refid="group__obc__can_1ga83a77f224d5e726b32e0c7e7acff1163" kindref="member">hal_can_port_t</ref></type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type><ref refid="group__obc__can_1gaa1855c6c62ad7361ec91e6872e92acdd" kindref="member">hal_can_tx_cb_t</ref></type>
+          <declname>cb</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>ctx</declname>
+        </param>
+        <briefdescription>
+<para>Register a callback for completed CAN transmissions. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Physical CAN port index. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">cb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Callback handler function. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">ctx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>User context pointer. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_can.h" line="130" column="6" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_can.c" bodystart="133" bodyend="139" declfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_can.h" declline="130" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__obc__can_1gac9fc5cf7611124be5ee8bf5e6218ed26" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void hal_can_register_error_callback</definition>
+        <argsstring>(hal_can_port_t port, hal_can_error_cb_t cb, void *ctx)</argsstring>
+        <name>hal_can_register_error_callback</name>
+        <param>
+          <type><ref refid="group__obc__can_1ga83a77f224d5e726b32e0c7e7acff1163" kindref="member">hal_can_port_t</ref></type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type><ref refid="group__obc__can_1ga27842fc8e60ca805f6daf1fd815564b6" kindref="member">hal_can_error_cb_t</ref></type>
+          <declname>cb</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>ctx</declname>
+        </param>
+        <briefdescription>
+<para>Register a callback for CAN error conditions. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Physical CAN port index. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">cb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Callback handler function. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">ctx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>User context pointer. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_can.h" line="140" column="6" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_can.c" bodystart="141" bodyend="147" declfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_can.h" declline="140" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__obc__can_1ga6b98e16889952465b964a7e6b5d01e0c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void hal_can_isr_handler</definition>
+        <argsstring>(hal_can_port_t port)</argsstring>
+        <name>hal_can_isr_handler</name>
+        <param>
+          <type><ref refid="group__obc__can_1ga83a77f224d5e726b32e0c7e7acff1163" kindref="member">hal_can_port_t</ref></type>
+          <declname>port</declname>
+        </param>
+        <briefdescription>
+<para>Interrupt service routine entry point for CAN port interrupts. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Physical CAN port index. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_can.h" line="148" column="6" bodyfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_can.c" bodystart="149" bodyend="157" declfile="/home/runner/work/cubesat/cubesat/obc/v1/firmware/hal/hal_can.h" declline="148" declcolumn="6"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>CANBus driver for OSUSat OBC. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>
