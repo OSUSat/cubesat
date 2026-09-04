@@ -140,7 +140,26 @@ This repository utilizes submodules (such as `osusat/core` and `osusat/messaging
 git submodule update --init --recursive
 ```
 
-### 3. Compilation Guide
+### 3. Hardware Development & KiCad Templates
+
+To create new expansion / daughterboard hardware designs in KiCad, symlink the shared template directory to your local KiCad user template path:
+
+- **Linux**:
+  ```bash
+  mkdir -p ~/.local/share/kicad/10.0/template
+  ln -sf /path/to/cubesat/repo/shared/kicad/templates/test_board ~/.local/share/kicad/10.0/template/test_board
+  ```
+- **Windows (PowerShell)**:
+  ```powershell
+  New-Item -ItemType Directory -Force -Path "$env:APPDATA\kicad\10.0\template"
+  New-Item -ItemType SymbolicLink -Path "$env:APPDATA\kicad\10.0\template\test_board" -Target "C:\path\to\cubesat\repo\shared\kicad\templates\test_board"
+  ```
+
+Once symlinked, open KiCad, click **File → New Project from Template...**, select the **User Templates** tab, and choose **OSUSat Backplane Test Board Template**.
+
+For full manual setup options and details, see [shared/kicad/README.md](./shared/kicad/README.md).
+
+### 4. Compilation Guide
 
 #### Building for the ARM Target (e.g., EPS v1)
 
