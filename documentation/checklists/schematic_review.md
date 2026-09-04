@@ -1,5 +1,5 @@
 # Schematic Review Checklist
-*One page. Pass/fail only. Full context: [Schematic & Layout Design Guidelines](../design_guidelines/schematic_layout_design.md)*
+*Pass/fail only.*
 
 ## Document Control
 

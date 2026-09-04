@@ -1,5 +1,5 @@
 # Firmware Service Checklist
-*One page. Pass/fail only. Full context: [Refactoring Polling-Based Modules to be Event Driven](../design_guidelines/refactoring_polling_services.md), [Keeping the HAL Policy Free](../design_guidelines/keeping_the_hal_policy_free.md)*
+*Pass/fail only.*
 
 ## Document Control
 
