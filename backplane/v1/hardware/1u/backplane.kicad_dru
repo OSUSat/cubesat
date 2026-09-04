@@ -1,4 +1,41 @@
+# KiCad Custom Design Rules (.kicad_dru)
+# Baseline rules for JLCPCB 4-Layer PCB Fabrication (JLC04161H-7628 stackup)
+# Derived from OSUSAT OBC verified hardware constraints
+
 (version 1)
-(rule "Allow_Edge_Plating_GND"
-   (constraint edge_clearance (min -0.5mm))
-   (condition "A.NetName == 'GND' && A.Type != 'Zone'"))
+
+(rule "JLCPCB Minimum Clearance"
+  (constraint clearance (min 0.1mm))
+  (condition "true"))
+
+(rule "JLCPCB Minimum Track Width"
+  (constraint track_width (min 0.1mm))
+  (condition "true"))
+
+(rule "JLCPCB Minimum Via Diameter & Drill"
+  (constraint via_diameter (min 0.5mm))
+  (constraint hole_size (min 0.3mm))
+  (condition "true"))
+
+(rule "JLCPCB Minimum Via Annular Ring"
+  (constraint via_annular_width (min 0.1mm))
+  (condition "true"))
+
+(rule "JLCPCB Minimum Microvia Size"
+  (constraint microvia_diameter (min 0.2mm))
+  (constraint microvia_drill (min 0.1mm))
+  (condition "true"))
+
+(rule "JLCPCB Copper to Edge Clearance"
+  (constraint copper_edge_clearance (min 0.5mm))
+  (condition "true"))
+
+(rule "JLCPCB Hole Clearance & Hole-to-Hole Spacing"
+  (constraint hole_clearance (min 0.25mm))
+  (constraint hole_to_hole (min 0.25mm))
+  (condition "true"))
+
+(rule "JLCPCB Silkscreen Height & Line Thickness"
+  (constraint text_height (min 0.8mm))
+  (constraint text_thickness (min 0.08mm))
+  (condition "true"))

@@ -39,9 +39,9 @@
         "other_text_thickness": 0.15,
         "other_text_upright": false,
         "pads": {
-          "drill": 3.2,
-          "height": 6.4,
-          "width": 6.4
+          "drill": 0.8,
+          "height": 1.27,
+          "width": 2.54
         },
         "silk_line_width": 0.1,
         "silk_text_italic": false,
@@ -65,17 +65,11 @@
           "min_thickness": 0.25,
           "pad_connection": 1,
           "remove_islands": 0,
-          "thermal_relief_gap": 0.3,
+          "thermal_relief_gap": 0.5,
           "thermal_relief_spoke_width": 0.5
         }
       },
-      "diff_pair_dimensions": [
-        {
-          "gap": 0.0,
-          "via_gap": 0.0,
-          "width": 0.0
-        }
-      ],
+      "diff_pair_dimensions": [],
       "drc_exclusions": [],
       "meta": {
         "version": 2
@@ -133,12 +127,12 @@
         "too_many_vias": "error",
         "track_angle": "error",
         "track_dangling": "warning",
-        "track_not_centered_on_via": "warning",
+        "track_not_centered_on_via": "ignore",
         "track_on_post_machined_layer": "error",
         "track_segment_length": "error",
         "track_width": "error",
         "tracks_crossing": "error",
-        "tuning_profile_track_geometries": "warning",
+        "tuning_profile_track_geometries": "ignore",
         "unconnected_items": "error",
         "unresolved_variable": "error",
         "via_dangling": "warning",
@@ -146,8 +140,8 @@
       },
       "rules": {
         "max_error": 0.005,
-        "min_clearance": 0.1,
-        "min_connection": 0.1,
+        "min_clearance": 0.0,
+        "min_connection": 0.0,
         "min_copper_edge_clearance": 0.5,
         "min_groove_width": 0.0,
         "min_hole_clearance": 0.25,
@@ -159,10 +153,10 @@
         "min_text_height": 0.8,
         "min_text_thickness": 0.08,
         "min_through_hole_diameter": 0.3,
-        "min_track_width": 0.1,
+        "min_track_width": 0.2,
         "min_via_annular_width": 0.1,
         "min_via_diameter": 0.5,
-        "solder_mask_to_copper_clearance": 0.005,
+        "solder_mask_to_copper_clearance": 0.0,
         "use_height_for_length_calcs": true
       },
       "teardrop_options": [
@@ -209,14 +203,7 @@
           "td_width_to_size_filter_ratio": 0.9
         }
       ],
-      "track_widths": [
-        0.0,
-        0.1,
-        0.2,
-        0.5,
-        1.0,
-        2.0
-      ],
+      "track_widths": [],
       "tuning_pattern_settings": {
         "diff_pair_defaults": {
           "corner_radius_percentage": 80,
@@ -243,12 +230,7 @@
           "spacing": 0.6
         }
       },
-      "via_dimensions": [
-        {
-          "diameter": 0.0,
-          "drill": 0.0
-        }
-      ],
+      "via_dimensions": [],
       "zones_allow_external_fillets": false
     },
     "ipc2581": {
@@ -258,7 +240,7 @@
       "internal_id": "",
       "mfg": "",
       "mpn": "",
-      "sch_revision": "v1r1"
+      "sch_revision": ""
     },
     "layer_pairs": [],
     "layer_presets": [],
@@ -506,14 +488,14 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "backplane.kicad_pro",
+    "filename": "test_board.kicad_pro",
     "version": 3
   },
   "net_settings": {
     "classes": [
       {
         "bus_width": 12,
-        "clearance": 0.15,
+        "clearance": 0.2,
         "diff_pair_gap": 0.25,
         "diff_pair_via_gap": 0.25,
         "diff_pair_width": 0.2,
@@ -529,36 +511,6 @@
         "via_diameter": 0.6,
         "via_drill": 0.3,
         "wire_width": 6
-      },
-      {
-        "clearance": 0.2,
-        "name": "50",
-        "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 1,
-        "schematic_color": "rgb(222, 104, 105)",
-        "track_width": 0.2941,
-        "tuning_profile": ""
-      },
-      {
-        "clearance": 0.1,
-        "diff_pair_gap": 0.2,
-        "diff_pair_width": 0.1321,
-        "name": "CAN",
-        "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 2,
-        "schematic_color": "rgb(185, 156, 20)",
-        "track_width": 0.1,
-        "tuning_profile": ""
-      },
-      {
-        "clearance": 0.2,
-        "diff_pair_gap": 0.2,
-        "diff_pair_width": 0.2644,
-        "name": "USB",
-        "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 0,
-        "schematic_color": "rgb(0, 82, 149)",
-        "tuning_profile": ""
       }
     ],
     "meta": {
@@ -566,12 +518,7 @@
     },
     "net_colors": null,
     "netclass_assignments": null,
-    "netclass_patterns": [
-      {
-        "netclass": "CAN",
-        "pattern": "**CAN_*"
-      }
-    ]
+    "netclass_patterns": []
   },
   "pcbnew": {
     "last_paths": {
@@ -651,24 +598,12 @@
           "label": "Datasheet",
           "name": "Datasheet",
           "show": true
-        },
-        {
-          "group_by": false,
-          "label": "Description",
-          "name": "Description",
-          "show": false
-        },
-        {
-          "group_by": false,
-          "label": "#",
-          "name": "${ITEM_NUMBER}",
-          "show": false
         }
       ],
-      "filter_string": "CAN_MAIN",
+      "filter_string": "",
       "group_symbols": true,
       "include_excluded_from_bom": true,
-      "name": "",
+      "name": "Default Editing",
       "sort_asc": true,
       "sort_field": "Reference"
     },
@@ -708,18 +643,22 @@
     "subpart_id_separator": 0,
     "top_level_sheets": [
       {
-        "filename": "backplane.kicad_sch",
+        "filename": "test_board.kicad_sch",
         "name": "Root",
-        "uuid": "ff6150f1-1fd9-4271-9d6b-656f65d5ebe5"
+        "uuid": "b20f5a9e-495e-48d8-8648-bd5c7d9b4620"
       }
     ],
-    "used_designators": "",
+    "used_designators": "#PWR1-7,#PWR33,J1",
     "variants": []
   },
   "sheets": [
     [
-      "ff6150f1-1fd9-4271-9d6b-656f65d5ebe5",
+      "b20f5a9e-495e-48d8-8648-bd5c7d9b4620",
       "Root"
+    ],
+    [
+      "d7776c9d-110d-4867-b7e7-ee23b34eac43",
+      "Inter-Board-Connector"
     ]
   ],
   "text_variables": {},
