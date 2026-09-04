@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>OSUSat Backplane Expansion / Test Board Template</title>
+  </head>
+  <body>
+    <h1>OSUSat Backplane Test Board Template</h1>
+    <h2>CubeSat Backplane Expansion Card Template (v1)</h2>
+
+    <p>
+      This KiCad project template provides a standardized baseline for developing OSUSat CubeSat expansion cards, test boards, and payload modules compatible with the OSUSat Backplane architecture.
+    </p>
+
+    <h3>Key Technical Features</h3>
+    <ul>
+      <li><strong>Inter-Board Connector Interface:</strong> Pre-configured hierarchical schematic sheet (<code>inter_board_connector.kicad_sch</code>) featuring the Samtec TFM-120-X1-XXX-D-RA 40-pin connector (<code>J1</code>).</li>
+      <li><strong>Standardized Bus Architecture:</strong> Fully labeled signal nets including CAN bus (<code>CAN_MAIN_P</code>, <code>CAN_MAIN_N</code>), SPI bus (<code>SPI_SCK</code>, <code>SPI_MOSI</code>, <code>SPI_MISO</code>, <code>SPI_CS</code>), I2C bus (<code>I2C_SCL</code>, <code>I2C_SDA</code>), System Reset, and 8 dedicated power rail lines (<code>RAIL_1_VOUT</code> &ndash; <code>RAIL_8_VOUT</code>) plus ground domains.</li>
+      <li><strong>Mechanical Geometry & CAD:</strong> Pre-defined PCB edge cuts (<code>Edge.Cuts</code>), connector placement, mounting references, and 3D CAD STEP model (<code>board.step</code>).</li>
+      <li><strong>Shared Library Integrations:</strong> Pre-linked <code>sym-lib-table</code> and <code>fp-lib-table</code> pointing to the shared OSUSat library repository (<code>shared/kicad/</code>).</li>
+    </ul>
+
+    <h3>Instructions for Use</h3>
+    <ol>
+      <li>Create a new project from this template when designing a new subsystem card or test fixture for the OSUSat backplane.</li>
+      <li>Use the <code>Inter-Board-Connector</code> sheet instance to interface your card to the backplane signals.</li>
+      <li>Add custom payload, sensor, or power circuits on top-level or new sub-sheets.</li>
+      <li>Verify signal routing and power budgets against system ICD specifications.</li>
+    </ol>
+
+    <p><img src="brd.png" alt="Board 3D Preview" style="max-width: 100%; height: auto; border: 1px solid #ccc; border-radius: 4px;"></p>
+
+    <p><em>OSUSat Hardware Engineering &copy; 2026</em></p>
+  </body>
+</html>
