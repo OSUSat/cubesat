@@ -1,0 +1,244 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="bsp_2hal__driver_2Src_2stm32l4xx__hal__i2c__ex_8c" kind="file" language="C++">
+    <compoundname>stm32l4xx_hal_i2c_ex.c</compoundname>
+    <includes local="yes">stm32l4xx_hal.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Src/stm32l4xx_hal_i2c_ex.c</label>
+        <link refid="bsp_2hal__driver_2Src_2stm32l4xx__hal__i2c__ex_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>stm32l4xx_hal.h</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+<para>I2C Extended HAL module driver. This file provides firmware functions to manage the following functionalities of I2C Extended peripheral: </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>MCD Application Team<itemizedlist>
+<listitem><para>Filter Mode Functions</para>
+</listitem><listitem><para>WakeUp Mode Functions</para>
+</listitem><listitem><para>FastModePlus Functions</para>
+</listitem></itemizedlist>
+</para>
+</simplesect>
+<simplesect kind="attention"><para></para>
+</simplesect>
+Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
+<para>This software is licensed under terms that can be found in the LICENSE file in the root directory of this software component. If no LICENSE file comes with this software, it is provided AS-IS.</para>
+<para><verbatim>==============================================================================
+             ##### I2C peripheral Extended features  #####
+==============================================================================
+
+[..] Comparing to other previous devices, the I2C interface for STM32L4xx
+     devices contains the following additional features
+
+     (+) Possibility to disable or enable Analog Noise Filter
+     (+) Use of a configured Digital Noise Filter
+     (+) Disable or enable wakeup from Stop mode(s)
+     (+) Disable or enable Fast Mode Plus
+
+                   ##### How to use this driver #####
+==============================================================================
+[..] This driver provides functions to configure Noise Filter and Wake Up Feature
+  (#) Configure I2C Analog noise filter using the function HAL_I2CEx_ConfigAnalogFilter()
+  (#) Configure I2C Digital noise filter using the function HAL_I2CEx_ConfigDigitalFilter()
+  (#) Configure the enable or disable of I2C Wake Up Mode using the functions :
+        (++) HAL_I2CEx_EnableWakeUp()
+        (++) HAL_I2CEx_DisableWakeUp()
+  (#) Configure the enable or disable of fast mode plus driving capability using the functions :
+        (++) HAL_I2CEx_EnableFastModePlus()
+        (++) HAL_I2CEx_DisableFastModePlus()
+</verbatim> </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Includes<sp/>------------------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;stm32l4xx_hal.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>HAL_I2C_MODULE_ENABLED</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>typedef<sp/>-----------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>define<sp/>------------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>macro<sp/>-------------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>variables<sp/>---------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>function<sp/>prototypes<sp/>-----------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>functions<sp/>---------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/><ref refid="group__I2CEx__Exported__Functions__Group1_1ga2f0b5fc42fca412214f3968e528e2b9e" kindref="member">HAL_I2CEx_ConfigAnalogFilter</ref>(<ref refid="structI2C__HandleTypeDef" kindref="compound">I2C_HandleTypeDef</ref><sp/>*hi2c,<sp/>uint32_t<sp/>AnalogFilter)</highlight></codeline>
+<codeline lineno="97"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>the<sp/>parameters<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(<ref refid="group__Exported__macros_1gacdf0149a4e8c41a6814c13613c38a6b2" kindref="member">IS_I2C_ALL_INSTANCE</ref>(hi2c-&gt;<ref refid="structI2C__HandleTypeDef_1af1878331ec7a5a0c4900ddae3152a764" kindref="member">Instance</ref>));</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(<ref refid="group__I2CEx__Private__Macro_1ga2ca73a919482ef22e5f3bcd5e4a0c820" kindref="member">IS_I2C_ANALOG_FILTER</ref>(AnalogFilter));</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(hi2c-&gt;State<sp/>==<sp/><ref refid="group__HAL__state__structure__definition_1ggaef355af8eab251ae2a19ee164ad81c37af859ce60c5e462b0bfde3a5010bc72d1" kindref="member">HAL_I2C_STATE_READY</ref>)</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Process<sp/>Locked<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1ad3d96e1b9022ba76b69eeda91027b36c" kindref="member">__HAL_LOCK</ref>(hi2c);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>hi2c-&gt;State<sp/>=<sp/><ref refid="group__HAL__state__structure__definition_1ggaef355af8eab251ae2a19ee164ad81c37a0c503d6c0388f0d872b368557e278b5a" kindref="member">HAL_I2C_STATE_BUSY</ref>;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Disable<sp/>the<sp/>selected<sp/>I2C<sp/>peripheral<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__I2C__Exported__Macros_1ga3d6a35da02ca72537a15570912c80412" kindref="member">__HAL_I2C_DISABLE</ref>(hi2c);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Reset<sp/>I2Cx<sp/>ANOFF<sp/>bit<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/>hi2c-&gt;<ref refid="structI2C__HandleTypeDef_1af1878331ec7a5a0c4900ddae3152a764" kindref="member">Instance</ref>-&gt;CR1<sp/>&amp;=<sp/>~(<ref refid="group__Peripheral__Registers__Bits__Definition_1ga4b33b8e33fa18fd49d6d1d8a69777289" kindref="member">I2C_CR1_ANFOFF</ref>);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Set<sp/>analog<sp/>filter<sp/>bit*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>hi2c-&gt;<ref refid="structI2C__HandleTypeDef_1af1878331ec7a5a0c4900ddae3152a764" kindref="member">Instance</ref>-&gt;CR1<sp/>|=<sp/>AnalogFilter;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__I2C__Exported__Macros_1gacff412c47b0c1d63ef3b2a07f65988b7" kindref="member">__HAL_I2C_ENABLE</ref>(hi2c);</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>hi2c-&gt;State<sp/>=<sp/><ref refid="group__HAL__state__structure__definition_1ggaef355af8eab251ae2a19ee164ad81c37af859ce60c5e462b0bfde3a5010bc72d1" kindref="member">HAL_I2C_STATE_READY</ref>;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Process<sp/>Unlocked<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a7c2c23627aed2bb71d8c1ad071cda004" kindref="member">__HAL_UNLOCK</ref>(hi2c);</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>;</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa8532fa3641ae7c14cb1b0554e2d9cbc7" kindref="member">HAL_BUSY</ref>;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="131"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/><ref refid="group__I2CEx__Exported__Functions__Group1_1ga474acc9b92626a0f690bf9aa8991a476" kindref="member">HAL_I2CEx_ConfigDigitalFilter</ref>(<ref refid="structI2C__HandleTypeDef" kindref="compound">I2C_HandleTypeDef</ref><sp/>*hi2c,<sp/>uint32_t<sp/>DigitalFilter)</highlight></codeline>
+<codeline lineno="141"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/>uint32_t<sp/>tmpreg;</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>the<sp/>parameters<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(<ref refid="group__Exported__macros_1gacdf0149a4e8c41a6814c13613c38a6b2" kindref="member">IS_I2C_ALL_INSTANCE</ref>(hi2c-&gt;<ref refid="structI2C__HandleTypeDef_1af1878331ec7a5a0c4900ddae3152a764" kindref="member">Instance</ref>));</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(<ref refid="group__I2CEx__Private__Macro_1gac10d26772d885184a7a30d9a2adee453" kindref="member">IS_I2C_DIGITAL_FILTER</ref>(DigitalFilter));</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(hi2c-&gt;State<sp/>==<sp/><ref refid="group__HAL__state__structure__definition_1ggaef355af8eab251ae2a19ee164ad81c37af859ce60c5e462b0bfde3a5010bc72d1" kindref="member">HAL_I2C_STATE_READY</ref>)</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Process<sp/>Locked<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1ad3d96e1b9022ba76b69eeda91027b36c" kindref="member">__HAL_LOCK</ref>(hi2c);</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/>hi2c-&gt;State<sp/>=<sp/><ref refid="group__HAL__state__structure__definition_1ggaef355af8eab251ae2a19ee164ad81c37a0c503d6c0388f0d872b368557e278b5a" kindref="member">HAL_I2C_STATE_BUSY</ref>;</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Disable<sp/>the<sp/>selected<sp/>I2C<sp/>peripheral<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__I2C__Exported__Macros_1ga3d6a35da02ca72537a15570912c80412" kindref="member">__HAL_I2C_DISABLE</ref>(hi2c);</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Get<sp/>the<sp/>old<sp/>register<sp/>value<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/>tmpreg<sp/>=<sp/>hi2c-&gt;<ref refid="structI2C__HandleTypeDef_1af1878331ec7a5a0c4900ddae3152a764" kindref="member">Instance</ref>-&gt;CR1;</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Reset<sp/>I2Cx<sp/>DNF<sp/>bits<sp/>[11:8]<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/>tmpreg<sp/>&amp;=<sp/>~(<ref refid="group__Peripheral__Registers__Bits__Definition_1gae2ee714428013b4a48aba608f6922bd6" kindref="member">I2C_CR1_DNF</ref>);</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Set<sp/>I2Cx<sp/>DNF<sp/>coefficient<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/>tmpreg<sp/>|=<sp/>DigitalFilter<sp/>&lt;&lt;<sp/>8U;</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Store<sp/>the<sp/>new<sp/>register<sp/>value<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/>hi2c-&gt;<ref refid="structI2C__HandleTypeDef_1af1878331ec7a5a0c4900ddae3152a764" kindref="member">Instance</ref>-&gt;CR1<sp/>=<sp/>tmpreg;</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__I2C__Exported__Macros_1gacff412c47b0c1d63ef3b2a07f65988b7" kindref="member">__HAL_I2C_ENABLE</ref>(hi2c);</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/>hi2c-&gt;State<sp/>=<sp/><ref refid="group__HAL__state__structure__definition_1ggaef355af8eab251ae2a19ee164ad81c37af859ce60c5e462b0bfde3a5010bc72d1" kindref="member">HAL_I2C_STATE_READY</ref>;</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Process<sp/>Unlocked<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a7c2c23627aed2bb71d8c1ad071cda004" kindref="member">__HAL_UNLOCK</ref>(hi2c);</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>;</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa8532fa3641ae7c14cb1b0554e2d9cbc7" kindref="member">HAL_BUSY</ref>;</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="183"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/><ref refid="group__I2CEx__Exported__Functions__Group2_1ga117747a05be1298f16154b9c4a526336" kindref="member">HAL_I2CEx_EnableWakeUp</ref>(<ref refid="structI2C__HandleTypeDef" kindref="compound">I2C_HandleTypeDef</ref><sp/>*hi2c)</highlight></codeline>
+<codeline lineno="209"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>the<sp/>parameters<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(<ref refid="group__Exported__macros_1gadf692bda16bac3264bccff7f59ddaab9" kindref="member">IS_I2C_WAKEUP_FROMSTOP_INSTANCE</ref>(hi2c-&gt;<ref refid="structI2C__HandleTypeDef_1af1878331ec7a5a0c4900ddae3152a764" kindref="member">Instance</ref>));</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(hi2c-&gt;State<sp/>==<sp/><ref refid="group__HAL__state__structure__definition_1ggaef355af8eab251ae2a19ee164ad81c37af859ce60c5e462b0bfde3a5010bc72d1" kindref="member">HAL_I2C_STATE_READY</ref>)</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Process<sp/>Locked<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1ad3d96e1b9022ba76b69eeda91027b36c" kindref="member">__HAL_LOCK</ref>(hi2c);</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"></highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/>hi2c-&gt;State<sp/>=<sp/><ref refid="group__HAL__state__structure__definition_1ggaef355af8eab251ae2a19ee164ad81c37a0c503d6c0388f0d872b368557e278b5a" kindref="member">HAL_I2C_STATE_BUSY</ref>;</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"></highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Disable<sp/>the<sp/>selected<sp/>I2C<sp/>peripheral<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__I2C__Exported__Macros_1ga3d6a35da02ca72537a15570912c80412" kindref="member">__HAL_I2C_DISABLE</ref>(hi2c);</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"></highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Enable<sp/>wakeup<sp/>from<sp/>stop<sp/>mode<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/>hi2c-&gt;<ref refid="structI2C__HandleTypeDef_1af1878331ec7a5a0c4900ddae3152a764" kindref="member">Instance</ref>-&gt;CR1<sp/>|=<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1ga75a226d059143573fab07f866853ce75" kindref="member">I2C_CR1_WUPEN</ref>;</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"></highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__I2C__Exported__Macros_1gacff412c47b0c1d63ef3b2a07f65988b7" kindref="member">__HAL_I2C_ENABLE</ref>(hi2c);</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"></highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/>hi2c-&gt;State<sp/>=<sp/><ref refid="group__HAL__state__structure__definition_1ggaef355af8eab251ae2a19ee164ad81c37af859ce60c5e462b0bfde3a5010bc72d1" kindref="member">HAL_I2C_STATE_READY</ref>;</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"></highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Process<sp/>Unlocked<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a7c2c23627aed2bb71d8c1ad071cda004" kindref="member">__HAL_UNLOCK</ref>(hi2c);</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"></highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>;</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa8532fa3641ae7c14cb1b0554e2d9cbc7" kindref="member">HAL_BUSY</ref>;</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="239"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"></highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/><ref refid="group__I2CEx__Exported__Functions__Group2_1ga8e761e304c77fa623824bb297ea626b3" kindref="member">HAL_I2CEx_DisableWakeUp</ref>(<ref refid="structI2C__HandleTypeDef" kindref="compound">I2C_HandleTypeDef</ref><sp/>*hi2c)</highlight></codeline>
+<codeline lineno="248"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>the<sp/>parameters<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(<ref refid="group__Exported__macros_1gadf692bda16bac3264bccff7f59ddaab9" kindref="member">IS_I2C_WAKEUP_FROMSTOP_INSTANCE</ref>(hi2c-&gt;<ref refid="structI2C__HandleTypeDef_1af1878331ec7a5a0c4900ddae3152a764" kindref="member">Instance</ref>));</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"></highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(hi2c-&gt;State<sp/>==<sp/><ref refid="group__HAL__state__structure__definition_1ggaef355af8eab251ae2a19ee164ad81c37af859ce60c5e462b0bfde3a5010bc72d1" kindref="member">HAL_I2C_STATE_READY</ref>)</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Process<sp/>Locked<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1ad3d96e1b9022ba76b69eeda91027b36c" kindref="member">__HAL_LOCK</ref>(hi2c);</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"></highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/>hi2c-&gt;State<sp/>=<sp/><ref refid="group__HAL__state__structure__definition_1ggaef355af8eab251ae2a19ee164ad81c37a0c503d6c0388f0d872b368557e278b5a" kindref="member">HAL_I2C_STATE_BUSY</ref>;</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"></highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Disable<sp/>the<sp/>selected<sp/>I2C<sp/>peripheral<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__I2C__Exported__Macros_1ga3d6a35da02ca72537a15570912c80412" kindref="member">__HAL_I2C_DISABLE</ref>(hi2c);</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"></highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Enable<sp/>wakeup<sp/>from<sp/>stop<sp/>mode<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/>hi2c-&gt;<ref refid="structI2C__HandleTypeDef_1af1878331ec7a5a0c4900ddae3152a764" kindref="member">Instance</ref>-&gt;CR1<sp/>&amp;=<sp/>~(<ref refid="group__Peripheral__Registers__Bits__Definition_1ga75a226d059143573fab07f866853ce75" kindref="member">I2C_CR1_WUPEN</ref>);</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"></highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__I2C__Exported__Macros_1gacff412c47b0c1d63ef3b2a07f65988b7" kindref="member">__HAL_I2C_ENABLE</ref>(hi2c);</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"></highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/>hi2c-&gt;State<sp/>=<sp/><ref refid="group__HAL__state__structure__definition_1ggaef355af8eab251ae2a19ee164ad81c37af859ce60c5e462b0bfde3a5010bc72d1" kindref="member">HAL_I2C_STATE_READY</ref>;</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"></highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Process<sp/>Unlocked<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a7c2c23627aed2bb71d8c1ad071cda004" kindref="member">__HAL_UNLOCK</ref>(hi2c);</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"></highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>;</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa8532fa3641ae7c14cb1b0554e2d9cbc7" kindref="member">HAL_BUSY</ref>;</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="278"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="314"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__I2CEx__Exported__Functions__Group3_1ga4002aa7dd388a6c1a4d6a3ff27b65942" kindref="member">HAL_I2CEx_EnableFastModePlus</ref>(uint32_t<sp/>ConfigFastModePlus)</highlight></codeline>
+<codeline lineno="315"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>the<sp/>parameter<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(<ref refid="group__I2CEx__Private__Macro_1ga834beb1e67c16ce8e161c6d4047665d1" kindref="member">IS_I2C_FASTMODEPLUS</ref>(ConfigFastModePlus));</highlight></codeline>
+<codeline lineno="318"><highlight class="normal"></highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Enable<sp/>SYSCFG<sp/>clock<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/><ref refid="group__RCC__APB2__Clock__Enable__Disable_1gafc3ffcbb86e4913ae336ba094ca199e1" kindref="member">__HAL_RCC_SYSCFG_CLK_ENABLE</ref>();</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"></highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Enable<sp/>fast<sp/>mode<sp/>plus<sp/>driving<sp/>capability<sp/>for<sp/>selected<sp/>pin<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="323"><highlight class="normal"><sp/><sp/><ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga3c833fe1c486cb62250ccbca32899cb8" kindref="member">SYSCFG</ref>-&gt;CFGR1,<sp/>(uint32_t)ConfigFastModePlus);</highlight></codeline>
+<codeline lineno="324"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"></highlight></codeline>
+<codeline lineno="343"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__I2CEx__Exported__Functions__Group3_1ga3ad1ae2b495e02f6c750871d283cef44" kindref="member">HAL_I2CEx_DisableFastModePlus</ref>(uint32_t<sp/>ConfigFastModePlus)</highlight></codeline>
+<codeline lineno="344"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="345"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>the<sp/>parameter<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="346"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(<ref refid="group__I2CEx__Private__Macro_1ga834beb1e67c16ce8e161c6d4047665d1" kindref="member">IS_I2C_FASTMODEPLUS</ref>(ConfigFastModePlus));</highlight></codeline>
+<codeline lineno="347"><highlight class="normal"></highlight></codeline>
+<codeline lineno="348"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Enable<sp/>SYSCFG<sp/>clock<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="349"><highlight class="normal"><sp/><sp/><ref refid="group__RCC__APB2__Clock__Enable__Disable_1gafc3ffcbb86e4913ae336ba094ca199e1" kindref="member">__HAL_RCC_SYSCFG_CLK_ENABLE</ref>();</highlight></codeline>
+<codeline lineno="350"><highlight class="normal"></highlight></codeline>
+<codeline lineno="351"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Disable<sp/>fast<sp/>mode<sp/>plus<sp/>driving<sp/>capability<sp/>for<sp/>selected<sp/>pin<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="352"><highlight class="normal"><sp/><sp/><ref refid="group__Exported__macros_1ga133aae6fc0d41bffab39ab223a7001de" kindref="member">CLEAR_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga3c833fe1c486cb62250ccbca32899cb8" kindref="member">SYSCFG</ref>-&gt;CFGR1,<sp/>(uint32_t)ConfigFastModePlus);</highlight></codeline>
+<codeline lineno="353"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="361"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>HAL_I2C_MODULE_ENABLED<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Src/stm32l4xx_hal_i2c_ex.c"/>
+  </compounddef>
+</doxygen>

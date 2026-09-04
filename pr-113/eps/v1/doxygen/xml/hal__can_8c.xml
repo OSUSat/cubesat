@@ -1,0 +1,300 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="hal__can_8c" kind="file" language="C++">
+    <compoundname>hal_can.c</compoundname>
+    <includes refid="hal__can_8h" local="yes">hal_can.h</includes>
+    <includes refid="can_8h" local="yes">can.h</includes>
+    <includes local="yes">stm32l4xx_hal.h</includes>
+    <includes local="no">string.h</includes>
+    <incdepgraph>
+      <node id="5">
+        <label>can.h</label>
+        <link refid="can_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>main.h</label>
+        <link refid="bsp_2mcu_2Inc_2main_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_can.c</label>
+        <link refid="hal__can_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>hal_can.h</label>
+        <link refid="hal__can_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>stdbool.h</label>
+      </node>
+      <node id="4">
+        <label>stdint.h</label>
+      </node>
+      <node id="7">
+        <label>stm32l4xx_hal.h</label>
+      </node>
+      <node id="8">
+        <label>string.h</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="hal__can_8h" kindref="compound">hal_can.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="can_8h" kindref="compound">can.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;stm32l4xx_hal.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(__arm__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/>CAN_HandleTypeDef<sp/>*hcan;</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__can__types_1ga6a4873f0aefa6b5c891174d24dc89523" kindref="member">hal_can_rx_cb_t</ref><sp/>rx_cb;</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*rx_cb_ctx;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__can__types_1gaa1855c6c62ad7361ec91e6872e92acdd" kindref="member">hal_can_tx_cb_t</ref><sp/>tx_cb;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*tx_cb_ctx;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__can__types_1ga27842fc8e60ca805f6daf1fd815564b6" kindref="member">hal_can_error_cb_t</ref><sp/>err_cb;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*err_cb_ctx;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>initialized;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal">}<sp/>can_port_state_t;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>can_port_state_t<sp/>g_can_state[<ref refid="group__can__types_1gga83a77f224d5e726b32e0c7e7acff1163a47b1cb98c87de850be1f916c23a4a0de" kindref="member">HAL_CAN_PORT_MAX</ref>];</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>CAN_HandleTypeDef<sp/>*get_hal_handle(<ref refid="group__can__types_1ga83a77f224d5e726b32e0c7e7acff1163" kindref="member">hal_can_port_t</ref><sp/>port)<sp/>{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(port)<sp/>{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="group__can__types_1gga83a77f224d5e726b32e0c7e7acff1163aac46ad8f66070ccf930a4b21f5512039" kindref="member">HAL_CAN_PORT_1</ref>:</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>&amp;<ref refid="can_8h_1a1618d731d18d69e906e8a357b7cd3c8d" kindref="member">hcan1</ref>;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="group__can__types_1gga83a77f224d5e726b32e0c7e7acff1163a2428504723e2f469d58bc3bbade475a9" kindref="member">HAL_CAN_PORT_2</ref>:</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>&amp;<ref refid="can_8h_1ab77168d14df04ccca5d48612ee21ced8" kindref="member">hcan2</ref>;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="30"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__can__api_1gaee75487bc1a6b3c93fc347d818d5fd18" kindref="member">hal_can_init</ref>(<ref refid="group__can__types_1ga83a77f224d5e726b32e0c7e7acff1163" kindref="member">hal_can_port_t</ref><sp/>port,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhal__can__config__t" kindref="compound">hal_can_config_t</ref><sp/>*config)<sp/>{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(port<sp/>&gt;=<sp/><ref refid="group__can__types_1gga83a77f224d5e726b32e0c7e7acff1163a47b1cb98c87de850be1f916c23a4a0de" kindref="member">HAL_CAN_PORT_MAX</ref><sp/>||<sp/>config<sp/>==<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>can_port_state_t<sp/>*state<sp/>=<sp/>&amp;g_can_state[port];</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>memset(state,<sp/>0,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(*state));</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;hcan<sp/>=<sp/>get_hal_handle(port);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(state-&gt;hcan<sp/>==<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>initialize<sp/>physical<sp/>peripheral<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(port<sp/>==<sp/><ref refid="group__can__types_1gga83a77f224d5e726b32e0c7e7acff1163aac46ad8f66070ccf930a4b21f5512039" kindref="member">HAL_CAN_PORT_1</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="can_8h_1a030a62a0956ab83394eb8354a0e97902" kindref="member">MX_CAN1_Init</ref>();</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(port<sp/>==<sp/><ref refid="group__can__types_1gga83a77f224d5e726b32e0c7e7acff1163a2428504723e2f469d58bc3bbade475a9" kindref="member">HAL_CAN_PORT_2</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="can_8h_1a1ee5cd592134235b6c07f676784d47c3" kindref="member">MX_CAN2_Init</ref>();</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(state-&gt;hcan-&gt;State<sp/>==<sp/>HAL_CAN_STATE_ERROR)<sp/>{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>configure<sp/>standard<sp/>accept-all<sp/>filter<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>CAN_FilterTypeDef<sp/>filter_init<sp/>=<sp/>{0};</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>filter_init.FilterIdHigh<sp/>=<sp/>0x0000;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>filter_init.FilterIdLow<sp/>=<sp/>0x0000;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>filter_init.FilterMaskIdHigh<sp/>=<sp/>0x0000;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>filter_init.FilterMaskIdLow<sp/>=<sp/>0x0000;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>filter_init.FilterFIFOAssignment<sp/>=<sp/>CAN_RX_FIFO0;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>filter_init.FilterMode<sp/>=<sp/>CAN_FILTERMODE_IDMASK;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>filter_init.FilterScale<sp/>=<sp/>CAN_FILTERSCALE_32BIT;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>filter_init.FilterActivation<sp/>=<sp/><ref refid="group__Exported__types_1ggac9a7e9a35d2513ec15c3b537aaa4fba1a7d46875fa3ebd2c34d2756950eda83bf" kindref="member">ENABLE</ref>;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(port<sp/>==<sp/><ref refid="group__can__types_1gga83a77f224d5e726b32e0c7e7acff1163aac46ad8f66070ccf930a4b21f5512039" kindref="member">HAL_CAN_PORT_1</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>filter_init.FilterBank<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>filter_init.SlaveStartFilterBank<sp/>=<sp/>14;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>filter_init.FilterBank<sp/>=<sp/>14;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>filter_init.SlaveStartFilterBank<sp/>=<sp/>14;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(HAL_CAN_ConfigFilter(state-&gt;hcan,<sp/>&amp;filter_init)<sp/>!=<sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>activate<sp/>notifications<sp/>for<sp/>interrupt<sp/>driven<sp/>rx,<sp/>tx,<sp/>and<sp/>errors<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>HAL_CAN_ActivateNotification(state-&gt;hcan,<sp/>CAN_IT_RX_FIFO0_MSG_PENDING<sp/>|</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CAN_IT_TX_MAILBOX_EMPTY<sp/>|</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CAN_IT_ERROR<sp/>|</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CAN_IT_LAST_ERROR_CODE);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>start<sp/>the<sp/>CAN<sp/>peripheral<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(HAL_CAN_Start(state-&gt;hcan)<sp/>!=<sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;initialized<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><ref refid="group__can__types_1gaeb6a2f8beecd9def75dff7fa7c2f0d00" kindref="member">hal_can_status_t</ref><sp/><ref refid="group__can__api_1ga8a524c5e1b426d9222656f692ed92c03" kindref="member">hal_can_write</ref>(<ref refid="group__can__types_1ga83a77f224d5e726b32e0c7e7acff1163" kindref="member">hal_can_port_t</ref><sp/>port,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhal__can__msg__t" kindref="compound">hal_can_msg_t</ref><sp/>*msg)<sp/>{</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(port<sp/>&gt;=<sp/><ref refid="group__can__types_1gga83a77f224d5e726b32e0c7e7acff1163a47b1cb98c87de850be1f916c23a4a0de" kindref="member">HAL_CAN_PORT_MAX</ref><sp/>||<sp/>msg<sp/>==<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__can__types_1ggaeb6a2f8beecd9def75dff7fa7c2f0d00a7491e6002bd789ec1fb36a3e20e6eaa7" kindref="member">HAL_CAN_ERROR</ref>;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>can_port_state_t<sp/>*state<sp/>=<sp/>&amp;g_can_state[port];</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!state-&gt;initialized<sp/>||<sp/>state-&gt;hcan<sp/>==<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__can__types_1ggaeb6a2f8beecd9def75dff7fa7c2f0d00a7491e6002bd789ec1fb36a3e20e6eaa7" kindref="member">HAL_CAN_ERROR</ref>;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>check<sp/>if<sp/>mailboxes<sp/>are<sp/>full<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(HAL_CAN_GetTxMailboxesFreeLevel(state-&gt;hcan)<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__can__types_1ggaeb6a2f8beecd9def75dff7fa7c2f0d00ada2eff86f3d4b0747e4bac54486b03d0" kindref="member">HAL_CAN_BUSY</ref>;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>CAN_TxHeaderTypeDef<sp/>tx_header<sp/>=<sp/>{0};</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(msg-&gt;<ref refid="structhal__can__msg__t_1af60e2f35059e4c412730cd68118811b5" kindref="member">id_type</ref><sp/>==<sp/><ref refid="group__can__types_1gga82e327fd51718fe7488208d31bcd0970a6c2ef9ad99f769274b09e4908049e78d" kindref="member">HAL_CAN_ID_STD</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tx_header.StdId<sp/>=<sp/>msg-&gt;<ref refid="structhal__can__msg__t_1a915d9fb57b719983617ae96d655eefae" kindref="member">id</ref>;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tx_header.IDE<sp/>=<sp/>CAN_ID_STD;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tx_header.ExtId<sp/>=<sp/>msg-&gt;<ref refid="structhal__can__msg__t_1a915d9fb57b719983617ae96d655eefae" kindref="member">id</ref>;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tx_header.IDE<sp/>=<sp/>CAN_ID_EXT;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(msg-&gt;<ref refid="structhal__can__msg__t_1a85b16081242769e2ec30c1140066fd24" kindref="member">rtr</ref><sp/>==<sp/><ref refid="group__can__types_1ggaf102438ea18694f7a9339683b50a19d3adbc763834c27abea9956a905811b4a90" kindref="member">HAL_CAN_RTR_DATA</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tx_header.RTR<sp/>=<sp/>CAN_RTR_DATA;</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tx_header.RTR<sp/>=<sp/>CAN_RTR_REMOTE;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/>tx_header.DLC<sp/>=<sp/>msg-&gt;<ref refid="structhal__can__msg__t_1a0df091d638b20ccca454be9e25676392" kindref="member">dlc</ref>;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/>tx_header.TransmitGlobalTime<sp/>=<sp/><ref refid="group__Exported__types_1ggac9a7e9a35d2513ec15c3b537aaa4fba1ad3a9df141be0ccf10389b640f492b26d" kindref="member">DISABLE</ref>;</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>mailbox;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/>status<sp/>=<sp/>HAL_CAN_AddTxMessage(state-&gt;hcan,<sp/>&amp;tx_header,<sp/>msg-&gt;<ref refid="structhal__can__msg__t_1a59646cc502102b8ccfbf35d8b199cd66" kindref="member">data</ref>,<sp/>&amp;mailbox);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(status<sp/>==<sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__can__types_1ggaeb6a2f8beecd9def75dff7fa7c2f0d00af8abc9c057afe8b767acd0aab294c278" kindref="member">HAL_CAN_OK</ref>;</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(status<sp/>==<sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa8532fa3641ae7c14cb1b0554e2d9cbc7" kindref="member">HAL_BUSY</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__can__types_1ggaeb6a2f8beecd9def75dff7fa7c2f0d00ada2eff86f3d4b0747e4bac54486b03d0" kindref="member">HAL_CAN_BUSY</ref>;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__can__types_1ggaeb6a2f8beecd9def75dff7fa7c2f0d00a7491e6002bd789ec1fb36a3e20e6eaa7" kindref="member">HAL_CAN_ERROR</ref>;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="137"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__can__api_1ga4dd37d5795d680815722a43124c64c8b" kindref="member">hal_can_register_rx_callback</ref>(<ref refid="group__can__types_1ga83a77f224d5e726b32e0c7e7acff1163" kindref="member">hal_can_port_t</ref><sp/>port,<sp/><ref refid="group__can__types_1ga6a4873f0aefa6b5c891174d24dc89523" kindref="member">hal_can_rx_cb_t</ref><sp/>cb,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*ctx)<sp/>{</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(port<sp/>&gt;=<sp/><ref refid="group__can__types_1gga83a77f224d5e726b32e0c7e7acff1163a47b1cb98c87de850be1f916c23a4a0de" kindref="member">HAL_CAN_PORT_MAX</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/>g_can_state[port].rx_cb<sp/>=<sp/>cb;</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/>g_can_state[port].rx_cb_ctx<sp/>=<sp/>ctx;</highlight></codeline>
+<codeline lineno="145"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__can__api_1ga72caff0e5a7fe741fb1546fd7c7587f6" kindref="member">hal_can_register_tx_callback</ref>(<ref refid="group__can__types_1ga83a77f224d5e726b32e0c7e7acff1163" kindref="member">hal_can_port_t</ref><sp/>port,<sp/><ref refid="group__can__types_1gaa1855c6c62ad7361ec91e6872e92acdd" kindref="member">hal_can_tx_cb_t</ref><sp/>cb,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*ctx)<sp/>{</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(port<sp/>&gt;=<sp/><ref refid="group__can__types_1gga83a77f224d5e726b32e0c7e7acff1163a47b1cb98c87de850be1f916c23a4a0de" kindref="member">HAL_CAN_PORT_MAX</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/>g_can_state[port].tx_cb<sp/>=<sp/>cb;</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/>g_can_state[port].tx_cb_ctx<sp/>=<sp/>ctx;</highlight></codeline>
+<codeline lineno="153"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__can__api_1gac9fc5cf7611124be5ee8bf5e6218ed26" kindref="member">hal_can_register_error_callback</ref>(<ref refid="group__can__types_1ga83a77f224d5e726b32e0c7e7acff1163" kindref="member">hal_can_port_t</ref><sp/>port,<sp/><ref refid="group__can__types_1ga27842fc8e60ca805f6daf1fd815564b6" kindref="member">hal_can_error_cb_t</ref><sp/>cb,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*ctx)<sp/>{</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(port<sp/>&gt;=<sp/><ref refid="group__can__types_1gga83a77f224d5e726b32e0c7e7acff1163a47b1cb98c87de850be1f916c23a4a0de" kindref="member">HAL_CAN_PORT_MAX</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/>g_can_state[port].err_cb<sp/>=<sp/>cb;</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/>g_can_state[port].err_cb_ctx<sp/>=<sp/>ctx;</highlight></codeline>
+<codeline lineno="161"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__can__api_1ga6b98e16889952465b964a7e6b5d01e0c" kindref="member">hal_can_isr_handler</ref>(<ref refid="group__can__types_1ga83a77f224d5e726b32e0c7e7acff1163" kindref="member">hal_can_port_t</ref><sp/>port)<sp/>{</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(port<sp/>&gt;=<sp/><ref refid="group__can__types_1gga83a77f224d5e726b32e0c7e7acff1163a47b1cb98c87de850be1f916c23a4a0de" kindref="member">HAL_CAN_PORT_MAX</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/>can_port_state_t<sp/>*state<sp/>=<sp/>&amp;g_can_state[port];</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(state-&gt;initialized<sp/>&amp;&amp;<sp/>state-&gt;hcan<sp/>!=<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HAL_CAN_IRQHandler(state-&gt;hcan);</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="171"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>HAL<sp/>CAN<sp/>library<sp/>weak<sp/>callbacks<sp/>override<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef<sp/>*hcan)<sp/>{</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__can__types_1ga83a77f224d5e726b32e0c7e7acff1163" kindref="member">hal_can_port_t</ref><sp/>port<sp/>=<sp/>(hcan-&gt;Instance<sp/>==<sp/><ref refid="group__Peripheral__declaration_1ga4964ecb6a5c689aaf8ee2832b8093aac" kindref="member">CAN1</ref>)<sp/>?<sp/><ref refid="group__can__types_1gga83a77f224d5e726b32e0c7e7acff1163aac46ad8f66070ccf930a4b21f5512039" kindref="member">HAL_CAN_PORT_1</ref><sp/>:<sp/><ref refid="group__can__types_1gga83a77f224d5e726b32e0c7e7acff1163a2428504723e2f469d58bc3bbade475a9" kindref="member">HAL_CAN_PORT_2</ref>;</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/>can_port_state_t<sp/>*state<sp/>=<sp/>&amp;g_can_state[port];</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/>CAN_RxHeaderTypeDef<sp/>rx_header;</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structhal__can__msg__t" kindref="compound">hal_can_msg_t</ref><sp/>msg<sp/>=<sp/>{0};</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(HAL_CAN_GetRxMessage(hcan,<sp/>CAN_RX_FIFO0,<sp/>&amp;rx_header,<sp/>msg.<ref refid="structhal__can__msg__t_1a59646cc502102b8ccfbf35d8b199cd66" kindref="member">data</ref>)<sp/>==<sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(rx_header.IDE<sp/>==<sp/>CAN_ID_STD)<sp/>{</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>msg.<ref refid="structhal__can__msg__t_1a915d9fb57b719983617ae96d655eefae" kindref="member">id</ref><sp/>=<sp/>rx_header.StdId;</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>msg.<ref refid="structhal__can__msg__t_1af60e2f35059e4c412730cd68118811b5" kindref="member">id_type</ref><sp/>=<sp/><ref refid="group__can__types_1gga82e327fd51718fe7488208d31bcd0970a6c2ef9ad99f769274b09e4908049e78d" kindref="member">HAL_CAN_ID_STD</ref>;</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>msg.<ref refid="structhal__can__msg__t_1a915d9fb57b719983617ae96d655eefae" kindref="member">id</ref><sp/>=<sp/>rx_header.ExtId;</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>msg.<ref refid="structhal__can__msg__t_1af60e2f35059e4c412730cd68118811b5" kindref="member">id_type</ref><sp/>=<sp/><ref refid="group__can__types_1gga82e327fd51718fe7488208d31bcd0970af091582bbb83bc3f1512530256f1241b" kindref="member">HAL_CAN_ID_EXT</ref>;</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(rx_header.RTR<sp/>==<sp/>CAN_RTR_DATA)<sp/>{</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>msg.<ref refid="structhal__can__msg__t_1a85b16081242769e2ec30c1140066fd24" kindref="member">rtr</ref><sp/>=<sp/><ref refid="group__can__types_1ggaf102438ea18694f7a9339683b50a19d3adbc763834c27abea9956a905811b4a90" kindref="member">HAL_CAN_RTR_DATA</ref>;</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>msg.<ref refid="structhal__can__msg__t_1a85b16081242769e2ec30c1140066fd24" kindref="member">rtr</ref><sp/>=<sp/><ref refid="group__can__types_1ggaf102438ea18694f7a9339683b50a19d3a4e328a101c6995bb3ff209802699bb03" kindref="member">HAL_CAN_RTR_REMOTE</ref>;</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>msg.<ref refid="structhal__can__msg__t_1a0df091d638b20ccca454be9e25676392" kindref="member">dlc</ref><sp/>=<sp/>rx_header.DLC;</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(state-&gt;rx_cb<sp/>!=<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state-&gt;rx_cb(port,<sp/>&amp;msg,<sp/>state-&gt;rx_cb_ctx);</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="202"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>HAL_CAN_TxMailbox0CompleteCallback(CAN_HandleTypeDef<sp/>*hcan)<sp/>{</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__can__types_1ga83a77f224d5e726b32e0c7e7acff1163" kindref="member">hal_can_port_t</ref><sp/>port<sp/>=<sp/>(hcan-&gt;Instance<sp/>==<sp/><ref refid="group__Peripheral__declaration_1ga4964ecb6a5c689aaf8ee2832b8093aac" kindref="member">CAN1</ref>)<sp/>?<sp/><ref refid="group__can__types_1gga83a77f224d5e726b32e0c7e7acff1163aac46ad8f66070ccf930a4b21f5512039" kindref="member">HAL_CAN_PORT_1</ref><sp/>:<sp/><ref refid="group__can__types_1gga83a77f224d5e726b32e0c7e7acff1163a2428504723e2f469d58bc3bbade475a9" kindref="member">HAL_CAN_PORT_2</ref>;</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/>can_port_state_t<sp/>*state<sp/>=<sp/>&amp;g_can_state[port];</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(state-&gt;tx_cb<sp/>!=<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state-&gt;tx_cb(port,<sp/>state-&gt;tx_cb_ctx);</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="210"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"></highlight></codeline>
+<codeline lineno="212"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>HAL_CAN_TxMailbox1CompleteCallback(CAN_HandleTypeDef<sp/>*hcan)<sp/>{</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__can__types_1ga83a77f224d5e726b32e0c7e7acff1163" kindref="member">hal_can_port_t</ref><sp/>port<sp/>=<sp/>(hcan-&gt;Instance<sp/>==<sp/><ref refid="group__Peripheral__declaration_1ga4964ecb6a5c689aaf8ee2832b8093aac" kindref="member">CAN1</ref>)<sp/>?<sp/><ref refid="group__can__types_1gga83a77f224d5e726b32e0c7e7acff1163aac46ad8f66070ccf930a4b21f5512039" kindref="member">HAL_CAN_PORT_1</ref><sp/>:<sp/><ref refid="group__can__types_1gga83a77f224d5e726b32e0c7e7acff1163a2428504723e2f469d58bc3bbade475a9" kindref="member">HAL_CAN_PORT_2</ref>;</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/>can_port_state_t<sp/>*state<sp/>=<sp/>&amp;g_can_state[port];</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(state-&gt;tx_cb<sp/>!=<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state-&gt;tx_cb(port,<sp/>state-&gt;tx_cb_ctx);</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="218"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"></highlight></codeline>
+<codeline lineno="220"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>HAL_CAN_TxMailbox2CompleteCallback(CAN_HandleTypeDef<sp/>*hcan)<sp/>{</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__can__types_1ga83a77f224d5e726b32e0c7e7acff1163" kindref="member">hal_can_port_t</ref><sp/>port<sp/>=<sp/>(hcan-&gt;Instance<sp/>==<sp/><ref refid="group__Peripheral__declaration_1ga4964ecb6a5c689aaf8ee2832b8093aac" kindref="member">CAN1</ref>)<sp/>?<sp/><ref refid="group__can__types_1gga83a77f224d5e726b32e0c7e7acff1163aac46ad8f66070ccf930a4b21f5512039" kindref="member">HAL_CAN_PORT_1</ref><sp/>:<sp/><ref refid="group__can__types_1gga83a77f224d5e726b32e0c7e7acff1163a2428504723e2f469d58bc3bbade475a9" kindref="member">HAL_CAN_PORT_2</ref>;</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/>can_port_state_t<sp/>*state<sp/>=<sp/>&amp;g_can_state[port];</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(state-&gt;tx_cb<sp/>!=<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state-&gt;tx_cb(port,<sp/>state-&gt;tx_cb_ctx);</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="226"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"></highlight></codeline>
+<codeline lineno="228"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>HAL_CAN_ErrorCallback(CAN_HandleTypeDef<sp/>*hcan)<sp/>{</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__can__types_1ga83a77f224d5e726b32e0c7e7acff1163" kindref="member">hal_can_port_t</ref><sp/>port<sp/>=<sp/>(hcan-&gt;Instance<sp/>==<sp/><ref refid="group__Peripheral__declaration_1ga4964ecb6a5c689aaf8ee2832b8093aac" kindref="member">CAN1</ref>)<sp/>?<sp/><ref refid="group__can__types_1gga83a77f224d5e726b32e0c7e7acff1163aac46ad8f66070ccf930a4b21f5512039" kindref="member">HAL_CAN_PORT_1</ref><sp/>:<sp/><ref refid="group__can__types_1gga83a77f224d5e726b32e0c7e7acff1163a2428504723e2f469d58bc3bbade475a9" kindref="member">HAL_CAN_PORT_2</ref>;</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/>can_port_state_t<sp/>*state<sp/>=<sp/>&amp;g_can_state[port];</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>error<sp/>=<sp/>HAL_CAN_GetError(hcan);</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(state-&gt;err_cb<sp/>!=<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state-&gt;err_cb(port,<sp/>error,<sp/>state-&gt;err_cb_ctx);</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="235"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"></highlight></codeline>
+<codeline lineno="237"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>defined(__arm__)<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_can.c"/>
+  </compounddef>
+</doxygen>

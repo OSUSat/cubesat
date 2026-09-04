@@ -1,0 +1,537 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="hal__uart_8c" kind="file" language="C++">
+    <compoundname>hal_uart.c</compoundname>
+    <includes refid="hal__uart_8h" local="yes">hal_uart.h</includes>
+    <includes refid="event__bus_8h" local="yes">osusat/event_bus.h</includes>
+    <includes refid="ring__buffer_8h" local="yes">osusat/ring_buffer.h</includes>
+    <includes local="yes">stm32l4xx_hal.h</includes>
+    <includes local="yes">stm32l4xx_hal_def.h</includes>
+    <includes local="yes">stm32l4xx_hal_uart.h</includes>
+    <includes local="no">stdint.h</includes>
+    <includes local="no">string.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_uart.c</label>
+        <link refid="hal__uart_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>hal_uart.h</label>
+        <link refid="hal__uart_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>osusat/event_bus.h</label>
+        <link refid="event__bus_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>osusat/ring_buffer.h</label>
+        <link refid="ring__buffer_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>stdbool.h</label>
+      </node>
+      <node id="4">
+        <label>stddef.h</label>
+      </node>
+      <node id="5">
+        <label>stdint.h</label>
+      </node>
+      <node id="8">
+        <label>stm32l4xx_hal.h</label>
+      </node>
+      <node id="9">
+        <label>stm32l4xx_hal_def.h</label>
+      </node>
+      <node id="10">
+        <label>stm32l4xx_hal_uart.h</label>
+      </node>
+      <node id="11">
+        <label>string.h</label>
+      </node>
+    </incdepgraph>
+    <innerclass refid="structuart__port__state__t" prot="public">uart_port_state_t</innerclass>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="hal__uart_8c_1ac58748de79395a1751fc333bbc7ebd6b" prot="public" static="no">
+        <name>DMA_BUFFER_SIZE</name>
+        <initializer>256</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_uart.c" line="17" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_uart.c" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="hal__uart_8c_1a88a3aa77e33d6b8c0b99f25cf2b8ef35" prot="public" static="no">
+        <name>UART_TX_CAPACITY</name>
+        <initializer>512</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_uart.c" line="18" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_uart.c" bodystart="18" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="hal__uart_8c_1ab5ce5d599773997ce470b12e16f4e7e8" prot="public" static="yes" mutable="no">
+        <type><ref refid="structuart__port__state__t" kindref="compound">uart_port_state_t</ref></type>
+        <definition>uart_port_state_t g_uart_state[UART_PORT_MAX]</definition>
+        <argsstring>[UART_PORT_MAX]</argsstring>
+        <name>g_uart_state</name>
+        <initializer>= {0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_uart.c" line="46" column="26" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_uart.c" bodystart="46" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="variable" id="hal__uart_8c_1a2cf715bef37f7e8ef385a30974a5f0d5" prot="public" static="no" extern="yes" mutable="no">
+        <type><ref refid="structUART__HandleTypeDef" kindref="compound">UART_HandleTypeDef</ref></type>
+        <definition>UART_HandleTypeDef huart1</definition>
+        <argsstring></argsstring>
+        <name>huart1</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_uart.c" line="48" column="27" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Core/Src/usart.c" bodystart="27" bodyend="-1" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_uart.c" declline="48" declcolumn="27"/>
+      </memberdef>
+      <memberdef kind="variable" id="hal__uart_8c_1ab7c63c1b0f65db92b6a4ea19edf957e1" prot="public" static="no" extern="yes" mutable="no">
+        <type><ref refid="structUART__HandleTypeDef" kindref="compound">UART_HandleTypeDef</ref></type>
+        <definition>UART_HandleTypeDef huart3</definition>
+        <argsstring></argsstring>
+        <name>huart3</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_uart.c" line="50" column="27" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Core/Src/usart.c" bodystart="28" bodyend="-1" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_uart.c" declline="50" declcolumn="27"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="hal__uart_8c_1a3668b0c0a33b69f67b5304e4943a289c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void uart_start_tx</definition>
+        <argsstring>(uart_port_t port)</argsstring>
+        <name>uart_start_tx</name>
+        <param>
+          <type><ref refid="group__uart__types_1ga7f28644638bd57536eb5260695e83de9" kindref="member">uart_port_t</ref></type>
+          <declname>port</declname>
+        </param>
+        <briefdescription>
+<para>Helper to kick-start a TX if none is in progress. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_uart.c" line="56" column="13" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_uart.c" bodystart="56" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="hal__uart_8c_1ae17ed99306efd8fe7baa6eef1dc0202c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structUART__HandleTypeDef" kindref="compound">UART_HandleTypeDef</ref> *</type>
+        <definition>static UART_HandleTypeDef * get_hal_handle</definition>
+        <argsstring>(uart_port_t port)</argsstring>
+        <name>get_hal_handle</name>
+        <param>
+          <type><ref refid="group__uart__types_1ga7f28644638bd57536eb5260695e83de9" kindref="member">uart_port_t</ref></type>
+          <declname>port</declname>
+        </param>
+        <briefdescription>
+<para>Map uart_port_t to STM32 HAL handle. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_uart.c" line="71" column="27" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_uart.c" bodystart="71" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="function" id="hal__uart_8c_1a45a9f2e304ad2eaa80799d0203f11871" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void process_dma_input</definition>
+        <argsstring>(uart_port_t port)</argsstring>
+        <name>process_dma_input</name>
+        <param>
+          <type><ref refid="group__uart__types_1ga7f28644638bd57536eb5260695e83de9" kindref="member">uart_port_t</ref></type>
+          <declname>port</declname>
+        </param>
+        <briefdescription>
+<para>Process new bytes from DMA buffer into User Ring Buffer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This calculates how many bytes the DMA has written since we last checked, copies them to the ring buffer, and fires the user callback. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_uart.c" line="89" column="13" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_uart.c" bodystart="89" bodyend="130"/>
+      </memberdef>
+      <member refid="group__uart__api_1ga68658cc0c2481518a87da03f5678f1bd" kind="function"><name>hal_uart_init</name></member>
+      <member refid="group__uart__api_1ga6958ec0e88f16a944298998d1772c71e" kind="function"><name>hal_uart_register_rx_callback</name></member>
+      <member refid="group__uart__api_1gafe2074ec1f9a6a3a4fbf73cd8f8ec41c" kind="function"><name>hal_uart_register_error_callback</name></member>
+      <member refid="group__uart__api_1ga4483e54b3d76f3f0b2bb91f2d28ccd62" kind="function"><name>hal_uart_write</name></member>
+      <member refid="group__uart__api_1gac1a9051d3daf0c76f550edc36e95db4b" kind="function"><name>hal_uart_read</name></member>
+      <member refid="group__uart__api_1gab8d90577dada915fa244800214d65993" kind="function"><name>hal_uart_isr_handler</name></member>
+      <member refid="group__UART__Exported__Functions__Group2_1ga1884970cc493d8efba5aec28c0d526e7" kind="function"><name>HAL_UART_RxHalfCpltCallback</name></member>
+      <member refid="group__UART__Exported__Functions__Group2_1gae494a9643f29b87d6d81e5264e60e57b" kind="function"><name>HAL_UART_RxCpltCallback</name></member>
+      <member refid="group__UART__Exported__Functions__Group2_1gabcdf9b59049eccbc87d54042f9235b1a" kind="function"><name>HAL_UART_TxCpltCallback</name></member>
+      <member refid="group__UART__Exported__Functions__Group2_1ga0e0456ea96d55db31de947fb3e954f18" kind="function"><name>HAL_UART_ErrorCallback</name></member>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="hal__uart_8h" kindref="compound">hal_uart.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="event__bus_8h" kindref="compound">osusat/event_bus.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="ring__buffer_8h" kindref="compound">osusat/ring_buffer.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;stm32l4xx_hal.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;stm32l4xx_hal_def.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;stm32l4xx_hal_uart.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">//<sp/>size<sp/>of<sp/>the<sp/>raw<sp/>DMA<sp/>buffer</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ideally<sp/>2x<sp/>the<sp/>max<sp/>expected<sp/>packet<sp/>size<sp/>to<sp/>prevent<sp/>overwrites</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DMA_BUFFER_SIZE<sp/>256</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>UART_TX_CAPACITY<sp/>512</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="structuart__port__state__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structUART__HandleTypeDef" kindref="compound">UART_HandleTypeDef</ref><sp/>*huart;<sp/></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structosusat__ring__buffer__t" kindref="compound">osusat_ring_buffer_t</ref><sp/>rx_ring;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>rx_storage[<ref refid="hal__uart_8h_1a3e2f064113760a6f6a5283f8f0e49fe5" kindref="member">UART_RX_CAPACITY</ref>];<sp/></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structosusat__ring__buffer__t" kindref="compound">osusat_ring_buffer_t</ref><sp/>tx_ring;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>tx_storage[<ref refid="hal__uart_8c_1a88a3aa77e33d6b8c0b99f25cf2b8ef35" kindref="member">UART_TX_CAPACITY</ref>];<sp/></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>dma_buffer[<ref refid="hal__uart_8c_1ac58748de79395a1751fc333bbc7ebd6b" kindref="member">DMA_BUFFER_SIZE</ref>];</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>last_dma_pos;<sp/></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>current_tx_byte;<sp/></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__uart__types_1ga98671ef10144eb8b0da339ca06dd03b4" kindref="member">uart_rx_callback_t</ref><sp/>rx_callback;<sp/></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*rx_callback_ctx;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__uart__types_1ga657936db7b6e3c8b4a3d9122c76987ae" kindref="member">uart_hal_error_cb_t</ref><sp/>error_callback;<sp/></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*error_callback_ctx;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>initialized;<sp/></highlight></codeline>
+<codeline lineno="44"><highlight class="normal">}<sp/><ref refid="structuart__port__state__t" kindref="compound">uart_port_state_t</ref>;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structuart__port__state__t" kindref="compound">uart_port_state_t</ref><sp/>g_uart_state[<ref refid="group__uart__types_1gga7f28644638bd57536eb5260695e83de9aa9786d8f9cf4c84f4ac9b594979ea194" kindref="member">UART_PORT_MAX</ref>]<sp/>=<sp/>{0};</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="structUART__HandleTypeDef" kindref="compound">UART_HandleTypeDef</ref><sp/><ref refid="hal__uart_8c_1a2cf715bef37f7e8ef385a30974a5f0d5" kindref="member">huart1</ref>;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="comment">//<sp/>extern<sp/>UART_HandleTypeDef<sp/>huart2;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="structUART__HandleTypeDef" kindref="compound">UART_HandleTypeDef</ref><sp/><ref refid="hal__uart_8c_1ab7c63c1b0f65db92b6a4ea19edf957e1" kindref="member">huart3</ref>;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="comment">//<sp/>extern<sp/>UART_HandleTypeDef<sp/>huart4;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>uart_start_tx(<ref refid="group__uart__types_1ga7f28644638bd57536eb5260695e83de9" kindref="member">uart_port_t</ref><sp/>port)<sp/>{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structuart__port__state__t" kindref="compound">uart_port_state_t</ref><sp/>*state<sp/>=<sp/>&amp;g_uart_state[port];</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(state-&gt;<ref refid="structuart__port__state__t_1a3d0ce3426c5e1dadb8ee390e714c987e" kindref="member">huart</ref>-&gt;gState<sp/>!=<sp/><ref refid="group__UART__State__Definition_1ga5f9ebc1c0e62dbad395ecf020e88bce9" kindref="member">HAL_UART_STATE_READY</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="group__osusat__ring__buffer__api_1ga5f006e082a5e7caddda22ffd638b12da" kindref="member">osusat_ring_buffer_pop</ref>(&amp;state-&gt;<ref refid="structuart__port__state__t_1a0fee1e082ff784e7d66f2cf29f4f6547" kindref="member">tx_ring</ref>,<sp/>&amp;state-&gt;<ref refid="structuart__port__state__t_1a27a996ac70b7e470b711e5165bec6cc2" kindref="member">current_tx_byte</ref>))<sp/>{</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__UART__Exported__Functions__Group2_1ga695812b114bd1eb4d9afd6831143b01b" kindref="member">HAL_UART_Transmit_IT</ref>(state-&gt;<ref refid="structuart__port__state__t_1a3d0ce3426c5e1dadb8ee390e714c987e" kindref="member">huart</ref>,<sp/>&amp;state-&gt;<ref refid="structuart__port__state__t_1a27a996ac70b7e470b711e5165bec6cc2" kindref="member">current_tx_byte</ref>,<sp/>1);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structUART__HandleTypeDef" kindref="compound">UART_HandleTypeDef</ref><sp/>*get_hal_handle(<ref refid="group__uart__types_1ga7f28644638bd57536eb5260695e83de9" kindref="member">uart_port_t</ref><sp/>port)<sp/>{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(port)<sp/>{</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="group__uart__types_1gga7f28644638bd57536eb5260695e83de9a4214053499c9bf408d20f9617812c0f5" kindref="member">UART_PORT_1</ref>:</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>&amp;<ref refid="hal__uart_8c_1a2cf715bef37f7e8ef385a30974a5f0d5" kindref="member">huart1</ref>;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="group__uart__types_1gga7f28644638bd57536eb5260695e83de9aa244f63b13d1cf5359685df1a7288818" kindref="member">UART_PORT_3</ref>:</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>&amp;<ref refid="hal__uart_8c_1ab7c63c1b0f65db92b6a4ea19edf957e1" kindref="member">huart3</ref>;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>NOTE:<sp/>our<sp/>pinout<sp/>does<sp/>not<sp/>use<sp/>ports<sp/>2<sp/>or<sp/>4</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="81"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>process_dma_input(<ref refid="group__uart__types_1ga7f28644638bd57536eb5260695e83de9" kindref="member">uart_port_t</ref><sp/>port)<sp/>{</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structuart__port__state__t" kindref="compound">uart_port_state_t</ref><sp/>*state<sp/>=<sp/>&amp;g_uart_state[port];</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>calculate<sp/>current<sp/>DMA<sp/>Write<sp/>Position</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>CNDTR<sp/>counts<sp/>down<sp/>from<sp/>buffer<sp/>size.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>so,<sp/>pos<sp/>=<sp/>size<sp/>-<sp/>remaining</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>current_pos<sp/>=</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="hal__uart_8c_1ac58748de79395a1751fc333bbc7ebd6b" kindref="member">DMA_BUFFER_SIZE</ref><sp/>-<sp/><ref refid="group__DMA__Exported__Macros_1ga082d691311bac96641dc35a17cfe8e63" kindref="member">__HAL_DMA_GET_COUNTER</ref>(state-&gt;<ref refid="structuart__port__state__t_1a3d0ce3426c5e1dadb8ee390e714c987e" kindref="member">huart</ref>-&gt;hdmarx);</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(current_pos<sp/>==<sp/>state-&gt;<ref refid="structuart__port__state__t_1a5ab5a10320bf5294bae3fd443f04dc75" kindref="member">last_dma_pos</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>copy<sp/>data<sp/>from<sp/>DMA<sp/>buffer<sp/>to<sp/>Ring<sp/>Buffer</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>we<sp/>must<sp/>handle<sp/>the<sp/>case<sp/>where<sp/>the<sp/>DMA<sp/>wrapped<sp/>around<sp/>the<sp/>end<sp/>of<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>buffer</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>start<sp/>=<sp/>state-&gt;<ref refid="structuart__port__state__t_1a5ab5a10320bf5294bae3fd443f04dc75" kindref="member">last_dma_pos</ref>;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(current_pos<sp/>&gt;<sp/>start)<sp/>{</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>standard<sp/>case</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(uint32_t<sp/>i<sp/>=<sp/>start;<sp/>i<sp/>&lt;<sp/>current_pos;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__osusat__ring__buffer__api_1ga24d294734f61bf4558d82a332060af67" kindref="member">osusat_ring_buffer_push</ref>(&amp;state-&gt;<ref refid="structuart__port__state__t_1a5416084956b2804967d1d115da3b5c02" kindref="member">rx_ring</ref>,<sp/>state-&gt;<ref refid="structuart__port__state__t_1a3ae61aec9433b9f5b8df13e38d69c0bf" kindref="member">dma_buffer</ref>[i]);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>wrap-around<sp/>case,<sp/>end<sp/>of<sp/>buffer...</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(uint32_t<sp/>i<sp/>=<sp/>start;<sp/>i<sp/>&lt;<sp/><ref refid="hal__uart_8c_1ac58748de79395a1751fc333bbc7ebd6b" kindref="member">DMA_BUFFER_SIZE</ref>;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__osusat__ring__buffer__api_1ga24d294734f61bf4558d82a332060af67" kindref="member">osusat_ring_buffer_push</ref>(&amp;state-&gt;<ref refid="structuart__port__state__t_1a5416084956b2804967d1d115da3b5c02" kindref="member">rx_ring</ref>,<sp/>state-&gt;<ref refid="structuart__port__state__t_1a3ae61aec9433b9f5b8df13e38d69c0bf" kindref="member">dma_buffer</ref>[i]);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>...then<sp/>from<sp/>beginning<sp/>to<sp/>current</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(uint32_t<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>current_pos;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__osusat__ring__buffer__api_1ga24d294734f61bf4558d82a332060af67" kindref="member">osusat_ring_buffer_push</ref>(&amp;state-&gt;<ref refid="structuart__port__state__t_1a5416084956b2804967d1d115da3b5c02" kindref="member">rx_ring</ref>,<sp/>state-&gt;<ref refid="structuart__port__state__t_1a3ae61aec9433b9f5b8df13e38d69c0bf" kindref="member">dma_buffer</ref>[i]);</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>4.<sp/>update<sp/>position<sp/>tracker</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;<ref refid="structuart__port__state__t_1a5ab5a10320bf5294bae3fd443f04dc75" kindref="member">last_dma_pos</ref><sp/>=<sp/>current_pos;</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(state-&gt;<ref refid="structuart__port__state__t_1abc466b3d5155c7f947617880a03a889b" kindref="member">rx_callback</ref><sp/>!=<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state-&gt;<ref refid="structuart__port__state__t_1abc466b3d5155c7f947617880a03a889b" kindref="member">rx_callback</ref>(port,<sp/>state-&gt;<ref refid="structuart__port__state__t_1afa4d65702ab1af6991d3d652d1dac8fe" kindref="member">rx_callback_ctx</ref>);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="130"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__uart__api_1ga68658cc0c2481518a87da03f5678f1bd" kindref="member">hal_uart_init</ref>(<ref refid="group__uart__types_1ga7f28644638bd57536eb5260695e83de9" kindref="member">uart_port_t</ref><sp/>port,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structuart__config__t" kindref="compound">uart_config_t</ref><sp/>*config)<sp/>{</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(port<sp/>&gt;=<sp/><ref refid="group__uart__types_1gga7f28644638bd57536eb5260695e83de9aa9786d8f9cf4c84f4ac9b594979ea194" kindref="member">UART_PORT_MAX</ref><sp/>||<sp/>config<sp/>==<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structuart__port__state__t" kindref="compound">uart_port_state_t</ref><sp/>*state<sp/>=<sp/>&amp;g_uart_state[port];</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;<ref refid="structuart__port__state__t_1a3d0ce3426c5e1dadb8ee390e714c987e" kindref="member">huart</ref><sp/>=<sp/>get_hal_handle(port);</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(state-&gt;<ref refid="structuart__port__state__t_1a3d0ce3426c5e1dadb8ee390e714c987e" kindref="member">huart</ref><sp/>==<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__osusat__ring__buffer__api_1ga0042234225cbcdf0809fb285062ec630" kindref="member">osusat_ring_buffer_init</ref>(&amp;state-&gt;<ref refid="structuart__port__state__t_1a5416084956b2804967d1d115da3b5c02" kindref="member">rx_ring</ref>,<sp/>state-&gt;<ref refid="structuart__port__state__t_1aa0554893baf6884539d371eef67bcf68" kindref="member">rx_storage</ref>,</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="hal__uart_8h_1a3e2f064113760a6f6a5283f8f0e49fe5" kindref="member">UART_RX_CAPACITY</ref>,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__osusat__ring__buffer__api_1ga0042234225cbcdf0809fb285062ec630" kindref="member">osusat_ring_buffer_init</ref>(&amp;state-&gt;<ref refid="structuart__port__state__t_1a0fee1e082ff784e7d66f2cf29f4f6547" kindref="member">tx_ring</ref>,<sp/>state-&gt;<ref refid="structuart__port__state__t_1acb1cd0811b128c18fca4915c7522751b" kindref="member">tx_storage</ref>,</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="hal__uart_8c_1a88a3aa77e33d6b8c0b99f25cf2b8ef35" kindref="member">UART_TX_CAPACITY</ref>,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;<ref refid="structuart__port__state__t_1a3d0ce3426c5e1dadb8ee390e714c987e" kindref="member">huart</ref>-&gt;Init.BaudRate<sp/>=<sp/>config-&gt;<ref refid="structuart__config__t_1a736260dfb0b24aa8bf3bee3ada0d4a4e" kindref="member">baudrate</ref>;</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;<ref refid="structuart__port__state__t_1a3d0ce3426c5e1dadb8ee390e714c987e" kindref="member">huart</ref>-&gt;Init.WordLength<sp/>=<sp/><ref refid="group__UARTEx__Word__Length_1gaf394e9abaf17932ee89591f990fe6407" kindref="member">UART_WORDLENGTH_8B</ref>;</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;<ref refid="structuart__port__state__t_1a3d0ce3426c5e1dadb8ee390e714c987e" kindref="member">huart</ref>-&gt;Init.StopBits<sp/>=<sp/><ref refid="group__UART__Stop__Bits_1ga7cf97e555292d574de8abc596ba0e2ce" kindref="member">UART_STOPBITS_1</ref>;</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;<ref refid="structuart__port__state__t_1a3d0ce3426c5e1dadb8ee390e714c987e" kindref="member">huart</ref>-&gt;Init.Parity<sp/>=<sp/><ref refid="group__UART__Parity_1ga270dea6e1a92dd83fe58802450bdd60c" kindref="member">UART_PARITY_NONE</ref>;</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;<ref refid="structuart__port__state__t_1a3d0ce3426c5e1dadb8ee390e714c987e" kindref="member">huart</ref>-&gt;Init.Mode<sp/>=<sp/><ref refid="group__UART__Mode_1gab47c162935901e89322e2ce6700b6744" kindref="member">UART_MODE_TX_RX</ref>;</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;<ref refid="structuart__port__state__t_1a3d0ce3426c5e1dadb8ee390e714c987e" kindref="member">huart</ref>-&gt;Init.HwFlowCtl<sp/>=<sp/><ref refid="group__UART__Hardware__Flow__Control_1gae0569001c06b7760cd38c481f84116cf" kindref="member">UART_HWCONTROL_NONE</ref>;</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;<ref refid="structuart__port__state__t_1a3d0ce3426c5e1dadb8ee390e714c987e" kindref="member">huart</ref>-&gt;Init.OverSampling<sp/>=<sp/><ref refid="group__UART__Over__Sampling_1gaa6a320ec65d248d76f21de818db1a2f0" kindref="member">UART_OVERSAMPLING_16</ref>;</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="group__UART__Exported__Functions__Group1_1gabe47045024787099b0bfa82bbe7b0b6a" kindref="member">HAL_UART_Init</ref>(state-&gt;<ref refid="structuart__port__state__t_1a3d0ce3426c5e1dadb8ee390e714c987e" kindref="member">huart</ref>)<sp/>!=<sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;<ref refid="structuart__port__state__t_1a5ab5a10320bf5294bae3fd443f04dc75" kindref="member">last_dma_pos</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>start<sp/>circular<sp/>dma</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__UART__Exported__Functions__Group2_1gad674cce054e58927720cd689620ffa08" kindref="member">HAL_UART_Receive_DMA</ref>(state-&gt;<ref refid="structuart__port__state__t_1a3d0ce3426c5e1dadb8ee390e714c987e" kindref="member">huart</ref>,<sp/>state-&gt;<ref refid="structuart__port__state__t_1a3ae61aec9433b9f5b8df13e38d69c0bf" kindref="member">dma_buffer</ref>,<sp/><ref refid="hal__uart_8c_1ac58748de79395a1751fc333bbc7ebd6b" kindref="member">DMA_BUFFER_SIZE</ref>);</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>enable<sp/>&quot;idle<sp/>line&quot;<sp/>interrupt</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__UART__Exported__Macros_1gaba94165ed584d49c1ec12df9819bd4bb" kindref="member">__HAL_UART_ENABLE_IT</ref>(state-&gt;<ref refid="structuart__port__state__t_1a3d0ce3426c5e1dadb8ee390e714c987e" kindref="member">huart</ref>,<sp/><ref refid="group__UART__Interrupt__definition_1ga9781808d4f9999061fc2da36572191d9" kindref="member">UART_IT_IDLE</ref>);</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;<ref refid="structuart__port__state__t_1a443a06dc0c3f5db549db92817aa00fa3" kindref="member">initialized</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="170"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__uart__api_1ga6958ec0e88f16a944298998d1772c71e" kindref="member">hal_uart_register_rx_callback</ref>(<ref refid="group__uart__types_1ga7f28644638bd57536eb5260695e83de9" kindref="member">uart_port_t</ref><sp/>port,<sp/><ref refid="group__uart__types_1ga98671ef10144eb8b0da339ca06dd03b4" kindref="member">uart_rx_callback_t</ref><sp/>cb,</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*ctx)<sp/>{</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(port<sp/>&gt;=<sp/><ref refid="group__uart__types_1gga7f28644638bd57536eb5260695e83de9aa9786d8f9cf4c84f4ac9b594979ea194" kindref="member">UART_PORT_MAX</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structuart__port__state__t" kindref="compound">uart_port_state_t</ref><sp/>*state<sp/>=<sp/>&amp;g_uart_state[port];</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;<ref refid="structuart__port__state__t_1abc466b3d5155c7f947617880a03a889b" kindref="member">rx_callback</ref><sp/>=<sp/>cb;</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;<ref refid="structuart__port__state__t_1afa4d65702ab1af6991d3d652d1dac8fe" kindref="member">rx_callback_ctx</ref><sp/>=<sp/>ctx;</highlight></codeline>
+<codeline lineno="182"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__uart__api_1gafe2074ec1f9a6a3a4fbf73cd8f8ec41c" kindref="member">hal_uart_register_error_callback</ref>(<ref refid="group__uart__types_1ga7f28644638bd57536eb5260695e83de9" kindref="member">uart_port_t</ref><sp/>port,<sp/><ref refid="group__uart__types_1ga657936db7b6e3c8b4a3d9122c76987ae" kindref="member">uart_hal_error_cb_t</ref><sp/>cb,</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*ctx)<sp/>{</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(port<sp/>&gt;=<sp/><ref refid="group__uart__types_1gga7f28644638bd57536eb5260695e83de9aa9786d8f9cf4c84f4ac9b594979ea194" kindref="member">UART_PORT_MAX</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/>g_uart_state[port].<ref refid="structuart__port__state__t_1acec38e3c06dcc92a7b7b4e1d024f4f37" kindref="member">error_callback</ref><sp/>=<sp/>cb;</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/>g_uart_state[port].<ref refid="structuart__port__state__t_1a6a551cd82641dab5b24a3e583cf4f15b" kindref="member">error_callback_ctx</ref><sp/>=<sp/>ctx;</highlight></codeline>
+<codeline lineno="192"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__uart__api_1ga4483e54b3d76f3f0b2bb91f2d28ccd62" kindref="member">hal_uart_write</ref>(<ref refid="group__uart__types_1ga7f28644638bd57536eb5260695e83de9" kindref="member">uart_port_t</ref><sp/>port,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>*data,<sp/>uint16_t<sp/>len)<sp/>{</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(port<sp/>&gt;=<sp/><ref refid="group__uart__types_1gga7f28644638bd57536eb5260695e83de9aa9786d8f9cf4c84f4ac9b594979ea194" kindref="member">UART_PORT_MAX</ref><sp/>||<sp/>data<sp/>==<sp/>NULL<sp/>||<sp/>len<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structuart__port__state__t" kindref="compound">uart_port_state_t</ref><sp/>*state<sp/>=<sp/>&amp;g_uart_state[port];</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!state-&gt;<ref refid="structuart__port__state__t_1a443a06dc0c3f5db549db92817aa00fa3" kindref="member">initialized</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>non-blocking<sp/>push<sp/>to<sp/>tx_ring</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(uint16_t<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>len;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="group__osusat__ring__buffer__api_1ga24d294734f61bf4558d82a332060af67" kindref="member">osusat_ring_buffer_push</ref>(&amp;state-&gt;<ref refid="structuart__port__state__t_1a0fee1e082ff784e7d66f2cf29f4f6547" kindref="member">tx_ring</ref>,<sp/>data[i]))<sp/>{</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;<sp/></highlight><highlight class="comment">//<sp/>buffer<sp/>full</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/>uart_start_tx(port);</highlight></codeline>
+<codeline lineno="212"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"></highlight></codeline>
+<codeline lineno="214"><highlight class="normal">uint16_t<sp/><ref refid="group__uart__api_1gac1a9051d3daf0c76f550edc36e95db4b" kindref="member">hal_uart_read</ref>(<ref refid="group__uart__types_1ga7f28644638bd57536eb5260695e83de9" kindref="member">uart_port_t</ref><sp/>port,<sp/>uint8_t<sp/>*out,<sp/>uint16_t<sp/>len)<sp/>{</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(port<sp/>&gt;=<sp/><ref refid="group__uart__types_1gga7f28644638bd57536eb5260695e83de9aa9786d8f9cf4c84f4ac9b594979ea194" kindref="member">UART_PORT_MAX</ref><sp/>||<sp/>out<sp/>==<sp/>NULL<sp/>||<sp/>len<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"></highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structuart__port__state__t" kindref="compound">uart_port_state_t</ref><sp/>*state<sp/>=<sp/>&amp;g_uart_state[port];</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!state-&gt;<ref refid="structuart__port__state__t_1a443a06dc0c3f5db549db92817aa00fa3" kindref="member">initialized</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/>read_count<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"></highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(uint16_t<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>len;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="group__osusat__ring__buffer__api_1ga5f006e082a5e7caddda22ffd638b12da" kindref="member">osusat_ring_buffer_pop</ref>(&amp;state-&gt;<ref refid="structuart__port__state__t_1a5416084956b2804967d1d115da3b5c02" kindref="member">rx_ring</ref>,<sp/>&amp;out[i]))<sp/>{</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>read_count++;</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"></highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>read_count;</highlight></codeline>
+<codeline lineno="235"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"></highlight></codeline>
+<codeline lineno="237"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__uart__api_1gab8d90577dada915fa244800214d65993" kindref="member">hal_uart_isr_handler</ref>(<ref refid="group__uart__types_1ga7f28644638bd57536eb5260695e83de9" kindref="member">uart_port_t</ref><sp/>port)<sp/>{</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(port<sp/>&gt;=<sp/><ref refid="group__uart__types_1gga7f28644638bd57536eb5260695e83de9aa9786d8f9cf4c84f4ac9b594979ea194" kindref="member">UART_PORT_MAX</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"></highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structuart__port__state__t" kindref="compound">uart_port_state_t</ref><sp/>*state<sp/>=<sp/>&amp;g_uart_state[port];</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!state-&gt;<ref refid="structuart__port__state__t_1a443a06dc0c3f5db549db92817aa00fa3" kindref="member">initialized</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"></highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="group__UART__Exported__Macros_1ga261fe8a2afe84ec048113654266c5bf6" kindref="member">__HAL_UART_GET_FLAG</ref>(state-&gt;<ref refid="structuart__port__state__t_1a3d0ce3426c5e1dadb8ee390e714c987e" kindref="member">huart</ref>,<sp/><ref refid="group__UART__Flags_1ga5d7a320c505672f7508e3bd99f532a69" kindref="member">UART_FLAG_IDLE</ref>))<sp/>{</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__UART__Exported__Macros_1ga1345aa0af53d82269b13835c225e91d0" kindref="member">__HAL_UART_CLEAR_IDLEFLAG</ref>(state-&gt;<ref refid="structuart__port__state__t_1a3d0ce3426c5e1dadb8ee390e714c987e" kindref="member">huart</ref>);</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"></highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>process_dma_input(port);</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"></highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__UART__Exported__Functions__Group2_1gaad01472c507ceee3c5f2274c775ff3bf" kindref="member">HAL_UART_IRQHandler</ref>(state-&gt;<ref refid="structuart__port__state__t_1a3d0ce3426c5e1dadb8ee390e714c987e" kindref="member">huart</ref>);</highlight></codeline>
+<codeline lineno="254"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"></highlight></codeline>
+<codeline lineno="259"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__UART__Exported__Functions__Group2_1ga1884970cc493d8efba5aec28c0d526e7" kindref="member">HAL_UART_RxHalfCpltCallback</ref>(<ref refid="structUART__HandleTypeDef" kindref="compound">UART_HandleTypeDef</ref><sp/>*huart)<sp/>{</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="group__uart__types_1gga7f28644638bd57536eb5260695e83de9aa9786d8f9cf4c84f4ac9b594979ea194" kindref="member">UART_PORT_MAX</ref>;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(g_uart_state[i].huart<sp/>==<sp/>huart)<sp/>{</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>process_dma_input(i);</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="266"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"></highlight></codeline>
+<codeline lineno="272"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__UART__Exported__Functions__Group2_1gae494a9643f29b87d6d81e5264e60e57b" kindref="member">HAL_UART_RxCpltCallback</ref>(<ref refid="structUART__HandleTypeDef" kindref="compound">UART_HandleTypeDef</ref><sp/>*huart)<sp/>{</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="group__uart__types_1gga7f28644638bd57536eb5260695e83de9aa9786d8f9cf4c84f4ac9b594979ea194" kindref="member">UART_PORT_MAX</ref>;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(g_uart_state[i].huart<sp/>==<sp/>huart)<sp/>{</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>process_dma_input(i);</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="279"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"></highlight></codeline>
+<codeline lineno="285"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__UART__Exported__Functions__Group2_1gabcdf9b59049eccbc87d54042f9235b1a" kindref="member">HAL_UART_TxCpltCallback</ref>(<ref refid="structUART__HandleTypeDef" kindref="compound">UART_HandleTypeDef</ref><sp/>*huart)<sp/>{</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="group__uart__types_1gga7f28644638bd57536eb5260695e83de9aa9786d8f9cf4c84f4ac9b594979ea194" kindref="member">UART_PORT_MAX</ref>;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(g_uart_state[i].huart<sp/>==<sp/>huart)<sp/>{</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uart_start_tx(i);</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="292"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"></highlight></codeline>
+<codeline lineno="297"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__UART__Exported__Functions__Group2_1ga0e0456ea96d55db31de947fb3e954f18" kindref="member">HAL_UART_ErrorCallback</ref>(<ref refid="structUART__HandleTypeDef" kindref="compound">UART_HandleTypeDef</ref><sp/>*huart)<sp/>{</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__uart__types_1ga7f28644638bd57536eb5260695e83de9" kindref="member">uart_port_t</ref><sp/>port<sp/>=<sp/><ref refid="group__uart__types_1gga7f28644638bd57536eb5260695e83de9aa9786d8f9cf4c84f4ac9b594979ea194" kindref="member">UART_PORT_MAX</ref>;</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="group__uart__types_1gga7f28644638bd57536eb5260695e83de9aa9786d8f9cf4c84f4ac9b594979ea194" kindref="member">UART_PORT_MAX</ref>;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(g_uart_state[i].huart<sp/>==<sp/>huart)<sp/>{</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>port<sp/>=<sp/>i;</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"></highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(port<sp/>==<sp/><ref refid="group__uart__types_1gga7f28644638bd57536eb5260695e83de9aa9786d8f9cf4c84f4ac9b594979ea194" kindref="member">UART_PORT_MAX</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"></highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structuart__port__state__t" kindref="compound">uart_port_state_t</ref><sp/>*state<sp/>=<sp/>&amp;g_uart_state[port];</highlight></codeline>
+<codeline lineno="311"><highlight class="normal"></highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__uart__types_1ga74b95f81faa4de6d75094e95783b2cc4" kindref="member">uart_error_t</ref><sp/>err<sp/>=<sp/><ref refid="group__uart__types_1gga74b95f81faa4de6d75094e95783b2cc4af69c0fcf731b8844a1e0bfb02dd47f62" kindref="member">UART_HAL_ERR_UNKNOWN</ref>;</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>hal_err<sp/>=<sp/>huart-&gt;ErrorCode;</highlight></codeline>
+<codeline lineno="314"><highlight class="normal"></highlight></codeline>
+<codeline lineno="315"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(hal_err<sp/>&amp;<sp/><ref refid="group__UART__Error__Definition_1gaedc030add6c499cf41be7f12dd95930c" kindref="member">HAL_UART_ERROR_ORE</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>err<sp/>=<sp/><ref refid="group__uart__types_1gga74b95f81faa4de6d75094e95783b2cc4af69a4a1c42b3bb10684cfd416b437722" kindref="member">UART_HAL_ERR_OVERRUN</ref>;</highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(hal_err<sp/>&amp;<sp/><ref refid="group__UART__Error__Definition_1ga4a4e32a346dd01f4c41c4fc27afbc72c" kindref="member">HAL_UART_ERROR_NE</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="318"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>err<sp/>=<sp/><ref refid="group__uart__types_1gga74b95f81faa4de6d75094e95783b2cc4afd9af68422ded3b41d98026ac1bc1855" kindref="member">UART_HAL_ERR_NOISE</ref>;</highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(hal_err<sp/>&amp;<sp/><ref refid="group__UART__Error__Definition_1gaf23cb510d4dc2c8e05a45abfbf5f3457" kindref="member">HAL_UART_ERROR_FE</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>err<sp/>=<sp/><ref refid="group__uart__types_1gga74b95f81faa4de6d75094e95783b2cc4a345aa166b44218d8e950aae0fb3ad38d" kindref="member">UART_HAL_ERR_FRAMING</ref>;</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(hal_err<sp/>&amp;<sp/><ref refid="group__UART__Error__Definition_1gad447a37701acd199dcb653ce32917970" kindref="member">HAL_UART_ERROR_PE</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>err<sp/>=<sp/><ref refid="group__uart__types_1gga74b95f81faa4de6d75094e95783b2cc4ab4fd946e790c65fea0d699c1333d7292" kindref="member">UART_HAL_ERR_PARITY</ref>;</highlight></codeline>
+<codeline lineno="323"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="324"><highlight class="normal"></highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>notify<sp/>the<sp/>error<sp/>hook</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>we<sp/>do<sp/>this<sp/>before<sp/>restarting,<sp/>so<sp/>the<sp/>service<sp/>knows<sp/>we<sp/>might<sp/>drop<sp/>a</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>packet</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(state-&gt;<ref refid="structuart__port__state__t_1acec38e3c06dcc92a7b7b4e1d024f4f37" kindref="member">error_callback</ref><sp/>!=<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="329"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state-&gt;<ref refid="structuart__port__state__t_1acec38e3c06dcc92a7b7b4e1d024f4f37" kindref="member">error_callback</ref>(port,<sp/>err,<sp/>state-&gt;<ref refid="structuart__port__state__t_1a6a551cd82641dab5b24a3e583cf4f15b" kindref="member">error_callback_ctx</ref>);</highlight></codeline>
+<codeline lineno="330"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="331"><highlight class="normal"></highlight></codeline>
+<codeline lineno="332"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>restart<sp/>DMA<sp/>if<sp/>it<sp/>stopped</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="333"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>HAL<sp/>ISR<sp/>usually<sp/>disables<sp/>DMA<sp/>on<sp/>severe<sp/>errors<sp/>(like<sp/>ORE).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>we<sp/>check<sp/>if<sp/>the<sp/>state<sp/>is<sp/>&quot;READY&quot;<sp/>(which<sp/>means<sp/>&quot;Not<sp/>Busy&quot;<sp/>/<sp/>Stopped).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(huart-&gt;RxState<sp/>==<sp/><ref refid="group__UART__State__Definition_1ga5f9ebc1c0e62dbad395ecf020e88bce9" kindref="member">HAL_UART_STATE_READY</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="336"><highlight class="normal"></highlight></codeline>
+<codeline lineno="337"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>clear<sp/>error<sp/>flags</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="338"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__UART__Exported__Macros_1ga9bd035161d41cde4f2568c7af06493bf" kindref="member">__HAL_UART_CLEAR_FLAG</ref>(huart,<sp/><ref refid="group__UART__IT__CLEAR__Flags_1ga3bc97b70293f9a7bf8cc21a74094afad" kindref="member">UART_CLEAR_OREF</ref><sp/>|<sp/><ref refid="group__UART__IT__CLEAR__Flags_1gad5b9aafb495296d917a5d85e63383396" kindref="member">UART_CLEAR_NEF</ref><sp/>|</highlight></codeline>
+<codeline lineno="339"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__UART__IT__CLEAR__Flags_1ga9c2aef8048dd09ea5e72d69c63026f02" kindref="member">UART_CLEAR_PEF</ref><sp/>|<sp/><ref refid="group__UART__IT__CLEAR__Flags_1ga2040edf7a1daa2e9f352364e285ef5c3" kindref="member">UART_CLEAR_FEF</ref>);</highlight></codeline>
+<codeline lineno="340"><highlight class="normal"></highlight></codeline>
+<codeline lineno="341"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state-&gt;<ref refid="structuart__port__state__t_1a5ab5a10320bf5294bae3fd443f04dc75" kindref="member">last_dma_pos</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="342"><highlight class="normal"></highlight></codeline>
+<codeline lineno="343"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>restart<sp/>the<sp/>circular<sp/>DMA</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="344"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__UART__Exported__Functions__Group2_1gad674cce054e58927720cd689620ffa08" kindref="member">HAL_UART_Receive_DMA</ref>(huart,<sp/>state-&gt;<ref refid="structuart__port__state__t_1a3ae61aec9433b9f5b8df13e38d69c0bf" kindref="member">dma_buffer</ref>,<sp/><ref refid="hal__uart_8c_1ac58748de79395a1751fc333bbc7ebd6b" kindref="member">DMA_BUFFER_SIZE</ref>);</highlight></codeline>
+<codeline lineno="345"><highlight class="normal"></highlight></codeline>
+<codeline lineno="346"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>re-enable<sp/>the<sp/>Idle<sp/>Line<sp/>Interrupt<sp/>(often<sp/>disabled<sp/>by<sp/>HAL<sp/>on<sp/>error)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="347"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__UART__Exported__Macros_1gaba94165ed584d49c1ec12df9819bd4bb" kindref="member">__HAL_UART_ENABLE_IT</ref>(huart,<sp/><ref refid="group__UART__Interrupt__definition_1ga9781808d4f9999061fc2da36572191d9" kindref="member">UART_IT_IDLE</ref>);</highlight></codeline>
+<codeline lineno="348"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="349"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_uart.c"/>
+  </compounddef>
+</doxygen>

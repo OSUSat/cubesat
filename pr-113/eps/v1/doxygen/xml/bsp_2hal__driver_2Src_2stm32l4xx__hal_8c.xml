@@ -1,0 +1,417 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="bsp_2hal__driver_2Src_2stm32l4xx__hal_8c" kind="file" language="C++">
+    <compoundname>stm32l4xx_hal.c</compoundname>
+    <includes local="yes">stm32l4xx_hal.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Src/stm32l4xx_hal.c</label>
+        <link refid="bsp_2hal__driver_2Src_2stm32l4xx__hal_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>stm32l4xx_hal.h</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+<para>HAL module driver. This is the common part of the HAL initialization. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>MCD Application Team </para>
+</simplesect>
+<simplesect kind="attention"><para></para>
+</simplesect>
+Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
+<para>This software is licensed under terms that can be found in the LICENSE file in the root directory of this software component. If no LICENSE file comes with this software, it is provided AS-IS.</para>
+<para><verbatim>==============================================================================
+                   ##### How to use this driver #####
+==============================================================================
+  [..]
+  The common HAL driver contains a set of generic and common APIs that can be
+  used by the PPP peripheral drivers and the user to start using the HAL.
+  [..]
+  The HAL contains two APIs&apos; categories:
+       (+) Common HAL APIs
+       (+) Services HAL APIs</verbatim> </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Includes<sp/>------------------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;stm32l4xx_hal.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>HAL_MODULE_ENABLED</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>typedef<sp/>-----------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>define<sp/>------------------------------------------------------------*/</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>STM32L4XX_HAL_VERSION_MAIN<sp/><sp/><sp/>(0x01UL)<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>STM32L4XX_HAL_VERSION_SUB1<sp/><sp/><sp/>(0x0DUL)<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>STM32L4XX_HAL_VERSION_SUB2<sp/><sp/><sp/>(0x06UL)<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>STM32L4XX_HAL_VERSION_RC<sp/><sp/><sp/><sp/><sp/>(0x00U)<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>STM32L4XX_HAL_VERSION<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((STM32L4XX_HAL_VERSION_MAIN<sp/><sp/>&lt;&lt;<sp/>24U)\</highlight></codeline>
+<codeline lineno="59"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|(STM32L4XX_HAL_VERSION_SUB1<sp/>&lt;&lt;<sp/>16U)\</highlight></codeline>
+<codeline lineno="60"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|(STM32L4XX_HAL_VERSION_SUB2<sp/>&lt;&lt;<sp/>8U)\</highlight></codeline>
+<codeline lineno="61"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|(STM32L4XX_HAL_VERSION_RC))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(VREFBUF)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>VREFBUF_TIMEOUT_VALUE<sp/><sp/><sp/><sp/><sp/>10U<sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>10<sp/>ms<sp/>(to<sp/>be<sp/>confirmed)<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>VREFBUF<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>------------<sp/>SYSCFG<sp/>registers<sp/>bit<sp/>address<sp/>in<sp/>the<sp/>alias<sp/>region<sp/>------------<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SYSCFG_OFFSET<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(SYSCFG_BASE<sp/>-<sp/>PERIPH_BASE)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>---<sp/><sp/>MEMRMP<sp/>Register<sp/>---*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Alias<sp/>word<sp/>address<sp/>of<sp/>FB_MODE<sp/>bit<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MEMRMP_OFFSET<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SYSCFG_OFFSET</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FB_MODE_BitNumber<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>8U</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FB_MODE_BB<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(PERIPH_BB_BASE<sp/>+<sp/>(MEMRMP_OFFSET<sp/>*<sp/>32U)<sp/>+<sp/>(FB_MODE_BitNumber<sp/>*<sp/>4U))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>---<sp/>SCSR<sp/>Register<sp/>---*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Alias<sp/>word<sp/>address<sp/>of<sp/>SRAM2ER<sp/>bit<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SCSR_OFFSET<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(SYSCFG_OFFSET<sp/>+<sp/>0x18U)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BRER_BitNumber<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0U</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SCSR_SRAM2ER_BB<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(PERIPH_BB_BASE<sp/>+<sp/>(SCSR_OFFSET<sp/>*<sp/>32U)<sp/>+<sp/>(BRER_BitNumber<sp/>*<sp/>4U))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>macro<sp/>-------------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>variables<sp/>---------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>function<sp/>prototypes<sp/>-----------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Exported<sp/>variables<sp/>--------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><ref refid="bootstrap_2Drivers_2CMSIS_2Include_2core__armv81mml_8h_1aec43007d9998a0a0e01faede4133d6be" kindref="member">__IO</ref><sp/>uint32_t<sp/><ref refid="group__HAL__Exported__Variables_1ga9d411ea525781e633bf7ea7ef2f90728" kindref="member">uwTick</ref>;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal">uint32_t<sp/><ref refid="group__HAL__Exported__Variables_1ga3000c5e83924ed2debb1849c738d4be2" kindref="member">uwTickPrio</ref><sp/>=<sp/>(1UL<sp/>&lt;&lt;<sp/><ref refid="group__Configuration__section__for__CMSIS_1gae3fe3587d5100c787e02102ce3944460" kindref="member">__NVIC_PRIO_BITS</ref>);<sp/></highlight><highlight class="comment">/*<sp/>Invalid<sp/>priority<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><ref refid="group__HAL__TICK__FREQ_1gab36ec81674817249c46734772ff3b73a" kindref="member">HAL_TickFreqTypeDef</ref><sp/><ref refid="group__HAL__Exported__Variables_1ga84a0c55c4d0bff06a085b4fcfd6531cd" kindref="member">uwTickFreq</ref><sp/>=<sp/><ref refid="group__HAL__TICK__FREQ_1ggab36ec81674817249c46734772ff3b73aa94e043d780eb1c36291338f6d6314e42" kindref="member">HAL_TICK_FREQ_DEFAULT</ref>;<sp/><sp/></highlight><highlight class="comment">/*<sp/>1KHz<sp/>*/</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Exported<sp/>functions<sp/>--------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/><ref refid="group__HAL__Exported__Functions__Group1_1gaecac54d350c3730e6831eb404e557dc4" kindref="member">HAL_Init</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="153"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/><sp/>status<sp/>=<sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>;</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Configure<sp/>Flash<sp/>prefetch,<sp/>Instruction<sp/>cache,<sp/>Data<sp/>cache<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Default<sp/>configuration<sp/>at<sp/>reset<sp/>is:<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>-<sp/>Prefetch<sp/>disabled<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>-<sp/>Instruction<sp/>cache<sp/>enabled<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>-<sp/>Data<sp/>cache<sp/>enabled<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>(INSTRUCTION_CACHE_ENABLE<sp/>==<sp/>0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><ref refid="group__FLASH__Exported__Macros_1ga01bf00ed6e7c0e74ed0931f3b8b033ed" kindref="member">__HAL_FLASH_INSTRUCTION_CACHE_DISABLE</ref>();</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>INSTRUCTION_CACHE_ENABLE<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>(DATA_CACHE_ENABLE<sp/>==<sp/>0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><ref refid="group__FLASH__Exported__Macros_1ga247f85a1fcc780be21f9fc2f1d29ee7e" kindref="member">__HAL_FLASH_DATA_CACHE_DISABLE</ref>();</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>DATA_CACHE_ENABLE<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>(PREFETCH_ENABLE<sp/>!=<sp/>0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><ref refid="group__FLASH__Exported__Macros_1gad36059641057f824516303ea92734e6f" kindref="member">__HAL_FLASH_PREFETCH_BUFFER_ENABLE</ref>();</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>PREFETCH_ENABLE<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Set<sp/>Interrupt<sp/>Group<sp/>Priority<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><ref refid="group__CORTEX__Exported__Functions__Group1_1gad9be53e08b1498adea006e5e037f238f" kindref="member">HAL_NVIC_SetPriorityGrouping</ref>(<ref refid="group__CORTEX__Preemption__Priority__Group_1gae6eab9140204bc938255aa148e597c45" kindref="member">NVIC_PRIORITYGROUP_4</ref>);</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Use<sp/>SysTick<sp/>as<sp/>time<sp/>base<sp/>source<sp/>and<sp/>configure<sp/>1ms<sp/>tick<sp/>(default<sp/>clock<sp/>after<sp/>Reset<sp/>is<sp/>MSI)<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="group__HAL__Exported__Functions__Group1_1ga879cdb21ef051eb81ec51c18147397d5" kindref="member">HAL_InitTick</ref>(<ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1ae27809d4959b9fd5b5d974e3e1c77d2e" kindref="member">TICK_INT_PRIORITY</ref>)<sp/>!=<sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>)</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/>status<sp/>=<sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa5a04e395e501e4e400172c610478c4a4" kindref="member">HAL_ERROR</ref>;</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Init<sp/>the<sp/>low<sp/>level<sp/>hardware<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__HAL__Exported__Functions__Group1_1gae4fb8e66865c87d0ebab74a726a6891f" kindref="member">HAL_MspInit</ref>();</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Return<sp/>function<sp/>status<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>status;</highlight></codeline>
+<codeline lineno="189"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/><ref refid="group__HAL__Exported__Functions__Group1_1ga95911129a26afb05232caaaefa31956f" kindref="member">HAL_DeInit</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="197"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Reset<sp/>of<sp/>all<sp/>peripherals<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><ref refid="group__RCC__APB1__Force__Release__Reset_1ga6f6e7048eca1abd1be132027f5b79465" kindref="member">__HAL_RCC_APB1_FORCE_RESET</ref>();</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><ref refid="group__RCC__APB1__Force__Release__Reset_1ga9d0742ab271ace3dbe1a4e83de3d017b" kindref="member">__HAL_RCC_APB1_RELEASE_RESET</ref>();</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><ref refid="group__RCC__APB2__Force__Release__Reset_1ga8788da8c644ad0cc54912baede7d49b4" kindref="member">__HAL_RCC_APB2_FORCE_RESET</ref>();</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><ref refid="group__RCC__APB2__Force__Release__Reset_1gae1e413d623154942d5bbe89769161ece" kindref="member">__HAL_RCC_APB2_RELEASE_RESET</ref>();</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><ref refid="group__RCC__AHB1__Force__Release__Reset_1ga87d828d91e67aaa931853a60779826c2" kindref="member">__HAL_RCC_AHB1_FORCE_RESET</ref>();</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><ref refid="group__RCC__AHB1__Force__Release__Reset_1ga23b6a1e77c4f045c29cc36a4b1e910b0" kindref="member">__HAL_RCC_AHB1_RELEASE_RESET</ref>();</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"></highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><ref refid="group__RCC__AHB2__Force__Release__Reset_1gae82cd541f933be46ec8d6c3ea50d402c" kindref="member">__HAL_RCC_AHB2_FORCE_RESET</ref>();</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><ref refid="group__RCC__AHB2__Force__Release__Reset_1gae5bd400860d81b996fafa310df1f2eec" kindref="member">__HAL_RCC_AHB2_RELEASE_RESET</ref>();</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><ref refid="group__RCC__AHB3__Force__Release__Reset_1ga230a57ed6c129076b4fd17bdb07d79f6" kindref="member">__HAL_RCC_AHB3_FORCE_RESET</ref>();</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><ref refid="group__RCC__AHB3__Force__Release__Reset_1ga200c904f6644fc13da81eed085bc6850" kindref="member">__HAL_RCC_AHB3_RELEASE_RESET</ref>();</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"></highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>De-Init<sp/>the<sp/>low<sp/>level<sp/>hardware<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><ref refid="group__HAL__Exported__Functions__Group1_1gadd10d026ef02d00e32e80c9eab9db830" kindref="member">HAL_MspDeInit</ref>();</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"></highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Return<sp/>function<sp/>status<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>;</highlight></codeline>
+<codeline lineno="219"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="normal">__weak<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__HAL__Exported__Functions__Group1_1gae4fb8e66865c87d0ebab74a726a6891f" kindref="member">HAL_MspInit</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="226"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>NOTE<sp/>:<sp/>This<sp/>function<sp/>should<sp/>not<sp/>be<sp/>modified,<sp/>when<sp/>the<sp/>callback<sp/>is<sp/>needed,</highlight></codeline>
+<codeline lineno="228"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>the<sp/>HAL_MspInit<sp/>could<sp/>be<sp/>implemented<sp/>in<sp/>the<sp/>user<sp/>file</highlight></codeline>
+<codeline lineno="229"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="230"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"></highlight></codeline>
+<codeline lineno="236"><highlight class="normal">__weak<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__HAL__Exported__Functions__Group1_1gadd10d026ef02d00e32e80c9eab9db830" kindref="member">HAL_MspDeInit</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="237"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>NOTE<sp/>:<sp/>This<sp/>function<sp/>should<sp/>not<sp/>be<sp/>modified,<sp/>when<sp/>the<sp/>callback<sp/>is<sp/>needed,</highlight></codeline>
+<codeline lineno="239"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>the<sp/>HAL_MspDeInit<sp/>could<sp/>be<sp/>implemented<sp/>in<sp/>the<sp/>user<sp/>file</highlight></codeline>
+<codeline lineno="240"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="241"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"></highlight></codeline>
+<codeline lineno="259"><highlight class="normal">__weak<sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/><ref refid="group__HAL__Exported__Functions__Group1_1ga879cdb21ef051eb81ec51c18147397d5" kindref="member">HAL_InitTick</ref>(uint32_t<sp/>TickPriority)</highlight></codeline>
+<codeline lineno="260"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/><sp/>status<sp/>=<sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>;</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"></highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>uwTickFreq<sp/>for<sp/>MisraC<sp/>2012<sp/>(even<sp/>if<sp/>uwTickFreq<sp/>is<sp/>a<sp/>enum<sp/>type<sp/>that<sp/>doesn&apos;t<sp/>take<sp/>the<sp/>value<sp/>zero)*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((uint32_t)<ref refid="group__HAL__Exported__Variables_1ga84a0c55c4d0bff06a085b4fcfd6531cd" kindref="member">uwTickFreq</ref><sp/>!=<sp/>0U)</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*Configure<sp/>the<sp/>SysTick<sp/>to<sp/>have<sp/>interrupt<sp/>in<sp/>1ms<sp/>time<sp/>basis*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="group__CORTEX__Exported__Functions__Group1_1gac3a3f0d53c315523a8e6e7bcac1940cf" kindref="member">HAL_SYSTICK_Config</ref>(<ref refid="group__STM32L4xx__System__Private__Variables_1gaa3cd3e43291e81e795d642b79b6088e6" kindref="member">SystemCoreClock</ref><sp/>/<sp/>(1000U<sp/>/<sp/>(uint32_t)<ref refid="group__HAL__Exported__Variables_1ga84a0c55c4d0bff06a085b4fcfd6531cd" kindref="member">uwTickFreq</ref>))<sp/>==<sp/>0U)</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Configure<sp/>the<sp/>SysTick<sp/>IRQ<sp/>priority<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(TickPriority<sp/>&lt;<sp/>(1UL<sp/>&lt;&lt;<sp/><ref refid="group__Configuration__section__for__CMSIS_1gae3fe3587d5100c787e02102ce3944460" kindref="member">__NVIC_PRIO_BITS</ref>))</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__CORTEX__Exported__Functions__Group1_1ga8581a82025a4780efd00876a66e3e91b" kindref="member">HAL_NVIC_SetPriority</ref>(<ref refid="group__Peripheral__interrupt__number__definition_1gga7e1129cd8a196f4284d41db3e82ad5c8a6dbff8f8543325f3474cbae2446776e7" kindref="member">SysTick_IRQn</ref>,<sp/>TickPriority,<sp/>0U);</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__HAL__Exported__Variables_1ga3000c5e83924ed2debb1849c738d4be2" kindref="member">uwTickPrio</ref><sp/>=<sp/>TickPriority;</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>status<sp/>=<sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa5a04e395e501e4e400172c610478c4a4" kindref="member">HAL_ERROR</ref>;</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>status<sp/>=<sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa5a04e395e501e4e400172c610478c4a4" kindref="member">HAL_ERROR</ref>;</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/>status<sp/>=<sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa5a04e395e501e4e400172c610478c4a4" kindref="member">HAL_ERROR</ref>;</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"></highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Return<sp/>function<sp/>status<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>status;</highlight></codeline>
+<codeline lineno="292"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"></highlight></codeline>
+<codeline lineno="327"><highlight class="normal">__weak<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__HAL__Exported__Functions__Group2_1gaa8361d44d76b7f6256834f828165837a" kindref="member">HAL_IncTick</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="328"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="329"><highlight class="normal"><sp/><sp/><ref refid="group__HAL__Exported__Variables_1ga9d411ea525781e633bf7ea7ef2f90728" kindref="member">uwTick</ref><sp/>+=<sp/>(uint32_t)<ref refid="group__HAL__Exported__Variables_1ga84a0c55c4d0bff06a085b4fcfd6531cd" kindref="member">uwTickFreq</ref>;</highlight></codeline>
+<codeline lineno="330"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="331"><highlight class="normal"></highlight></codeline>
+<codeline lineno="338"><highlight class="normal">__weak<sp/>uint32_t<sp/><ref refid="group__HAL__Exported__Functions__Group2_1gaf2c4f03d53e997a54e1fd5e80daa55c4" kindref="member">HAL_GetTick</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="339"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="340"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__HAL__Exported__Variables_1ga9d411ea525781e633bf7ea7ef2f90728" kindref="member">uwTick</ref>;</highlight></codeline>
+<codeline lineno="341"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="342"><highlight class="normal"></highlight></codeline>
+<codeline lineno="347"><highlight class="normal">uint32_t<sp/><ref refid="group__HAL__Exported__Functions__Group2_1gacdcc8b5d33b9f97fe1b0abd6a86a3d4b" kindref="member">HAL_GetTickPrio</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="348"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="349"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__HAL__Exported__Variables_1ga3000c5e83924ed2debb1849c738d4be2" kindref="member">uwTickPrio</ref>;</highlight></codeline>
+<codeline lineno="350"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="351"><highlight class="normal"></highlight></codeline>
+<codeline lineno="357"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/><ref refid="group__HAL__Exported__Functions__Group2_1ga47f2dd240b2aed823a76b11496f37690" kindref="member">HAL_SetTickFreq</ref>(<ref refid="group__HAL__TICK__FREQ_1gab36ec81674817249c46734772ff3b73a" kindref="member">HAL_TickFreqTypeDef</ref><sp/>Freq)</highlight></codeline>
+<codeline lineno="358"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="359"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/>status<sp/><sp/>=<sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>;</highlight></codeline>
+<codeline lineno="360"><highlight class="normal"><sp/><sp/><ref refid="group__HAL__TICK__FREQ_1gab36ec81674817249c46734772ff3b73a" kindref="member">HAL_TickFreqTypeDef</ref><sp/>prevTickFreq;</highlight></codeline>
+<codeline lineno="361"><highlight class="normal"></highlight></codeline>
+<codeline lineno="362"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="group__HAL__Exported__Variables_1ga84a0c55c4d0bff06a085b4fcfd6531cd" kindref="member">uwTickFreq</ref><sp/>!=<sp/>Freq)</highlight></codeline>
+<codeline lineno="363"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="364"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Back<sp/>up<sp/>uwTickFreq<sp/>frequency<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="365"><highlight class="normal"><sp/><sp/><sp/><sp/>prevTickFreq<sp/>=<sp/><ref refid="group__HAL__Exported__Variables_1ga84a0c55c4d0bff06a085b4fcfd6531cd" kindref="member">uwTickFreq</ref>;</highlight></codeline>
+<codeline lineno="366"><highlight class="normal"></highlight></codeline>
+<codeline lineno="367"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Update<sp/>uwTickFreq<sp/>global<sp/>variable<sp/>used<sp/>by<sp/>HAL_InitTick()<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="368"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__HAL__Exported__Variables_1ga84a0c55c4d0bff06a085b4fcfd6531cd" kindref="member">uwTickFreq</ref><sp/>=<sp/>Freq;</highlight></codeline>
+<codeline lineno="369"><highlight class="normal"></highlight></codeline>
+<codeline lineno="370"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Apply<sp/>the<sp/>new<sp/>tick<sp/>Freq<sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="371"><highlight class="normal"><sp/><sp/><sp/><sp/>status<sp/>=<sp/><ref refid="group__HAL__Exported__Functions__Group1_1ga879cdb21ef051eb81ec51c18147397d5" kindref="member">HAL_InitTick</ref>(<ref refid="group__HAL__Exported__Variables_1ga3000c5e83924ed2debb1849c738d4be2" kindref="member">uwTickPrio</ref>);</highlight></codeline>
+<codeline lineno="372"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(status<sp/>!=<sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>)</highlight></codeline>
+<codeline lineno="373"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="374"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Restore<sp/>previous<sp/>tick<sp/>frequency<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="375"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__HAL__Exported__Variables_1ga84a0c55c4d0bff06a085b4fcfd6531cd" kindref="member">uwTickFreq</ref><sp/>=<sp/>prevTickFreq;</highlight></codeline>
+<codeline lineno="376"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="377"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="378"><highlight class="normal"></highlight></codeline>
+<codeline lineno="379"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>status;</highlight></codeline>
+<codeline lineno="380"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="381"><highlight class="normal"></highlight></codeline>
+<codeline lineno="387"><highlight class="normal"><ref refid="group__HAL__TICK__FREQ_1gab36ec81674817249c46734772ff3b73a" kindref="member">HAL_TickFreqTypeDef</ref><sp/><ref refid="group__HAL__Exported__Functions__Group2_1ga803cdbcc0883bcf5f5c98c50024c97e6" kindref="member">HAL_GetTickFreq</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="388"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="389"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__HAL__Exported__Variables_1ga84a0c55c4d0bff06a085b4fcfd6531cd" kindref="member">uwTickFreq</ref>;</highlight></codeline>
+<codeline lineno="390"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="391"><highlight class="normal"></highlight></codeline>
+<codeline lineno="403"><highlight class="normal">__weak<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__HAL__Exported__Functions__Group2_1gae63b34eea12780ca2e1100c2402da18e" kindref="member">HAL_Delay</ref>(uint32_t<sp/>Delay)</highlight></codeline>
+<codeline lineno="404"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="405"><highlight class="normal"><sp/><sp/>uint32_t<sp/>tickstart<sp/>=<sp/><ref refid="group__HAL__Exported__Functions__Group2_1gaf2c4f03d53e997a54e1fd5e80daa55c4" kindref="member">HAL_GetTick</ref>();</highlight></codeline>
+<codeline lineno="406"><highlight class="normal"><sp/><sp/>uint32_t<sp/>wait<sp/>=<sp/>Delay;</highlight></codeline>
+<codeline lineno="407"><highlight class="normal"></highlight></codeline>
+<codeline lineno="408"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Add<sp/>a<sp/>period<sp/>to<sp/>guaranty<sp/>minimum<sp/>wait<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="409"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(wait<sp/>&lt;<sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1aad28bc64749c50dcedd6bf819fdc6974" kindref="member">HAL_MAX_DELAY</ref>)</highlight></codeline>
+<codeline lineno="410"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="411"><highlight class="normal"><sp/><sp/><sp/><sp/>wait<sp/>+=<sp/>(uint32_t)<ref refid="group__HAL__Exported__Variables_1ga84a0c55c4d0bff06a085b4fcfd6531cd" kindref="member">uwTickFreq</ref>;</highlight></codeline>
+<codeline lineno="412"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="413"><highlight class="normal"></highlight></codeline>
+<codeline lineno="414"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>((<ref refid="group__HAL__Exported__Functions__Group2_1gaf2c4f03d53e997a54e1fd5e80daa55c4" kindref="member">HAL_GetTick</ref>()<sp/>-<sp/>tickstart)<sp/>&lt;<sp/>wait)</highlight></codeline>
+<codeline lineno="415"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="416"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="417"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="418"><highlight class="normal"></highlight></codeline>
+<codeline lineno="429"><highlight class="normal">__weak<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__HAL__Exported__Functions__Group2_1gaaf651af2afe688a991c657f64f8fa5f9" kindref="member">HAL_SuspendTick</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="430"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="431"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Disable<sp/>SysTick<sp/>Interrupt<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="432"><highlight class="normal"><sp/><sp/><ref refid="group__CMSIS__CORE_1gacd96c53beeaff8f603fcda425eb295de" kindref="member">SysTick</ref>-&gt;CTRL<sp/>&amp;=<sp/>~SysTick_CTRL_TICKINT_Msk;</highlight></codeline>
+<codeline lineno="433"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="434"><highlight class="normal"></highlight></codeline>
+<codeline lineno="445"><highlight class="normal">__weak<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__HAL__Exported__Functions__Group2_1ga24e0ee9dae1ec0f9d19200f5575ff790" kindref="member">HAL_ResumeTick</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="446"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="447"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Enable<sp/>SysTick<sp/>Interrupt<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="448"><highlight class="normal"><sp/><sp/><ref refid="group__CMSIS__CORE_1gacd96c53beeaff8f603fcda425eb295de" kindref="member">SysTick</ref>-&gt;CTRL<sp/><sp/>|=<sp/><ref refid="group__CMSIS__CORE_1ga95bb984266ca764024836a870238a027" kindref="member">SysTick_CTRL_TICKINT_Msk</ref>;</highlight></codeline>
+<codeline lineno="449"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="450"><highlight class="normal"></highlight></codeline>
+<codeline lineno="455"><highlight class="normal">uint32_t<sp/><ref refid="group__HAL__Exported__Functions__Group2_1gafb139b375512ad2a234e4619b129b966" kindref="member">HAL_GetHalVersion</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="456"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="457"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>STM32L4XX_HAL_VERSION;</highlight></codeline>
+<codeline lineno="458"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="459"><highlight class="normal"></highlight></codeline>
+<codeline lineno="464"><highlight class="normal">uint32_t<sp/><ref refid="group__HAL__Exported__Functions__Group2_1gae051ef9e932404b21f5877c7186406b8" kindref="member">HAL_GetREVID</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="465"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="466"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">((<ref refid="group__Peripheral__declaration_1ga92ec6d9ec2251fda7d4ce09748cd74b4" kindref="member">DBGMCU</ref>-&gt;IDCODE<sp/>&amp;<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1ga887eb26364a8693355024ca203323165" kindref="member">DBGMCU_IDCODE_REV_ID</ref>)<sp/>&gt;&gt;<sp/>16);</highlight></codeline>
+<codeline lineno="467"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="468"><highlight class="normal"></highlight></codeline>
+<codeline lineno="473"><highlight class="normal">uint32_t<sp/><ref refid="group__HAL__Exported__Functions__Group2_1gaff785f069ed650de77ff82ac407f7c84" kindref="member">HAL_GetDEVID</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="474"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="475"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">(<ref refid="group__Peripheral__declaration_1ga92ec6d9ec2251fda7d4ce09748cd74b4" kindref="member">DBGMCU</ref>-&gt;IDCODE<sp/>&amp;<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1gafd961fcddc40341a817a9ec85b7c80ac" kindref="member">DBGMCU_IDCODE_DEV_ID</ref>);</highlight></codeline>
+<codeline lineno="476"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="477"><highlight class="normal"></highlight></codeline>
+<codeline lineno="482"><highlight class="normal">uint32_t<sp/><ref refid="group__HAL__Exported__Functions__Group2_1gaf982aa0a575eef3758c0840a24077506" kindref="member">HAL_GetUIDw0</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="483"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="484"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">(<ref refid="group__Exported__macros_1gae7f188a4d26c9e713a48414783421071" kindref="member">READ_REG</ref>(*((uint32_t<sp/>*)<ref refid="group__Peripheral__memory__map_1ga664eda42b83c919b153b07b23348be67" kindref="member">UID_BASE</ref>)));</highlight></codeline>
+<codeline lineno="485"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="486"><highlight class="normal"></highlight></codeline>
+<codeline lineno="491"><highlight class="normal">uint32_t<sp/><ref refid="group__HAL__Exported__Functions__Group2_1ga52720dd92ed2bd4314a2a129855d766c" kindref="member">HAL_GetUIDw1</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="492"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="493"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">(<ref refid="group__Exported__macros_1gae7f188a4d26c9e713a48414783421071" kindref="member">READ_REG</ref>(*((uint32_t<sp/>*)(<ref refid="group__Peripheral__memory__map_1ga664eda42b83c919b153b07b23348be67" kindref="member">UID_BASE</ref><sp/>+<sp/>4U))));</highlight></codeline>
+<codeline lineno="494"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="495"><highlight class="normal"></highlight></codeline>
+<codeline lineno="500"><highlight class="normal">uint32_t<sp/><ref refid="group__HAL__Exported__Functions__Group2_1ga5785ae5ec8d4c5a7dadb1359f0778700" kindref="member">HAL_GetUIDw2</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="501"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="502"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">(<ref refid="group__Exported__macros_1gae7f188a4d26c9e713a48414783421071" kindref="member">READ_REG</ref>(*((uint32_t<sp/>*)(<ref refid="group__Peripheral__memory__map_1ga664eda42b83c919b153b07b23348be67" kindref="member">UID_BASE</ref><sp/>+<sp/>8U))));</highlight></codeline>
+<codeline lineno="503"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="504"><highlight class="normal"></highlight></codeline>
+<codeline lineno="529"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__HAL__Exported__Functions__Group3_1gaf031bcc71ebad9b7edf405547efd762b" kindref="member">HAL_DBGMCU_EnableDBGSleepMode</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="530"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="531"><highlight class="normal"><sp/><sp/><ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga92ec6d9ec2251fda7d4ce09748cd74b4" kindref="member">DBGMCU</ref>-&gt;CR,<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1ga037c80fe1d7308cee68245715ef6cd9a" kindref="member">DBGMCU_CR_DBG_SLEEP</ref>);</highlight></codeline>
+<codeline lineno="532"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="533"><highlight class="normal"></highlight></codeline>
+<codeline lineno="538"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__HAL__Exported__Functions__Group3_1gac7820d0561f19999a68d714655b901b5" kindref="member">HAL_DBGMCU_DisableDBGSleepMode</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="539"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="540"><highlight class="normal"><sp/><sp/><ref refid="group__Exported__macros_1ga133aae6fc0d41bffab39ab223a7001de" kindref="member">CLEAR_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga92ec6d9ec2251fda7d4ce09748cd74b4" kindref="member">DBGMCU</ref>-&gt;CR,<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1ga037c80fe1d7308cee68245715ef6cd9a" kindref="member">DBGMCU_CR_DBG_SLEEP</ref>);</highlight></codeline>
+<codeline lineno="541"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="542"><highlight class="normal"></highlight></codeline>
+<codeline lineno="547"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__HAL__Exported__Functions__Group3_1gadf25043b17de4bef38a95a75fd03e5c4" kindref="member">HAL_DBGMCU_EnableDBGStopMode</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="548"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="549"><highlight class="normal"><sp/><sp/><ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga92ec6d9ec2251fda7d4ce09748cd74b4" kindref="member">DBGMCU</ref>-&gt;CR,<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1gaf511f21a8de5b0b66c862915eee8bf75" kindref="member">DBGMCU_CR_DBG_STOP</ref>);</highlight></codeline>
+<codeline lineno="550"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="551"><highlight class="normal"></highlight></codeline>
+<codeline lineno="556"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__HAL__Exported__Functions__Group3_1ga2c93dcee35e5983d74f1000de7c042d5" kindref="member">HAL_DBGMCU_DisableDBGStopMode</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="557"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="558"><highlight class="normal"><sp/><sp/><ref refid="group__Exported__macros_1ga133aae6fc0d41bffab39ab223a7001de" kindref="member">CLEAR_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga92ec6d9ec2251fda7d4ce09748cd74b4" kindref="member">DBGMCU</ref>-&gt;CR,<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1gaf511f21a8de5b0b66c862915eee8bf75" kindref="member">DBGMCU_CR_DBG_STOP</ref>);</highlight></codeline>
+<codeline lineno="559"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="560"><highlight class="normal"></highlight></codeline>
+<codeline lineno="565"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__HAL__Exported__Functions__Group3_1ga28a1323b2eeb0a408c1cfdbfa0db5ead" kindref="member">HAL_DBGMCU_EnableDBGStandbyMode</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="566"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="567"><highlight class="normal"><sp/><sp/><ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga92ec6d9ec2251fda7d4ce09748cd74b4" kindref="member">DBGMCU</ref>-&gt;CR,<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1ga107a9396d63c892a8e614897c9d0b132" kindref="member">DBGMCU_CR_DBG_STANDBY</ref>);</highlight></codeline>
+<codeline lineno="568"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="569"><highlight class="normal"></highlight></codeline>
+<codeline lineno="574"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__HAL__Exported__Functions__Group3_1ga7faa58d8508ea3123b9f247a70379779" kindref="member">HAL_DBGMCU_DisableDBGStandbyMode</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="575"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="576"><highlight class="normal"><sp/><sp/><ref refid="group__Exported__macros_1ga133aae6fc0d41bffab39ab223a7001de" kindref="member">CLEAR_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga92ec6d9ec2251fda7d4ce09748cd74b4" kindref="member">DBGMCU</ref>-&gt;CR,<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1ga107a9396d63c892a8e614897c9d0b132" kindref="member">DBGMCU_CR_DBG_STANDBY</ref>);</highlight></codeline>
+<codeline lineno="577"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="578"><highlight class="normal"></highlight></codeline>
+<codeline lineno="607"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__HAL__Exported__Functions__Group4_1gaa1bda45e550d89db1bc107c1249cf4c8" kindref="member">HAL_SYSCFG_SRAM2Erase</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="608"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="609"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>unlock<sp/>the<sp/>write<sp/>protection<sp/>of<sp/>the<sp/>SRAM2ER<sp/>bit<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="610"><highlight class="normal"><sp/><sp/><ref refid="group__Peripheral__declaration_1ga3c833fe1c486cb62250ccbca32899cb8" kindref="member">SYSCFG</ref>-&gt;SKR<sp/>=<sp/>0xCA;</highlight></codeline>
+<codeline lineno="611"><highlight class="normal"><sp/><sp/><ref refid="group__Peripheral__declaration_1ga3c833fe1c486cb62250ccbca32899cb8" kindref="member">SYSCFG</ref>-&gt;SKR<sp/>=<sp/>0x53;</highlight></codeline>
+<codeline lineno="612"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Starts<sp/>a<sp/>hardware<sp/>SRAM2<sp/>erase<sp/>operation*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="613"><highlight class="normal"><sp/><sp/>*(<ref refid="bootstrap_2Drivers_2CMSIS_2Include_2core__armv81mml_8h_1aec43007d9998a0a0e01faede4133d6be" kindref="member">__IO</ref><sp/>uint32_t<sp/>*)<sp/>SCSR_SRAM2ER_BB<sp/>=<sp/>0x00000001UL;</highlight></codeline>
+<codeline lineno="614"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="615"><highlight class="normal"></highlight></codeline>
+<codeline lineno="626"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__HAL__Exported__Functions__Group4_1ga4de8f9428b2e1dee765628c0a6bc7e69" kindref="member">HAL_SYSCFG_EnableMemorySwappingBank</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="627"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="628"><highlight class="normal"><sp/><sp/>*(<ref refid="bootstrap_2Drivers_2CMSIS_2Include_2core__armv81mml_8h_1aec43007d9998a0a0e01faede4133d6be" kindref="member">__IO</ref><sp/>uint32_t<sp/>*)FB_MODE_BB<sp/>=<sp/>0x00000001UL;</highlight></codeline>
+<codeline lineno="629"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="630"><highlight class="normal"></highlight></codeline>
+<codeline lineno="641"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__HAL__Exported__Functions__Group4_1ga71d9863788eefedea43a32e10fd93b0b" kindref="member">HAL_SYSCFG_DisableMemorySwappingBank</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="642"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="643"><highlight class="normal"></highlight></codeline>
+<codeline lineno="644"><highlight class="normal"><sp/><sp/>*(<ref refid="bootstrap_2Drivers_2CMSIS_2Include_2core__armv81mml_8h_1aec43007d9998a0a0e01faede4133d6be" kindref="member">__IO</ref><sp/>uint32_t<sp/>*)FB_MODE_BB<sp/>=<sp/>0x00000000UL;</highlight></codeline>
+<codeline lineno="645"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="646"><highlight class="normal"></highlight></codeline>
+<codeline lineno="647"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(VREFBUF)</highlight></codeline>
+<codeline lineno="658"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>HAL_SYSCFG_VREFBUF_VoltageScalingConfig(uint32_t<sp/>VoltageScaling)</highlight></codeline>
+<codeline lineno="659"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="660"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>the<sp/>parameters<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="661"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(IS_SYSCFG_VREFBUF_VOLTAGE_SCALE(VoltageScaling));</highlight></codeline>
+<codeline lineno="662"><highlight class="normal"></highlight></codeline>
+<codeline lineno="663"><highlight class="normal"><sp/><sp/><ref refid="group__Exported__macros_1ga6553c99f510c3bab8cc0a91602053247" kindref="member">MODIFY_REG</ref>(<ref refid="group__Peripheral__declaration_1ga1446a32e57e1b1cfa1683494561a5b2f" kindref="member">VREFBUF</ref>-&gt;CSR,<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1gad4670ed4900a7abf116f8f13378ea6a8" kindref="member">VREFBUF_CSR_VRS</ref>,<sp/>VoltageScaling);</highlight></codeline>
+<codeline lineno="664"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="665"><highlight class="normal"></highlight></codeline>
+<codeline lineno="674"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>HAL_SYSCFG_VREFBUF_HighImpedanceConfig(uint32_t<sp/>Mode)</highlight></codeline>
+<codeline lineno="675"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="676"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>the<sp/>parameters<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="677"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(IS_SYSCFG_VREFBUF_HIGH_IMPEDANCE(Mode));</highlight></codeline>
+<codeline lineno="678"><highlight class="normal"></highlight></codeline>
+<codeline lineno="679"><highlight class="normal"><sp/><sp/><ref refid="group__Exported__macros_1ga6553c99f510c3bab8cc0a91602053247" kindref="member">MODIFY_REG</ref>(<ref refid="group__Peripheral__declaration_1ga1446a32e57e1b1cfa1683494561a5b2f" kindref="member">VREFBUF</ref>-&gt;CSR,<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1ga13d4cf5943c63ae8ff694e1446266bcc" kindref="member">VREFBUF_CSR_HIZ</ref>,<sp/>Mode);</highlight></codeline>
+<codeline lineno="680"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="681"><highlight class="normal"></highlight></codeline>
+<codeline lineno="686"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>HAL_SYSCFG_VREFBUF_TrimmingConfig(uint32_t<sp/>TrimmingValue)</highlight></codeline>
+<codeline lineno="687"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="688"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>the<sp/>parameters<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="689"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(IS_SYSCFG_VREFBUF_TRIMMING(TrimmingValue));</highlight></codeline>
+<codeline lineno="690"><highlight class="normal"></highlight></codeline>
+<codeline lineno="691"><highlight class="normal"><sp/><sp/><ref refid="group__Exported__macros_1ga6553c99f510c3bab8cc0a91602053247" kindref="member">MODIFY_REG</ref>(<ref refid="group__Peripheral__declaration_1ga1446a32e57e1b1cfa1683494561a5b2f" kindref="member">VREFBUF</ref>-&gt;CCR,<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1ga352e19b53b9986eb54de8fd79b27d052" kindref="member">VREFBUF_CCR_TRIM</ref>,<sp/>TrimmingValue);</highlight></codeline>
+<codeline lineno="692"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="693"><highlight class="normal"></highlight></codeline>
+<codeline lineno="698"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/>HAL_SYSCFG_EnableVREFBUF(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="699"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="700"><highlight class="normal"><sp/><sp/>uint32_t<sp/><sp/>tickstart;</highlight></codeline>
+<codeline lineno="701"><highlight class="normal"></highlight></codeline>
+<codeline lineno="702"><highlight class="normal"><sp/><sp/><ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga1446a32e57e1b1cfa1683494561a5b2f" kindref="member">VREFBUF</ref>-&gt;CSR,<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1ga20bab4e4f333ddecff9bf922c7d93a02" kindref="member">VREFBUF_CSR_ENVR</ref>);</highlight></codeline>
+<codeline lineno="703"><highlight class="normal"></highlight></codeline>
+<codeline lineno="704"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Get<sp/>Start<sp/>Tick*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="705"><highlight class="normal"><sp/><sp/>tickstart<sp/>=<sp/><ref refid="group__HAL__Exported__Functions__Group2_1gaf2c4f03d53e997a54e1fd5e80daa55c4" kindref="member">HAL_GetTick</ref>();</highlight></codeline>
+<codeline lineno="706"><highlight class="normal"></highlight></codeline>
+<codeline lineno="707"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Wait<sp/>for<sp/>VRR<sp/>bit<sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="708"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal">(<ref refid="group__Exported__macros_1ga822bb1bb9710d5f2fa6396b84e583c33" kindref="member">READ_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga1446a32e57e1b1cfa1683494561a5b2f" kindref="member">VREFBUF</ref>-&gt;CSR,<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1gaf40ce35d91ad9aaedeaf6c3f3d618c33" kindref="member">VREFBUF_CSR_VRR</ref>)<sp/>==<sp/>0U)</highlight></codeline>
+<codeline lineno="709"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="710"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">((<ref refid="group__HAL__Exported__Functions__Group2_1gaf2c4f03d53e997a54e1fd5e80daa55c4" kindref="member">HAL_GetTick</ref>()<sp/>-<sp/>tickstart)<sp/>&gt;<sp/>VREFBUF_TIMEOUT_VALUE)</highlight></codeline>
+<codeline lineno="711"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="712"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa00c89549bc881c35e8e4cd9e718337e5" kindref="member">HAL_TIMEOUT</ref>;</highlight></codeline>
+<codeline lineno="713"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="714"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="715"><highlight class="normal"></highlight></codeline>
+<codeline lineno="716"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>;</highlight></codeline>
+<codeline lineno="717"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="718"><highlight class="normal"></highlight></codeline>
+<codeline lineno="724"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>HAL_SYSCFG_DisableVREFBUF(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="725"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="726"><highlight class="normal"><sp/><sp/><ref refid="group__Exported__macros_1ga133aae6fc0d41bffab39ab223a7001de" kindref="member">CLEAR_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga1446a32e57e1b1cfa1683494561a5b2f" kindref="member">VREFBUF</ref>-&gt;CSR,<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1ga20bab4e4f333ddecff9bf922c7d93a02" kindref="member">VREFBUF_CSR_ENVR</ref>);</highlight></codeline>
+<codeline lineno="727"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="728"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>VREFBUF<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="729"><highlight class="normal"></highlight></codeline>
+<codeline lineno="735"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__HAL__Exported__Functions__Group4_1gac22593c32829479d739cf1e17e3eee9b" kindref="member">HAL_SYSCFG_EnableIOAnalogSwitchBooster</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="736"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="737"><highlight class="normal"><sp/><sp/><ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga3c833fe1c486cb62250ccbca32899cb8" kindref="member">SYSCFG</ref>-&gt;CFGR1,<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1ga948471b86a4c7bf56000670b10b203ab" kindref="member">SYSCFG_CFGR1_BOOSTEN</ref>);</highlight></codeline>
+<codeline lineno="738"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="739"><highlight class="normal"></highlight></codeline>
+<codeline lineno="745"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__HAL__Exported__Functions__Group4_1ga82d49eb550bc6c4357b570acfd6aed1c" kindref="member">HAL_SYSCFG_DisableIOAnalogSwitchBooster</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="746"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="747"><highlight class="normal"><sp/><sp/><ref refid="group__Exported__macros_1ga133aae6fc0d41bffab39ab223a7001de" kindref="member">CLEAR_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga3c833fe1c486cb62250ccbca32899cb8" kindref="member">SYSCFG</ref>-&gt;CFGR1,<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1ga948471b86a4c7bf56000670b10b203ab" kindref="member">SYSCFG_CFGR1_BOOSTEN</ref>);</highlight></codeline>
+<codeline lineno="748"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="749"><highlight class="normal"></highlight></codeline>
+<codeline lineno="758"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>HAL_MODULE_ENABLED<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Src/stm32l4xx_hal.c"/>
+  </compounddef>
+</doxygen>

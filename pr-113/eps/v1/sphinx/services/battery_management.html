@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Battery Management Service &#8212; OSUSat EPS Firmware  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="MPPT Controller Service" href="mppt_controller.html" />
+    <link rel="prev" title="OSUSat EPS Firmware documentation" href="../index.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="battery-management-service">
+<h1>Battery Management Service<a class="headerlink" href="#battery-management-service" title="Link to this heading">¶</a></h1>
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group__battery__management"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">Battery</span> <span class="pre">Management</span> <span class="pre">Service</span></span></dt>
+<dd><p>Monitors and controls the CubeSat battery pack. </p>
+<p>The BMS is responsible for:<ul class="simple">
+<li><p>pack voltage/current monitoring</p></li>
+<li><p>temperature and health estimation</p></li>
+<li><p>charge state determination</p></li>
+<li><p>enabling/disabling charging/balancing circuits</p></li>
+<li><p>protection and failsafe behavior</p></li>
+<li><p>telemetry collection for upstream consumption</p></li>
+<li><p>error state management by notifying redundancy manager </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group__battery__management__types"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">Structures</span></span></dt>
+<dd><p>Structures used by the Battery Management Service. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.BATTERY_SERVICE_UID">
+<span class="target" id="group__battery__management__types_1gafff0ce24627e80f6ff4a9c28051b2085"></span><span class="sig-name descname"><span class="n"><span class="pre">BATTERY_SERVICE_UID</span></span></span><a class="headerlink" href="#c.BATTERY_SERVICE_UID" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Service Unique Identifier (16-bit). Used to construct unique Event IDs. “BA77” = BATT. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.BATTERY_EVENT_FAULT_DETECTED">
+<span class="target" id="group__battery__management__types_1gab24d24185749fde8c2995766ece636ee"></span><span class="sig-name descname"><span class="n"><span class="pre">BATTERY_EVENT_FAULT_DETECTED</span></span></span><a class="headerlink" href="#c.BATTERY_EVENT_FAULT_DETECTED" title="Link to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.BATTERY_EVENT_SELF_CHECK_PASSED">
+<span class="target" id="group__battery__management__types_1gad7d8c430783f35c8db6b3aebf67b6f57"></span><span class="sig-name descname"><span class="n"><span class="pre">BATTERY_EVENT_SELF_CHECK_PASSED</span></span></span><a class="headerlink" href="#c.BATTERY_EVENT_SELF_CHECK_PASSED" title="Link to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.BATTERY_EVENT_SELF_CHECK_FAILED">
+<span class="target" id="group__battery__management__types_1gaedac1bd0dfaf601fdf25de82903106c8"></span><span class="sig-name descname"><span class="n"><span class="pre">BATTERY_EVENT_SELF_CHECK_FAILED</span></span></span><a class="headerlink" href="#c.BATTERY_EVENT_SELF_CHECK_FAILED" title="Link to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.BATTERY_EVENT_CRITICAL_LOW">
+<span class="target" id="group__battery__management__types_1ga71d2f807c933117718b2982526b15bcc"></span><span class="sig-name descname"><span class="n"><span class="pre">BATTERY_EVENT_CRITICAL_LOW</span></span></span><a class="headerlink" href="#c.BATTERY_EVENT_CRITICAL_LOW" title="Link to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.BATTERY_EVENT_CHARGING_CHANGE">
+<span class="target" id="group__battery__management__types_1ga2bd033ba4e99b3c12a7f3160e2863280"></span><span class="sig-name descname"><span class="n"><span class="pre">BATTERY_EVENT_CHARGING_CHANGE</span></span></span><a class="headerlink" href="#c.BATTERY_EVENT_CHARGING_CHANGE" title="Link to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.BATTERY_EVENT_FULLY_CHARGED">
+<span class="target" id="group__battery__management__types_1ga1c6299df5d6efa71ae1dd2e9d8cb98fb"></span><span class="sig-name descname"><span class="n"><span class="pre">BATTERY_EVENT_FULLY_CHARGED</span></span></span><a class="headerlink" href="#c.BATTERY_EVENT_FULLY_CHARGED" title="Link to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.BATTERY_EVENT_TELEMETRY">
+<span class="target" id="group__battery__management__types_1gaafc9e07e74733f402534815fc8c85b9f"></span><span class="sig-name descname"><span class="n"><span class="pre">BATTERY_EVENT_TELEMETRY</span></span></span><a class="headerlink" href="#c.BATTERY_EVENT_TELEMETRY" title="Link to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-enums">Enums</p>
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv418battery_event_id_t">
+<span id="_CPPv318battery_event_id_t"></span><span id="_CPPv218battery_event_id_t"></span><span class="target" id="group__battery__management__types_1ga2f33f8497203b52f72a9f33fd8c17af3"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">battery_event_id_t</span></span></span><a class="headerlink" href="#_CPPv418battery_event_id_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18battery_event_id_t22BATTERY_FAULT_DETECTEDE">
+<span id="_CPPv3N18battery_event_id_t22BATTERY_FAULT_DETECTEDE"></span><span id="_CPPv2N18battery_event_id_t22BATTERY_FAULT_DETECTEDE"></span><span class="target" id="group__battery__management__types_1gga2f33f8497203b52f72a9f33fd8c17af3a07a0e57da134a1538866c7c1e64f7c2f"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">BATTERY_FAULT_DETECTED</span></span></span><a class="headerlink" href="#_CPPv4N18battery_event_id_t22BATTERY_FAULT_DETECTEDE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Published when a critical fault is detected. Payload: <a class="reference internal" href="#structbattery__status__t"><span class="std std-ref">battery_status_t</span></a> (Snapshot at time of failure) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18battery_event_id_t25BATTERY_SELF_CHECK_PASSEDE">
+<span id="_CPPv3N18battery_event_id_t25BATTERY_SELF_CHECK_PASSEDE"></span><span id="_CPPv2N18battery_event_id_t25BATTERY_SELF_CHECK_PASSEDE"></span><span class="target" id="group__battery__management__types_1gga2f33f8497203b52f72a9f33fd8c17af3a4c8451780b0447a0b14194500dcd7253"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">BATTERY_SELF_CHECK_PASSED</span></span></span><a class="headerlink" href="#_CPPv4N18battery_event_id_t25BATTERY_SELF_CHECK_PASSEDE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Published when the battery management service passes its self-check. Payload: NULL. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18battery_event_id_t25BATTERY_SELF_CHECK_FAILEDE">
+<span id="_CPPv3N18battery_event_id_t25BATTERY_SELF_CHECK_FAILEDE"></span><span id="_CPPv2N18battery_event_id_t25BATTERY_SELF_CHECK_FAILEDE"></span><span class="target" id="group__battery__management__types_1gga2f33f8497203b52f72a9f33fd8c17af3a90a5761df089450462a3ccab926b9b80"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">BATTERY_SELF_CHECK_FAILED</span></span></span><a class="headerlink" href="#_CPPv4N18battery_event_id_t25BATTERY_SELF_CHECK_FAILEDE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Published when the battery management service fails its self-check. Payload: failure mode. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18battery_event_id_t20BATTERY_CRITICAL_LOWE">
+<span id="_CPPv3N18battery_event_id_t20BATTERY_CRITICAL_LOWE"></span><span id="_CPPv2N18battery_event_id_t20BATTERY_CRITICAL_LOWE"></span><span class="target" id="group__battery__management__types_1gga2f33f8497203b52f72a9f33fd8c17af3af86e6bbb72100232b01a51b4e093c06c"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">BATTERY_CRITICAL_LOW</span></span></span><a class="headerlink" href="#_CPPv4N18battery_event_id_t20BATTERY_CRITICAL_LOWE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Published when voltage drops below critical threshold. Payload: float (Current Voltage) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18battery_event_id_t23BATTERY_CHARGING_CHANGEE">
+<span id="_CPPv3N18battery_event_id_t23BATTERY_CHARGING_CHANGEE"></span><span id="_CPPv2N18battery_event_id_t23BATTERY_CHARGING_CHANGEE"></span><span class="target" id="group__battery__management__types_1gga2f33f8497203b52f72a9f33fd8c17af3adad9578440c9893a39bb1bc71efb9d82"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">BATTERY_CHARGING_CHANGE</span></span></span><a class="headerlink" href="#_CPPv4N18battery_event_id_t23BATTERY_CHARGING_CHANGEE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Published when charging starts or stops. Payload: bool (true = charging started, false = stopped) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18battery_event_id_t21BATTERY_FULLY_CHARGEDE">
+<span id="_CPPv3N18battery_event_id_t21BATTERY_FULLY_CHARGEDE"></span><span id="_CPPv2N18battery_event_id_t21BATTERY_FULLY_CHARGEDE"></span><span class="target" id="group__battery__management__types_1gga2f33f8497203b52f72a9f33fd8c17af3aed0819dccfcf0b61a7c66847b5fe54a9"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">BATTERY_FULLY_CHARGED</span></span></span><a class="headerlink" href="#_CPPv4N18battery_event_id_t21BATTERY_FULLY_CHARGEDE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Published when battery reaches 100% SoC. Payload: NULL. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18battery_event_id_t17BATTERY_TELEMETRYE">
+<span id="_CPPv3N18battery_event_id_t17BATTERY_TELEMETRYE"></span><span id="_CPPv2N18battery_event_id_t17BATTERY_TELEMETRYE"></span><span class="target" id="group__battery__management__types_1gga2f33f8497203b52f72a9f33fd8c17af3a5e6f1db30a24d15a6fc29f8be1f79348"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">BATTERY_TELEMETRY</span></span></span><a class="headerlink" href="#_CPPv4N18battery_event_id_t17BATTERY_TELEMETRYE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Periodic telemetry broadcast (e.g., every 10s or 1 min). Payload: <a class="reference internal" href="#structbattery__status__t"><span class="std std-ref">battery_status_t</span></a>. </p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv416battery_status_t">
+<span id="_CPPv316battery_status_t"></span><span id="_CPPv216battery_status_t"></span><span id="battery_status_t"></span><span class="target" id="structbattery__status__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">battery_status_t</span></span></span><a class="headerlink" href="#_CPPv416battery_status_t" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;battery_management.h&gt;</em></div>
+<p>Snapshot of system battery state. </p>
+<p>This structure is returned by ::battery_get_status and is used internally by the BMS to make decisions. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N16battery_status_t7voltageE">
+<span id="_CPPv3N16battery_status_t7voltageE"></span><span id="_CPPv2N16battery_status_t7voltageE"></span><span id="battery_status_t::voltage__float"></span><span class="target" id="structbattery__status__t_1adf660474d9cef3d3aaa3ba0a214070d2"></span><span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">voltage</span></span></span><a class="headerlink" href="#_CPPv4N16battery_status_t7voltageE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Current pack voltage in volts </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N16battery_status_t7currentE">
+<span id="_CPPv3N16battery_status_t7currentE"></span><span id="_CPPv2N16battery_status_t7currentE"></span><span id="battery_status_t::current__float"></span><span class="target" id="structbattery__status__t_1a0a2a19f24f79b8a9bc8b9997f5e7a01b"></span><span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">current</span></span></span><a class="headerlink" href="#_CPPv4N16battery_status_t7currentE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Pack current in amps (+ = charging, - = discharging) </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N16battery_status_t11temperatureE">
+<span id="_CPPv3N16battery_status_t11temperatureE"></span><span id="_CPPv2N16battery_status_t11temperatureE"></span><span id="battery_status_t::temperature__float"></span><span class="target" id="structbattery__status__t_1ab1ea520ecc8d3c7cfb46836551b62c92"></span><span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">temperature</span></span></span><a class="headerlink" href="#_CPPv4N16battery_status_t11temperatureE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Average pack temperature in C </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N16battery_status_t3socE">
+<span id="_CPPv3N16battery_status_t3socE"></span><span id="_CPPv2N16battery_status_t3socE"></span><span id="battery_status_t::soc__float"></span><span class="target" id="structbattery__status__t_1aa8289be30e4fec9fe32c2e5c2c08dcaa"></span><span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">soc</span></span></span><a class="headerlink" href="#_CPPv4N16battery_status_t3socE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>State of charge (0-100%) </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N16battery_status_t3sohE">
+<span id="_CPPv3N16battery_status_t3sohE"></span><span id="_CPPv2N16battery_status_t3sohE"></span><span id="battery_status_t::soh__float"></span><span class="target" id="structbattery__status__t_1a5305a01ae3310684072cd171d5320b0e"></span><span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">soh</span></span></span><a class="headerlink" href="#_CPPv4N16battery_status_t3sohE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>State of health estimate (0-100%) </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N16battery_status_t8chargingE">
+<span id="_CPPv3N16battery_status_t8chargingE"></span><span id="_CPPv2N16battery_status_t8chargingE"></span><span id="battery_status_t::charging__b"></span><span class="target" id="structbattery__status__t_1a7c6991fffe727d2720cb06ceb96d2f7f"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">charging</span></span></span><a class="headerlink" href="#_CPPv4N16battery_status_t8chargingE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>True if charging is currently active </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N16battery_status_t9balancingE">
+<span id="_CPPv3N16battery_status_t9balancingE"></span><span id="_CPPv2N16battery_status_t9balancingE"></span><span id="battery_status_t::balancing__b"></span><span class="target" id="structbattery__status__t_1ad3888c7bc4109a78018ce66a395dde21"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">balancing</span></span></span><a class="headerlink" href="#_CPPv4N16battery_status_t9balancingE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>True if balancing circuits are enabled </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N16battery_status_t10protectionE">
+<span id="_CPPv3N16battery_status_t10protectionE"></span><span id="_CPPv2N16battery_status_t10protectionE"></span><span id="battery_status_t::protection__b"></span><span class="target" id="structbattery__status__t_1a55780291c9bceaeff355e3df82b0aeb1"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">protection</span></span></span><a class="headerlink" href="#_CPPv4N16battery_status_t10protectionE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>True if in battery protection mode (could be due to a fault, etc.) </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv420battery_management_t">
+<span id="_CPPv320battery_management_t"></span><span id="_CPPv220battery_management_t"></span><span id="battery_management_t"></span><span class="target" id="structbattery__management__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">battery_management_t</span></span></span><a class="headerlink" href="#_CPPv420battery_management_t" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;battery_management.h&gt;</em></div>
+<p>The battery management service. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20battery_management_t14battery_statusE">
+<span id="_CPPv3N20battery_management_t14battery_statusE"></span><span id="_CPPv2N20battery_management_t14battery_statusE"></span><span id="battery_management_t::battery_status__battery_status_t"></span><span class="target" id="structbattery__management__t_1aa3abfd687121b5f1b518fbf88f54bc3f"></span><a class="reference internal" href="#_CPPv416battery_status_t" title="battery_status_t"><span class="n"><span class="pre">battery_status_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">battery_status</span></span></span><a class="headerlink" href="#_CPPv4N20battery_management_t14battery_statusE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>The battery status </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20battery_management_t11initializedE">
+<span id="_CPPv3N20battery_management_t11initializedE"></span><span id="_CPPv2N20battery_management_t11initializedE"></span><span id="battery_management_t::initialized__b"></span><span class="target" id="structbattery__management__t_1a1c41ec6059fe36ce0931bd296f6163a8"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">initialized</span></span></span><a class="headerlink" href="#_CPPv4N20battery_management_t11initializedE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>True if the BMS is initialized </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20battery_management_t12tick_counterE">
+<span id="_CPPv3N20battery_management_t12tick_counterE"></span><span id="_CPPv2N20battery_management_t12tick_counterE"></span><span id="battery_management_t::tick_counter__uint32_t"></span><span class="target" id="structbattery__management__t_1a1d53888ce2917c193fc4a9a774b35447"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">tick_counter</span></span></span><a class="headerlink" href="#_CPPv4N20battery_management_t12tick_counterE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Internal counter for update loop </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20battery_management_t22telemetry_tick_counterE">
+<span id="_CPPv3N20battery_management_t22telemetry_tick_counterE"></span><span id="_CPPv2N20battery_management_t22telemetry_tick_counterE"></span><span id="battery_management_t::telemetry_tick_counter__uint32_t"></span><span class="target" id="structbattery__management__t_1aed3cf7b02e2c28c98756d2e3a08305ed"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">telemetry_tick_counter</span></span></span><a class="headerlink" href="#_CPPv4N20battery_management_t22telemetry_tick_counterE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Internal counter for telemetry </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group__battery__management__api"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">Public</span> <span class="pre">API</span></span></dt>
+<dd><p>External interface for interacting with the Battery Management Service. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv412battery_initP20battery_management_t">
+<span id="_CPPv312battery_initP20battery_management_t"></span><span id="_CPPv212battery_initP20battery_management_t"></span><span id="battery_init__battery_management_tP"></span><span class="target" id="group__battery__management__api_1gacad3a3de8e213994954cb9ce6a55f0ef"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">battery_init</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv420battery_management_t" title="battery_management_t"><span class="n"><span class="pre">battery_management_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">manager</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv412battery_initP20battery_management_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Initialize the Battery Management Service. </p>
+<p>This must be called once at startup before any other BMS functions. Initializes internal state, and performs a startup self-check.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If called more than once, the internal battery state will be reset.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>manager</strong> – <strong>[out]</strong> The battery manager </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv422battery_charge_controlP20battery_management_tb">
+<span id="_CPPv322battery_charge_controlP20battery_management_tb"></span><span id="_CPPv222battery_charge_controlP20battery_management_tb"></span><span id="battery_charge_control__battery_management_tP.b"></span><span class="target" id="group__battery__management__api_1ga8f086f5628c0498505e56661ffd04ff1"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">battery_charge_control</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv420battery_management_t" title="battery_management_t"><span class="n"><span class="pre">battery_management_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">manager</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">enable</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv422battery_charge_controlP20battery_management_tb" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Apply charge-control policy. </p>
+<p>Enables or disables charging circuits based on SoC, temperature, EPS power budget, and safety limits.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>manager</strong> – <strong>[in]</strong> The battery manager </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv420battery_protect_modeP20battery_management_t">
+<span id="_CPPv320battery_protect_modeP20battery_management_t"></span><span id="_CPPv220battery_protect_modeP20battery_management_t"></span><span id="battery_protect_mode__battery_management_tP"></span><span class="target" id="group__battery__management__api_1ga903c812782a956a3300006154b17c839"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">battery_protect_mode</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv420battery_management_t" title="battery_management_t"><span class="n"><span class="pre">battery_management_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">manager</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv420battery_protect_modeP20battery_management_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Enter battery protection mode. </p>
+<p>Used during overvoltage, deep discharge, or other critical conditions. May disable EPS rails or charging.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>manager</strong> – <strong>[in]</strong> The battery manager </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">OSUSat EPS Firmware</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Services:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Battery Management Service</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#c.BATTERY_SERVICE_UID"><code class="docutils literal notranslate"><span class="pre">BATTERY_SERVICE_UID</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.BATTERY_EVENT_FAULT_DETECTED"><code class="docutils literal notranslate"><span class="pre">BATTERY_EVENT_FAULT_DETECTED</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.BATTERY_EVENT_SELF_CHECK_PASSED"><code class="docutils literal notranslate"><span class="pre">BATTERY_EVENT_SELF_CHECK_PASSED</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.BATTERY_EVENT_SELF_CHECK_FAILED"><code class="docutils literal notranslate"><span class="pre">BATTERY_EVENT_SELF_CHECK_FAILED</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.BATTERY_EVENT_CRITICAL_LOW"><code class="docutils literal notranslate"><span class="pre">BATTERY_EVENT_CRITICAL_LOW</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.BATTERY_EVENT_CHARGING_CHANGE"><code class="docutils literal notranslate"><span class="pre">BATTERY_EVENT_CHARGING_CHANGE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.BATTERY_EVENT_FULLY_CHARGED"><code class="docutils literal notranslate"><span class="pre">BATTERY_EVENT_FULLY_CHARGED</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.BATTERY_EVENT_TELEMETRY"><code class="docutils literal notranslate"><span class="pre">BATTERY_EVENT_TELEMETRY</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv418battery_event_id_t"><code class="docutils literal notranslate"><span class="pre">battery_event_id_t</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv416battery_status_t"><code class="docutils literal notranslate"><span class="pre">battery_status_t</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv420battery_management_t"><code class="docutils literal notranslate"><span class="pre">battery_management_t</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv412battery_initP20battery_management_t"><code class="docutils literal notranslate"><span class="pre">battery_init()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv422battery_charge_controlP20battery_management_tb"><code class="docutils literal notranslate"><span class="pre">battery_charge_control()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv420battery_protect_modeP20battery_management_t"><code class="docutils literal notranslate"><span class="pre">battery_protect_mode()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mppt_controller.html">MPPT Controller Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="power_profiles.html">Power Profiles Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rail_controller.html">Rail Controller Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="redundancy_manager.html">Redundancy Manager Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telemetry.html">Telemetry Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="uart_events.html">UART Events Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="watchdog.html">Watchdog Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">Logging Service</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../index.html" title="previous chapter">OSUSat EPS Firmware documentation</a></li>
+      <li>Next: <a href="mppt_controller.html" title="next chapter">MPPT Controller Service</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2025, FerretCode.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.1.0</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/services/battery_management.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

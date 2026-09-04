@@ -1,0 +1,115 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__flash__ex_8h" kind="file" language="C++">
+    <compoundname>stm32l4xx_hal_flash_ex.h</compoundname>
+    <includes refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h" local="yes">stm32l4xx_hal_def.h</includes>
+    <includedby refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__flash_8h" local="yes">/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_flash.h</includedby>
+    <incdepgraph>
+      <node id="4">
+        <label>Legacy/stm32_hal_legacy.h</label>
+        <link refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2Legacy_2stm32__hal__legacy_8h"/>
+      </node>
+      <node id="2">
+        <label>stm32l4xx_hal_def.h</label>
+        <link refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_flash_ex.h</label>
+        <link refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__flash__ex_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>stddef.h</label>
+      </node>
+      <node id="3">
+        <label>stm32l4xx.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_flash.h</label>
+        <link refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__flash_8h"/>
+      </node>
+      <node id="1">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_flash_ex.h</label>
+        <link refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__flash__ex_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <sectiondef kind="func">
+      <member refid="group__FLASHEx__Exported__Functions__Group1_1ga9c4e0c7b4f528b7cccae6ad610eb5953" kind="function"><name>HAL_FLASHEx_Erase</name></member>
+      <member refid="group__FLASHEx__Exported__Functions__Group1_1gaf58c6764859e4febc21abe462dfb2615" kind="function"><name>HAL_FLASHEx_Erase_IT</name></member>
+      <member refid="group__FLASHEx__Exported__Functions__Group1_1ga001dd4a8defa9eb24a17c4df5953a41d" kind="function"><name>HAL_FLASHEx_OBProgram</name></member>
+      <member refid="group__FLASHEx__Exported__Functions__Group1_1ga6d45d5442b8147533b1100ec40fe75d7" kind="function"><name>HAL_FLASHEx_OBGetConfig</name></member>
+      <member refid="group__FLASHEx__Private__Functions_1gaeb338db00621612c920bad80cefe9dea" kind="function"><name>FLASH_PageErase</name></member>
+      <member refid="group__FLASHEx__Private__Functions_1ga0881881ce55e54e123206bc2e0dc62f3" kind="function"><name>FLASH_FlushCaches</name></member>
+    </sectiondef>
+    <briefdescription>
+<para>Header file of FLASH HAL Extended module. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>MCD Application Team </para>
+</simplesect>
+<simplesect kind="attention"><para></para>
+</simplesect>
+Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
+<para>This software is licensed under terms that can be found in the LICENSE file in the root directory of this software component. If no LICENSE file comes with this software, it is provided AS-IS. </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Define<sp/>to<sp/>prevent<sp/>recursive<sp/>inclusion<sp/>-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>STM32L4xx_HAL_FLASH_EX_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>STM32L4xx_HAL_FLASH_EX_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Includes<sp/>------------------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="bsp_2hal__driver_2Inc_2stm32l4xx__hal__def_8h" kindref="compound">stm32l4xx_hal_def.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Exported<sp/>types<sp/>------------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Exported<sp/>constants<sp/>--------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined<sp/>(FLASH_CFGR_LVEN)</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FLASH_LVE_PIN_CTRL<sp/><sp/><sp/><sp/><sp/>0x00000000U<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FLASH_LVE_PIN_FORCED<sp/><sp/><sp/>FLASH_CFGR_LVEN<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>FLASH_CFGR_LVEN<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Exported<sp/>macro<sp/>------------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Exported<sp/>functions<sp/>--------------------------------------------------------*/</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Extended<sp/>Program<sp/>operation<sp/>functions<sp/><sp/>*************************************/</highlight></codeline>
+<codeline lineno="69" refid="group__FLASHEx__Exported__Functions__Group1_1ga9c4e0c7b4f528b7cccae6ad610eb5953" refkind="member"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/><ref refid="group__FLASHEx__Exported__Functions__Group1_1ga9c4e0c7b4f528b7cccae6ad610eb5953" kindref="member">HAL_FLASHEx_Erase</ref>(<ref refid="structFLASH__EraseInitTypeDef" kindref="compound">FLASH_EraseInitTypeDef</ref><sp/>*pEraseInit,<sp/>uint32_t<sp/>*PageError);</highlight></codeline>
+<codeline lineno="70" refid="group__FLASHEx__Exported__Functions__Group1_1gaf58c6764859e4febc21abe462dfb2615" refkind="member"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/><ref refid="group__FLASHEx__Exported__Functions__Group1_1gaf58c6764859e4febc21abe462dfb2615" kindref="member">HAL_FLASHEx_Erase_IT</ref>(<ref refid="structFLASH__EraseInitTypeDef" kindref="compound">FLASH_EraseInitTypeDef</ref><sp/>*pEraseInit);</highlight></codeline>
+<codeline lineno="71" refid="group__FLASHEx__Exported__Functions__Group1_1ga001dd4a8defa9eb24a17c4df5953a41d" refkind="member"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/><ref refid="group__FLASHEx__Exported__Functions__Group1_1ga001dd4a8defa9eb24a17c4df5953a41d" kindref="member">HAL_FLASHEx_OBProgram</ref>(<ref refid="structFLASH__OBProgramInitTypeDef" kindref="compound">FLASH_OBProgramInitTypeDef</ref><sp/>*pOBInit);</highlight></codeline>
+<codeline lineno="72" refid="group__FLASHEx__Exported__Functions__Group1_1ga6d45d5442b8147533b1100ec40fe75d7" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__FLASHEx__Exported__Functions__Group1_1ga6d45d5442b8147533b1100ec40fe75d7" kindref="member">HAL_FLASHEx_OBGetConfig</ref>(<ref refid="structFLASH__OBProgramInitTypeDef" kindref="compound">FLASH_OBProgramInitTypeDef</ref><sp/>*pOBInit);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined<sp/>(FLASH_CFGR_LVEN)</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/>HAL_FLASHEx_ConfigLVEPin(uint32_t<sp/>ConfigLVE);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>FLASH_CFGR_LVEN<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>function<sp/>----------------------------------------------------------*/</highlight></codeline>
+<codeline lineno="95" refid="group__FLASHEx__Private__Functions_1gaeb338db00621612c920bad80cefe9dea" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__FLASHEx__Private__Functions_1gaeb338db00621612c920bad80cefe9dea" kindref="member">FLASH_PageErase</ref>(uint32_t<sp/>Page,<sp/>uint32_t<sp/>Banks);</highlight></codeline>
+<codeline lineno="96" refid="group__FLASHEx__Private__Functions_1ga0881881ce55e54e123206bc2e0dc62f3" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__FLASHEx__Private__Functions_1ga0881881ce55e54e123206bc2e0dc62f3" kindref="member">FLASH_FlushCaches</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>macros<sp/>------------------------------------------------------------*/</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined<sp/>(FLASH_CFGR_LVEN)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>IS_FLASH_LVE_PIN(CFG)<sp/><sp/>(((CFG)<sp/>==<sp/>FLASH_LVE_PIN_CTRL)<sp/>||<sp/>((CFG)<sp/>==<sp/>FLASH_LVE_PIN_FORCED))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>FLASH_CFGR_LVEN<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>STM32L4xx_HAL_FLASH_EX_H<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_flash_ex.h"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="md__2home_2runner_2work_2cubesat_2cubesat_2eps_2v1_2firmware_2lib_2messaging_2README" kind="page">
+    <compoundname>md__2home_2runner_2work_2cubesat_2cubesat_2eps_2v1_2firmware_2lib_2messaging_2README</compoundname>
+    <title>messaging</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><anchor id="md__2home_2runner_2work_2cubesat_2cubesat_2eps_2v1_2firmware_2lib_2messaging_2README_1autotoc_md55"/>Messaging standards and protocols for OSUSat/SCRT</para>
+<sect1 id="md__2home_2runner_2work_2cubesat_2cubesat_2eps_2v1_2firmware_2lib_2messaging_2README_1autotoc_md56">
+<title>Messaging Spec</title>
+<para><itemizedlist>
+<listitem><para>The messaging specification can be found in <ref refid="SPEC_8md" kindref="compound">spec/SPEC.md</ref></para>
+</listitem><listitem><para>The current revision of the messaging specification implementation is located at spec/messages.yml</para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+<sect1 id="md__2home_2runner_2work_2cubesat_2cubesat_2eps_2v1_2firmware_2lib_2messaging_2README_1autotoc_md57">
+<title>Code Generation</title>
+<para><itemizedlist>
+<listitem><para>A simple code generation pipeline is found in <ref refid="gen_8py" kindref="compound">generator/gen.py</ref></para>
+</listitem><listitem><para>It outputs C, C++, and Python headers/codecs for messages and encoding/decoding functionality</para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+<sect1 id="md__2home_2runner_2work_2cubesat_2cubesat_2eps_2v1_2firmware_2lib_2messaging_2README_1autotoc_md58">
+<title>Project Integration</title>
+<sect2 id="md__2home_2runner_2work_2cubesat_2cubesat_2eps_2v1_2firmware_2lib_2messaging_2README_1autotoc_md59">
+<title>C/CPP integration</title>
+<para><itemizedlist>
+<listitem><para>Add this repository as a subdirectory of your project<itemizedlist>
+<listitem><para>git submodule add <ulink url="https://github.com/osusat/messaging.git">https://github.com/osusat/messaging.git</ulink> lib/</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para>Use one of the example CMakeLists.txt files to link the C/CPP libraries<itemizedlist>
+<listitem><para>You may need to modify the subdirectory that CMake targets for the library files. Change <computeroutput>add_subdirectory(../../ ...</computeroutput> -&gt; <computeroutput>add_subdirectory(lib/messaging ...</computeroutput>, for example.<itemizedlist>
+<listitem><para>Make sure it targets the submodule you added</para>
+</listitem></itemizedlist>
+</para>
+</listitem></itemizedlist>
+</para>
+</listitem></itemizedlist>
+</para>
+</sect2>
+<sect2 id="md__2home_2runner_2work_2cubesat_2cubesat_2eps_2v1_2firmware_2lib_2messaging_2README_1autotoc_md60">
+<title>Python Integration</title>
+<para><itemizedlist>
+<listitem><para>Install the package via PyPi: <computeroutput>pip install osusat-messaging</computeroutput></para>
+</listitem></itemizedlist>
+</para>
+</sect2>
+</sect1>
+<sect1 id="md__2home_2runner_2work_2cubesat_2cubesat_2eps_2v1_2firmware_2lib_2messaging_2README_1autotoc_md61">
+<title>Examples</title>
+<para><itemizedlist>
+<listitem><para>Example codec/packet usage can be found under the <computeroutput>examples</computeroutput> directory</para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+<sect1 id="md__2home_2runner_2work_2cubesat_2cubesat_2eps_2v1_2firmware_2lib_2messaging_2README_1autotoc_md62">
+<title>Developing</title>
+<sect2 id="md__2home_2runner_2work_2cubesat_2cubesat_2eps_2v1_2firmware_2lib_2messaging_2README_1autotoc_md63">
+<title>Development with UNIX/Windows systems</title>
+<para><programlisting><codeline><highlight class="normal">#<sp/>Generator<sp/>Development</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">cd<sp/>generator</highlight></codeline>
+<codeline><highlight class="normal">python<sp/>-m<sp/>venv<sp/>.venv/<sp/>#<sp/>create<sp/>a<sp/>python<sp/>virtual<sp/>environment<sp/>for<sp/>package<sp/>isolation</highlight></codeline>
+<codeline><highlight class="normal">source<sp/>.venv/bin/activate<sp/>#<sp/>activate<sp/>the<sp/>virtual<sp/>environment<sp/>you<sp/>just<sp/>created</highlight></codeline>
+<codeline><highlight class="normal">pip<sp/>install<sp/>-r<sp/>requirements.txt<sp/>#<sp/>install<sp/>generator<sp/>dependencies</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>C/CPP<sp/>Codec<sp/>Development</highlight></codeline>
+<codeline><highlight class="normal">mkdir<sp/>build<sp/>&amp;&amp;<sp/>cd<sp/>build</highlight></codeline>
+<codeline><highlight class="normal">cmake<sp/>..</highlight></codeline>
+<codeline><highlight class="normal">make</highlight></codeline>
+</programlisting></para>
+</sect2>
+<sect2 id="md__2home_2runner_2work_2cubesat_2cubesat_2eps_2v1_2firmware_2lib_2messaging_2README_1autotoc_md64">
+<title>Development with NixOS systems</title>
+<para><programlisting><codeline><highlight class="normal">nix-shell<sp/>#<sp/>good<sp/>to<sp/>go<sp/>:)</highlight></codeline>
+</programlisting> </para>
+</sect2>
+</sect1>
+    </detaileddescription>
+    <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/messaging/README.md"/>
+  </compounddef>
+</doxygen>
