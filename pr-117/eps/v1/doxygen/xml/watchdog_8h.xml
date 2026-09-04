@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="watchdog_8h" kind="file" language="C++">
+    <compoundname>watchdog.h</compoundname>
+    <includes local="no">stdbool.h</includes>
+    <includes local="no">stdint.h</includes>
+    <includedby refid="main_8c" local="yes">/home/runner/work/cubesat/cubesat/eps/v1/firmware/main.c</includedby>
+    <includedby refid="watchdog_8c" local="yes">/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/watchdog.c</includedby>
+    <includedby refid="test__watchdog_8c" local="yes">/home/runner/work/cubesat/cubesat/eps/v1/firmware/tests/test_watchdog.c</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/watchdog.h</label>
+        <link refid="watchdog_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>stdbool.h</label>
+      </node>
+      <node id="3">
+        <label>stdint.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/main.c</label>
+        <link refid="main_8c"/>
+      </node>
+      <node id="3">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/watchdog.c</label>
+        <link refid="watchdog_8c"/>
+      </node>
+      <node id="1">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/watchdog.h</label>
+        <link refid="watchdog_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/tests/test_watchdog.c</label>
+        <link refid="test__watchdog_8c"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structwatchdog__t" prot="public">watchdog_t</innerclass>
+    <sectiondef kind="func">
+      <member refid="group__watchdog__api_1gab3855c9896bbd7be2a19dc5e7b515bdc" kind="function"><name>watchdog_init</name></member>
+      <member refid="group__watchdog__api_1ga98d1081b076ba58b41c102cfb296cb9e" kind="function"><name>watchdog_pet</name></member>
+      <member refid="group__watchdog__api_1ga6c17c5d5849e0fcca77e95c67b97ba30" kind="function"><name>watchdog_force_reset</name></member>
+    </sectiondef>
+    <briefdescription>
+<para>Hardware Watchdog Timer (WDT) abstraction. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This module manages the system&apos;s Independent Watchdog. </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>WATCHDOG_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>WATCHDOG_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdbool.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="structwatchdog__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="40" refid="structwatchdog__t_1a289656ba2813aa4c7592c9037d93400f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structwatchdog__t_1a289656ba2813aa4c7592c9037d93400f" kindref="member">timeout_ms</ref>;<sp/></highlight></codeline>
+<codeline lineno="41" refid="structwatchdog__t_1a42b206e511eb9c1e7bce8d3babf07727" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structwatchdog__t_1a42b206e511eb9c1e7bce8d3babf07727" kindref="member">last_pet_tick</ref>;<sp/></highlight></codeline>
+<codeline lineno="42" refid="structwatchdog__t_1acfc1a715a7b689c0d802dc45a9897470" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structwatchdog__t_1acfc1a715a7b689c0d802dc45a9897470" kindref="member">enabled</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="43"><highlight class="normal">}<sp/><ref refid="structwatchdog__t" kindref="compound">watchdog_t</ref>;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<sp/><highlight class="comment">//<sp/>end<sp/>watchdog_types</highlight><codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__watchdog__api_1gab3855c9896bbd7be2a19dc5e7b515bdc" kindref="member">watchdog_init</ref>(<ref refid="structwatchdog__t" kindref="compound">watchdog_t</ref><sp/>*watchdog);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__watchdog__api_1ga98d1081b076ba58b41c102cfb296cb9e" kindref="member">watchdog_pet</ref>(<ref refid="structwatchdog__t" kindref="compound">watchdog_t</ref><sp/>*watchdog);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__watchdog__api_1ga6c17c5d5849e0fcca77e95c67b97ba30" kindref="member">watchdog_force_reset</ref>(<ref refid="structwatchdog__t" kindref="compound">watchdog_t</ref><sp/>*watchdog);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<sp/><highlight class="comment">//<sp/>end<sp/>watchdog_api</highlight><codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<sp/><highlight class="comment">//<sp/>end<sp/>watchdog</highlight><codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>WATCHDOG_H</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/watchdog.h"/>
+  </compounddef>
+</doxygen>

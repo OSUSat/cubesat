@@ -1,0 +1,127 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="group__rail__controller__api" kind="group">
+    <compoundname>rail_controller_api</compoundname>
+    <title>Public API</title>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="group__rail__controller__api_1gae3f6fb977735e9f424c7051aa097d6b8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void rail_controller_init</definition>
+        <argsstring>(rail_controller_t *manager)</argsstring>
+        <name>rail_controller_init</name>
+        <param>
+          <type><ref refid="structrail__controller__t" kindref="compound">rail_controller_t</ref> *</type>
+          <declname>manager</declname>
+        </param>
+        <briefdescription>
+<para>Initialize the Rail Controller hardware. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Configures GPIO pins for load switches as outputs (defaulting to OFF) and initializes any I2C/ADC interfaces required for current monitoring.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>[controller]</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The rail controller</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>This function is idempotent. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/rail_controller.h" line="164" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/rail_controller.c" bodystart="46" bodyend="75" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/rail_controller.h" declline="164" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__rail__controller__api_1ga8cbfeb3e6f0570ada9a5dff861664207" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void rail_controller_enable</definition>
+        <argsstring>(rail_controller_t *manager, power_rail_t rail)</argsstring>
+        <name>rail_controller_enable</name>
+        <param>
+          <type><ref refid="structrail__controller__t" kindref="compound">rail_controller_t</ref> *</type>
+          <declname>manager</declname>
+        </param>
+        <param>
+          <type><ref refid="eps__config_8h_1a73c39de4f420a491a24f9b39649a2455" kindref="member">power_rail_t</ref></type>
+          <declname>rail</declname>
+        </param>
+        <briefdescription>
+<para>Turn ON a specific power rail. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">rail</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The unique ID of the rail to enable (defined in <ref refid="eps__config_8h" kindref="compound">eps_config.h</ref>). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">controller</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The rail controller</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>This function returns immediately. The rail voltage may take some time to stabilize. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/rail_controller.h" line="176" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/rail_controller.c" bodystart="98" bodyend="108" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/rail_controller.h" declline="176" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__rail__controller__api_1ga98d6f2a9fdab9901173ee9a419071ceb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void rail_controller_disable</definition>
+        <argsstring>(rail_controller_t *manager, power_rail_t rail)</argsstring>
+        <name>rail_controller_disable</name>
+        <param>
+          <type><ref refid="structrail__controller__t" kindref="compound">rail_controller_t</ref> *</type>
+          <declname>manager</declname>
+        </param>
+        <param>
+          <type><ref refid="eps__config_8h_1a73c39de4f420a491a24f9b39649a2455" kindref="member">power_rail_t</ref></type>
+          <declname>rail</declname>
+        </param>
+        <briefdescription>
+<para>Turn OFF a specific power rail. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">rail</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The unique ID of the rail to disable. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">controller</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The rail controller </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/rail_controller.h" line="184" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/rail_controller.c" bodystart="110" bodyend="120" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/rail_controller.h" declline="184" declcolumn="6"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>External interface for interacting with the Rail Controller Service. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

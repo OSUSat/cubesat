@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="md__2home_2runner_2work_2cubesat_2cubesat_2eps_2v1_2firmware_2lib_2messaging_2spec_2SPEC" kind="page">
+    <compoundname>md__2home_2runner_2work_2cubesat_2cubesat_2eps_2v1_2firmware_2lib_2messaging_2spec_2SPEC</compoundname>
+    <title>OSUSat/SCRT Messaging Standard</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><anchor id="md__2home_2runner_2work_2cubesat_2cubesat_2eps_2v1_2firmware_2lib_2messaging_2spec_2SPEC_1autotoc_md65"/><itemizedlist>
+<listitem><para>Packet based</para>
+</listitem><listitem><para>Messages are framed in the same way, with headers, checksums, and ACK/NACK support</para>
+</listitem><listitem><para>Backwards compatibility is important to make sure we don’t break old commands</para>
+</listitem><listitem><para>Shared functionality for parsing and serializing between subsystem codebases</para>
+</listitem></itemizedlist>
+</para>
+<para><table rows="12" cols="3"><row>
+<entry thead="yes"><para>Field   </para>
+</entry><entry thead="yes"><para>Size (bytes)   </para>
+</entry><entry thead="yes"><para>Notes    </para>
+</entry></row>
+<row>
+<entry thead="no"><para>Start Byte   </para>
+</entry><entry thead="no"><para>1   </para>
+</entry><entry thead="no"><para>Tentatively <computeroutput>0x7E</computeroutput>. Radio protocols like AX.25 use <computeroutput>0x7E</computeroutput> as a start byte.    </para>
+</entry></row>
+<row>
+<entry thead="no"><para>Version #   </para>
+</entry><entry thead="no"><para>1   </para>
+</entry><entry thead="no"><para>Messaging standard version number    </para>
+</entry></row>
+<row>
+<entry thead="no"><para>Destination   </para>
+</entry><entry thead="no"><para>1   </para>
+</entry><entry thead="no"><para>Target destination enum. <computeroutput>0x01</computeroutput> for EPS, <computeroutput>0x02</computeroutput> for payload, etc.    </para>
+</entry></row>
+<row>
+<entry thead="no"><para>Source   </para>
+</entry><entry thead="no"><para>1   </para>
+</entry><entry thead="no"><para>Same enum but corresponds to who sent the packet    </para>
+</entry></row>
+<row>
+<entry thead="no"><para>Message Type   </para>
+</entry><entry thead="no"><para>1   </para>
+</entry><entry thead="no"><para>Enum for message type. <computeroutput>0x01</computeroutput> is command, <computeroutput>0x02</computeroutput> telemetry, etc.    </para>
+</entry></row>
+<row>
+<entry thead="no"><para>Command ID   </para>
+</entry><entry thead="no"><para>1   </para>
+</entry><entry thead="no"><para>Enum for command ID. With the subsystem destination defined, specific command tables can be different. A common commands table should be maintained with a few commands that every subsystem uses, and a specified offset at which subsystem specific commands begin.    </para>
+</entry></row>
+<row>
+<entry thead="no"><para>Sequence   </para>
+</entry><entry thead="no"><para>1   </para>
+</entry><entry thead="no"><para>Packet sequence #. Used for sending multi-packet payloads across the wire.    </para>
+</entry></row>
+<row>
+<entry thead="no"><para>Last Chunk Flag   </para>
+</entry><entry thead="no"><para>1   </para>
+</entry><entry thead="no"><para>Indicates whether this packet marks the end of the packet sequence.    </para>
+</entry></row>
+<row>
+<entry thead="no"><para>Length   </para>
+</entry><entry thead="no"><para>1   </para>
+</entry><entry thead="no"><para>Packet payload length in bytes    </para>
+</entry></row>
+<row>
+<entry thead="no"><para>Payload   </para>
+</entry><entry thead="no"><para>N   </para>
+</entry><entry thead="no"><para>Variable length payload    </para>
+</entry></row>
+<row>
+<entry thead="no"><para>CRC   </para>
+</entry><entry thead="no"><para>2   </para>
+</entry><entry thead="no"><para>Cyclic redundancy check for error correction (<computeroutput>CRC-16-CCITT</computeroutput>)   </para>
+</entry></row>
+</table>
+</para>
+<sect1 id="md__2home_2runner_2work_2cubesat_2cubesat_2eps_2v1_2firmware_2lib_2messaging_2spec_2SPEC_1autotoc_md66">
+<title>Message Handshake</title>
+<para><itemizedlist>
+<listitem><para>Every command must be ACKed with a new packet with the ACK message type</para>
+</listitem><listitem><para>If an error or invalid state occurs, send back a new packet with the NACK/ERR message type, with the error message/state in the payload</para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+<sect1 id="md__2home_2runner_2work_2cubesat_2cubesat_2eps_2v1_2firmware_2lib_2messaging_2spec_2SPEC_1autotoc_md67">
+<title>Command Table Code Generation</title>
+<para><itemizedlist>
+<listitem><para>Command table and system configuration lives in a YAML document</para>
+</listitem><listitem><para>Simple python autogeneration script should parse the YAML configuration and generate C header files and python files containing the command table that can be accessed programmatically</para>
+</listitem><listitem><para>This way, commands are known at build time </para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+    </detaileddescription>
+    <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/messaging/spec/SPEC.md"/>
+  </compounddef>
+</doxygen>

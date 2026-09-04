@@ -1,0 +1,315 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="packet_8c" kind="file" language="C++">
+    <compoundname>packet.c</compoundname>
+    <includes refid="packet_8h" local="yes">packet.h</includes>
+    <includes local="no">stddef.h</includes>
+    <includes local="no">stdint.h</includes>
+    <includes local="no">string.h</includes>
+    <incdepgraph>
+      <node id="3">
+        <label>messages.h</label>
+        <link refid="messages_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>packet.h</label>
+        <link refid="packet_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/messaging/c/src/packet.c</label>
+        <link refid="packet_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>stdbool.h</label>
+      </node>
+      <node id="6">
+        <label>stddef.h</label>
+      </node>
+      <node id="4">
+        <label>stdint.h</label>
+      </node>
+      <node id="7">
+        <label>string.h</label>
+      </node>
+    </incdepgraph>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="packet_8c_1a32d7e3761821e149c19aef6b82b60731" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint16_t</type>
+        <definition>uint16_t osusat_crc16_ccitt</definition>
+        <argsstring>(const uint8_t *data, size_t length)</argsstring>
+        <name>osusat_crc16_ccitt</name>
+        <param>
+          <type>const uint8_t *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>length</declname>
+        </param>
+        <briefdescription>
+<para>Calculates the CRC-16-CCITT for a block of data. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Calculates the CRC-16-CCITT checksum.</para>
+<para>This implementation is a standard bit-wise calculation and does not require a lookup table, saving space in memory-constrained systems. Polynomial: 0x1021 </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/messaging/c/src/packet.c" line="12" column="10" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/messaging/c/src/packet.c" bodystart="12" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="packet_8c_1a93662568ee003d2da0b8e869867834f1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int16_t</type>
+        <definition>int16_t osusat_packet_pack</definition>
+        <argsstring>(const OSUSatPacket *packet, uint8_t *buffer, size_t buffer_size)</argsstring>
+        <name>osusat_packet_pack</name>
+        <param>
+          <type>const <ref refid="structOSUSatPacket" kindref="compound">OSUSatPacket</ref> *</type>
+          <declname>packet</declname>
+        </param>
+        <param>
+          <type>uint8_t *</type>
+          <declname>buffer</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>buffer_size</declname>
+        </param>
+        <briefdescription>
+<para>Serializes an <ref refid="structOSUSatPacket" kindref="compound">OSUSatPacket</ref> struct into a byte buffer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>packet</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the <ref refid="structOSUSatPacket" kindref="compound">OSUSatPacket</ref> struct to pack. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>buffer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the output buffer where the packed data will be written. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>buffer_size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The total size of the output buffer. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The total number of bytes written to the buffer, or a negative OSUSatPacketResult on error. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/messaging/c/src/packet.c" line="36" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/messaging/c/src/packet.c" bodystart="36" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="packet_8c_1a9dd74a9f3320a826e2081fbf68df701f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="packet_8h_1a39a219748971c184f958c6b6de4cd6a3" kindref="member">OSUSatPacketResult</ref></type>
+        <definition>OSUSatPacketResult osusat_packet_unpack</definition>
+        <argsstring>(OSUSatPacket *packet, uint8_t *buffer, size_t buffer_size)</argsstring>
+        <name>osusat_packet_unpack</name>
+        <param>
+          <type><ref refid="structOSUSatPacket" kindref="compound">OSUSatPacket</ref> *</type>
+          <declname>packet</declname>
+        </param>
+        <param>
+          <type>uint8_t *</type>
+          <declname>buffer</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>buffer_size</declname>
+        </param>
+        <briefdescription>
+<para>Deserializes a byte buffer into an <ref refid="structOSUSatPacket" kindref="compound">OSUSatPacket</ref> struct. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Note: The <computeroutput>packet-&gt;payload</computeroutput> will point into the original <computeroutput>buffer</computeroutput>. No data is copied.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>packet</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the <ref refid="structOSUSatPacket" kindref="compound">OSUSatPacket</ref> struct to populate. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>buffer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the input buffer containing the raw packet data. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>buffer_size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The size of the data in the input buffer. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>OSUSAT_PACKET_OK on success, or a negative OSUSatPacketResult on error. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/messaging/c/src/packet.c" line="74" column="20" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/messaging/c/src/packet.c" bodystart="74" bodyend="125"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="packet_8h" kindref="compound">packet.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stddef.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal">uint16_t<sp/><ref refid="packet_8c_1a32d7e3761821e149c19aef6b82b60731" kindref="member">osusat_crc16_ccitt</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>*data,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>length)<sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/>crc<sp/>=<sp/>0xFFFF;<sp/></highlight><highlight class="comment">//<sp/>initial<sp/>value</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>length;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>move<sp/>byte<sp/>left<sp/>by<sp/>8<sp/>bits<sp/>&amp;<sp/>XOR<sp/>against<sp/>current<sp/>crc</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>effectively<sp/>moves<sp/>the<sp/>byte<sp/>into<sp/>the<sp/>most<sp/>significant<sp/>bits<sp/>of<sp/>the<sp/>crc</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>register</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>crc<sp/>^=<sp/>(uint16_t)data[i]<sp/>&lt;&lt;<sp/>8;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>0;<sp/>j<sp/>&lt;<sp/>8;<sp/>j++)<sp/>{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>is<sp/>the<sp/>most<sp/>significant<sp/>bit<sp/>set?</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(crc<sp/>&amp;<sp/>0x8000)<sp/>{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>shift<sp/>left<sp/>&amp;<sp/>XOR<sp/>with<sp/>the<sp/>polynomial</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>crc<sp/>=<sp/>(crc<sp/>&lt;&lt;<sp/>1)<sp/>^<sp/>0x1021;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>shift<sp/>left</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>crc<sp/>&lt;&lt;=<sp/>1;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>crc;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal">int16_t<sp/><ref refid="packet_8c_1a93662568ee003d2da0b8e869867834f1" kindref="member">osusat_packet_pack</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structOSUSatPacket" kindref="compound">OSUSatPacket</ref><sp/>*packet,<sp/>uint8_t<sp/>*buffer,</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>buffer_size)<sp/>{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(packet<sp/>==<sp/>NULL<sp/>||<sp/>buffer<sp/>==<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="packet_8h_1a39a219748971c184f958c6b6de4cd6a3a701fea802c9db7d560d6790d365b75df" kindref="member">OSUSAT_PACKET_ERR_NULL_PTR</ref>;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>total_size<sp/>=<sp/><ref refid="packet_8h_1a713e49ffab48f6407bc923d5a27b0fdd" kindref="member">OSUSAT_FRAME_OVERHEAD</ref><sp/>+<sp/>packet-&gt;<ref refid="structOSUSatPacket_1a9d41915bf256f5894d7330ba95143b98" kindref="member">payload_len</ref>;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(buffer_size<sp/>&lt;<sp/>total_size)<sp/>{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="packet_8h_1a39a219748971c184f958c6b6de4cd6a3a5115938eae44c78ae50292997d4b0039" kindref="member">OSUSAT_PACKET_ERR_BUFFER_TOO_SMALL</ref>;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>buffer[0]<sp/>=<sp/><ref refid="packet_8h_1a5118816fbd3f461bdf14416025fa43da" kindref="member">OSUSAT_START_BYTE</ref>;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>offset<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>buffer[offset++]<sp/>=<sp/>packet-&gt;<ref refid="structOSUSatPacket_1ad0150165698e87a142b9d36a35f77a16" kindref="member">version</ref>;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>buffer[offset++]<sp/>=<sp/>packet-&gt;<ref refid="structOSUSatPacket_1ab2bbaebb9304cab0b32286027ba55782" kindref="member">destination</ref>;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>buffer[offset++]<sp/>=<sp/>packet-&gt;<ref refid="structOSUSatPacket_1a61e3b18ed5402f85e6da8424e664c93b" kindref="member">source</ref>;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>buffer[offset++]<sp/>=<sp/>packet-&gt;<ref refid="structOSUSatPacket_1a2b46a0908d4d55c9bc73b5b1f5f9e294" kindref="member">message_type</ref>;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>buffer[offset++]<sp/>=<sp/>packet-&gt;<ref refid="structOSUSatPacket_1a9c303077dac399dcb7a85274a855182b" kindref="member">command_id</ref>;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>buffer[offset++]<sp/>=<sp/>packet-&gt;<ref refid="structOSUSatPacket_1ab32254546d10c21bbcba905e62093e53" kindref="member">sequence</ref>;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>buffer[offset++]<sp/>=<sp/>packet-&gt;<ref refid="structOSUSatPacket_1a477bb6448d2cbeb74603649adf4a2bf4" kindref="member">is_last_chunk</ref><sp/>?<sp/>1<sp/>:<sp/>0;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>buffer[offset++]<sp/>=<sp/>packet-&gt;<ref refid="structOSUSatPacket_1a9d41915bf256f5894d7330ba95143b98" kindref="member">payload_len</ref>;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(packet-&gt;<ref refid="structOSUSatPacket_1a9d41915bf256f5894d7330ba95143b98" kindref="member">payload_len</ref><sp/>&gt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>memcpy(&amp;buffer[offset],<sp/>packet-&gt;<ref refid="structOSUSatPacket_1a00b93b872aaf6995d65889bb8ff22956" kindref="member">payload</ref>,<sp/>packet-&gt;<ref refid="structOSUSatPacket_1a9d41915bf256f5894d7330ba95143b98" kindref="member">payload_len</ref>);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>offset<sp/>+=<sp/>packet-&gt;<ref refid="structOSUSatPacket_1a9d41915bf256f5894d7330ba95143b98" kindref="member">payload_len</ref>;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/>crc<sp/>=<sp/><ref refid="packet_8c_1a32d7e3761821e149c19aef6b82b60731" kindref="member">osusat_crc16_ccitt</ref>(&amp;buffer[1],</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="packet_8h_1a80765c347e39ee49e915fc201ccb7e7a" kindref="member">OSUSAT_HEADER_SIZE</ref><sp/>+<sp/>packet-&gt;<ref refid="structOSUSatPacket_1a9d41915bf256f5894d7330ba95143b98" kindref="member">payload_len</ref>);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>buffer[offset++]<sp/>=<sp/>(crc<sp/>&gt;&gt;<sp/>8)<sp/>&amp;<sp/>0xFF;<sp/></highlight><highlight class="comment">//<sp/>big<sp/>endian<sp/>CRC</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>buffer[offset++]<sp/>=<sp/>crc<sp/>&amp;<sp/>0xFF;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>total_size;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><ref refid="packet_8h_1a39a219748971c184f958c6b6de4cd6a3" kindref="member">OSUSatPacketResult</ref><sp/><ref refid="packet_8c_1a9dd74a9f3320a826e2081fbf68df701f" kindref="member">osusat_packet_unpack</ref>(<ref refid="structOSUSatPacket" kindref="compound">OSUSatPacket</ref><sp/>*packet,<sp/>uint8_t<sp/>*buffer,</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>buffer_size)<sp/>{</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(packet<sp/>==<sp/>NULL<sp/>||<sp/>buffer<sp/>==<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="packet_8h_1a39a219748971c184f958c6b6de4cd6a3a701fea802c9db7d560d6790d365b75df" kindref="member">OSUSAT_PACKET_ERR_NULL_PTR</ref>;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(buffer_size<sp/>&lt;<sp/><ref refid="packet_8h_1a713e49ffab48f6407bc923d5a27b0fdd" kindref="member">OSUSAT_FRAME_OVERHEAD</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="packet_8h_1a39a219748971c184f958c6b6de4cd6a3a5115938eae44c78ae50292997d4b0039" kindref="member">OSUSAT_PACKET_ERR_BUFFER_TOO_SMALL</ref>;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(buffer[0]<sp/>!=<sp/><ref refid="packet_8h_1a5118816fbd3f461bdf14416025fa43da" kindref="member">OSUSAT_START_BYTE</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="packet_8h_1a39a219748971c184f958c6b6de4cd6a3a22b8f310aa49648e756db62863768dec" kindref="member">OSUSAT_PACKET_ERR_BAD_START_BYTE</ref>;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>payload_len<sp/>=<sp/>buffer[1<sp/>+<sp/>7];<sp/></highlight><highlight class="comment">//<sp/>length<sp/>is<sp/>the<sp/>8th<sp/>byte<sp/>of<sp/>the<sp/>header</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>total_packet_size<sp/>=<sp/><ref refid="packet_8h_1a713e49ffab48f6407bc923d5a27b0fdd" kindref="member">OSUSAT_FRAME_OVERHEAD</ref><sp/>+<sp/>payload_len;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(buffer_size<sp/>&lt;<sp/>total_packet_size)<sp/>{</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="packet_8h_1a39a219748971c184f958c6b6de4cd6a3ad92ea8f0349d561a6a285117c25be964" kindref="member">OSUSAT_PACKET_ERR_BAD_LENGTH</ref>;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>*data_to_check<sp/>=<sp/>&amp;buffer[1];</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>data_len<sp/>=<sp/><ref refid="packet_8h_1a80765c347e39ee49e915fc201ccb7e7a" kindref="member">OSUSAT_HEADER_SIZE</ref><sp/>+<sp/>payload_len;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/>calculated_crc<sp/>=<sp/><ref refid="packet_8c_1a32d7e3761821e149c19aef6b82b60731" kindref="member">osusat_crc16_ccitt</ref>(data_to_check,<sp/>data_len);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/>received_crc<sp/>=</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((uint16_t)buffer[1<sp/>+<sp/>data_len]<sp/>&lt;&lt;<sp/>8)<sp/>|<sp/>buffer[1<sp/>+<sp/>data_len<sp/>+<sp/>1];</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(calculated_crc<sp/>!=<sp/>received_crc)<sp/>{</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="packet_8h_1a39a219748971c184f958c6b6de4cd6a3a91203f66c176a7a9cedfd6738d3a44d8" kindref="member">OSUSAT_PACKET_ERR_BAD_CRC</ref>;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>offset<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>packet-&gt;<ref refid="structOSUSatPacket_1ad0150165698e87a142b9d36a35f77a16" kindref="member">version</ref><sp/>=<sp/>buffer[offset++];</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/>packet-&gt;<ref refid="structOSUSatPacket_1ab2bbaebb9304cab0b32286027ba55782" kindref="member">destination</ref><sp/>=<sp/>buffer[offset++];</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>packet-&gt;<ref refid="structOSUSatPacket_1a61e3b18ed5402f85e6da8424e664c93b" kindref="member">source</ref><sp/>=<sp/>buffer[offset++];</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/>packet-&gt;<ref refid="structOSUSatPacket_1a2b46a0908d4d55c9bc73b5b1f5f9e294" kindref="member">message_type</ref><sp/>=<sp/>buffer[offset++];</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/>packet-&gt;<ref refid="structOSUSatPacket_1a9c303077dac399dcb7a85274a855182b" kindref="member">command_id</ref><sp/>=<sp/>buffer[offset++];</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/>packet-&gt;<ref refid="structOSUSatPacket_1ab32254546d10c21bbcba905e62093e53" kindref="member">sequence</ref><sp/>=<sp/>buffer[offset++];</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/>packet-&gt;<ref refid="structOSUSatPacket_1a477bb6448d2cbeb74603649adf4a2bf4" kindref="member">is_last_chunk</ref><sp/>=<sp/>(buffer[offset++]<sp/>!=<sp/>0);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>packet-&gt;<ref refid="structOSUSatPacket_1a9d41915bf256f5894d7330ba95143b98" kindref="member">payload_len</ref><sp/>=<sp/>buffer[offset++];</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(packet-&gt;<ref refid="structOSUSatPacket_1a9d41915bf256f5894d7330ba95143b98" kindref="member">payload_len</ref><sp/>&gt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>packet-&gt;<ref refid="structOSUSatPacket_1a00b93b872aaf6995d65889bb8ff22956" kindref="member">payload</ref><sp/>=<sp/>&amp;buffer[offset];</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>packet-&gt;<ref refid="structOSUSatPacket_1a00b93b872aaf6995d65889bb8ff22956" kindref="member">payload</ref><sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="packet_8h_1a39a219748971c184f958c6b6de4cd6a3a561600c3bb1e99e5753ea2e01ca8f774" kindref="member">OSUSAT_PACKET_OK</ref>;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/messaging/c/src/packet.c"/>
+  </compounddef>
+</doxygen>

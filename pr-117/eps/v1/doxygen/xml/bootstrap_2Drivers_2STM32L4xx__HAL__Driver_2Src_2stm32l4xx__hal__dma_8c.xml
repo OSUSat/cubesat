@@ -1,0 +1,964 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Src_2stm32l4xx__hal__dma_8c" kind="file" language="C++">
+    <compoundname>stm32l4xx_hal_dma.c</compoundname>
+    <includes local="yes">stm32l4xx_hal.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_dma.c</label>
+        <link refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Src_2stm32l4xx__hal__dma_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>stm32l4xx_hal.h</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+<para>DMA HAL module driver. This file provides firmware functions to manage the following functionalities of the Direct Memory Access (DMA) peripheral: </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>MCD Application Team<itemizedlist>
+<listitem><para>Initialization and de-initialization functions</para>
+</listitem><listitem><para>IO operation functions</para>
+</listitem><listitem><para>Peripheral State and errors functions</para>
+</listitem></itemizedlist>
+</para>
+</simplesect>
+<simplesect kind="attention"><para></para>
+</simplesect>
+Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
+<para>This software is licensed under terms that can be found in the LICENSE file in the root directory of this software component. If no LICENSE file comes with this software, it is provided AS-IS.</para>
+<para><verbatim>==============================================================================
+                      ##### How to use this driver #####
+==============================================================================
+[..]
+ (#) Enable and configure the peripheral to be connected to the DMA Channel
+     (except for internal SRAM / FLASH memories: no initialization is
+     necessary). Please refer to the Reference manual for connection between peripherals
+     and DMA requests.
+
+ (#) For a given Channel, program the required configuration through the following parameters:
+     Channel request, Transfer Direction, Source and Destination data formats,
+     Circular or Normal mode, Channel Priority level, Source and Destination Increment mode
+     using HAL_DMA_Init() function.
+
+     Prior to HAL_DMA_Init the peripheral clock shall be enabled for both DMA &amp; DMAMUX
+     thanks to:
+    (##) DMA1 or DMA2: __HAL_RCC_DMA1_CLK_ENABLE() or  __HAL_RCC_DMA2_CLK_ENABLE();
+    (##) DMAMUX1:      __HAL_RCC_DMAMUX1_CLK_ENABLE();
+
+ (#) Use HAL_DMA_GetState() function to return the DMA state and HAL_DMA_GetError() in case of error
+     detection.
+
+ (#) Use HAL_DMA_Abort() function to abort the current transfer
+
+   -@-   In Memory-to-Memory transfer mode, Circular mode is not allowed.
+
+   *** Polling mode IO operation ***
+   =================================
+   [..]
+     (+) Use HAL_DMA_Start() to start DMA transfer after the configuration of Source
+         address and destination address and the Length of data to be transferred
+     (+) Use HAL_DMA_PollForTransfer() to poll for the end of current transfer, in this
+         case a fixed Timeout can be configured by User depending from his application.
+
+   *** Interrupt mode IO operation ***
+   ===================================
+   [..]
+     (+) Configure the DMA interrupt priority using HAL_NVIC_SetPriority()
+     (+) Enable the DMA IRQ handler using HAL_NVIC_EnableIRQ()
+     (+) Use HAL_DMA_Start_IT() to start DMA transfer after the configuration of
+         Source address and destination address and the Length of data to be transferred.
+         In this case the DMA interrupt is configured
+     (+) Use HAL_DMA_IRQHandler() called under DMA_IRQHandler() Interrupt subroutine
+     (+) At the end of data transfer HAL_DMA_IRQHandler() function is executed and user can
+            add his own function to register callbacks with HAL_DMA_RegisterCallback().
+
+   *** DMA HAL driver macros list ***
+   =============================================
+   [..]
+     Below the list of macros in DMA HAL driver.
+
+     (+) __HAL_DMA_ENABLE: Enable the specified DMA Channel.
+     (+) __HAL_DMA_DISABLE: Disable the specified DMA Channel.
+     (+) __HAL_DMA_GET_FLAG: Get the DMA Channel pending flags.
+     (+) __HAL_DMA_CLEAR_FLAG: Clear the DMA Channel pending flags.
+     (+) __HAL_DMA_ENABLE_IT: Enable the specified DMA Channel interrupts.
+     (+) __HAL_DMA_DISABLE_IT: Disable the specified DMA Channel interrupts.
+     (+) __HAL_DMA_GET_IT_SOURCE: Check whether the specified DMA Channel interrupt is enabled or not.
+
+   [..]
+    (@) You can refer to the DMA HAL driver header file for more useful macros</verbatim> </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Includes<sp/>------------------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;stm32l4xx_hal.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>HAL_DMA_MODULE_ENABLED</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>typedef<sp/>-----------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>define<sp/>------------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>macro<sp/>-------------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>variables<sp/>---------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>function<sp/>prototypes<sp/>-----------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>DMA_SetConfig(<ref refid="struct____DMA__HandleTypeDef" kindref="compound">DMA_HandleTypeDef</ref><sp/>*hdma,<sp/>uint32_t<sp/>SrcAddress,<sp/>uint32_t<sp/>DstAddress,<sp/>uint32_t<sp/>DataLength);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(DMAMUX1)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>DMA_CalcDMAMUXChannelBaseAndMask(<ref refid="struct____DMA__HandleTypeDef" kindref="compound">DMA_HandleTypeDef</ref><sp/>*hdma);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>DMA_CalcDMAMUXRequestGenBaseAndMask(<ref refid="struct____DMA__HandleTypeDef" kindref="compound">DMA_HandleTypeDef</ref><sp/>*hdma);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>DMAMUX1<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Exported<sp/>functions<sp/>---------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/><ref refid="group__DMA__Exported__Functions__Group1_1ga0fbcb690074233a03f2fa366dc22ff01" kindref="member">HAL_DMA_Init</ref>(<ref refid="struct____DMA__HandleTypeDef" kindref="compound">DMA_HandleTypeDef</ref><sp/>*hdma)</highlight></codeline>
+<codeline lineno="156"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>the<sp/>DMA<sp/>handle<sp/>allocation<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(hdma<sp/>==<sp/>NULL)</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa5a04e395e501e4e400172c610478c4a4" kindref="member">HAL_ERROR</ref>;</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>the<sp/>parameters<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(<ref refid="group__Exported__macros_1ga40beb02b397c5f47e22a83fc28034afe" kindref="member">IS_DMA_ALL_INSTANCE</ref>(hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a08f5d05c6daa9d6e2dfc4945f01c8510" kindref="member">Instance</ref>));</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(<ref refid="group__DMA__Private__Macros_1gae2b02e8e823854bcd7c5746cdd29e70d" kindref="member">IS_DMA_DIRECTION</ref>(hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a3792cb34cedb0e2ab204e41b53ef75ad" kindref="member">Init</ref>.<ref refid="structDMA__InitTypeDef_1a0145b5d0e074fa8e2e185ecf2c4a15ca" kindref="member">Direction</ref>));</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(<ref refid="group__DMA__Private__Macros_1ga28762105b3f567c16ba79a47e68ff0fa" kindref="member">IS_DMA_PERIPHERAL_INC_STATE</ref>(hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a3792cb34cedb0e2ab204e41b53ef75ad" kindref="member">Init</ref>.<ref refid="structDMA__InitTypeDef_1a46811eb656170cb5c542054d1a41db3a" kindref="member">PeriphInc</ref>));</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(<ref refid="group__DMA__Private__Macros_1gaa880f39d499d1e80449cf80381e4eb67" kindref="member">IS_DMA_MEMORY_INC_STATE</ref>(hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a3792cb34cedb0e2ab204e41b53ef75ad" kindref="member">Init</ref>.<ref refid="structDMA__InitTypeDef_1a49b187ba5ab8ba4354e02837e8b99414" kindref="member">MemInc</ref>));</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(<ref refid="group__DMA__Private__Macros_1gad7916e0ae55cdf5efdfa68a09a028037" kindref="member">IS_DMA_PERIPHERAL_DATA_SIZE</ref>(hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a3792cb34cedb0e2ab204e41b53ef75ad" kindref="member">Init</ref>.<ref refid="structDMA__InitTypeDef_1a10a4a549953efa20c235dcbb381b6f0b" kindref="member">PeriphDataAlignment</ref>));</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(<ref refid="group__DMA__Private__Macros_1gac9e3748cebcb16d4ae4206d562bc804c" kindref="member">IS_DMA_MEMORY_DATA_SIZE</ref>(hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a3792cb34cedb0e2ab204e41b53ef75ad" kindref="member">Init</ref>.<ref refid="structDMA__InitTypeDef_1a7784efedc4a61325fa7364fcace10136" kindref="member">MemDataAlignment</ref>));</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(<ref refid="group__DMA__Private__Macros_1gad88ee5030574d6a573904378fb62c7ac" kindref="member">IS_DMA_MODE</ref>(hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a3792cb34cedb0e2ab204e41b53ef75ad" kindref="member">Init</ref>.<ref refid="structDMA__InitTypeDef_1adbbca090b53d32ac93cc7359b7994db2" kindref="member">Mode</ref>));</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(<ref refid="group__DMA__Private__Macros_1gaa1cae2ab458948511596467c87cd02b6" kindref="member">IS_DMA_PRIORITY</ref>(hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a3792cb34cedb0e2ab204e41b53ef75ad" kindref="member">Init</ref>.<ref refid="structDMA__InitTypeDef_1af110cc02c840207930e3c0e5de5d7dc4" kindref="member">Priority</ref>));</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(<ref refid="group__DMA__Private__Macros_1ga0c6c13bc917ee21022b59a3474f256bc" kindref="member">IS_DMA_ALL_REQUEST</ref>(hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a3792cb34cedb0e2ab204e41b53ef75ad" kindref="member">Init</ref>.<ref refid="structDMA__InitTypeDef_1a74997b2fac5607fafbb958d4311b9017" kindref="member">Request</ref>));</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Compute<sp/>the<sp/>channel<sp/>index<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((uint32_t)(hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a08f5d05c6daa9d6e2dfc4945f01c8510" kindref="member">Instance</ref>)<sp/>&lt;<sp/>(uint32_t)(<ref refid="group__Peripheral__declaration_1gad86c75e1ff89e03e15570f47962865c8" kindref="member">DMA2_Channel1</ref>))</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>DMA1<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a6bc83cac62e984f201c0e1b2eca70d57" kindref="member">ChannelIndex</ref><sp/>=<sp/>(((uint32_t)hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a08f5d05c6daa9d6e2dfc4945f01c8510" kindref="member">Instance</ref><sp/>-<sp/>(uint32_t)<ref refid="group__Peripheral__declaration_1gac83c5be824be1c02716e2522e80ddf7a" kindref="member">DMA1_Channel1</ref>)<sp/>/<sp/>((uint32_t)<ref refid="group__Peripheral__declaration_1ga23d7631dd10c645e06971b2543ba2949" kindref="member">DMA1_Channel2</ref><sp/>-<sp/>(uint32_t)<ref refid="group__Peripheral__declaration_1gac83c5be824be1c02716e2522e80ddf7a" kindref="member">DMA1_Channel1</ref>))<sp/>&lt;&lt;<sp/>2U;</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a998405f672c54246acdeba8c1d5318ec" kindref="member">DmaBaseAddress</ref><sp/>=<sp/><ref refid="group__Peripheral__declaration_1gacc16d2a5937f7585320a98f7f6b578f9" kindref="member">DMA1</ref>;</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>DMA2<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a6bc83cac62e984f201c0e1b2eca70d57" kindref="member">ChannelIndex</ref><sp/>=<sp/>(((uint32_t)hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a08f5d05c6daa9d6e2dfc4945f01c8510" kindref="member">Instance</ref><sp/>-<sp/>(uint32_t)<ref refid="group__Peripheral__declaration_1gad86c75e1ff89e03e15570f47962865c8" kindref="member">DMA2_Channel1</ref>)<sp/>/<sp/>((uint32_t)<ref refid="group__Peripheral__declaration_1ga316024020799373b9d8e35c316c74f24" kindref="member">DMA2_Channel2</ref><sp/>-<sp/>(uint32_t)<ref refid="group__Peripheral__declaration_1gad86c75e1ff89e03e15570f47962865c8" kindref="member">DMA2_Channel1</ref>))<sp/>&lt;&lt;<sp/>2U;</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a998405f672c54246acdeba8c1d5318ec" kindref="member">DmaBaseAddress</ref><sp/>=<sp/><ref refid="group__Peripheral__declaration_1ga506520140eec1708bc7570c49bdf972d" kindref="member">DMA2</ref>;</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Change<sp/>DMA<sp/>peripheral<sp/>state<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a9759b676141bec799cdab94c3e08e6e4" kindref="member">State</ref><sp/>=<sp/><ref refid="group__DMA__Exported__Types_1gga9c012af359987a240826f29073bbe463af7a0a2ca8de4e5be9e85b6a9073476ef" kindref="member">HAL_DMA_STATE_BUSY</ref>;</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Clear<sp/>PL,<sp/>MSIZE,<sp/>PSIZE,<sp/>MINC,<sp/>PINC,<sp/>CIRC,<sp/>DIR<sp/>and<sp/>MEM2MEM<sp/>bits<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><ref refid="group__Exported__macros_1ga133aae6fc0d41bffab39ab223a7001de" kindref="member">CLEAR_BIT</ref>(hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a08f5d05c6daa9d6e2dfc4945f01c8510" kindref="member">Instance</ref>-&gt;<ref refid="structDMA__Channel__TypeDef_1aa4938d438293f76ff6d9a262715c23eb" kindref="member">CCR</ref>,<sp/>(<ref refid="group__Peripheral__Registers__Bits__Definition_1ga97726688157629243aa59bb60e33c284" kindref="member">DMA_CCR_PL</ref><sp/><sp/><sp/><sp/>|<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1ga492495253fe3f05ea83dd3c3dbb5dddf" kindref="member">DMA_CCR_MSIZE</ref><sp/><sp/>|<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1ga1a8d824b9bff520523fccfbe57b07516" kindref="member">DMA_CCR_PSIZE</ref><sp/><sp/>|<sp/>\</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1gaa189138f534283d876f654ec9474987e" kindref="member">DMA_CCR_MINC</ref><sp/><sp/>|<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1ga028cb96357bd24868a74ee1134a35b7e" kindref="member">DMA_CCR_PINC</ref><sp/><sp/><sp/>|<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1ga445471396e741418bcd6f63404f4052c" kindref="member">DMA_CCR_CIRC</ref><sp/><sp/><sp/>|<sp/>\</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1ga8f1ece172cf3c3e696b86d401d7345a2" kindref="member">DMA_CCR_DIR</ref><sp/><sp/><sp/>|<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1ga5c87a41026384e25fe2312d03af76215" kindref="member">DMA_CCR_MEM2MEM</ref>));</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Set<sp/>the<sp/>DMA<sp/>Channel<sp/>configuration<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a08f5d05c6daa9d6e2dfc4945f01c8510" kindref="member">Instance</ref>-&gt;<ref refid="structDMA__Channel__TypeDef_1aa4938d438293f76ff6d9a262715c23eb" kindref="member">CCR</ref>,<sp/>(hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a3792cb34cedb0e2ab204e41b53ef75ad" kindref="member">Init</ref>.<ref refid="structDMA__InitTypeDef_1a0145b5d0e074fa8e2e185ecf2c4a15ca" kindref="member">Direction</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a3792cb34cedb0e2ab204e41b53ef75ad" kindref="member">Init</ref>.<ref refid="structDMA__InitTypeDef_1a46811eb656170cb5c542054d1a41db3a" kindref="member">PeriphInc</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a3792cb34cedb0e2ab204e41b53ef75ad" kindref="member">Init</ref>.<ref refid="structDMA__InitTypeDef_1a49b187ba5ab8ba4354e02837e8b99414" kindref="member">MemInc</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>\</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a3792cb34cedb0e2ab204e41b53ef75ad" kindref="member">Init</ref>.<ref refid="structDMA__InitTypeDef_1a10a4a549953efa20c235dcbb381b6f0b" kindref="member">PeriphDataAlignment</ref><sp/>|<sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a3792cb34cedb0e2ab204e41b53ef75ad" kindref="member">Init</ref>.<ref refid="structDMA__InitTypeDef_1a7784efedc4a61325fa7364fcace10136" kindref="member">MemDataAlignment</ref><sp/>|<sp/>\</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a3792cb34cedb0e2ab204e41b53ef75ad" kindref="member">Init</ref>.<ref refid="structDMA__InitTypeDef_1adbbca090b53d32ac93cc7359b7994db2" kindref="member">Mode</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a3792cb34cedb0e2ab204e41b53ef75ad" kindref="member">Init</ref>.<ref refid="structDMA__InitTypeDef_1af110cc02c840207930e3c0e5de5d7dc4" kindref="member">Priority</ref>));</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(DMAMUX1)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Initialize<sp/>parameters<sp/>for<sp/>DMAMUX<sp/>channel<sp/>:</highlight></codeline>
+<codeline lineno="205"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>DMAmuxChannel,<sp/>DMAmuxChannelStatus<sp/>and<sp/>DMAmuxChannelStatusMask</highlight></codeline>
+<codeline lineno="206"><highlight class="comment"><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/>DMA_CalcDMAMUXChannelBaseAndMask(hdma);</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a3792cb34cedb0e2ab204e41b53ef75ad" kindref="member">Init</ref>.<ref refid="structDMA__InitTypeDef_1a0145b5d0e074fa8e2e185ecf2c4a15ca" kindref="member">Direction</ref><sp/>==<sp/><ref refid="group__DMA__Data__transfer__direction_1ga0695035d725855ccf64d2d8452a33810" kindref="member">DMA_MEMORY_TO_MEMORY</ref>)</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>if<sp/>memory<sp/>to<sp/>memory<sp/>force<sp/>the<sp/>request<sp/>to<sp/>0*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a3792cb34cedb0e2ab204e41b53ef75ad" kindref="member">Init</ref>.<ref refid="structDMA__InitTypeDef_1a74997b2fac5607fafbb958d4311b9017" kindref="member">Request</ref><sp/>=<sp/>DMA_REQUEST_MEM2MEM;</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"></highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Set<sp/>peripheral<sp/>request<sp/><sp/>to<sp/>DMAMUX<sp/>channel<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/>hdma-&gt;DMAmuxChannel-&gt;CCR<sp/>=<sp/>(hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a3792cb34cedb0e2ab204e41b53ef75ad" kindref="member">Init</ref>.<ref refid="structDMA__InitTypeDef_1a74997b2fac5607fafbb958d4311b9017" kindref="member">Request</ref><sp/>&amp;<sp/>DMAMUX_CxCR_DMAREQ_ID);</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"></highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Clear<sp/>the<sp/>DMAMUX<sp/>synchro<sp/>overrun<sp/>flag<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/>hdma-&gt;DMAmuxChannelStatus-&gt;CFR<sp/>=<sp/>hdma-&gt;DMAmuxChannelStatusMask;</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"></highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(((hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a3792cb34cedb0e2ab204e41b53ef75ad" kindref="member">Init</ref>.<ref refid="structDMA__InitTypeDef_1a74997b2fac5607fafbb958d4311b9017" kindref="member">Request</ref><sp/>&gt;<sp/><sp/>0UL)<sp/>&amp;&amp;<sp/>(hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a3792cb34cedb0e2ab204e41b53ef75ad" kindref="member">Init</ref>.<ref refid="structDMA__InitTypeDef_1a74997b2fac5607fafbb958d4311b9017" kindref="member">Request</ref><sp/>&lt;=<sp/>DMA_REQUEST_GENERATOR3)))</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Initialize<sp/>parameters<sp/>for<sp/>DMAMUX<sp/>request<sp/>generator<sp/>:</highlight></codeline>
+<codeline lineno="224"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DMAmuxRequestGen,<sp/>DMAmuxRequestGenStatus<sp/>and<sp/>DMAmuxRequestGenStatusMask</highlight></codeline>
+<codeline lineno="225"><highlight class="comment"><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/>DMA_CalcDMAMUXRequestGenBaseAndMask(hdma);</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"></highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Reset<sp/>the<sp/>DMAMUX<sp/>request<sp/>generator<sp/>register*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/>hdma-&gt;DMAmuxRequestGen-&gt;RGCR<sp/>=<sp/>0U;</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"></highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Clear<sp/>the<sp/>DMAMUX<sp/>request<sp/>generator<sp/>overrun<sp/>flag<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/>hdma-&gt;DMAmuxRequestGenStatus-&gt;RGCFR<sp/>=<sp/>hdma-&gt;DMAmuxRequestGenStatusMask;</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/>hdma-&gt;DMAmuxRequestGen<sp/>=<sp/>0U;</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/>hdma-&gt;DMAmuxRequestGenStatus<sp/>=<sp/>0U;</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/>hdma-&gt;DMAmuxRequestGenStatusMask<sp/>=<sp/>0U;</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Set<sp/>request<sp/>selection<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a3792cb34cedb0e2ab204e41b53ef75ad" kindref="member">Init</ref>.<ref refid="structDMA__InitTypeDef_1a0145b5d0e074fa8e2e185ecf2c4a15ca" kindref="member">Direction</ref><sp/>!=<sp/><ref refid="group__DMA__Data__transfer__direction_1ga0695035d725855ccf64d2d8452a33810" kindref="member">DMA_MEMORY_TO_MEMORY</ref>)</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Write<sp/>to<sp/>DMA<sp/>channel<sp/>selection<sp/>register<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="group__Peripheral__declaration_1gacc16d2a5937f7585320a98f7f6b578f9" kindref="member">DMA1</ref><sp/>==<sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a998405f672c54246acdeba8c1d5318ec" kindref="member">DmaBaseAddress</ref>)</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Reset<sp/>request<sp/>selection<sp/>for<sp/>DMA1<sp/>Channelx<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__Peripheral__declaration_1gaa9aec23907042cb42f768c85709509b4" kindref="member">DMA1_CSELR</ref>-&gt;CSELR<sp/>&amp;=<sp/>~(<ref refid="group__Peripheral__Registers__Bits__Definition_1gae14cb7e311c0b6368694302d65dc8b2c" kindref="member">DMA_CSELR_C1S</ref><sp/>&lt;&lt;<sp/>(hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a6bc83cac62e984f201c0e1b2eca70d57" kindref="member">ChannelIndex</ref><sp/>&amp;<sp/>0x1cU));</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"></highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Configure<sp/>request<sp/>selection<sp/>for<sp/>DMA1<sp/>Channelx<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__Peripheral__declaration_1gaa9aec23907042cb42f768c85709509b4" kindref="member">DMA1_CSELR</ref>-&gt;CSELR<sp/>|=<sp/>(uint32_t)(hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a3792cb34cedb0e2ab204e41b53ef75ad" kindref="member">Init</ref>.<ref refid="structDMA__InitTypeDef_1a74997b2fac5607fafbb958d4311b9017" kindref="member">Request</ref><sp/>&lt;&lt;<sp/>(hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a6bc83cac62e984f201c0e1b2eca70d57" kindref="member">ChannelIndex</ref><sp/>&amp;<sp/>0x1cU));</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">/*<sp/>DMA2<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Reset<sp/>request<sp/>selection<sp/>for<sp/>DMA2<sp/>Channelx<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__Peripheral__declaration_1gadf99f57b49d94e655c4ec26f649f853e" kindref="member">DMA2_CSELR</ref>-&gt;CSELR<sp/>&amp;=<sp/>~(<ref refid="group__Peripheral__Registers__Bits__Definition_1gae14cb7e311c0b6368694302d65dc8b2c" kindref="member">DMA_CSELR_C1S</ref><sp/>&lt;&lt;<sp/>(hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a6bc83cac62e984f201c0e1b2eca70d57" kindref="member">ChannelIndex</ref><sp/>&amp;<sp/>0x1cU));</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"></highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Configure<sp/>request<sp/>selection<sp/>for<sp/>DMA2<sp/>Channelx<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__Peripheral__declaration_1gadf99f57b49d94e655c4ec26f649f853e" kindref="member">DMA2_CSELR</ref>-&gt;CSELR<sp/>|=<sp/>(uint32_t)(hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a3792cb34cedb0e2ab204e41b53ef75ad" kindref="member">Init</ref>.<ref refid="structDMA__InitTypeDef_1a74997b2fac5607fafbb958d4311b9017" kindref="member">Request</ref><sp/>&lt;&lt;<sp/>(hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a6bc83cac62e984f201c0e1b2eca70d57" kindref="member">ChannelIndex</ref><sp/>&amp;<sp/>0x1cU));</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>DMAMUX1<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="263"><highlight class="normal"></highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Initialize<sp/>the<sp/>error<sp/>code<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a67a2a8b907bc9b5c0af87f9de2bffc29" kindref="member">ErrorCode</ref><sp/>=<sp/><ref refid="group__DMA__Error__Code_1gaad4009390bfbe05a1bb7115d03c25a97" kindref="member">HAL_DMA_ERROR_NONE</ref>;</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"></highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Initialize<sp/>the<sp/>DMA<sp/>state*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a9759b676141bec799cdab94c3e08e6e4" kindref="member">State</ref><sp/>=<sp/><ref refid="group__DMA__Exported__Types_1gga9c012af359987a240826f29073bbe463ad497944e6e72bc3ca904694b1098105a" kindref="member">HAL_DMA_STATE_READY</ref>;</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"></highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Release<sp/>Lock<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a7c2c23627aed2bb71d8c1ad071cda004" kindref="member">__HAL_UNLOCK</ref>(hdma);</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"></highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>;</highlight></codeline>
+<codeline lineno="274"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"></highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/><ref refid="group__DMA__Exported__Functions__Group1_1ga7bb8587d642da11252a97f5c41c389ef" kindref="member">HAL_DMA_DeInit</ref>(<ref refid="struct____DMA__HandleTypeDef" kindref="compound">DMA_HandleTypeDef</ref><sp/>*hdma)</highlight></codeline>
+<codeline lineno="283"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>the<sp/>DMA<sp/>handle<sp/>allocation<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(NULL<sp/>==<sp/>hdma)</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa5a04e395e501e4e400172c610478c4a4" kindref="member">HAL_ERROR</ref>;</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"></highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>the<sp/>parameters<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(<ref refid="group__Exported__macros_1ga40beb02b397c5f47e22a83fc28034afe" kindref="member">IS_DMA_ALL_INSTANCE</ref>(hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a08f5d05c6daa9d6e2dfc4945f01c8510" kindref="member">Instance</ref>));</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"></highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Disable<sp/>the<sp/>selected<sp/>DMA<sp/>Channelx<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/><ref refid="group__DMA__Exported__Macros_1gafeef4c5e8c3f015cdecc0f37bbe063dc" kindref="member">__HAL_DMA_DISABLE</ref>(hdma);</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"></highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Compute<sp/>the<sp/>channel<sp/>index<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((uint32_t)(hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a08f5d05c6daa9d6e2dfc4945f01c8510" kindref="member">Instance</ref>)<sp/>&lt;<sp/>(uint32_t)(<ref refid="group__Peripheral__declaration_1gad86c75e1ff89e03e15570f47962865c8" kindref="member">DMA2_Channel1</ref>))</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>DMA1<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a6bc83cac62e984f201c0e1b2eca70d57" kindref="member">ChannelIndex</ref><sp/>=<sp/>(((uint32_t)hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a08f5d05c6daa9d6e2dfc4945f01c8510" kindref="member">Instance</ref><sp/>-<sp/>(uint32_t)<ref refid="group__Peripheral__declaration_1gac83c5be824be1c02716e2522e80ddf7a" kindref="member">DMA1_Channel1</ref>)<sp/>/<sp/>((uint32_t)<ref refid="group__Peripheral__declaration_1ga23d7631dd10c645e06971b2543ba2949" kindref="member">DMA1_Channel2</ref><sp/>-<sp/>(uint32_t)<ref refid="group__Peripheral__declaration_1gac83c5be824be1c02716e2522e80ddf7a" kindref="member">DMA1_Channel1</ref>))<sp/>&lt;&lt;<sp/>2U;</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a998405f672c54246acdeba8c1d5318ec" kindref="member">DmaBaseAddress</ref><sp/>=<sp/><ref refid="group__Peripheral__declaration_1gacc16d2a5937f7585320a98f7f6b578f9" kindref="member">DMA1</ref>;</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>DMA2<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a6bc83cac62e984f201c0e1b2eca70d57" kindref="member">ChannelIndex</ref><sp/>=<sp/>(((uint32_t)hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a08f5d05c6daa9d6e2dfc4945f01c8510" kindref="member">Instance</ref><sp/>-<sp/>(uint32_t)<ref refid="group__Peripheral__declaration_1gad86c75e1ff89e03e15570f47962865c8" kindref="member">DMA2_Channel1</ref>)<sp/>/<sp/>((uint32_t)<ref refid="group__Peripheral__declaration_1ga316024020799373b9d8e35c316c74f24" kindref="member">DMA2_Channel2</ref><sp/>-<sp/>(uint32_t)<ref refid="group__Peripheral__declaration_1gad86c75e1ff89e03e15570f47962865c8" kindref="member">DMA2_Channel1</ref>))<sp/>&lt;&lt;<sp/>2U;</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a998405f672c54246acdeba8c1d5318ec" kindref="member">DmaBaseAddress</ref><sp/>=<sp/><ref refid="group__Peripheral__declaration_1ga506520140eec1708bc7570c49bdf972d" kindref="member">DMA2</ref>;</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"></highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Reset<sp/>DMA<sp/>Channel<sp/>control<sp/>register<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a08f5d05c6daa9d6e2dfc4945f01c8510" kindref="member">Instance</ref>-&gt;<ref refid="structDMA__Channel__TypeDef_1aa4938d438293f76ff6d9a262715c23eb" kindref="member">CCR</ref><sp/>=<sp/>0U;</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"></highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Clear<sp/>all<sp/>flags<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a998405f672c54246acdeba8c1d5318ec" kindref="member">DmaBaseAddress</ref>-&gt;<ref refid="structDMA__TypeDef_1a30576220ca1968e61666d92092e8911e" kindref="member">IFCR</ref><sp/>=<sp/>(<ref refid="group__Peripheral__Registers__Bits__Definition_1ga3475228c998897d0f408a4c5da066186" kindref="member">DMA_ISR_GIF1</ref><sp/>&lt;&lt;<sp/>(hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a6bc83cac62e984f201c0e1b2eca70d57" kindref="member">ChannelIndex</ref><sp/>&amp;<sp/>0x1CU));</highlight></codeline>
+<codeline lineno="315"><highlight class="normal"></highlight></codeline>
+<codeline lineno="316"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(DMAMUX1)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Initialize<sp/>parameters<sp/>for<sp/>DMAMUX<sp/>channel<sp/>:</highlight></codeline>
+<codeline lineno="318"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>DMAmuxChannel,<sp/>DMAmuxChannelStatus<sp/>and<sp/>DMAmuxChannelStatusMask<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="319"><highlight class="normal"></highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/>DMA_CalcDMAMUXChannelBaseAndMask(hdma);</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"></highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Reset<sp/>the<sp/>DMAMUX<sp/>channel<sp/>that<sp/>corresponds<sp/>to<sp/>the<sp/>DMA<sp/>channel<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="323"><highlight class="normal"><sp/><sp/>hdma-&gt;DMAmuxChannel-&gt;CCR<sp/>=<sp/>0U;</highlight></codeline>
+<codeline lineno="324"><highlight class="normal"></highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Clear<sp/>the<sp/>DMAMUX<sp/>synchro<sp/>overrun<sp/>flag<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/>hdma-&gt;DMAmuxChannelStatus-&gt;CFR<sp/>=<sp/>hdma-&gt;DMAmuxChannelStatusMask;</highlight></codeline>
+<codeline lineno="327"><highlight class="normal"></highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Reset<sp/>Request<sp/>generator<sp/>parameters<sp/>if<sp/>any<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="329"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(((hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a3792cb34cedb0e2ab204e41b53ef75ad" kindref="member">Init</ref>.<ref refid="structDMA__InitTypeDef_1a74997b2fac5607fafbb958d4311b9017" kindref="member">Request</ref><sp/>&gt;<sp/><sp/>0UL)<sp/>&amp;&amp;<sp/>(hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a3792cb34cedb0e2ab204e41b53ef75ad" kindref="member">Init</ref>.<ref refid="structDMA__InitTypeDef_1a74997b2fac5607fafbb958d4311b9017" kindref="member">Request</ref><sp/>&lt;=<sp/>DMA_REQUEST_GENERATOR3)))</highlight></codeline>
+<codeline lineno="330"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Initialize<sp/>parameters<sp/>for<sp/>DMAMUX<sp/>request<sp/>generator<sp/>:</highlight></codeline>
+<codeline lineno="332"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DMAmuxRequestGen,<sp/>DMAmuxRequestGenStatus<sp/>and<sp/>DMAmuxRequestGenStatusMask</highlight></codeline>
+<codeline lineno="333"><highlight class="comment"><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/><sp/>DMA_CalcDMAMUXRequestGenBaseAndMask(hdma);</highlight></codeline>
+<codeline lineno="335"><highlight class="normal"></highlight></codeline>
+<codeline lineno="336"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Reset<sp/>the<sp/>DMAMUX<sp/>request<sp/>generator<sp/>register*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="337"><highlight class="normal"><sp/><sp/><sp/><sp/>hdma-&gt;DMAmuxRequestGen-&gt;RGCR<sp/>=<sp/>0U;</highlight></codeline>
+<codeline lineno="338"><highlight class="normal"></highlight></codeline>
+<codeline lineno="339"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Clear<sp/>the<sp/>DMAMUX<sp/>request<sp/>generator<sp/>overrun<sp/>flag<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="340"><highlight class="normal"><sp/><sp/><sp/><sp/>hdma-&gt;DMAmuxRequestGenStatus-&gt;RGCFR<sp/>=<sp/>hdma-&gt;DMAmuxRequestGenStatusMask;</highlight></codeline>
+<codeline lineno="341"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="342"><highlight class="normal"></highlight></codeline>
+<codeline lineno="343"><highlight class="normal"><sp/><sp/>hdma-&gt;DMAmuxRequestGen<sp/>=<sp/>0U;</highlight></codeline>
+<codeline lineno="344"><highlight class="normal"><sp/><sp/>hdma-&gt;DMAmuxRequestGenStatus<sp/>=<sp/>0U;</highlight></codeline>
+<codeline lineno="345"><highlight class="normal"><sp/><sp/>hdma-&gt;DMAmuxRequestGenStatusMask<sp/>=<sp/>0U;</highlight></codeline>
+<codeline lineno="346"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="347"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Reset<sp/>DMA<sp/>channel<sp/>selection<sp/>register<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="348"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="group__Peripheral__declaration_1gacc16d2a5937f7585320a98f7f6b578f9" kindref="member">DMA1</ref><sp/>==<sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a998405f672c54246acdeba8c1d5318ec" kindref="member">DmaBaseAddress</ref>)</highlight></codeline>
+<codeline lineno="349"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="350"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>DMA1<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="351"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__Peripheral__declaration_1gaa9aec23907042cb42f768c85709509b4" kindref="member">DMA1_CSELR</ref>-&gt;CSELR<sp/>&amp;=<sp/>~(<ref refid="group__Peripheral__Registers__Bits__Definition_1gae14cb7e311c0b6368694302d65dc8b2c" kindref="member">DMA_CSELR_C1S</ref><sp/>&lt;&lt;<sp/>(hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a6bc83cac62e984f201c0e1b2eca70d57" kindref="member">ChannelIndex</ref><sp/>&amp;<sp/>0x1cU));</highlight></codeline>
+<codeline lineno="352"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="353"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="354"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="355"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>DMA2<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="356"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__Peripheral__declaration_1gadf99f57b49d94e655c4ec26f649f853e" kindref="member">DMA2_CSELR</ref>-&gt;CSELR<sp/>&amp;=<sp/>~(<ref refid="group__Peripheral__Registers__Bits__Definition_1gae14cb7e311c0b6368694302d65dc8b2c" kindref="member">DMA_CSELR_C1S</ref><sp/>&lt;&lt;<sp/>(hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a6bc83cac62e984f201c0e1b2eca70d57" kindref="member">ChannelIndex</ref><sp/>&amp;<sp/>0x1cU));</highlight></codeline>
+<codeline lineno="357"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="358"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>DMAMUX1<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="359"><highlight class="normal"></highlight></codeline>
+<codeline lineno="360"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Clean<sp/>callbacks<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="361"><highlight class="normal"><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a96ce80a174927f0f2bf589f059a0767e" kindref="member">XferCpltCallback</ref><sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="362"><highlight class="normal"><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a30839b184d01ec37546d6fd64f7600c8" kindref="member">XferHalfCpltCallback</ref><sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="363"><highlight class="normal"><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1aa793c384c0c214db84bc1fb6a40fe19b" kindref="member">XferErrorCallback</ref><sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="364"><highlight class="normal"><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a6f0cffc6d05e6eb6f1f8b04b9821ef17" kindref="member">XferAbortCallback</ref><sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="365"><highlight class="normal"></highlight></codeline>
+<codeline lineno="366"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Initialize<sp/>the<sp/>error<sp/>code<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="367"><highlight class="normal"><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a67a2a8b907bc9b5c0af87f9de2bffc29" kindref="member">ErrorCode</ref><sp/>=<sp/><ref refid="group__DMA__Error__Code_1gaad4009390bfbe05a1bb7115d03c25a97" kindref="member">HAL_DMA_ERROR_NONE</ref>;</highlight></codeline>
+<codeline lineno="368"><highlight class="normal"></highlight></codeline>
+<codeline lineno="369"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Initialize<sp/>the<sp/>DMA<sp/>state<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="370"><highlight class="normal"><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a9759b676141bec799cdab94c3e08e6e4" kindref="member">State</ref><sp/>=<sp/><ref refid="group__DMA__Exported__Types_1gga9c012af359987a240826f29073bbe463a9e7be73da32b8c837cde0318e0d5eed2" kindref="member">HAL_DMA_STATE_RESET</ref>;</highlight></codeline>
+<codeline lineno="371"><highlight class="normal"></highlight></codeline>
+<codeline lineno="372"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Release<sp/>Lock<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="373"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a7c2c23627aed2bb71d8c1ad071cda004" kindref="member">__HAL_UNLOCK</ref>(hdma);</highlight></codeline>
+<codeline lineno="374"><highlight class="normal"></highlight></codeline>
+<codeline lineno="375"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>;</highlight></codeline>
+<codeline lineno="376"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="377"><highlight class="normal"></highlight></codeline>
+<codeline lineno="411"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/><ref refid="group__DMA__Exported__Functions__Group2_1ga96fbd9c285135f558fd9283a57406330" kindref="member">HAL_DMA_Start</ref>(<ref refid="struct____DMA__HandleTypeDef" kindref="compound">DMA_HandleTypeDef</ref><sp/>*hdma,<sp/>uint32_t<sp/>SrcAddress,<sp/>uint32_t<sp/>DstAddress,<sp/>uint32_t<sp/>DataLength)</highlight></codeline>
+<codeline lineno="412"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="413"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/>status<sp/>=<sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>;</highlight></codeline>
+<codeline lineno="414"><highlight class="normal"></highlight></codeline>
+<codeline lineno="415"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>the<sp/>parameters<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="416"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(<ref refid="group__DMA__Private__Macros_1ga72ef4033bb3bc2cdfdbe579083b05e32" kindref="member">IS_DMA_BUFFER_SIZE</ref>(DataLength));</highlight></codeline>
+<codeline lineno="417"><highlight class="normal"></highlight></codeline>
+<codeline lineno="418"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Process<sp/>locked<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="419"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1ad3d96e1b9022ba76b69eeda91027b36c" kindref="member">__HAL_LOCK</ref>(hdma);</highlight></codeline>
+<codeline lineno="420"><highlight class="normal"></highlight></codeline>
+<codeline lineno="421"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a9759b676141bec799cdab94c3e08e6e4" kindref="member">State</ref><sp/>==<sp/><ref refid="group__DMA__Exported__Types_1gga9c012af359987a240826f29073bbe463ad497944e6e72bc3ca904694b1098105a" kindref="member">HAL_DMA_STATE_READY</ref>)</highlight></codeline>
+<codeline lineno="422"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="423"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Change<sp/>DMA<sp/>peripheral<sp/>state<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="424"><highlight class="normal"><sp/><sp/><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a9759b676141bec799cdab94c3e08e6e4" kindref="member">State</ref><sp/>=<sp/><ref refid="group__DMA__Exported__Types_1gga9c012af359987a240826f29073bbe463af7a0a2ca8de4e5be9e85b6a9073476ef" kindref="member">HAL_DMA_STATE_BUSY</ref>;</highlight></codeline>
+<codeline lineno="425"><highlight class="normal"></highlight></codeline>
+<codeline lineno="426"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Initialize<sp/>the<sp/>error<sp/>code<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="427"><highlight class="normal"><sp/><sp/><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a67a2a8b907bc9b5c0af87f9de2bffc29" kindref="member">ErrorCode</ref><sp/>=<sp/><ref refid="group__DMA__Error__Code_1gaad4009390bfbe05a1bb7115d03c25a97" kindref="member">HAL_DMA_ERROR_NONE</ref>;</highlight></codeline>
+<codeline lineno="428"><highlight class="normal"></highlight></codeline>
+<codeline lineno="429"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Disable<sp/>the<sp/>peripheral<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="430"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__DMA__Exported__Macros_1gafeef4c5e8c3f015cdecc0f37bbe063dc" kindref="member">__HAL_DMA_DISABLE</ref>(hdma);</highlight></codeline>
+<codeline lineno="431"><highlight class="normal"></highlight></codeline>
+<codeline lineno="432"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Configure<sp/>the<sp/>source,<sp/>destination<sp/>address<sp/>and<sp/>the<sp/>data<sp/>length<sp/>&amp;<sp/>clear<sp/>flags*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="433"><highlight class="normal"><sp/><sp/><sp/><sp/>DMA_SetConfig(hdma,<sp/>SrcAddress,<sp/>DstAddress,<sp/>DataLength);</highlight></codeline>
+<codeline lineno="434"><highlight class="normal"></highlight></codeline>
+<codeline lineno="435"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Enable<sp/>the<sp/>Peripheral<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="436"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__DMA__Exported__Macros_1ga93900b3ef3f87ef924eb887279a434b4" kindref="member">__HAL_DMA_ENABLE</ref>(hdma);</highlight></codeline>
+<codeline lineno="437"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="438"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="439"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="440"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Change<sp/>the<sp/>error<sp/>code<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="441"><highlight class="normal"><sp/><sp/><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a67a2a8b907bc9b5c0af87f9de2bffc29" kindref="member">ErrorCode</ref><sp/>=<sp/><ref refid="group__DMA__Error__Code_1ga2fdb3d3f17fe028f4b4f16c89f008a76" kindref="member">HAL_DMA_ERROR_BUSY</ref>;</highlight></codeline>
+<codeline lineno="442"><highlight class="normal"></highlight></codeline>
+<codeline lineno="443"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Process<sp/>Unlocked<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="444"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a7c2c23627aed2bb71d8c1ad071cda004" kindref="member">__HAL_UNLOCK</ref>(hdma);</highlight></codeline>
+<codeline lineno="445"><highlight class="normal"></highlight></codeline>
+<codeline lineno="446"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Return<sp/>error<sp/>status<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="447"><highlight class="normal"><sp/><sp/><sp/><sp/>status<sp/>=<sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa5a04e395e501e4e400172c610478c4a4" kindref="member">HAL_ERROR</ref>;</highlight></codeline>
+<codeline lineno="448"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="449"><highlight class="normal"></highlight></codeline>
+<codeline lineno="450"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>status;</highlight></codeline>
+<codeline lineno="451"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="452"><highlight class="normal"></highlight></codeline>
+<codeline lineno="462"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/><ref refid="group__DMA__Exported__Functions__Group2_1ga7eddc0931ac8a3d77b23d6d5e68407c7" kindref="member">HAL_DMA_Start_IT</ref>(<ref refid="struct____DMA__HandleTypeDef" kindref="compound">DMA_HandleTypeDef</ref><sp/>*hdma,<sp/>uint32_t<sp/>SrcAddress,<sp/>uint32_t<sp/>DstAddress,</highlight></codeline>
+<codeline lineno="463"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>DataLength)</highlight></codeline>
+<codeline lineno="464"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="465"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/>status<sp/>=<sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>;</highlight></codeline>
+<codeline lineno="466"><highlight class="normal"></highlight></codeline>
+<codeline lineno="467"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>the<sp/>parameters<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="468"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(<ref refid="group__DMA__Private__Macros_1ga72ef4033bb3bc2cdfdbe579083b05e32" kindref="member">IS_DMA_BUFFER_SIZE</ref>(DataLength));</highlight></codeline>
+<codeline lineno="469"><highlight class="normal"></highlight></codeline>
+<codeline lineno="470"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Process<sp/>locked<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="471"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1ad3d96e1b9022ba76b69eeda91027b36c" kindref="member">__HAL_LOCK</ref>(hdma);</highlight></codeline>
+<codeline lineno="472"><highlight class="normal"></highlight></codeline>
+<codeline lineno="473"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a9759b676141bec799cdab94c3e08e6e4" kindref="member">State</ref><sp/>==<sp/><ref refid="group__DMA__Exported__Types_1gga9c012af359987a240826f29073bbe463ad497944e6e72bc3ca904694b1098105a" kindref="member">HAL_DMA_STATE_READY</ref>)</highlight></codeline>
+<codeline lineno="474"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="475"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Change<sp/>DMA<sp/>peripheral<sp/>state<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="476"><highlight class="normal"><sp/><sp/><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a9759b676141bec799cdab94c3e08e6e4" kindref="member">State</ref><sp/>=<sp/><ref refid="group__DMA__Exported__Types_1gga9c012af359987a240826f29073bbe463af7a0a2ca8de4e5be9e85b6a9073476ef" kindref="member">HAL_DMA_STATE_BUSY</ref>;</highlight></codeline>
+<codeline lineno="477"><highlight class="normal"><sp/><sp/><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a67a2a8b907bc9b5c0af87f9de2bffc29" kindref="member">ErrorCode</ref><sp/>=<sp/><ref refid="group__DMA__Error__Code_1gaad4009390bfbe05a1bb7115d03c25a97" kindref="member">HAL_DMA_ERROR_NONE</ref>;</highlight></codeline>
+<codeline lineno="478"><highlight class="normal"></highlight></codeline>
+<codeline lineno="479"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Disable<sp/>the<sp/>peripheral<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="480"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__DMA__Exported__Macros_1gafeef4c5e8c3f015cdecc0f37bbe063dc" kindref="member">__HAL_DMA_DISABLE</ref>(hdma);</highlight></codeline>
+<codeline lineno="481"><highlight class="normal"></highlight></codeline>
+<codeline lineno="482"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Configure<sp/>the<sp/>source,<sp/>destination<sp/>address<sp/>and<sp/>the<sp/>data<sp/>length<sp/>&amp;<sp/>clear<sp/>flags*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="483"><highlight class="normal"><sp/><sp/><sp/><sp/>DMA_SetConfig(hdma,<sp/>SrcAddress,<sp/>DstAddress,<sp/>DataLength);</highlight></codeline>
+<codeline lineno="484"><highlight class="normal"></highlight></codeline>
+<codeline lineno="485"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Enable<sp/>the<sp/>transfer<sp/>complete<sp/>interrupt<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="486"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Enable<sp/>the<sp/>transfer<sp/>Error<sp/>interrupt<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="487"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(NULL<sp/>!=<sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a30839b184d01ec37546d6fd64f7600c8" kindref="member">XferHalfCpltCallback</ref>)</highlight></codeline>
+<codeline lineno="488"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="489"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Enable<sp/>the<sp/>Half<sp/>transfer<sp/>complete<sp/>interrupt<sp/>as<sp/>well<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="490"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__DMA__Exported__Macros_1ga2124233229c04ca90b790cd8cddfa98b" kindref="member">__HAL_DMA_ENABLE_IT</ref>(hdma,<sp/>(<ref refid="group__DMA__interrupt__enable__definitions_1ga06e83dd277e0d3e5635cf8ce8dfd6e16" kindref="member">DMA_IT_TC</ref><sp/>|<sp/><ref refid="group__DMA__interrupt__enable__definitions_1gadf11c572b9797e04a14b105fdc2e5f66" kindref="member">DMA_IT_HT</ref><sp/>|<sp/><ref refid="group__DMA__interrupt__enable__definitions_1gaf9d92649d2a0146f663ff253d8f3b59e" kindref="member">DMA_IT_TE</ref>));</highlight></codeline>
+<codeline lineno="491"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="492"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="493"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="494"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__DMA__Exported__Macros_1ga2867eab09398df2daac55c3f327654da" kindref="member">__HAL_DMA_DISABLE_IT</ref>(hdma,<sp/><ref refid="group__DMA__interrupt__enable__definitions_1gadf11c572b9797e04a14b105fdc2e5f66" kindref="member">DMA_IT_HT</ref>);</highlight></codeline>
+<codeline lineno="495"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__DMA__Exported__Macros_1ga2124233229c04ca90b790cd8cddfa98b" kindref="member">__HAL_DMA_ENABLE_IT</ref>(hdma,<sp/>(<ref refid="group__DMA__interrupt__enable__definitions_1ga06e83dd277e0d3e5635cf8ce8dfd6e16" kindref="member">DMA_IT_TC</ref><sp/>|<sp/><ref refid="group__DMA__interrupt__enable__definitions_1gaf9d92649d2a0146f663ff253d8f3b59e" kindref="member">DMA_IT_TE</ref>));</highlight></codeline>
+<codeline lineno="496"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="497"><highlight class="normal"></highlight></codeline>
+<codeline lineno="498"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(DMAMUX1)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="499"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>if<sp/>DMAMUX<sp/>Synchronization<sp/>is<sp/>enabled*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="500"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((hdma-&gt;DMAmuxChannel-&gt;CCR<sp/>&amp;<sp/>DMAMUX_CxCR_SE)<sp/>!=<sp/>0U)</highlight></codeline>
+<codeline lineno="501"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="502"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Enable<sp/>DMAMUX<sp/>sync<sp/>overrun<sp/>IT*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="503"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>hdma-&gt;DMAmuxChannel-&gt;CCR<sp/>|=<sp/>DMAMUX_CxCR_SOIE;</highlight></codeline>
+<codeline lineno="504"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="505"><highlight class="normal"></highlight></codeline>
+<codeline lineno="506"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(hdma-&gt;DMAmuxRequestGen<sp/>!=<sp/>0U)</highlight></codeline>
+<codeline lineno="507"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="508"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>if<sp/>using<sp/>DMAMUX<sp/>request<sp/>generator,<sp/>enable<sp/>the<sp/>DMAMUX<sp/>request<sp/>generator<sp/>overrun<sp/>IT*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="509"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>enable<sp/>the<sp/>request<sp/>gen<sp/>overrun<sp/>IT*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="510"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>hdma-&gt;DMAmuxRequestGen-&gt;RGCR<sp/>|=<sp/>DMAMUX_RGxCR_OIE;</highlight></codeline>
+<codeline lineno="511"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="512"><highlight class="normal"></highlight></codeline>
+<codeline lineno="513"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>DMAMUX1<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="514"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Enable<sp/>the<sp/>Peripheral<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="515"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__DMA__Exported__Macros_1ga93900b3ef3f87ef924eb887279a434b4" kindref="member">__HAL_DMA_ENABLE</ref>(hdma);</highlight></codeline>
+<codeline lineno="516"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="517"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="518"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="519"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Change<sp/>the<sp/>error<sp/>code<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="520"><highlight class="normal"><sp/><sp/><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a67a2a8b907bc9b5c0af87f9de2bffc29" kindref="member">ErrorCode</ref><sp/>=<sp/><ref refid="group__DMA__Error__Code_1ga2fdb3d3f17fe028f4b4f16c89f008a76" kindref="member">HAL_DMA_ERROR_BUSY</ref>;</highlight></codeline>
+<codeline lineno="521"><highlight class="normal"></highlight></codeline>
+<codeline lineno="522"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Process<sp/>Unlocked<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="523"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a7c2c23627aed2bb71d8c1ad071cda004" kindref="member">__HAL_UNLOCK</ref>(hdma);</highlight></codeline>
+<codeline lineno="524"><highlight class="normal"></highlight></codeline>
+<codeline lineno="525"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Return<sp/>error<sp/>status<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="526"><highlight class="normal"><sp/><sp/><sp/><sp/>status<sp/>=<sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa5a04e395e501e4e400172c610478c4a4" kindref="member">HAL_ERROR</ref>;</highlight></codeline>
+<codeline lineno="527"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="528"><highlight class="normal"></highlight></codeline>
+<codeline lineno="529"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>status;</highlight></codeline>
+<codeline lineno="530"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="531"><highlight class="normal"></highlight></codeline>
+<codeline lineno="538"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/><ref refid="group__DMA__Exported__Functions__Group2_1ga001f9fb04328a7460f9ff16908ff987c" kindref="member">HAL_DMA_Abort</ref>(<ref refid="struct____DMA__HandleTypeDef" kindref="compound">DMA_HandleTypeDef</ref><sp/>*hdma)</highlight></codeline>
+<codeline lineno="539"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="540"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>the<sp/>DMA<sp/>peripheral<sp/>handle<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="541"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(NULL<sp/>==<sp/>hdma)</highlight></codeline>
+<codeline lineno="542"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="543"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa5a04e395e501e4e400172c610478c4a4" kindref="member">HAL_ERROR</ref>;</highlight></codeline>
+<codeline lineno="544"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="545"><highlight class="normal"></highlight></codeline>
+<codeline lineno="546"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>the<sp/>DMA<sp/>peripheral<sp/>state<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="547"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a9759b676141bec799cdab94c3e08e6e4" kindref="member">State</ref><sp/>!=<sp/><ref refid="group__DMA__Exported__Types_1gga9c012af359987a240826f29073bbe463af7a0a2ca8de4e5be9e85b6a9073476ef" kindref="member">HAL_DMA_STATE_BUSY</ref>)</highlight></codeline>
+<codeline lineno="548"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="549"><highlight class="normal"><sp/><sp/><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a67a2a8b907bc9b5c0af87f9de2bffc29" kindref="member">ErrorCode</ref><sp/>=<sp/><ref refid="group__DMA__Error__Code_1gab7526e686427f26bf3b6af062d5a690b" kindref="member">HAL_DMA_ERROR_NO_XFER</ref>;</highlight></codeline>
+<codeline lineno="550"><highlight class="normal"></highlight></codeline>
+<codeline lineno="551"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Process<sp/>Unlocked<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="552"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a7c2c23627aed2bb71d8c1ad071cda004" kindref="member">__HAL_UNLOCK</ref>(hdma);</highlight></codeline>
+<codeline lineno="553"><highlight class="normal"></highlight></codeline>
+<codeline lineno="554"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa5a04e395e501e4e400172c610478c4a4" kindref="member">HAL_ERROR</ref>;</highlight></codeline>
+<codeline lineno="555"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="556"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="557"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="558"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Disable<sp/>the<sp/>channel<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="559"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__DMA__Exported__Macros_1gafeef4c5e8c3f015cdecc0f37bbe063dc" kindref="member">__HAL_DMA_DISABLE</ref>(hdma);</highlight></codeline>
+<codeline lineno="560"><highlight class="normal"></highlight></codeline>
+<codeline lineno="561"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Disable<sp/>DMA<sp/>IT<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="562"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__DMA__Exported__Macros_1ga2867eab09398df2daac55c3f327654da" kindref="member">__HAL_DMA_DISABLE_IT</ref>(hdma,<sp/>(<ref refid="group__DMA__interrupt__enable__definitions_1ga06e83dd277e0d3e5635cf8ce8dfd6e16" kindref="member">DMA_IT_TC</ref><sp/>|<sp/><ref refid="group__DMA__interrupt__enable__definitions_1gadf11c572b9797e04a14b105fdc2e5f66" kindref="member">DMA_IT_HT</ref><sp/>|<sp/><ref refid="group__DMA__interrupt__enable__definitions_1gaf9d92649d2a0146f663ff253d8f3b59e" kindref="member">DMA_IT_TE</ref>));</highlight></codeline>
+<codeline lineno="563"><highlight class="normal"></highlight></codeline>
+<codeline lineno="564"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(DMAMUX1)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="565"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>disable<sp/>the<sp/>DMAMUX<sp/>sync<sp/>overrun<sp/>IT*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="566"><highlight class="normal"><sp/><sp/><sp/><sp/>hdma-&gt;DMAmuxChannel-&gt;CCR<sp/>&amp;=<sp/>~DMAMUX_CxCR_SOIE;</highlight></codeline>
+<codeline lineno="567"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>DMAMUX1<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="568"><highlight class="normal"></highlight></codeline>
+<codeline lineno="569"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Clear<sp/>all<sp/>flags<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="570"><highlight class="normal"><sp/><sp/><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a998405f672c54246acdeba8c1d5318ec" kindref="member">DmaBaseAddress</ref>-&gt;<ref refid="structDMA__TypeDef_1a30576220ca1968e61666d92092e8911e" kindref="member">IFCR</ref><sp/>=<sp/>(<ref refid="group__Peripheral__Registers__Bits__Definition_1ga3475228c998897d0f408a4c5da066186" kindref="member">DMA_ISR_GIF1</ref><sp/>&lt;&lt;<sp/>(hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a6bc83cac62e984f201c0e1b2eca70d57" kindref="member">ChannelIndex</ref><sp/>&amp;<sp/>0x1CU));</highlight></codeline>
+<codeline lineno="571"><highlight class="normal"></highlight></codeline>
+<codeline lineno="572"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(DMAMUX1)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="573"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Clear<sp/>the<sp/>DMAMUX<sp/>synchro<sp/>overrun<sp/>flag<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="574"><highlight class="normal"><sp/><sp/><sp/><sp/>hdma-&gt;DMAmuxChannelStatus-&gt;CFR<sp/>=<sp/>hdma-&gt;DMAmuxChannelStatusMask;</highlight></codeline>
+<codeline lineno="575"><highlight class="normal"></highlight></codeline>
+<codeline lineno="576"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(hdma-&gt;DMAmuxRequestGen<sp/>!=<sp/>0U)</highlight></codeline>
+<codeline lineno="577"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="578"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>if<sp/>using<sp/>DMAMUX<sp/>request<sp/>generator,<sp/>disable<sp/>the<sp/>DMAMUX<sp/>request<sp/>generator<sp/>overrun<sp/>IT*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="579"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>disable<sp/>the<sp/>request<sp/>gen<sp/>overrun<sp/>IT*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="580"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>hdma-&gt;DMAmuxRequestGen-&gt;RGCR<sp/>&amp;=<sp/>~DMAMUX_RGxCR_OIE;</highlight></codeline>
+<codeline lineno="581"><highlight class="normal"></highlight></codeline>
+<codeline lineno="582"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Clear<sp/>the<sp/>DMAMUX<sp/>request<sp/>generator<sp/>overrun<sp/>flag<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="583"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>hdma-&gt;DMAmuxRequestGenStatus-&gt;RGCFR<sp/>=<sp/>hdma-&gt;DMAmuxRequestGenStatusMask;</highlight></codeline>
+<codeline lineno="584"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="585"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>DMAMUX1<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="586"><highlight class="normal"></highlight></codeline>
+<codeline lineno="587"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Change<sp/>the<sp/>DMA<sp/>state<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="588"><highlight class="normal"><sp/><sp/><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a9759b676141bec799cdab94c3e08e6e4" kindref="member">State</ref><sp/>=<sp/><ref refid="group__DMA__Exported__Types_1gga9c012af359987a240826f29073bbe463ad497944e6e72bc3ca904694b1098105a" kindref="member">HAL_DMA_STATE_READY</ref>;</highlight></codeline>
+<codeline lineno="589"><highlight class="normal"></highlight></codeline>
+<codeline lineno="590"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Process<sp/>Unlocked<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="591"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a7c2c23627aed2bb71d8c1ad071cda004" kindref="member">__HAL_UNLOCK</ref>(hdma);</highlight></codeline>
+<codeline lineno="592"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="593"><highlight class="normal"></highlight></codeline>
+<codeline lineno="594"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>;</highlight></codeline>
+<codeline lineno="595"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="596"><highlight class="normal"></highlight></codeline>
+<codeline lineno="603"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/><ref refid="group__DMA__Exported__Functions__Group2_1ga6677d7e614747341a58ffd7a048fd390" kindref="member">HAL_DMA_Abort_IT</ref>(<ref refid="struct____DMA__HandleTypeDef" kindref="compound">DMA_HandleTypeDef</ref><sp/>*hdma)</highlight></codeline>
+<codeline lineno="604"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="605"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/>status<sp/>=<sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>;</highlight></codeline>
+<codeline lineno="606"><highlight class="normal"></highlight></codeline>
+<codeline lineno="607"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a9759b676141bec799cdab94c3e08e6e4" kindref="member">State</ref><sp/>!=<sp/><ref refid="group__DMA__Exported__Types_1gga9c012af359987a240826f29073bbe463af7a0a2ca8de4e5be9e85b6a9073476ef" kindref="member">HAL_DMA_STATE_BUSY</ref>)</highlight></codeline>
+<codeline lineno="608"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="609"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>no<sp/>transfer<sp/>ongoing<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="610"><highlight class="normal"><sp/><sp/><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a67a2a8b907bc9b5c0af87f9de2bffc29" kindref="member">ErrorCode</ref><sp/>=<sp/><ref refid="group__DMA__Error__Code_1gab7526e686427f26bf3b6af062d5a690b" kindref="member">HAL_DMA_ERROR_NO_XFER</ref>;</highlight></codeline>
+<codeline lineno="611"><highlight class="normal"></highlight></codeline>
+<codeline lineno="612"><highlight class="normal"><sp/><sp/><sp/><sp/>status<sp/>=<sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa5a04e395e501e4e400172c610478c4a4" kindref="member">HAL_ERROR</ref>;</highlight></codeline>
+<codeline lineno="613"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="614"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="615"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="616"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Disable<sp/>the<sp/>channel<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="617"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__DMA__Exported__Macros_1gafeef4c5e8c3f015cdecc0f37bbe063dc" kindref="member">__HAL_DMA_DISABLE</ref>(hdma);</highlight></codeline>
+<codeline lineno="618"><highlight class="normal"></highlight></codeline>
+<codeline lineno="619"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Disable<sp/>DMA<sp/>IT<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="620"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__DMA__Exported__Macros_1ga2867eab09398df2daac55c3f327654da" kindref="member">__HAL_DMA_DISABLE_IT</ref>(hdma,<sp/>(<ref refid="group__DMA__interrupt__enable__definitions_1ga06e83dd277e0d3e5635cf8ce8dfd6e16" kindref="member">DMA_IT_TC</ref><sp/>|<sp/><ref refid="group__DMA__interrupt__enable__definitions_1gadf11c572b9797e04a14b105fdc2e5f66" kindref="member">DMA_IT_HT</ref><sp/>|<sp/><ref refid="group__DMA__interrupt__enable__definitions_1gaf9d92649d2a0146f663ff253d8f3b59e" kindref="member">DMA_IT_TE</ref>));</highlight></codeline>
+<codeline lineno="621"><highlight class="normal"></highlight></codeline>
+<codeline lineno="622"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(DMAMUX1)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="623"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>disable<sp/>the<sp/>DMAMUX<sp/>sync<sp/>overrun<sp/>IT*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="624"><highlight class="normal"><sp/><sp/><sp/><sp/>hdma-&gt;DMAmuxChannel-&gt;CCR<sp/>&amp;=<sp/>~DMAMUX_CxCR_SOIE;</highlight></codeline>
+<codeline lineno="625"><highlight class="normal"></highlight></codeline>
+<codeline lineno="626"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Clear<sp/>all<sp/>flags<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="627"><highlight class="normal"><sp/><sp/><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a998405f672c54246acdeba8c1d5318ec" kindref="member">DmaBaseAddress</ref>-&gt;<ref refid="structDMA__TypeDef_1a30576220ca1968e61666d92092e8911e" kindref="member">IFCR</ref><sp/>=<sp/>(<ref refid="group__Peripheral__Registers__Bits__Definition_1ga3475228c998897d0f408a4c5da066186" kindref="member">DMA_ISR_GIF1</ref><sp/>&lt;&lt;<sp/>(hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a6bc83cac62e984f201c0e1b2eca70d57" kindref="member">ChannelIndex</ref><sp/>&amp;<sp/>0x1CU));</highlight></codeline>
+<codeline lineno="628"><highlight class="normal"></highlight></codeline>
+<codeline lineno="629"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Clear<sp/>the<sp/>DMAMUX<sp/>synchro<sp/>overrun<sp/>flag<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="630"><highlight class="normal"><sp/><sp/><sp/><sp/>hdma-&gt;DMAmuxChannelStatus-&gt;CFR<sp/>=<sp/>hdma-&gt;DMAmuxChannelStatusMask;</highlight></codeline>
+<codeline lineno="631"><highlight class="normal"></highlight></codeline>
+<codeline lineno="632"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(hdma-&gt;DMAmuxRequestGen<sp/>!=<sp/>0U)</highlight></codeline>
+<codeline lineno="633"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="634"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>if<sp/>using<sp/>DMAMUX<sp/>request<sp/>generator,<sp/>disable<sp/>the<sp/>DMAMUX<sp/>request<sp/>generator<sp/>overrun<sp/>IT*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="635"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>disable<sp/>the<sp/>request<sp/>gen<sp/>overrun<sp/>IT*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="636"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>hdma-&gt;DMAmuxRequestGen-&gt;RGCR<sp/>&amp;=<sp/>~DMAMUX_RGxCR_OIE;</highlight></codeline>
+<codeline lineno="637"><highlight class="normal"></highlight></codeline>
+<codeline lineno="638"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Clear<sp/>the<sp/>DMAMUX<sp/>request<sp/>generator<sp/>overrun<sp/>flag<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="639"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>hdma-&gt;DMAmuxRequestGenStatus-&gt;RGCFR<sp/>=<sp/>hdma-&gt;DMAmuxRequestGenStatusMask;</highlight></codeline>
+<codeline lineno="640"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="641"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="642"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Clear<sp/>all<sp/>flags<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="643"><highlight class="normal"><sp/><sp/><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a998405f672c54246acdeba8c1d5318ec" kindref="member">DmaBaseAddress</ref>-&gt;<ref refid="structDMA__TypeDef_1a30576220ca1968e61666d92092e8911e" kindref="member">IFCR</ref><sp/>=<sp/>(<ref refid="group__Peripheral__Registers__Bits__Definition_1ga3475228c998897d0f408a4c5da066186" kindref="member">DMA_ISR_GIF1</ref><sp/>&lt;&lt;<sp/>(hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a6bc83cac62e984f201c0e1b2eca70d57" kindref="member">ChannelIndex</ref><sp/>&amp;<sp/>0x1CU));</highlight></codeline>
+<codeline lineno="644"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>DMAMUX1<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="645"><highlight class="normal"></highlight></codeline>
+<codeline lineno="646"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Change<sp/>the<sp/>DMA<sp/>state<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="647"><highlight class="normal"><sp/><sp/><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a9759b676141bec799cdab94c3e08e6e4" kindref="member">State</ref><sp/>=<sp/><ref refid="group__DMA__Exported__Types_1gga9c012af359987a240826f29073bbe463ad497944e6e72bc3ca904694b1098105a" kindref="member">HAL_DMA_STATE_READY</ref>;</highlight></codeline>
+<codeline lineno="648"><highlight class="normal"></highlight></codeline>
+<codeline lineno="649"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Process<sp/>Unlocked<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="650"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a7c2c23627aed2bb71d8c1ad071cda004" kindref="member">__HAL_UNLOCK</ref>(hdma);</highlight></codeline>
+<codeline lineno="651"><highlight class="normal"></highlight></codeline>
+<codeline lineno="652"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Call<sp/>User<sp/>Abort<sp/>callback<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="653"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a6f0cffc6d05e6eb6f1f8b04b9821ef17" kindref="member">XferAbortCallback</ref><sp/>!=<sp/>NULL)</highlight></codeline>
+<codeline lineno="654"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="655"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a6f0cffc6d05e6eb6f1f8b04b9821ef17" kindref="member">XferAbortCallback</ref>(hdma);</highlight></codeline>
+<codeline lineno="656"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="657"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="658"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>status;</highlight></codeline>
+<codeline lineno="659"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="660"><highlight class="normal"></highlight></codeline>
+<codeline lineno="669"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/><ref refid="group__DMA__Exported__Functions__Group2_1ga976a30472df973e3ad983f21289c9b5d" kindref="member">HAL_DMA_PollForTransfer</ref>(<ref refid="struct____DMA__HandleTypeDef" kindref="compound">DMA_HandleTypeDef</ref><sp/>*hdma,<sp/><ref refid="group__DMA__Exported__Types_1gaee3245eea8fa938edeb35a6c9596fd86" kindref="member">HAL_DMA_LevelCompleteTypeDef</ref><sp/>CompleteLevel,</highlight></codeline>
+<codeline lineno="670"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>Timeout)</highlight></codeline>
+<codeline lineno="671"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="672"><highlight class="normal"><sp/><sp/>uint32_t<sp/>temp;</highlight></codeline>
+<codeline lineno="673"><highlight class="normal"><sp/><sp/>uint32_t<sp/>tickstart;</highlight></codeline>
+<codeline lineno="674"><highlight class="normal"></highlight></codeline>
+<codeline lineno="675"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a9759b676141bec799cdab94c3e08e6e4" kindref="member">State</ref><sp/>!=<sp/><ref refid="group__DMA__Exported__Types_1gga9c012af359987a240826f29073bbe463af7a0a2ca8de4e5be9e85b6a9073476ef" kindref="member">HAL_DMA_STATE_BUSY</ref>)</highlight></codeline>
+<codeline lineno="676"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="677"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>no<sp/>transfer<sp/>ongoing<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="678"><highlight class="normal"><sp/><sp/><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a67a2a8b907bc9b5c0af87f9de2bffc29" kindref="member">ErrorCode</ref><sp/>=<sp/><ref refid="group__DMA__Error__Code_1gab7526e686427f26bf3b6af062d5a690b" kindref="member">HAL_DMA_ERROR_NO_XFER</ref>;</highlight></codeline>
+<codeline lineno="679"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a7c2c23627aed2bb71d8c1ad071cda004" kindref="member">__HAL_UNLOCK</ref>(hdma);</highlight></codeline>
+<codeline lineno="680"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa5a04e395e501e4e400172c610478c4a4" kindref="member">HAL_ERROR</ref>;</highlight></codeline>
+<codeline lineno="681"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="682"><highlight class="normal"></highlight></codeline>
+<codeline lineno="683"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Polling<sp/>mode<sp/>not<sp/>supported<sp/>in<sp/>circular<sp/>mode<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="684"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a08f5d05c6daa9d6e2dfc4945f01c8510" kindref="member">Instance</ref>-&gt;<ref refid="structDMA__Channel__TypeDef_1aa4938d438293f76ff6d9a262715c23eb" kindref="member">CCR</ref><sp/>&amp;<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1ga445471396e741418bcd6f63404f4052c" kindref="member">DMA_CCR_CIRC</ref>)<sp/>!=<sp/>0U)</highlight></codeline>
+<codeline lineno="685"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="686"><highlight class="normal"><sp/><sp/><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a67a2a8b907bc9b5c0af87f9de2bffc29" kindref="member">ErrorCode</ref><sp/>=<sp/><ref refid="group__DMA__Error__Code_1ga7432f31f9972e1c0a398a3f20587d118" kindref="member">HAL_DMA_ERROR_NOT_SUPPORTED</ref>;</highlight></codeline>
+<codeline lineno="687"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa5a04e395e501e4e400172c610478c4a4" kindref="member">HAL_ERROR</ref>;</highlight></codeline>
+<codeline lineno="688"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="689"><highlight class="normal"></highlight></codeline>
+<codeline lineno="690"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Get<sp/>the<sp/>level<sp/>transfer<sp/>complete<sp/>flag<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="691"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="group__DMA__Exported__Types_1ggaee3245eea8fa938edeb35a6c9596fd86a5314147c8ba21548763bf89446b78468" kindref="member">HAL_DMA_FULL_TRANSFER</ref><sp/>==<sp/>CompleteLevel)</highlight></codeline>
+<codeline lineno="692"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="693"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Transfer<sp/>Complete<sp/>flag<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="694"><highlight class="normal"><sp/><sp/><sp/><sp/>temp<sp/>=<sp/><ref refid="group__DMA__flag__definitions_1ga02b6c752c28b35dba79fa1d2bb55ec06" kindref="member">DMA_FLAG_TC1</ref><sp/>&lt;&lt;<sp/>(hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a6bc83cac62e984f201c0e1b2eca70d57" kindref="member">ChannelIndex</ref><sp/>&amp;<sp/>0x1CU);</highlight></codeline>
+<codeline lineno="695"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="696"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="697"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="698"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Half<sp/>Transfer<sp/>Complete<sp/>flag<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="699"><highlight class="normal"><sp/><sp/><sp/><sp/>temp<sp/>=<sp/><ref refid="group__DMA__flag__definitions_1ga4317f6260e1aecc4f5fe882fc043f606" kindref="member">DMA_FLAG_HT1</ref><sp/>&lt;&lt;<sp/>(hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a6bc83cac62e984f201c0e1b2eca70d57" kindref="member">ChannelIndex</ref><sp/>&amp;<sp/>0x1CU);</highlight></codeline>
+<codeline lineno="700"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="701"><highlight class="normal"></highlight></codeline>
+<codeline lineno="702"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Get<sp/>tick<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="703"><highlight class="normal"><sp/><sp/>tickstart<sp/>=<sp/><ref refid="group__HAL__Exported__Functions__Group2_1gaf2c4f03d53e997a54e1fd5e80daa55c4" kindref="member">HAL_GetTick</ref>();</highlight></codeline>
+<codeline lineno="704"><highlight class="normal"></highlight></codeline>
+<codeline lineno="705"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>((hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a998405f672c54246acdeba8c1d5318ec" kindref="member">DmaBaseAddress</ref>-&gt;<ref refid="structDMA__TypeDef_1aa341a859df2f59bf6c0f7a000ab8734b" kindref="member">ISR</ref><sp/>&amp;<sp/>temp)<sp/>==<sp/>0U)</highlight></codeline>
+<codeline lineno="706"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="707"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a998405f672c54246acdeba8c1d5318ec" kindref="member">DmaBaseAddress</ref>-&gt;<ref refid="structDMA__TypeDef_1aa341a859df2f59bf6c0f7a000ab8734b" kindref="member">ISR</ref><sp/>&amp;<sp/>(<ref refid="group__DMA__flag__definitions_1ga198c0b4984a79514964d3dd5ae546008" kindref="member">DMA_FLAG_TE1</ref><sp/>&lt;&lt;<sp/>(hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a6bc83cac62e984f201c0e1b2eca70d57" kindref="member">ChannelIndex</ref><sp/>&amp;<sp/>0x1CU)))<sp/>!=<sp/>0U)</highlight></codeline>
+<codeline lineno="708"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="709"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>When<sp/>a<sp/>DMA<sp/>transfer<sp/>error<sp/>occurs<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="710"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>A<sp/>hardware<sp/>clear<sp/>of<sp/>its<sp/>EN<sp/>bits<sp/>is<sp/>performed<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="711"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Clear<sp/>all<sp/>flags<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="712"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a998405f672c54246acdeba8c1d5318ec" kindref="member">DmaBaseAddress</ref>-&gt;<ref refid="structDMA__TypeDef_1a30576220ca1968e61666d92092e8911e" kindref="member">IFCR</ref><sp/>=<sp/>(<ref refid="group__Peripheral__Registers__Bits__Definition_1ga3475228c998897d0f408a4c5da066186" kindref="member">DMA_ISR_GIF1</ref><sp/>&lt;&lt;<sp/>(hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a6bc83cac62e984f201c0e1b2eca70d57" kindref="member">ChannelIndex</ref><sp/>&amp;<sp/>0x1CU));</highlight></codeline>
+<codeline lineno="713"><highlight class="normal"></highlight></codeline>
+<codeline lineno="714"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Update<sp/>error<sp/>code<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="715"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a67a2a8b907bc9b5c0af87f9de2bffc29" kindref="member">ErrorCode</ref><sp/>=<sp/><ref refid="group__DMA__Error__Code_1ga9882442c5f8f0170917934bbee1cc92d" kindref="member">HAL_DMA_ERROR_TE</ref>;</highlight></codeline>
+<codeline lineno="716"><highlight class="normal"></highlight></codeline>
+<codeline lineno="717"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Change<sp/>the<sp/>DMA<sp/>state<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="718"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a9759b676141bec799cdab94c3e08e6e4" kindref="member">State</ref><sp/>=<sp/><ref refid="group__DMA__Exported__Types_1gga9c012af359987a240826f29073bbe463ad497944e6e72bc3ca904694b1098105a" kindref="member">HAL_DMA_STATE_READY</ref>;</highlight></codeline>
+<codeline lineno="719"><highlight class="normal"></highlight></codeline>
+<codeline lineno="720"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Process<sp/>Unlocked<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="721"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a7c2c23627aed2bb71d8c1ad071cda004" kindref="member">__HAL_UNLOCK</ref>(hdma);</highlight></codeline>
+<codeline lineno="722"><highlight class="normal"></highlight></codeline>
+<codeline lineno="723"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa5a04e395e501e4e400172c610478c4a4" kindref="member">HAL_ERROR</ref>;</highlight></codeline>
+<codeline lineno="724"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="725"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>for<sp/>the<sp/>Timeout<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="726"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(Timeout<sp/>!=<sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1aad28bc64749c50dcedd6bf819fdc6974" kindref="member">HAL_MAX_DELAY</ref>)</highlight></codeline>
+<codeline lineno="727"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="728"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(((<ref refid="group__HAL__Exported__Functions__Group2_1gaf2c4f03d53e997a54e1fd5e80daa55c4" kindref="member">HAL_GetTick</ref>()<sp/>-<sp/>tickstart)<sp/>&gt;<sp/>Timeout)<sp/>||<sp/>(Timeout<sp/>==<sp/>0U))</highlight></codeline>
+<codeline lineno="729"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="730"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Update<sp/>error<sp/>code<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="731"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a67a2a8b907bc9b5c0af87f9de2bffc29" kindref="member">ErrorCode</ref><sp/>=<sp/><ref refid="group__DMA__Error__Code_1ga6cf6a5b8881ff36ed4316a29bbfb5b79" kindref="member">HAL_DMA_ERROR_TIMEOUT</ref>;</highlight></codeline>
+<codeline lineno="732"><highlight class="normal"></highlight></codeline>
+<codeline lineno="733"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Change<sp/>the<sp/>DMA<sp/>state<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="734"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a9759b676141bec799cdab94c3e08e6e4" kindref="member">State</ref><sp/>=<sp/><ref refid="group__DMA__Exported__Types_1gga9c012af359987a240826f29073bbe463ad497944e6e72bc3ca904694b1098105a" kindref="member">HAL_DMA_STATE_READY</ref>;</highlight></codeline>
+<codeline lineno="735"><highlight class="normal"></highlight></codeline>
+<codeline lineno="736"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Process<sp/>Unlocked<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="737"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a7c2c23627aed2bb71d8c1ad071cda004" kindref="member">__HAL_UNLOCK</ref>(hdma);</highlight></codeline>
+<codeline lineno="738"><highlight class="normal"></highlight></codeline>
+<codeline lineno="739"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa5a04e395e501e4e400172c610478c4a4" kindref="member">HAL_ERROR</ref>;</highlight></codeline>
+<codeline lineno="740"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="741"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="742"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="743"><highlight class="normal"></highlight></codeline>
+<codeline lineno="744"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(DMAMUX1)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="745"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*Check<sp/>for<sp/>DMAMUX<sp/>Request<sp/>generator<sp/>(if<sp/>used)<sp/>overrun<sp/>status<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="746"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(hdma-&gt;DMAmuxRequestGen<sp/>!=<sp/>0U)</highlight></codeline>
+<codeline lineno="747"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="748"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>if<sp/>using<sp/>DMAMUX<sp/>request<sp/>generator<sp/>Check<sp/>for<sp/>DMAMUX<sp/>request<sp/>generator<sp/>overrun<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="749"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((hdma-&gt;DMAmuxRequestGenStatus-&gt;RGSR<sp/>&amp;<sp/>hdma-&gt;DMAmuxRequestGenStatusMask)<sp/>!=<sp/>0U)</highlight></codeline>
+<codeline lineno="750"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="751"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Disable<sp/>the<sp/>request<sp/>gen<sp/>overrun<sp/>interrupt<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="752"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>hdma-&gt;DMAmuxRequestGen-&gt;RGCR<sp/>|=<sp/>DMAMUX_RGxCR_OIE;</highlight></codeline>
+<codeline lineno="753"><highlight class="normal"></highlight></codeline>
+<codeline lineno="754"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Clear<sp/>the<sp/>DMAMUX<sp/>request<sp/>generator<sp/>overrun<sp/>flag<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="755"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>hdma-&gt;DMAmuxRequestGenStatus-&gt;RGCFR<sp/>=<sp/>hdma-&gt;DMAmuxRequestGenStatusMask;</highlight></codeline>
+<codeline lineno="756"><highlight class="normal"></highlight></codeline>
+<codeline lineno="757"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Update<sp/>error<sp/>code<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="758"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a67a2a8b907bc9b5c0af87f9de2bffc29" kindref="member">ErrorCode</ref><sp/>|=<sp/><ref refid="group__DMA__Error__Code_1ga3326e19157867d2fbee258b8327de03a" kindref="member">HAL_DMA_ERROR_REQGEN</ref>;</highlight></codeline>
+<codeline lineno="759"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="760"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="761"><highlight class="normal"></highlight></codeline>
+<codeline lineno="762"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>for<sp/>DMAMUX<sp/>Synchronization<sp/>overrun<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="763"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((hdma-&gt;DMAmuxChannelStatus-&gt;CSR<sp/>&amp;<sp/>hdma-&gt;DMAmuxChannelStatusMask)<sp/>!=<sp/>0U)</highlight></codeline>
+<codeline lineno="764"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="765"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Clear<sp/>the<sp/>DMAMUX<sp/>synchro<sp/>overrun<sp/>flag<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="766"><highlight class="normal"><sp/><sp/><sp/><sp/>hdma-&gt;DMAmuxChannelStatus-&gt;CFR<sp/>=<sp/>hdma-&gt;DMAmuxChannelStatusMask;</highlight></codeline>
+<codeline lineno="767"><highlight class="normal"></highlight></codeline>
+<codeline lineno="768"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Update<sp/>error<sp/>code<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="769"><highlight class="normal"><sp/><sp/><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a67a2a8b907bc9b5c0af87f9de2bffc29" kindref="member">ErrorCode</ref><sp/>|=<sp/><ref refid="group__DMA__Error__Code_1ga14727cd304e8d655835ffa1ea1c94adb" kindref="member">HAL_DMA_ERROR_SYNC</ref>;</highlight></codeline>
+<codeline lineno="770"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="771"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>DMAMUX1<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="772"><highlight class="normal"></highlight></codeline>
+<codeline lineno="773"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="group__DMA__Exported__Types_1ggaee3245eea8fa938edeb35a6c9596fd86a5314147c8ba21548763bf89446b78468" kindref="member">HAL_DMA_FULL_TRANSFER</ref><sp/>==<sp/>CompleteLevel)</highlight></codeline>
+<codeline lineno="774"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="775"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Clear<sp/>the<sp/>transfer<sp/>complete<sp/>flag<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="776"><highlight class="normal"><sp/><sp/><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a998405f672c54246acdeba8c1d5318ec" kindref="member">DmaBaseAddress</ref>-&gt;<ref refid="structDMA__TypeDef_1a30576220ca1968e61666d92092e8911e" kindref="member">IFCR</ref><sp/>=<sp/>(<ref refid="group__DMA__flag__definitions_1ga02b6c752c28b35dba79fa1d2bb55ec06" kindref="member">DMA_FLAG_TC1</ref><sp/>&lt;&lt;<sp/>(hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a6bc83cac62e984f201c0e1b2eca70d57" kindref="member">ChannelIndex</ref><sp/>&amp;<sp/>0x1CU));</highlight></codeline>
+<codeline lineno="777"><highlight class="normal"></highlight></codeline>
+<codeline lineno="778"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Process<sp/>unlocked<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="779"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a7c2c23627aed2bb71d8c1ad071cda004" kindref="member">__HAL_UNLOCK</ref>(hdma);</highlight></codeline>
+<codeline lineno="780"><highlight class="normal"></highlight></codeline>
+<codeline lineno="781"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>The<sp/>selected<sp/>Channelx<sp/>EN<sp/>bit<sp/>is<sp/>cleared<sp/>(DMA<sp/>is<sp/>disabled<sp/>and</highlight></codeline>
+<codeline lineno="782"><highlight class="comment"><sp/><sp/><sp/><sp/>all<sp/>transfers<sp/>are<sp/>complete)<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="783"><highlight class="normal"><sp/><sp/><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a9759b676141bec799cdab94c3e08e6e4" kindref="member">State</ref><sp/>=<sp/><ref refid="group__DMA__Exported__Types_1gga9c012af359987a240826f29073bbe463ad497944e6e72bc3ca904694b1098105a" kindref="member">HAL_DMA_STATE_READY</ref>;</highlight></codeline>
+<codeline lineno="784"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="785"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="786"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="787"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Clear<sp/>the<sp/>half<sp/>transfer<sp/>complete<sp/>flag<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="788"><highlight class="normal"><sp/><sp/><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a998405f672c54246acdeba8c1d5318ec" kindref="member">DmaBaseAddress</ref>-&gt;<ref refid="structDMA__TypeDef_1a30576220ca1968e61666d92092e8911e" kindref="member">IFCR</ref><sp/>=<sp/>(<ref refid="group__DMA__flag__definitions_1ga4317f6260e1aecc4f5fe882fc043f606" kindref="member">DMA_FLAG_HT1</ref><sp/>&lt;&lt;<sp/>(hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a6bc83cac62e984f201c0e1b2eca70d57" kindref="member">ChannelIndex</ref><sp/>&amp;<sp/>0x1CU));</highlight></codeline>
+<codeline lineno="789"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="790"><highlight class="normal"></highlight></codeline>
+<codeline lineno="791"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>;</highlight></codeline>
+<codeline lineno="792"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="793"><highlight class="normal"></highlight></codeline>
+<codeline lineno="800"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__DMA__Exported__Functions__Group2_1ga8c8564d06f6d39b702af1c5cbb7dd54a" kindref="member">HAL_DMA_IRQHandler</ref>(<ref refid="struct____DMA__HandleTypeDef" kindref="compound">DMA_HandleTypeDef</ref><sp/>*hdma)</highlight></codeline>
+<codeline lineno="801"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="802"><highlight class="normal"><sp/><sp/>uint32_t<sp/>flag_it<sp/>=<sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a998405f672c54246acdeba8c1d5318ec" kindref="member">DmaBaseAddress</ref>-&gt;<ref refid="structDMA__TypeDef_1aa341a859df2f59bf6c0f7a000ab8734b" kindref="member">ISR</ref>;</highlight></codeline>
+<codeline lineno="803"><highlight class="normal"><sp/><sp/>uint32_t<sp/>source_it<sp/>=<sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a08f5d05c6daa9d6e2dfc4945f01c8510" kindref="member">Instance</ref>-&gt;<ref refid="structDMA__Channel__TypeDef_1aa4938d438293f76ff6d9a262715c23eb" kindref="member">CCR</ref>;</highlight></codeline>
+<codeline lineno="804"><highlight class="normal"></highlight></codeline>
+<codeline lineno="805"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Half<sp/>Transfer<sp/>Complete<sp/>Interrupt<sp/>management<sp/>******************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="806"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(((flag_it<sp/>&amp;<sp/>(<ref refid="group__DMA__flag__definitions_1ga4317f6260e1aecc4f5fe882fc043f606" kindref="member">DMA_FLAG_HT1</ref><sp/>&lt;&lt;<sp/>(hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a6bc83cac62e984f201c0e1b2eca70d57" kindref="member">ChannelIndex</ref><sp/>&amp;<sp/>0x1CU)))<sp/>!=<sp/>0U)<sp/>&amp;&amp;<sp/>((source_it<sp/>&amp;<sp/><ref refid="group__DMA__interrupt__enable__definitions_1gadf11c572b9797e04a14b105fdc2e5f66" kindref="member">DMA_IT_HT</ref>)<sp/>!=<sp/>0U))</highlight></codeline>
+<codeline lineno="807"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="808"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Disable<sp/>the<sp/>half<sp/>transfer<sp/>interrupt<sp/>if<sp/>the<sp/>DMA<sp/>mode<sp/>is<sp/>not<sp/>CIRCULAR<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="809"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a08f5d05c6daa9d6e2dfc4945f01c8510" kindref="member">Instance</ref>-&gt;<ref refid="structDMA__Channel__TypeDef_1aa4938d438293f76ff6d9a262715c23eb" kindref="member">CCR</ref><sp/>&amp;<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1ga445471396e741418bcd6f63404f4052c" kindref="member">DMA_CCR_CIRC</ref>)<sp/>==<sp/>0U)</highlight></codeline>
+<codeline lineno="810"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="811"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Disable<sp/>the<sp/>half<sp/>transfer<sp/>interrupt<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="812"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__DMA__Exported__Macros_1ga2867eab09398df2daac55c3f327654da" kindref="member">__HAL_DMA_DISABLE_IT</ref>(hdma,<sp/><ref refid="group__DMA__interrupt__enable__definitions_1gadf11c572b9797e04a14b105fdc2e5f66" kindref="member">DMA_IT_HT</ref>);</highlight></codeline>
+<codeline lineno="813"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="814"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Clear<sp/>the<sp/>half<sp/>transfer<sp/>complete<sp/>flag<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="815"><highlight class="normal"><sp/><sp/><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a998405f672c54246acdeba8c1d5318ec" kindref="member">DmaBaseAddress</ref>-&gt;<ref refid="structDMA__TypeDef_1a30576220ca1968e61666d92092e8911e" kindref="member">IFCR</ref><sp/>=<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1ga5f83359698adf05854b55705f78d8a5c" kindref="member">DMA_ISR_HTIF1</ref><sp/>&lt;&lt;<sp/>(hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a6bc83cac62e984f201c0e1b2eca70d57" kindref="member">ChannelIndex</ref><sp/>&amp;<sp/>0x1CU);</highlight></codeline>
+<codeline lineno="816"><highlight class="normal"></highlight></codeline>
+<codeline lineno="817"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>DMA<sp/>peripheral<sp/>state<sp/>is<sp/>not<sp/>updated<sp/>in<sp/>Half<sp/>Transfer<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="818"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>but<sp/>in<sp/>Transfer<sp/>Complete<sp/>case<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="819"><highlight class="normal"></highlight></codeline>
+<codeline lineno="820"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a30839b184d01ec37546d6fd64f7600c8" kindref="member">XferHalfCpltCallback</ref><sp/>!=<sp/>NULL)</highlight></codeline>
+<codeline lineno="821"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="822"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Half<sp/>transfer<sp/>callback<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="823"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a30839b184d01ec37546d6fd64f7600c8" kindref="member">XferHalfCpltCallback</ref>(hdma);</highlight></codeline>
+<codeline lineno="824"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="825"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="826"><highlight class="normal"></highlight></codeline>
+<codeline lineno="827"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Transfer<sp/>Complete<sp/>Interrupt<sp/>management<sp/>***********************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="828"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((0U<sp/>!=<sp/>(flag_it<sp/>&amp;<sp/>(<ref refid="group__DMA__flag__definitions_1ga02b6c752c28b35dba79fa1d2bb55ec06" kindref="member">DMA_FLAG_TC1</ref><sp/>&lt;&lt;<sp/>(hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a6bc83cac62e984f201c0e1b2eca70d57" kindref="member">ChannelIndex</ref><sp/>&amp;<sp/>0x1CU))))<sp/>&amp;&amp;<sp/>(0U<sp/>!=<sp/>(source_it<sp/>&amp;<sp/><ref refid="group__DMA__interrupt__enable__definitions_1ga06e83dd277e0d3e5635cf8ce8dfd6e16" kindref="member">DMA_IT_TC</ref>)))</highlight></codeline>
+<codeline lineno="829"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="830"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a08f5d05c6daa9d6e2dfc4945f01c8510" kindref="member">Instance</ref>-&gt;<ref refid="structDMA__Channel__TypeDef_1aa4938d438293f76ff6d9a262715c23eb" kindref="member">CCR</ref><sp/>&amp;<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1ga445471396e741418bcd6f63404f4052c" kindref="member">DMA_CCR_CIRC</ref>)<sp/>==<sp/>0U)</highlight></codeline>
+<codeline lineno="831"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="832"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Disable<sp/>the<sp/>transfer<sp/>complete<sp/>and<sp/>error<sp/>interrupt<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="833"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__DMA__Exported__Macros_1ga2867eab09398df2daac55c3f327654da" kindref="member">__HAL_DMA_DISABLE_IT</ref>(hdma,<sp/><ref refid="group__DMA__interrupt__enable__definitions_1gaf9d92649d2a0146f663ff253d8f3b59e" kindref="member">DMA_IT_TE</ref><sp/>|<sp/><ref refid="group__DMA__interrupt__enable__definitions_1ga06e83dd277e0d3e5635cf8ce8dfd6e16" kindref="member">DMA_IT_TC</ref>);</highlight></codeline>
+<codeline lineno="834"><highlight class="normal"></highlight></codeline>
+<codeline lineno="835"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Change<sp/>the<sp/>DMA<sp/>state<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="836"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a9759b676141bec799cdab94c3e08e6e4" kindref="member">State</ref><sp/>=<sp/><ref refid="group__DMA__Exported__Types_1gga9c012af359987a240826f29073bbe463ad497944e6e72bc3ca904694b1098105a" kindref="member">HAL_DMA_STATE_READY</ref>;</highlight></codeline>
+<codeline lineno="837"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="838"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Clear<sp/>the<sp/>transfer<sp/>complete<sp/>flag<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="839"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__DMA__Exported__Macros_1gabc041fb1c85ea7a3af94e42470ef7f2a" kindref="member">__HAL_DMA_CLEAR_FLAG</ref>(hdma,<sp/>(<ref refid="group__DMA__flag__definitions_1ga02b6c752c28b35dba79fa1d2bb55ec06" kindref="member">DMA_FLAG_TC1</ref><sp/>&lt;&lt;<sp/>(hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a6bc83cac62e984f201c0e1b2eca70d57" kindref="member">ChannelIndex</ref><sp/>&amp;<sp/>0x1CU)));</highlight></codeline>
+<codeline lineno="840"><highlight class="normal"></highlight></codeline>
+<codeline lineno="841"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Process<sp/>Unlocked<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="842"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a7c2c23627aed2bb71d8c1ad071cda004" kindref="member">__HAL_UNLOCK</ref>(hdma);</highlight></codeline>
+<codeline lineno="843"><highlight class="normal"></highlight></codeline>
+<codeline lineno="844"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a96ce80a174927f0f2bf589f059a0767e" kindref="member">XferCpltCallback</ref><sp/>!=<sp/>NULL)</highlight></codeline>
+<codeline lineno="845"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="846"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Transfer<sp/>complete<sp/>callback<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="847"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a96ce80a174927f0f2bf589f059a0767e" kindref="member">XferCpltCallback</ref>(hdma);</highlight></codeline>
+<codeline lineno="848"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="849"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="850"><highlight class="normal"></highlight></codeline>
+<codeline lineno="851"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Transfer<sp/>Error<sp/>Interrupt<sp/>management<sp/>**************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="852"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(((flag_it<sp/>&amp;<sp/>(<ref refid="group__DMA__flag__definitions_1ga198c0b4984a79514964d3dd5ae546008" kindref="member">DMA_FLAG_TE1</ref><sp/>&lt;&lt;<sp/>(hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a6bc83cac62e984f201c0e1b2eca70d57" kindref="member">ChannelIndex</ref><sp/>&amp;<sp/>0x1CU)))<sp/>!=<sp/>0U)<sp/>&amp;&amp;<sp/>((source_it<sp/>&amp;<sp/><ref refid="group__DMA__interrupt__enable__definitions_1gaf9d92649d2a0146f663ff253d8f3b59e" kindref="member">DMA_IT_TE</ref>)<sp/>!=<sp/>0U))</highlight></codeline>
+<codeline lineno="853"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="854"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>When<sp/>a<sp/>DMA<sp/>transfer<sp/>error<sp/>occurs<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="855"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>A<sp/>hardware<sp/>clear<sp/>of<sp/>its<sp/>EN<sp/>bits<sp/>is<sp/>performed<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="856"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Disable<sp/>ALL<sp/>DMA<sp/>IT<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="857"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__DMA__Exported__Macros_1ga2867eab09398df2daac55c3f327654da" kindref="member">__HAL_DMA_DISABLE_IT</ref>(hdma,<sp/>(<ref refid="group__DMA__interrupt__enable__definitions_1ga06e83dd277e0d3e5635cf8ce8dfd6e16" kindref="member">DMA_IT_TC</ref><sp/>|<sp/><ref refid="group__DMA__interrupt__enable__definitions_1gadf11c572b9797e04a14b105fdc2e5f66" kindref="member">DMA_IT_HT</ref><sp/>|<sp/><ref refid="group__DMA__interrupt__enable__definitions_1gaf9d92649d2a0146f663ff253d8f3b59e" kindref="member">DMA_IT_TE</ref>));</highlight></codeline>
+<codeline lineno="858"><highlight class="normal"></highlight></codeline>
+<codeline lineno="859"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Clear<sp/>all<sp/>flags<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="860"><highlight class="normal"><sp/><sp/><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a998405f672c54246acdeba8c1d5318ec" kindref="member">DmaBaseAddress</ref>-&gt;<ref refid="structDMA__TypeDef_1a30576220ca1968e61666d92092e8911e" kindref="member">IFCR</ref><sp/>=<sp/>(<ref refid="group__Peripheral__Registers__Bits__Definition_1ga3475228c998897d0f408a4c5da066186" kindref="member">DMA_ISR_GIF1</ref><sp/>&lt;&lt;<sp/>(hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a6bc83cac62e984f201c0e1b2eca70d57" kindref="member">ChannelIndex</ref><sp/>&amp;<sp/>0x1CU));</highlight></codeline>
+<codeline lineno="861"><highlight class="normal"></highlight></codeline>
+<codeline lineno="862"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Update<sp/>error<sp/>code<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="863"><highlight class="normal"><sp/><sp/><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a67a2a8b907bc9b5c0af87f9de2bffc29" kindref="member">ErrorCode</ref><sp/>=<sp/><ref refid="group__DMA__Error__Code_1ga9882442c5f8f0170917934bbee1cc92d" kindref="member">HAL_DMA_ERROR_TE</ref>;</highlight></codeline>
+<codeline lineno="864"><highlight class="normal"></highlight></codeline>
+<codeline lineno="865"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Change<sp/>the<sp/>DMA<sp/>state<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="866"><highlight class="normal"><sp/><sp/><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a9759b676141bec799cdab94c3e08e6e4" kindref="member">State</ref><sp/>=<sp/><ref refid="group__DMA__Exported__Types_1gga9c012af359987a240826f29073bbe463ad497944e6e72bc3ca904694b1098105a" kindref="member">HAL_DMA_STATE_READY</ref>;</highlight></codeline>
+<codeline lineno="867"><highlight class="normal"></highlight></codeline>
+<codeline lineno="868"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Process<sp/>Unlocked<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="869"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a7c2c23627aed2bb71d8c1ad071cda004" kindref="member">__HAL_UNLOCK</ref>(hdma);</highlight></codeline>
+<codeline lineno="870"><highlight class="normal"></highlight></codeline>
+<codeline lineno="871"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1aa793c384c0c214db84bc1fb6a40fe19b" kindref="member">XferErrorCallback</ref><sp/>!=<sp/>NULL)</highlight></codeline>
+<codeline lineno="872"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="873"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Transfer<sp/>error<sp/>callback<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="874"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1aa793c384c0c214db84bc1fb6a40fe19b" kindref="member">XferErrorCallback</ref>(hdma);</highlight></codeline>
+<codeline lineno="875"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="876"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="877"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="878"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="879"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Nothing<sp/>To<sp/>Do<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="880"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="881"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="882"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="883"><highlight class="normal"></highlight></codeline>
+<codeline lineno="894"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/><ref refid="group__DMA__Exported__Functions__Group2_1gaabec77de08a59c94f2c6265ce7ae8261" kindref="member">HAL_DMA_RegisterCallback</ref>(<ref refid="struct____DMA__HandleTypeDef" kindref="compound">DMA_HandleTypeDef</ref><sp/>*hdma,<sp/><ref refid="group__DMA__Exported__Types_1gafbe8b2bd9ce2128de6cdc08ccde7e8ad" kindref="member">HAL_DMA_CallbackIDTypeDef</ref><sp/>CallbackID,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>(*<sp/>pCallback)(<ref refid="struct____DMA__HandleTypeDef" kindref="compound">DMA_HandleTypeDef</ref><sp/>*_hdma))</highlight></codeline>
+<codeline lineno="895"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="896"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/>status<sp/>=<sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>;</highlight></codeline>
+<codeline lineno="897"><highlight class="normal"></highlight></codeline>
+<codeline lineno="898"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Process<sp/>locked<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="899"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1ad3d96e1b9022ba76b69eeda91027b36c" kindref="member">__HAL_LOCK</ref>(hdma);</highlight></codeline>
+<codeline lineno="900"><highlight class="normal"></highlight></codeline>
+<codeline lineno="901"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a9759b676141bec799cdab94c3e08e6e4" kindref="member">State</ref><sp/>==<sp/><ref refid="group__DMA__Exported__Types_1gga9c012af359987a240826f29073bbe463ad497944e6e72bc3ca904694b1098105a" kindref="member">HAL_DMA_STATE_READY</ref>)</highlight></codeline>
+<codeline lineno="902"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="903"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(CallbackID)</highlight></codeline>
+<codeline lineno="904"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="905"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><sp/><ref refid="group__DMA__Exported__Types_1ggafbe8b2bd9ce2128de6cdc08ccde7e8ada7d4463d9db2e6d15282128b44ae08e12" kindref="member">HAL_DMA_XFER_CPLT_CB_ID</ref>:</highlight></codeline>
+<codeline lineno="906"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a96ce80a174927f0f2bf589f059a0767e" kindref="member">XferCpltCallback</ref><sp/>=<sp/>pCallback;</highlight></codeline>
+<codeline lineno="907"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="908"><highlight class="normal"></highlight></codeline>
+<codeline lineno="909"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><sp/><ref refid="group__DMA__Exported__Types_1ggafbe8b2bd9ce2128de6cdc08ccde7e8ada4b1606f39a4eec41d958bc878719f046" kindref="member">HAL_DMA_XFER_HALFCPLT_CB_ID</ref>:</highlight></codeline>
+<codeline lineno="910"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a30839b184d01ec37546d6fd64f7600c8" kindref="member">XferHalfCpltCallback</ref><sp/>=<sp/>pCallback;</highlight></codeline>
+<codeline lineno="911"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="912"><highlight class="normal"></highlight></codeline>
+<codeline lineno="913"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><sp/><ref refid="group__DMA__Exported__Types_1ggafbe8b2bd9ce2128de6cdc08ccde7e8ada3e76bc89154e0b50333cc551bf0337a6" kindref="member">HAL_DMA_XFER_ERROR_CB_ID</ref>:</highlight></codeline>
+<codeline lineno="914"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1aa793c384c0c214db84bc1fb6a40fe19b" kindref="member">XferErrorCallback</ref><sp/>=<sp/>pCallback;</highlight></codeline>
+<codeline lineno="915"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="916"><highlight class="normal"></highlight></codeline>
+<codeline lineno="917"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><sp/><ref refid="group__DMA__Exported__Types_1ggafbe8b2bd9ce2128de6cdc08ccde7e8ada3059a9412e0624699e9123ba2bccdf3e" kindref="member">HAL_DMA_XFER_ABORT_CB_ID</ref>:</highlight></codeline>
+<codeline lineno="918"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a6f0cffc6d05e6eb6f1f8b04b9821ef17" kindref="member">XferAbortCallback</ref><sp/>=<sp/>pCallback;</highlight></codeline>
+<codeline lineno="919"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="920"><highlight class="normal"></highlight></codeline>
+<codeline lineno="921"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="922"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>status<sp/>=<sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa5a04e395e501e4e400172c610478c4a4" kindref="member">HAL_ERROR</ref>;</highlight></codeline>
+<codeline lineno="923"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="924"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="925"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="926"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="927"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="928"><highlight class="normal"><sp/><sp/><sp/><sp/>status<sp/>=<sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa5a04e395e501e4e400172c610478c4a4" kindref="member">HAL_ERROR</ref>;</highlight></codeline>
+<codeline lineno="929"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="930"><highlight class="normal"></highlight></codeline>
+<codeline lineno="931"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Release<sp/>Lock<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="932"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a7c2c23627aed2bb71d8c1ad071cda004" kindref="member">__HAL_UNLOCK</ref>(hdma);</highlight></codeline>
+<codeline lineno="933"><highlight class="normal"></highlight></codeline>
+<codeline lineno="934"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>status;</highlight></codeline>
+<codeline lineno="935"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="936"><highlight class="normal"></highlight></codeline>
+<codeline lineno="945"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/><ref refid="group__DMA__Exported__Functions__Group2_1ga87842d3780f0e54c7fb29a003e6b5ac4" kindref="member">HAL_DMA_UnRegisterCallback</ref>(<ref refid="struct____DMA__HandleTypeDef" kindref="compound">DMA_HandleTypeDef</ref><sp/>*hdma,<sp/><ref refid="group__DMA__Exported__Types_1gafbe8b2bd9ce2128de6cdc08ccde7e8ad" kindref="member">HAL_DMA_CallbackIDTypeDef</ref><sp/>CallbackID)</highlight></codeline>
+<codeline lineno="946"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="947"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/>status<sp/>=<sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>;</highlight></codeline>
+<codeline lineno="948"><highlight class="normal"></highlight></codeline>
+<codeline lineno="949"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Process<sp/>locked<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="950"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1ad3d96e1b9022ba76b69eeda91027b36c" kindref="member">__HAL_LOCK</ref>(hdma);</highlight></codeline>
+<codeline lineno="951"><highlight class="normal"></highlight></codeline>
+<codeline lineno="952"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a9759b676141bec799cdab94c3e08e6e4" kindref="member">State</ref><sp/>==<sp/><ref refid="group__DMA__Exported__Types_1gga9c012af359987a240826f29073bbe463ad497944e6e72bc3ca904694b1098105a" kindref="member">HAL_DMA_STATE_READY</ref>)</highlight></codeline>
+<codeline lineno="953"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="954"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(CallbackID)</highlight></codeline>
+<codeline lineno="955"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="956"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><sp/><ref refid="group__DMA__Exported__Types_1ggafbe8b2bd9ce2128de6cdc08ccde7e8ada7d4463d9db2e6d15282128b44ae08e12" kindref="member">HAL_DMA_XFER_CPLT_CB_ID</ref>:</highlight></codeline>
+<codeline lineno="957"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a96ce80a174927f0f2bf589f059a0767e" kindref="member">XferCpltCallback</ref><sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="958"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="959"><highlight class="normal"></highlight></codeline>
+<codeline lineno="960"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><sp/><ref refid="group__DMA__Exported__Types_1ggafbe8b2bd9ce2128de6cdc08ccde7e8ada4b1606f39a4eec41d958bc878719f046" kindref="member">HAL_DMA_XFER_HALFCPLT_CB_ID</ref>:</highlight></codeline>
+<codeline lineno="961"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a30839b184d01ec37546d6fd64f7600c8" kindref="member">XferHalfCpltCallback</ref><sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="962"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="963"><highlight class="normal"></highlight></codeline>
+<codeline lineno="964"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><sp/><ref refid="group__DMA__Exported__Types_1ggafbe8b2bd9ce2128de6cdc08ccde7e8ada3e76bc89154e0b50333cc551bf0337a6" kindref="member">HAL_DMA_XFER_ERROR_CB_ID</ref>:</highlight></codeline>
+<codeline lineno="965"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1aa793c384c0c214db84bc1fb6a40fe19b" kindref="member">XferErrorCallback</ref><sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="966"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="967"><highlight class="normal"></highlight></codeline>
+<codeline lineno="968"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><sp/><ref refid="group__DMA__Exported__Types_1ggafbe8b2bd9ce2128de6cdc08ccde7e8ada3059a9412e0624699e9123ba2bccdf3e" kindref="member">HAL_DMA_XFER_ABORT_CB_ID</ref>:</highlight></codeline>
+<codeline lineno="969"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a6f0cffc6d05e6eb6f1f8b04b9821ef17" kindref="member">XferAbortCallback</ref><sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="970"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="971"><highlight class="normal"></highlight></codeline>
+<codeline lineno="972"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><sp/><sp/><ref refid="group__DMA__Exported__Types_1ggafbe8b2bd9ce2128de6cdc08ccde7e8adac9935fd906719942d6b09cfd55e837f0" kindref="member">HAL_DMA_XFER_ALL_CB_ID</ref>:</highlight></codeline>
+<codeline lineno="973"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a96ce80a174927f0f2bf589f059a0767e" kindref="member">XferCpltCallback</ref><sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="974"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a30839b184d01ec37546d6fd64f7600c8" kindref="member">XferHalfCpltCallback</ref><sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="975"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1aa793c384c0c214db84bc1fb6a40fe19b" kindref="member">XferErrorCallback</ref><sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="976"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a6f0cffc6d05e6eb6f1f8b04b9821ef17" kindref="member">XferAbortCallback</ref><sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="977"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="978"><highlight class="normal"></highlight></codeline>
+<codeline lineno="979"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="980"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>status<sp/>=<sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa5a04e395e501e4e400172c610478c4a4" kindref="member">HAL_ERROR</ref>;</highlight></codeline>
+<codeline lineno="981"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="982"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="983"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="984"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="985"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="986"><highlight class="normal"><sp/><sp/><sp/><sp/>status<sp/>=<sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa5a04e395e501e4e400172c610478c4a4" kindref="member">HAL_ERROR</ref>;</highlight></codeline>
+<codeline lineno="987"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="988"><highlight class="normal"></highlight></codeline>
+<codeline lineno="989"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Release<sp/>Lock<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="990"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a7c2c23627aed2bb71d8c1ad071cda004" kindref="member">__HAL_UNLOCK</ref>(hdma);</highlight></codeline>
+<codeline lineno="991"><highlight class="normal"></highlight></codeline>
+<codeline lineno="992"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>status;</highlight></codeline>
+<codeline lineno="993"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="994"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1022"><highlight class="normal"><ref refid="group__DMA__Exported__Types_1ga9c012af359987a240826f29073bbe463" kindref="member">HAL_DMA_StateTypeDef</ref><sp/><ref refid="group__DMA__Exported__Functions__Group3_1gaef09509c41da57dc118c8ffb9533ce3f" kindref="member">HAL_DMA_GetState</ref>(<ref refid="struct____DMA__HandleTypeDef" kindref="compound">DMA_HandleTypeDef</ref><sp/>*hdma)</highlight></codeline>
+<codeline lineno="1023"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="1024"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Return<sp/>DMA<sp/>handle<sp/>state<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1025"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a9759b676141bec799cdab94c3e08e6e4" kindref="member">State</ref>;</highlight></codeline>
+<codeline lineno="1026"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="1027"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1034"><highlight class="normal">uint32_t<sp/><ref refid="group__DMA__Exported__Functions__Group3_1gabc0735694a0dd08e352b796d7fa7634f" kindref="member">HAL_DMA_GetError</ref>(<ref refid="struct____DMA__HandleTypeDef" kindref="compound">DMA_HandleTypeDef</ref><sp/>*hdma)</highlight></codeline>
+<codeline lineno="1035"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="1036"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Return<sp/>the<sp/>DMA<sp/>error<sp/>code<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1037"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a67a2a8b907bc9b5c0af87f9de2bffc29" kindref="member">ErrorCode</ref>;</highlight></codeline>
+<codeline lineno="1038"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="1039"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1061"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>DMA_SetConfig(<ref refid="struct____DMA__HandleTypeDef" kindref="compound">DMA_HandleTypeDef</ref><sp/>*hdma,<sp/>uint32_t<sp/>SrcAddress,<sp/>uint32_t<sp/>DstAddress,<sp/>uint32_t<sp/>DataLength)</highlight></codeline>
+<codeline lineno="1062"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="1063"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(DMAMUX1)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1064"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Clear<sp/>the<sp/>DMAMUX<sp/>synchro<sp/>overrun<sp/>flag<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1065"><highlight class="normal"><sp/><sp/>hdma-&gt;DMAmuxChannelStatus-&gt;CFR<sp/>=<sp/>hdma-&gt;DMAmuxChannelStatusMask;</highlight></codeline>
+<codeline lineno="1066"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1067"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(hdma-&gt;DMAmuxRequestGen<sp/>!=<sp/>0U)</highlight></codeline>
+<codeline lineno="1068"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="1069"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Clear<sp/>the<sp/>DMAMUX<sp/>request<sp/>generator<sp/>overrun<sp/>flag<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1070"><highlight class="normal"><sp/><sp/><sp/><sp/>hdma-&gt;DMAmuxRequestGenStatus-&gt;RGCFR<sp/>=<sp/>hdma-&gt;DMAmuxRequestGenStatusMask;</highlight></codeline>
+<codeline lineno="1071"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="1072"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>DMAMUX1<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1073"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1074"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Clear<sp/>all<sp/>flags<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1075"><highlight class="normal"><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a998405f672c54246acdeba8c1d5318ec" kindref="member">DmaBaseAddress</ref>-&gt;<ref refid="structDMA__TypeDef_1a30576220ca1968e61666d92092e8911e" kindref="member">IFCR</ref><sp/>=<sp/>(<ref refid="group__Peripheral__Registers__Bits__Definition_1ga3475228c998897d0f408a4c5da066186" kindref="member">DMA_ISR_GIF1</ref><sp/>&lt;&lt;<sp/>(hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a6bc83cac62e984f201c0e1b2eca70d57" kindref="member">ChannelIndex</ref><sp/>&amp;<sp/>0x1CU));</highlight></codeline>
+<codeline lineno="1076"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1077"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Configure<sp/>DMA<sp/>Channel<sp/>data<sp/>length<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1078"><highlight class="normal"><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a08f5d05c6daa9d6e2dfc4945f01c8510" kindref="member">Instance</ref>-&gt;<ref refid="structDMA__Channel__TypeDef_1af1c675e412fb96e38b6b4630b88c5676" kindref="member">CNDTR</ref><sp/>=<sp/>DataLength;</highlight></codeline>
+<codeline lineno="1079"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1080"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Memory<sp/>to<sp/>Peripheral<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1081"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a3792cb34cedb0e2ab204e41b53ef75ad" kindref="member">Init</ref>.<ref refid="structDMA__InitTypeDef_1a0145b5d0e074fa8e2e185ecf2c4a15ca" kindref="member">Direction</ref>)<sp/>==<sp/><ref refid="group__DMA__Data__transfer__direction_1ga9e76fc559a2d5c766c969e6e921b1ee9" kindref="member">DMA_MEMORY_TO_PERIPH</ref>)</highlight></codeline>
+<codeline lineno="1082"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="1083"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Configure<sp/>DMA<sp/>Channel<sp/>destination<sp/>address<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1084"><highlight class="normal"><sp/><sp/><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a08f5d05c6daa9d6e2dfc4945f01c8510" kindref="member">Instance</ref>-&gt;<ref refid="structDMA__Channel__TypeDef_1a8ce1c9c2742eaaa0e97ddbb3a06154cc" kindref="member">CPAR</ref><sp/>=<sp/>DstAddress;</highlight></codeline>
+<codeline lineno="1085"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1086"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Configure<sp/>DMA<sp/>Channel<sp/>source<sp/>address<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1087"><highlight class="normal"><sp/><sp/><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a08f5d05c6daa9d6e2dfc4945f01c8510" kindref="member">Instance</ref>-&gt;<ref refid="structDMA__Channel__TypeDef_1a7a9886b5f9e0edaf5ced3d1870b33ad7" kindref="member">CMAR</ref><sp/>=<sp/>SrcAddress;</highlight></codeline>
+<codeline lineno="1088"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="1089"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Peripheral<sp/>to<sp/>Memory<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1090"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1091"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="1092"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Configure<sp/>DMA<sp/>Channel<sp/>source<sp/>address<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1093"><highlight class="normal"><sp/><sp/><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a08f5d05c6daa9d6e2dfc4945f01c8510" kindref="member">Instance</ref>-&gt;<ref refid="structDMA__Channel__TypeDef_1a8ce1c9c2742eaaa0e97ddbb3a06154cc" kindref="member">CPAR</ref><sp/>=<sp/>SrcAddress;</highlight></codeline>
+<codeline lineno="1094"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1095"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Configure<sp/>DMA<sp/>Channel<sp/>destination<sp/>address<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1096"><highlight class="normal"><sp/><sp/><sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a08f5d05c6daa9d6e2dfc4945f01c8510" kindref="member">Instance</ref>-&gt;<ref refid="structDMA__Channel__TypeDef_1a7a9886b5f9e0edaf5ced3d1870b33ad7" kindref="member">CMAR</ref><sp/>=<sp/>DstAddress;</highlight></codeline>
+<codeline lineno="1097"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="1098"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="1099"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(DMAMUX1)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1107"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>DMA_CalcDMAMUXChannelBaseAndMask(<ref refid="struct____DMA__HandleTypeDef" kindref="compound">DMA_HandleTypeDef</ref><sp/>*hdma)</highlight></codeline>
+<codeline lineno="1108"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="1109"><highlight class="normal"><sp/><sp/>uint32_t<sp/>channel_number;</highlight></codeline>
+<codeline lineno="1110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1111"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>check<sp/>if<sp/>instance<sp/>is<sp/>not<sp/>outside<sp/>the<sp/>DMA<sp/>channel<sp/>range<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1112"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((uint32_t)hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a08f5d05c6daa9d6e2dfc4945f01c8510" kindref="member">Instance</ref><sp/>&lt;<sp/>(uint32_t)<ref refid="group__Peripheral__declaration_1gad86c75e1ff89e03e15570f47962865c8" kindref="member">DMA2_Channel1</ref>)</highlight></codeline>
+<codeline lineno="1113"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="1114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>DMA1<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Associate<sp/>a<sp/>DMA<sp/>Channel<sp/>to<sp/>a<sp/>DMAMUX<sp/>channel<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1116"><highlight class="normal"><sp/><sp/><sp/><sp/>hdma-&gt;DMAmuxChannel<sp/>=<sp/>(DMAMUX1_Channel0<sp/>+<sp/>(hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a6bc83cac62e984f201c0e1b2eca70d57" kindref="member">ChannelIndex</ref><sp/>&gt;&gt;<sp/>2U));</highlight></codeline>
+<codeline lineno="1117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1118"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Prepare<sp/>channel_number<sp/>used<sp/>for<sp/>DMAmuxChannelStatusMask<sp/>computation<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1119"><highlight class="normal"><sp/><sp/><sp/><sp/>channel_number<sp/>=<sp/>(((uint32_t)hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a08f5d05c6daa9d6e2dfc4945f01c8510" kindref="member">Instance</ref><sp/>&amp;<sp/>0xFFU)<sp/>-<sp/>8U)<sp/>/<sp/>20U;</highlight></codeline>
+<codeline lineno="1120"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="1121"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1122"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="1123"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>DMA2<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1124"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Associate<sp/>a<sp/>DMA<sp/>Channel<sp/>to<sp/>a<sp/>DMAMUX<sp/>channel<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1125"><highlight class="normal"><sp/><sp/><sp/><sp/>hdma-&gt;DMAmuxChannel<sp/>=<sp/>(DMAMUX1_Channel7<sp/>+<sp/>(hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a6bc83cac62e984f201c0e1b2eca70d57" kindref="member">ChannelIndex</ref><sp/>&gt;&gt;<sp/>2U));</highlight></codeline>
+<codeline lineno="1126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1127"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Prepare<sp/>channel_number<sp/>used<sp/>for<sp/>DMAmuxChannelStatusMask<sp/>computation<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1128"><highlight class="normal"><sp/><sp/><sp/><sp/>channel_number<sp/>=<sp/>(((((uint32_t)hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a08f5d05c6daa9d6e2dfc4945f01c8510" kindref="member">Instance</ref><sp/>&amp;<sp/>0xFFU)<sp/>-<sp/>8U)<sp/>/<sp/>20U)<sp/>+<sp/>7U);</highlight></codeline>
+<codeline lineno="1129"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="1130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1131"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Initialize<sp/>the<sp/>field<sp/>DMAmuxChannelStatus<sp/>to<sp/>DMAMUX1_ChannelStatus<sp/>base<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1132"><highlight class="normal"><sp/><sp/>hdma-&gt;DMAmuxChannelStatus<sp/>=<sp/>DMAMUX1_ChannelStatus;</highlight></codeline>
+<codeline lineno="1133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1134"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Initialize<sp/>the<sp/>field<sp/>DMAmuxChannelStatusMask<sp/>with<sp/>the<sp/>corresponding<sp/>index<sp/>of<sp/>the<sp/>DMAMUX<sp/>channel<sp/>selected<sp/>for<sp/>the<sp/>current<sp/>ChannelIndex<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1135"><highlight class="normal"><sp/><sp/>hdma-&gt;DMAmuxChannelStatusMask<sp/>=<sp/>1UL<sp/>&lt;&lt;<sp/>(channel_number<sp/>&amp;<sp/>0x1FU);</highlight></codeline>
+<codeline lineno="1136"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="1137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1145"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>DMA_CalcDMAMUXRequestGenBaseAndMask(<ref refid="struct____DMA__HandleTypeDef" kindref="compound">DMA_HandleTypeDef</ref><sp/>*hdma)</highlight></codeline>
+<codeline lineno="1146"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="1147"><highlight class="normal"><sp/><sp/>uint32_t<sp/>request<sp/>=<sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a3792cb34cedb0e2ab204e41b53ef75ad" kindref="member">Init</ref>.<ref refid="structDMA__InitTypeDef_1a74997b2fac5607fafbb958d4311b9017" kindref="member">Request</ref><sp/>&amp;<sp/>DMAMUX_CxCR_DMAREQ_ID;</highlight></codeline>
+<codeline lineno="1148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1149"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>DMA<sp/>Channels<sp/>are<sp/>connected<sp/>to<sp/>DMAMUX1<sp/>request<sp/>generator<sp/>blocks*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1150"><highlight class="normal"><sp/><sp/>hdma-&gt;DMAmuxRequestGen<sp/>=<sp/>(DMAMUX_RequestGen_TypeDef<sp/>*)((uint32_t)(((uint32_t)DMAMUX1_RequestGenerator0)<sp/>+<sp/>((request<sp/>-<sp/>1U)<sp/>*<sp/>4U)));</highlight></codeline>
+<codeline lineno="1151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1152"><highlight class="normal"><sp/><sp/>hdma-&gt;DMAmuxRequestGenStatus<sp/>=<sp/>DMAMUX1_RequestGenStatus;</highlight></codeline>
+<codeline lineno="1153"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1154"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>here<sp/>&quot;Request&quot;<sp/>is<sp/>either<sp/>DMA_REQUEST_GENERATOR0<sp/>to<sp/>DMA_REQUEST_GENERATOR3,<sp/>i.e.<sp/>&lt;=<sp/>4*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1155"><highlight class="normal"><sp/><sp/>hdma-&gt;DMAmuxRequestGenStatusMask<sp/>=<sp/>1UL<sp/>&lt;&lt;<sp/>((request<sp/>-<sp/>1U)<sp/>&amp;<sp/>0x3U);</highlight></codeline>
+<codeline lineno="1156"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="1157"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>DMAMUX1<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1158"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1167"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>HAL_DMA_MODULE_ENABLED<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_dma.c"/>
+  </compounddef>
+</doxygen>

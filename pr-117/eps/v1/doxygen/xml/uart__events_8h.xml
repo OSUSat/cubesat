@@ -1,0 +1,198 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="uart__events_8h" kind="file" language="C++">
+    <compoundname>uart_events.h</compoundname>
+    <includes refid="hal__uart_8h" local="yes">hal_uart.h</includes>
+    <includes refid="event__bus_8h" local="yes">osusat/event_bus.h</includes>
+    <includes refid="packet_8h" local="yes">packet.h</includes>
+    <includes local="no">stdbool.h</includes>
+    <includedby refid="main_8c" local="yes">/home/runner/work/cubesat/cubesat/eps/v1/firmware/main.c</includedby>
+    <includedby refid="telemetry_8h" local="yes">/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/telemetry.h</includedby>
+    <includedby refid="uart__events_8c" local="yes">/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/uart_events.c</includedby>
+    <incdepgraph>
+      <node id="2">
+        <label>hal_uart.h</label>
+        <link refid="hal__uart_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>osusat/event_bus.h</label>
+        <link refid="event__bus_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>messages.h</label>
+        <link refid="messages_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>packet.h</label>
+        <link refid="packet_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/uart_events.h</label>
+        <link refid="uart__events_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>stdbool.h</label>
+      </node>
+      <node id="4">
+        <label>stddef.h</label>
+      </node>
+      <node id="5">
+        <label>stdint.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/main.c</label>
+        <link refid="main_8c"/>
+      </node>
+      <node id="4">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/telemetry.c</label>
+        <link refid="telemetry_8c"/>
+      </node>
+      <node id="3">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/telemetry.h</label>
+        <link refid="telemetry_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/uart_events.c</label>
+        <link refid="uart__events_8c"/>
+      </node>
+      <node id="1">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/uart_events.h</label>
+        <link refid="uart__events_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/tests/test_telemetry.c</label>
+        <link refid="test__telemetry_8c"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structuart__events__t" prot="public">uart_events_t</innerclass>
+    <sectiondef kind="define">
+      <member refid="group__uart__events__types_1ga0319158435eee3e9ed018667858f93fc" kind="define"><name>UART_SERVICE_UID</name></member>
+      <member refid="group__uart__events__types_1ga09a5fb4024645a4042df5c85d6ecb8a6" kind="define"><name>UART_EVENT_PACKET_RECEIVED</name></member>
+      <member refid="group__uart__events__types_1ga9aff7da89cbac87342e5d952eb250318" kind="define"><name>UART_EVENT_ERROR_DETECTED</name></member>
+      <member refid="group__uart__events__types_1ga6bd09ceb54a8e2e8e323de3508e36e82" kind="define"><name>UART_EVENT_TX_COMPLETE</name></member>
+      <member refid="group__uart__events__types_1gaed578dfde00c8d7335f60947a7352835" kind="define"><name>UART_RX_MAX_PACKET_SIZE</name></member>
+      <member refid="group__uart__events__types_1gaef7200bd5b3732fe7c7c69df0b5e7caf" kind="define"><name>UART_PACKET_POOL_SIZE</name></member>
+    </sectiondef>
+    <sectiondef kind="enum">
+      <member refid="group__uart__events__types_1ga832a34af945169115e69b8a9b46d0f6d" kind="enum"><name>uart_event_id_t</name></member>
+      <member refid="group__uart__events__types_1gaf0d6ead56ef385028dc0138bc816c2a3" kind="enum"><name>rx_state_t</name></member>
+    </sectiondef>
+    <sectiondef kind="func">
+      <member refid="group__uart__events__api_1gac49317802c3a26a65adc994980d2b38e" kind="function"><name>uart_events_init</name></member>
+      <member refid="group__uart__events__api_1ga4757f4c4b537d90f1f4ef303cd2a61db" kind="function"><name>uart_events_send_packet</name></member>
+    </sectiondef>
+    <briefdescription>
+<para>UART Communication Service. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Integrates the <ref refid="namespaceOSUSat" kindref="compound">OSUSat</ref> Packet Library with the HAL UART driver. </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>UART_EVENTS_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>UART_EVENTS_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="hal__uart_8h" kindref="compound">hal_uart.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="event__bus_8h" kindref="compound">osusat/event_bus.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="packet_8h" kindref="compound">packet.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdbool.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="group__uart__events__types_1ga0319158435eee3e9ed018667858f93fc" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>UART_SERVICE_UID<sp/>0xC044</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30" refid="group__uart__events__types_1ga832a34af945169115e69b8a9b46d0f6d" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="35" refid="group__uart__events__types_1gga832a34af945169115e69b8a9b46d0f6da9f2f73b1eecfbd3ececddea1704e1ee5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__uart__events__types_1gga832a34af945169115e69b8a9b46d0f6da9f2f73b1eecfbd3ececddea1704e1ee5" kindref="member">UART_PACKET_RECEIVED</ref><sp/>=<sp/>0x10,</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="group__uart__events__types_1gga832a34af945169115e69b8a9b46d0f6da35efeb7f8ddf6e15f796de99a4f66a71" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__uart__events__types_1gga832a34af945169115e69b8a9b46d0f6da35efeb7f8ddf6e15f796de99a4f66a71" kindref="member">UART_ERROR_DETECTED</ref>,</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__uart__events__types_1gga832a34af945169115e69b8a9b46d0f6dad0138ae2b7d3814fa3462f28e8489591" kindref="member">UART_TX_COMPLETE</ref></highlight></codeline>
+<codeline lineno="48" refid="group__uart__events__types_1gga832a34af945169115e69b8a9b46d0f6dad0138ae2b7d3814fa3462f28e8489591" refkind="member"><highlight class="normal">}<sp/><ref refid="group__uart__events__types_1ga832a34af945169115e69b8a9b46d0f6d" kindref="member">uart_event_id_t</ref>;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50" refid="group__uart__events__types_1ga09a5fb4024645a4042df5c85d6ecb8a6" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>UART_EVENT_PACKET_RECEIVED<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="51"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>OSUSAT_BUILD_EVENT_ID(UART_SERVICE_UID,<sp/>UART_PACKET_RECEIVED)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52" refid="group__uart__events__types_1ga9aff7da89cbac87342e5d952eb250318" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>UART_EVENT_ERROR_DETECTED<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="53"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>OSUSAT_BUILD_EVENT_ID(UART_SERVICE_UID,<sp/>UART_ERROR_DETECTED)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54" refid="group__uart__events__types_1ga6bd09ceb54a8e2e8e323de3508e36e82" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>UART_EVENT_TX_COMPLETE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="55"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>OSUSAT_BUILD_EVENT_ID(UART_SERVICE_UID,<sp/>UART_TX_COMPLETE)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57" refid="group__uart__events__types_1gaf0d6ead56ef385028dc0138bc816c2a3" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="58" refid="group__uart__events__types_1ggaf0d6ead56ef385028dc0138bc816c2a3a587888300c36514d75196c26fd8c0f8a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__uart__events__types_1ggaf0d6ead56ef385028dc0138bc816c2a3a587888300c36514d75196c26fd8c0f8a" kindref="member">RX_STATE_WAIT_START_BYTE</ref>,<sp/></highlight></codeline>
+<codeline lineno="59" refid="group__uart__events__types_1ggaf0d6ead56ef385028dc0138bc816c2a3ad034637fb737ee5493fedb195cba9f42" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__uart__events__types_1ggaf0d6ead56ef385028dc0138bc816c2a3ad034637fb737ee5493fedb195cba9f42" kindref="member">RX_STATE_READ_HEADER</ref>,<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__uart__events__types_1ggaf0d6ead56ef385028dc0138bc816c2a3a585ff0920506b11196b6984fe3225885" kindref="member">RX_STATE_READ_PAYLOAD</ref><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="61" refid="group__uart__events__types_1ggaf0d6ead56ef385028dc0138bc816c2a3a585ff0920506b11196b6984fe3225885" refkind="member"><highlight class="normal">}<sp/><ref refid="group__uart__events__types_1gaf0d6ead56ef385028dc0138bc816c2a3" kindref="member">rx_state_t</ref>;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="comment">//<sp/>max<sp/>packet<sp/>size:<sp/>Start(1)<sp/>+<sp/>Header(8)<sp/>+<sp/>Payload(255)<sp/>+<sp/>CRC(2)<sp/>=<sp/>266</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="comment">//<sp/>we<sp/>round<sp/>up<sp/>to<sp/>300<sp/>for<sp/>safety.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65" refid="group__uart__events__types_1gaed578dfde00c8d7335f60947a7352835" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>UART_RX_MAX_PACKET_SIZE<sp/>300</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="comment">//<sp/>number<sp/>of<sp/>buffers<sp/>in<sp/>the<sp/>pool.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="comment">//<sp/>4<sp/>buffers<sp/>gives<sp/>subscribers<sp/>4<sp/>full<sp/>packet<sp/>intervals<sp/>to<sp/>read<sp/>data.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69" refid="group__uart__events__types_1gaef7200bd5b3732fe7c7c69df0b5e7caf" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>UART_PACKET_POOL_SIZE<sp/>4</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75" refid="structuart__events__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="76" refid="structuart__events__t_1ad2ef4561678dc8b153a6fa8780fe1b5c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structuart__events__t_1ad2ef4561678dc8b153a6fa8780fe1b5c" kindref="member">initialized</ref>;<sp/></highlight></codeline>
+<codeline lineno="77" refid="structuart__events__t_1a2066c955824ebc8e9f813a543a32d1bb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__uart__types_1ga7f28644638bd57536eb5260695e83de9" kindref="member">uart_port_t</ref><sp/><ref refid="structuart__events__t_1a2066c955824ebc8e9f813a543a32d1bb" kindref="member">port</ref>;<sp/></highlight></codeline>
+<codeline lineno="79" refid="structuart__events__t_1ab877b7f7ac7e7315b124361d60c2fecb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structuart__events__t_1ab877b7f7ac7e7315b124361d60c2fecb" kindref="member">rx_byte_count</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="80" refid="structuart__events__t_1a2892e07fc57573a1805eb56494e047bd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structuart__events__t_1a2892e07fc57573a1805eb56494e047bd" kindref="member">rx_packet_count</ref>;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="81" refid="structuart__events__t_1a1ab03b2687a2bcfbe5a5441e5a745666" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structuart__events__t_1a1ab03b2687a2bcfbe5a5441e5a745666" kindref="member">rx_crc_error_count</ref>;<sp/></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>we<sp/>collect<sp/>bytes<sp/>here<sp/>until<sp/>we<sp/>have<sp/>a<sp/>full<sp/>frame<sp/>to<sp/>pass<sp/>to</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>osusat_packet_unpack</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85" refid="structuart__events__t_1a23b61a809926fb384c73c85ffd528190" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>packet_pool[<ref refid="group__uart__events__types_1gaef7200bd5b3732fe7c7c69df0b5e7caf" kindref="member">UART_PACKET_POOL_SIZE</ref>][<ref refid="group__uart__events__types_1gaed578dfde00c8d7335f60947a7352835" kindref="member">UART_RX_MAX_PACKET_SIZE</ref>];</highlight></codeline>
+<codeline lineno="86" refid="structuart__events__t_1a8231eb5b060c0afcc1b69e57ccc75bee" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structuart__events__t_1a8231eb5b060c0afcc1b69e57ccc75bee" kindref="member">pool_index</ref>;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="87" refid="structuart__events__t_1a965a8f0f5c4b72d3b97d1a4ced013772" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/><ref refid="structuart__events__t_1a965a8f0f5c4b72d3b97d1a4ced013772" kindref="member">decode_index</ref>;<sp/></highlight></codeline>
+<codeline lineno="89" refid="structuart__events__t_1abcb0a923e55c6a1f8cae85038bf96eb6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__uart__events__types_1gaf0d6ead56ef385028dc0138bc816c2a3" kindref="member">rx_state_t</ref><sp/><ref refid="structuart__events__t_1abcb0a923e55c6a1f8cae85038bf96eb6" kindref="member">rx_state</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="90" refid="structuart__events__t_1ab7cc7737b55472ff31e8fa38f14b0b55" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/><ref refid="structuart__events__t_1ab7cc7737b55472ff31e8fa38f14b0b55" kindref="member">expected_packet_len</ref>;<sp/></highlight></codeline>
+<codeline lineno="92"><highlight class="normal">}<sp/><ref refid="structuart__events__t" kindref="compound">uart_events_t</ref>;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__uart__events__api_1gac49317802c3a26a65adc994980d2b38e" kindref="member">uart_events_init</ref>(<ref refid="structuart__events__t" kindref="compound">uart_events_t</ref><sp/>*uart,<sp/><ref refid="group__uart__types_1ga7f28644638bd57536eb5260695e83de9" kindref="member">uart_port_t</ref><sp/>port);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__uart__events__api_1ga4757f4c4b537d90f1f4ef303cd2a61db" kindref="member">uart_events_send_packet</ref>(<ref refid="structuart__events__t" kindref="compound">uart_events_t</ref><sp/>*uart,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structOSUSatPacket" kindref="compound">OSUSatPacket</ref><sp/>*packet);</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>UART_EVENTS_H</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/uart_events.h"/>
+  </compounddef>
+</doxygen>

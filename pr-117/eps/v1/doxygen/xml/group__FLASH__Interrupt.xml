@@ -1,0 +1,450 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="group__FLASH__Interrupt" kind="group">
+    <compoundname>FLASH_Interrupt</compoundname>
+    <title>FLASH Interrupts Macros</title>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="group__FLASH__Interrupt_1ga13fa137a911f02a2f94fb9fb0762a340" prot="public" static="no">
+        <name>__HAL_FLASH_ENABLE_IT</name>
+        <param><defname>__INTERRUPT__</defname></param>
+        <initializer>                                                     do { if(((__INTERRUPT__) &amp; <ref refid="group__FLASH__Interrupt__definition_1gaecdc533ad50a649b780f72e8dee48a1b" kindref="member">FLASH_IT_ECCC</ref>) != 0U) { <ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga844ea28ba1e0a5a0e497f16b61ea306b" kindref="member">FLASH</ref>-&gt;ECCR, <ref refid="group__Peripheral__Registers__Bits__Definition_1ga5296c9ff3e4e2ed6f1468edcb625563e" kindref="member">FLASH_ECCR_ECCIE</ref>); }\
+                                                     if(((__INTERRUPT__) &amp; (~<ref refid="group__FLASH__Interrupt__definition_1gaecdc533ad50a649b780f72e8dee48a1b" kindref="member">FLASH_IT_ECCC</ref>)) != 0U) { <ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga844ea28ba1e0a5a0e497f16b61ea306b" kindref="member">FLASH</ref>-&gt;CR, ((__INTERRUPT__) &amp; (~<ref refid="group__FLASH__Interrupt__definition_1gaecdc533ad50a649b780f72e8dee48a1b" kindref="member">FLASH_IT_ECCC</ref>))); }\
+                                                   } while(0)</initializer>
+        <briefdescription>
+<para>Enable the specified FLASH interrupt. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__INTERRUPT__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>FLASH interrupt This parameter can be any combination of the following values: <itemizedlist>
+<listitem><para>FLASH_IT_EOP: End of FLASH Operation Interrupt </para>
+</listitem>
+<listitem><para>FLASH_IT_OPERR: Error Interrupt </para>
+</listitem>
+<listitem><para>FLASH_IT_RDERR: PCROP Read Error Interrupt </para>
+</listitem>
+<listitem><para>FLASH_IT_ECCC: ECC Correction Interrupt </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>none</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_flash.h" line="700" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_flash.h" bodystart="700" bodyend="702"/>
+      </memberdef>
+      <memberdef kind="define" id="group__FLASH__Interrupt_1ga1f40f507b5d4b3a4da68e4244a1097ee" prot="public" static="no">
+        <name>__HAL_FLASH_DISABLE_IT</name>
+        <param><defname>__INTERRUPT__</defname></param>
+        <initializer>                                                     do { if(((__INTERRUPT__) &amp; <ref refid="group__FLASH__Interrupt__definition_1gaecdc533ad50a649b780f72e8dee48a1b" kindref="member">FLASH_IT_ECCC</ref>) != 0U) { <ref refid="group__Exported__macros_1ga133aae6fc0d41bffab39ab223a7001de" kindref="member">CLEAR_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga844ea28ba1e0a5a0e497f16b61ea306b" kindref="member">FLASH</ref>-&gt;ECCR, <ref refid="group__Peripheral__Registers__Bits__Definition_1ga5296c9ff3e4e2ed6f1468edcb625563e" kindref="member">FLASH_ECCR_ECCIE</ref>); }\
+                                                     if(((__INTERRUPT__) &amp; (~<ref refid="group__FLASH__Interrupt__definition_1gaecdc533ad50a649b780f72e8dee48a1b" kindref="member">FLASH_IT_ECCC</ref>)) != 0U) { <ref refid="group__Exported__macros_1ga133aae6fc0d41bffab39ab223a7001de" kindref="member">CLEAR_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga844ea28ba1e0a5a0e497f16b61ea306b" kindref="member">FLASH</ref>-&gt;CR, ((__INTERRUPT__) &amp; (~<ref refid="group__FLASH__Interrupt__definition_1gaecdc533ad50a649b780f72e8dee48a1b" kindref="member">FLASH_IT_ECCC</ref>))); }\
+                                                   } while(0)</initializer>
+        <briefdescription>
+<para>Disable the specified FLASH interrupt. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__INTERRUPT__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>FLASH interrupt This parameter can be any combination of the following values: <itemizedlist>
+<listitem><para>FLASH_IT_EOP: End of FLASH Operation Interrupt </para>
+</listitem>
+<listitem><para>FLASH_IT_OPERR: Error Interrupt </para>
+</listitem>
+<listitem><para>FLASH_IT_RDERR: PCROP Read Error Interrupt </para>
+</listitem>
+<listitem><para>FLASH_IT_ECCC: ECC Correction Interrupt </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>none</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_flash.h" line="714" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_flash.h" bodystart="714" bodyend="716"/>
+      </memberdef>
+      <memberdef kind="define" id="group__FLASH__Interrupt_1ga0d3dd161fecc0e47c9e109c7c28672c1" prot="public" static="no">
+        <name>__HAL_FLASH_GET_FLAG</name>
+        <param><defname>__FLAG__</defname></param>
+        <initializer>                                                 ((((__FLAG__) &amp; <ref refid="group__FLASH__Flags_1gabe226a49ae06fe4da74bebc935e56b0c" kindref="member">FLASH_FLAG_ECCR_ERRORS</ref>) != 0U)     ? \
+                                                 (<ref refid="group__Exported__macros_1ga822bb1bb9710d5f2fa6396b84e583c33" kindref="member">READ_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga844ea28ba1e0a5a0e497f16b61ea306b" kindref="member">FLASH</ref>-&gt;ECCR, (__FLAG__)) != 0U) : \
+                                                 (<ref refid="group__Exported__macros_1ga822bb1bb9710d5f2fa6396b84e583c33" kindref="member">READ_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga844ea28ba1e0a5a0e497f16b61ea306b" kindref="member">FLASH</ref>-&gt;SR,   (__FLAG__)) != 0U))</initializer>
+        <briefdescription>
+<para>Check whether the specified FLASH flag is set or not. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__FLAG__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the FLASH flag to check. This parameter can be one of the following values: <itemizedlist>
+<listitem><para>FLASH_FLAG_EOP: FLASH End of Operation flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_OPERR: FLASH Operation error flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_PROGERR: FLASH Programming error flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_WRPERR: FLASH Write protection error flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_PGAERR: FLASH Programming alignment error flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_SIZERR: FLASH Size error flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_PGSERR: FLASH Programming sequence error flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_MISERR: FLASH Fast programming data miss error flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_FASTERR: FLASH Fast programming error flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_RDERR: FLASH PCROP read error flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_OPTVERR: FLASH Option validity error flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_BSY: FLASH write/erase operations in progress flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_PEMPTY : FLASH Boot from not programmed flash (apply only for STM32L43x/STM32L44x devices) </para>
+</listitem>
+<listitem><para>FLASH_FLAG_ECCC: FLASH one ECC error has been detected and corrected </para>
+</listitem>
+<listitem><para>FLASH_FLAG_ECCD: FLASH two ECC errors have been detected </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>The</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>new state of FLASH_FLAG (SET or RESET). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_flash.h" line="739" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_flash.h" bodystart="739" bodyend="741"/>
+      </memberdef>
+      <memberdef kind="define" id="group__FLASH__Interrupt_1ga68e49c4675761e2ec35153e747de7622" prot="public" static="no">
+        <name>__HAL_FLASH_CLEAR_FLAG</name>
+        <param><defname>__FLAG__</defname></param>
+        <initializer>                                                     do { if(((__FLAG__) &amp; <ref refid="group__FLASH__Flags_1gabe226a49ae06fe4da74bebc935e56b0c" kindref="member">FLASH_FLAG_ECCR_ERRORS</ref>) != 0U) { <ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga844ea28ba1e0a5a0e497f16b61ea306b" kindref="member">FLASH</ref>-&gt;ECCR, ((__FLAG__) &amp; <ref refid="group__FLASH__Flags_1gabe226a49ae06fe4da74bebc935e56b0c" kindref="member">FLASH_FLAG_ECCR_ERRORS</ref>)); }\
+                                                     if(((__FLAG__) &amp; ~(<ref refid="group__FLASH__Flags_1gabe226a49ae06fe4da74bebc935e56b0c" kindref="member">FLASH_FLAG_ECCR_ERRORS</ref>)) != 0U) { <ref refid="group__Exported__macros_1ga32f78bffcaf6d13023dcd7f05e0c4d57" kindref="member">WRITE_REG</ref>(<ref refid="group__Peripheral__declaration_1ga844ea28ba1e0a5a0e497f16b61ea306b" kindref="member">FLASH</ref>-&gt;SR, ((__FLAG__) &amp; ~(<ref refid="group__FLASH__Flags_1gabe226a49ae06fe4da74bebc935e56b0c" kindref="member">FLASH_FLAG_ECCR_ERRORS</ref>))); }\
+                                                   } while(0)</initializer>
+        <briefdescription>
+<para>Clear the FLASH&apos;s pending flags. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__FLAG__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the FLASH flags to clear. This parameter can be any combination of the following values: <itemizedlist>
+<listitem><para>FLASH_FLAG_EOP: FLASH End of Operation flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_OPERR: FLASH Operation error flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_PROGERR: FLASH Programming error flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_WRPERR: FLASH Write protection error flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_PGAERR: FLASH Programming alignment error flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_SIZERR: FLASH Size error flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_PGSERR: FLASH Programming sequence error flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_MISERR: FLASH Fast programming data miss error flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_FASTERR: FLASH Fast programming error flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_RDERR: FLASH PCROP read error flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_OPTVERR: FLASH Option validity error flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_ECCC: FLASH one ECC error has been detected and corrected </para>
+</listitem>
+<listitem><para>FLASH_FLAG_ECCD: FLASH two ECC errors have been detected </para>
+</listitem>
+<listitem><para>FLASH_FLAG_ALL_ERRORS: FLASH All errors flags </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_flash.h" line="763" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_flash.h" bodystart="763" bodyend="765"/>
+      </memberdef>
+      <memberdef kind="define" id="group__FLASH__Interrupt_1ga13fa137a911f02a2f94fb9fb0762a340" prot="public" static="no">
+        <name>__HAL_FLASH_ENABLE_IT</name>
+        <param><defname>__INTERRUPT__</defname></param>
+        <initializer>                                                     do { if(((__INTERRUPT__) &amp; <ref refid="group__FLASH__Interrupt__definition_1gaecdc533ad50a649b780f72e8dee48a1b" kindref="member">FLASH_IT_ECCC</ref>) != 0U) { <ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga844ea28ba1e0a5a0e497f16b61ea306b" kindref="member">FLASH</ref>-&gt;ECCR, <ref refid="group__Peripheral__Registers__Bits__Definition_1ga5296c9ff3e4e2ed6f1468edcb625563e" kindref="member">FLASH_ECCR_ECCIE</ref>); }\
+                                                     if(((__INTERRUPT__) &amp; (~<ref refid="group__FLASH__Interrupt__definition_1gaecdc533ad50a649b780f72e8dee48a1b" kindref="member">FLASH_IT_ECCC</ref>)) != 0U) { <ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga844ea28ba1e0a5a0e497f16b61ea306b" kindref="member">FLASH</ref>-&gt;CR, ((__INTERRUPT__) &amp; (~<ref refid="group__FLASH__Interrupt__definition_1gaecdc533ad50a649b780f72e8dee48a1b" kindref="member">FLASH_IT_ECCC</ref>))); }\
+                                                   } while(0)</initializer>
+        <briefdescription>
+<para>Enable the specified FLASH interrupt. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__INTERRUPT__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>FLASH interrupt This parameter can be any combination of the following values: <itemizedlist>
+<listitem><para>FLASH_IT_EOP: End of FLASH Operation Interrupt </para>
+</listitem>
+<listitem><para>FLASH_IT_OPERR: Error Interrupt </para>
+</listitem>
+<listitem><para>FLASH_IT_RDERR: PCROP Read Error Interrupt </para>
+</listitem>
+<listitem><para>FLASH_IT_ECCC: ECC Correction Interrupt </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>none</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_flash.h" line="700" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_flash.h" bodystart="700" bodyend="702"/>
+      </memberdef>
+      <memberdef kind="define" id="group__FLASH__Interrupt_1ga1f40f507b5d4b3a4da68e4244a1097ee" prot="public" static="no">
+        <name>__HAL_FLASH_DISABLE_IT</name>
+        <param><defname>__INTERRUPT__</defname></param>
+        <initializer>                                                     do { if(((__INTERRUPT__) &amp; <ref refid="group__FLASH__Interrupt__definition_1gaecdc533ad50a649b780f72e8dee48a1b" kindref="member">FLASH_IT_ECCC</ref>) != 0U) { <ref refid="group__Exported__macros_1ga133aae6fc0d41bffab39ab223a7001de" kindref="member">CLEAR_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga844ea28ba1e0a5a0e497f16b61ea306b" kindref="member">FLASH</ref>-&gt;ECCR, <ref refid="group__Peripheral__Registers__Bits__Definition_1ga5296c9ff3e4e2ed6f1468edcb625563e" kindref="member">FLASH_ECCR_ECCIE</ref>); }\
+                                                     if(((__INTERRUPT__) &amp; (~<ref refid="group__FLASH__Interrupt__definition_1gaecdc533ad50a649b780f72e8dee48a1b" kindref="member">FLASH_IT_ECCC</ref>)) != 0U) { <ref refid="group__Exported__macros_1ga133aae6fc0d41bffab39ab223a7001de" kindref="member">CLEAR_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga844ea28ba1e0a5a0e497f16b61ea306b" kindref="member">FLASH</ref>-&gt;CR, ((__INTERRUPT__) &amp; (~<ref refid="group__FLASH__Interrupt__definition_1gaecdc533ad50a649b780f72e8dee48a1b" kindref="member">FLASH_IT_ECCC</ref>))); }\
+                                                   } while(0)</initializer>
+        <briefdescription>
+<para>Disable the specified FLASH interrupt. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__INTERRUPT__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>FLASH interrupt This parameter can be any combination of the following values: <itemizedlist>
+<listitem><para>FLASH_IT_EOP: End of FLASH Operation Interrupt </para>
+</listitem>
+<listitem><para>FLASH_IT_OPERR: Error Interrupt </para>
+</listitem>
+<listitem><para>FLASH_IT_RDERR: PCROP Read Error Interrupt </para>
+</listitem>
+<listitem><para>FLASH_IT_ECCC: ECC Correction Interrupt </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>none</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_flash.h" line="714" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_flash.h" bodystart="714" bodyend="716"/>
+      </memberdef>
+      <memberdef kind="define" id="group__FLASH__Interrupt_1ga0d3dd161fecc0e47c9e109c7c28672c1" prot="public" static="no">
+        <name>__HAL_FLASH_GET_FLAG</name>
+        <param><defname>__FLAG__</defname></param>
+        <initializer>                                                 ((((__FLAG__) &amp; <ref refid="group__FLASH__Flags_1gabe226a49ae06fe4da74bebc935e56b0c" kindref="member">FLASH_FLAG_ECCR_ERRORS</ref>) != 0U)     ? \
+                                                 (<ref refid="group__Exported__macros_1ga822bb1bb9710d5f2fa6396b84e583c33" kindref="member">READ_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga844ea28ba1e0a5a0e497f16b61ea306b" kindref="member">FLASH</ref>-&gt;ECCR, (__FLAG__)) != 0U) : \
+                                                 (<ref refid="group__Exported__macros_1ga822bb1bb9710d5f2fa6396b84e583c33" kindref="member">READ_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga844ea28ba1e0a5a0e497f16b61ea306b" kindref="member">FLASH</ref>-&gt;SR,   (__FLAG__)) != 0U))</initializer>
+        <briefdescription>
+<para>Check whether the specified FLASH flag is set or not. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__FLAG__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the FLASH flag to check. This parameter can be one of the following values: <itemizedlist>
+<listitem><para>FLASH_FLAG_EOP: FLASH End of Operation flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_OPERR: FLASH Operation error flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_PROGERR: FLASH Programming error flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_WRPERR: FLASH Write protection error flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_PGAERR: FLASH Programming alignment error flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_SIZERR: FLASH Size error flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_PGSERR: FLASH Programming sequence error flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_MISERR: FLASH Fast programming data miss error flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_FASTERR: FLASH Fast programming error flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_RDERR: FLASH PCROP read error flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_OPTVERR: FLASH Option validity error flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_BSY: FLASH write/erase operations in progress flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_PEMPTY : FLASH Boot from not programmed flash (apply only for STM32L43x/STM32L44x devices) </para>
+</listitem>
+<listitem><para>FLASH_FLAG_ECCC: FLASH one ECC error has been detected and corrected </para>
+</listitem>
+<listitem><para>FLASH_FLAG_ECCD: FLASH two ECC errors have been detected </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>The</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>new state of FLASH_FLAG (SET or RESET). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_flash.h" line="739" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_flash.h" bodystart="739" bodyend="741"/>
+      </memberdef>
+      <memberdef kind="define" id="group__FLASH__Interrupt_1ga68e49c4675761e2ec35153e747de7622" prot="public" static="no">
+        <name>__HAL_FLASH_CLEAR_FLAG</name>
+        <param><defname>__FLAG__</defname></param>
+        <initializer>                                                     do { if(((__FLAG__) &amp; <ref refid="group__FLASH__Flags_1gabe226a49ae06fe4da74bebc935e56b0c" kindref="member">FLASH_FLAG_ECCR_ERRORS</ref>) != 0U) { <ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga844ea28ba1e0a5a0e497f16b61ea306b" kindref="member">FLASH</ref>-&gt;ECCR, ((__FLAG__) &amp; <ref refid="group__FLASH__Flags_1gabe226a49ae06fe4da74bebc935e56b0c" kindref="member">FLASH_FLAG_ECCR_ERRORS</ref>)); }\
+                                                     if(((__FLAG__) &amp; ~(<ref refid="group__FLASH__Flags_1gabe226a49ae06fe4da74bebc935e56b0c" kindref="member">FLASH_FLAG_ECCR_ERRORS</ref>)) != 0U) { <ref refid="group__Exported__macros_1ga32f78bffcaf6d13023dcd7f05e0c4d57" kindref="member">WRITE_REG</ref>(<ref refid="group__Peripheral__declaration_1ga844ea28ba1e0a5a0e497f16b61ea306b" kindref="member">FLASH</ref>-&gt;SR, ((__FLAG__) &amp; ~(<ref refid="group__FLASH__Flags_1gabe226a49ae06fe4da74bebc935e56b0c" kindref="member">FLASH_FLAG_ECCR_ERRORS</ref>))); }\
+                                                   } while(0)</initializer>
+        <briefdescription>
+<para>Clear the FLASH&apos;s pending flags. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__FLAG__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the FLASH flags to clear. This parameter can be any combination of the following values: <itemizedlist>
+<listitem><para>FLASH_FLAG_EOP: FLASH End of Operation flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_OPERR: FLASH Operation error flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_PROGERR: FLASH Programming error flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_WRPERR: FLASH Write protection error flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_PGAERR: FLASH Programming alignment error flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_SIZERR: FLASH Size error flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_PGSERR: FLASH Programming sequence error flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_MISERR: FLASH Fast programming data miss error flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_FASTERR: FLASH Fast programming error flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_RDERR: FLASH PCROP read error flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_OPTVERR: FLASH Option validity error flag </para>
+</listitem>
+<listitem><para>FLASH_FLAG_ECCC: FLASH one ECC error has been detected and corrected </para>
+</listitem>
+<listitem><para>FLASH_FLAG_ECCD: FLASH two ECC errors have been detected </para>
+</listitem>
+<listitem><para>FLASH_FLAG_ALL_ERRORS: FLASH All errors flags </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_flash.h" line="763" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_flash.h" bodystart="763" bodyend="765"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>macros to handle FLASH interrupts </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,208 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Src_2stm32l4xx__hal__iwdg_8c" kind="file" language="C++">
+    <compoundname>stm32l4xx_hal_iwdg.c</compoundname>
+    <includes local="yes">stm32l4xx_hal.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_iwdg.c</label>
+        <link refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Src_2stm32l4xx__hal__iwdg_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>stm32l4xx_hal.h</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+<para>IWDG HAL module driver. This file provides firmware functions to manage the following functionalities of the Independent Watchdog (IWDG) peripheral: </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>MCD Application Team<itemizedlist>
+<listitem><para>Initialization and Start functions</para>
+</listitem><listitem><para>IO operation functions</para>
+</listitem></itemizedlist>
+</para>
+</simplesect>
+<simplesect kind="attention"><para></para>
+</simplesect>
+Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
+<para>This software is licensed under terms that can be found in the LICENSE file in the root directory of this software component. If no LICENSE file comes with this software, it is provided AS-IS.</para>
+<para><verbatim>==============================================================================
+                  ##### IWDG Generic features #####
+==============================================================================
+[..]
+  (+) The IWDG can be started by either software or hardware (configurable
+      through option byte).
+
+  (+) The IWDG is clocked by the Low-Speed Internal clock (LSI) and thus stays
+      active even if the main clock fails.
+
+  (+) Once the IWDG is started, the LSI is forced ON and both cannot be
+      disabled. The counter starts counting down from the reset value (0xFFF).
+      When it reaches the end of count value (0x000) a reset signal is
+      generated (IWDG reset).
+
+  (+) Whenever the key value 0x0000 AAAA is written in the IWDG_KR register,
+      the IWDG_RLR value is reloaded into the counter and the watchdog reset
+      is prevented.
+
+  (+) The IWDG is implemented in the VDD voltage domain that is still functional
+      in STOP and STANDBY mode (IWDG reset can wake up the CPU from STANDBY).
+      IWDGRST flag in RCC_CSR register can be used to inform when an IWDG
+      reset occurs.
+
+  (+) Debug mode: When the microcontroller enters debug mode (core halted),
+      the IWDG counter either continues to work normally or stops, depending
+      on DBG_IWDG_STOP configuration bit in DBG module, accessible through
+      __HAL_DBGMCU_FREEZE_IWDG() and __HAL_DBGMCU_UNFREEZE_IWDG() macros.
+
+  [..] Min-max timeout value @32KHz (LSI): ~125us / ~32.7s
+       The IWDG timeout may vary due to LSI clock frequency dispersion.
+       STM32L4xx devices provide the capability to measure the LSI clock
+       frequency (LSI clock is internally connected to TIM16 CH1 input capture).
+       The measured value can be used to have an IWDG timeout with an
+       acceptable accuracy.
+
+  [..] Default timeout value (necessary for IWDG_SR status register update):
+       Constant LSI_VALUE is defined based on the nominal LSI clock frequency.
+       This frequency being subject to variations as mentioned above, the
+       default timeout value (defined through constant HAL_IWDG_DEFAULT_TIMEOUT
+       below) may become too short or too long.
+       In such cases, this default timeout value can be tuned by redefining
+       the constant LSI_VALUE at user-application level (based, for instance,
+       on the measured LSI clock frequency as explained above).
+
+                   ##### How to use this driver #####
+==============================================================================
+[..]
+  (#) Use IWDG using HAL_IWDG_Init() function to :
+    (++) Enable instance by writing Start keyword in IWDG_KEY register. LSI
+         clock is forced ON and IWDG counter starts counting down.
+    (++) Enable write access to configuration registers:
+        IWDG_PR, IWDG_RLR and IWDG_WINR.
+    (++) Configure the IWDG prescaler and counter reload value. This reload
+         value will be loaded in the IWDG counter each time the watchdog is
+         reloaded, then the IWDG will start counting down from this value.
+    (++) Depending on window parameter:
+      (+++) If Window Init parameter is same as Window register value,
+           nothing more is done but reload counter value in order to exit
+           function with exact time base.
+      (+++) Else modify Window register. This will automatically reload
+           watchdog counter.
+    (++) Wait for status flags to be reset.
+
+  (#) Then the application program must refresh the IWDG counter at regular
+      intervals during normal operation to prevent an MCU reset, using
+      HAL_IWDG_Refresh() function.
+
+   *** IWDG HAL driver macros list ***
+   ====================================
+   [..]
+     Below the list of most used macros in IWDG HAL driver:
+    (+) __HAL_IWDG_START: Enable the IWDG peripheral
+    (+) __HAL_IWDG_RELOAD_COUNTER: Reloads IWDG counter with value defined in
+        the reload register</verbatim> </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Includes<sp/>------------------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;stm32l4xx_hal.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>HAL_IWDG_MODULE_ENABLED</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>typedef<sp/>-----------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>define<sp/>------------------------------------------------------------*/</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Status<sp/>register<sp/>needs<sp/>up<sp/>to<sp/>5<sp/>LSI<sp/>clock<sp/>periods<sp/>divided<sp/>by<sp/>the<sp/>clock</highlight></codeline>
+<codeline lineno="121"><highlight class="comment"><sp/><sp/><sp/>prescaler<sp/>to<sp/>be<sp/>updated.<sp/>The<sp/>number<sp/>of<sp/>LSI<sp/>clock<sp/>periods<sp/>is<sp/>upper-rounded<sp/>to</highlight></codeline>
+<codeline lineno="122"><highlight class="comment"><sp/><sp/><sp/>6<sp/>for<sp/>the<sp/>timeout<sp/>value<sp/>calculation.</highlight></codeline>
+<codeline lineno="123"><highlight class="comment"><sp/><sp/><sp/>The<sp/>timeout<sp/>value<sp/>is<sp/>calculated<sp/>using<sp/>the<sp/>highest<sp/>prescaler<sp/>(256)<sp/>and</highlight></codeline>
+<codeline lineno="124"><highlight class="comment"><sp/><sp/><sp/>the<sp/>LSI_VALUE<sp/>constant.<sp/>The<sp/>value<sp/>of<sp/>this<sp/>constant<sp/>can<sp/>be<sp/>changed<sp/>by<sp/>the<sp/>user</highlight></codeline>
+<codeline lineno="125"><highlight class="comment"><sp/><sp/><sp/>to<sp/>take<sp/>into<sp/>account<sp/>possible<sp/>LSI<sp/>clock<sp/>period<sp/>variations.</highlight></codeline>
+<codeline lineno="126"><highlight class="comment"><sp/><sp/><sp/>The<sp/>timeout<sp/>value<sp/>is<sp/>multiplied<sp/>by<sp/>1000<sp/>to<sp/>be<sp/>converted<sp/>in<sp/>milliseconds.</highlight></codeline>
+<codeline lineno="127"><highlight class="comment"><sp/><sp/><sp/>LSI<sp/>startup<sp/>time<sp/>is<sp/>also<sp/>considered<sp/>here<sp/>by<sp/>adding<sp/>LSI_STARTUP_TIME</highlight></codeline>
+<codeline lineno="128"><highlight class="comment"><sp/><sp/><sp/>converted<sp/>in<sp/>milliseconds.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HAL_IWDG_DEFAULT_TIMEOUT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(((6UL<sp/>*<sp/>256UL<sp/>*<sp/>1000UL)<sp/>/<sp/>(LSI_VALUE<sp/>/<sp/>128U))<sp/>+<sp/>\</highlight></codeline>
+<codeline lineno="130"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((LSI_STARTUP_TIME<sp/>/<sp/>1000UL)<sp/>+<sp/>1UL))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>IWDG_KERNEL_UPDATE_FLAGS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(IWDG_SR_WVU<sp/>|<sp/>IWDG_SR_RVU<sp/>|<sp/>IWDG_SR_PVU)</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>macro<sp/>-------------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>variables<sp/>---------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>function<sp/>prototypes<sp/>-----------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Exported<sp/>functions<sp/>--------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/><ref refid="group__IWDG__Exported__Functions__Group1_1ga2e1669e60f2dc298fecaed919e7ae810" kindref="member">HAL_IWDG_Init</ref>(<ref refid="structIWDG__HandleTypeDef" kindref="compound">IWDG_HandleTypeDef</ref><sp/>*<ref refid="bootstrap_2Core_2Inc_2iwdg_8h_1a80f055e38f52ca3c57e183fc685ea477" kindref="member">hiwdg</ref>)</highlight></codeline>
+<codeline lineno="172"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/>uint32_t<sp/>tickstart;</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>the<sp/>IWDG<sp/>handle<sp/>allocation<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="bootstrap_2Core_2Inc_2iwdg_8h_1a80f055e38f52ca3c57e183fc685ea477" kindref="member">hiwdg</ref><sp/>==<sp/>NULL)</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa5a04e395e501e4e400172c610478c4a4" kindref="member">HAL_ERROR</ref>;</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>the<sp/>parameters<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(<ref refid="group__Exported__macros_1gad9ec4c52f0572ee67d043e006f1d5e39" kindref="member">IS_IWDG_ALL_INSTANCE</ref>(<ref refid="bootstrap_2Core_2Inc_2iwdg_8h_1a80f055e38f52ca3c57e183fc685ea477" kindref="member">hiwdg</ref>-&gt;<ref refid="structIWDG__HandleTypeDef_1a9b59d0eb51ed6de855a3cb83d8fd3025" kindref="member">Instance</ref>));</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(<ref refid="group__IWDG__Private__Macros_1ga2b1af237dca5c067fbc9088185cb8185" kindref="member">IS_IWDG_PRESCALER</ref>(<ref refid="bootstrap_2Core_2Inc_2iwdg_8h_1a80f055e38f52ca3c57e183fc685ea477" kindref="member">hiwdg</ref>-&gt;<ref refid="structIWDG__HandleTypeDef_1ae308075a425af205912feb4059c6f213" kindref="member">Init</ref>.<ref refid="structIWDG__InitTypeDef_1adb8ce67e656492f5ac26473bb70c5daa" kindref="member">Prescaler</ref>));</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(<ref refid="group__IWDG__Private__Macros_1gad7ade0982243f56ba89ff764534f553c" kindref="member">IS_IWDG_RELOAD</ref>(<ref refid="bootstrap_2Core_2Inc_2iwdg_8h_1a80f055e38f52ca3c57e183fc685ea477" kindref="member">hiwdg</ref>-&gt;<ref refid="structIWDG__HandleTypeDef_1ae308075a425af205912feb4059c6f213" kindref="member">Init</ref>.<ref refid="structIWDG__InitTypeDef_1af5a275e4c73292039258a0287fb7901d" kindref="member">Reload</ref>));</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(<ref refid="group__IWDG__Private__Macros_1ga4ef7fac65e2c0d6a9c66c9899b9eb195" kindref="member">IS_IWDG_WINDOW</ref>(<ref refid="bootstrap_2Core_2Inc_2iwdg_8h_1a80f055e38f52ca3c57e183fc685ea477" kindref="member">hiwdg</ref>-&gt;<ref refid="structIWDG__HandleTypeDef_1ae308075a425af205912feb4059c6f213" kindref="member">Init</ref>.<ref refid="structIWDG__InitTypeDef_1a424d8d1b8b8705a50607af48bfa2c0c5" kindref="member">Window</ref>));</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Enable<sp/>IWDG.<sp/>LSI<sp/>is<sp/>turned<sp/>on<sp/>automatically<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><ref refid="group__IWDG__Exported__Macros_1ga5914aff5b85e3151bb75377a32d83d6a" kindref="member">__HAL_IWDG_START</ref>(<ref refid="bootstrap_2Core_2Inc_2iwdg_8h_1a80f055e38f52ca3c57e183fc685ea477" kindref="member">hiwdg</ref>);</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Enable<sp/>write<sp/>access<sp/>to<sp/>IWDG_PR,<sp/>IWDG_RLR<sp/>and<sp/>IWDG_WINR<sp/>registers<sp/>by<sp/>writing</highlight></codeline>
+<codeline lineno="191"><highlight class="comment"><sp/><sp/>0x5555<sp/>in<sp/>KR<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><ref refid="group__IWDG__Private__Macros_1ga65cf77f3cfd45d3fd66c0cf33d23d7ab" kindref="member">IWDG_ENABLE_WRITE_ACCESS</ref>(<ref refid="bootstrap_2Core_2Inc_2iwdg_8h_1a80f055e38f52ca3c57e183fc685ea477" kindref="member">hiwdg</ref>);</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Write<sp/>to<sp/>IWDG<sp/>registers<sp/>the<sp/>Prescaler<sp/>&amp;<sp/>Reload<sp/>values<sp/>to<sp/>work<sp/>with<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2iwdg_8h_1a80f055e38f52ca3c57e183fc685ea477" kindref="member">hiwdg</ref>-&gt;<ref refid="structIWDG__HandleTypeDef_1a9b59d0eb51ed6de855a3cb83d8fd3025" kindref="member">Instance</ref>-&gt;<ref refid="structIWDG__TypeDef_1a5f2717885ff171e686e0347af9e6b68d" kindref="member">PR</ref><sp/>=<sp/><ref refid="bootstrap_2Core_2Inc_2iwdg_8h_1a80f055e38f52ca3c57e183fc685ea477" kindref="member">hiwdg</ref>-&gt;<ref refid="structIWDG__HandleTypeDef_1ae308075a425af205912feb4059c6f213" kindref="member">Init</ref>.<ref refid="structIWDG__InitTypeDef_1adb8ce67e656492f5ac26473bb70c5daa" kindref="member">Prescaler</ref>;</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2iwdg_8h_1a80f055e38f52ca3c57e183fc685ea477" kindref="member">hiwdg</ref>-&gt;<ref refid="structIWDG__HandleTypeDef_1a9b59d0eb51ed6de855a3cb83d8fd3025" kindref="member">Instance</ref>-&gt;<ref refid="structIWDG__TypeDef_1aa3703eaa40e447dcacc69c0827595532" kindref="member">RLR</ref><sp/>=<sp/><ref refid="bootstrap_2Core_2Inc_2iwdg_8h_1a80f055e38f52ca3c57e183fc685ea477" kindref="member">hiwdg</ref>-&gt;<ref refid="structIWDG__HandleTypeDef_1ae308075a425af205912feb4059c6f213" kindref="member">Init</ref>.<ref refid="structIWDG__InitTypeDef_1af5a275e4c73292039258a0287fb7901d" kindref="member">Reload</ref>;</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>pending<sp/>flag,<sp/>if<sp/>previous<sp/>update<sp/>not<sp/>done,<sp/>return<sp/>timeout<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/>tickstart<sp/>=<sp/><ref refid="group__HAL__Exported__Functions__Group2_1gaf2c4f03d53e997a54e1fd5e80daa55c4" kindref="member">HAL_GetTick</ref>();</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Wait<sp/>for<sp/>register<sp/>to<sp/>be<sp/>updated<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>((<ref refid="bootstrap_2Core_2Inc_2iwdg_8h_1a80f055e38f52ca3c57e183fc685ea477" kindref="member">hiwdg</ref>-&gt;<ref refid="structIWDG__HandleTypeDef_1a9b59d0eb51ed6de855a3cb83d8fd3025" kindref="member">Instance</ref>-&gt;<ref refid="structIWDG__TypeDef_1a9bbfbe921f2acfaf58251849bd0a511c" kindref="member">SR</ref><sp/>&amp;<sp/>IWDG_KERNEL_UPDATE_FLAGS)<sp/>!=<sp/>0x00u)</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((<ref refid="group__HAL__Exported__Functions__Group2_1gaf2c4f03d53e997a54e1fd5e80daa55c4" kindref="member">HAL_GetTick</ref>()<sp/>-<sp/>tickstart)<sp/>&gt;<sp/>HAL_IWDG_DEFAULT_TIMEOUT)</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((<ref refid="bootstrap_2Core_2Inc_2iwdg_8h_1a80f055e38f52ca3c57e183fc685ea477" kindref="member">hiwdg</ref>-&gt;<ref refid="structIWDG__HandleTypeDef_1a9b59d0eb51ed6de855a3cb83d8fd3025" kindref="member">Instance</ref>-&gt;<ref refid="structIWDG__TypeDef_1a9bbfbe921f2acfaf58251849bd0a511c" kindref="member">SR</ref><sp/>&amp;<sp/>IWDG_KERNEL_UPDATE_FLAGS)<sp/>!=<sp/>0x00u)</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa00c89549bc881c35e8e4cd9e718337e5" kindref="member">HAL_TIMEOUT</ref>;</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>If<sp/>window<sp/>parameter<sp/>is<sp/>different<sp/>than<sp/>current<sp/>value,<sp/>modify<sp/>window</highlight></codeline>
+<codeline lineno="214"><highlight class="comment"><sp/><sp/>register<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="bootstrap_2Core_2Inc_2iwdg_8h_1a80f055e38f52ca3c57e183fc685ea477" kindref="member">hiwdg</ref>-&gt;<ref refid="structIWDG__HandleTypeDef_1a9b59d0eb51ed6de855a3cb83d8fd3025" kindref="member">Instance</ref>-&gt;<ref refid="structIWDG__TypeDef_1a88aff7f1de0043ecf1667bd40b8c99d1" kindref="member">WINR</ref><sp/>!=<sp/><ref refid="bootstrap_2Core_2Inc_2iwdg_8h_1a80f055e38f52ca3c57e183fc685ea477" kindref="member">hiwdg</ref>-&gt;<ref refid="structIWDG__HandleTypeDef_1ae308075a425af205912feb4059c6f213" kindref="member">Init</ref>.<ref refid="structIWDG__InitTypeDef_1a424d8d1b8b8705a50607af48bfa2c0c5" kindref="member">Window</ref>)</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Write<sp/>to<sp/>IWDG<sp/>WINR<sp/>the<sp/>IWDG_Window<sp/>value<sp/>to<sp/>compare<sp/>with.<sp/>In<sp/>any<sp/>case,</highlight></codeline>
+<codeline lineno="218"><highlight class="comment"><sp/><sp/><sp/><sp/>even<sp/>if<sp/>window<sp/>feature<sp/>is<sp/>disabled,<sp/>Watchdog<sp/>will<sp/>be<sp/>reloaded<sp/>by<sp/>writing</highlight></codeline>
+<codeline lineno="219"><highlight class="comment"><sp/><sp/><sp/><sp/>windows<sp/>register<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2iwdg_8h_1a80f055e38f52ca3c57e183fc685ea477" kindref="member">hiwdg</ref>-&gt;<ref refid="structIWDG__HandleTypeDef_1a9b59d0eb51ed6de855a3cb83d8fd3025" kindref="member">Instance</ref>-&gt;<ref refid="structIWDG__TypeDef_1a88aff7f1de0043ecf1667bd40b8c99d1" kindref="member">WINR</ref><sp/>=<sp/><ref refid="bootstrap_2Core_2Inc_2iwdg_8h_1a80f055e38f52ca3c57e183fc685ea477" kindref="member">hiwdg</ref>-&gt;<ref refid="structIWDG__HandleTypeDef_1ae308075a425af205912feb4059c6f213" kindref="member">Init</ref>.<ref refid="structIWDG__InitTypeDef_1a424d8d1b8b8705a50607af48bfa2c0c5" kindref="member">Window</ref>;</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Reload<sp/>IWDG<sp/>counter<sp/>with<sp/>value<sp/>defined<sp/>in<sp/>the<sp/>reload<sp/>register<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__IWDG__Exported__Macros_1gac0eaf381e60a654d6b51c43f645e088f" kindref="member">__HAL_IWDG_RELOAD_COUNTER</ref>(<ref refid="bootstrap_2Core_2Inc_2iwdg_8h_1a80f055e38f52ca3c57e183fc685ea477" kindref="member">hiwdg</ref>);</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"></highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Return<sp/>function<sp/>status<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>;</highlight></codeline>
+<codeline lineno="230"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"></highlight></codeline>
+<codeline lineno="232"><highlight class="normal"></highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/><ref refid="group__IWDG__Exported__Functions__Group2_1ga7e86236aea6d2f3638397fdf90333e4a" kindref="member">HAL_IWDG_Refresh</ref>(<ref refid="structIWDG__HandleTypeDef" kindref="compound">IWDG_HandleTypeDef</ref><sp/>*<ref refid="bootstrap_2Core_2Inc_2iwdg_8h_1a80f055e38f52ca3c57e183fc685ea477" kindref="member">hiwdg</ref>)</highlight></codeline>
+<codeline lineno="259"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Reload<sp/>IWDG<sp/>counter<sp/>with<sp/>value<sp/>defined<sp/>in<sp/>the<sp/>reload<sp/>register<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><ref refid="group__IWDG__Exported__Macros_1gac0eaf381e60a654d6b51c43f645e088f" kindref="member">__HAL_IWDG_RELOAD_COUNTER</ref>(<ref refid="bootstrap_2Core_2Inc_2iwdg_8h_1a80f055e38f52ca3c57e183fc685ea477" kindref="member">hiwdg</ref>);</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"></highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Return<sp/>function<sp/>status<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>;</highlight></codeline>
+<codeline lineno="265"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"></highlight></codeline>
+<codeline lineno="267"><highlight class="normal"></highlight></codeline>
+<codeline lineno="276"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>HAL_IWDG_MODULE_ENABLED<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_iwdg.c"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,184 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="group__osusat__slog__types" kind="group">
+    <compoundname>osusat_slog_types</compoundname>
+    <title>Structures</title>
+    <innerclass refid="structosusat__slog__entry__t" prot="public">osusat_slog_entry_t</innerclass>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="group__osusat__slog__types_1gafe0f1801f6e3827f06165e284313814b" prot="public" static="no" strong="no">
+        <type></type>
+        <name>osusat_slog_level_t</name>
+        <enumvalue id="group__osusat__slog__types_1ggafe0f1801f6e3827f06165e284313814ba3416b48f12ae3f2061aa0be0f9f6628e" prot="public">
+          <name>OSUSAT_SLOG_DEBUG</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Verbose debug information </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__osusat__slog__types_1ggafe0f1801f6e3827f06165e284313814ba0910e0bc044406b4a8be8fbd9198bb24" prot="public">
+          <name>OSUSAT_SLOG_INFO</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Informational messages </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__osusat__slog__types_1ggafe0f1801f6e3827f06165e284313814ba4331435d3b641ebbb3a79f5dde6f3d6e" prot="public">
+          <name>OSUSAT_SLOG_WARN</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Warning conditions </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__osusat__slog__types_1ggafe0f1801f6e3827f06165e284313814baaaae4bb5016bcadcae7bf6d772e3f193" prot="public">
+          <name>OSUSAT_SLOG_ERROR</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Error conditions </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__osusat__slog__types_1ggafe0f1801f6e3827f06165e284313814ba02b6fdc266af82fa9d529477846cab24" prot="public">
+          <name>OSUSAT_SLOG_CRITICAL</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Critical failures </para>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Log severity levels. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/slog.h" line="62" column="1" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/slog.h" bodystart="62" bodyend="68"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group__osusat__slog__types_1ga39b7ea30f55831ceddb5ab6bc8f316c3" prot="public" static="no">
+        <type>uint32_t(*</type>
+        <definition>typedef uint32_t(* osusat_slog_timestamp_fn_t) (void)</definition>
+        <argsstring>)(void)</argsstring>
+        <name>osusat_slog_timestamp_fn_t</name>
+        <briefdescription>
+<para>Timestamp provider function type. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Current timestamp in milliseconds. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/slog.h" line="90" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/slog.h" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__osusat__slog__types_1ga920f6ea1f2d1a7ff05e2e926cdaa2afa" prot="public" static="no">
+        <type>void(*</type>
+        <definition>typedef void(* osusat_slog_flush_fn_t) (const osusat_slog_entry_t *entry, const char *message, void *ctx)</definition>
+        <argsstring>)(const osusat_slog_entry_t *entry, const char *message, void *ctx)</argsstring>
+        <name>osusat_slog_flush_fn_t</name>
+        <briefdescription>
+<para>Flush callback function type. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Called during <ref refid="group__osusat__slog__api_1gac76adcb9d644cb6c538e4e18a92bd133" kindref="member">osusat_slog_flush()</ref> for each log entry. Implementation should handle framing, packetization, and transmission as needed.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">entry</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to log entry header. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to null-terminated message string. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">ctx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>User context pointer passed during flush. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/slog.h" line="102" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/slog.h" bodystart="102" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="group__osusat__slog__types_1gae687057651841f31f03c8710710929f6" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>osusat_slog_entry_t</definition>
+        <argsstring></argsstring>
+        <name>osusat_slog_entry_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/slog.h" line="83" column="2" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/slog.h" bodystart="83" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="group__osusat__slog__types_1gab898071398b359603a35c202e9c65f3b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>struct</type>
+        <definition>struct __attribute__</definition>
+        <argsstring>((packed))</argsstring>
+        <name>__attribute__</name>
+        <param>
+          <type>(packed)</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+<para>&lt; Millisecond timestamp when log was created</para>
+<para>&lt; Severity level (osusat_slog_level_t)</para>
+<para>&lt; Subsystem/component identifier</para>
+<para>&lt; Source code line number</para>
+<para>&lt; Length of message string (excluding null)</para>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/slog.h" line="1" column="0" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/slog.h" bodystart="77" bodyend="83"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="group__osusat__slog__types_1ga57883fd5885c295959cb476989be0b94" prot="public" static="no">
+        <name>OSUSAT_SLOG_MAX_MESSAGE_LEN</name>
+        <initializer>128</initializer>
+        <briefdescription>
+<para>Maximum length of a single log message (including null terminator). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/slog.h" line="57" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/slog.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Structures and types used by the Logging System. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,291 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="group__uart__api" kind="group">
+    <compoundname>uart_api</compoundname>
+    <title>Public API</title>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="group__uart__api_1ga68658cc0c2481518a87da03f5678f1bd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void hal_uart_init</definition>
+        <argsstring>(uart_port_t port, const uart_config_t *config)</argsstring>
+        <name>hal_uart_init</name>
+        <param>
+          <type><ref refid="group__uart__types_1ga7f28644638bd57536eb5260695e83de9" kindref="member">uart_port_t</ref></type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structuart__config__t" kindref="compound">uart_config_t</ref> *</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+<para>Initialize the UART driver. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This must be called before configuring or using any UART port.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART port index </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">config</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the UART configuration </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_uart.h" line="103" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_uart.c" bodystart="132" bodyend="170" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_uart.h" declline="103" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__uart__api_1ga6958ec0e88f16a944298998d1772c71e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void hal_uart_register_rx_callback</definition>
+        <argsstring>(uart_port_t port, uart_rx_callback_t cb, void *ctx)</argsstring>
+        <name>hal_uart_register_rx_callback</name>
+        <param>
+          <type><ref refid="group__uart__types_1ga7f28644638bd57536eb5260695e83de9" kindref="member">uart_port_t</ref></type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type><ref refid="group__uart__types_1ga98671ef10144eb8b0da339ca06dd03b4" kindref="member">uart_rx_callback_t</ref></type>
+          <declname>cb</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>ctx</declname>
+        </param>
+        <briefdescription>
+<para>Register a callback that fires whenever new bytes are received. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The UART port </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">cb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The callback handler </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">ctx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Any additional context to pass to the RX callback </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_uart.h" line="112" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_uart.c" bodystart="172" bodyend="182" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_uart.h" declline="112" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__uart__api_1gafe2074ec1f9a6a3a4fbf73cd8f8ec41c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void hal_uart_register_error_callback</definition>
+        <argsstring>(uart_port_t port, uart_hal_error_cb_t cb, void *ctx)</argsstring>
+        <name>hal_uart_register_error_callback</name>
+        <param>
+          <type><ref refid="group__uart__types_1ga7f28644638bd57536eb5260695e83de9" kindref="member">uart_port_t</ref></type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type><ref refid="group__uart__types_1ga657936db7b6e3c8b4a3d9122c76987ae" kindref="member">uart_hal_error_cb_t</ref></type>
+          <declname>cb</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>ctx</declname>
+        </param>
+        <briefdescription>
+<para>Register a callback function upon a UART error. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The UART port </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">cb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The callback handler </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">ctx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Any additional context to pass to the error callback </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_uart.h" line="122" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_uart.c" bodystart="184" bodyend="192" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_uart.h" declline="122" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__uart__api_1ga4483e54b3d76f3f0b2bb91f2d28ccd62" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void hal_uart_write</definition>
+        <argsstring>(uart_port_t port, const uint8_t *data, uint16_t len)</argsstring>
+        <name>hal_uart_write</name>
+        <param>
+          <type><ref refid="group__uart__types_1ga7f28644638bd57536eb5260695e83de9" kindref="member">uart_port_t</ref></type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type>const uint8_t *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>len</declname>
+        </param>
+        <briefdescription>
+<para>Send raw bytes (blocking or DMA depending on implementation) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The UART port </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The UART data to write </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">len</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The length of the payload </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_uart.h" line="132" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_uart.c" bodystart="194" bodyend="212" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_uart.h" declline="132" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__uart__api_1gac1a9051d3daf0c76f550edc36e95db4b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint16_t</type>
+        <definition>uint16_t hal_uart_read</definition>
+        <argsstring>(uart_port_t port, uint8_t *out, uint16_t len)</argsstring>
+        <name>hal_uart_read</name>
+        <param>
+          <type><ref refid="group__uart__types_1ga7f28644638bd57536eb5260695e83de9" kindref="member">uart_port_t</ref></type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type>uint8_t *</type>
+          <declname>out</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>len</declname>
+        </param>
+        <briefdescription>
+<para>Non-blocking read of up to <computeroutput>len</computeroutput> bytes from the RX ring buffer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The UART port </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">out</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The output buffer for any read UART bytes </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">len</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The length to read </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_uart.h" line="141" column="10" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_uart.c" bodystart="214" bodyend="235" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_uart.h" declline="141" declcolumn="10"/>
+      </memberdef>
+      <memberdef kind="function" id="group__uart__api_1gab8d90577dada915fa244800214d65993" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void hal_uart_isr_handler</definition>
+        <argsstring>(uart_port_t port)</argsstring>
+        <name>hal_uart_isr_handler</name>
+        <param>
+          <type><ref refid="group__uart__types_1ga7f28644638bd57536eb5260695e83de9" kindref="member">uart_port_t</ref></type>
+          <declname>port</declname>
+        </param>
+        <briefdescription>
+<para>ISR entry point for real hardware. Should be called from the MCU&apos;s UARTx_IRQHandler(). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The UART port </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_uart.h" line="149" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_uart.c" bodystart="237" bodyend="254" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_uart.h" declline="149" declcolumn="6"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>External interface for interacting with the UART driver. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

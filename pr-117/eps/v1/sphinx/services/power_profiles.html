@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Power Profiles Service &#8212; OSUSat EPS Firmware  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Rail Controller Service" href="rail_controller.html" />
+    <link rel="prev" title="MPPT Controller Service" href="mppt_controller.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="power-profiles-service">
+<h1>Power Profiles Service<a class="headerlink" href="#power-profiles-service" title="Link to this heading">¶</a></h1>
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group__power__profiles"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">Power</span> <span class="pre">Profiles</span> <span class="pre">Service</span></span></dt>
+<dd><p>Manages groups of power rails corresponding to system states. </p>
+<p>The Power Profiles service acts as a translation layer between high-level system states (Safe, Nominal) and physical rails.</p>
+<p>It:<ul class="simple">
+<li><p>accepts commands to enter specific power profiles</p></li>
+<li><p>executes the actual switch toggling for the rails defined in the power profile</p></li>
+<li><p>reads rail mappings from the system configuration. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group__power__profiles__types"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">Types</span></span></dt>
+<dd><p>Enumerations and structures used by the Power Profiles service. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-enums">Enums</p>
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv415power_profile_t">
+<span id="_CPPv315power_profile_t"></span><span id="_CPPv215power_profile_t"></span><span class="target" id="group__power__profiles__types_1gaaa76c374d83ff47037a4930b2a616025"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">power_profile_t</span></span></span><a class="headerlink" href="#_CPPv415power_profile_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>High-level system power configurations. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N15power_profile_t21POWER_PROFILE_NOMINALE">
+<span id="_CPPv3N15power_profile_t21POWER_PROFILE_NOMINALE"></span><span id="_CPPv2N15power_profile_t21POWER_PROFILE_NOMINALE"></span><span class="target" id="group__power__profiles__types_1ggaaa76c374d83ff47037a4930b2a616025a94c0466438e870a5895ae082f37d1c7c"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">POWER_PROFILE_NOMINAL</span></span></span><a class="headerlink" href="#_CPPv4N15power_profile_t21POWER_PROFILE_NOMINALE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Standard operation, most rails enabled </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N15power_profile_t18POWER_PROFILE_SAFEE">
+<span id="_CPPv3N15power_profile_t18POWER_PROFILE_SAFEE"></span><span id="_CPPv2N15power_profile_t18POWER_PROFILE_SAFEE"></span><span class="target" id="group__power__profiles__types_1ggaaa76c374d83ff47037a4930b2a616025a8e3f2e879a8ec11926814ea8cb5e403f"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">POWER_PROFILE_SAFE</span></span></span><a class="headerlink" href="#_CPPv4N15power_profile_t18POWER_PROFILE_SAFEE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Safe mode in case of faults or low power, most rails disabled </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv422power_profile_status_t">
+<span id="_CPPv322power_profile_status_t"></span><span id="_CPPv222power_profile_status_t"></span><span class="target" id="group__power__profiles__types_1gaffe08cae8739332391c30af934a68280"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">power_profile_status_t</span></span></span><a class="headerlink" href="#_CPPv422power_profile_status_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Status codes for profile operations. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N22power_profile_status_t21POWER_PROFILE_SUCCESSE">
+<span id="_CPPv3N22power_profile_status_t21POWER_PROFILE_SUCCESSE"></span><span id="_CPPv2N22power_profile_status_t21POWER_PROFILE_SUCCESSE"></span><span class="target" id="group__power__profiles__types_1ggaffe08cae8739332391c30af934a68280a4f32efdb8273667595d5b1827aa42ac8"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">POWER_PROFILE_SUCCESS</span></span></span><a class="headerlink" href="#_CPPv4N22power_profile_status_t21POWER_PROFILE_SUCCESSE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>The operation was completed successfully </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N22power_profile_status_t35POWER_PROFILE_ERROR_INVALID_PROFILEE">
+<span id="_CPPv3N22power_profile_status_t35POWER_PROFILE_ERROR_INVALID_PROFILEE"></span><span id="_CPPv2N22power_profile_status_t35POWER_PROFILE_ERROR_INVALID_PROFILEE"></span><span class="target" id="group__power__profiles__types_1ggaffe08cae8739332391c30af934a68280acfc21d8e61e3345d86db66660e26620e"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">POWER_PROFILE_ERROR_INVALID_PROFILE</span></span></span><a class="headerlink" href="#_CPPv4N22power_profile_status_t35POWER_PROFILE_ERROR_INVALID_PROFILEE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>The requested power profile does not exist </p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv420power_profile_info_t">
+<span id="_CPPv320power_profile_info_t"></span><span id="_CPPv220power_profile_info_t"></span><span id="power_profile_info_t"></span><span class="target" id="structpower__profile__info__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">power_profile_info_t</span></span></span><a class="headerlink" href="#_CPPv420power_profile_info_t" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;power_profiles.h&gt;</em></div>
+<p>Internal container for profile configuration data. </p>
+<p>Used to retrieve the specific list of rails associated with a requested profile. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20power_profile_info_t5railsE">
+<span id="_CPPv3N20power_profile_info_t5railsE"></span><span id="_CPPv2N20power_profile_info_t5railsE"></span><span id="power_profile_info_t::rails__power_rail_tCP"></span><span class="target" id="structpower__profile__info__t_1a7b1b1387a4be433665337202fa407ca4"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">power_rail_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">rails</span></span></span><a class="headerlink" href="#_CPPv4N20power_profile_info_t5railsE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Pointer to the array of rails </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20power_profile_info_t5countE">
+<span id="_CPPv3N20power_profile_info_t5countE"></span><span id="_CPPv2N20power_profile_info_t5countE"></span><span id="power_profile_info_t::count__i"></span><span class="target" id="structpower__profile__info__t_1a85186541bdd9d1bc8972e53213337255"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">count</span></span></span><a class="headerlink" href="#_CPPv4N20power_profile_info_t5countE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Number of rails in the profile </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv416power_profiles_t">
+<span id="_CPPv316power_profiles_t"></span><span id="_CPPv216power_profiles_t"></span><span id="power_profiles_t"></span><span class="target" id="structpower__profiles__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">power_profiles_t</span></span></span><a class="headerlink" href="#_CPPv416power_profiles_t" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;power_profiles.h&gt;</em></div>
+<p>Container for the Power Profiles Service state. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N16power_profiles_t15rail_controllerE">
+<span id="_CPPv3N16power_profiles_t15rail_controllerE"></span><span id="_CPPv2N16power_profiles_t15rail_controllerE"></span><span id="power_profiles_t::rail_controller__rail_controller_tP"></span><span class="target" id="structpower__profiles__t_1a43f735344dc5923fd95329aa83d4d230"></span><a class="reference internal" href="rail_controller.html#_CPPv417rail_controller_t" title="rail_controller_t"><span class="n"><span class="pre">rail_controller_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">rail_controller</span></span></span><a class="headerlink" href="#_CPPv4N16power_profiles_t15rail_controllerE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Pointer to the rail controller instance. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N16power_profiles_t15current_profileE">
+<span id="_CPPv3N16power_profiles_t15current_profileE"></span><span id="_CPPv2N16power_profiles_t15current_profileE"></span><span id="power_profiles_t::current_profile__power_profile_t"></span><span class="target" id="structpower__profiles__t_1aa161369cef5e6f219067f40f2b356d90"></span><a class="reference internal" href="#_CPPv415power_profile_t" title="power_profile_t"><span class="n"><span class="pre">power_profile_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">current_profile</span></span></span><a class="headerlink" href="#_CPPv4N16power_profiles_t15current_profileE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>The currently active power profile. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N16power_profiles_t11initializedE">
+<span id="_CPPv3N16power_profiles_t11initializedE"></span><span id="_CPPv2N16power_profiles_t11initializedE"></span><span id="power_profiles_t::initialized__b"></span><span class="target" id="structpower__profiles__t_1a356afb85cead295316ba22d1f55e646d"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">initialized</span></span></span><a class="headerlink" href="#_CPPv4N16power_profiles_t11initializedE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>True if the service has been initialized. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group__power__profiles__api"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">Public</span> <span class="pre">API</span></span></dt>
+<dd><p>Functions for applying power configurations. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv419power_profiles_initP16power_profiles_tP17rail_controller_t">
+<span id="_CPPv319power_profiles_initP16power_profiles_tP17rail_controller_t"></span><span id="_CPPv219power_profiles_initP16power_profiles_tP17rail_controller_t"></span><span id="power_profiles_init__power_profiles_tP.rail_controller_tP"></span><span class="target" id="group__power__profiles__api_1gab8448eefa1b2c48c6385e8ab507ffce4"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">power_profiles_init</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv416power_profiles_t" title="power_profiles_t"><span class="n"><span class="pre">power_profiles_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">profiles</span></span>, <a class="reference internal" href="rail_controller.html#_CPPv417rail_controller_t" title="rail_controller_t"><span class="n"><span class="pre">rail_controller_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">controller</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv419power_profiles_initP16power_profiles_tP17rail_controller_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Initialize the Power Profiles Service. </p>
+<p>This must be called once at startup. It subscribes to profile change request events from the application layer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>profiles</strong> – <strong>[in]</strong> The power profiles service instance. </p></li>
+<li><p><strong>controller</strong> – <strong>[in]</strong> The rail controller instance. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv421power_profiles_enableP16power_profiles_t15power_profile_t">
+<span id="_CPPv321power_profiles_enableP16power_profiles_t15power_profile_t"></span><span id="_CPPv221power_profiles_enableP16power_profiles_t15power_profile_t"></span><span id="power_profiles_enable__power_profiles_tP.power_profile_t"></span><span class="target" id="group__power__profiles__api_1gad7c6a83ce0113bd858d66ca7b2c91f45"></span><a class="reference internal" href="#_CPPv422power_profile_status_t" title="power_profile_status_t"><span class="n"><span class="pre">power_profile_status_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">power_profiles_enable</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv416power_profiles_t" title="power_profiles_t"><span class="n"><span class="pre">power_profiles_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">profiles</span></span>, <a class="reference internal" href="#_CPPv415power_profile_t" title="power_profile_t"><span class="n"><span class="pre">power_profile_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">profile</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv421power_profiles_enableP16power_profiles_t15power_profile_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Enable all power rails associated with a specific profile. </p>
+<p>Iterates through the list of rails defined for the given profile and instructs the Rail Controller to turn them ON.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>profiles</strong> – <strong>[in]</strong> The power profiles service instance. </p></li>
+<li><p><strong>profile</strong> – <strong>[in]</strong> The target profile to enable (e.g., POWER_PROFILE_NOMINAL).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return values<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>POWER_PROFILE_SUCCESS</strong> – Operation successful. </p></li>
+<li><p><strong>POWER_PROFILE_ERROR_INVALID_PROFILE</strong> – The provided profile ID does not exist. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv422power_profiles_disableP16power_profiles_t15power_profile_t">
+<span id="_CPPv322power_profiles_disableP16power_profiles_t15power_profile_t"></span><span id="_CPPv222power_profiles_disableP16power_profiles_t15power_profile_t"></span><span id="power_profiles_disable__power_profiles_tP.power_profile_t"></span><span class="target" id="group__power__profiles__api_1ga9fc78b2b700a9edb2843ffea8ad17f8c"></span><a class="reference internal" href="#_CPPv422power_profile_status_t" title="power_profile_status_t"><span class="n"><span class="pre">power_profile_status_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">power_profiles_disable</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv416power_profiles_t" title="power_profiles_t"><span class="n"><span class="pre">power_profiles_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">profiles</span></span>, <a class="reference internal" href="#_CPPv415power_profile_t" title="power_profile_t"><span class="n"><span class="pre">power_profile_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">profile</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv422power_profiles_disableP16power_profiles_t15power_profile_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Disable all power rails associated with a specific profile. </p>
+<p>Iterates through the list of rails defined for the given profile and instructs the Rail Controller to turn them OFF.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is typically used when transitioning out of a state, or to shut down specific subsystems associated with a mode.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>profiles</strong> – <strong>[in]</strong> The power profiles service instance. </p></li>
+<li><p><strong>profile</strong> – <strong>[in]</strong> The target profile to disable.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return values<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>POWER_PROFILE_SUCCESS</strong> – Operation successful. </p></li>
+<li><p><strong>POWER_PROFILE_ERROR_INVALID_PROFILE</strong> – The provided profile ID does not exist. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">OSUSat EPS Firmware</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Services:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="battery_management.html">Battery Management Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mppt_controller.html">MPPT Controller Service</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Power Profiles Service</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv415power_profile_t"><code class="docutils literal notranslate"><span class="pre">power_profile_t</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv422power_profile_status_t"><code class="docutils literal notranslate"><span class="pre">power_profile_status_t</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv420power_profile_info_t"><code class="docutils literal notranslate"><span class="pre">power_profile_info_t</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv416power_profiles_t"><code class="docutils literal notranslate"><span class="pre">power_profiles_t</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv419power_profiles_initP16power_profiles_tP17rail_controller_t"><code class="docutils literal notranslate"><span class="pre">power_profiles_init()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv421power_profiles_enableP16power_profiles_t15power_profile_t"><code class="docutils literal notranslate"><span class="pre">power_profiles_enable()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv422power_profiles_disableP16power_profiles_t15power_profile_t"><code class="docutils literal notranslate"><span class="pre">power_profiles_disable()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rail_controller.html">Rail Controller Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="redundancy_manager.html">Redundancy Manager Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telemetry.html">Telemetry Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="uart_events.html">UART Events Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="watchdog.html">Watchdog Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">Logging Service</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="mppt_controller.html" title="previous chapter">MPPT Controller Service</a></li>
+      <li>Next: <a href="rail_controller.html" title="next chapter">Rail Controller Service</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2025, FerretCode.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.1.0</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/services/power_profiles.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

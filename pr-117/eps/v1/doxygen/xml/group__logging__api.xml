@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="group__logging__api" kind="group">
+    <compoundname>logging_api</compoundname>
+    <title>Public API</title>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="group__logging__api_1gacfa3b63f33f6b41229b7293c37ffef4e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void logging_init</definition>
+        <argsstring>(osusat_slog_level_t min_level, can_events_t *primary_can, can_events_t *aux_can)</argsstring>
+        <name>logging_init</name>
+        <param>
+          <type><ref refid="group__osusat__slog__types_1gafe0f1801f6e3827f06165e284313814b" kindref="member">osusat_slog_level_t</ref></type>
+          <declname>min_level</declname>
+        </param>
+        <param>
+          <type><ref refid="structcan__events__t" kindref="compound">can_events_t</ref> *</type>
+          <declname>primary_can</declname>
+        </param>
+        <param>
+          <type><ref refid="structcan__events__t" kindref="compound">can_events_t</ref> *</type>
+          <declname>aux_can</declname>
+        </param>
+        <briefdescription>
+<para>Initialize the logging service. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Must be called after <ref refid="group__can__api_1gaee75487bc1a6b3c93fc347d818d5fd18" kindref="member">hal_can_init()</ref> and before any logging.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">min_level</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Minimum log level to record. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/logging.h" line="64" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/logging.c" bodystart="52" bodyend="80" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/logging.h" declline="64" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__logging__api_1gae344a717b3119e6abed5c4b75737a337" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t logging_flush</definition>
+        <argsstring>(void)</argsstring>
+        <name>logging_flush</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Flush pending logs to OBC via CAN. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Should be called periodically from main loop or triggered by events.</para>
+<para><simplesect kind="return"><para>Number of log entries flushed. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/logging.h" line="74" column="8" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/logging.c" bodystart="177" bodyend="196" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/logging.h" declline="74" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="group__logging__api_1gac5d48d0826af20ccbcfefcae52dab9df" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void logging_set_level</definition>
+        <argsstring>(osusat_slog_level_t level)</argsstring>
+        <name>logging_set_level</name>
+        <param>
+          <type><ref refid="group__osusat__slog__types_1gafe0f1801f6e3827f06165e284313814b" kindref="member">osusat_slog_level_t</ref></type>
+          <declname>level</declname>
+        </param>
+        <briefdescription>
+<para>Change the minimum log level at runtime. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Useful for debugging, can be called via command handler.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">level</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>New minimum log level. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/logging.h" line="83" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/logging.c" bodystart="198" bodyend="201" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/logging.h" declline="83" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__logging__api_1ga68313b2800456508351fdf21c8685fbf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t logging_pending_count</definition>
+        <argsstring>(void)</argsstring>
+        <name>logging_pending_count</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Get number of pending log entries. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Approximate count of buffered logs. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/logging.h" line="90" column="8" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/logging.c" bodystart="203" bodyend="203" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/logging.h" declline="90" declcolumn="8"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>External interface for the logging service. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

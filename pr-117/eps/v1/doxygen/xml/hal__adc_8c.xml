@@ -1,0 +1,125 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="hal__adc_8c" kind="file" language="C++">
+    <compoundname>hal_adc.c</compoundname>
+    <includes refid="hal__adc_8h" local="yes">hal_adc.h</includes>
+    <includes local="yes">stm32l4xx_hal.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_adc.c</label>
+        <link refid="hal__adc_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>hal_adc.h</label>
+        <link refid="hal__adc_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>stdint.h</label>
+      </node>
+      <node id="4">
+        <label>stm32l4xx_hal.h</label>
+      </node>
+    </incdepgraph>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="hal__adc_8c_1a602abb8ec84dcb3b6f854a738310ea46" prot="public" static="no">
+        <name>ADC_BUFFER_SIZE</name>
+        <initializer>11</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_adc.c" line="11" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_adc.c" bodystart="11" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="hal__adc_8c_1acd9221f1aa19aebfe0b744947f2daf49" prot="public" static="no" extern="yes" mutable="no">
+        <type><ref refid="structADC__HandleTypeDef" kindref="compound">ADC_HandleTypeDef</ref></type>
+        <definition>ADC_HandleTypeDef hadc2</definition>
+        <argsstring></argsstring>
+        <name>hadc2</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_adc.c" line="9" column="26" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Core/Src/adc.c" bodystart="27" bodyend="-1" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_adc.c" declline="9" declcolumn="26"/>
+      </memberdef>
+      <memberdef kind="variable" id="hal__adc_8c_1aa9dde8d1f67d9678deab338d5c8cc709" prot="public" static="yes" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t adc_buffer[ADC_BUFFER_SIZE]</definition>
+        <argsstring>[ADC_BUFFER_SIZE]</argsstring>
+        <name>adc_buffer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_adc.c" line="12" column="17" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_adc.c" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="hal__adc_8c_1a57c4a7285c48a694470efbd15394c56c" prot="public" static="yes" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t adc_initialized</definition>
+        <argsstring></argsstring>
+        <name>adc_initialized</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_adc.c" line="13" column="16" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_adc.c" bodystart="13" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <member refid="group__adc__api_1ga81b32a5bbfb422b51862d59fe2a33ccd" kind="function"><name>hal_adc_init</name></member>
+      <member refid="group__adc__api_1ga4e6e34bb10795f8866a932879948804c" kind="function"><name>hal_adc_read</name></member>
+    </sectiondef>
+    <briefdescription>
+<para>HAL driver for ADC. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="hal__adc_8h" kindref="compound">hal_adc.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;stm32l4xx_hal.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="structADC__HandleTypeDef" kindref="compound">ADC_HandleTypeDef</ref><sp/><ref refid="hal__adc_8c_1acd9221f1aa19aebfe0b744947f2daf49" kindref="member">hadc2</ref>;</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ADC_BUFFER_SIZE<sp/>11</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>uint16_t<sp/>adc_buffer[<ref refid="hal__adc_8c_1a602abb8ec84dcb3b6f854a738310ea46" kindref="member">ADC_BUFFER_SIZE</ref>];</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>uint8_t<sp/>adc_initialized<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__adc__api_1ga81b32a5bbfb422b51862d59fe2a33ccd" kindref="member">hal_adc_init</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(adc_initialized)<sp/>{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Start<sp/>circular<sp/>DMA<sp/>regular<sp/>conversions<sp/>for<sp/>ADC2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__ADC__Exported__Functions__Group2_1ga7c3ef5532dddebe7fd76bb8f589d11fd" kindref="member">HAL_ADC_Start_DMA</ref>(&amp;<ref refid="hal__adc_8c_1acd9221f1aa19aebfe0b744947f2daf49" kindref="member">hadc2</ref>,<sp/>(uint32_t*)adc_buffer,<sp/><ref refid="hal__adc_8c_1a602abb8ec84dcb3b6f854a738310ea46" kindref="member">ADC_BUFFER_SIZE</ref>);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>adc_initialized<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal">uint16_t<sp/><ref refid="group__adc__api_1ga4e6e34bb10795f8866a932879948804c" kindref="member">hal_adc_read</ref>(<ref refid="group__adc__types_1gaafc4060027875f8fe46242b0656d7814" kindref="member">adc_channel_t</ref><sp/>channel)<sp/>{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!adc_initialized)<sp/>{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__adc__api_1ga81b32a5bbfb422b51862d59fe2a33ccd" kindref="member">hal_adc_init</ref>();</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(channel<sp/>&gt;=<sp/><ref refid="group__adc__types_1ggaafc4060027875f8fe46242b0656d7814abfe49e087a8e8e4844dff47acdaf7e97" kindref="member">ADC_CHANNEL_MAX</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>adc_buffer[channel];</highlight></codeline>
+<codeline lineno="32"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_adc.c"/>
+  </compounddef>
+</doxygen>
