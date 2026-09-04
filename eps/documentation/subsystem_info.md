@@ -6,9 +6,9 @@
 
 - Version: 1
 - Author: Ethan Eggert
-- Approver: 
-- Last Revised date: 07/5/2026
-- Approval Status: Unapproved
+- Approver: eps-lead
+- Last Revised date: 07/17/2026
+- Approval Status: Approved
 
 # Background and context
 
