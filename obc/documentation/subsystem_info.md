@@ -4,10 +4,10 @@
 
 ## Document Control
 
-- Version: 1
+- Version: 2
 - Author: Ethan Eggert
 - Approver: 
-- Last Revised date: 07/5/2026
+- Last Revised date: 09/14/2026
 - Approval Status: Unapproved
 
 # Background and context
@@ -59,6 +59,7 @@ The on-board computer (OBC) subsystem handles main system control, managing the 
 
 # Scope and deliverables
 
+## Revision 1 Deliverables (v1r1)
 
 | Deliverable | Description |
 | :---- | :---- |
@@ -70,6 +71,17 @@ The on-board computer (OBC) subsystem handles main system control, managing the 
 | Command implementations | Software functionality that allows the state machine to actually execute actions on other system boards |
 | Test harness and software tests (throughout project) | A testing framework that allows OBC testing to occur without the other actual subsystems, by mocking subsystems in software so the OBC can run in a dummy mode as if they were present |
 | Software dependency injection framework (throughout project) | A DI framework that allows rapid creation and swapping of components, so that if a communications or payload board's architecture or pinout changes, swappable components can be loaded at boot time |
+
+## Revision 2 Deliverables (v2r1)
+
+| Deliverable | Description |
+| :---- | :---- |
+| OBC v2 Scoping & Requirements | Audit OBC v1 performance and hardware/firmware limitations, establish comprehensive design requirements, and update state machine specifications for v2. |
+| OBC v2 Hardware Schematic | Design the hardware schematic for OBC v2, including updated MCU/co-processor, memory interfaces, hardware watchdogs, power filtering, and IBC bus connections. |
+| OBC v2 PCB Layout & Manufacturing | Produce the PCB layout, routing, layer stackup, DFM checks, and manufacturing package for the OBC v2 board. |
+| OBC v2 Firmware Services & State Machine | Implement modular firmware services, state machine transitions, enhanced health probes, safe mode recovery, and ground station commands for v2. |
+| OBC v2 Test Harness & HITL Mocking Framework | Expand the unit test harness, continuous integration tests, and HITL mocks to simulate subsystem communication for v2 validation. |
+| OBC v2 System Integration & Testing | Perform hardware-in-the-loop system integration of OBC v2 with the backplane, EPS, ADCS, Payload, and Comms subsystems. |
 
 # Resources
 
@@ -85,6 +97,15 @@ The on-board computer (OBC) subsystem handles main system control, managing the 
 - [X] Implement and test software functionality
 - [X] Test on real hardware
 - [X] Integrate with system
+
+# Next steps (v2r1)
+
+- [ ] Scope OBC v2 hardware and firmware requirements based on v1 evaluation
+- [ ] Design OBC v2 hardware schematic
+- [ ] Design OBC v2 PCB layout and generate manufacturing packages
+- [ ] Refactor OBC firmware services and state machine logic
+- [ ] Expand test harness and HITL mock framework for v2 interfaces
+- [ ] Integrate OBC v2 with system backplane and validate operation
 
 # OBC Messaging Standard
 
