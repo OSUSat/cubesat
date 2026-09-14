@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="structfault__list__response__t" kind="struct" language="C++" prot="public">
+    <compoundname>fault_list_response_t</compoundname>
+    <includes refid="redundancy__manager_8h" local="no">redundancy_manager.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structfault__list__response__t_1a260b01639e4de9779a8bb8fc9ca1ea6c" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t fault_list_response_t::total_faults</definition>
+        <argsstring></argsstring>
+        <name>total_faults</name>
+        <qualifiedname>fault_list_response_t::total_faults</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Total number of active faults </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/redundancy_manager.h" line="305" column="14" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/redundancy_manager.h" bodystart="305" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structfault__list__response__t_1a46d40627c96d16453db7b4fd66310d35" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t fault_list_response_t::chunk_index</definition>
+        <argsstring></argsstring>
+        <name>chunk_index</name>
+        <qualifiedname>fault_list_response_t::chunk_index</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Which chunk this is (0-based) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/redundancy_manager.h" line="306" column="14" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/redundancy_manager.h" bodystart="306" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structfault__list__response__t_1a8162f6ba3904cf2a7950bb51c4ccc527" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t fault_list_response_t::faults_in_chunk</definition>
+        <argsstring></argsstring>
+        <name>faults_in_chunk</name>
+        <qualifiedname>fault_list_response_t::faults_in_chunk</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Number of faults in this response </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/redundancy_manager.h" line="307" column="14" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/redundancy_manager.h" bodystart="307" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structfault__list__response__t_1a88481254312f7c82ce7960bb7038d2a4" prot="public" static="no" mutable="no">
+        <type><ref refid="structfault__t" kindref="compound">fault_t</ref></type>
+        <definition>fault_t fault_list_response_t::faults[4]</definition>
+        <argsstring>[4]</argsstring>
+        <name>faults</name>
+        <qualifiedname>fault_list_response_t::faults</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Up to 4 faults per response </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/redundancy_manager.h" line="308" column="13" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/redundancy_manager.h" bodystart="308" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Response payload for fault list queries. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Contains a subset of active faults. May require multiple events for complete fault list. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>fault_list_response_t</label>
+        <link refid="structfault__list__response__t"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>faults</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>fault_t</label>
+        <link refid="structfault__t"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/redundancy_manager.h" line="304" column="1" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/redundancy_manager.h" bodystart="304" bodyend="309"/>
+    <listofallmembers>
+      <member refid="structfault__list__response__t_1a46d40627c96d16453db7b4fd66310d35" prot="public" virt="non-virtual"><scope>fault_list_response_t</scope><name>chunk_index</name></member>
+      <member refid="structfault__list__response__t_1a88481254312f7c82ce7960bb7038d2a4" prot="public" virt="non-virtual"><scope>fault_list_response_t</scope><name>faults</name></member>
+      <member refid="structfault__list__response__t_1a8162f6ba3904cf2a7950bb51c4ccc527" prot="public" virt="non-virtual"><scope>fault_list_response_t</scope><name>faults_in_chunk</name></member>
+      <member refid="structfault__list__response__t_1a260b01639e4de9779a8bb8fc9ca1ea6c" prot="public" virt="non-virtual"><scope>fault_list_response_t</scope><name>total_faults</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,1379 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="group__ADC__Private__Macros" kind="group">
+    <compoundname>ADC_Private_Macros</compoundname>
+    <title>ADC Private Macros</title>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="group__ADC__Private__Macros_1gae2da95074db4dd0418c1dd1f13ad7970" prot="public" static="no">
+        <name>ADC_GET_RESOLUTION</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer>  (LL_ADC_GetResolution((__HANDLE__)-&gt;Instance))</initializer>
+        <briefdescription>
+<para>Return resolution bits in CFGR register RES[1:0] field. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ADC handle </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>Value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>of bitfield RES in CFGR register. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" line="968" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" bodystart="968" bodyend="969"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ADC__Private__Macros_1gac7ab87a3ab932eed1b3ac5faad4e3aa9" prot="public" static="no">
+        <name>ADC_CLEAR_ERRORCODE</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer>((__HANDLE__)-&gt;ErrorCode = <ref refid="group__ADC__Error__Code_1ga93b4576d46ee0f8c53b7d69f39778e38" kindref="member">HAL_ADC_ERROR_NONE</ref>)</initializer>
+        <briefdescription>
+<para>Clear ADC error code (set it to no error code &quot;HAL_ADC_ERROR_NONE&quot;). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ADC handle </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" line="976" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" bodystart="976" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ADC__Private__Macros_1gafe3a7a04ff078c62ae98b19403f696c7" prot="public" static="no">
+        <name>ADC_IS_ENABLE</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer>  ((((((__HANDLE__)-&gt;Instance-&gt;CR) &amp; (<ref refid="group__Peripheral__Registers__Bits__Definition_1ga26fe09dfd6969dd95591942e80cc3d2b" kindref="member">ADC_CR_ADEN</ref> | <ref refid="group__Peripheral__Registers__Bits__Definition_1gad99494f414a25f32a5f00ea39ea2150a" kindref="member">ADC_CR_ADDIS</ref>)) == <ref refid="group__Peripheral__Registers__Bits__Definition_1ga26fe09dfd6969dd95591942e80cc3d2b" kindref="member">ADC_CR_ADEN</ref>) &amp;&amp; \
+    ((((__HANDLE__)-&gt;Instance-&gt;ISR) &amp; <ref refid="group__ADC__flags__definition_1gaf1a4a140115121cc0ec1f821d2c8c199" kindref="member">ADC_FLAG_RDY</ref>) == <ref refid="group__ADC__flags__definition_1gaf1a4a140115121cc0ec1f821d2c8c199" kindref="member">ADC_FLAG_RDY</ref>)                  \
+   ) ? <ref refid="group__Exported__types_1gga89136caac2e14c55151f527ac02daaffab44c8101cc294c074709ec1b14211792" kindref="member">SET</ref> : <ref refid="group__Exported__types_1gga89136caac2e14c55151f527ac02daaffa589b7d94a3d91d145720e2fed0eb3a05" kindref="member">RESET</ref>)</initializer>
+        <briefdescription>
+<para>Verification of ADC state: enabled or disabled. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ADC handle </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(ADC enabled) or RESET (ADC disabled) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" line="983" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" bodystart="983" bodyend="986"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ADC__Private__Macros_1ga5df8ea820271c854b85617162b08c6d3" prot="public" static="no">
+        <name>ADC_IS_CONVERSION_ONGOING_REGULAR</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer>  (LL_ADC_REG_IsConversionOngoing((__HANDLE__)-&gt;Instance))</initializer>
+        <briefdescription>
+<para>Check if conversion is on going on regular group. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ADC handle </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>Value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>&quot;0&quot; (no conversion is on going) or value &quot;1&quot; (conversion is on going) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" line="993" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" bodystart="993" bodyend="994"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ADC__Private__Macros_1gaaf93e91b164d4a220aae475eff82665f" prot="public" static="no">
+        <name>ADC_STATE_CLR_SET</name>
+        <initializer><ref refid="group__Exported__macros_1ga6553c99f510c3bab8cc0a91602053247" kindref="member">MODIFY_REG</ref></initializer>
+        <briefdescription>
+<para>Simultaneously clear and set specific bits of the handle State. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para><ref refid="group__ADC__Private__Macros_1gaaf93e91b164d4a220aae475eff82665f" kindref="member">ADC_STATE_CLR_SET()</ref> macro is merely aliased to generic macro <ref refid="group__Exported__macros_1ga6553c99f510c3bab8cc0a91602053247" kindref="member">MODIFY_REG()</ref>, the first parameter is the ADC handle State, the second parameter is the bit field to clear, the third and last parameter is the bit field to set. </para>
+</simplesect>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" line="1003" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" bodystart="1003" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ADC__Private__Macros_1ga485c12f57d082232da8e219ae6b4f44b" prot="public" static="no">
+        <name>IS_ADC_RANGE</name>
+        <param><defname>__RESOLUTION__</defname></param>
+        <param><defname>__ADC_VALUE__</defname></param>
+        <initializer>  ((__ADC_VALUE__) &lt;= __LL_ADC_DIGITAL_SCALE(__RESOLUTION__))</initializer>
+        <briefdescription>
+<para>Verify that a given value is aligned with the ADC resolution range. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__RESOLUTION__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ADC resolution (12, 10, 8 or 6 bits). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>__ADC_VALUE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>value checked against the resolution. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>ADC_VALUE</bold> in line with <bold>RESOLUTION</bold>) or RESET (<bold>ADC_VALUE</bold> not in line with <bold>RESOLUTION</bold>) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" line="1011" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" bodystart="1011" bodyend="1012"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ADC__Private__Macros_1ga4d294f9233f769141602ad28f5934695" prot="public" static="no">
+        <name>IS_ADC_REGULAR_NB_CONV</name>
+        <param><defname>__LENGTH__</defname></param>
+        <initializer>(((__LENGTH__) &gt;= (1UL)) &amp;&amp; ((__LENGTH__) &lt;= (16UL)))</initializer>
+        <briefdescription>
+<para>Verify the length of the scheduled regular conversions group. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__LENGTH__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>number of programmed conversions. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>LENGTH</bold> is within the maximum number of possible programmable regular conversions) or RESET (<bold>LENGTH</bold> is null or too large) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" line="1020" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" bodystart="1020" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ADC__Private__Macros_1ga5883ebe5aa1b4424a532439dbb2e9428" prot="public" static="no">
+        <name>IS_ADC_REGULAR_DISCONT_NUMBER</name>
+        <param><defname>NUMBER</defname></param>
+        <initializer>(((NUMBER) &gt;= (1UL)) &amp;&amp; ((NUMBER) &lt;= (8UL)))</initializer>
+        <briefdescription>
+<para>Verify the number of scheduled regular conversions in discontinuous mode. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>NUMBER</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>number of scheduled regular conversions in discontinuous mode. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(NUMBER is within the maximum number of regular conversions in discontinuous mode) or RESET (NUMBER is null or too large) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" line="1029" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" bodystart="1029" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ADC__Private__Macros_1ga7118e43c49043f69e1f5a9c0cb9838ba" prot="public" static="no">
+        <name>IS_ADC_CLOCKPRESCALER</name>
+        <param><defname>__ADC_CLOCK__</defname></param>
+        <initializer>                                              (((__ADC_CLOCK__) == <ref refid="group__ADC__HAL__EC__COMMON__CLOCK__SOURCE_1ga82b23f1d4c415971ce7339b5484c89e5" kindref="member">ADC_CLOCK_SYNC_PCLK_DIV1</ref>) || \
+                                              ((__ADC_CLOCK__) == <ref refid="group__ADC__HAL__EC__COMMON__CLOCK__SOURCE_1ga71571b183aa6d0ddbaeef8a1da11d00a" kindref="member">ADC_CLOCK_SYNC_PCLK_DIV2</ref>) || \
+                                              ((__ADC_CLOCK__) == <ref refid="group__ADC__HAL__EC__COMMON__CLOCK__SOURCE_1ga41b6a6d1cdf7806ec1e5790fc7fdc651" kindref="member">ADC_CLOCK_SYNC_PCLK_DIV4</ref>) || \
+                                              ((__ADC_CLOCK__) == <ref refid="group__ADC__HAL__EC__COMMON__CLOCK__SOURCE_1ga092c0277fd6db9b905d229c9f8dda8ab" kindref="member">ADC_CLOCK_ASYNC_DIV1</ref>)     || \
+                                              ((__ADC_CLOCK__) == <ref refid="group__ADC__HAL__EC__COMMON__CLOCK__SOURCE_1gacf4ae9c70dd75168acf17fbce10af8b8" kindref="member">ADC_CLOCK_ASYNC_DIV2</ref>)     || \
+                                              ((__ADC_CLOCK__) == <ref refid="group__ADC__HAL__EC__COMMON__CLOCK__SOURCE_1ga5fb738b8222dfdbceb02a0ad041f5da5" kindref="member">ADC_CLOCK_ASYNC_DIV4</ref>)     || \
+                                              ((__ADC_CLOCK__) == <ref refid="group__ADC__HAL__EC__COMMON__CLOCK__SOURCE_1ga5f601e9eebdb8cdede55795569afba73" kindref="member">ADC_CLOCK_ASYNC_DIV6</ref>)     || \
+                                              ((__ADC_CLOCK__) == <ref refid="group__ADC__HAL__EC__COMMON__CLOCK__SOURCE_1ga7b2f8fab64f09ff0b3f1417c35277cba" kindref="member">ADC_CLOCK_ASYNC_DIV8</ref>)     || \
+                                              ((__ADC_CLOCK__) == <ref refid="group__ADC__HAL__EC__COMMON__CLOCK__SOURCE_1ga02e1e376967ec71b7de92fd3396ee0c7" kindref="member">ADC_CLOCK_ASYNC_DIV10</ref>)    || \
+                                              ((__ADC_CLOCK__) == <ref refid="group__ADC__HAL__EC__COMMON__CLOCK__SOURCE_1ga4dcf1f94a3bb0d0d302c5d0e036e9be2" kindref="member">ADC_CLOCK_ASYNC_DIV12</ref>)    || \
+                                              ((__ADC_CLOCK__) == <ref refid="group__ADC__HAL__EC__COMMON__CLOCK__SOURCE_1gacbc0428c7aedfe765753b1730aaab760" kindref="member">ADC_CLOCK_ASYNC_DIV16</ref>)    || \
+                                              ((__ADC_CLOCK__) == <ref refid="group__ADC__HAL__EC__COMMON__CLOCK__SOURCE_1gafe248b4ca392b46aa17cf3364ed1ab26" kindref="member">ADC_CLOCK_ASYNC_DIV32</ref>)    || \
+                                              ((__ADC_CLOCK__) == <ref refid="group__ADC__HAL__EC__COMMON__CLOCK__SOURCE_1gafc1ea6ea65684834d93104333f5560e4" kindref="member">ADC_CLOCK_ASYNC_DIV64</ref>)    || \
+                                              ((__ADC_CLOCK__) == <ref refid="group__ADC__HAL__EC__COMMON__CLOCK__SOURCE_1ga833ca0a88cdca2c7c37a7fbf02450bf5" kindref="member">ADC_CLOCK_ASYNC_DIV128</ref>)   || \
+                                              ((__ADC_CLOCK__) == <ref refid="group__ADC__HAL__EC__COMMON__CLOCK__SOURCE_1ga5735f0862aff35cbc195bdf316b286ee" kindref="member">ADC_CLOCK_ASYNC_DIV256</ref>) )</initializer>
+        <briefdescription>
+<para>Verify the ADC clock setting. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__ADC_CLOCK__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>programmed ADC clock. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>ADC_CLOCK</bold> is a valid value) or RESET (<bold>ADC_CLOCK</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" line="1037" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" bodystart="1037" bodyend="1051"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ADC__Private__Macros_1gaf59f31238af51285241d76a0ff60b61e" prot="public" static="no">
+        <name>IS_ADC_RESOLUTION</name>
+        <param><defname>__RESOLUTION__</defname></param>
+        <initializer>                                           (((__RESOLUTION__) == <ref refid="group__ADC__HAL__EC__RESOLUTION_1ga49c8408a1cdbf97bbf29234c3770fa74" kindref="member">ADC_RESOLUTION_12B</ref>) || \
+                                           ((__RESOLUTION__) == <ref refid="group__ADC__HAL__EC__RESOLUTION_1ga91289e269eb3080d25301909c0f417e5" kindref="member">ADC_RESOLUTION_10B</ref>) || \
+                                           ((__RESOLUTION__) == <ref refid="group__ADC__HAL__EC__RESOLUTION_1ga39925af93719877bdcc5664e4b95e69a" kindref="member">ADC_RESOLUTION_8B</ref>)  || \
+                                           ((__RESOLUTION__) == <ref refid="group__ADC__HAL__EC__RESOLUTION_1ga24c5226e05db78b4065f2f187d497b04" kindref="member">ADC_RESOLUTION_6B</ref>)    )</initializer>
+        <briefdescription>
+<para>Verify the ADC resolution setting. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__RESOLUTION__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>programmed ADC resolution. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>RESOLUTION</bold> is a valid value) or RESET (<bold>RESOLUTION</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" line="1058" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" bodystart="1058" bodyend="1061"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ADC__Private__Macros_1gaade9a451653fbda3a2d75da91f8821f4" prot="public" static="no">
+        <name>IS_ADC_RESOLUTION_8_6_BITS</name>
+        <param><defname>__RESOLUTION__</defname></param>
+        <initializer>                                                    (((__RESOLUTION__) == <ref refid="group__ADC__HAL__EC__RESOLUTION_1ga39925af93719877bdcc5664e4b95e69a" kindref="member">ADC_RESOLUTION_8B</ref>) || \
+                                                    ((__RESOLUTION__) == <ref refid="group__ADC__HAL__EC__RESOLUTION_1ga24c5226e05db78b4065f2f187d497b04" kindref="member">ADC_RESOLUTION_6B</ref>)   )</initializer>
+        <briefdescription>
+<para>Verify the ADC resolution setting when limited to 6 or 8 bits. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__RESOLUTION__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>programmed ADC resolution when limited to 6 or 8 bits. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>RESOLUTION</bold> is a valid value) or RESET (<bold>RESOLUTION</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" line="1068" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" bodystart="1068" bodyend="1069"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ADC__Private__Macros_1ga54970a6455876984379854bf0cab8ddf" prot="public" static="no">
+        <name>IS_ADC_DATA_ALIGN</name>
+        <param><defname>__ALIGN__</defname></param>
+        <initializer>                                      (((__ALIGN__) == <ref refid="group__ADC__HAL__EC__DATA__ALIGN_1gafed5c0d327ad6d2cc0960f7943beb265" kindref="member">ADC_DATAALIGN_RIGHT</ref>) || \
+                                      ((__ALIGN__) == <ref refid="group__ADC__HAL__EC__DATA__ALIGN_1ga8afeead661c1ffbc27a5405a254d60ba" kindref="member">ADC_DATAALIGN_LEFT</ref>)    )</initializer>
+        <briefdescription>
+<para>Verify the ADC converted data alignment. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__ALIGN__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>programmed ADC converted data alignment. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>ALIGN</bold> is a valid value) or RESET (<bold>ALIGN</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" line="1076" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" bodystart="1076" bodyend="1077"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ADC__Private__Macros_1gab91c46d2f017e319598f47c1f0cf52aa" prot="public" static="no">
+        <name>IS_ADC_SCAN_MODE</name>
+        <param><defname>__SCAN_MODE__</defname></param>
+        <initializer>                                         (((__SCAN_MODE__) == <ref refid="group__ADC__Scan__mode_1ga6e269121b26e999155863ce52c522883" kindref="member">ADC_SCAN_DISABLE</ref>) || \
+                                         ((__SCAN_MODE__) == <ref refid="group__ADC__Scan__mode_1ga1e109b8619961829ff2bc368c1725382" kindref="member">ADC_SCAN_ENABLE</ref>)    )</initializer>
+        <briefdescription>
+<para>Verify the ADC scan mode. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__SCAN_MODE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>programmed ADC scan mode. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>SCAN_MODE</bold> is valid) or RESET (<bold>SCAN_MODE</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" line="1084" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" bodystart="1084" bodyend="1085"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ADC__Private__Macros_1ga7d7bb6f7b1c445c392d64e54b75741b7" prot="public" static="no">
+        <name>IS_ADC_EXTTRIG_EDGE</name>
+        <param><defname>__EDGE__</defname></param>
+        <initializer>                                       (((__EDGE__) == <ref refid="group__ADC__regular__external__trigger__edge_1gab2e3a19c05441925f9b9a482238994ac" kindref="member">ADC_EXTERNALTRIGCONVEDGE_NONE</ref>)         || \
+                                       ((__EDGE__) == <ref refid="group__ADC__regular__external__trigger__edge_1ga0aaa4e876de630733ca4ca4116b9608e" kindref="member">ADC_EXTERNALTRIGCONVEDGE_RISING</ref>)       || \
+                                       ((__EDGE__) == <ref refid="group__ADC__regular__external__trigger__edge_1ga15975c01b6a514f346272a1373239c54" kindref="member">ADC_EXTERNALTRIGCONVEDGE_FALLING</ref>)      || \
+                                       ((__EDGE__) == <ref refid="group__ADC__regular__external__trigger__edge_1gab4221f5f52b5f75dc8cea701bb57be35" kindref="member">ADC_EXTERNALTRIGCONVEDGE_RISINGFALLING</ref>)  )</initializer>
+        <briefdescription>
+<para>Verify the ADC edge trigger setting for regular group. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__EDGE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>programmed ADC edge trigger setting. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>EDGE</bold> is a valid value) or RESET (<bold>EDGE</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" line="1092" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" bodystart="1092" bodyend="1095"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ADC__Private__Macros_1ga45ff70b3db18ed6c5b5e335af2426220" prot="public" static="no">
+        <name>IS_ADC_EXTTRIG</name>
+        <param><defname>__HANDLE__</defname></param>
+        <param><defname>__REGTRIG__</defname></param>
+        <initializer>                                                 (((__REGTRIG__) == <ref refid="group__ADC__regular__external__trigger__source_1ga675c3b7d7e8ecccb6a22fd9af4466b49" kindref="member">ADC_EXTERNALTRIG_T1_CC1</ref>)   || \
+                                                 ((__REGTRIG__) == <ref refid="group__ADC__regular__external__trigger__source_1ga4eddfd5601687d3dc1088ff3ae6c9b34" kindref="member">ADC_EXTERNALTRIG_T1_CC2</ref>)   || \
+                                                 ((__REGTRIG__) == <ref refid="group__ADC__regular__external__trigger__source_1ga090438bcac0f33206bf0e0165f2c71ce" kindref="member">ADC_EXTERNALTRIG_T1_CC3</ref>)   || \
+                                                 ((__REGTRIG__) == <ref refid="group__ADC__regular__external__trigger__source_1gac6dc356899afe00c76d354cfea4ecfda" kindref="member">ADC_EXTERNALTRIG_T2_CC2</ref>)   || \
+                                                 ((__REGTRIG__) == <ref refid="group__ADC__regular__external__trigger__source_1ga763ad79d293f8eae7208b94a49b1de01" kindref="member">ADC_EXTERNALTRIG_T3_TRGO</ref>)  || \
+                                                 ((__REGTRIG__) == <ref refid="group__ADC__regular__external__trigger__source_1gaa72503069f3daddd3b54321d38148c43" kindref="member">ADC_EXTERNALTRIG_T4_CC4</ref>)   || \
+                                                 ((__REGTRIG__) == <ref refid="group__ADC__regular__external__trigger__source_1ga79c6ddcd5e158a6506da9fae010927d8" kindref="member">ADC_EXTERNALTRIG_EXT_IT11</ref>) || \
+                                                 ((__REGTRIG__) == <ref refid="group__ADC__regular__external__trigger__source_1ga0c2b0c3bf04b45736f04df50f67e3b80" kindref="member">ADC_EXTERNALTRIG_T8_TRGO</ref>)  || \
+                                                 ((__REGTRIG__) == <ref refid="group__ADC__regular__external__trigger__source_1ga12b4fbf934390e10f1a4f7183c03e4d6" kindref="member">ADC_EXTERNALTRIG_T8_TRGO2</ref>) || \
+                                                 ((__REGTRIG__) == <ref refid="group__ADC__regular__external__trigger__source_1ga4cf45a5a339ab8342984fabb268a91b8" kindref="member">ADC_EXTERNALTRIG_T1_TRGO</ref>)  || \
+                                                 ((__REGTRIG__) == <ref refid="group__ADC__regular__external__trigger__source_1ga8d7fd6a426a23de3361426448b7f5d49" kindref="member">ADC_EXTERNALTRIG_T1_TRGO2</ref>) || \
+                                                 ((__REGTRIG__) == <ref refid="group__ADC__regular__external__trigger__source_1gaaf414b3716e97dff957fa9dabe691ceb" kindref="member">ADC_EXTERNALTRIG_T2_TRGO</ref>)  || \
+                                                 ((__REGTRIG__) == <ref refid="group__ADC__regular__external__trigger__source_1gacbde6cb476c93a74fa2203884af33c06" kindref="member">ADC_EXTERNALTRIG_T4_TRGO</ref>)  || \
+                                                 ((__REGTRIG__) == <ref refid="group__ADC__regular__external__trigger__source_1ga8494b127c514467b790fef9d5be6f2ac" kindref="member">ADC_EXTERNALTRIG_T6_TRGO</ref>)  || \
+                                                 ((__REGTRIG__) == <ref refid="group__ADC__regular__external__trigger__source_1ga1c2905c00d2c282336eb21c25d9f1f3c" kindref="member">ADC_EXTERNALTRIG_T15_TRGO</ref>) || \
+                                                 ((__REGTRIG__) == <ref refid="group__ADC__regular__external__trigger__source_1gab18f8f69bd5b45c79b62a28df2f731cd" kindref="member">ADC_EXTERNALTRIG_T3_CC4</ref>)   || \
+                                                 ((__REGTRIG__) == <ref refid="group__ADC__regular__external__trigger__source_1ga349ec6a1c2a362fba718cbfd068e50dc" kindref="member">ADC_SOFTWARE_START</ref>)           )</initializer>
+        <briefdescription>
+<para>Verify the ADC regular conversions external trigger. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ADC handle </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>__REGTRIG__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>programmed ADC regular conversions external trigger. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>REGTRIG</bold> is a valid value) or RESET (<bold>REGTRIG</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" line="1103" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" bodystart="1103" bodyend="1119"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ADC__Private__Macros_1gad338383404104dbaaeb11dd35c307c50" prot="public" static="no">
+        <name>IS_ADC_EOC_SELECTION</name>
+        <param><defname>__EOC_SELECTION__</defname></param>
+        <initializer>                                                 (((__EOC_SELECTION__) == <ref refid="group__ADC__EOCSelection_1ga4c455483d74c1be899d4b2e8f45f202b" kindref="member">ADC_EOC_SINGLE_CONV</ref>)    || \
+                                                 ((__EOC_SELECTION__) == <ref refid="group__ADC__EOCSelection_1ga6c71ff64c9ecc9ba19ac088009f36cd8" kindref="member">ADC_EOC_SEQ_CONV</ref>)  )</initializer>
+        <briefdescription>
+<para>Verify the ADC regular conversions check for converted data availability. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__EOC_SELECTION__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>converted data availability check. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>EOC_SELECTION</bold> is a valid value) or RESET (<bold>EOC_SELECTION</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" line="1126" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" bodystart="1126" bodyend="1127"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ADC__Private__Macros_1ga98356ff17378f4a8f7136d931bda3337" prot="public" static="no">
+        <name>IS_ADC_OVERRUN</name>
+        <param><defname>__OVR__</defname></param>
+        <initializer>                                 (((__OVR__) == <ref refid="group__ADC__HAL__EC__REG__OVR__DATA__BEHAVIOR_1ga5e6fdbe9cab7436c3bf4551944c5c04d" kindref="member">ADC_OVR_DATA_PRESERVED</ref>)  || \
+                                 ((__OVR__) == <ref refid="group__ADC__HAL__EC__REG__OVR__DATA__BEHAVIOR_1gaeafc365762736ea8b5d73ba8c163548a" kindref="member">ADC_OVR_DATA_OVERWRITTEN</ref>)  )</initializer>
+        <briefdescription>
+<para>Verify the ADC regular conversions overrun handling. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__OVR__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ADC regular conversions overrun handling. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>OVR</bold> is a valid value) or RESET (<bold>OVR</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" line="1134" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" bodystart="1134" bodyend="1135"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ADC__Private__Macros_1gac8f170c8a85df2517d8441f4d41c0341" prot="public" static="no">
+        <name>IS_ADC_SAMPLE_TIME</name>
+        <param><defname>__TIME__</defname></param>
+        <initializer>                                      (((__TIME__) == <ref refid="group__ADC__HAL__EC__CHANNEL__SAMPLINGTIME_1gadd158f0b924bd3e84b3571aa3afd5a04" kindref="member">ADC_SAMPLETIME_2CYCLES_5</ref>)   || \
+                                      ((__TIME__) == <ref refid="group__ADC__HAL__EC__CHANNEL__SAMPLINGTIME_1gaabd7a273d843f02be0a6dbfe712fa59b" kindref="member">ADC_SAMPLETIME_6CYCLES_5</ref>)   || \
+                                      ((__TIME__) == <ref refid="group__ADC__HAL__EC__CHANNEL__SAMPLINGTIME_1ga4ec313f4ced6fff99856fe0acf97e83d" kindref="member">ADC_SAMPLETIME_12CYCLES_5</ref>)  || \
+                                      ((__TIME__) == <ref refid="group__ADC__HAL__EC__CHANNEL__SAMPLINGTIME_1gaa174ef6a01bfcfac268abbf1acd666d4" kindref="member">ADC_SAMPLETIME_24CYCLES_5</ref>)  || \
+                                      ((__TIME__) == <ref refid="group__ADC__HAL__EC__CHANNEL__SAMPLINGTIME_1ga327b080bb0ed6865057be04c9a0188cd" kindref="member">ADC_SAMPLETIME_47CYCLES_5</ref>)  || \
+                                      ((__TIME__) == <ref refid="group__ADC__HAL__EC__CHANNEL__SAMPLINGTIME_1gaa9ead4cac32fec831090e507d2dc8f04" kindref="member">ADC_SAMPLETIME_92CYCLES_5</ref>)  || \
+                                      ((__TIME__) == <ref refid="group__ADC__HAL__EC__CHANNEL__SAMPLINGTIME_1ga9c8ef195740ae88df08196306c0d24bc" kindref="member">ADC_SAMPLETIME_247CYCLES_5</ref>) || \
+                                      ((__TIME__) == <ref refid="group__ADC__HAL__EC__CHANNEL__SAMPLINGTIME_1gaf6c21c0cb07c5dd457c520bbb0dcb935" kindref="member">ADC_SAMPLETIME_640CYCLES_5</ref>)   )</initializer>
+        <briefdescription>
+<para>Verify the ADC conversions sampling time. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__TIME__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ADC conversions sampling time. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>TIME</bold> is a valid value) or RESET (<bold>TIME</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" line="1153" column="10" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" bodystart="1153" bodyend="1160"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ADC__Private__Macros_1ga3867aaca9226684d9ba1693dd9131e2a" prot="public" static="no">
+        <name>IS_ADC_REGULAR_RANK</name>
+        <param><defname>__CHANNEL__</defname></param>
+        <initializer>                                          (((__CHANNEL__) == <ref refid="group__ADC__HAL__EC__REG__SEQ__RANKS_1gadf298d930c7a4f313ece62320dbd600c" kindref="member">ADC_REGULAR_RANK_1</ref> ) || \
+                                          ((__CHANNEL__) == <ref refid="group__ADC__HAL__EC__REG__SEQ__RANKS_1ga21f2593d1950de1b7f98770a21009826" kindref="member">ADC_REGULAR_RANK_2</ref> ) || \
+                                          ((__CHANNEL__) == <ref refid="group__ADC__HAL__EC__REG__SEQ__RANKS_1gadaab09acdc0504f6ed8a84d7de6170dc" kindref="member">ADC_REGULAR_RANK_3</ref> ) || \
+                                          ((__CHANNEL__) == <ref refid="group__ADC__HAL__EC__REG__SEQ__RANKS_1gae23fcbfa4f2a1c919038739cbcb57410" kindref="member">ADC_REGULAR_RANK_4</ref> ) || \
+                                          ((__CHANNEL__) == <ref refid="group__ADC__HAL__EC__REG__SEQ__RANKS_1ga288d36b6b6e483116ca423ee5709580e" kindref="member">ADC_REGULAR_RANK_5</ref> ) || \
+                                          ((__CHANNEL__) == <ref refid="group__ADC__HAL__EC__REG__SEQ__RANKS_1ga6636e3943689f2a196256c939b3aa5f5" kindref="member">ADC_REGULAR_RANK_6</ref> ) || \
+                                          ((__CHANNEL__) == <ref refid="group__ADC__HAL__EC__REG__SEQ__RANKS_1ga63bea206a722dd11460d09b619aa4145" kindref="member">ADC_REGULAR_RANK_7</ref> ) || \
+                                          ((__CHANNEL__) == <ref refid="group__ADC__HAL__EC__REG__SEQ__RANKS_1gab39e2e0fb73beec47d249a75a42b5293" kindref="member">ADC_REGULAR_RANK_8</ref> ) || \
+                                          ((__CHANNEL__) == <ref refid="group__ADC__HAL__EC__REG__SEQ__RANKS_1ga2df1ef58ff97a2a6946b4cc0978e9693" kindref="member">ADC_REGULAR_RANK_9</ref> ) || \
+                                          ((__CHANNEL__) == <ref refid="group__ADC__HAL__EC__REG__SEQ__RANKS_1gad969d11913f157d860cc3e8ea81d2bcf" kindref="member">ADC_REGULAR_RANK_10</ref>) || \
+                                          ((__CHANNEL__) == <ref refid="group__ADC__HAL__EC__REG__SEQ__RANKS_1gada79d07e1e30ef538ae3eb4d611d35a6" kindref="member">ADC_REGULAR_RANK_11</ref>) || \
+                                          ((__CHANNEL__) == <ref refid="group__ADC__HAL__EC__REG__SEQ__RANKS_1ga038fc7ee28205a62242e105ac4004931" kindref="member">ADC_REGULAR_RANK_12</ref>) || \
+                                          ((__CHANNEL__) == <ref refid="group__ADC__HAL__EC__REG__SEQ__RANKS_1gaf705597a827461af553a94766ca6e84b" kindref="member">ADC_REGULAR_RANK_13</ref>) || \
+                                          ((__CHANNEL__) == <ref refid="group__ADC__HAL__EC__REG__SEQ__RANKS_1gab062685d9e3235869566d82891f5842b" kindref="member">ADC_REGULAR_RANK_14</ref>) || \
+                                          ((__CHANNEL__) == <ref refid="group__ADC__HAL__EC__REG__SEQ__RANKS_1ga36d371d1ced7f233fdf59ffc67234b4d" kindref="member">ADC_REGULAR_RANK_15</ref>) || \
+                                          ((__CHANNEL__) == <ref refid="group__ADC__HAL__EC__REG__SEQ__RANKS_1ga85f2ea453f67b9a5aad74aa94b696adb" kindref="member">ADC_REGULAR_RANK_16</ref>)   )</initializer>
+        <briefdescription>
+<para>Verify the ADC regular channel setting. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__CHANNEL__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>programmed ADC regular channel. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>CHANNEL</bold> is valid) or RESET (<bold>CHANNEL</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" line="1168" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" bodystart="1168" bodyend="1183"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ADC__Private__Macros_1gae2da95074db4dd0418c1dd1f13ad7970" prot="public" static="no">
+        <name>ADC_GET_RESOLUTION</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer>  (LL_ADC_GetResolution((__HANDLE__)-&gt;Instance))</initializer>
+        <briefdescription>
+<para>Return resolution bits in CFGR register RES[1:0] field. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ADC handle </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>Value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>of bitfield RES in CFGR register. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_adc.h" line="968" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_adc.h" bodystart="968" bodyend="969"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ADC__Private__Macros_1gac7ab87a3ab932eed1b3ac5faad4e3aa9" prot="public" static="no">
+        <name>ADC_CLEAR_ERRORCODE</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer>((__HANDLE__)-&gt;ErrorCode = <ref refid="group__ADC__Error__Code_1ga93b4576d46ee0f8c53b7d69f39778e38" kindref="member">HAL_ADC_ERROR_NONE</ref>)</initializer>
+        <briefdescription>
+<para>Clear ADC error code (set it to no error code &quot;HAL_ADC_ERROR_NONE&quot;). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ADC handle </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_adc.h" line="976" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_adc.h" bodystart="976" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ADC__Private__Macros_1gafe3a7a04ff078c62ae98b19403f696c7" prot="public" static="no">
+        <name>ADC_IS_ENABLE</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer>  ((((((__HANDLE__)-&gt;Instance-&gt;CR) &amp; (<ref refid="group__Peripheral__Registers__Bits__Definition_1ga26fe09dfd6969dd95591942e80cc3d2b" kindref="member">ADC_CR_ADEN</ref> | <ref refid="group__Peripheral__Registers__Bits__Definition_1gad99494f414a25f32a5f00ea39ea2150a" kindref="member">ADC_CR_ADDIS</ref>)) == <ref refid="group__Peripheral__Registers__Bits__Definition_1ga26fe09dfd6969dd95591942e80cc3d2b" kindref="member">ADC_CR_ADEN</ref>) &amp;&amp; \
+    ((((__HANDLE__)-&gt;Instance-&gt;ISR) &amp; <ref refid="group__ADC__flags__definition_1gaf1a4a140115121cc0ec1f821d2c8c199" kindref="member">ADC_FLAG_RDY</ref>) == <ref refid="group__ADC__flags__definition_1gaf1a4a140115121cc0ec1f821d2c8c199" kindref="member">ADC_FLAG_RDY</ref>)                  \
+   ) ? <ref refid="group__Exported__types_1gga89136caac2e14c55151f527ac02daaffab44c8101cc294c074709ec1b14211792" kindref="member">SET</ref> : <ref refid="group__Exported__types_1gga89136caac2e14c55151f527ac02daaffa589b7d94a3d91d145720e2fed0eb3a05" kindref="member">RESET</ref>)</initializer>
+        <briefdescription>
+<para>Verification of ADC state: enabled or disabled. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ADC handle </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(ADC enabled) or RESET (ADC disabled) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_adc.h" line="983" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_adc.h" bodystart="983" bodyend="986"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ADC__Private__Macros_1ga5df8ea820271c854b85617162b08c6d3" prot="public" static="no">
+        <name>ADC_IS_CONVERSION_ONGOING_REGULAR</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer>  (LL_ADC_REG_IsConversionOngoing((__HANDLE__)-&gt;Instance))</initializer>
+        <briefdescription>
+<para>Check if conversion is on going on regular group. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ADC handle </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>Value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>&quot;0&quot; (no conversion is on going) or value &quot;1&quot; (conversion is on going) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_adc.h" line="993" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_adc.h" bodystart="993" bodyend="994"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ADC__Private__Macros_1gaaf93e91b164d4a220aae475eff82665f" prot="public" static="no">
+        <name>ADC_STATE_CLR_SET</name>
+        <initializer><ref refid="group__Exported__macros_1ga6553c99f510c3bab8cc0a91602053247" kindref="member">MODIFY_REG</ref></initializer>
+        <briefdescription>
+<para>Simultaneously clear and set specific bits of the handle State. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para><ref refid="group__ADC__Private__Macros_1gaaf93e91b164d4a220aae475eff82665f" kindref="member">ADC_STATE_CLR_SET()</ref> macro is merely aliased to generic macro <ref refid="group__Exported__macros_1ga6553c99f510c3bab8cc0a91602053247" kindref="member">MODIFY_REG()</ref>, the first parameter is the ADC handle State, the second parameter is the bit field to clear, the third and last parameter is the bit field to set. </para>
+</simplesect>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_adc.h" line="1003" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_adc.h" bodystart="1003" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ADC__Private__Macros_1ga485c12f57d082232da8e219ae6b4f44b" prot="public" static="no">
+        <name>IS_ADC_RANGE</name>
+        <param><defname>__RESOLUTION__</defname></param>
+        <param><defname>__ADC_VALUE__</defname></param>
+        <initializer>  ((__ADC_VALUE__) &lt;= __LL_ADC_DIGITAL_SCALE(__RESOLUTION__))</initializer>
+        <briefdescription>
+<para>Verify that a given value is aligned with the ADC resolution range. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__RESOLUTION__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ADC resolution (12, 10, 8 or 6 bits). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>__ADC_VALUE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>value checked against the resolution. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>ADC_VALUE</bold> in line with <bold>RESOLUTION</bold>) or RESET (<bold>ADC_VALUE</bold> not in line with <bold>RESOLUTION</bold>) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_adc.h" line="1011" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_adc.h" bodystart="1011" bodyend="1012"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ADC__Private__Macros_1ga4d294f9233f769141602ad28f5934695" prot="public" static="no">
+        <name>IS_ADC_REGULAR_NB_CONV</name>
+        <param><defname>__LENGTH__</defname></param>
+        <initializer>(((__LENGTH__) &gt;= (1UL)) &amp;&amp; ((__LENGTH__) &lt;= (16UL)))</initializer>
+        <briefdescription>
+<para>Verify the length of the scheduled regular conversions group. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__LENGTH__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>number of programmed conversions. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>LENGTH</bold> is within the maximum number of possible programmable regular conversions) or RESET (<bold>LENGTH</bold> is null or too large) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_adc.h" line="1020" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_adc.h" bodystart="1020" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ADC__Private__Macros_1ga5883ebe5aa1b4424a532439dbb2e9428" prot="public" static="no">
+        <name>IS_ADC_REGULAR_DISCONT_NUMBER</name>
+        <param><defname>NUMBER</defname></param>
+        <initializer>(((NUMBER) &gt;= (1UL)) &amp;&amp; ((NUMBER) &lt;= (8UL)))</initializer>
+        <briefdescription>
+<para>Verify the number of scheduled regular conversions in discontinuous mode. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>NUMBER</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>number of scheduled regular conversions in discontinuous mode. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(NUMBER is within the maximum number of regular conversions in discontinuous mode) or RESET (NUMBER is null or too large) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_adc.h" line="1029" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_adc.h" bodystart="1029" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ADC__Private__Macros_1ga7118e43c49043f69e1f5a9c0cb9838ba" prot="public" static="no">
+        <name>IS_ADC_CLOCKPRESCALER</name>
+        <param><defname>__ADC_CLOCK__</defname></param>
+        <initializer>                                              (((__ADC_CLOCK__) == <ref refid="group__ADC__HAL__EC__COMMON__CLOCK__SOURCE_1ga82b23f1d4c415971ce7339b5484c89e5" kindref="member">ADC_CLOCK_SYNC_PCLK_DIV1</ref>) || \
+                                              ((__ADC_CLOCK__) == <ref refid="group__ADC__HAL__EC__COMMON__CLOCK__SOURCE_1ga71571b183aa6d0ddbaeef8a1da11d00a" kindref="member">ADC_CLOCK_SYNC_PCLK_DIV2</ref>) || \
+                                              ((__ADC_CLOCK__) == <ref refid="group__ADC__HAL__EC__COMMON__CLOCK__SOURCE_1ga41b6a6d1cdf7806ec1e5790fc7fdc651" kindref="member">ADC_CLOCK_SYNC_PCLK_DIV4</ref>) || \
+                                              ((__ADC_CLOCK__) == <ref refid="group__ADC__HAL__EC__COMMON__CLOCK__SOURCE_1ga092c0277fd6db9b905d229c9f8dda8ab" kindref="member">ADC_CLOCK_ASYNC_DIV1</ref>)     || \
+                                              ((__ADC_CLOCK__) == <ref refid="group__ADC__HAL__EC__COMMON__CLOCK__SOURCE_1gacf4ae9c70dd75168acf17fbce10af8b8" kindref="member">ADC_CLOCK_ASYNC_DIV2</ref>)     || \
+                                              ((__ADC_CLOCK__) == <ref refid="group__ADC__HAL__EC__COMMON__CLOCK__SOURCE_1ga5fb738b8222dfdbceb02a0ad041f5da5" kindref="member">ADC_CLOCK_ASYNC_DIV4</ref>)     || \
+                                              ((__ADC_CLOCK__) == <ref refid="group__ADC__HAL__EC__COMMON__CLOCK__SOURCE_1ga5f601e9eebdb8cdede55795569afba73" kindref="member">ADC_CLOCK_ASYNC_DIV6</ref>)     || \
+                                              ((__ADC_CLOCK__) == <ref refid="group__ADC__HAL__EC__COMMON__CLOCK__SOURCE_1ga7b2f8fab64f09ff0b3f1417c35277cba" kindref="member">ADC_CLOCK_ASYNC_DIV8</ref>)     || \
+                                              ((__ADC_CLOCK__) == <ref refid="group__ADC__HAL__EC__COMMON__CLOCK__SOURCE_1ga02e1e376967ec71b7de92fd3396ee0c7" kindref="member">ADC_CLOCK_ASYNC_DIV10</ref>)    || \
+                                              ((__ADC_CLOCK__) == <ref refid="group__ADC__HAL__EC__COMMON__CLOCK__SOURCE_1ga4dcf1f94a3bb0d0d302c5d0e036e9be2" kindref="member">ADC_CLOCK_ASYNC_DIV12</ref>)    || \
+                                              ((__ADC_CLOCK__) == <ref refid="group__ADC__HAL__EC__COMMON__CLOCK__SOURCE_1gacbc0428c7aedfe765753b1730aaab760" kindref="member">ADC_CLOCK_ASYNC_DIV16</ref>)    || \
+                                              ((__ADC_CLOCK__) == <ref refid="group__ADC__HAL__EC__COMMON__CLOCK__SOURCE_1gafe248b4ca392b46aa17cf3364ed1ab26" kindref="member">ADC_CLOCK_ASYNC_DIV32</ref>)    || \
+                                              ((__ADC_CLOCK__) == <ref refid="group__ADC__HAL__EC__COMMON__CLOCK__SOURCE_1gafc1ea6ea65684834d93104333f5560e4" kindref="member">ADC_CLOCK_ASYNC_DIV64</ref>)    || \
+                                              ((__ADC_CLOCK__) == <ref refid="group__ADC__HAL__EC__COMMON__CLOCK__SOURCE_1ga833ca0a88cdca2c7c37a7fbf02450bf5" kindref="member">ADC_CLOCK_ASYNC_DIV128</ref>)   || \
+                                              ((__ADC_CLOCK__) == <ref refid="group__ADC__HAL__EC__COMMON__CLOCK__SOURCE_1ga5735f0862aff35cbc195bdf316b286ee" kindref="member">ADC_CLOCK_ASYNC_DIV256</ref>) )</initializer>
+        <briefdescription>
+<para>Verify the ADC clock setting. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__ADC_CLOCK__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>programmed ADC clock. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>ADC_CLOCK</bold> is a valid value) or RESET (<bold>ADC_CLOCK</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_adc.h" line="1037" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_adc.h" bodystart="1037" bodyend="1051"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ADC__Private__Macros_1gaf59f31238af51285241d76a0ff60b61e" prot="public" static="no">
+        <name>IS_ADC_RESOLUTION</name>
+        <param><defname>__RESOLUTION__</defname></param>
+        <initializer>                                           (((__RESOLUTION__) == <ref refid="group__ADC__HAL__EC__RESOLUTION_1ga49c8408a1cdbf97bbf29234c3770fa74" kindref="member">ADC_RESOLUTION_12B</ref>) || \
+                                           ((__RESOLUTION__) == <ref refid="group__ADC__HAL__EC__RESOLUTION_1ga91289e269eb3080d25301909c0f417e5" kindref="member">ADC_RESOLUTION_10B</ref>) || \
+                                           ((__RESOLUTION__) == <ref refid="group__ADC__HAL__EC__RESOLUTION_1ga39925af93719877bdcc5664e4b95e69a" kindref="member">ADC_RESOLUTION_8B</ref>)  || \
+                                           ((__RESOLUTION__) == <ref refid="group__ADC__HAL__EC__RESOLUTION_1ga24c5226e05db78b4065f2f187d497b04" kindref="member">ADC_RESOLUTION_6B</ref>)    )</initializer>
+        <briefdescription>
+<para>Verify the ADC resolution setting. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__RESOLUTION__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>programmed ADC resolution. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>RESOLUTION</bold> is a valid value) or RESET (<bold>RESOLUTION</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_adc.h" line="1058" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_adc.h" bodystart="1058" bodyend="1061"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ADC__Private__Macros_1gaade9a451653fbda3a2d75da91f8821f4" prot="public" static="no">
+        <name>IS_ADC_RESOLUTION_8_6_BITS</name>
+        <param><defname>__RESOLUTION__</defname></param>
+        <initializer>                                                    (((__RESOLUTION__) == <ref refid="group__ADC__HAL__EC__RESOLUTION_1ga39925af93719877bdcc5664e4b95e69a" kindref="member">ADC_RESOLUTION_8B</ref>) || \
+                                                    ((__RESOLUTION__) == <ref refid="group__ADC__HAL__EC__RESOLUTION_1ga24c5226e05db78b4065f2f187d497b04" kindref="member">ADC_RESOLUTION_6B</ref>)   )</initializer>
+        <briefdescription>
+<para>Verify the ADC resolution setting when limited to 6 or 8 bits. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__RESOLUTION__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>programmed ADC resolution when limited to 6 or 8 bits. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>RESOLUTION</bold> is a valid value) or RESET (<bold>RESOLUTION</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_adc.h" line="1068" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_adc.h" bodystart="1068" bodyend="1069"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ADC__Private__Macros_1ga54970a6455876984379854bf0cab8ddf" prot="public" static="no">
+        <name>IS_ADC_DATA_ALIGN</name>
+        <param><defname>__ALIGN__</defname></param>
+        <initializer>                                      (((__ALIGN__) == <ref refid="group__ADC__HAL__EC__DATA__ALIGN_1gafed5c0d327ad6d2cc0960f7943beb265" kindref="member">ADC_DATAALIGN_RIGHT</ref>) || \
+                                      ((__ALIGN__) == <ref refid="group__ADC__HAL__EC__DATA__ALIGN_1ga8afeead661c1ffbc27a5405a254d60ba" kindref="member">ADC_DATAALIGN_LEFT</ref>)    )</initializer>
+        <briefdescription>
+<para>Verify the ADC converted data alignment. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__ALIGN__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>programmed ADC converted data alignment. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>ALIGN</bold> is a valid value) or RESET (<bold>ALIGN</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_adc.h" line="1076" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_adc.h" bodystart="1076" bodyend="1077"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ADC__Private__Macros_1gab91c46d2f017e319598f47c1f0cf52aa" prot="public" static="no">
+        <name>IS_ADC_SCAN_MODE</name>
+        <param><defname>__SCAN_MODE__</defname></param>
+        <initializer>                                         (((__SCAN_MODE__) == <ref refid="group__ADC__Scan__mode_1ga6e269121b26e999155863ce52c522883" kindref="member">ADC_SCAN_DISABLE</ref>) || \
+                                         ((__SCAN_MODE__) == <ref refid="group__ADC__Scan__mode_1ga1e109b8619961829ff2bc368c1725382" kindref="member">ADC_SCAN_ENABLE</ref>)    )</initializer>
+        <briefdescription>
+<para>Verify the ADC scan mode. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__SCAN_MODE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>programmed ADC scan mode. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>SCAN_MODE</bold> is valid) or RESET (<bold>SCAN_MODE</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_adc.h" line="1084" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_adc.h" bodystart="1084" bodyend="1085"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ADC__Private__Macros_1ga7d7bb6f7b1c445c392d64e54b75741b7" prot="public" static="no">
+        <name>IS_ADC_EXTTRIG_EDGE</name>
+        <param><defname>__EDGE__</defname></param>
+        <initializer>                                       (((__EDGE__) == <ref refid="group__ADC__regular__external__trigger__edge_1gab2e3a19c05441925f9b9a482238994ac" kindref="member">ADC_EXTERNALTRIGCONVEDGE_NONE</ref>)         || \
+                                       ((__EDGE__) == <ref refid="group__ADC__regular__external__trigger__edge_1ga0aaa4e876de630733ca4ca4116b9608e" kindref="member">ADC_EXTERNALTRIGCONVEDGE_RISING</ref>)       || \
+                                       ((__EDGE__) == <ref refid="group__ADC__regular__external__trigger__edge_1ga15975c01b6a514f346272a1373239c54" kindref="member">ADC_EXTERNALTRIGCONVEDGE_FALLING</ref>)      || \
+                                       ((__EDGE__) == <ref refid="group__ADC__regular__external__trigger__edge_1gab4221f5f52b5f75dc8cea701bb57be35" kindref="member">ADC_EXTERNALTRIGCONVEDGE_RISINGFALLING</ref>)  )</initializer>
+        <briefdescription>
+<para>Verify the ADC edge trigger setting for regular group. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__EDGE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>programmed ADC edge trigger setting. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>EDGE</bold> is a valid value) or RESET (<bold>EDGE</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_adc.h" line="1092" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_adc.h" bodystart="1092" bodyend="1095"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ADC__Private__Macros_1ga45ff70b3db18ed6c5b5e335af2426220" prot="public" static="no">
+        <name>IS_ADC_EXTTRIG</name>
+        <param><defname>__HANDLE__</defname></param>
+        <param><defname>__REGTRIG__</defname></param>
+        <initializer>                                                 (((__REGTRIG__) == <ref refid="group__ADC__regular__external__trigger__source_1ga675c3b7d7e8ecccb6a22fd9af4466b49" kindref="member">ADC_EXTERNALTRIG_T1_CC1</ref>)   || \
+                                                 ((__REGTRIG__) == <ref refid="group__ADC__regular__external__trigger__source_1ga4eddfd5601687d3dc1088ff3ae6c9b34" kindref="member">ADC_EXTERNALTRIG_T1_CC2</ref>)   || \
+                                                 ((__REGTRIG__) == <ref refid="group__ADC__regular__external__trigger__source_1ga090438bcac0f33206bf0e0165f2c71ce" kindref="member">ADC_EXTERNALTRIG_T1_CC3</ref>)   || \
+                                                 ((__REGTRIG__) == <ref refid="group__ADC__regular__external__trigger__source_1gac6dc356899afe00c76d354cfea4ecfda" kindref="member">ADC_EXTERNALTRIG_T2_CC2</ref>)   || \
+                                                 ((__REGTRIG__) == <ref refid="group__ADC__regular__external__trigger__source_1ga763ad79d293f8eae7208b94a49b1de01" kindref="member">ADC_EXTERNALTRIG_T3_TRGO</ref>)  || \
+                                                 ((__REGTRIG__) == <ref refid="group__ADC__regular__external__trigger__source_1gaa72503069f3daddd3b54321d38148c43" kindref="member">ADC_EXTERNALTRIG_T4_CC4</ref>)   || \
+                                                 ((__REGTRIG__) == <ref refid="group__ADC__regular__external__trigger__source_1ga79c6ddcd5e158a6506da9fae010927d8" kindref="member">ADC_EXTERNALTRIG_EXT_IT11</ref>) || \
+                                                 ((__REGTRIG__) == <ref refid="group__ADC__regular__external__trigger__source_1ga0c2b0c3bf04b45736f04df50f67e3b80" kindref="member">ADC_EXTERNALTRIG_T8_TRGO</ref>)  || \
+                                                 ((__REGTRIG__) == <ref refid="group__ADC__regular__external__trigger__source_1ga12b4fbf934390e10f1a4f7183c03e4d6" kindref="member">ADC_EXTERNALTRIG_T8_TRGO2</ref>) || \
+                                                 ((__REGTRIG__) == <ref refid="group__ADC__regular__external__trigger__source_1ga4cf45a5a339ab8342984fabb268a91b8" kindref="member">ADC_EXTERNALTRIG_T1_TRGO</ref>)  || \
+                                                 ((__REGTRIG__) == <ref refid="group__ADC__regular__external__trigger__source_1ga8d7fd6a426a23de3361426448b7f5d49" kindref="member">ADC_EXTERNALTRIG_T1_TRGO2</ref>) || \
+                                                 ((__REGTRIG__) == <ref refid="group__ADC__regular__external__trigger__source_1gaaf414b3716e97dff957fa9dabe691ceb" kindref="member">ADC_EXTERNALTRIG_T2_TRGO</ref>)  || \
+                                                 ((__REGTRIG__) == <ref refid="group__ADC__regular__external__trigger__source_1gacbde6cb476c93a74fa2203884af33c06" kindref="member">ADC_EXTERNALTRIG_T4_TRGO</ref>)  || \
+                                                 ((__REGTRIG__) == <ref refid="group__ADC__regular__external__trigger__source_1ga8494b127c514467b790fef9d5be6f2ac" kindref="member">ADC_EXTERNALTRIG_T6_TRGO</ref>)  || \
+                                                 ((__REGTRIG__) == <ref refid="group__ADC__regular__external__trigger__source_1ga1c2905c00d2c282336eb21c25d9f1f3c" kindref="member">ADC_EXTERNALTRIG_T15_TRGO</ref>) || \
+                                                 ((__REGTRIG__) == <ref refid="group__ADC__regular__external__trigger__source_1gab18f8f69bd5b45c79b62a28df2f731cd" kindref="member">ADC_EXTERNALTRIG_T3_CC4</ref>)   || \
+                                                 ((__REGTRIG__) == <ref refid="group__ADC__regular__external__trigger__source_1ga349ec6a1c2a362fba718cbfd068e50dc" kindref="member">ADC_SOFTWARE_START</ref>)           )</initializer>
+        <briefdescription>
+<para>Verify the ADC regular conversions external trigger. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ADC handle </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>__REGTRIG__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>programmed ADC regular conversions external trigger. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>REGTRIG</bold> is a valid value) or RESET (<bold>REGTRIG</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_adc.h" line="1103" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_adc.h" bodystart="1103" bodyend="1119"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ADC__Private__Macros_1gad338383404104dbaaeb11dd35c307c50" prot="public" static="no">
+        <name>IS_ADC_EOC_SELECTION</name>
+        <param><defname>__EOC_SELECTION__</defname></param>
+        <initializer>                                                 (((__EOC_SELECTION__) == <ref refid="group__ADC__EOCSelection_1ga4c455483d74c1be899d4b2e8f45f202b" kindref="member">ADC_EOC_SINGLE_CONV</ref>)    || \
+                                                 ((__EOC_SELECTION__) == <ref refid="group__ADC__EOCSelection_1ga6c71ff64c9ecc9ba19ac088009f36cd8" kindref="member">ADC_EOC_SEQ_CONV</ref>)  )</initializer>
+        <briefdescription>
+<para>Verify the ADC regular conversions check for converted data availability. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__EOC_SELECTION__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>converted data availability check. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>EOC_SELECTION</bold> is a valid value) or RESET (<bold>EOC_SELECTION</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_adc.h" line="1126" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_adc.h" bodystart="1126" bodyend="1127"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ADC__Private__Macros_1ga98356ff17378f4a8f7136d931bda3337" prot="public" static="no">
+        <name>IS_ADC_OVERRUN</name>
+        <param><defname>__OVR__</defname></param>
+        <initializer>                                 (((__OVR__) == <ref refid="group__ADC__HAL__EC__REG__OVR__DATA__BEHAVIOR_1ga5e6fdbe9cab7436c3bf4551944c5c04d" kindref="member">ADC_OVR_DATA_PRESERVED</ref>)  || \
+                                 ((__OVR__) == <ref refid="group__ADC__HAL__EC__REG__OVR__DATA__BEHAVIOR_1gaeafc365762736ea8b5d73ba8c163548a" kindref="member">ADC_OVR_DATA_OVERWRITTEN</ref>)  )</initializer>
+        <briefdescription>
+<para>Verify the ADC regular conversions overrun handling. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__OVR__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ADC regular conversions overrun handling. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>OVR</bold> is a valid value) or RESET (<bold>OVR</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_adc.h" line="1134" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_adc.h" bodystart="1134" bodyend="1135"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ADC__Private__Macros_1gac8f170c8a85df2517d8441f4d41c0341" prot="public" static="no">
+        <name>IS_ADC_SAMPLE_TIME</name>
+        <param><defname>__TIME__</defname></param>
+        <initializer>                                      (((__TIME__) == <ref refid="group__ADC__HAL__EC__CHANNEL__SAMPLINGTIME_1gadd158f0b924bd3e84b3571aa3afd5a04" kindref="member">ADC_SAMPLETIME_2CYCLES_5</ref>)   || \
+                                      ((__TIME__) == <ref refid="group__ADC__HAL__EC__CHANNEL__SAMPLINGTIME_1gaabd7a273d843f02be0a6dbfe712fa59b" kindref="member">ADC_SAMPLETIME_6CYCLES_5</ref>)   || \
+                                      ((__TIME__) == <ref refid="group__ADC__HAL__EC__CHANNEL__SAMPLINGTIME_1ga4ec313f4ced6fff99856fe0acf97e83d" kindref="member">ADC_SAMPLETIME_12CYCLES_5</ref>)  || \
+                                      ((__TIME__) == <ref refid="group__ADC__HAL__EC__CHANNEL__SAMPLINGTIME_1gaa174ef6a01bfcfac268abbf1acd666d4" kindref="member">ADC_SAMPLETIME_24CYCLES_5</ref>)  || \
+                                      ((__TIME__) == <ref refid="group__ADC__HAL__EC__CHANNEL__SAMPLINGTIME_1ga327b080bb0ed6865057be04c9a0188cd" kindref="member">ADC_SAMPLETIME_47CYCLES_5</ref>)  || \
+                                      ((__TIME__) == <ref refid="group__ADC__HAL__EC__CHANNEL__SAMPLINGTIME_1gaa9ead4cac32fec831090e507d2dc8f04" kindref="member">ADC_SAMPLETIME_92CYCLES_5</ref>)  || \
+                                      ((__TIME__) == <ref refid="group__ADC__HAL__EC__CHANNEL__SAMPLINGTIME_1ga9c8ef195740ae88df08196306c0d24bc" kindref="member">ADC_SAMPLETIME_247CYCLES_5</ref>) || \
+                                      ((__TIME__) == <ref refid="group__ADC__HAL__EC__CHANNEL__SAMPLINGTIME_1gaf6c21c0cb07c5dd457c520bbb0dcb935" kindref="member">ADC_SAMPLETIME_640CYCLES_5</ref>)   )</initializer>
+        <briefdescription>
+<para>Verify the ADC conversions sampling time. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__TIME__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ADC conversions sampling time. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>TIME</bold> is a valid value) or RESET (<bold>TIME</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_adc.h" line="1153" column="10" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_adc.h" bodystart="1153" bodyend="1160"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ADC__Private__Macros_1ga3867aaca9226684d9ba1693dd9131e2a" prot="public" static="no">
+        <name>IS_ADC_REGULAR_RANK</name>
+        <param><defname>__CHANNEL__</defname></param>
+        <initializer>                                          (((__CHANNEL__) == <ref refid="group__ADC__HAL__EC__REG__SEQ__RANKS_1gadf298d930c7a4f313ece62320dbd600c" kindref="member">ADC_REGULAR_RANK_1</ref> ) || \
+                                          ((__CHANNEL__) == <ref refid="group__ADC__HAL__EC__REG__SEQ__RANKS_1ga21f2593d1950de1b7f98770a21009826" kindref="member">ADC_REGULAR_RANK_2</ref> ) || \
+                                          ((__CHANNEL__) == <ref refid="group__ADC__HAL__EC__REG__SEQ__RANKS_1gadaab09acdc0504f6ed8a84d7de6170dc" kindref="member">ADC_REGULAR_RANK_3</ref> ) || \
+                                          ((__CHANNEL__) == <ref refid="group__ADC__HAL__EC__REG__SEQ__RANKS_1gae23fcbfa4f2a1c919038739cbcb57410" kindref="member">ADC_REGULAR_RANK_4</ref> ) || \
+                                          ((__CHANNEL__) == <ref refid="group__ADC__HAL__EC__REG__SEQ__RANKS_1ga288d36b6b6e483116ca423ee5709580e" kindref="member">ADC_REGULAR_RANK_5</ref> ) || \
+                                          ((__CHANNEL__) == <ref refid="group__ADC__HAL__EC__REG__SEQ__RANKS_1ga6636e3943689f2a196256c939b3aa5f5" kindref="member">ADC_REGULAR_RANK_6</ref> ) || \
+                                          ((__CHANNEL__) == <ref refid="group__ADC__HAL__EC__REG__SEQ__RANKS_1ga63bea206a722dd11460d09b619aa4145" kindref="member">ADC_REGULAR_RANK_7</ref> ) || \
+                                          ((__CHANNEL__) == <ref refid="group__ADC__HAL__EC__REG__SEQ__RANKS_1gab39e2e0fb73beec47d249a75a42b5293" kindref="member">ADC_REGULAR_RANK_8</ref> ) || \
+                                          ((__CHANNEL__) == <ref refid="group__ADC__HAL__EC__REG__SEQ__RANKS_1ga2df1ef58ff97a2a6946b4cc0978e9693" kindref="member">ADC_REGULAR_RANK_9</ref> ) || \
+                                          ((__CHANNEL__) == <ref refid="group__ADC__HAL__EC__REG__SEQ__RANKS_1gad969d11913f157d860cc3e8ea81d2bcf" kindref="member">ADC_REGULAR_RANK_10</ref>) || \
+                                          ((__CHANNEL__) == <ref refid="group__ADC__HAL__EC__REG__SEQ__RANKS_1gada79d07e1e30ef538ae3eb4d611d35a6" kindref="member">ADC_REGULAR_RANK_11</ref>) || \
+                                          ((__CHANNEL__) == <ref refid="group__ADC__HAL__EC__REG__SEQ__RANKS_1ga038fc7ee28205a62242e105ac4004931" kindref="member">ADC_REGULAR_RANK_12</ref>) || \
+                                          ((__CHANNEL__) == <ref refid="group__ADC__HAL__EC__REG__SEQ__RANKS_1gaf705597a827461af553a94766ca6e84b" kindref="member">ADC_REGULAR_RANK_13</ref>) || \
+                                          ((__CHANNEL__) == <ref refid="group__ADC__HAL__EC__REG__SEQ__RANKS_1gab062685d9e3235869566d82891f5842b" kindref="member">ADC_REGULAR_RANK_14</ref>) || \
+                                          ((__CHANNEL__) == <ref refid="group__ADC__HAL__EC__REG__SEQ__RANKS_1ga36d371d1ced7f233fdf59ffc67234b4d" kindref="member">ADC_REGULAR_RANK_15</ref>) || \
+                                          ((__CHANNEL__) == <ref refid="group__ADC__HAL__EC__REG__SEQ__RANKS_1ga85f2ea453f67b9a5aad74aa94b696adb" kindref="member">ADC_REGULAR_RANK_16</ref>)   )</initializer>
+        <briefdescription>
+<para>Verify the ADC regular channel setting. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__CHANNEL__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>programmed ADC regular channel. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>CHANNEL</bold> is valid) or RESET (<bold>CHANNEL</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_adc.h" line="1168" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_adc.h" bodystart="1168" bodyend="1183"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

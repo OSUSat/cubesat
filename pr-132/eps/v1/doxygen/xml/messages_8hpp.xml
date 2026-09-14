@@ -1,0 +1,116 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="messages_8hpp" kind="file" language="C++">
+    <compoundname>messages.hpp</compoundname>
+    <includes local="no">cstdint</includes>
+    <includedby refid="packet_8hpp" local="yes">/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/messaging/cpp/include/packet.hpp</includedby>
+    <includedby refid="main_8cpp" local="yes">/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/messaging/examples/cpp/src/main.cpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/messaging/cpp/include/messages.hpp</label>
+        <link refid="messages_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>cstdint</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/messaging/cpp/include/messages.hpp</label>
+        <link refid="messages_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/messaging/cpp/include/packet.hpp</label>
+        <link refid="packet_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/messaging/cpp/src/packet.cpp</label>
+        <link refid="packet_8cpp"/>
+      </node>
+      <node id="4">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/messaging/examples/cpp/src/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innernamespace refid="namespaceOSUSat">OSUSat</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>OSUSAT_MESSAGES_HPP</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OSUSAT_MESSAGES_HPP</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10" refid="namespaceOSUSat" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceOSUSat" kindref="compound">OSUSat</ref><sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12" refid="namespaceOSUSat_1abe79d391ba3b44ac838aa4aed8ff1d71" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="namespaceOSUSat_1abe79d391ba3b44ac838aa4aed8ff1d71" kindref="member">OSUSatDestination</ref><sp/>:<sp/>uint8_t<sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceOSUSat_1abe79d391ba3b44ac838aa4aed8ff1d71ac2c027d8c62500300145c3043546d4c6" kindref="member">EPS</ref><sp/>=<sp/>0x01,</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceOSUSat_1abe79d391ba3b44ac838aa4aed8ff1d71aca8fef80e43c8db749b7c9406d535b1a" kindref="member">PAYLOAD</ref><sp/>=<sp/>0x02,</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceOSUSat_1abe79d391ba3b44ac838aa4aed8ff1d71ac5878c0c0199e57e3e999f7dc4add33f" kindref="member">OBC</ref><sp/>=<sp/>0x03,</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceOSUSat_1abe79d391ba3b44ac838aa4aed8ff1d71ac9546343e8e677d92812a4443b3a1bd1" kindref="member">COMMS</ref><sp/>=<sp/>0x04,</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceOSUSat_1abe79d391ba3b44ac838aa4aed8ff1d71a321ffaa502a30879dd21fb1b4a333d8d" kindref="member">GSE</ref><sp/>=<sp/>0x05,</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceOSUSat_1abe79d391ba3b44ac838aa4aed8ff1d71a5d296554abda2ef650c543463372eda6" kindref="member">AVIONICS</ref><sp/>=<sp/>0x06,</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceOSUSat_1abe79d391ba3b44ac838aa4aed8ff1d71a6123f59b43d02675c758f9cc81e9fe8b" kindref="member">BEAVS</ref><sp/>=<sp/>0x07,</highlight></codeline>
+<codeline lineno="20"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22" refid="namespaceOSUSat_1abae685ddf262512f27d637aca800488e" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="namespaceOSUSat_1abae685ddf262512f27d637aca800488e" kindref="member">OSUSatMessageType</ref><sp/>:<sp/>uint8_t<sp/>{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceOSUSat_1abae685ddf262512f27d637aca800488ea26097a57f572fe88a7cdf80543422cb1" kindref="member">COMMAND</ref><sp/>=<sp/>0x01,</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceOSUSat_1abae685ddf262512f27d637aca800488eabb3d2d909c73fe49800949a344775f8b" kindref="member">TELEMETRY</ref><sp/>=<sp/>0x02,</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceOSUSat_1abae685ddf262512f27d637aca800488ea0fc437bc317835cad5faafc12a83fad5" kindref="member">ACK</ref><sp/>=<sp/>0x03,</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceOSUSat_1abae685ddf262512f27d637aca800488eaa68c6c77586d4c740ec1b75b65b37946" kindref="member">NACK</ref><sp/>=<sp/>0x04,</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceOSUSat_1abae685ddf262512f27d637aca800488ea8df329b49b6668b7b1ec13ba71c72864" kindref="member">EXPERIMENT</ref><sp/>=<sp/>0x05,</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceOSUSat_1abae685ddf262512f27d637aca800488ea4b5ffcdaf38ce4d463171f5c977c5ab3" kindref="member">LOG</ref><sp/>=<sp/>0x06,</highlight></codeline>
+<codeline lineno="29"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="namespaceOSUSat_1afca86d75ad4e96f8717d0220d9e07e9e" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="namespaceOSUSat_1afca86d75ad4e96f8717d0220d9e07e9e" kindref="member">OSUSatCommonCommand</ref><sp/>:<sp/>uint8_t<sp/>{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceOSUSat_1afca86d75ad4e96f8717d0220d9e07e9ea0d895a0a05a7cce9b2c0c8bb252f78cc" kindref="member">HEARTBEAT</ref><sp/>=<sp/>0x01,</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceOSUSat_1afca86d75ad4e96f8717d0220d9e07e9eab5859d8721cfdc0312b2838b9c985bc1" kindref="member">RESET</ref><sp/>=<sp/>0x02,</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceOSUSat_1afca86d75ad4e96f8717d0220d9e07e9eab332708e4304e13c9b424e7465254954" kindref="member">ENABLE</ref><sp/>=<sp/>0x03,</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceOSUSat_1afca86d75ad4e96f8717d0220d9e07e9eafc93ea58f6d27ffed2b6518ffecf3e4e" kindref="member">DISABLE</ref><sp/>=<sp/>0x04,</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceOSUSat_1afca86d75ad4e96f8717d0220d9e07e9ea5f241c8c8f985b3c51e05d39cf030f4c" kindref="member">STATUS</ref><sp/>=<sp/>0x05,</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceOSUSat_1afca86d75ad4e96f8717d0220d9e07e9ea04fac4125be48b16f14a8551a8dfcc47" kindref="member">HEALTHCHECK</ref><sp/>=<sp/>0x06,</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceOSUSat_1abae685ddf262512f27d637aca800488ea4b5ffcdaf38ce4d463171f5c977c5ab3" kindref="member">LOG</ref><sp/>=<sp/>0x07,</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="namespaceOSUSat_1a1645e2ca868e67400e8212b6bebeb133" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="namespaceOSUSat_1a1645e2ca868e67400e8212b6bebeb133" kindref="member">OSUSatEPSCommand</ref><sp/>:<sp/>uint8_t<sp/>{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceOSUSat_1a1645e2ca868e67400e8212b6bebeb133a17f34cc27cf0c6d52faaea87b9d94ac3" kindref="member">ENABLE_RAIL</ref><sp/>=<sp/>0x11,</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceOSUSat_1a1645e2ca868e67400e8212b6bebeb133adfa0c86b1b8b60b11f509c8beabb2651" kindref="member">DISABLE_RAIL</ref><sp/>=<sp/>0x12,</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46" refid="namespaceOSUSat_1a2de9aebca9aedefe24c3bc511e954a6f" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="namespaceOSUSat_1a2de9aebca9aedefe24c3bc511e954a6f" kindref="member">OSUSatPAYLOADCommand</ref><sp/>:<sp/>uint8_t<sp/>{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceOSUSat_1a2de9aebca9aedefe24c3bc511e954a6fab8ce72703e6a13b352f8cde770194c21" kindref="member">CAPTURE_IMAGE</ref><sp/>=<sp/>0x13,</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceOSUSat_1a2de9aebca9aedefe24c3bc511e954a6fa97ced54ee054d3616b13ddb05c37ba2f" kindref="member">TRANSFER_IMAGE</ref><sp/>=<sp/>0x14,</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceOSUSat_1a2de9aebca9aedefe24c3bc511e954a6fa47f45e65244c17ec9fa8771a5c6d60e1" kindref="member">ARM</ref><sp/>=<sp/>0x15,</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceOSUSat_1a2de9aebca9aedefe24c3bc511e954a6fa3cac1eb8d219461b09c2328ff1c33ae0" kindref="member">DISARM</ref><sp/>=<sp/>0x16,</highlight></codeline>
+<codeline lineno="51"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53" refid="namespaceOSUSat_1a81af7483934265a959c1cf81817d4739" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="namespaceOSUSat_1a81af7483934265a959c1cf81817d4739" kindref="member">OSUSatOBCCommand</ref><sp/>:<sp/>uint8_t<sp/>{</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceOSUSat_1a81af7483934265a959c1cf81817d4739a8013c4a10cb955b28a9a04cf72b74298" kindref="member">GET_SYSTEM_STATE</ref><sp/>=<sp/>0x17,</highlight></codeline>
+<codeline lineno="55"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57" refid="namespaceOSUSat_1a8acb42eae8325f0da6418135c466c74f" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="namespaceOSUSat_1a8acb42eae8325f0da6418135c466c74f" kindref="member">OSUSatGSECommand</ref><sp/>:<sp/>uint8_t<sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceOSUSat_1a8acb42eae8325f0da6418135c466c74fa6ce4449e7669e11f795b735adc4e041c" kindref="member">TOGGLE_SAFE_MODE</ref><sp/>=<sp/>0x18,</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceOSUSat_1a8acb42eae8325f0da6418135c466c74fab0f2f616caeb361f601dd75368b62ebf" kindref="member">TOGGLE_MAINTENANCE_MODE</ref><sp/>=<sp/>0x19,</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceOSUSat_1a8acb42eae8325f0da6418135c466c74fa66a198d3d195c07b11aff099f572058f" kindref="member">PROBE_SUBSYSTEM_STATUS</ref><sp/>=<sp/>0x1A,</highlight></codeline>
+<codeline lineno="61"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>OSUSAT_MESSAGES_HPP</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/messaging/cpp/include/messages.hpp"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,277 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="bootstrap_2Drivers_2CMSIS_2Device_2ST_2STM32L4xx_2Include_2stm32l4xx_8h" kind="file" language="C++">
+    <compoundname>stm32l4xx.h</compoundname>
+    <sectiondef kind="define">
+      <member refid="group__Library__configuration__section_1gab826667865e4b774c90e9866b34c67cc" kind="define"><name>STM32L4</name></member>
+      <member refid="group__Library__configuration__section_1gad4521baecdabba9531048aef710a6bb9" kind="define"><name>__STM32L4_CMSIS_VERSION_MAIN</name></member>
+      <member refid="group__Library__configuration__section_1ga4d6d1f6776490687bde768379e5ab36b" kind="define"><name>__STM32L4_CMSIS_VERSION_SUB1</name></member>
+      <member refid="group__Library__configuration__section_1ga2e2763e5989b86d6786a8615b0dfbcb9" kind="define"><name>__STM32L4_CMSIS_VERSION_SUB2</name></member>
+      <member refid="group__Library__configuration__section_1gae44471dbb98e99cacc665d7a80e18259" kind="define"><name>__STM32L4_CMSIS_VERSION_RC</name></member>
+      <member refid="group__Library__configuration__section_1ga2db0eff678684f33447be14b855aee80" kind="define"><name>__STM32L4_CMSIS_VERSION</name></member>
+      <member refid="group__Exported__types_1gaffaf7c3f537d7a3370b1bbdda67a2bf6" kind="define"><name>IS_FUNCTIONAL_STATE</name></member>
+      <member refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kind="define"><name>SET_BIT</name></member>
+      <member refid="group__Exported__macros_1ga133aae6fc0d41bffab39ab223a7001de" kind="define"><name>CLEAR_BIT</name></member>
+      <member refid="group__Exported__macros_1ga822bb1bb9710d5f2fa6396b84e583c33" kind="define"><name>READ_BIT</name></member>
+      <member refid="group__Exported__macros_1ga1378fbdda39f40b85420df55f41460ef" kind="define"><name>CLEAR_REG</name></member>
+      <member refid="group__Exported__macros_1ga32f78bffcaf6d13023dcd7f05e0c4d57" kind="define"><name>WRITE_REG</name></member>
+      <member refid="group__Exported__macros_1gae7f188a4d26c9e713a48414783421071" kind="define"><name>READ_REG</name></member>
+      <member refid="group__Exported__macros_1ga6553c99f510c3bab8cc0a91602053247" kind="define"><name>MODIFY_REG</name></member>
+      <member refid="group__Exported__macros_1ga5daccb3b4245b833e81ff60fd1f4cf80" kind="define"><name>ATOMIC_SET_BIT</name></member>
+      <member refid="group__Exported__macros_1ga08dfef58d3b054b80745eda49e8907fb" kind="define"><name>ATOMIC_CLEAR_BIT</name></member>
+      <member refid="group__Exported__macros_1ga89dc36b64605a58fd1666d76b51bde1c" kind="define"><name>ATOMIC_MODIFY_REG</name></member>
+      <member refid="group__Exported__macros_1ga567c489b25ec989c6ffcda6e1a49c4c2" kind="define"><name>ATOMIC_SETH_BIT</name></member>
+      <member refid="group__Exported__macros_1ga72150176ac8514f3a9f71b354d344661" kind="define"><name>ATOMIC_CLEARH_BIT</name></member>
+      <member refid="group__Exported__macros_1ga8774e17ec273484ebb30efd3f9307f3a" kind="define"><name>ATOMIC_MODIFYH_REG</name></member>
+      <member refid="group__Exported__macros_1ga47a8870d71d55cefb3df47cd8c815ec8" kind="define"><name>POSITION_VAL</name></member>
+    </sectiondef>
+    <sectiondef kind="enum">
+      <member refid="group__Exported__types_1ga89136caac2e14c55151f527ac02daaff" kind="enum"><name>FlagStatus</name></member>
+      <member refid="group__Exported__types_1gac9a7e9a35d2513ec15c3b537aaa4fba1" kind="enum"><name>FunctionalState</name></member>
+      <member refid="group__Exported__types_1ga8333b96c67f83cba354b3407fcbb6ee8" kind="enum"><name>ErrorStatus</name></member>
+    </sectiondef>
+    <sectiondef kind="typedef">
+      <member refid="group__Exported__types_1ga39d4411201fb731279ad5a409b2b80d7" kind="typedef"><name>ITStatus</name></member>
+    </sectiondef>
+    <briefdescription>
+<para>CMSIS STM32L4xx Device Peripheral Access Layer Header File. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>MCD Application Team <verbatim>     The file is the unique include file that the application programmer
+     is using in the C source code, usually in main.c. This file contains:
+      - Configuration section that allows to select:
+         - The STM32L4xx device used in the target application
+         - To use or not the peripheral&apos;s drivers in application code(i.e.
+           code will be based on direct access to peripheral&apos;s registers
+           rather than drivers API), this option is controlled by
+           &quot;#define USE_HAL_DRIVER&quot;
+</verbatim></para>
+</simplesect>
+<simplesect kind="attention"><para></para>
+</simplesect>
+Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
+<para>This software is licensed under terms that can be found in the LICENSE file in the root directory of this software component. If no LICENSE file comes with this software, it is provided AS-IS. </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>__STM32L4xx_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__STM32L4xx_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>__cplusplus<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>!defined<sp/>(STM32L4)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52" refid="group__Library__configuration__section_1gab826667865e4b774c90e9866b34c67cc" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>STM32L4</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>STM32L4<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Uncomment<sp/>the<sp/>line<sp/>below<sp/>according<sp/>to<sp/>the<sp/>target<sp/>STM32L4<sp/>device<sp/>used<sp/>in<sp/>your</highlight></codeline>
+<codeline lineno="56"><highlight class="comment"><sp/><sp/><sp/>application</highlight></codeline>
+<codeline lineno="57"><highlight class="comment"><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>!defined<sp/>(STM32L412xx)<sp/>&amp;&amp;<sp/>!defined<sp/>(STM32L422xx)<sp/>&amp;&amp;<sp/>\</highlight></codeline>
+<codeline lineno="60"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>!defined<sp/>(STM32L431xx)<sp/>&amp;&amp;<sp/>!defined<sp/>(STM32L432xx)<sp/>&amp;&amp;<sp/>!defined<sp/>(STM32L433xx)<sp/>&amp;&amp;<sp/>!defined<sp/>(STM32L442xx)<sp/>&amp;&amp;<sp/>!defined<sp/>(STM32L443xx)<sp/>&amp;&amp;<sp/>\</highlight></codeline>
+<codeline lineno="61"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>!defined<sp/>(STM32L451xx)<sp/>&amp;&amp;<sp/>!defined<sp/>(STM32L452xx)<sp/>&amp;&amp;<sp/>!defined<sp/>(STM32L462xx)<sp/>&amp;&amp;<sp/>\</highlight></codeline>
+<codeline lineno="62"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>!defined<sp/>(STM32L471xx)<sp/>&amp;&amp;<sp/>!defined<sp/>(STM32L475xx)<sp/>&amp;&amp;<sp/>!defined<sp/>(STM32L476xx)<sp/>&amp;&amp;<sp/>!defined<sp/>(STM32L485xx)<sp/>&amp;&amp;<sp/>!defined<sp/>(STM32L486xx)<sp/>&amp;&amp;<sp/>\</highlight></codeline>
+<codeline lineno="63"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>!defined<sp/>(STM32L496xx)<sp/>&amp;&amp;<sp/>!defined<sp/>(STM32L4A6xx)<sp/>&amp;&amp;<sp/>\</highlight></codeline>
+<codeline lineno="64"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>!defined<sp/>(STM32L4P5xx)<sp/>&amp;&amp;<sp/>!defined<sp/>(STM32L4Q5xx)<sp/>&amp;&amp;<sp/>\</highlight></codeline>
+<codeline lineno="65"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>!defined<sp/>(STM32L4R5xx)<sp/>&amp;&amp;<sp/>!defined<sp/>(STM32L4R7xx)<sp/>&amp;&amp;<sp/>!defined<sp/>(STM32L4R9xx)<sp/>&amp;&amp;<sp/>!defined<sp/>(STM32L4S5xx)<sp/>&amp;&amp;<sp/>!defined<sp/>(STM32L4S7xx)<sp/>&amp;&amp;<sp/>!defined<sp/>(STM32L4S9xx)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>#define<sp/>STM32L412xx<sp/>*/</highlight><highlight class="normal"><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>#define<sp/>STM32L422xx<sp/>*/</highlight><highlight class="normal"><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>#define<sp/>STM32L431xx<sp/>*/</highlight><highlight class="normal"><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>#define<sp/>STM32L432xx<sp/>*/</highlight><highlight class="normal"><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>#define<sp/>STM32L433xx<sp/>*/</highlight><highlight class="normal"><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>#define<sp/>STM32L442xx<sp/>*/</highlight><highlight class="normal"><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>#define<sp/>STM32L443xx<sp/>*/</highlight><highlight class="normal"><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>#define<sp/>STM32L451xx<sp/>*/</highlight><highlight class="normal"><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>#define<sp/>STM32L452xx<sp/>*/</highlight><highlight class="normal"><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>#define<sp/>STM32L462xx<sp/>*/</highlight><highlight class="normal"><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>#define<sp/>STM32L471xx<sp/>*/</highlight><highlight class="normal"><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>#define<sp/>STM32L475xx<sp/>*/</highlight><highlight class="normal"><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>#define<sp/>STM32L476xx<sp/>*/</highlight><highlight class="normal"><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>#define<sp/>STM32L485xx<sp/>*/</highlight><highlight class="normal"><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>#define<sp/>STM32L486xx<sp/>*/</highlight><highlight class="normal"><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>#define<sp/>STM32L496xx<sp/>*/</highlight><highlight class="normal"><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>#define<sp/>STM32L4A6xx<sp/>*/</highlight><highlight class="normal"><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>#define<sp/>STM32L4P5xx<sp/>*/</highlight><highlight class="normal"><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>#define<sp/>STM32L4R5xx<sp/>*/</highlight><highlight class="normal"><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>#define<sp/>STM32L4R7xx<sp/>*/</highlight><highlight class="normal"><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>#define<sp/>STM32L4R9xx<sp/>*/</highlight><highlight class="normal"><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>#define<sp/>STM32L4S5xx<sp/>*/</highlight><highlight class="normal"><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>#define<sp/>STM32L4S7xx<sp/>*/</highlight><highlight class="normal"><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>#define<sp/>STM32L4S9xx<sp/>*/</highlight><highlight class="normal"><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight><highlight class="comment">/*<sp/><sp/>Tip:<sp/>To<sp/>avoid<sp/>modifying<sp/>this<sp/>file<sp/>each<sp/>time<sp/>you<sp/>need<sp/>to<sp/>switch<sp/>between<sp/>these</highlight></codeline>
+<codeline lineno="93"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>devices,<sp/>you<sp/>can<sp/>define<sp/>the<sp/>device<sp/>in<sp/>your<sp/>toolchain<sp/>compiler<sp/>preprocessor.</highlight></codeline>
+<codeline lineno="94"><highlight class="comment"><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>!defined<sp/><sp/>(USE_HAL_DRIVER)</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*#define<sp/>USE_HAL_DRIVER<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>USE_HAL_DRIVER<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107" refid="group__Library__configuration__section_1gad4521baecdabba9531048aef710a6bb9" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__STM32L4_CMSIS_VERSION_MAIN<sp/><sp/><sp/>(0x01)<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108" refid="group__Library__configuration__section_1ga4d6d1f6776490687bde768379e5ab36b" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__STM32L4_CMSIS_VERSION_SUB1<sp/><sp/><sp/>(0x07)<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109" refid="group__Library__configuration__section_1ga2e2763e5989b86d6786a8615b0dfbcb9" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__STM32L4_CMSIS_VERSION_SUB2<sp/><sp/><sp/>(0x05)<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110" refid="group__Library__configuration__section_1gae44471dbb98e99cacc665d7a80e18259" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__STM32L4_CMSIS_VERSION_RC<sp/><sp/><sp/><sp/><sp/>(0x00)<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111" refid="group__Library__configuration__section_1ga2db0eff678684f33447be14b855aee80" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__STM32L4_CMSIS_VERSION<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((__STM32L4_CMSIS_VERSION_MAIN<sp/>&lt;&lt;<sp/>24)\</highlight></codeline>
+<codeline lineno="112"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|(__STM32L4_CMSIS_VERSION_SUB1<sp/>&lt;&lt;<sp/>16)\</highlight></codeline>
+<codeline lineno="113"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|(__STM32L4_CMSIS_VERSION_SUB2<sp/>&lt;&lt;<sp/>8<sp/>)\</highlight></codeline>
+<codeline lineno="114"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|(__STM32L4_CMSIS_VERSION_RC))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(STM32L412xx)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#include<sp/>&quot;stm32l412xx.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(STM32L422xx)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#include<sp/>&quot;stm32l422xx.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(STM32L431xx)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#include<sp/>&quot;stm32l431xx.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(STM32L432xx)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#include<sp/>&quot;stm32l432xx.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(STM32L433xx)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#include<sp/>&quot;stm32l433xx.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(STM32L442xx)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#include<sp/>&quot;stm32l442xx.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(STM32L443xx)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#include<sp/>&quot;stm32l443xx.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(STM32L451xx)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#include<sp/>&quot;stm32l451xx.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(STM32L452xx)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#include<sp/>&quot;stm32l452xx.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(STM32L462xx)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#include<sp/>&quot;stm32l462xx.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(STM32L471xx)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#include<sp/>&quot;stm32l471xx.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(STM32L475xx)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#include<sp/>&quot;stm32l475xx.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(STM32L476xx)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#include<sp/>&quot;stm32l476xx.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(STM32L485xx)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#include<sp/>&quot;stm32l485xx.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(STM32L486xx)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#include<sp/>&quot;stm32l486xx.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(STM32L496xx)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#include<sp/>&quot;stm32l496xx.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(STM32L4A6xx)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#include<sp/>&quot;stm32l4a6xx.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(STM32L4P5xx)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#include<sp/>&quot;stm32l4p5xx.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(STM32L4Q5xx)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#include<sp/>&quot;stm32l4q5xx.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(STM32L4R5xx)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#include<sp/>&quot;stm32l4r5xx.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(STM32L4R7xx)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#include<sp/>&quot;stm32l4r7xx.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(STM32L4R9xx)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#include<sp/>&quot;stm32l4r9xx.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(STM32L4S5xx)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#include<sp/>&quot;stm32l4s5xx.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(STM32L4S7xx)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#include<sp/>&quot;stm32l4s7xx.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(STM32L4S9xx)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#include<sp/>&quot;stm32l4s9xx.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/>#error<sp/>&quot;Please<sp/>select<sp/>first<sp/>the<sp/>target<sp/>STM32L4xx<sp/>device<sp/>used<sp/>in<sp/>your<sp/>application<sp/>(in<sp/>stm32l4xx.h<sp/>file)&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight></codeline>
+<codeline lineno="185" refid="group__Exported__types_1ga89136caac2e14c55151f527ac02daaff" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="187" refid="group__Exported__types_1gga89136caac2e14c55151f527ac02daaffa589b7d94a3d91d145720e2fed0eb3a05" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="group__Exported__types_1gga89136caac2e14c55151f527ac02daaffa589b7d94a3d91d145720e2fed0eb3a05" kindref="member">RESET</ref><sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><ref refid="group__Exported__types_1gga89136caac2e14c55151f527ac02daaffab44c8101cc294c074709ec1b14211792" kindref="member">SET</ref><sp/>=<sp/>!<ref refid="group__Exported__types_1gga89136caac2e14c55151f527ac02daaffa589b7d94a3d91d145720e2fed0eb3a05" kindref="member">RESET</ref></highlight></codeline>
+<codeline lineno="189" refid="group__Exported__types_1ga39d4411201fb731279ad5a409b2b80d7" refkind="member"><highlight class="normal">}<sp/><ref refid="group__Exported__types_1ga89136caac2e14c55151f527ac02daaff" kindref="member">FlagStatus</ref>,<sp/><ref refid="group__Exported__types_1ga39d4411201fb731279ad5a409b2b80d7" kindref="member">ITStatus</ref>;</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight></codeline>
+<codeline lineno="191" refid="group__Exported__types_1gac9a7e9a35d2513ec15c3b537aaa4fba1" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="193" refid="group__Exported__types_1ggac9a7e9a35d2513ec15c3b537aaa4fba1ad3a9df141be0ccf10389b640f492b26d" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="group__Exported__types_1ggac9a7e9a35d2513ec15c3b537aaa4fba1ad3a9df141be0ccf10389b640f492b26d" kindref="member">DISABLE</ref><sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><ref refid="group__Exported__types_1ggac9a7e9a35d2513ec15c3b537aaa4fba1a7d46875fa3ebd2c34d2756950eda83bf" kindref="member">ENABLE</ref><sp/>=<sp/>!<ref refid="group__Exported__types_1ggac9a7e9a35d2513ec15c3b537aaa4fba1ad3a9df141be0ccf10389b640f492b26d" kindref="member">DISABLE</ref></highlight></codeline>
+<codeline lineno="195" refid="group__Exported__types_1ggac9a7e9a35d2513ec15c3b537aaa4fba1a7d46875fa3ebd2c34d2756950eda83bf" refkind="member"><highlight class="normal">}<sp/><ref refid="group__Exported__types_1gac9a7e9a35d2513ec15c3b537aaa4fba1" kindref="member">FunctionalState</ref>;</highlight></codeline>
+<codeline lineno="196" refid="group__Exported__types_1gaffaf7c3f537d7a3370b1bbdda67a2bf6" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>IS_FUNCTIONAL_STATE(STATE)<sp/>(((STATE)<sp/>==<sp/>DISABLE)<sp/>||<sp/>((STATE)<sp/>==<sp/>ENABLE))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight></codeline>
+<codeline lineno="198" refid="group__Exported__types_1ga8333b96c67f83cba354b3407fcbb6ee8" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="200" refid="group__Exported__types_1gga8333b96c67f83cba354b3407fcbb6ee8ac7f69f7c9e5aea9b8f54cf02870e2bf8" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="group__Exported__types_1gga8333b96c67f83cba354b3407fcbb6ee8ac7f69f7c9e5aea9b8f54cf02870e2bf8" kindref="member">SUCCESS</ref><sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><ref refid="group__Exported__types_1gga8333b96c67f83cba354b3407fcbb6ee8a2fd6f336d08340583bd620a7f5694c90" kindref="member">ERROR</ref><sp/>=<sp/>!<ref refid="group__Exported__types_1gga8333b96c67f83cba354b3407fcbb6ee8ac7f69f7c9e5aea9b8f54cf02870e2bf8" kindref="member">SUCCESS</ref></highlight></codeline>
+<codeline lineno="202" refid="group__Exported__types_1gga8333b96c67f83cba354b3407fcbb6ee8a2fd6f336d08340583bd620a7f5694c90" refkind="member"><highlight class="normal">}<sp/><ref refid="group__Exported__types_1ga8333b96c67f83cba354b3407fcbb6ee8" kindref="member">ErrorStatus</ref>;</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight></codeline>
+<codeline lineno="212" refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SET_BIT(REG,<sp/>BIT)<sp/><sp/><sp/><sp/><sp/>((REG)<sp/>|=<sp/>(BIT))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"></highlight></codeline>
+<codeline lineno="214" refid="group__Exported__macros_1ga133aae6fc0d41bffab39ab223a7001de" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CLEAR_BIT(REG,<sp/>BIT)<sp/><sp/><sp/>((REG)<sp/>&amp;=<sp/>~(BIT))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="215"><highlight class="normal"></highlight></codeline>
+<codeline lineno="216" refid="group__Exported__macros_1ga822bb1bb9710d5f2fa6396b84e583c33" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>READ_BIT(REG,<sp/>BIT)<sp/><sp/><sp/><sp/>((REG)<sp/>&amp;<sp/>(BIT))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="217"><highlight class="normal"></highlight></codeline>
+<codeline lineno="218" refid="group__Exported__macros_1ga1378fbdda39f40b85420df55f41460ef" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CLEAR_REG(REG)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((REG)<sp/>=<sp/>(0x0))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="219"><highlight class="normal"></highlight></codeline>
+<codeline lineno="220" refid="group__Exported__macros_1ga32f78bffcaf6d13023dcd7f05e0c4d57" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>WRITE_REG(REG,<sp/>VAL)<sp/><sp/><sp/>((REG)<sp/>=<sp/>(VAL))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="221"><highlight class="normal"></highlight></codeline>
+<codeline lineno="222" refid="group__Exported__macros_1gae7f188a4d26c9e713a48414783421071" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>READ_REG(REG)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((REG))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="223"><highlight class="normal"></highlight></codeline>
+<codeline lineno="224" refid="group__Exported__macros_1ga6553c99f510c3bab8cc0a91602053247" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MODIFY_REG(REG,<sp/>CLEARMASK,<sp/>SETMASK)<sp/><sp/>WRITE_REG((REG),<sp/>(((READ_REG(REG))<sp/>&amp;<sp/>(~(CLEARMASK)))<sp/>|<sp/>(SETMASK)))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="normal"></highlight></codeline>
+<codeline lineno="226"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Use<sp/>of<sp/>CMSIS<sp/>compiler<sp/>intrinsics<sp/>for<sp/>register<sp/>exclusive<sp/>access<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="227"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Atomic<sp/>32-bit<sp/>register<sp/>access<sp/>macro<sp/>to<sp/>set<sp/>one<sp/>or<sp/>several<sp/>bits<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="228" refid="group__Exported__macros_1ga5daccb3b4245b833e81ff60fd1f4cf80" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ATOMIC_SET_BIT(REG,<sp/>BIT)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="229"><highlight class="preprocessor"><sp/><sp/>do<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="230"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>uint32_t<sp/>val;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="231"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>do<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="232"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/>val<sp/>=<sp/>__LDREXW((__IO<sp/>uint32_t<sp/>*)&amp;(REG))<sp/>|<sp/>(BIT);<sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="233"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/>while<sp/>((__STREXW(val,(__IO<sp/>uint32_t<sp/>*)&amp;(REG)))<sp/>!=<sp/>0U);<sp/>\</highlight></codeline>
+<codeline lineno="234"><highlight class="preprocessor"><sp/><sp/>}<sp/>while(0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="235"><highlight class="normal"></highlight></codeline>
+<codeline lineno="236"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Atomic<sp/>32-bit<sp/>register<sp/>access<sp/>macro<sp/>to<sp/>clear<sp/>one<sp/>or<sp/>several<sp/>bits<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="237" refid="group__Exported__macros_1ga08dfef58d3b054b80745eda49e8907fb" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ATOMIC_CLEAR_BIT(REG,<sp/>BIT)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="238"><highlight class="preprocessor"><sp/><sp/>do<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="239"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>uint32_t<sp/>val;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="240"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>do<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="241"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/>val<sp/>=<sp/>__LDREXW((__IO<sp/>uint32_t<sp/>*)&amp;(REG))<sp/>&amp;<sp/>~(BIT);<sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="242"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/>while<sp/>((__STREXW(val,(__IO<sp/>uint32_t<sp/>*)&amp;(REG)))<sp/>!=<sp/>0U);<sp/>\</highlight></codeline>
+<codeline lineno="243"><highlight class="preprocessor"><sp/><sp/>}<sp/>while(0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="244"><highlight class="normal"></highlight></codeline>
+<codeline lineno="245"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Atomic<sp/>32-bit<sp/>register<sp/>access<sp/>macro<sp/>to<sp/>clear<sp/>and<sp/>set<sp/>one<sp/>or<sp/>several<sp/>bits<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="246" refid="group__Exported__macros_1ga89dc36b64605a58fd1666d76b51bde1c" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ATOMIC_MODIFY_REG(REG,<sp/>CLEARMSK,<sp/>SETMASK)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="247"><highlight class="preprocessor"><sp/><sp/>do<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="248"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>uint32_t<sp/>val;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="249"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>do<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="250"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/>val<sp/>=<sp/>(__LDREXW((__IO<sp/>uint32_t<sp/>*)&amp;(REG))<sp/>&amp;<sp/>~(CLEARMSK))<sp/>|<sp/>(SETMASK);<sp/>\</highlight></codeline>
+<codeline lineno="251"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/>while<sp/>((__STREXW(val,(__IO<sp/>uint32_t<sp/>*)&amp;(REG)))<sp/>!=<sp/>0U);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="252"><highlight class="preprocessor"><sp/><sp/>}<sp/>while(0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="253"><highlight class="normal"></highlight></codeline>
+<codeline lineno="254"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Atomic<sp/>16-bit<sp/>register<sp/>access<sp/>macro<sp/>to<sp/>set<sp/>one<sp/>or<sp/>several<sp/>bits<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="255" refid="group__Exported__macros_1ga567c489b25ec989c6ffcda6e1a49c4c2" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ATOMIC_SETH_BIT(REG,<sp/>BIT)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="256"><highlight class="preprocessor"><sp/><sp/>do<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="257"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>uint16_t<sp/>val;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="258"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>do<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="259"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/>val<sp/>=<sp/>__LDREXH((__IO<sp/>uint16_t<sp/>*)&amp;(REG))<sp/>|<sp/>(BIT);<sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="260"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/>while<sp/>((__STREXH(val,(__IO<sp/>uint16_t<sp/>*)&amp;(REG)))<sp/>!=<sp/>0U);<sp/>\</highlight></codeline>
+<codeline lineno="261"><highlight class="preprocessor"><sp/><sp/>}<sp/>while(0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="262"><highlight class="normal"></highlight></codeline>
+<codeline lineno="263"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Atomic<sp/>16-bit<sp/>register<sp/>access<sp/>macro<sp/>to<sp/>clear<sp/>one<sp/>or<sp/>several<sp/>bits<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="264" refid="group__Exported__macros_1ga72150176ac8514f3a9f71b354d344661" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ATOMIC_CLEARH_BIT(REG,<sp/>BIT)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="265"><highlight class="preprocessor"><sp/><sp/>do<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="266"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>uint16_t<sp/>val;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="267"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>do<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="268"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/>val<sp/>=<sp/>__LDREXH((__IO<sp/>uint16_t<sp/>*)&amp;(REG))<sp/>&amp;<sp/>~(BIT);<sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="269"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/>while<sp/>((__STREXH(val,(__IO<sp/>uint16_t<sp/>*)&amp;(REG)))<sp/>!=<sp/>0U);<sp/>\</highlight></codeline>
+<codeline lineno="270"><highlight class="preprocessor"><sp/><sp/>}<sp/>while(0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="271"><highlight class="normal"></highlight></codeline>
+<codeline lineno="272"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Atomic<sp/>16-bit<sp/>register<sp/>access<sp/>macro<sp/>to<sp/>clear<sp/>and<sp/>set<sp/>one<sp/>or<sp/>several<sp/>bits<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="273" refid="group__Exported__macros_1ga8774e17ec273484ebb30efd3f9307f3a" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ATOMIC_MODIFYH_REG(REG,<sp/>CLEARMSK,<sp/>SETMASK)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="274"><highlight class="preprocessor"><sp/><sp/>do<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="275"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>uint16_t<sp/>val;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="276"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>do<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="277"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/>val<sp/>=<sp/>(__LDREXH((__IO<sp/>uint16_t<sp/>*)&amp;(REG))<sp/>&amp;<sp/>~(CLEARMSK))<sp/>|<sp/>(SETMASK);<sp/>\</highlight></codeline>
+<codeline lineno="278"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/>while<sp/>((__STREXH(val,(__IO<sp/>uint16_t<sp/>*)&amp;(REG)))<sp/>!=<sp/>0U);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="279"><highlight class="preprocessor"><sp/><sp/>}<sp/>while(0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="280"><highlight class="normal"></highlight></codeline>
+<codeline lineno="281" refid="group__Exported__macros_1ga47a8870d71d55cefb3df47cd8c815ec8" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>POSITION_VAL(VAL)<sp/><sp/><sp/><sp/><sp/>(__CLZ(__RBIT(VAL)))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="282"><highlight class="normal"></highlight></codeline>
+<codeline lineno="287"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined<sp/>(USE_HAL_DRIVER)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="288"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/>#include<sp/>&quot;stm32l4xx_hal.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="289"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>USE_HAL_DRIVER<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="290"><highlight class="normal"></highlight></codeline>
+<codeline lineno="291"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="292"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>__cplusplus<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="294"><highlight class="normal"></highlight></codeline>
+<codeline lineno="295"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>__STM32L4xx_H<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l4xx.h"/>
+  </compounddef>
+</doxygen>

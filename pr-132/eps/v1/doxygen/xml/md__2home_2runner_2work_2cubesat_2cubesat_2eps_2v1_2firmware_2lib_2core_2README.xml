@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="md__2home_2runner_2work_2cubesat_2cubesat_2eps_2v1_2firmware_2lib_2core_2README" kind="page">
+    <compoundname>md__2home_2runner_2work_2cubesat_2cubesat_2eps_2v1_2firmware_2lib_2core_2README</compoundname>
+    <title>core</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><anchor id="md__2home_2runner_2work_2cubesat_2cubesat_2eps_2v1_2firmware_2lib_2core_2README_1autotoc_md52"/> Core primitives for use in embedded <ref refid="namespaceOSUSat" kindref="compound">OSUSat</ref> firmware</para>
+<para>Documentation can be found <ulink url="https://osusat.github.io/core/">here</ulink></para>
+<sect1 id="md__2home_2runner_2work_2cubesat_2cubesat_2eps_2v1_2firmware_2lib_2core_2README_1autotoc_md53">
+<title>Provided Primitives</title>
+<para>The current primitives available are:</para>
+<para><itemizedlist>
+<listitem><para>Ring buffer (arbitrary size, using modulo)</para>
+</listitem><listitem><para>Ring buffer Power of 2 (capacity must be a power of 2, but runs faster using a bitmask)</para>
+</listitem><listitem><para>Event bus</para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+<sect1 id="md__2home_2runner_2work_2cubesat_2cubesat_2eps_2v1_2firmware_2lib_2core_2README_1autotoc_md54">
+<title>Project Integration</title>
+<para><itemizedlist>
+<listitem><para>Add this repository as a submodule of your project:<itemizedlist>
+<listitem><para><computeroutput>git submodule add <ulink url="https://github.com/osusat/core.git">https://github.com/osusat/core.git</ulink> lib/</computeroutput></para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para>Link the C library using CMake<itemizedlist>
+<listitem><para>Add the library as a subdirectory using <computeroutput>add_subdirectory(lib/core ${CMAKE_CURRENT_BINARY_DIR}/osusat-core-build)</computeroutput></para>
+</listitem><listitem><para>Link the library using <computeroutput>target_link_libraries(my_c_project PRIVATE OSUSat::Core)</computeroutput> </para>
+</listitem></itemizedlist>
+</para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+    </detaileddescription>
+    <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/README.md"/>
+  </compounddef>
+</doxygen>
