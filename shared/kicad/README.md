@@ -18,7 +18,7 @@ This directory contains shared KiCad symbols, footprints, 3D models, design rule
 
 Symlinking links the shared repository template directory directly into your local KiCad environment. Any updates pulled from git will be available in KiCad without copying files manually.
 
-### 🐧 Linux Instructions
+### Linux Instructions
 
 1. Open a terminal and ensure your KiCad template directory exists:
    ```bash
@@ -33,7 +33,7 @@ Symlinking links the shared repository template directory directly into your loc
 
 ---
 
-### 🪟 Windows Instructions
+### Windows Instructions
 
 #### Option 1: PowerShell
 Run PowerShell and execute:
@@ -57,7 +57,7 @@ mklink /D "%APPDATA%\kicad\10.0\template\test_board" "C:\path\to\cubesat\shared\
 
 ---
 
-### ⚙️ Alternative: Configure Path in KiCad GUI
+### Alternative: Configure Path in KiCad GUI
 
 1. Open KiCad.
 2. Navigate to **Preferences → Configure Paths...**
@@ -68,7 +68,7 @@ mklink /D "%APPDATA%\kicad\10.0\template\test_board" "C:\path\to\cubesat\shared\
 
 ---
 
-## 🚀 Creating a Board from Template
+## Creating a Board from Template
 
 1. Open KiCad.
 2. Select **File → New Project from Template...** (or `Ctrl+N`).
