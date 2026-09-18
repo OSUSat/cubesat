@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="group__watchdog__api" kind="group">
+    <compoundname>watchdog_api</compoundname>
+    <title>Public API</title>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="group__watchdog__api_1gab3855c9896bbd7be2a19dc5e7b515bdc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void watchdog_init</definition>
+        <argsstring>(watchdog_t *watchdog)</argsstring>
+        <name>watchdog_init</name>
+        <param>
+          <type><ref refid="structwatchdog__t" kindref="compound">watchdog_t</ref> *</type>
+          <declname>watchdog</declname>
+        </param>
+        <briefdescription>
+<para>Initialize the Hardware Watchdog. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Configures the hardware timer with the timeout specified in the configuration. Once initialized, the watchdog typically cannot be disabled until a reset.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">wd</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the watchdog service instance. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/watchdog.h" line="65" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/watchdog.c" bodystart="24" bodyend="41" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/watchdog.h" declline="65" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__watchdog__api_1ga98d1081b076ba58b41c102cfb296cb9e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void watchdog_pet</definition>
+        <argsstring>(watchdog_t *watchdog)</argsstring>
+        <name>watchdog_pet</name>
+        <param>
+          <type><ref refid="structwatchdog__t" kindref="compound">watchdog_t</ref> *</type>
+          <declname>watchdog</declname>
+        </param>
+        <briefdescription>
+<para>Reset the watchdog timer (kicking/petting). </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Refreshes the hardware counter to prevent a system reset. Updates the <computeroutput>last_pet_tick</computeroutput> in the software struct for debugging.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">watchdog</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the watchdog service instance. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/watchdog.h" line="75" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/watchdog.c" bodystart="43" bodyend="55" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/watchdog.h" declline="75" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__watchdog__api_1ga6c17c5d5849e0fcca77e95c67b97ba30" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void watchdog_force_reset</definition>
+        <argsstring>(watchdog_t *watchdog)</argsstring>
+        <name>watchdog_force_reset</name>
+        <param>
+          <type><ref refid="structwatchdog__t" kindref="compound">watchdog_t</ref> *</type>
+          <declname>watchdog</declname>
+        </param>
+        <briefdescription>
+<para>Intentionally trigger a system reset. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Useful for &quot;safe mode&quot; transitions or recovering from unrecoverable errors. This function will block until the hardware resets the device.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">watchdog</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the watchdog service instance. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/watchdog.h" line="85" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/watchdog.c" bodystart="57" bodyend="65" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/watchdog.h" declline="85" declcolumn="6"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Functions for managing system safety. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>
