@@ -1,0 +1,351 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="event__bus__mock_8c" kind="file" language="C++">
+    <compoundname>event_bus_mock.c</compoundname>
+    <includes refid="event__bus__mock_8h" local="yes">event_bus_mock.h</includes>
+    <includes local="no">stdio.h</includes>
+    <includes local="no">string.h</includes>
+    <incdepgraph>
+      <node id="3">
+        <label>osusat/event_bus.h</label>
+        <link refid="event__bus_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/tests/mocks/event_bus_mock.c</label>
+        <link refid="event__bus__mock_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>event_bus_mock.h</label>
+        <link refid="event__bus__mock_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>stdbool.h</label>
+      </node>
+      <node id="5">
+        <label>stddef.h</label>
+      </node>
+      <node id="6">
+        <label>stdint.h</label>
+      </node>
+      <node id="7">
+        <label>stdio.h</label>
+      </node>
+      <node id="8">
+        <label>string.h</label>
+      </node>
+    </incdepgraph>
+    <innerclass refid="structsubscription__t" prot="public">subscription_t</innerclass>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="event__bus__mock_8c_1ace926d2a7c63c15f7b7fa0b1ae8ca717" prot="public" static="no">
+        <name>MAX_SUBSCRIBERS</name>
+        <initializer>16</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/tests/mocks/event_bus_mock.c" line="5" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/tests/mocks/event_bus_mock.c" bodystart="5" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="event__bus__mock_8c_1a86c0bb2621242f4eb45f786ae6891553" prot="public" static="no">
+        <name>MAX_PUBLISHED_EVENTS</name>
+        <initializer>16</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/tests/mocks/event_bus_mock.c" line="6" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/tests/mocks/event_bus_mock.c" bodystart="6" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="event__bus__mock_8c_1a08af1160ebe559067c27ebecf680ef6e" prot="public" static="yes" mutable="no">
+        <type><ref refid="structsubscription__t" kindref="compound">subscription_t</ref></type>
+        <definition>subscription_t subscriptions[MAX_SUBSCRIBERS]</definition>
+        <argsstring>[MAX_SUBSCRIBERS]</argsstring>
+        <name>subscriptions</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/tests/mocks/event_bus_mock.c" line="14" column="23" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/tests/mocks/event_bus_mock.c" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="event__bus__mock_8c_1a8c5d466e8456fa3d71cd0ab39e45b62d" prot="public" static="yes" mutable="no">
+        <type>int</type>
+        <definition>int subscriber_count</definition>
+        <argsstring></argsstring>
+        <name>subscriber_count</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/tests/mocks/event_bus_mock.c" line="15" column="12" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/tests/mocks/event_bus_mock.c" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="event__bus__mock_8c_1a38746e60cbb48359bd82869a6fbdb896" prot="public" static="yes" mutable="no">
+        <type><ref refid="structcaptured__event__t" kindref="compound">captured_event_t</ref></type>
+        <definition>captured_event_t published_events[MAX_PUBLISHED_EVENTS]</definition>
+        <argsstring>[MAX_PUBLISHED_EVENTS]</argsstring>
+        <name>published_events</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/tests/mocks/event_bus_mock.c" line="17" column="25" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/tests/mocks/event_bus_mock.c" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="event__bus__mock_8c_1ad37f48dcabcbfc6975187a31ea289aca" prot="public" static="yes" mutable="no">
+        <type>int</type>
+        <definition>int published_count</definition>
+        <argsstring></argsstring>
+        <name>published_count</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/tests/mocks/event_bus_mock.c" line="18" column="12" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/tests/mocks/event_bus_mock.c" bodystart="18" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <member refid="group__osusat__event__bus__api_1gaae6e93a3fbfe725ca1494eb91284863c" kind="function"><name>osusat_event_bus_init</name></member>
+      <member refid="group__osusat__event__bus__api_1gae83611a56e85f92a045e85cb804a4fde" kind="function"><name>osusat_event_bus_subscribe</name></member>
+      <member refid="group__osusat__event__bus__api_1ga9a19dc997602dd4c0a2bd006b51e2486" kind="function"><name>osusat_event_bus_publish</name></member>
+      <member refid="group__osusat__event__bus__api_1ga0a64376500bc5e410ce4d8e436475bb3" kind="function"><name>osusat_event_bus_process</name></member>
+      <memberdef kind="function" id="event__bus__mock_8c_1a121f932ba1d967116a67f099bc09c648" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int mock_event_bus_get_published_count</definition>
+        <argsstring>(void)</argsstring>
+        <name>mock_event_bus_get_published_count</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/tests/mocks/event_bus_mock.c" line="62" column="5" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/tests/mocks/event_bus_mock.c" bodystart="62" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="event__bus__mock_8c_1aa6e381f785a1673dafdb48272396b829" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structcaptured__event__t" kindref="compound">captured_event_t</ref></type>
+        <definition>captured_event_t mock_event_bus_get_published_event</definition>
+        <argsstring>(int index)</argsstring>
+        <name>mock_event_bus_get_published_event</name>
+        <param>
+          <type>int</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/tests/mocks/event_bus_mock.c" line="64" column="18" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/tests/mocks/event_bus_mock.c" bodystart="64" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="event__bus__mock_8c_1a94087286220f8f143a1e0dfff35d94ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mock_event_bus_reset_published</definition>
+        <argsstring>(void)</argsstring>
+        <name>mock_event_bus_reset_published</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/tests/mocks/event_bus_mock.c" line="68" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/tests/mocks/event_bus_mock.c" bodystart="68" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="function" id="event__bus__mock_8c_1afa31de42d6382f1d927ee7085121cc0e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mock_event_bus_reset_subscribers</definition>
+        <argsstring>(void)</argsstring>
+        <name>mock_event_bus_reset_subscribers</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/tests/mocks/event_bus_mock.c" line="73" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/tests/mocks/event_bus_mock.c" bodystart="73" bodyend="76"/>
+      </memberdef>
+      <memberdef kind="function" id="event__bus__mock_8c_1af889bdec63ff87df66cd5e9efb904804" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mock_event_bus_reset</definition>
+        <argsstring>(void)</argsstring>
+        <name>mock_event_bus_reset</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/tests/mocks/event_bus_mock.c" line="78" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/tests/mocks/event_bus_mock.c" bodystart="78" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="function" id="event__bus__mock_8c_1a9218d04ae1c60e3be72f071062ecb58d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mock_event_bus_trigger</definition>
+        <argsstring>(osusat_event_id_t event_id, const void *payload, size_t len)</argsstring>
+        <name>mock_event_bus_trigger</name>
+        <param>
+          <type><ref refid="group__osusat__event__bus__types_1gac1bdf9439b2f075299a2f98e80fe4264" kindref="member">osusat_event_id_t</ref></type>
+          <declname>event_id</declname>
+        </param>
+        <param>
+          <type>const void *</type>
+          <declname>payload</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>len</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/tests/mocks/event_bus_mock.c" line="83" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/tests/mocks/event_bus_mock.c" bodystart="83" bodyend="99"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="event__bus__mock_8h" kindref="compound">event_bus_mock.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdio.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MAX_SUBSCRIBERS<sp/>16</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MAX_PUBLISHED_EVENTS<sp/>16</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8" refid="structsubscription__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__osusat__event__bus__types_1gac1bdf9439b2f075299a2f98e80fe4264" kindref="member">osusat_event_id_t</ref><sp/>id;</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__osusat__event__bus__types_1gaccccae08b2fbb1acea7a6cb888e36c01" kindref="member">osusat_event_handler_t</ref><sp/>handler;</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*ctx;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal">}<sp/><ref refid="structsubscription__t" kindref="compound">subscription_t</ref>;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structsubscription__t" kindref="compound">subscription_t</ref><sp/>subscriptions[<ref refid="event__bus__mock_8c_1ace926d2a7c63c15f7b7fa0b1ae8ca717" kindref="member">MAX_SUBSCRIBERS</ref>];</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>subscriber_count<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structcaptured__event__t" kindref="compound">captured_event_t</ref><sp/>published_events[<ref refid="event__bus__mock_8c_1a86c0bb2621242f4eb45f786ae6891553" kindref="member">MAX_PUBLISHED_EVENTS</ref>];</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>published_count<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__osusat__event__bus__api_1gaae6e93a3fbfe725ca1494eb91284863c" kindref="member">osusat_event_bus_init</ref>(<ref refid="structosusat__event__t" kindref="compound">osusat_event_t</ref><sp/>*queue_storage,</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>queue_capacity)<sp/>{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>(void)queue_storage;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>(void)queue_capacity;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="event__bus__mock_8c_1af889bdec63ff87df66cd5e9efb904804" kindref="member">mock_event_bus_reset</ref>();</highlight></codeline>
+<codeline lineno="26"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="group__osusat__event__bus__api_1gae83611a56e85f92a045e85cb804a4fde" kindref="member">osusat_event_bus_subscribe</ref>(<ref refid="group__osusat__event__bus__types_1gac1bdf9439b2f075299a2f98e80fe4264" kindref="member">osusat_event_id_t</ref><sp/>event_id,</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__osusat__event__bus__types_1gaccccae08b2fbb1acea7a6cb888e36c01" kindref="member">osusat_event_handler_t</ref><sp/>handler,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*ctx)<sp/>{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(subscriber_count<sp/>&lt;<sp/><ref refid="event__bus__mock_8c_1ace926d2a7c63c15f7b7fa0b1ae8ca717" kindref="member">MAX_SUBSCRIBERS</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>subscriptions[subscriber_count++]<sp/>=</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(<ref refid="structsubscription__t" kindref="compound">subscription_t</ref>){event_id,<sp/>handler,<sp/>ctx};</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="group__osusat__event__bus__api_1ga9a19dc997602dd4c0a2bd006b51e2486" kindref="member">osusat_event_bus_publish</ref>(<ref refid="group__osusat__event__bus__types_1gac1bdf9439b2f075299a2f98e80fe4264" kindref="member">osusat_event_id_t</ref><sp/>event_id,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*payload,</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>len)<sp/>{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(published_count<sp/>&lt;<sp/><ref refid="event__bus__mock_8c_1a86c0bb2621242f4eb45f786ae6891553" kindref="member">MAX_PUBLISHED_EVENTS</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structcaptured__event__t" kindref="compound">captured_event_t</ref><sp/>*e<sp/>=<sp/>&amp;published_events[published_count++];</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>e-&gt;<ref refid="structcaptured__event__t_1a23a3b8c170d119f63494309488710bcd" kindref="member">id</ref><sp/>=<sp/>event_id;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>e-&gt;<ref refid="structcaptured__event__t_1a039298b54de9d4e77487af4f145051e7" kindref="member">payload_len</ref><sp/>=<sp/>len;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(payload<sp/>&amp;&amp;<sp/>len<sp/>&gt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>memcpy(e-&gt;<ref refid="structcaptured__event__t_1a21d31565432968cc6267a6507ef2d7d3" kindref="member">payload</ref>,<sp/>payload,<sp/>len);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__osusat__event__bus__api_1ga0a64376500bc5e410ce4d8e436475bb3" kindref="member">osusat_event_bus_process</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>in<sp/>this<sp/>mock,<sp/>events<sp/>are<sp/>processed<sp/>immediately<sp/>by<sp/>mock_event_bus_trigger</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="comment">//<sp/>mock-specific<sp/>functions</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="event__bus__mock_8c_1a121f932ba1d967116a67f099bc09c648" kindref="member">mock_event_bus_get_published_count</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>published_count;<sp/>}</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><ref refid="structcaptured__event__t" kindref="compound">captured_event_t</ref><sp/><ref refid="event__bus__mock_8c_1aa6e381f785a1673dafdb48272396b829" kindref="member">mock_event_bus_get_published_event</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>index)<sp/>{</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>published_events[index];</highlight></codeline>
+<codeline lineno="66"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="event__bus__mock_8c_1a94087286220f8f143a1e0dfff35d94ae" kindref="member">mock_event_bus_reset_published</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>published_count<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>memset(published_events,<sp/>0,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(published_events));</highlight></codeline>
+<codeline lineno="71"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="event__bus__mock_8c_1afa31de42d6382f1d927ee7085121cc0e" kindref="member">mock_event_bus_reset_subscribers</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>subscriber_count<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>memset(subscriptions,<sp/>0,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(subscriptions));</highlight></codeline>
+<codeline lineno="76"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="event__bus__mock_8c_1af889bdec63ff87df66cd5e9efb904804" kindref="member">mock_event_bus_reset</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="event__bus__mock_8c_1a94087286220f8f143a1e0dfff35d94ae" kindref="member">mock_event_bus_reset_published</ref>();</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="event__bus__mock_8c_1afa31de42d6382f1d927ee7085121cc0e" kindref="member">mock_event_bus_reset_subscribers</ref>();</highlight></codeline>
+<codeline lineno="81"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="event__bus__mock_8c_1a9218d04ae1c60e3be72f071062ecb58d" kindref="member">mock_event_bus_trigger</ref>(<ref refid="group__osusat__event__bus__types_1gac1bdf9439b2f075299a2f98e80fe4264" kindref="member">osusat_event_id_t</ref><sp/>event_id,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*payload,</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>len)<sp/>{</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>subscriber_count;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(subscriptions[i].</highlight><highlight class="keywordtype">id</highlight><highlight class="normal"><sp/>==<sp/>event_id)<sp/>{</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structosusat__event__t" kindref="compound">osusat_event_t</ref><sp/>event;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">event</highlight><highlight class="normal">.<ref refid="group__osusat__event__bus_1ga50b8f7dc805b7558c90d8f130c83e73d" kindref="member">id</ref><sp/>=<sp/>event_id;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">event</highlight><highlight class="normal">.payload_len<sp/>=<sp/>len;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(payload<sp/>&amp;&amp;<sp/>len<sp/>&gt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>memcpy(event.<ref refid="group__osusat__event__bus_1gab6eca2e9d47a2653c6fc53deaff61353" kindref="member">payload</ref>,<sp/>payload,<sp/>len);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>subscriptions[i].<ref refid="structsubscription__t_1ab9654c832fe016903fb30c520d907e6b" kindref="member">handler</ref>(&amp;event,<sp/>subscriptions[i].ctx);</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="99"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/tests/mocks/event_bus_mock.c"/>
+  </compounddef>
+</doxygen>

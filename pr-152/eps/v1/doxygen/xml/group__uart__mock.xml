@@ -1,0 +1,184 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="group__uart__mock" kind="group">
+    <compoundname>uart_mock</compoundname>
+    <title>UART Mock</title>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="group__uart__mock_1ga9f3af6567c6357cd6fa774415f3551ca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mock_uart_push_rx</definition>
+        <argsstring>(uart_port_t port, const uint8_t *data, size_t len)</argsstring>
+        <name>mock_uart_push_rx</name>
+        <param>
+          <type><ref refid="group__uart__types_1ga7f28644638bd57536eb5260695e83de9" kindref="member">uart_port_t</ref></type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type>const uint8_t *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>len</declname>
+        </param>
+        <briefdescription>
+<para>Inject test data into the UART RX buffer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Used to simulate bytes arriving from external devices.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART port receiving data </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to buffer of injected bytes </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">len</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of bytes to inject </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/mocks/hal_uart_mock.h" line="34" column="6" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/mocks/hal_uart_mock.h" declline="34" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__uart__mock_1gaed7ac0a4088132d82e5f0b94e545d470" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool mock_uart_receive_byte_from_isr</definition>
+        <argsstring>(uart_port_t port, uint8_t byte)</argsstring>
+        <name>mock_uart_receive_byte_from_isr</name>
+        <param>
+          <type><ref refid="group__uart__types_1ga7f28644638bd57536eb5260695e83de9" kindref="member">uart_port_t</ref></type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>byte</declname>
+        </param>
+        <briefdescription>
+<para>Simulate a single byte arriving via ISR. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Mimics the MCU hardware ISR pushing one byte into the HAL buffer. Invokes the registered RX callback if available.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART port receiving data </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">byte</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The byte to inject </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if the byte was successfully stored in the RX buffer </para>
+</simplesect>
+<simplesect kind="return"><para>false if the RX buffer was full </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/mocks/hal_uart_mock.h" line="47" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/mocks/hal_uart_mock.c" bodystart="106" bodyend="123" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/mocks/hal_uart_mock.h" declline="47" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__uart__mock_1gafc12f9b07a496b2f0f974a7712648984" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t mock_uart_get_tx</definition>
+        <argsstring>(uart_port_t port, uint8_t *out, size_t max_len)</argsstring>
+        <name>mock_uart_get_tx</name>
+        <param>
+          <type><ref refid="group__uart__types_1ga7f28644638bd57536eb5260695e83de9" kindref="member">uart_port_t</ref></type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type>uint8_t *</type>
+          <declname>out</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>max_len</declname>
+        </param>
+        <briefdescription>
+<para>Retrieve data written to a UART TX buffer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART port whose TX buffer is queried </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">buffer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Destination buffer to copy TX data into </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">max_len</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Maximum number of bytes to copy</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Number of bytes copied into <computeroutput>buffer</computeroutput> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/mocks/hal_uart_mock.h" line="58" column="8" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/mocks/hal_uart_mock.c" bodystart="139" bodyend="158" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/mocks/hal_uart_mock.h" declline="58" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="group__uart__mock_1gaec38e25a0cd2afcaa5e63fb72542311d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mock_uart_reset</definition>
+        <argsstring>(void)</argsstring>
+        <name>mock_uart_reset</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Clear all mock UART buffers. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Resets both RX and TX mock state for all UART ports. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/mocks/hal_uart_mock.h" line="65" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/mocks/hal_uart_mock.c" bodystart="160" bodyend="165" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/mocks/hal_uart_mock.h" declline="65" declcolumn="6"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Testing utilities for the UART module. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

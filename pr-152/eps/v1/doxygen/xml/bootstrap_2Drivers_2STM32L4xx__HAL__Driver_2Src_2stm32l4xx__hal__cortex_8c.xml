@@ -1,0 +1,329 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Src_2stm32l4xx__hal__cortex_8c" kind="file" language="C++">
+    <compoundname>stm32l4xx_hal_cortex.c</compoundname>
+    <includes local="yes">stm32l4xx_hal.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_cortex.c</label>
+        <link refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Src_2stm32l4xx__hal__cortex_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>stm32l4xx_hal.h</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+<para>CORTEX HAL module driver. This file provides firmware functions to manage the following functionalities of the CORTEX: </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>MCD Application Team<itemizedlist>
+<listitem><para>Initialization and Configuration functions</para>
+</listitem><listitem><para>Peripheral Control functions</para>
+</listitem></itemizedlist>
+</para>
+</simplesect>
+<verbatim>==============================================================================
+                      ##### How to use this driver #####
+==============================================================================
+
+  [..]
+  *** How to configure Interrupts using CORTEX HAL driver ***
+  ===========================================================
+  [..]
+  This section provides functions allowing to configure the NVIC interrupts (IRQ).
+  The Cortex-M4 exceptions are managed by CMSIS functions.
+
+  (#) Configure the NVIC Priority Grouping using HAL_NVIC_SetPriorityGrouping() function.
+  (#) Configure the priority of the selected IRQ Channels using HAL_NVIC_SetPriority().
+  (#) Enable the selected IRQ Channels using HAL_NVIC_EnableIRQ().
+
+   -@- When the NVIC_PRIORITYGROUP_0 is selected, IRQ pre-emption is no more possible.
+       The pending IRQ priority will be managed only by the sub priority.
+
+   -@- IRQ priority order (sorted by highest to lowest priority):
+      (+@) Lowest pre-emption priority
+      (+@) Lowest sub priority
+      (+@) Lowest hardware priority (IRQ number)
+
+  [..]
+  *** How to configure SysTick using CORTEX HAL driver ***
+  ========================================================
+  [..]
+  Setup SysTick Timer for time base.
+
+ (+) The HAL_SYSTICK_Config() function calls the SysTick_Config() function which
+     is a CMSIS function that:
+      (++) Configures the SysTick Reload register with value passed as function parameter.
+      (++) Configures the SysTick IRQ priority to the lowest value (0x0F).
+      (++) Resets the SysTick Counter register.
+      (++) Configures the SysTick Counter clock source to be Core Clock Source (HCLK).
+      (++) Enables the SysTick Interrupt.
+      (++) Starts the SysTick Counter.
+
+ (+) You can change the SysTick Clock source to be HCLK_Div8 by calling the macro
+     __HAL_CORTEX_SYSTICKCLK_CONFIG(SYSTICK_CLKSOURCE_HCLK_DIV8) just after the
+     HAL_SYSTICK_Config() function call. The __HAL_CORTEX_SYSTICKCLK_CONFIG() macro is defined
+     inside the stm32l4xx_hal_cortex.h file.
+
+ (+) You can change the SysTick IRQ priority by calling the
+     HAL_NVIC_SetPriority(SysTick_IRQn,...) function just after the HAL_SYSTICK_Config() function
+     call. The HAL_NVIC_SetPriority() call the NVIC_SetPriority() function which is a CMSIS function.
+
+ (+) To adjust the SysTick time base, use the following formula:
+
+     Reload Value = SysTick Counter Clock (Hz) x  Desired Time base (s)
+     (++) Reload Value is the parameter to be passed for HAL_SYSTICK_Config() function
+     (++) Reload Value should not exceed 0xFFFFFF</verbatim></para>
+<para>The table below gives the allowed values of the pre-emption priority and subpriority according to the Priority Grouping configuration performed by <ref refid="group__CORTEX__Exported__Functions__Group1_1gad9be53e08b1498adea006e5e037f238f" kindref="member">HAL_NVIC_SetPriorityGrouping()</ref> function.</para>
+<para><hruler/>
+ </para>
+<sect1 id="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Src_2stm32l4xx__hal__cortex_8c_1autotoc_md20">
+<title>NVIC_PriorityGroup   | NVIC_IRQChannelPreemptionPriority | NVIC_IRQChannelSubPriority  |       Description</title>
+<para>NVIC_PRIORITYGROUP_0 | 0 | 0-15 | 0 bit for pre-emption priority </para>
+<sect2 id="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Src_2stm32l4xx__hal__cortex_8c_1autotoc_md21">
+<title>|                                   |                             | 4 bits for subpriority</title>
+<para>NVIC_PRIORITYGROUP_1 | 0-1 | 0-7 | 1 bit for pre-emption priority </para>
+</sect2>
+<sect2 id="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Src_2stm32l4xx__hal__cortex_8c_1autotoc_md22">
+<title>|                                   |                             | 3 bits for subpriority</title>
+<para>NVIC_PRIORITYGROUP_2 | 0-3 | 0-3 | 2 bits for pre-emption priority </para>
+</sect2>
+<sect2 id="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Src_2stm32l4xx__hal__cortex_8c_1autotoc_md23">
+<title>|                                   |                             | 2 bits for subpriority</title>
+<para>NVIC_PRIORITYGROUP_3 | 0-7 | 0-1 | 3 bits for pre-emption priority </para>
+</sect2>
+<sect2 id="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Src_2stm32l4xx__hal__cortex_8c_1autotoc_md24">
+<title>|                                   |                             | 1 bit for subpriority</title>
+<para>NVIC_PRIORITYGROUP_4 | 0-15 | 0 | 4 bits for pre-emption priority </para>
+</sect2>
+</sect1>
+<sect1 id="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Src_2stm32l4xx__hal__cortex_8c_1autotoc_md25">
+<title>|                                   |                             | 0 bit for subpriority</title>
+<para><simplesect kind="attention"><para></para>
+</simplesect>
+Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
+<para>This software is licensed under terms that can be found in the LICENSE file in the root directory of this software component. If no LICENSE file comes with this software, it is provided AS-IS. </para>
+</sect1>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Includes<sp/>------------------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;stm32l4xx_hal.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>HAL_CORTEX_MODULE_ENABLED</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>types<sp/>-------------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>variables<sp/>---------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>constants<sp/>---------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>macros<sp/>------------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>functions<sp/>---------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Exported<sp/>functions<sp/>--------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__CORTEX__Exported__Functions__Group1_1gad9be53e08b1498adea006e5e037f238f" kindref="member">HAL_NVIC_SetPriorityGrouping</ref>(uint32_t<sp/>PriorityGroup)</highlight></codeline>
+<codeline lineno="164"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>the<sp/>parameters<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(<ref refid="group__CORTEX__Private__Macros_1ga6569304a39fe4f91bd59b6a586c8ede9" kindref="member">IS_NVIC_PRIORITY_GROUP</ref>(PriorityGroup));</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Set<sp/>the<sp/>PRIGROUP[10:8]<sp/>bits<sp/>according<sp/>to<sp/>the<sp/>PriorityGroup<sp/>parameter<sp/>value<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><ref refid="group__CMSIS__CORE_1ga0e798d5aec68cdd8263db86a76df788f" kindref="member">NVIC_SetPriorityGrouping</ref>(PriorityGroup);</highlight></codeline>
+<codeline lineno="170"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__CORTEX__Exported__Functions__Group1_1ga8581a82025a4780efd00876a66e3e91b" kindref="member">HAL_NVIC_SetPriority</ref>(<ref refid="group__Peripheral__interrupt__number__definition_1ga7e1129cd8a196f4284d41db3e82ad5c8" kindref="member">IRQn_Type</ref><sp/>IRQn,<sp/>uint32_t<sp/>PreemptPriority,<sp/>uint32_t<sp/>SubPriority)</highlight></codeline>
+<codeline lineno="186"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/>uint32_t<sp/>prioritygroup<sp/>=<sp/>0x00;</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>the<sp/>parameters<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(<ref refid="group__CORTEX__Private__Macros_1ga010705bc997dcff935b965b372cba61d" kindref="member">IS_NVIC_SUB_PRIORITY</ref>(SubPriority));</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(<ref refid="group__CORTEX__Private__Macros_1gaf30fd8f5960c2e28a772d8f16bb156dd" kindref="member">IS_NVIC_PREEMPTION_PRIORITY</ref>(PreemptPriority));</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/>prioritygroup<sp/>=<sp/><ref refid="group__CMSIS__CORE_1ga4eeb9214f2264fc23c34ad5de2d3fa11" kindref="member">NVIC_GetPriorityGrouping</ref>();</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><ref refid="group__CMSIS__CORE_1gae0e9d0e2f7b6133828c71b57d4941c35" kindref="member">NVIC_SetPriority</ref>(IRQn,<sp/><ref refid="group__CMSIS__Core__NVICFunctions_1gadb94ac5d892b376e4f3555ae0418ebac" kindref="member">NVIC_EncodePriority</ref>(prioritygroup,<sp/>PreemptPriority,<sp/>SubPriority));</highlight></codeline>
+<codeline lineno="196"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight></codeline>
+<codeline lineno="207"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__CORTEX__Exported__Functions__Group1_1gaaad4492c1b25e006d69948a15790352a" kindref="member">HAL_NVIC_EnableIRQ</ref>(<ref refid="group__Peripheral__interrupt__number__definition_1ga7e1129cd8a196f4284d41db3e82ad5c8" kindref="member">IRQn_Type</ref><sp/>IRQn)</highlight></codeline>
+<codeline lineno="208"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>the<sp/>parameters<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(<ref refid="group__CORTEX__Private__Macros_1ga9b8dcac4ed8e88c14d9bb04e369dad6a" kindref="member">IS_NVIC_DEVICE_IRQ</ref>(IRQn));</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Enable<sp/>interrupt<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><ref refid="group__CMSIS__CORE_1ga57b3064413dbc7459d9646020fdd8bef" kindref="member">NVIC_EnableIRQ</ref>(IRQn);</highlight></codeline>
+<codeline lineno="214"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"></highlight></codeline>
+<codeline lineno="223"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__CORTEX__Exported__Functions__Group1_1ga50ca6290e068821cb84aa168f3e13967" kindref="member">HAL_NVIC_DisableIRQ</ref>(<ref refid="group__Peripheral__interrupt__number__definition_1ga7e1129cd8a196f4284d41db3e82ad5c8" kindref="member">IRQn_Type</ref><sp/>IRQn)</highlight></codeline>
+<codeline lineno="224"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>the<sp/>parameters<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(<ref refid="group__CORTEX__Private__Macros_1ga9b8dcac4ed8e88c14d9bb04e369dad6a" kindref="member">IS_NVIC_DEVICE_IRQ</ref>(IRQn));</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Disable<sp/>interrupt<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><ref refid="group__CMSIS__CORE_1ga73b4e251f59cab4e9a5e234aac02ae57" kindref="member">NVIC_DisableIRQ</ref>(IRQn);</highlight></codeline>
+<codeline lineno="230"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"></highlight></codeline>
+<codeline lineno="236"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__CORTEX__Exported__Functions__Group1_1gac83d89028fabdf5d4c38ecf4fbfbefdc" kindref="member">HAL_NVIC_SystemReset</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="237"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>System<sp/>Reset<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><ref refid="group__CMSIS__CORE_1ga6aa0367d3642575610476bf0366f0c48" kindref="member">NVIC_SystemReset</ref>();</highlight></codeline>
+<codeline lineno="240"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"></highlight></codeline>
+<codeline lineno="249"><highlight class="normal">uint32_t<sp/><ref refid="group__CORTEX__Exported__Functions__Group1_1gac3a3f0d53c315523a8e6e7bcac1940cf" kindref="member">HAL_SYSTICK_Config</ref>(uint32_t<sp/>TicksNumb)</highlight></codeline>
+<codeline lineno="250"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>SysTick_Config(TicksNumb);</highlight></codeline>
+<codeline lineno="252"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="277"><highlight class="normal">uint32_t<sp/><ref refid="group__CORTEX__Exported__Functions__Group2_1gaa02bc953fd4fce22248c491a93c4ce40" kindref="member">HAL_NVIC_GetPriorityGrouping</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="278"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Get<sp/>the<sp/>PRIGROUP[10:8]<sp/>field<sp/>value<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__CMSIS__CORE_1ga4eeb9214f2264fc23c34ad5de2d3fa11" kindref="member">NVIC_GetPriorityGrouping</ref>();</highlight></codeline>
+<codeline lineno="281"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"></highlight></codeline>
+<codeline lineno="304"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__CORTEX__Exported__Functions__Group2_1ga6a21c9d904b0bcf4cb060f7c5c39b6f5" kindref="member">HAL_NVIC_GetPriority</ref>(<ref refid="group__Peripheral__interrupt__number__definition_1ga7e1129cd8a196f4284d41db3e82ad5c8" kindref="member">IRQn_Type</ref><sp/>IRQn,<sp/>uint32_t<sp/>PriorityGroup,<sp/>uint32_t<sp/>*pPreemptPriority,<sp/>uint32_t<sp/>*pSubPriority)</highlight></codeline>
+<codeline lineno="305"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>the<sp/>parameters<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(<ref refid="group__CORTEX__Private__Macros_1ga6569304a39fe4f91bd59b6a586c8ede9" kindref="member">IS_NVIC_PRIORITY_GROUP</ref>(PriorityGroup));</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/></highlight><highlight class="comment">/*<sp/>Get<sp/>priority<sp/>for<sp/>Cortex-M<sp/>system<sp/>or<sp/>device<sp/>specific<sp/>interrupts<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/><ref refid="group__CMSIS__Core__NVICFunctions_1ga3387607fd8a1a32cccd77d2ac672dd96" kindref="member">NVIC_DecodePriority</ref>(<ref refid="group__CMSIS__CORE_1gaf59b9d0a791d2157abb319753953eceb" kindref="member">NVIC_GetPriority</ref>(IRQn),<sp/>PriorityGroup,<sp/>pPreemptPriority,<sp/>pSubPriority);</highlight></codeline>
+<codeline lineno="310"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="311"><highlight class="normal"></highlight></codeline>
+<codeline lineno="319"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__CORTEX__Exported__Functions__Group2_1gaecf50f6c6d0e1fa5f8bd8c1b45309f18" kindref="member">HAL_NVIC_SetPendingIRQ</ref>(<ref refid="group__Peripheral__interrupt__number__definition_1ga7e1129cd8a196f4284d41db3e82ad5c8" kindref="member">IRQn_Type</ref><sp/>IRQn)</highlight></codeline>
+<codeline lineno="320"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>the<sp/>parameters<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(<ref refid="group__CORTEX__Private__Macros_1ga9b8dcac4ed8e88c14d9bb04e369dad6a" kindref="member">IS_NVIC_DEVICE_IRQ</ref>(IRQn));</highlight></codeline>
+<codeline lineno="323"><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline lineno="324"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Set<sp/>interrupt<sp/>pending<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/><ref refid="group__CMSIS__CORE_1ga2b47e2e52cf5c48a5c3348636434b3ac" kindref="member">NVIC_SetPendingIRQ</ref>(IRQn);</highlight></codeline>
+<codeline lineno="326"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="327"><highlight class="normal"></highlight></codeline>
+<codeline lineno="337"><highlight class="normal">uint32_t<sp/><ref refid="group__CORTEX__Exported__Functions__Group2_1ga3bd5802a96f0dcbc00ac3b89b134da3b" kindref="member">HAL_NVIC_GetPendingIRQ</ref>(<ref refid="group__Peripheral__interrupt__number__definition_1ga7e1129cd8a196f4284d41db3e82ad5c8" kindref="member">IRQn_Type</ref><sp/>IRQn)</highlight></codeline>
+<codeline lineno="338"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="339"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>the<sp/>parameters<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="340"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(<ref refid="group__CORTEX__Private__Macros_1ga9b8dcac4ed8e88c14d9bb04e369dad6a" kindref="member">IS_NVIC_DEVICE_IRQ</ref>(IRQn));</highlight></codeline>
+<codeline lineno="341"><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline lineno="342"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Return<sp/>1<sp/>if<sp/>pending<sp/>else<sp/>0<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="343"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__CMSIS__CORE_1gac608957a239466e9e0cbc30aa64feb3b" kindref="member">NVIC_GetPendingIRQ</ref>(IRQn);</highlight></codeline>
+<codeline lineno="344"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="345"><highlight class="normal"></highlight></codeline>
+<codeline lineno="353"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__CORTEX__Exported__Functions__Group2_1ga0c7d007acf1339ca1bb46f3c6e018ff5" kindref="member">HAL_NVIC_ClearPendingIRQ</ref>(<ref refid="group__Peripheral__interrupt__number__definition_1ga7e1129cd8a196f4284d41db3e82ad5c8" kindref="member">IRQn_Type</ref><sp/>IRQn)</highlight></codeline>
+<codeline lineno="354"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="355"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>the<sp/>parameters<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="356"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(<ref refid="group__CORTEX__Private__Macros_1ga9b8dcac4ed8e88c14d9bb04e369dad6a" kindref="member">IS_NVIC_DEVICE_IRQ</ref>(IRQn));</highlight></codeline>
+<codeline lineno="357"><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline lineno="358"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Clear<sp/>pending<sp/>interrupt<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="359"><highlight class="normal"><sp/><sp/><ref refid="group__CMSIS__CORE_1ga590cf113000a079b1f0ea3dcd5b5316c" kindref="member">NVIC_ClearPendingIRQ</ref>(IRQn);</highlight></codeline>
+<codeline lineno="360"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="361"><highlight class="normal"></highlight></codeline>
+<codeline lineno="370"><highlight class="normal">uint32_t<sp/><ref refid="group__CORTEX__Exported__Functions__Group2_1gad3f7598e54fb3d74eaf9abedef704c57" kindref="member">HAL_NVIC_GetActive</ref>(<ref refid="group__Peripheral__interrupt__number__definition_1ga7e1129cd8a196f4284d41db3e82ad5c8" kindref="member">IRQn_Type</ref><sp/>IRQn)</highlight></codeline>
+<codeline lineno="371"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="372"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Return<sp/>1<sp/>if<sp/>active<sp/>else<sp/>0<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="373"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__CMSIS__CORE_1ga58ad3f352f832235ab3b192ff4745320" kindref="member">NVIC_GetActive</ref>(IRQn);</highlight></codeline>
+<codeline lineno="374"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="375"><highlight class="normal"></highlight></codeline>
+<codeline lineno="384"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__CORTEX__Exported__Functions__Group2_1ga3284dc8428996f5b6aa6b3b99e643788" kindref="member">HAL_SYSTICK_CLKSourceConfig</ref>(uint32_t<sp/>CLKSource)</highlight></codeline>
+<codeline lineno="385"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="386"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>the<sp/>parameters<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="387"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(<ref refid="group__CORTEX__Private__Macros_1ga22d6291f6aed29442cf4cd9098fa0784" kindref="member">IS_SYSTICK_CLK_SOURCE</ref>(CLKSource));</highlight></codeline>
+<codeline lineno="388"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(CLKSource<sp/>==<sp/><ref refid="group__CORTEX__SysTick__clock__source_1ga6f6582df23b6fbc578325e453b9893b7" kindref="member">SYSTICK_CLKSOURCE_HCLK</ref>)</highlight></codeline>
+<codeline lineno="389"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="390"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__CMSIS__CORE_1gacd96c53beeaff8f603fcda425eb295de" kindref="member">SysTick</ref>-&gt;CTRL<sp/>|=<sp/><ref refid="group__CORTEX__SysTick__clock__source_1ga6f6582df23b6fbc578325e453b9893b7" kindref="member">SYSTICK_CLKSOURCE_HCLK</ref>;</highlight></codeline>
+<codeline lineno="391"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="392"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="393"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="394"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__CMSIS__CORE_1gacd96c53beeaff8f603fcda425eb295de" kindref="member">SysTick</ref>-&gt;CTRL<sp/>&amp;=<sp/>~SYSTICK_CLKSOURCE_HCLK;</highlight></codeline>
+<codeline lineno="395"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="396"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="397"><highlight class="normal"></highlight></codeline>
+<codeline lineno="402"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__CORTEX__Exported__Functions__Group2_1ga5b66b62383261c1e0acef98d344aa4c1" kindref="member">HAL_SYSTICK_IRQHandler</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="403"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="404"><highlight class="normal"><sp/><sp/><ref refid="group__CORTEX__Exported__Functions__Group2_1ga5033855e81ba2071231b60599a3ce9a1" kindref="member">HAL_SYSTICK_Callback</ref>();</highlight></codeline>
+<codeline lineno="405"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="406"><highlight class="normal"></highlight></codeline>
+<codeline lineno="411"><highlight class="normal">__weak<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__CORTEX__Exported__Functions__Group2_1ga5033855e81ba2071231b60599a3ce9a1" kindref="member">HAL_SYSTICK_Callback</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="412"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="413"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>NOTE<sp/>:<sp/>This<sp/>function<sp/>should<sp/>not<sp/>be<sp/>modified,<sp/>when<sp/>the<sp/>callback<sp/>is<sp/>needed,</highlight></codeline>
+<codeline lineno="414"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>the<sp/>HAL_SYSTICK_Callback<sp/>could<sp/>be<sp/>implemented<sp/>in<sp/>the<sp/>user<sp/>file</highlight></codeline>
+<codeline lineno="415"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="416"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="417"><highlight class="normal"></highlight></codeline>
+<codeline lineno="418"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>(__MPU_PRESENT<sp/>==<sp/>1)</highlight></codeline>
+<codeline lineno="430"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>HAL_MPU_Enable(uint32_t<sp/>MPU_Control)</highlight></codeline>
+<codeline lineno="431"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="432"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Enable<sp/>the<sp/>MPU<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="433"><highlight class="normal"><sp/><sp/>MPU-&gt;CTRL<sp/>=<sp/>(MPU_Control<sp/>|<sp/>MPU_CTRL_ENABLE_Msk);</highlight></codeline>
+<codeline lineno="434"><highlight class="normal"></highlight></codeline>
+<codeline lineno="435"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Ensure<sp/>MPU<sp/>setting<sp/>take<sp/>effects<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="436"><highlight class="normal"><sp/><sp/><ref refid="group__CMSIS__Core__InstructionInterface_1ga1224abad38b623ea154bf6dcf6993ebc" kindref="member">__DSB</ref>();</highlight></codeline>
+<codeline lineno="437"><highlight class="normal"><sp/><sp/><ref refid="group__CMSIS__Core__InstructionInterface_1ga02ee76ebe1fc72082d4ea683d35b5c89" kindref="member">__ISB</ref>();</highlight></codeline>
+<codeline lineno="438"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="439"><highlight class="normal"></highlight></codeline>
+<codeline lineno="440"><highlight class="normal"></highlight></codeline>
+<codeline lineno="445"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>HAL_MPU_Disable(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="446"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="447"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Make<sp/>sure<sp/>outstanding<sp/>transfers<sp/>are<sp/>done<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="448"><highlight class="normal"><sp/><sp/><ref refid="group__CMSIS__Core__InstructionInterface_1gaf26a64b05700dcf057e3be7a1809ca35" kindref="member">__DMB</ref>();</highlight></codeline>
+<codeline lineno="449"><highlight class="normal"></highlight></codeline>
+<codeline lineno="450"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Disable<sp/>the<sp/>MPU<sp/>and<sp/>clear<sp/>the<sp/>control<sp/>register*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="451"><highlight class="normal"><sp/><sp/>MPU-&gt;CTRL<sp/><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="452"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="453"><highlight class="normal"></highlight></codeline>
+<codeline lineno="458"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>HAL_MPU_EnableRegion(uint32_t<sp/>RegionNumber)</highlight></codeline>
+<codeline lineno="459"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="460"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>the<sp/>parameters<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="461"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(IS_MPU_REGION_NUMBER(RegionNumber));</highlight></codeline>
+<codeline lineno="462"><highlight class="normal"></highlight></codeline>
+<codeline lineno="463"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Set<sp/>the<sp/>Region<sp/>number<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="464"><highlight class="normal"><sp/><sp/>MPU-&gt;RNR<sp/>=<sp/>RegionNumber;</highlight></codeline>
+<codeline lineno="465"><highlight class="normal"></highlight></codeline>
+<codeline lineno="466"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Enable<sp/>the<sp/>Region<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="467"><highlight class="normal"><sp/><sp/><ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(MPU-&gt;RASR,<sp/>MPU_RASR_ENABLE_Msk);</highlight></codeline>
+<codeline lineno="468"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="469"><highlight class="normal"></highlight></codeline>
+<codeline lineno="474"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>HAL_MPU_DisableRegion(uint32_t<sp/>RegionNumber)</highlight></codeline>
+<codeline lineno="475"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="476"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>the<sp/>parameters<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="477"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(IS_MPU_REGION_NUMBER(RegionNumber));</highlight></codeline>
+<codeline lineno="478"><highlight class="normal"></highlight></codeline>
+<codeline lineno="479"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Set<sp/>the<sp/>Region<sp/>number<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="480"><highlight class="normal"><sp/><sp/>MPU-&gt;RNR<sp/>=<sp/>RegionNumber;</highlight></codeline>
+<codeline lineno="481"><highlight class="normal"></highlight></codeline>
+<codeline lineno="482"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Disable<sp/>the<sp/>Region<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="483"><highlight class="normal"><sp/><sp/><ref refid="group__Exported__macros_1ga133aae6fc0d41bffab39ab223a7001de" kindref="member">CLEAR_BIT</ref>(MPU-&gt;RASR,<sp/>MPU_RASR_ENABLE_Msk);</highlight></codeline>
+<codeline lineno="484"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="485"><highlight class="normal"></highlight></codeline>
+<codeline lineno="492"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>HAL_MPU_ConfigRegion(MPU_Region_InitTypeDef<sp/>*MPU_Init)</highlight></codeline>
+<codeline lineno="493"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="494"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>the<sp/>parameters<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="495"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(IS_MPU_REGION_NUMBER(MPU_Init-&gt;Number));</highlight></codeline>
+<codeline lineno="496"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(IS_MPU_REGION_ENABLE(MPU_Init-&gt;Enable));</highlight></codeline>
+<codeline lineno="497"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(IS_MPU_INSTRUCTION_ACCESS(MPU_Init-&gt;DisableExec));</highlight></codeline>
+<codeline lineno="498"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(IS_MPU_REGION_PERMISSION_ATTRIBUTE(MPU_Init-&gt;AccessPermission));</highlight></codeline>
+<codeline lineno="499"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(IS_MPU_TEX_LEVEL(MPU_Init-&gt;TypeExtField));</highlight></codeline>
+<codeline lineno="500"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(IS_MPU_ACCESS_SHAREABLE(MPU_Init-&gt;IsShareable));</highlight></codeline>
+<codeline lineno="501"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(IS_MPU_ACCESS_CACHEABLE(MPU_Init-&gt;IsCacheable));</highlight></codeline>
+<codeline lineno="502"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(IS_MPU_ACCESS_BUFFERABLE(MPU_Init-&gt;IsBufferable));</highlight></codeline>
+<codeline lineno="503"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(IS_MPU_SUB_REGION_DISABLE(MPU_Init-&gt;SubRegionDisable));</highlight></codeline>
+<codeline lineno="504"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(IS_MPU_REGION_SIZE(MPU_Init-&gt;Size));</highlight></codeline>
+<codeline lineno="505"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Set<sp/>the<sp/>Region<sp/>number<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="506"><highlight class="normal"><sp/><sp/>MPU-&gt;RNR<sp/>=<sp/>MPU_Init-&gt;Number;</highlight></codeline>
+<codeline lineno="507"><highlight class="normal"></highlight></codeline>
+<codeline lineno="508"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Disable<sp/>the<sp/>Region<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="509"><highlight class="normal"><sp/><sp/><ref refid="group__Exported__macros_1ga133aae6fc0d41bffab39ab223a7001de" kindref="member">CLEAR_BIT</ref>(MPU-&gt;RASR,<sp/>MPU_RASR_ENABLE_Msk);</highlight></codeline>
+<codeline lineno="510"><highlight class="normal"></highlight></codeline>
+<codeline lineno="511"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Apply<sp/>configuration<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="512"><highlight class="normal"><sp/><sp/>MPU-&gt;RBAR<sp/>=<sp/>MPU_Init-&gt;BaseAddress;</highlight></codeline>
+<codeline lineno="513"><highlight class="normal"><sp/><sp/>MPU-&gt;RASR<sp/>=<sp/>((uint32_t)MPU_Init-&gt;DisableExec<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>MPU_RASR_XN_Pos)<sp/><sp/><sp/>|</highlight></codeline>
+<codeline lineno="514"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((uint32_t)MPU_Init-&gt;AccessPermission<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>MPU_RASR_AP_Pos)<sp/><sp/><sp/>|</highlight></codeline>
+<codeline lineno="515"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((uint32_t)MPU_Init-&gt;TypeExtField<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>MPU_RASR_TEX_Pos)<sp/><sp/>|</highlight></codeline>
+<codeline lineno="516"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((uint32_t)MPU_Init-&gt;IsShareable<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>MPU_RASR_S_Pos)<sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline lineno="517"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((uint32_t)MPU_Init-&gt;IsCacheable<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>MPU_RASR_C_Pos)<sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline lineno="518"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((uint32_t)MPU_Init-&gt;IsBufferable<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>MPU_RASR_B_Pos)<sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline lineno="519"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((uint32_t)MPU_Init-&gt;SubRegionDisable<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>MPU_RASR_SRD_Pos)<sp/><sp/>|</highlight></codeline>
+<codeline lineno="520"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((uint32_t)MPU_Init-&gt;Size<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>MPU_RASR_SIZE_Pos)<sp/>|</highlight></codeline>
+<codeline lineno="521"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((uint32_t)MPU_Init-&gt;Enable<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>MPU_RASR_ENABLE_Pos);</highlight></codeline>
+<codeline lineno="522"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="523"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>__MPU_PRESENT<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="524"><highlight class="normal"></highlight></codeline>
+<codeline lineno="533"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>HAL_CORTEX_MODULE_ENABLED<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_cortex.c"/>
+  </compounddef>
+</doxygen>

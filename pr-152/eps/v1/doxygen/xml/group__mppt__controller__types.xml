@@ -1,0 +1,170 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="group__mppt__controller__types" kind="group">
+    <compoundname>mppt_controller_types</compoundname>
+    <title>Structures &amp; Enums</title>
+    <innerclass refid="structmppt__channel__t" prot="public">mppt_channel_t</innerclass>
+    <innerclass refid="structmppt__t" prot="public">mppt_t</innerclass>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="group__mppt__controller__types_1gabb987ebc21a22104b2d0d9b1f068ee75" prot="public" static="no" strong="no">
+        <type></type>
+        <name>mppt_controller_event_id_t</name>
+        <enumvalue id="group__mppt__controller__types_1ggabb987ebc21a22104b2d0d9b1f068ee75aa8956bcfda80fca2d175b4f75b145fbc" prot="public">
+          <name>MPPT_FAULT_DETECTED</name>
+          <initializer>= 0x10</initializer>
+          <briefdescription>
+<para>Published when a critical fault is detected. Payload: <ref refid="structmppt__channel__t" kindref="compound">mppt_channel_t</ref> (Snapshot at time of fault) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__mppt__controller__types_1ggabb987ebc21a22104b2d0d9b1f068ee75ac5924f642273066196267dcd96522dc9" prot="public">
+          <name>MPPT_PGOOD_CHANGED</name>
+          <briefdescription>
+<para>The state of the MPPT controller&apos;s PGOOD pin has changed Payload: new state (bool) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__mppt__controller__types_1ggabb987ebc21a22104b2d0d9b1f068ee75a5687f682f717c966ba119200e35f0883" prot="public">
+          <name>MPPT_VOLTAGE_LOW</name>
+          <briefdescription>
+<para>The MPPT input voltage level has lowered below the threshold Payload: new voltage (float) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__mppt__controller__types_1ggabb987ebc21a22104b2d0d9b1f068ee75ac8eb75be469462ebeb9ff88ed8df3f44" prot="public">
+          <name>MPPT_TELEMETRY</name>
+          <briefdescription>
+<para>Periodic telemetry broadcast Payload: <ref refid="structmppt__channel__t" kindref="compound">mppt_channel_t</ref>. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/mppt_controller.h" line="44" column="1" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/mppt_controller.h" bodystart="44" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__mppt__controller__types_1ga99b58e9542c40c7a631454d1e599ac91" prot="public" static="no" strong="no">
+        <type></type>
+        <name>mppt_status_t</name>
+        <enumvalue id="group__mppt__controller__types_1gga99b58e9542c40c7a631454d1e599ac91a24136ee2ca90631ce947dc77fdd4df67" prot="public">
+          <name>MPPT_STATUS_OK</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Channel operating nominally </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__mppt__controller__types_1gga99b58e9542c40c7a631454d1e599ac91a3af3ae8a1d778aa6de275aa9173467f5" prot="public">
+          <name>MPPT_STATUS_DISABLED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Channel disabled by software or hardware </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__mppt__controller__types_1gga99b58e9542c40c7a631454d1e599ac91a9f375738fcb2d66bf259417d9c09bea2" prot="public">
+          <name>MPPT_STATUS_FAULT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>General hardware fault or unexpected condition </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__mppt__controller__types_1gga99b58e9542c40c7a631454d1e599ac91af206cac4e8e62c9a96b8d8b4459216ca" prot="public">
+          <name>MPPT_STATUS_UNDERVOLT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Input voltage too low for MPPT to operate </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__mppt__controller__types_1gga99b58e9542c40c7a631454d1e599ac91ad2ca1a383351f51d24ce0a98fb243b8b" prot="public">
+          <name>MPPT_STATUS_OVERTEMP</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Channel is thermally throttled or shut down </para>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>MPPT channel health state. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Represents the operating or fault condition of a solar MPPT channel. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/mppt_controller.h" line="85" column="1" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/mppt_controller.h" bodystart="85" bodyend="92"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="group__mppt__controller__types_1gab2ed61e93c092e857b1b7d9174444a71" prot="public" static="no">
+        <name>MPPT_CONTROLLER_SERVICE_ID</name>
+        <initializer>0xAB77</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/mppt_controller.h" line="42" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/mppt_controller.h" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__mppt__controller__types_1ga18168abb54bd661b779cecac6fcb9f74" prot="public" static="no">
+        <name>MPPT_EVENT_FAULT_DETECTED</name>
+        <initializer>    <ref refid="group__osusat__event__bus__types_1ga6fb66ede3b29d386fec6f57800d3e980" kindref="member">OSUSAT_BUILD_EVENT_ID</ref>(<ref refid="group__mppt__controller__types_1gab2ed61e93c092e857b1b7d9174444a71" kindref="member">MPPT_CONTROLLER_SERVICE_ID</ref>, <ref refid="group__mppt__controller__types_1ggabb987ebc21a22104b2d0d9b1f068ee75aa8956bcfda80fca2d175b4f75b145fbc" kindref="member">MPPT_FAULT_DETECTED</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/mppt_controller.h" line="70" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/mppt_controller.h" bodystart="70" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="define" id="group__mppt__controller__types_1gab6007c741e8345fb7dc0ab8bb0ca0b26" prot="public" static="no">
+        <name>MPPT_EVENT_PGOOD_CHANGED</name>
+        <initializer>    <ref refid="group__osusat__event__bus__types_1ga6fb66ede3b29d386fec6f57800d3e980" kindref="member">OSUSAT_BUILD_EVENT_ID</ref>(<ref refid="group__mppt__controller__types_1gab2ed61e93c092e857b1b7d9174444a71" kindref="member">MPPT_CONTROLLER_SERVICE_ID</ref>, <ref refid="group__mppt__controller__types_1ggabb987ebc21a22104b2d0d9b1f068ee75ac5924f642273066196267dcd96522dc9" kindref="member">MPPT_PGOOD_CHANGED</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/mppt_controller.h" line="72" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/mppt_controller.h" bodystart="72" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="define" id="group__mppt__controller__types_1gaac8caf6bc45710b591b66ca29911e81d" prot="public" static="no">
+        <name>MPPT_EVENT_VOLTAGE_LOW</name>
+        <initializer>    <ref refid="group__osusat__event__bus__types_1ga6fb66ede3b29d386fec6f57800d3e980" kindref="member">OSUSAT_BUILD_EVENT_ID</ref>(<ref refid="group__mppt__controller__types_1gab2ed61e93c092e857b1b7d9174444a71" kindref="member">MPPT_CONTROLLER_SERVICE_ID</ref>, <ref refid="group__mppt__controller__types_1ggabb987ebc21a22104b2d0d9b1f068ee75a5687f682f717c966ba119200e35f0883" kindref="member">MPPT_VOLTAGE_LOW</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/mppt_controller.h" line="74" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/mppt_controller.h" bodystart="74" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="define" id="group__mppt__controller__types_1gaaee46403596602e660b9cd831bd73286" prot="public" static="no">
+        <name>MPPT_EVENT_TELEMETRY</name>
+        <initializer>    <ref refid="group__osusat__event__bus__types_1ga6fb66ede3b29d386fec6f57800d3e980" kindref="member">OSUSAT_BUILD_EVENT_ID</ref>(<ref refid="group__mppt__controller__types_1gab2ed61e93c092e857b1b7d9174444a71" kindref="member">MPPT_CONTROLLER_SERVICE_ID</ref>, <ref refid="group__mppt__controller__types_1ggabb987ebc21a22104b2d0d9b1f068ee75ac8eb75be469462ebeb9ff88ed8df3f44" kindref="member">MPPT_TELEMETRY</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/mppt_controller.h" line="76" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/mppt_controller.h" bodystart="76" bodyend="77"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Types used by the MPPT Controller Service. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

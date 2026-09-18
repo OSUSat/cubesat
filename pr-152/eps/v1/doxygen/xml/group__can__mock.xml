@@ -1,0 +1,126 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="group__can__mock" kind="group">
+    <compoundname>can_mock</compoundname>
+    <title>CAN Mock</title>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="group__can__mock_1gad1dd6d91538233c7f3a3f288cd4cbe6b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mock_can_push_rx</definition>
+        <argsstring>(hal_can_port_t port, const hal_can_msg_t *msg)</argsstring>
+        <name>mock_can_push_rx</name>
+        <param>
+          <type><ref refid="group__can__types_1ga83a77f224d5e726b32e0c7e7acff1163" kindref="member">hal_can_port_t</ref></type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structhal__can__msg__t" kindref="compound">hal_can_msg_t</ref> *</type>
+          <declname>msg</declname>
+        </param>
+        <briefdescription>
+<para>Inject a CAN message into the RX callback queue. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Simulates a message arriving from the CAN bus.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The CAN port. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>msg</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the message to inject. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/mocks/hal_can_mock.h" line="32" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/mocks/hal_can_mock.c" bodystart="93" bodyend="107" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/mocks/hal_can_mock.h" declline="32" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__can__mock_1ga6871d37aa0f5ba3ecd6b5b1062899031" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t mock_can_get_tx</definition>
+        <argsstring>(hal_can_port_t port, hal_can_msg_t *out, size_t max_len)</argsstring>
+        <name>mock_can_get_tx</name>
+        <param>
+          <type><ref refid="group__can__types_1ga83a77f224d5e726b32e0c7e7acff1163" kindref="member">hal_can_port_t</ref></type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type><ref refid="structhal__can__msg__t" kindref="compound">hal_can_msg_t</ref> *</type>
+          <declname>out</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>max_len</declname>
+        </param>
+        <briefdescription>
+<para>Retrieve a message that was transmitted. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The CAN port. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>out</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Buffer to copy the message to. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>max_len</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Maximum number of messages to retrieve. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>size_t Number of messages retrieved. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/mocks/hal_can_mock.h" line="42" column="8" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/mocks/hal_can_mock.c" bodystart="109" bodyend="125" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/mocks/hal_can_mock.h" declline="42" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="group__can__mock_1ga7b0f9cb84a6d3e153e6c5648666297b1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mock_can_reset</definition>
+        <argsstring>(void)</argsstring>
+        <name>mock_can_reset</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Reset the CAN mock state (clear all queues). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/mocks/hal_can_mock.h" line="47" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/mocks/hal_can_mock.c" bodystart="127" bodyend="129" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/mocks/hal_can_mock.h" declline="47" declcolumn="6"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Testing utilities for the CAN module. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

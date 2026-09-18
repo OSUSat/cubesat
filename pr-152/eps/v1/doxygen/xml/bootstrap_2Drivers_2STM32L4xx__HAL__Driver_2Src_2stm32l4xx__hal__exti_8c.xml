@@ -1,0 +1,519 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Src_2stm32l4xx__hal__exti_8c" kind="file" language="C++">
+    <compoundname>stm32l4xx_hal_exti.c</compoundname>
+    <includes local="yes">stm32l4xx_hal.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c</label>
+        <link refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Src_2stm32l4xx__hal__exti_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>stm32l4xx_hal.h</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+<para>EXTI HAL module driver. This file provides firmware functions to manage the following functionalities of the Extended Interrupts and events controller (EXTI) peripheral: </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>MCD Application Team<itemizedlist>
+<listitem><para>Initialization and de-initialization functions</para>
+</listitem><listitem><para>IO operation functions</para>
+</listitem></itemizedlist>
+</para>
+</simplesect>
+<simplesect kind="attention"><para></para>
+</simplesect>
+Copyright (c) 2018 STMicroelectronics. All rights reserved.</para>
+<para>This software is licensed under terms that can be found in the LICENSE file in the root directory of this software component. If no LICENSE file comes with this software, it is provided AS-IS.</para>
+<para><verbatim>==============================================================================
+                  ##### EXTI Peripheral features #####
+==============================================================================
+[..]
+  (+) Each Exti line can be configured within this driver.
+
+  (+) Exti line can be configured in 3 different modes
+      (++) Interrupt
+      (++) Event
+      (++) Both of them
+
+  (+) Configurable Exti lines can be configured with 3 different triggers
+      (++) Rising
+      (++) Falling
+      (++) Both of them
+
+  (+) When set in interrupt mode, configurable Exti lines have two different
+      interrupts pending registers which allow to distinguish which transition
+      occurs:
+      (++) Rising edge pending interrupt
+      (++) Falling
+
+  (+) Exti lines 0 to 15 are linked to gpio pin number 0 to 15. Gpio port can
+      be selected through multiplexer.
+
+                   ##### How to use this driver #####
+==============================================================================
+[..]
+
+  (#) Configure the EXTI line using HAL_EXTI_SetConfigLine().
+      (++) Choose the interrupt line number by setting &quot;Line&quot; member from
+           EXTI_ConfigTypeDef structure.
+      (++) Configure the interrupt and/or event mode using &quot;Mode&quot; member from
+           EXTI_ConfigTypeDef structure.
+      (++) For configurable lines, configure rising and/or falling trigger
+           &quot;Trigger&quot; member from EXTI_ConfigTypeDef structure.
+      (++) For Exti lines linked to gpio, choose gpio port using &quot;GPIOSel&quot;
+           member from GPIO_InitTypeDef structure.
+
+  (#) Get current Exti configuration of a dedicated line using
+      HAL_EXTI_GetConfigLine().
+      (++) Provide exiting handle as parameter.
+      (++) Provide pointer on EXTI_ConfigTypeDef structure as second parameter.
+
+  (#) Clear Exti configuration of a dedicated line using HAL_EXTI_ClearConfigLine().
+      (++) Provide exiting handle as parameter.
+
+  (#) Register callback to treat Exti interrupts using HAL_EXTI_RegisterCallback().
+      (++) Provide exiting handle as first parameter.
+      (++) Provide which callback will be registered using one value from
+           EXTI_CallbackIDTypeDef.
+      (++) Provide callback function pointer.
+
+  (#) Get interrupt pending bit using HAL_EXTI_GetPending().
+
+  (#) Clear interrupt pending bit using HAL_EXTI_ClearPending().
+
+  (#) Generate software interrupt using HAL_EXTI_GenerateSWI().</verbatim> </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Includes<sp/>------------------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;stm32l4xx_hal.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>HAL_EXTI_MODULE_ENABLED</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>typedef<sp/>-----------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>defines<sp/>------------------------------------------------------------*/</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>EXTI_MODE_OFFSET<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x08u<sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>0x20:<sp/>offset<sp/>between<sp/>MCU<sp/>IMR/EMR<sp/>registers<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>EXTI_CONFIG_OFFSET<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x08u<sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>0x20:<sp/>offset<sp/>between<sp/>MCU<sp/>Rising/Falling<sp/>configuration<sp/>registers<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>macros<sp/>------------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>variables<sp/>---------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>function<sp/>prototypes<sp/>-----------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Exported<sp/>functions<sp/>--------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/><ref refid="group__EXTI__Exported__Functions__Group1_1ga21c31dc6d13f1e32b4352e00ab6ad2b3" kindref="member">HAL_EXTI_SetConfigLine</ref>(<ref refid="structEXTI__HandleTypeDef" kindref="compound">EXTI_HandleTypeDef</ref><sp/>*hexti,<sp/><ref refid="structEXTI__ConfigTypeDef" kindref="compound">EXTI_ConfigTypeDef</ref><sp/>*pExtiConfig)</highlight></codeline>
+<codeline lineno="144"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Drivers_2CMSIS_2Include_2core__armv81mml_8h_1aec43007d9998a0a0e01faede4133d6be" kindref="member">__IO</ref><sp/>uint32_t<sp/>*regaddr;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/>uint32_t<sp/>regval;</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/>uint32_t<sp/>linepos;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/>uint32_t<sp/>maskline;</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/>uint32_t<sp/>offset;</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>null<sp/>pointer<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((hexti<sp/>==<sp/>NULL)<sp/>||<sp/>(pExtiConfig<sp/>==<sp/>NULL))</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa5a04e395e501e4e400172c610478c4a4" kindref="member">HAL_ERROR</ref>;</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>parameters<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(<ref refid="group__EXTI__Private__Macros_1gad1612a68c70ca4cdd0cbd3554e359af5" kindref="member">IS_EXTI_LINE</ref>(pExtiConfig-&gt;<ref refid="structEXTI__ConfigTypeDef_1a19ad88703f9ac13e8a741afdba86f6af" kindref="member">Line</ref>));</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(<ref refid="group__EXTI__Private__Macros_1gaa19d2fffcd305b75bf037aaf8f071ba7" kindref="member">IS_EXTI_MODE</ref>(pExtiConfig-&gt;<ref refid="structEXTI__ConfigTypeDef_1a6393a89a8cd198b19e10876e6f12cf5b" kindref="member">Mode</ref>));</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Assign<sp/>line<sp/>number<sp/>to<sp/>handle<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/>hexti-&gt;<ref refid="structEXTI__HandleTypeDef_1a6a2875051ad4276be5322ffa99e12566" kindref="member">Line</ref><sp/>=<sp/>pExtiConfig-&gt;<ref refid="structEXTI__ConfigTypeDef_1a19ad88703f9ac13e8a741afdba86f6af" kindref="member">Line</ref>;</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Compute<sp/>line<sp/>register<sp/>offset<sp/>and<sp/>line<sp/>mask<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/>offset<sp/>=<sp/>((pExtiConfig-&gt;<ref refid="structEXTI__ConfigTypeDef_1a19ad88703f9ac13e8a741afdba86f6af" kindref="member">Line</ref><sp/>&amp;<sp/><ref refid="group__EXTI__Private__Constants_1ga1aa525d078e0b4ba049f08d9f06f4012" kindref="member">EXTI_REG_MASK</ref>)<sp/>&gt;&gt;<sp/><ref refid="group__EXTI__Private__Constants_1ga187f8b65fedba7cc4a5662552dd0eb40" kindref="member">EXTI_REG_SHIFT</ref>);</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/>linepos<sp/>=<sp/>(pExtiConfig-&gt;<ref refid="structEXTI__ConfigTypeDef_1a19ad88703f9ac13e8a741afdba86f6af" kindref="member">Line</ref><sp/>&amp;<sp/><ref refid="group__EXTI__Private__Constants_1ga755405defae45017e19a17fd0279869c" kindref="member">EXTI_PIN_MASK</ref>);</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/>maskline<sp/>=<sp/>(1uL<sp/>&lt;&lt;<sp/>linepos);</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Configure<sp/>triggers<sp/>for<sp/>configurable<sp/>lines<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((pExtiConfig-&gt;<ref refid="structEXTI__ConfigTypeDef_1a19ad88703f9ac13e8a741afdba86f6af" kindref="member">Line</ref><sp/>&amp;<sp/><ref refid="group__EXTI__Private__Constants_1ga6f245ca02e17c1798fe43a66ea5b7fa4" kindref="member">EXTI_CONFIG</ref>)<sp/>!=<sp/>0x00u)</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(<ref refid="group__EXTI__Private__Macros_1gaba684e88699639398fb59c361c13c113" kindref="member">IS_EXTI_TRIGGER</ref>(pExtiConfig-&gt;<ref refid="structEXTI__ConfigTypeDef_1acf6d2ea84df5f2b705676584ae00707a" kindref="member">Trigger</ref>));</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Configure<sp/>rising<sp/>trigger<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/>regaddr<sp/>=<sp/>(&amp;<ref refid="group__Peripheral__declaration_1ga9189e770cd9b63dadd36683eb9843cac" kindref="member">EXTI</ref>-&gt;RTSR1<sp/>+<sp/>(EXTI_CONFIG_OFFSET<sp/>*<sp/>offset));</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/>regval<sp/>=<sp/>*regaddr;</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Mask<sp/>or<sp/>set<sp/>line<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((pExtiConfig-&gt;<ref refid="structEXTI__ConfigTypeDef_1acf6d2ea84df5f2b705676584ae00707a" kindref="member">Trigger</ref><sp/>&amp;<sp/><ref refid="group__EXTI__Trigger_1ga648bd5d6c2bebd85b5ea85f8af9a2ccc" kindref="member">EXTI_TRIGGER_RISING</ref>)<sp/>!=<sp/>0x00u)</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>regval<sp/>|=<sp/>maskline;</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>regval<sp/>&amp;=<sp/>~maskline;</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Store<sp/>rising<sp/>trigger<sp/>mode<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/>*regaddr<sp/>=<sp/>regval;</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Configure<sp/>falling<sp/>trigger<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/>regaddr<sp/>=<sp/>(&amp;<ref refid="group__Peripheral__declaration_1ga9189e770cd9b63dadd36683eb9843cac" kindref="member">EXTI</ref>-&gt;FTSR1<sp/>+<sp/>(EXTI_CONFIG_OFFSET<sp/>*<sp/>offset));</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/>regval<sp/>=<sp/>*regaddr;</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Mask<sp/>or<sp/>set<sp/>line<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((pExtiConfig-&gt;<ref refid="structEXTI__ConfigTypeDef_1acf6d2ea84df5f2b705676584ae00707a" kindref="member">Trigger</ref><sp/>&amp;<sp/><ref refid="group__EXTI__Trigger_1ga7461c33165994159edf79a095c227937" kindref="member">EXTI_TRIGGER_FALLING</ref>)<sp/>!=<sp/>0x00u)</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>regval<sp/>|=<sp/>maskline;</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>regval<sp/>&amp;=<sp/>~maskline;</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Store<sp/>falling<sp/>trigger<sp/>mode<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/>*regaddr<sp/>=<sp/>regval;</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"></highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Configure<sp/>gpio<sp/>port<sp/>selection<sp/>in<sp/>case<sp/>of<sp/>gpio<sp/>exti<sp/>line<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((pExtiConfig-&gt;<ref refid="structEXTI__ConfigTypeDef_1a19ad88703f9ac13e8a741afdba86f6af" kindref="member">Line</ref><sp/>&amp;<sp/><ref refid="group__EXTI__Private__Constants_1gacfa322960fc87db022536119cabb4d2a" kindref="member">EXTI_GPIO</ref>)<sp/>==<sp/><ref refid="group__EXTI__Private__Constants_1gacfa322960fc87db022536119cabb4d2a" kindref="member">EXTI_GPIO</ref>)</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(IS_EXTI_GPIO_PORT(pExtiConfig-&gt;<ref refid="structEXTI__ConfigTypeDef_1acb9a59bb7943a21c105481f85007a79c" kindref="member">GPIOSel</ref>));</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(<ref refid="group__EXTI__Private__Macros_1ga82f191b2ea96948f302dc6c2108ea534" kindref="member">IS_EXTI_GPIO_PIN</ref>(linepos));</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"></highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>regval<sp/>=<sp/><ref refid="group__Peripheral__declaration_1ga3c833fe1c486cb62250ccbca32899cb8" kindref="member">SYSCFG</ref>-&gt;EXTICR[linepos<sp/>&gt;&gt;<sp/>2u];</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>regval<sp/>&amp;=<sp/>~(<ref refid="group__Peripheral__Registers__Bits__Definition_1ga75b70d07448c3037234bc2abb8e3d884" kindref="member">SYSCFG_EXTICR1_EXTI0</ref><sp/>&lt;&lt;<sp/>(<ref refid="group__Peripheral__Registers__Bits__Definition_1ga1e187825ececb74bc0dc9bb16a22e8af" kindref="member">SYSCFG_EXTICR1_EXTI1_Pos</ref><sp/>*<sp/>(linepos<sp/>&amp;<sp/>0x03u)));</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>regval<sp/>|=<sp/>(pExtiConfig-&gt;<ref refid="structEXTI__ConfigTypeDef_1acb9a59bb7943a21c105481f85007a79c" kindref="member">GPIOSel</ref><sp/>&lt;&lt;<sp/>(<ref refid="group__Peripheral__Registers__Bits__Definition_1ga1e187825ececb74bc0dc9bb16a22e8af" kindref="member">SYSCFG_EXTICR1_EXTI1_Pos</ref><sp/>*<sp/>(linepos<sp/>&amp;<sp/>0x03u)));</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__Peripheral__declaration_1ga3c833fe1c486cb62250ccbca32899cb8" kindref="member">SYSCFG</ref>-&gt;EXTICR[linepos<sp/>&gt;&gt;<sp/>2u]<sp/>=<sp/>regval;</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"></highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Configure<sp/>interrupt<sp/>mode<sp/>:<sp/>read<sp/>current<sp/>mode<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/>regaddr<sp/>=<sp/>(&amp;<ref refid="group__Peripheral__declaration_1ga9189e770cd9b63dadd36683eb9843cac" kindref="member">EXTI</ref>-&gt;IMR1<sp/>+<sp/>(EXTI_MODE_OFFSET<sp/>*<sp/>offset));</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/>regval<sp/>=<sp/>*regaddr;</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Mask<sp/>or<sp/>set<sp/>line<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((pExtiConfig-&gt;<ref refid="structEXTI__ConfigTypeDef_1a6393a89a8cd198b19e10876e6f12cf5b" kindref="member">Mode</ref><sp/>&amp;<sp/><ref refid="group__EXTI__Mode_1gae1e032ec592296be21f416a79a44f4f5" kindref="member">EXTI_MODE_INTERRUPT</ref>)<sp/>!=<sp/>0x00u)</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/>regval<sp/>|=<sp/>maskline;</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/>regval<sp/>&amp;=<sp/>~maskline;</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"></highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Store<sp/>interrupt<sp/>mode<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/>*regaddr<sp/>=<sp/>regval;</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"></highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>The<sp/>event<sp/>mode<sp/>cannot<sp/>be<sp/>configured<sp/>if<sp/>the<sp/>line<sp/>does<sp/>not<sp/>support<sp/>it<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(((pExtiConfig-&gt;<ref refid="structEXTI__ConfigTypeDef_1a19ad88703f9ac13e8a741afdba86f6af" kindref="member">Line</ref><sp/>&amp;<sp/><ref refid="group__EXTI__Private__Constants_1gaa3c3d1a80e41861baaa300532bc2ccc8" kindref="member">EXTI_EVENT</ref>)<sp/>==<sp/><ref refid="group__EXTI__Private__Constants_1gaa3c3d1a80e41861baaa300532bc2ccc8" kindref="member">EXTI_EVENT</ref>)<sp/>||<sp/>((pExtiConfig-&gt;<ref refid="structEXTI__ConfigTypeDef_1a6393a89a8cd198b19e10876e6f12cf5b" kindref="member">Mode</ref><sp/>&amp;<sp/><ref refid="group__EXTI__Mode_1ga672fef88f86b5d8a421194e3dac0f2e1" kindref="member">EXTI_MODE_EVENT</ref>)<sp/>!=<sp/><ref refid="group__EXTI__Mode_1ga672fef88f86b5d8a421194e3dac0f2e1" kindref="member">EXTI_MODE_EVENT</ref>));</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"></highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Configure<sp/>event<sp/>mode<sp/>:<sp/>read<sp/>current<sp/>mode<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/>regaddr<sp/>=<sp/>(&amp;<ref refid="group__Peripheral__declaration_1ga9189e770cd9b63dadd36683eb9843cac" kindref="member">EXTI</ref>-&gt;EMR1<sp/>+<sp/>(EXTI_MODE_OFFSET<sp/>*<sp/>offset));</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/>regval<sp/>=<sp/>*regaddr;</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"></highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Mask<sp/>or<sp/>set<sp/>line<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((pExtiConfig-&gt;<ref refid="structEXTI__ConfigTypeDef_1a6393a89a8cd198b19e10876e6f12cf5b" kindref="member">Mode</ref><sp/>&amp;<sp/><ref refid="group__EXTI__Mode_1ga672fef88f86b5d8a421194e3dac0f2e1" kindref="member">EXTI_MODE_EVENT</ref>)<sp/>!=<sp/>0x00u)</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/>regval<sp/>|=<sp/>maskline;</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/>regval<sp/>&amp;=<sp/>~maskline;</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"></highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Store<sp/>event<sp/>mode<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/>*regaddr<sp/>=<sp/>regval;</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"></highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>;</highlight></codeline>
+<codeline lineno="259"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"></highlight></codeline>
+<codeline lineno="261"><highlight class="normal"></highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/><ref refid="group__EXTI__Exported__Functions__Group1_1gabc6617165a2712df438f38509c8205dd" kindref="member">HAL_EXTI_GetConfigLine</ref>(<ref refid="structEXTI__HandleTypeDef" kindref="compound">EXTI_HandleTypeDef</ref><sp/>*hexti,<sp/><ref refid="structEXTI__ConfigTypeDef" kindref="compound">EXTI_ConfigTypeDef</ref><sp/>*pExtiConfig)</highlight></codeline>
+<codeline lineno="269"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Drivers_2CMSIS_2Include_2core__armv81mml_8h_1aec43007d9998a0a0e01faede4133d6be" kindref="member">__IO</ref><sp/>uint32_t<sp/>*regaddr;</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/>uint32_t<sp/>regval;</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/>uint32_t<sp/>linepos;</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/>uint32_t<sp/>maskline;</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/>uint32_t<sp/>offset;</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"></highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>null<sp/>pointer<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((hexti<sp/>==<sp/>NULL)<sp/>||<sp/>(pExtiConfig<sp/>==<sp/>NULL))</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa5a04e395e501e4e400172c610478c4a4" kindref="member">HAL_ERROR</ref>;</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"></highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>the<sp/>parameter<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(<ref refid="group__EXTI__Private__Macros_1gad1612a68c70ca4cdd0cbd3554e359af5" kindref="member">IS_EXTI_LINE</ref>(hexti-&gt;<ref refid="structEXTI__HandleTypeDef_1a6a2875051ad4276be5322ffa99e12566" kindref="member">Line</ref>));</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"></highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Store<sp/>handle<sp/>line<sp/>number<sp/>to<sp/>configuration<sp/>structure<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/>pExtiConfig-&gt;<ref refid="structEXTI__ConfigTypeDef_1a19ad88703f9ac13e8a741afdba86f6af" kindref="member">Line</ref><sp/>=<sp/>hexti-&gt;<ref refid="structEXTI__HandleTypeDef_1a6a2875051ad4276be5322ffa99e12566" kindref="member">Line</ref>;</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"></highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Compute<sp/>line<sp/>register<sp/>offset<sp/>and<sp/>line<sp/>mask<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/>offset<sp/>=<sp/>((pExtiConfig-&gt;<ref refid="structEXTI__ConfigTypeDef_1a19ad88703f9ac13e8a741afdba86f6af" kindref="member">Line</ref><sp/>&amp;<sp/><ref refid="group__EXTI__Private__Constants_1ga1aa525d078e0b4ba049f08d9f06f4012" kindref="member">EXTI_REG_MASK</ref>)<sp/>&gt;&gt;<sp/><ref refid="group__EXTI__Private__Constants_1ga187f8b65fedba7cc4a5662552dd0eb40" kindref="member">EXTI_REG_SHIFT</ref>);</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/>linepos<sp/>=<sp/>(pExtiConfig-&gt;<ref refid="structEXTI__ConfigTypeDef_1a19ad88703f9ac13e8a741afdba86f6af" kindref="member">Line</ref><sp/>&amp;<sp/><ref refid="group__EXTI__Private__Constants_1ga755405defae45017e19a17fd0279869c" kindref="member">EXTI_PIN_MASK</ref>);</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/>maskline<sp/>=<sp/>(1uL<sp/>&lt;&lt;<sp/>linepos);</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"></highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>1]<sp/>Get<sp/>core<sp/>mode<sp/>:<sp/>interrupt<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/>regaddr<sp/>=<sp/>(&amp;<ref refid="group__Peripheral__declaration_1ga9189e770cd9b63dadd36683eb9843cac" kindref="member">EXTI</ref>-&gt;IMR1<sp/>+<sp/>(EXTI_MODE_OFFSET<sp/>*<sp/>offset));</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/>regval<sp/>=<sp/>*regaddr;</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"></highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>if<sp/>selected<sp/>line<sp/>is<sp/>enable<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((regval<sp/>&amp;<sp/>maskline)<sp/>!=<sp/>0x00u)</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/>pExtiConfig-&gt;<ref refid="structEXTI__ConfigTypeDef_1a6393a89a8cd198b19e10876e6f12cf5b" kindref="member">Mode</ref><sp/>=<sp/><ref refid="group__EXTI__Mode_1gae1e032ec592296be21f416a79a44f4f5" kindref="member">EXTI_MODE_INTERRUPT</ref>;</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/>pExtiConfig-&gt;<ref refid="structEXTI__ConfigTypeDef_1a6393a89a8cd198b19e10876e6f12cf5b" kindref="member">Mode</ref><sp/>=<sp/><ref refid="group__EXTI__Mode_1ga9b50ed09da5b1dd0619d8792f142b049" kindref="member">EXTI_MODE_NONE</ref>;</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"></highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Get<sp/>event<sp/>mode<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/>regaddr<sp/>=<sp/>(&amp;<ref refid="group__Peripheral__declaration_1ga9189e770cd9b63dadd36683eb9843cac" kindref="member">EXTI</ref>-&gt;EMR1<sp/>+<sp/>(EXTI_MODE_OFFSET<sp/>*<sp/>offset));</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/>regval<sp/>=<sp/>*regaddr;</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"></highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>if<sp/>selected<sp/>line<sp/>is<sp/>enable<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((regval<sp/>&amp;<sp/>maskline)<sp/>!=<sp/>0x00u)</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/>pExtiConfig-&gt;<ref refid="structEXTI__ConfigTypeDef_1a6393a89a8cd198b19e10876e6f12cf5b" kindref="member">Mode</ref><sp/>|=<sp/><ref refid="group__EXTI__Mode_1ga672fef88f86b5d8a421194e3dac0f2e1" kindref="member">EXTI_MODE_EVENT</ref>;</highlight></codeline>
+<codeline lineno="315"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"></highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Get<sp/>default<sp/>Trigger<sp/>and<sp/>GPIOSel<sp/>configuration<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="318"><highlight class="normal"><sp/><sp/>pExtiConfig-&gt;<ref refid="structEXTI__ConfigTypeDef_1acf6d2ea84df5f2b705676584ae00707a" kindref="member">Trigger</ref><sp/>=<sp/><ref refid="group__EXTI__Trigger_1gab0a4e8ed945992cb0cf071efe85748c8" kindref="member">EXTI_TRIGGER_NONE</ref>;</highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/>pExtiConfig-&gt;<ref refid="structEXTI__ConfigTypeDef_1acb9a59bb7943a21c105481f85007a79c" kindref="member">GPIOSel</ref><sp/>=<sp/>0x00u;</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"></highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>2]<sp/>Get<sp/>trigger<sp/>for<sp/>configurable<sp/>lines<sp/>:<sp/>rising<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((pExtiConfig-&gt;<ref refid="structEXTI__ConfigTypeDef_1a19ad88703f9ac13e8a741afdba86f6af" kindref="member">Line</ref><sp/>&amp;<sp/><ref refid="group__EXTI__Private__Constants_1ga6f245ca02e17c1798fe43a66ea5b7fa4" kindref="member">EXTI_CONFIG</ref>)<sp/>!=<sp/>0x00u)</highlight></codeline>
+<codeline lineno="323"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/>regaddr<sp/>=<sp/>(&amp;<ref refid="group__Peripheral__declaration_1ga9189e770cd9b63dadd36683eb9843cac" kindref="member">EXTI</ref>-&gt;RTSR1<sp/>+<sp/>(EXTI_CONFIG_OFFSET<sp/>*<sp/>offset));</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/>regval<sp/>=<sp/>*regaddr;</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"></highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>if<sp/>configuration<sp/>of<sp/>selected<sp/>line<sp/>is<sp/>enable<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((regval<sp/>&amp;<sp/>maskline)<sp/>!=<sp/>0x00u)</highlight></codeline>
+<codeline lineno="329"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="330"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>pExtiConfig-&gt;<ref refid="structEXTI__ConfigTypeDef_1acf6d2ea84df5f2b705676584ae00707a" kindref="member">Trigger</ref><sp/>=<sp/><ref refid="group__EXTI__Trigger_1ga648bd5d6c2bebd85b5ea85f8af9a2ccc" kindref="member">EXTI_TRIGGER_RISING</ref>;</highlight></codeline>
+<codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="332"><highlight class="normal"></highlight></codeline>
+<codeline lineno="333"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Get<sp/>falling<sp/>configuration<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/><sp/>regaddr<sp/>=<sp/>(&amp;<ref refid="group__Peripheral__declaration_1ga9189e770cd9b63dadd36683eb9843cac" kindref="member">EXTI</ref>-&gt;FTSR1<sp/>+<sp/>(EXTI_CONFIG_OFFSET<sp/>*<sp/>offset));</highlight></codeline>
+<codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/>regval<sp/>=<sp/>*regaddr;</highlight></codeline>
+<codeline lineno="336"><highlight class="normal"></highlight></codeline>
+<codeline lineno="337"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>if<sp/>configuration<sp/>of<sp/>selected<sp/>line<sp/>is<sp/>enable<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="338"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((regval<sp/>&amp;<sp/>maskline)<sp/>!=<sp/>0x00u)</highlight></codeline>
+<codeline lineno="339"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="340"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>pExtiConfig-&gt;<ref refid="structEXTI__ConfigTypeDef_1acf6d2ea84df5f2b705676584ae00707a" kindref="member">Trigger</ref><sp/>|=<sp/><ref refid="group__EXTI__Trigger_1ga7461c33165994159edf79a095c227937" kindref="member">EXTI_TRIGGER_FALLING</ref>;</highlight></codeline>
+<codeline lineno="341"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="342"><highlight class="normal"></highlight></codeline>
+<codeline lineno="343"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Get<sp/>Gpio<sp/>port<sp/>selection<sp/>for<sp/>gpio<sp/>lines<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="344"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((pExtiConfig-&gt;<ref refid="structEXTI__ConfigTypeDef_1a19ad88703f9ac13e8a741afdba86f6af" kindref="member">Line</ref><sp/>&amp;<sp/><ref refid="group__EXTI__Private__Constants_1gacfa322960fc87db022536119cabb4d2a" kindref="member">EXTI_GPIO</ref>)<sp/>==<sp/><ref refid="group__EXTI__Private__Constants_1gacfa322960fc87db022536119cabb4d2a" kindref="member">EXTI_GPIO</ref>)</highlight></codeline>
+<codeline lineno="345"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="346"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(<ref refid="group__EXTI__Private__Macros_1ga82f191b2ea96948f302dc6c2108ea534" kindref="member">IS_EXTI_GPIO_PIN</ref>(linepos));</highlight></codeline>
+<codeline lineno="347"><highlight class="normal"></highlight></codeline>
+<codeline lineno="348"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>regval<sp/>=<sp/><ref refid="group__Peripheral__declaration_1ga3c833fe1c486cb62250ccbca32899cb8" kindref="member">SYSCFG</ref>-&gt;EXTICR[linepos<sp/>&gt;&gt;<sp/>2u];</highlight></codeline>
+<codeline lineno="349"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>pExtiConfig-&gt;<ref refid="structEXTI__ConfigTypeDef_1acb9a59bb7943a21c105481f85007a79c" kindref="member">GPIOSel</ref><sp/>=<sp/>(regval<sp/>&gt;&gt;<sp/>(<ref refid="group__Peripheral__Registers__Bits__Definition_1ga1e187825ececb74bc0dc9bb16a22e8af" kindref="member">SYSCFG_EXTICR1_EXTI1_Pos</ref><sp/>*<sp/>(linepos<sp/>&amp;<sp/>0x03u)))<sp/>&amp;<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1ga75b70d07448c3037234bc2abb8e3d884" kindref="member">SYSCFG_EXTICR1_EXTI0</ref>;</highlight></codeline>
+<codeline lineno="350"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="351"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="352"><highlight class="normal"></highlight></codeline>
+<codeline lineno="353"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>;</highlight></codeline>
+<codeline lineno="354"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="355"><highlight class="normal"></highlight></codeline>
+<codeline lineno="356"><highlight class="normal"></highlight></codeline>
+<codeline lineno="362"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/><ref refid="group__EXTI__Exported__Functions__Group1_1gae8ed1defdcf965a62618af09c45c7866" kindref="member">HAL_EXTI_ClearConfigLine</ref>(<ref refid="structEXTI__HandleTypeDef" kindref="compound">EXTI_HandleTypeDef</ref><sp/>*hexti)</highlight></codeline>
+<codeline lineno="363"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="364"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Drivers_2CMSIS_2Include_2core__armv81mml_8h_1aec43007d9998a0a0e01faede4133d6be" kindref="member">__IO</ref><sp/>uint32_t<sp/>*regaddr;</highlight></codeline>
+<codeline lineno="365"><highlight class="normal"><sp/><sp/>uint32_t<sp/>regval;</highlight></codeline>
+<codeline lineno="366"><highlight class="normal"><sp/><sp/>uint32_t<sp/>linepos;</highlight></codeline>
+<codeline lineno="367"><highlight class="normal"><sp/><sp/>uint32_t<sp/>maskline;</highlight></codeline>
+<codeline lineno="368"><highlight class="normal"><sp/><sp/>uint32_t<sp/>offset;</highlight></codeline>
+<codeline lineno="369"><highlight class="normal"></highlight></codeline>
+<codeline lineno="370"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>null<sp/>pointer<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="371"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(hexti<sp/>==<sp/>NULL)</highlight></codeline>
+<codeline lineno="372"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="373"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa5a04e395e501e4e400172c610478c4a4" kindref="member">HAL_ERROR</ref>;</highlight></codeline>
+<codeline lineno="374"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="375"><highlight class="normal"></highlight></codeline>
+<codeline lineno="376"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>the<sp/>parameter<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="377"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(<ref refid="group__EXTI__Private__Macros_1gad1612a68c70ca4cdd0cbd3554e359af5" kindref="member">IS_EXTI_LINE</ref>(hexti-&gt;<ref refid="structEXTI__HandleTypeDef_1a6a2875051ad4276be5322ffa99e12566" kindref="member">Line</ref>));</highlight></codeline>
+<codeline lineno="378"><highlight class="normal"></highlight></codeline>
+<codeline lineno="379"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>compute<sp/>line<sp/>register<sp/>offset<sp/>and<sp/>line<sp/>mask<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="380"><highlight class="normal"><sp/><sp/>offset<sp/>=<sp/>((hexti-&gt;<ref refid="structEXTI__HandleTypeDef_1a6a2875051ad4276be5322ffa99e12566" kindref="member">Line</ref><sp/>&amp;<sp/><ref refid="group__EXTI__Private__Constants_1ga1aa525d078e0b4ba049f08d9f06f4012" kindref="member">EXTI_REG_MASK</ref>)<sp/>&gt;&gt;<sp/><ref refid="group__EXTI__Private__Constants_1ga187f8b65fedba7cc4a5662552dd0eb40" kindref="member">EXTI_REG_SHIFT</ref>);</highlight></codeline>
+<codeline lineno="381"><highlight class="normal"><sp/><sp/>linepos<sp/>=<sp/>(hexti-&gt;<ref refid="structEXTI__HandleTypeDef_1a6a2875051ad4276be5322ffa99e12566" kindref="member">Line</ref><sp/>&amp;<sp/><ref refid="group__EXTI__Private__Constants_1ga755405defae45017e19a17fd0279869c" kindref="member">EXTI_PIN_MASK</ref>);</highlight></codeline>
+<codeline lineno="382"><highlight class="normal"><sp/><sp/>maskline<sp/>=<sp/>(1uL<sp/>&lt;&lt;<sp/>linepos);</highlight></codeline>
+<codeline lineno="383"><highlight class="normal"></highlight></codeline>
+<codeline lineno="384"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>1]<sp/>Clear<sp/>interrupt<sp/>mode<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="385"><highlight class="normal"><sp/><sp/>regaddr<sp/>=<sp/>(&amp;<ref refid="group__Peripheral__declaration_1ga9189e770cd9b63dadd36683eb9843cac" kindref="member">EXTI</ref>-&gt;IMR1<sp/>+<sp/>(EXTI_MODE_OFFSET<sp/>*<sp/>offset));</highlight></codeline>
+<codeline lineno="386"><highlight class="normal"><sp/><sp/>regval<sp/>=<sp/>(*regaddr<sp/>&amp;<sp/>~maskline);</highlight></codeline>
+<codeline lineno="387"><highlight class="normal"><sp/><sp/>*regaddr<sp/>=<sp/>regval;</highlight></codeline>
+<codeline lineno="388"><highlight class="normal"></highlight></codeline>
+<codeline lineno="389"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>2]<sp/>Clear<sp/>event<sp/>mode<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="390"><highlight class="normal"><sp/><sp/>regaddr<sp/>=<sp/>(&amp;<ref refid="group__Peripheral__declaration_1ga9189e770cd9b63dadd36683eb9843cac" kindref="member">EXTI</ref>-&gt;EMR1<sp/>+<sp/>(EXTI_MODE_OFFSET<sp/>*<sp/>offset));</highlight></codeline>
+<codeline lineno="391"><highlight class="normal"><sp/><sp/>regval<sp/>=<sp/>(*regaddr<sp/>&amp;<sp/>~maskline);</highlight></codeline>
+<codeline lineno="392"><highlight class="normal"><sp/><sp/>*regaddr<sp/>=<sp/>regval;</highlight></codeline>
+<codeline lineno="393"><highlight class="normal"></highlight></codeline>
+<codeline lineno="394"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>3]<sp/>Clear<sp/>triggers<sp/>in<sp/>case<sp/>of<sp/>configurable<sp/>lines<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="395"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((hexti-&gt;<ref refid="structEXTI__HandleTypeDef_1a6a2875051ad4276be5322ffa99e12566" kindref="member">Line</ref><sp/>&amp;<sp/><ref refid="group__EXTI__Private__Constants_1ga6f245ca02e17c1798fe43a66ea5b7fa4" kindref="member">EXTI_CONFIG</ref>)<sp/>!=<sp/>0x00u)</highlight></codeline>
+<codeline lineno="396"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="397"><highlight class="normal"><sp/><sp/><sp/><sp/>regaddr<sp/>=<sp/>(&amp;<ref refid="group__Peripheral__declaration_1ga9189e770cd9b63dadd36683eb9843cac" kindref="member">EXTI</ref>-&gt;RTSR1<sp/>+<sp/>(EXTI_CONFIG_OFFSET<sp/>*<sp/>offset));</highlight></codeline>
+<codeline lineno="398"><highlight class="normal"><sp/><sp/><sp/><sp/>regval<sp/>=<sp/>(*regaddr<sp/>&amp;<sp/>~maskline);</highlight></codeline>
+<codeline lineno="399"><highlight class="normal"><sp/><sp/><sp/><sp/>*regaddr<sp/>=<sp/>regval;</highlight></codeline>
+<codeline lineno="400"><highlight class="normal"></highlight></codeline>
+<codeline lineno="401"><highlight class="normal"><sp/><sp/><sp/><sp/>regaddr<sp/>=<sp/>(&amp;<ref refid="group__Peripheral__declaration_1ga9189e770cd9b63dadd36683eb9843cac" kindref="member">EXTI</ref>-&gt;FTSR1<sp/>+<sp/>(EXTI_CONFIG_OFFSET<sp/>*<sp/>offset));</highlight></codeline>
+<codeline lineno="402"><highlight class="normal"><sp/><sp/><sp/><sp/>regval<sp/>=<sp/>(*regaddr<sp/>&amp;<sp/>~maskline);</highlight></codeline>
+<codeline lineno="403"><highlight class="normal"><sp/><sp/><sp/><sp/>*regaddr<sp/>=<sp/>regval;</highlight></codeline>
+<codeline lineno="404"><highlight class="normal"></highlight></codeline>
+<codeline lineno="405"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Get<sp/>Gpio<sp/>port<sp/>selection<sp/>for<sp/>gpio<sp/>lines<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="406"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((hexti-&gt;<ref refid="structEXTI__HandleTypeDef_1a6a2875051ad4276be5322ffa99e12566" kindref="member">Line</ref><sp/>&amp;<sp/><ref refid="group__EXTI__Private__Constants_1gacfa322960fc87db022536119cabb4d2a" kindref="member">EXTI_GPIO</ref>)<sp/>==<sp/><ref refid="group__EXTI__Private__Constants_1gacfa322960fc87db022536119cabb4d2a" kindref="member">EXTI_GPIO</ref>)</highlight></codeline>
+<codeline lineno="407"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="408"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(<ref refid="group__EXTI__Private__Macros_1ga82f191b2ea96948f302dc6c2108ea534" kindref="member">IS_EXTI_GPIO_PIN</ref>(linepos));</highlight></codeline>
+<codeline lineno="409"><highlight class="normal"></highlight></codeline>
+<codeline lineno="410"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>regval<sp/>=<sp/><ref refid="group__Peripheral__declaration_1ga3c833fe1c486cb62250ccbca32899cb8" kindref="member">SYSCFG</ref>-&gt;EXTICR[linepos<sp/>&gt;&gt;<sp/>2u];</highlight></codeline>
+<codeline lineno="411"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>regval<sp/>&amp;=<sp/>~(<ref refid="group__Peripheral__Registers__Bits__Definition_1ga75b70d07448c3037234bc2abb8e3d884" kindref="member">SYSCFG_EXTICR1_EXTI0</ref><sp/>&lt;&lt;<sp/>(<ref refid="group__Peripheral__Registers__Bits__Definition_1ga1e187825ececb74bc0dc9bb16a22e8af" kindref="member">SYSCFG_EXTICR1_EXTI1_Pos</ref><sp/>*<sp/>(linepos<sp/>&amp;<sp/>0x03u)));</highlight></codeline>
+<codeline lineno="412"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__Peripheral__declaration_1ga3c833fe1c486cb62250ccbca32899cb8" kindref="member">SYSCFG</ref>-&gt;EXTICR[linepos<sp/>&gt;&gt;<sp/>2u]<sp/>=<sp/>regval;</highlight></codeline>
+<codeline lineno="413"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="414"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="415"><highlight class="normal"></highlight></codeline>
+<codeline lineno="416"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>;</highlight></codeline>
+<codeline lineno="417"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="418"><highlight class="normal"></highlight></codeline>
+<codeline lineno="419"><highlight class="normal"></highlight></codeline>
+<codeline lineno="428"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/><ref refid="group__EXTI__Exported__Functions__Group1_1gacb6ee7e9f2429c3c3a1c99d4fe2d26d7" kindref="member">HAL_EXTI_RegisterCallback</ref>(<ref refid="structEXTI__HandleTypeDef" kindref="compound">EXTI_HandleTypeDef</ref><sp/>*hexti,<sp/><ref refid="group__EXTI__Exported__Types_1ga0ff36e8796a6ad3f2fc211e534c54c0e" kindref="member">EXTI_CallbackIDTypeDef</ref><sp/>CallbackID,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>(*pPendingCbfn)(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">))</highlight></codeline>
+<codeline lineno="429"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="430"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/>status<sp/>=<sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>;</highlight></codeline>
+<codeline lineno="431"><highlight class="normal"></highlight></codeline>
+<codeline lineno="432"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(CallbackID)</highlight></codeline>
+<codeline lineno="433"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="434"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><sp/><ref refid="group__EXTI__Exported__Types_1gga0ff36e8796a6ad3f2fc211e534c54c0ea9e0259c6eb4e5da890544489f133294b" kindref="member">HAL_EXTI_COMMON_CB_ID</ref>:</highlight></codeline>
+<codeline lineno="435"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>hexti-&gt;<ref refid="structEXTI__HandleTypeDef_1a2887a653cc9dc88761aa603712aa7343" kindref="member">PendingCallback</ref><sp/>=<sp/>pPendingCbfn;</highlight></codeline>
+<codeline lineno="436"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="437"><highlight class="normal"></highlight></codeline>
+<codeline lineno="438"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="439"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>status<sp/>=<sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa5a04e395e501e4e400172c610478c4a4" kindref="member">HAL_ERROR</ref>;</highlight></codeline>
+<codeline lineno="440"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="441"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="442"><highlight class="normal"></highlight></codeline>
+<codeline lineno="443"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>status;</highlight></codeline>
+<codeline lineno="444"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="445"><highlight class="normal"></highlight></codeline>
+<codeline lineno="446"><highlight class="normal"></highlight></codeline>
+<codeline lineno="454"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/><ref refid="group__EXTI__Exported__Functions__Group1_1gaa5856ee92dc1265db144af025673ee46" kindref="member">HAL_EXTI_GetHandle</ref>(<ref refid="structEXTI__HandleTypeDef" kindref="compound">EXTI_HandleTypeDef</ref><sp/>*hexti,<sp/>uint32_t<sp/>ExtiLine)</highlight></codeline>
+<codeline lineno="455"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="456"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>the<sp/>parameters<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="457"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(<ref refid="group__EXTI__Private__Macros_1gad1612a68c70ca4cdd0cbd3554e359af5" kindref="member">IS_EXTI_LINE</ref>(ExtiLine));</highlight></codeline>
+<codeline lineno="458"><highlight class="normal"></highlight></codeline>
+<codeline lineno="459"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>null<sp/>pointer<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="460"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(hexti<sp/>==<sp/>NULL)</highlight></codeline>
+<codeline lineno="461"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="462"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa5a04e395e501e4e400172c610478c4a4" kindref="member">HAL_ERROR</ref>;</highlight></codeline>
+<codeline lineno="463"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="464"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="465"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="466"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Store<sp/>line<sp/>number<sp/>as<sp/>handle<sp/>private<sp/>field<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="467"><highlight class="normal"><sp/><sp/><sp/><sp/>hexti-&gt;<ref refid="structEXTI__HandleTypeDef_1a6a2875051ad4276be5322ffa99e12566" kindref="member">Line</ref><sp/>=<sp/>ExtiLine;</highlight></codeline>
+<codeline lineno="468"><highlight class="normal"></highlight></codeline>
+<codeline lineno="469"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>;</highlight></codeline>
+<codeline lineno="470"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="471"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="472"><highlight class="normal"></highlight></codeline>
+<codeline lineno="473"><highlight class="normal"></highlight></codeline>
+<codeline lineno="495"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__EXTI__Exported__Functions__Group2_1ga241422a810a8e2aeb0cd8467145d33bb" kindref="member">HAL_EXTI_IRQHandler</ref>(<ref refid="structEXTI__HandleTypeDef" kindref="compound">EXTI_HandleTypeDef</ref><sp/>*hexti)</highlight></codeline>
+<codeline lineno="496"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="497"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Drivers_2CMSIS_2Include_2core__armv81mml_8h_1aec43007d9998a0a0e01faede4133d6be" kindref="member">__IO</ref><sp/>uint32_t<sp/>*regaddr;</highlight></codeline>
+<codeline lineno="498"><highlight class="normal"><sp/><sp/>uint32_t<sp/>regval;</highlight></codeline>
+<codeline lineno="499"><highlight class="normal"><sp/><sp/>uint32_t<sp/>maskline;</highlight></codeline>
+<codeline lineno="500"><highlight class="normal"><sp/><sp/>uint32_t<sp/>offset;</highlight></codeline>
+<codeline lineno="501"><highlight class="normal"></highlight></codeline>
+<codeline lineno="502"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Compute<sp/>line<sp/>register<sp/>offset<sp/>and<sp/>line<sp/>mask<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="503"><highlight class="normal"><sp/><sp/>offset<sp/>=<sp/>((hexti-&gt;<ref refid="structEXTI__HandleTypeDef_1a6a2875051ad4276be5322ffa99e12566" kindref="member">Line</ref><sp/>&amp;<sp/><ref refid="group__EXTI__Private__Constants_1ga1aa525d078e0b4ba049f08d9f06f4012" kindref="member">EXTI_REG_MASK</ref>)<sp/>&gt;&gt;<sp/><ref refid="group__EXTI__Private__Constants_1ga187f8b65fedba7cc4a5662552dd0eb40" kindref="member">EXTI_REG_SHIFT</ref>);</highlight></codeline>
+<codeline lineno="504"><highlight class="normal"><sp/><sp/>maskline<sp/>=<sp/>(1uL<sp/>&lt;&lt;<sp/>(hexti-&gt;<ref refid="structEXTI__HandleTypeDef_1a6a2875051ad4276be5322ffa99e12566" kindref="member">Line</ref><sp/>&amp;<sp/><ref refid="group__EXTI__Private__Constants_1ga755405defae45017e19a17fd0279869c" kindref="member">EXTI_PIN_MASK</ref>));</highlight></codeline>
+<codeline lineno="505"><highlight class="normal"></highlight></codeline>
+<codeline lineno="506"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Get<sp/>pending<sp/>bit<sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="507"><highlight class="normal"><sp/><sp/>regaddr<sp/>=<sp/>(&amp;<ref refid="group__Peripheral__declaration_1ga9189e770cd9b63dadd36683eb9843cac" kindref="member">EXTI</ref>-&gt;PR1<sp/>+<sp/>(EXTI_CONFIG_OFFSET<sp/>*<sp/>offset));</highlight></codeline>
+<codeline lineno="508"><highlight class="normal"><sp/><sp/>regval<sp/>=<sp/>(*regaddr<sp/>&amp;<sp/>maskline);</highlight></codeline>
+<codeline lineno="509"><highlight class="normal"></highlight></codeline>
+<codeline lineno="510"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(regval<sp/>!=<sp/>0x00u)</highlight></codeline>
+<codeline lineno="511"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="512"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Clear<sp/>pending<sp/>bit<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="513"><highlight class="normal"><sp/><sp/><sp/><sp/>*regaddr<sp/>=<sp/>maskline;</highlight></codeline>
+<codeline lineno="514"><highlight class="normal"></highlight></codeline>
+<codeline lineno="515"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Call<sp/>callback<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="516"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(hexti-&gt;<ref refid="structEXTI__HandleTypeDef_1a2887a653cc9dc88761aa603712aa7343" kindref="member">PendingCallback</ref><sp/>!=<sp/>NULL)</highlight></codeline>
+<codeline lineno="517"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="518"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>hexti-&gt;<ref refid="structEXTI__HandleTypeDef_1a2887a653cc9dc88761aa603712aa7343" kindref="member">PendingCallback</ref>();</highlight></codeline>
+<codeline lineno="519"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="520"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="521"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="522"><highlight class="normal"></highlight></codeline>
+<codeline lineno="523"><highlight class="normal"></highlight></codeline>
+<codeline lineno="533"><highlight class="normal">uint32_t<sp/><ref refid="group__EXTI__Exported__Functions__Group2_1ga96319c70ad567d85105e4608f8b0887e" kindref="member">HAL_EXTI_GetPending</ref>(<ref refid="structEXTI__HandleTypeDef" kindref="compound">EXTI_HandleTypeDef</ref><sp/>*hexti,<sp/>uint32_t<sp/>Edge)</highlight></codeline>
+<codeline lineno="534"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="535"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Drivers_2CMSIS_2Include_2core__armv81mml_8h_1aec43007d9998a0a0e01faede4133d6be" kindref="member">__IO</ref><sp/>uint32_t<sp/>*regaddr;</highlight></codeline>
+<codeline lineno="536"><highlight class="normal"><sp/><sp/>uint32_t<sp/>regval;</highlight></codeline>
+<codeline lineno="537"><highlight class="normal"><sp/><sp/>uint32_t<sp/>linepos;</highlight></codeline>
+<codeline lineno="538"><highlight class="normal"><sp/><sp/>uint32_t<sp/>maskline;</highlight></codeline>
+<codeline lineno="539"><highlight class="normal"><sp/><sp/>uint32_t<sp/>offset;</highlight></codeline>
+<codeline lineno="540"><highlight class="normal"></highlight></codeline>
+<codeline lineno="541"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Prevent<sp/>unused<sp/>argument(s)<sp/>compilation<sp/>warning<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="542"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a6bc306171da085f4c7df2c66d2ff8e47" kindref="member">UNUSED</ref>(Edge);</highlight></codeline>
+<codeline lineno="543"><highlight class="normal"></highlight></codeline>
+<codeline lineno="544"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>parameters<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="545"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(<ref refid="group__EXTI__Private__Macros_1gad1612a68c70ca4cdd0cbd3554e359af5" kindref="member">IS_EXTI_LINE</ref>(hexti-&gt;<ref refid="structEXTI__HandleTypeDef_1a6a2875051ad4276be5322ffa99e12566" kindref="member">Line</ref>));</highlight></codeline>
+<codeline lineno="546"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(<ref refid="group__EXTI__Private__Macros_1ga1ec20cce9b1da8e1bd3de992511ccc1e" kindref="member">IS_EXTI_CONFIG_LINE</ref>(hexti-&gt;<ref refid="structEXTI__HandleTypeDef_1a6a2875051ad4276be5322ffa99e12566" kindref="member">Line</ref>));</highlight></codeline>
+<codeline lineno="547"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(<ref refid="group__EXTI__Private__Macros_1ga8fc9a0110e16df06c61b51d46e50eb3f" kindref="member">IS_EXTI_PENDING_EDGE</ref>(Edge));</highlight></codeline>
+<codeline lineno="548"><highlight class="normal"></highlight></codeline>
+<codeline lineno="549"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Compute<sp/>line<sp/>register<sp/>offset<sp/>and<sp/>line<sp/>mask<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="550"><highlight class="normal"><sp/><sp/>offset<sp/>=<sp/>((hexti-&gt;<ref refid="structEXTI__HandleTypeDef_1a6a2875051ad4276be5322ffa99e12566" kindref="member">Line</ref><sp/>&amp;<sp/><ref refid="group__EXTI__Private__Constants_1ga1aa525d078e0b4ba049f08d9f06f4012" kindref="member">EXTI_REG_MASK</ref>)<sp/>&gt;&gt;<sp/><ref refid="group__EXTI__Private__Constants_1ga187f8b65fedba7cc4a5662552dd0eb40" kindref="member">EXTI_REG_SHIFT</ref>);</highlight></codeline>
+<codeline lineno="551"><highlight class="normal"><sp/><sp/>linepos<sp/>=<sp/>(hexti-&gt;<ref refid="structEXTI__HandleTypeDef_1a6a2875051ad4276be5322ffa99e12566" kindref="member">Line</ref><sp/>&amp;<sp/><ref refid="group__EXTI__Private__Constants_1ga755405defae45017e19a17fd0279869c" kindref="member">EXTI_PIN_MASK</ref>);</highlight></codeline>
+<codeline lineno="552"><highlight class="normal"><sp/><sp/>maskline<sp/>=<sp/>(1uL<sp/>&lt;&lt;<sp/>linepos);</highlight></codeline>
+<codeline lineno="553"><highlight class="normal"></highlight></codeline>
+<codeline lineno="554"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Get<sp/>pending<sp/>bit<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="555"><highlight class="normal"><sp/><sp/>regaddr<sp/>=<sp/>(&amp;<ref refid="group__Peripheral__declaration_1ga9189e770cd9b63dadd36683eb9843cac" kindref="member">EXTI</ref>-&gt;PR1<sp/>+<sp/>(EXTI_CONFIG_OFFSET<sp/>*<sp/>offset));</highlight></codeline>
+<codeline lineno="556"><highlight class="normal"></highlight></codeline>
+<codeline lineno="557"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>return<sp/>1<sp/>if<sp/>bit<sp/>is<sp/>set<sp/>else<sp/>0<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="558"><highlight class="normal"><sp/><sp/>regval<sp/>=<sp/>((*regaddr<sp/>&amp;<sp/>maskline)<sp/>&gt;&gt;<sp/>linepos);</highlight></codeline>
+<codeline lineno="559"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>regval;</highlight></codeline>
+<codeline lineno="560"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="561"><highlight class="normal"></highlight></codeline>
+<codeline lineno="562"><highlight class="normal"></highlight></codeline>
+<codeline lineno="572"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__EXTI__Exported__Functions__Group2_1gaa99dea85ad2aea36f0abbe022a82664d" kindref="member">HAL_EXTI_ClearPending</ref>(<ref refid="structEXTI__HandleTypeDef" kindref="compound">EXTI_HandleTypeDef</ref><sp/>*hexti,<sp/>uint32_t<sp/>Edge)</highlight></codeline>
+<codeline lineno="573"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="574"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Drivers_2CMSIS_2Include_2core__armv81mml_8h_1aec43007d9998a0a0e01faede4133d6be" kindref="member">__IO</ref><sp/>uint32_t<sp/>*regaddr;</highlight></codeline>
+<codeline lineno="575"><highlight class="normal"><sp/><sp/>uint32_t<sp/>maskline;</highlight></codeline>
+<codeline lineno="576"><highlight class="normal"><sp/><sp/>uint32_t<sp/>offset;</highlight></codeline>
+<codeline lineno="577"><highlight class="normal"></highlight></codeline>
+<codeline lineno="578"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Prevent<sp/>unused<sp/>argument(s)<sp/>compilation<sp/>warning<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="579"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a6bc306171da085f4c7df2c66d2ff8e47" kindref="member">UNUSED</ref>(Edge);</highlight></codeline>
+<codeline lineno="580"><highlight class="normal"></highlight></codeline>
+<codeline lineno="581"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>parameters<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="582"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(<ref refid="group__EXTI__Private__Macros_1gad1612a68c70ca4cdd0cbd3554e359af5" kindref="member">IS_EXTI_LINE</ref>(hexti-&gt;<ref refid="structEXTI__HandleTypeDef_1a6a2875051ad4276be5322ffa99e12566" kindref="member">Line</ref>));</highlight></codeline>
+<codeline lineno="583"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(<ref refid="group__EXTI__Private__Macros_1ga1ec20cce9b1da8e1bd3de992511ccc1e" kindref="member">IS_EXTI_CONFIG_LINE</ref>(hexti-&gt;<ref refid="structEXTI__HandleTypeDef_1a6a2875051ad4276be5322ffa99e12566" kindref="member">Line</ref>));</highlight></codeline>
+<codeline lineno="584"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(<ref refid="group__EXTI__Private__Macros_1ga8fc9a0110e16df06c61b51d46e50eb3f" kindref="member">IS_EXTI_PENDING_EDGE</ref>(Edge));</highlight></codeline>
+<codeline lineno="585"><highlight class="normal"></highlight></codeline>
+<codeline lineno="586"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>compute<sp/>line<sp/>register<sp/>offset<sp/>and<sp/>line<sp/>mask<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="587"><highlight class="normal"><sp/><sp/>offset<sp/>=<sp/>((hexti-&gt;<ref refid="structEXTI__HandleTypeDef_1a6a2875051ad4276be5322ffa99e12566" kindref="member">Line</ref><sp/>&amp;<sp/><ref refid="group__EXTI__Private__Constants_1ga1aa525d078e0b4ba049f08d9f06f4012" kindref="member">EXTI_REG_MASK</ref>)<sp/>&gt;&gt;<sp/><ref refid="group__EXTI__Private__Constants_1ga187f8b65fedba7cc4a5662552dd0eb40" kindref="member">EXTI_REG_SHIFT</ref>);</highlight></codeline>
+<codeline lineno="588"><highlight class="normal"><sp/><sp/>maskline<sp/>=<sp/>(1uL<sp/>&lt;&lt;<sp/>(hexti-&gt;<ref refid="structEXTI__HandleTypeDef_1a6a2875051ad4276be5322ffa99e12566" kindref="member">Line</ref><sp/>&amp;<sp/><ref refid="group__EXTI__Private__Constants_1ga755405defae45017e19a17fd0279869c" kindref="member">EXTI_PIN_MASK</ref>));</highlight></codeline>
+<codeline lineno="589"><highlight class="normal"></highlight></codeline>
+<codeline lineno="590"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Get<sp/>pending<sp/>register<sp/>address<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="591"><highlight class="normal"><sp/><sp/>regaddr<sp/>=<sp/>(&amp;<ref refid="group__Peripheral__declaration_1ga9189e770cd9b63dadd36683eb9843cac" kindref="member">EXTI</ref>-&gt;PR1<sp/>+<sp/>(EXTI_CONFIG_OFFSET<sp/>*<sp/>offset));</highlight></codeline>
+<codeline lineno="592"><highlight class="normal"></highlight></codeline>
+<codeline lineno="593"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Clear<sp/>Pending<sp/>bit<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="594"><highlight class="normal"><sp/><sp/>*regaddr<sp/>=<sp/><sp/>maskline;</highlight></codeline>
+<codeline lineno="595"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="596"><highlight class="normal"></highlight></codeline>
+<codeline lineno="597"><highlight class="normal"></highlight></codeline>
+<codeline lineno="603"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__EXTI__Exported__Functions__Group2_1ga6deebffde84bc80fa9ff1b7faa38615a" kindref="member">HAL_EXTI_GenerateSWI</ref>(<ref refid="structEXTI__HandleTypeDef" kindref="compound">EXTI_HandleTypeDef</ref><sp/>*hexti)</highlight></codeline>
+<codeline lineno="604"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="605"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Drivers_2CMSIS_2Include_2core__armv81mml_8h_1aec43007d9998a0a0e01faede4133d6be" kindref="member">__IO</ref><sp/>uint32_t<sp/>*regaddr;</highlight></codeline>
+<codeline lineno="606"><highlight class="normal"><sp/><sp/>uint32_t<sp/>maskline;</highlight></codeline>
+<codeline lineno="607"><highlight class="normal"><sp/><sp/>uint32_t<sp/>offset;</highlight></codeline>
+<codeline lineno="608"><highlight class="normal"></highlight></codeline>
+<codeline lineno="609"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>parameters<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="610"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(<ref refid="group__EXTI__Private__Macros_1gad1612a68c70ca4cdd0cbd3554e359af5" kindref="member">IS_EXTI_LINE</ref>(hexti-&gt;<ref refid="structEXTI__HandleTypeDef_1a6a2875051ad4276be5322ffa99e12566" kindref="member">Line</ref>));</highlight></codeline>
+<codeline lineno="611"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(<ref refid="group__EXTI__Private__Macros_1ga1ec20cce9b1da8e1bd3de992511ccc1e" kindref="member">IS_EXTI_CONFIG_LINE</ref>(hexti-&gt;<ref refid="structEXTI__HandleTypeDef_1a6a2875051ad4276be5322ffa99e12566" kindref="member">Line</ref>));</highlight></codeline>
+<codeline lineno="612"><highlight class="normal"></highlight></codeline>
+<codeline lineno="613"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>compute<sp/>line<sp/>register<sp/>offset<sp/>and<sp/>line<sp/>mask<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="614"><highlight class="normal"><sp/><sp/>offset<sp/>=<sp/>((hexti-&gt;<ref refid="structEXTI__HandleTypeDef_1a6a2875051ad4276be5322ffa99e12566" kindref="member">Line</ref><sp/>&amp;<sp/><ref refid="group__EXTI__Private__Constants_1ga1aa525d078e0b4ba049f08d9f06f4012" kindref="member">EXTI_REG_MASK</ref>)<sp/>&gt;&gt;<sp/><ref refid="group__EXTI__Private__Constants_1ga187f8b65fedba7cc4a5662552dd0eb40" kindref="member">EXTI_REG_SHIFT</ref>);</highlight></codeline>
+<codeline lineno="615"><highlight class="normal"><sp/><sp/>maskline<sp/>=<sp/>(1uL<sp/>&lt;&lt;<sp/>(hexti-&gt;<ref refid="structEXTI__HandleTypeDef_1a6a2875051ad4276be5322ffa99e12566" kindref="member">Line</ref><sp/>&amp;<sp/><ref refid="group__EXTI__Private__Constants_1ga755405defae45017e19a17fd0279869c" kindref="member">EXTI_PIN_MASK</ref>));</highlight></codeline>
+<codeline lineno="616"><highlight class="normal"></highlight></codeline>
+<codeline lineno="617"><highlight class="normal"><sp/><sp/>regaddr<sp/>=<sp/>(&amp;<ref refid="group__Peripheral__declaration_1ga9189e770cd9b63dadd36683eb9843cac" kindref="member">EXTI</ref>-&gt;SWIER1<sp/>+<sp/>(EXTI_CONFIG_OFFSET<sp/>*<sp/>offset));</highlight></codeline>
+<codeline lineno="618"><highlight class="normal"><sp/><sp/>*regaddr<sp/>=<sp/>maskline;</highlight></codeline>
+<codeline lineno="619"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="620"><highlight class="normal"></highlight></codeline>
+<codeline lineno="621"><highlight class="normal"></highlight></codeline>
+<codeline lineno="630"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>HAL_EXTI_MODULE_ENABLED<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c"/>
+  </compounddef>
+</doxygen>

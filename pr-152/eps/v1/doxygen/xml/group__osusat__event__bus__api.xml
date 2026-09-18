@@ -1,0 +1,215 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="group__osusat__event__bus__api" kind="group">
+    <compoundname>osusat_event_bus_api</compoundname>
+    <title>Public API</title>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="group__osusat__event__bus__api_1gaae6e93a3fbfe725ca1494eb91284863c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void osusat_event_bus_init</definition>
+        <argsstring>(osusat_event_t *queue_storage, size_t queue_capacity)</argsstring>
+        <name>osusat_event_bus_init</name>
+        <param>
+          <type><ref refid="structosusat__event__t" kindref="compound">osusat_event_t</ref> *</type>
+          <declname>queue_storage</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>queue_capacity</declname>
+        </param>
+        <briefdescription>
+<para>Initialize the Event Bus. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Configures the internal ring buffer and clears subscribers.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">queue_storage</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to allocated array of event structs. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">queue_capacity</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of elements in the storage array. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/event_bus.h" line="125" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/src/event_bus.c" bodystart="63" bodyend="71" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/event_bus.h" declline="125" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__osusat__event__bus__api_1gae83611a56e85f92a045e85cb804a4fde" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool osusat_event_bus_subscribe</definition>
+        <argsstring>(osusat_event_id_t event_id, osusat_event_handler_t handler, void *ctx)</argsstring>
+        <name>osusat_event_bus_subscribe</name>
+        <param>
+          <type><ref refid="group__osusat__event__bus__types_1gac1bdf9439b2f075299a2f98e80fe4264" kindref="member">osusat_event_id_t</ref></type>
+          <declname>event_id</declname>
+        </param>
+        <param>
+          <type><ref refid="group__osusat__event__bus__types_1gaccccae08b2fbb1acea7a6cb888e36c01" kindref="member">osusat_event_handler_t</ref></type>
+          <declname>handler</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>ctx</declname>
+        </param>
+        <briefdescription>
+<para>Subscribe to an event. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Registers a callback to be invoked when the specific Event ID occurs.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">event_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The Composite ID to listen for. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">handler</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The function to call. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">ctx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional context pointer passed to the handler.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>true</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Subscription added successfully. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>false</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Subscriber table full (increase OSUSAT_EVENT_MAX_SUBSCRIBERS). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/event_bus.h" line="140" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/src/event_bus.c" bodystart="73" bodyend="90" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/event_bus.h" declline="140" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__osusat__event__bus__api_1ga9a19dc997602dd4c0a2bd006b51e2486" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool osusat_event_bus_publish</definition>
+        <argsstring>(osusat_event_id_t event_id, const void *payload, size_t len)</argsstring>
+        <name>osusat_event_bus_publish</name>
+        <param>
+          <type><ref refid="group__osusat__event__bus__types_1gac1bdf9439b2f075299a2f98e80fe4264" kindref="member">osusat_event_id_t</ref></type>
+          <declname>event_id</declname>
+        </param>
+        <param>
+          <type>const void *</type>
+          <declname>payload</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>len</declname>
+        </param>
+        <briefdescription>
+<para>Publish an event to the bus. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Copies the event data into the queue. Safe to call from ISRs.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">event_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The Composite ID of the event. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">payload</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to data to copy (can be NULL). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">len</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Length of data (must be &lt;= OSUSAT_EVENT_MAX_PAYLOAD).</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>true</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Event queued successfully. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>false</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Queue full (Event Dropped!). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/event_bus.h" line="155" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/src/event_bus.c" bodystart="92" bodyend="128" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/event_bus.h" declline="155" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__osusat__event__bus__api_1ga0a64376500bc5e410ce4d8e436475bb3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void osusat_event_bus_process</definition>
+        <argsstring>(void)</argsstring>
+        <name>osusat_event_bus_process</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Process the Event Queue. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Pops all pending events and executes their subscribers. <simplesect kind="warning"><para>Must be called from the main loop (Thread Mode). </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/event_bus.h" line="164" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/src/event_bus.c" bodystart="130" bodyend="146" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/core/include/osusat/event_bus.h" declline="164" declcolumn="6"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>External interface for interacting with the Event Bus. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,736 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="main_8c" kind="file" language="C++">
+    <compoundname>main.c</compoundname>
+    <includes local="yes">adc.h</includes>
+    <includes refid="command__handler_8h" local="yes">app/command_handler.h</includes>
+    <includes refid="battery__management_8h" local="yes">battery_management.h</includes>
+    <includes refid="can__events_8h" local="yes">can_events.h</includes>
+    <includes local="yes">clock.h</includes>
+    <includes local="yes">dma.h</includes>
+    <includes local="yes">gpio.h</includes>
+    <includes refid="hal__can_8h" local="yes">hal_can.h</includes>
+    <includes refid="hal__time_8h" local="yes">hal_time.h</includes>
+    <includes refid="hal__uart_8h" local="yes">hal_uart.h</includes>
+    <includes local="yes">i2c.h</includes>
+    <includes local="yes">iwdg.h</includes>
+    <includes refid="logging_8h" local="yes">logging.h</includes>
+    <includes refid="mppt__controller_8h" local="yes">mppt_controller.h</includes>
+    <includes refid="event__bus_8h" local="yes">osusat/event_bus.h</includes>
+    <includes refid="slog_8h" local="yes">osusat/slog.h</includes>
+    <includes refid="power__policies_8h" local="yes">power_policies.h</includes>
+    <includes refid="rail__controller_8h" local="yes">rail_controller.h</includes>
+    <includes refid="redundancy__manager_8h" local="yes">redundancy_manager.h</includes>
+    <includes refid="power__profiles_8h" local="yes">services/power_profiles.h</includes>
+    <includes local="yes">stm32l4xx_hal.h</includes>
+    <includes local="yes">stm32l4xx_hal_gpio.h</includes>
+    <includes local="yes">stm32l4xx_hal_rcc.h</includes>
+    <includes refid="telemetry_8h" local="yes">telemetry.h</includes>
+    <includes refid="uart__events_8h" local="yes">uart_events.h</includes>
+    <includes local="yes">usart.h</includes>
+    <includes refid="watchdog_8h" local="yes">watchdog.h</includes>
+    <includes refid="hal__gpio_8h" local="yes">hal_gpio.h</includes>
+    <includes refid="eps__config_8h" local="yes">eps_config.h</includes>
+    <incdepgraph>
+      <node id="3">
+        <label>app/command_handler.h</label>
+        <link refid="command__handler_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>power_policies.h</label>
+        <link refid="power__policies_8h"/>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>eps_config.h</label>
+        <link refid="eps__config_8h"/>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>hal_can.h</label>
+        <link refid="hal__can_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="38">
+        <label>hal_gpio.h</label>
+        <link refid="hal__gpio_8h"/>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>hal_gpio_types.h</label>
+        <link refid="hal__gpio__types_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>hal_time.h</label>
+        <link refid="hal__time_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>hal_uart.h</label>
+        <link refid="hal__uart_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>osusat/event_bus.h</label>
+        <link refid="event__bus_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>ring_buffer.h</label>
+        <link refid="ring__buffer_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>osusat/slog.h</label>
+        <link refid="slog_8h"/>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>messages.h</label>
+        <link refid="messages_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>packet.h</label>
+        <link refid="packet_8h"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/main.c</label>
+        <link refid="main_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>battery_management.h</label>
+        <link refid="battery__management_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>can_events.h</label>
+        <link refid="can__events_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>logging.h</label>
+        <link refid="logging_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>mppt_controller.h</label>
+        <link refid="mppt__controller_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>power_profiles.h</label>
+        <link refid="power__profiles_8h"/>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>rail_controller.h</label>
+        <link refid="rail__controller_8h"/>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>redundancy_manager.h</label>
+        <link refid="redundancy__manager_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="34">
+        <label>telemetry.h</label>
+        <link refid="telemetry_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="35">
+        <label>uart_events.h</label>
+        <link refid="uart__events_8h"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="37">
+        <label>watchdog.h</label>
+        <link refid="watchdog_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>adc.h</label>
+      </node>
+      <node id="13">
+        <label>clock.h</label>
+      </node>
+      <node id="14">
+        <label>dma.h</label>
+      </node>
+      <node id="15">
+        <label>gpio.h</label>
+      </node>
+      <node id="18">
+        <label>i2c.h</label>
+      </node>
+      <node id="19">
+        <label>iwdg.h</label>
+      </node>
+      <node id="23">
+        <label>stdarg.h</label>
+      </node>
+      <node id="4">
+        <label>stdbool.h</label>
+      </node>
+      <node id="10">
+        <label>stddef.h</label>
+      </node>
+      <node id="5">
+        <label>stdint.h</label>
+      </node>
+      <node id="31">
+        <label>stm32l4xx_hal.h</label>
+      </node>
+      <node id="32">
+        <label>stm32l4xx_hal_gpio.h</label>
+      </node>
+      <node id="33">
+        <label>stm32l4xx_hal_rcc.h</label>
+      </node>
+      <node id="36">
+        <label>usart.h</label>
+      </node>
+    </incdepgraph>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="main_8c_1a3d16e5de491dfd7c361575b398679dd3" prot="public" static="no">
+        <name>EVENT_QUEUE_SIZE</name>
+        <initializer>16</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/main.c" line="33" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/main.c" bodystart="33" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="main_8c_1a24fc820a747e9907f19776f90494f9d2" prot="public" static="yes" mutable="no">
+        <type><ref refid="structosusat__event__t" kindref="compound">osusat_event_t</ref></type>
+        <definition>osusat_event_t event_queue[EVENT_QUEUE_SIZE]</definition>
+        <argsstring>[EVENT_QUEUE_SIZE]</argsstring>
+        <name>event_queue</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/main.c" line="34" column="23" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/main.c" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8c_1ab5e9da3cc03fdcc6546031ff0902bd93" prot="public" static="yes" mutable="no">
+        <type><ref refid="structcommand__handler__t" kindref="compound">command_handler_t</ref></type>
+        <definition>command_handler_t command_handler</definition>
+        <argsstring></argsstring>
+        <name>command_handler</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/main.c" line="37" column="26" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/main.c" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8c_1a42ee546bdbdce2ae4943bd7ca2c0b2a9" prot="public" static="yes" mutable="no">
+        <type><ref refid="structpower__policies__t" kindref="compound">power_policies_t</ref></type>
+        <definition>power_policies_t power_policies</definition>
+        <argsstring></argsstring>
+        <name>power_policies</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/main.c" line="38" column="25" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/main.c" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8c_1a909af6ee54b0c879241f94e585bd7761" prot="public" static="yes" mutable="no">
+        <type><ref refid="structbattery__management__t" kindref="compound">battery_management_t</ref></type>
+        <definition>battery_management_t battery_manager_service</definition>
+        <argsstring></argsstring>
+        <name>battery_manager_service</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/main.c" line="41" column="29" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/main.c" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8c_1a4308f82cb7cb8b34e66ed52b075c342b" prot="public" static="yes" mutable="no">
+        <type><ref refid="structrail__controller__t" kindref="compound">rail_controller_t</ref></type>
+        <definition>rail_controller_t rail_controller</definition>
+        <argsstring></argsstring>
+        <name>rail_controller</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/main.c" line="42" column="26" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/main.c" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8c_1a734b42c974a9f2c3fef36a3176bf7ec6" prot="public" static="yes" mutable="no">
+        <type><ref refid="structpower__profiles__t" kindref="compound">power_profiles_t</ref></type>
+        <definition>power_profiles_t power_profiles_service</definition>
+        <argsstring></argsstring>
+        <name>power_profiles_service</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/main.c" line="43" column="25" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/main.c" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8c_1a47cef9fa1e3bb8f3b68debd84abdc45d" prot="public" static="yes" mutable="no">
+        <type><ref refid="structmppt__t" kindref="compound">mppt_t</ref></type>
+        <definition>mppt_t mppt_controller_service</definition>
+        <argsstring></argsstring>
+        <name>mppt_controller_service</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/main.c" line="44" column="15" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/main.c" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8c_1a2c70b8ffbab7cc4184591550e48f2b73" prot="public" static="yes" mutable="no">
+        <type><ref refid="structredundancy__manager__t" kindref="compound">redundancy_manager_t</ref></type>
+        <definition>redundancy_manager_t redundancy_manager_service</definition>
+        <argsstring></argsstring>
+        <name>redundancy_manager_service</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/main.c" line="45" column="29" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/main.c" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8c_1a08485b45a82a45542e43b0746074b90f" prot="public" static="yes" mutable="no">
+        <type><ref refid="structuart__events__t" kindref="compound">uart_events_t</ref></type>
+        <definition>uart_events_t usart1_events_service</definition>
+        <argsstring></argsstring>
+        <name>usart1_events_service</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/main.c" line="46" column="22" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/main.c" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8c_1a544fd90d74aed9adec7010ac2a504848" prot="public" static="yes" mutable="no">
+        <type><ref refid="structuart__events__t" kindref="compound">uart_events_t</ref></type>
+        <definition>uart_events_t usart3_events_service</definition>
+        <argsstring></argsstring>
+        <name>usart3_events_service</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/main.c" line="47" column="22" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/main.c" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8c_1a9498c7852b3d7b6c3df2e5cd5bb306f3" prot="public" static="yes" mutable="no">
+        <type><ref refid="structcan__events__t" kindref="compound">can_events_t</ref></type>
+        <definition>can_events_t can1_events_service</definition>
+        <argsstring></argsstring>
+        <name>can1_events_service</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/main.c" line="48" column="21" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/main.c" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8c_1aa8b73bef716fb6c7f339431d98f6a62e" prot="public" static="yes" mutable="no">
+        <type><ref refid="structcan__events__t" kindref="compound">can_events_t</ref></type>
+        <definition>can_events_t can2_events_service</definition>
+        <argsstring></argsstring>
+        <name>can2_events_service</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/main.c" line="49" column="21" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/main.c" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8c_1a19ba42cac75280e6a033b18c4fec5c3c" prot="public" static="yes" mutable="no">
+        <type><ref refid="structwatchdog__t" kindref="compound">watchdog_t</ref></type>
+        <definition>watchdog_t watchdog</definition>
+        <argsstring></argsstring>
+        <name>watchdog</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/main.c" line="50" column="19" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/main.c" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="main_8c_1a2ff167f0264168b893bbf2ec6d91dcf4" prot="public" static="yes" mutable="no">
+        <type><ref refid="structtelemetry__t" kindref="compound">telemetry_t</ref></type>
+        <definition>telemetry_t telemetry</definition>
+        <argsstring></argsstring>
+        <name>telemetry</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/main.c" line="51" column="20" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/main.c" bodystart="51" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="main_8c_1ae66f6b31b5ad750f1fe042a706a4e3d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int main</definition>
+        <argsstring>()</argsstring>
+        <name>main</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/main.c" line="53" column="5" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/main.c" bodystart="53" bodyend="150"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;adc.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="command__handler_8h" kindref="compound">app/command_handler.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="battery__management_8h" kindref="compound">battery_management.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="can__events_8h" kindref="compound">can_events.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;clock.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;dma.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;gpio.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="hal__can_8h" kindref="compound">hal_can.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="hal__time_8h" kindref="compound">hal_time.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="hal__uart_8h" kindref="compound">hal_uart.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;i2c.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;iwdg.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="logging_8h" kindref="compound">logging.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="mppt__controller_8h" kindref="compound">mppt_controller.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="event__bus_8h" kindref="compound">osusat/event_bus.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="slog_8h" kindref="compound">osusat/slog.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="power__policies_8h" kindref="compound">power_policies.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="rail__controller_8h" kindref="compound">rail_controller.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="redundancy__manager_8h" kindref="compound">redundancy_manager.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="power__profiles_8h" kindref="compound">services/power_profiles.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;stm32l4xx_hal.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;stm32l4xx_hal_gpio.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;stm32l4xx_hal_rcc.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="telemetry_8h" kindref="compound">telemetry.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="uart__events_8h" kindref="compound">uart_events.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;usart.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="watchdog_8h" kindref="compound">watchdog.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="hal__gpio_8h" kindref="compound">hal_gpio.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="eps__config_8h" kindref="compound">eps_config.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="comment">//<sp/>event<sp/>bus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>EVENT_QUEUE_SIZE<sp/>16</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structosusat__event__t" kindref="compound">osusat_event_t</ref><sp/>event_queue[<ref refid="main_8c_1a3d16e5de491dfd7c361575b398679dd3" kindref="member">EVENT_QUEUE_SIZE</ref>];</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="comment">//<sp/>applications</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structcommand__handler__t" kindref="compound">command_handler_t</ref><sp/>command_handler;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structpower__policies__t" kindref="compound">power_policies_t</ref><sp/>power_policies;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment">//<sp/>services</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structbattery__management__t" kindref="compound">battery_management_t</ref><sp/>battery_manager_service;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structrail__controller__t" kindref="compound">rail_controller_t</ref><sp/>rail_controller;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structpower__profiles__t" kindref="compound">power_profiles_t</ref><sp/>power_profiles_service;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structmppt__t" kindref="compound">mppt_t</ref><sp/>mppt_controller_service;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structredundancy__manager__t" kindref="compound">redundancy_manager_t</ref><sp/>redundancy_manager_service;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structuart__events__t" kindref="compound">uart_events_t</ref><sp/>usart1_events_service;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structuart__events__t" kindref="compound">uart_events_t</ref><sp/>usart3_events_service;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structcan__events__t" kindref="compound">can_events_t</ref><sp/>can1_events_service;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structcan__events__t" kindref="compound">can_events_t</ref><sp/>can2_events_service;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structwatchdog__t" kindref="compound">watchdog_t</ref><sp/>watchdog;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structtelemetry__t" kindref="compound">telemetry_t</ref><sp/>telemetry;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="bootstrap_2Core_2Src_2main_8c_1a840291bc02cba5474a4cb46a9b9566fe" kindref="member">main</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>initialize<sp/>BSP<sp/>HAL</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__HAL__Exported__Functions__Group1_1gaecac54d350c3730e6831eb404e557dc4" kindref="member">HAL_Init</ref>();</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(__arm__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__HAL__Exported__Functions__Group3_1gaf031bcc71ebad9b7edf405547efd762b" kindref="member">HAL_DBGMCU_EnableDBGSleepMode</ref>();</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__HAL__Exported__Functions__Group3_1gadf25043b17de4bef38a95a75fd03e5c4" kindref="member">HAL_DBGMCU_EnableDBGStopMode</ref>();</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__HAL__Exported__Functions__Group3_1ga28a1323b2eeb0a408c1cfdbfa0db5ead" kindref="member">HAL_DBGMCU_EnableDBGStandbyMode</ref>();</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>__HAL_DBGMCU_FREEZE_IWDG();</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="clock_8c_1ac24d476ad05a73d0f06801505c0ddf33" kindref="member">bsp_clock_init</ref>();</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2dma_8h_1a323249dac769f9855c10b4ec9446b707" kindref="member">MX_DMA_Init</ref>();</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2gpio_8h_1ac724e431d2af879252de35615be2bdea" kindref="member">MX_GPIO_Init</ref>();</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__gpio__api_1gab5ae6f712980fbf6f16ecb6dc8ae1a36" kindref="member">hal_gpio_init</ref>();</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__gpio__api_1gaa314f8a9a4b7b51a49361b942b7d2c3b" kindref="member">hal_gpio_write</ref>(<ref refid="eps__config_8h_1ad1f5a8468c0cf4caba795c04625af830" kindref="member">WATCHDOG_SET0_PIN</ref>,<sp/><ref refid="hal__gpio__types_8h_1a2ff5468d5ab752db6fa1fb95363392a6affc092bc9a8100f9f19da09884087ee5" kindref="member">HAL_GPIO_STATE_HIGH</ref>);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__gpio__api_1gaa314f8a9a4b7b51a49361b942b7d2c3b" kindref="member">hal_gpio_write</ref>(<ref refid="eps__config_8h_1af48d5bef7d61c16a0ddec10db1224329" kindref="member">WATCHDOG_SET1_PIN</ref>,<sp/><ref refid="hal__gpio__types_8h_1a2ff5468d5ab752db6fa1fb95363392a6affc092bc9a8100f9f19da09884087ee5" kindref="member">HAL_GPIO_STATE_HIGH</ref>);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>8;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__gpio__api_1gaa314f8a9a4b7b51a49361b942b7d2c3b" kindref="member">hal_gpio_write</ref>(<ref refid="eps__config_8h_1aabe3d3dce57a9844de93be5a14326727" kindref="member">RAIL_RESET_PIN_START</ref><sp/>+<sp/>i,<sp/><ref refid="hal__gpio__types_8h_1a2ff5468d5ab752db6fa1fb95363392a6affc092bc9a8100f9f19da09884087ee5" kindref="member">HAL_GPIO_STATE_HIGH</ref>);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2adc_8h_1a101e2e3433dfe72bbbd0ae3a84489263" kindref="member">MX_ADC2_Init</ref>();</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2i2c_8h_1ada6e763cfa4108a8d24cd27b75f2f489" kindref="member">MX_I2C1_Init</ref>();</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2i2c_8h_1a021114cd02d4beb0b256095cfbd088b2" kindref="member">MX_I2C2_Init</ref>();</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2i2c_8h_1ad154e0c7086cb7e507cc717184567ff5" kindref="member">MX_I2C3_Init</ref>();</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2i2c_8h_1aff347bba84984e13d80fbd89994ef3f7" kindref="member">MX_I2C4_Init</ref>();</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2usart_8h_1a57d1167735baafab8e3288526c424929" kindref="member">MX_USART1_UART_Init</ref>();</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2usart_8h_1a3d04b903a77089f6ce08dd0bf1c81a81" kindref="member">MX_USART3_UART_Init</ref>();</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2iwdg_8h_1a7df36f813aafee7fc0b3ed5d3a8045e4" kindref="member">MX_IWDG_Init</ref>();</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>initialize<sp/>event<sp/>bus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__osusat__event__bus__api_1gaae6e93a3fbfe725ca1494eb91284863c" kindref="member">osusat_event_bus_init</ref>(event_queue,<sp/><ref refid="main_8c_1a3d16e5de491dfd7c361575b398679dd3" kindref="member">EVENT_QUEUE_SIZE</ref>);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>initialize<sp/>HAL</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__hal__time__api_1gaf754b59b56d2a344d9c868bdec1137c5" kindref="member">hal_time_init</ref>();</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structuart__config__t" kindref="compound">uart_config_t</ref><sp/>uart_config<sp/>=<sp/>{.<ref refid="structuart__config__t_1a736260dfb0b24aa8bf3bee3ada0d4a4e" kindref="member">baudrate</ref><sp/>=<sp/>115200};</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__uart__api_1ga68658cc0c2481518a87da03f5678f1bd" kindref="member">hal_uart_init</ref>(<ref refid="group__uart__types_1gga7f28644638bd57536eb5260695e83de9a4214053499c9bf408d20f9617812c0f5" kindref="member">UART_PORT_1</ref>,<sp/>&amp;uart_config);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__uart__api_1ga68658cc0c2481518a87da03f5678f1bd" kindref="member">hal_uart_init</ref>(<ref refid="group__uart__types_1gga7f28644638bd57536eb5260695e83de9aa244f63b13d1cf5359685df1a7288818" kindref="member">UART_PORT_3</ref>,<sp/>&amp;uart_config);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>initialize<sp/>services</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__uart__events__api_1gac49317802c3a26a65adc994980d2b38e" kindref="member">uart_events_init</ref>(&amp;usart1_events_service,<sp/><ref refid="group__uart__types_1gga7f28644638bd57536eb5260695e83de9a4214053499c9bf408d20f9617812c0f5" kindref="member">UART_PORT_1</ref>);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__uart__events__api_1gac49317802c3a26a65adc994980d2b38e" kindref="member">uart_events_init</ref>(&amp;usart3_events_service,<sp/><ref refid="group__uart__types_1gga7f28644638bd57536eb5260695e83de9aa244f63b13d1cf5359685df1a7288818" kindref="member">UART_PORT_3</ref>);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structhal__can__config__t" kindref="compound">hal_can_config_t</ref><sp/>can_config<sp/>=<sp/>{.<ref refid="structhal__can__config__t_1a035fe2ebe68ac9cdd0992070679002df" kindref="member">baudrate</ref><sp/>=<sp/>250000};</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__can__api_1gaee75487bc1a6b3c93fc347d818d5fd18" kindref="member">hal_can_init</ref>(<ref refid="group__can__types_1gga83a77f224d5e726b32e0c7e7acff1163aac46ad8f66070ccf930a4b21f5512039" kindref="member">HAL_CAN_PORT_1</ref>,<sp/>&amp;can_config);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__can__api_1gaee75487bc1a6b3c93fc347d818d5fd18" kindref="member">hal_can_init</ref>(<ref refid="group__can__types_1gga83a77f224d5e726b32e0c7e7acff1163a2428504723e2f469d58bc3bbade475a9" kindref="member">HAL_CAN_PORT_2</ref>,<sp/>&amp;can_config);</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__can__events__api_1ga4db1fa5defe1a1618ead802defedd4f7" kindref="member">can_events_init</ref>(&amp;can1_events_service,<sp/><ref refid="group__can__types_1gga83a77f224d5e726b32e0c7e7acff1163aac46ad8f66070ccf930a4b21f5512039" kindref="member">HAL_CAN_PORT_1</ref>);</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__can__events__api_1ga4db1fa5defe1a1618ead802defedd4f7" kindref="member">can_events_init</ref>(&amp;can2_events_service,<sp/><ref refid="group__can__types_1gga83a77f224d5e726b32e0c7e7acff1163a2428504723e2f469d58bc3bbade475a9" kindref="member">HAL_CAN_PORT_2</ref>);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__logging__api_1gacfa3b63f33f6b41229b7293c37ffef4e" kindref="member">logging_init</ref>(<ref refid="group__osusat__slog__types_1ggafe0f1801f6e3827f06165e284313814ba0910e0bc044406b4a8be8fbd9198bb24" kindref="member">OSUSAT_SLOG_INFO</ref>,<sp/>&amp;can1_events_service,<sp/>&amp;can2_events_service);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__battery__management__api_1gacad3a3de8e213994954cb9ce6a55f0ef" kindref="member">battery_init</ref>(&amp;battery_manager_service);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__rail__controller__api_1gae3f6fb977735e9f424c7051aa097d6b8" kindref="member">rail_controller_init</ref>(&amp;rail_controller);</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__power__profiles__api_1gab8448eefa1b2c48c6385e8ab507ffce4" kindref="member">power_profiles_init</ref>(&amp;power_profiles_service,<sp/>&amp;rail_controller);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__mppt__controller__api_1ga3fbe17e67243b9cfd0faf034a2a38762" kindref="member">mppt_init</ref>(&amp;mppt_controller_service);</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__redundancy__manager__api_1gadd9a3bd1c1926239b7616532cc18b449" kindref="member">redundancy_manager_init</ref>(&amp;redundancy_manager_service);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__watchdog__api_1gab3855c9896bbd7be2a19dc5e7b515bdc" kindref="member">watchdog_init</ref>(&amp;watchdog);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__telemetry__api_1gaf5946b1b5aa7e3c784685baa303c9425" kindref="member">telemetry_init</ref>(&amp;telemetry);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>telemetry.<ref refid="structtelemetry__t_1a635f629d22ec9faad221662bfd12adec" kindref="member">battery_manager</ref><sp/>=<sp/>&amp;battery_manager_service;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>telemetry.<ref refid="structtelemetry__t_1a159c4cdc6fba6bae218a6d3051e617e0" kindref="member">mppt_controller</ref><sp/>=<sp/>&amp;mppt_controller_service;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/>telemetry.<ref refid="structtelemetry__t_1a00e370e6e6b36371a562a37c343a519a" kindref="member">rail_controller</ref><sp/>=<sp/>&amp;rail_controller;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/>telemetry.<ref refid="structtelemetry__t_1a82b6ab8000f2417991b81e0197c0f957" kindref="member">redundancy_manager</ref><sp/>=<sp/>&amp;redundancy_manager_service;</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>telemetry.<ref refid="structtelemetry__t_1aa4e54c375b14911f2a4779673a54831e" kindref="member">usart1_events</ref><sp/>=<sp/>&amp;usart1_events_service;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/>telemetry.<ref refid="structtelemetry__t_1af46f1c2be8d8e0d654a1d894755bdfa2" kindref="member">usart3_events</ref><sp/>=<sp/>&amp;usart3_events_service;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/>telemetry.<ref refid="structtelemetry__t_1a32f04d1a5e0d516c357cd79f59cb4bdd" kindref="member">can1_events</ref><sp/>=<sp/>&amp;can1_events_service;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/>telemetry.<ref refid="structtelemetry__t_1a63dc108d496efcb050fc353f0c3f0717" kindref="member">can2_events</ref><sp/>=<sp/>&amp;can2_events_service;</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>initialize<sp/>applications</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__command__handler__api_1ga11e93676c655043736e4a8cd8f9f85d4" kindref="member">command_handler_init</ref>(&amp;command_handler);</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__power__policies__api_1ga81cc8d2821f1f269ea567ff0137c4460" kindref="member">power_policies_init</ref>(&amp;power_policies);</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__osusat__slog__api_1ga7bbefdd3b087c6a39b6f677b63f25d94" kindref="member">LOG_INFO</ref>(<ref refid="group__logging__types_1ga57bb7714cca858a4d242e4faae4d16be" kindref="member">EPS_COMPONENT_MAIN</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Initialization<sp/>complete&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(__arm__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="bsp_2mcu_2Inc_2main_8h_1a1bbb5c63339533fa0c378415cdcd2199" kindref="member">g_main_tick_flag</ref>;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(1)<sp/>{</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="bsp_2mcu_2Inc_2main_8h_1a1bbb5c63339533fa0c378415cdcd2199" kindref="member">g_main_tick_flag</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="bsp_2mcu_2Inc_2main_8h_1a1bbb5c63339533fa0c378415cdcd2199" kindref="member">g_main_tick_flag</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__osusat__event__bus__api_1ga9a19dc997602dd4c0a2bd006b51e2486" kindref="member">osusat_event_bus_publish</ref>(<ref refid="group__osusat__event__bus__types_1gaaa9fd284ba6ed1757d6ec8dc1bd19379" kindref="member">EVENT_SYSTICK</ref>,<sp/>NULL,<sp/>0);</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__osusat__event__bus__api_1ga0a64376500bc5e410ce4d8e436475bb3" kindref="member">osusat_event_bus_process</ref>();</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__CMSIS__Core__InstructionInterface_1gad23bf2b78a9a4524157c9de0d30b7448" kindref="member">__WFI</ref>();</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(1)<sp/>{</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__osusat__event__bus__api_1ga0a64376500bc5e410ce4d8e436475bb3" kindref="member">osusat_event_bus_process</ref>();</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="150"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/main.c"/>
+  </compounddef>
+</doxygen>

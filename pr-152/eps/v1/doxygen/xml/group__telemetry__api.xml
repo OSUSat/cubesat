@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="group__telemetry__api" kind="group">
+    <compoundname>telemetry_api</compoundname>
+    <title>Public API</title>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="group__telemetry__api_1gaf5946b1b5aa7e3c784685baa303c9425" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void telemetry_init</definition>
+        <argsstring>(telemetry_t *telemetry)</argsstring>
+        <name>telemetry_init</name>
+        <param>
+          <type><ref refid="structtelemetry__t" kindref="compound">telemetry_t</ref> *</type>
+          <declname>telemetry</declname>
+        </param>
+        <briefdescription>
+<para>Initialize the Telemetry aggregator instance. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Prepares the internal data structures and zeroes out the telemetry packet within the provided handle.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">telemetry</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the telemetry service instance to initialize. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/telemetry.h" line="123" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/telemetry.c" bodystart="25" bodyend="35" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/telemetry.h" declline="123" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__telemetry__api_1ga5b9969fe5b667cfa4c0fcd846ae5e94b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void telemetry_update</definition>
+        <argsstring>(telemetry_t *telemetry)</argsstring>
+        <name>telemetry_update</name>
+        <param>
+          <type><ref refid="structtelemetry__t" kindref="compound">telemetry_t</ref> *</type>
+          <declname>telemetry</declname>
+        </param>
+        <briefdescription>
+<para>Periodic update task. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function queries all other active services (Battery, Rails, etc.) to get their latest status and updates the snapshot inside the provided handle.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">telemetry</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the telemetry service instance to update. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/telemetry.h" line="134" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/telemetry.c" bodystart="37" bodyend="154" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/telemetry.h" declline="134" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__telemetry__api_1ga93645f7f57677a9f130e3490586980b8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structeps__telemetry__t" kindref="compound">eps_telemetry_t</ref></type>
+        <definition>eps_telemetry_t telemetry_get_all</definition>
+        <argsstring>(telemetry_t *telemetry)</argsstring>
+        <name>telemetry_get_all</name>
+        <param>
+          <type><ref refid="structtelemetry__t" kindref="compound">telemetry_t</ref> *</type>
+          <declname>telemetry</declname>
+        </param>
+        <briefdescription>
+<para>Retrieve the latest full system snapshot. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">telemetry</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the telemetry service instance to read from. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="structeps__telemetry__t" kindref="compound">eps_telemetry_t</ref> A copy of the aggregated telemetry data. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/telemetry.h" line="142" column="17" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/telemetry.c" bodystart="156" bodyend="164" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/telemetry.h" declline="142" declcolumn="17"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Functions for updating and retrieving telemetry. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

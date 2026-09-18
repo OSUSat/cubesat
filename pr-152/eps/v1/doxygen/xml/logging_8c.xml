@@ -1,0 +1,691 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="logging_8c" kind="file" language="C++">
+    <compoundname>logging.c</compoundname>
+    <includes refid="logging_8h" local="yes">logging.h</includes>
+    <includes refid="can__events_8h" local="yes">can_events.h</includes>
+    <includes refid="events_8h" local="yes">events.h</includes>
+    <includes refid="hal__flash_8h" local="yes">hal_flash.h</includes>
+    <includes refid="hal__time_8h" local="yes">hal_time.h</includes>
+    <includes refid="messages_8h" local="yes">messages.h</includes>
+    <includes refid="event__bus_8h" local="yes">osusat/event_bus.h</includes>
+    <includes refid="ring__buffer_8h" local="yes">osusat/ring_buffer.h</includes>
+    <includes refid="slog_8h" local="yes">osusat/slog.h</includes>
+    <includes refid="packet_8h" local="yes">packet.h</includes>
+    <includes refid="redundancy__manager_8h" local="yes">redundancy_manager.h</includes>
+    <includes local="no">stddef.h</includes>
+    <includes local="no">stdint.h</includes>
+    <includes local="no">string.h</includes>
+    <incdepgraph>
+      <node id="14">
+        <label>events.h</label>
+        <link refid="events_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>hal_can.h</label>
+        <link refid="hal__can_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>hal_flash.h</label>
+        <link refid="hal__flash_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>hal_time.h</label>
+        <link refid="hal__time_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>osusat/event_bus.h</label>
+        <link refid="event__bus_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>ring_buffer.h</label>
+        <link refid="ring__buffer_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>osusat/slog.h</label>
+        <link refid="slog_8h"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>messages.h</label>
+        <link refid="messages_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>packet.h</label>
+        <link refid="packet_8h"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>can_events.h</label>
+        <link refid="can__events_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/logging.c</label>
+        <link refid="logging_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>logging.h</label>
+        <link refid="logging_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>redundancy_manager.h</label>
+        <link refid="redundancy__manager_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>stdarg.h</label>
+      </node>
+      <node id="5">
+        <label>stdbool.h</label>
+      </node>
+      <node id="8">
+        <label>stddef.h</label>
+      </node>
+      <node id="6">
+        <label>stdint.h</label>
+      </node>
+      <node id="18">
+        <label>string.h</label>
+      </node>
+    </incdepgraph>
+    <innerclass refid="structlog__flush__context__t" prot="public">log_flush_context_t</innerclass>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="logging_8c_1a78efd407a87d3179cbfeb9c22bae4d01" prot="public" static="no">
+        <name>MAX_LOG_ENTRIES_PER_FLUSH</name>
+        <initializer>5</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/logging.c" line="24" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/logging.c" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="logging_8c_1a98ef9b5aa009c56edf0df1d8c6c0a8a1" prot="public" static="no">
+        <name>LOG_FLUSH_INTERVAL_CYCLES</name>
+        <initializer>600</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/logging.c" line="25" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/logging.c" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="logging_8c_1a85c7ebc840d55bb1c48d81cfca9ba1b8" prot="public" static="no">
+        <name>LOG_STORAGE_SIZE</name>
+        <initializer>4096</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/logging.c" line="27" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/logging.c" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="logging_8c_1add9bb394bbf2ed6839e75bfeddf4a9e2" prot="public" static="no">
+        <name>LOG_PACKET_MAX_PAYLOAD</name>
+        <initializer>200</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/logging.c" line="37" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/logging.c" bodystart="37" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="logging_8c_1a0480463612f62858d812fb86bc2fdf8f" prot="public" static="yes" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t g_flash_log_write_ptr</definition>
+        <argsstring></argsstring>
+        <name>g_flash_log_write_ptr</name>
+        <initializer>= <ref refid="logging_8h_1a3025005b21e0cda48173d89406058ca0" kindref="member">FLASH_LOG_START_ADDR</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/logging.c" line="22" column="17" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/logging.c" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="logging_8c_1a254facfb4dba42e4cb579529697a556b" prot="public" static="yes" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t log_storage[LOG_STORAGE_SIZE]</definition>
+        <argsstring>[LOG_STORAGE_SIZE]</argsstring>
+        <name>log_storage</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/logging.c" line="28" column="16" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/logging.c" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="logging_8c_1aec553e2c6fc2a5f160cce74f3c352c55" prot="public" static="yes" mutable="no">
+        <type><ref refid="structosusat__ring__buffer__t" kindref="compound">osusat_ring_buffer_t</ref></type>
+        <definition>osusat_ring_buffer_t log_ring_buffer</definition>
+        <argsstring></argsstring>
+        <name>log_ring_buffer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/logging.c" line="29" column="29" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/logging.c" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="logging_8c_1a2ea47e205862c99064b47464b3fbf262" prot="public" static="yes" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t tick_counter</definition>
+        <argsstring></argsstring>
+        <name>tick_counter</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/logging.c" line="30" column="17" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/logging.c" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="logging_8c_1a021e5adb7d95f9e2fe94a859327d7b61" prot="public" static="yes" mutable="no">
+        <type><ref refid="structcan__events__t" kindref="compound">can_events_t</ref> *</type>
+        <definition>can_events_t* g_primary_can</definition>
+        <argsstring></argsstring>
+        <name>g_primary_can</name>
+        <initializer>= NULL</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/logging.c" line="33" column="21" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/logging.c" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="logging_8c_1ae5a213e6c226e8457ab65f32470e5d9c" prot="public" static="yes" mutable="no">
+        <type><ref refid="structcan__events__t" kindref="compound">can_events_t</ref> *</type>
+        <definition>can_events_t* g_aux_can</definition>
+        <argsstring></argsstring>
+        <name>g_aux_can</name>
+        <initializer>= NULL</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/logging.c" line="34" column="21" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/logging.c" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="logging_8c_1af310d2bc5a24bfe56c5528e91f7b9a45" prot="public" static="yes" mutable="no">
+        <type><ref refid="structcan__events__t" kindref="compound">can_events_t</ref> *</type>
+        <definition>can_events_t* g_active_can</definition>
+        <argsstring></argsstring>
+        <name>g_active_can</name>
+        <initializer>= NULL</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/logging.c" line="35" column="21" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/logging.c" bodystart="35" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="logging_8c_1ab59fbeacc77703560b5c49be16bc8899" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void logging_handle_tick</definition>
+        <argsstring>(const osusat_event_t *e, void *ctx)</argsstring>
+        <name>logging_handle_tick</name>
+        <param>
+          <type>const <ref refid="structosusat__event__t" kindref="compound">osusat_event_t</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>ctx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/logging.c" line="159" column="13" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/logging.c" bodystart="159" bodyend="169" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/logging.c" declline="46" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="logging_8c_1a99735b88fa3ab4740865585a89aacad5" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void logging_handle_request</definition>
+        <argsstring>(const osusat_event_t *e, void *ctx)</argsstring>
+        <name>logging_handle_request</name>
+        <param>
+          <type>const <ref refid="structosusat__event__t" kindref="compound">osusat_event_t</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>ctx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/logging.c" line="171" column="13" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/logging.c" bodystart="171" bodyend="175" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/logging.c" declline="47" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="logging_8c_1aaeaec5deb1eeeeb05dbed6c2fa47e152" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void logging_handle_redundancy</definition>
+        <argsstring>(const osusat_event_t *e, void *ctx)</argsstring>
+        <name>logging_handle_redundancy</name>
+        <param>
+          <type>const <ref refid="structosusat__event__t" kindref="compound">osusat_event_t</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>ctx</declname>
+        </param>
+        <briefdescription>
+<para>Handles failover events from the Redundancy Manager. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/logging.c" line="208" column="13" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/logging.c" bodystart="208" bodyend="230" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/logging.c" declline="48" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="logging_8c_1a48e5b3d48475f82a76d3665b5cf7c768" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void send_log_packet</definition>
+        <argsstring>(log_flush_context_t *ctx, bool is_last)</argsstring>
+        <name>send_log_packet</name>
+        <param>
+          <type><ref refid="structlog__flush__context__t" kindref="compound">log_flush_context_t</ref> *</type>
+          <declname>ctx</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>is_last</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/logging.c" line="101" column="13" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/logging.c" bodystart="101" bodyend="131" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/logging.c" declline="49" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="logging_8c_1a4b6aee77685899ea444694ec68914ed1" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void write_log_to_flash</definition>
+        <argsstring>(const uint8_t *data, size_t size)</argsstring>
+        <name>write_log_to_flash</name>
+        <param>
+          <type>const uint8_t *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/logging.c" line="82" column="13" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/logging.c" bodystart="82" bodyend="99" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/logging.c" declline="50" declcolumn="13"/>
+      </memberdef>
+      <member refid="group__logging__api_1gacfa3b63f33f6b41229b7293c37ffef4e" kind="function"><name>logging_init</name></member>
+      <memberdef kind="function" id="logging_8c_1aa4b4a3505cf5e8dcda51e7c988580217" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void log_flush_callback</definition>
+        <argsstring>(const osusat_slog_entry_t *entry, const char *message, void *user_ctx)</argsstring>
+        <name>log_flush_callback</name>
+        <param>
+          <type>const <ref refid="structosusat__slog__entry__t" kindref="compound">osusat_slog_entry_t</ref> *</type>
+          <declname>entry</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>message</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>user_ctx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/logging.c" line="133" column="13" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/logging.c" bodystart="133" bodyend="157"/>
+      </memberdef>
+      <member refid="group__logging__api_1gae344a717b3119e6abed5c4b75737a337" kind="function"><name>logging_flush</name></member>
+      <member refid="group__logging__api_1gac5d48d0826af20ccbcfefcae52dab9df" kind="function"><name>logging_set_level</name></member>
+      <member refid="group__logging__api_1ga68313b2800456508351fdf21c8685fbf" kind="function"><name>logging_pending_count</name></member>
+    </sectiondef>
+    <briefdescription>
+<para>EPS Logging Service Implementation. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="logging_8h" kindref="compound">logging.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="can__events_8h" kindref="compound">can_events.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="events_8h" kindref="compound">events.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="hal__flash_8h" kindref="compound">hal_flash.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="hal__time_8h" kindref="compound">hal_time.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="messages_8h" kindref="compound">messages.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="event__bus_8h" kindref="compound">osusat/event_bus.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="ring__buffer_8h" kindref="compound">osusat/ring_buffer.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="slog_8h" kindref="compound">osusat/slog.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="packet_8h" kindref="compound">packet.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="redundancy__manager_8h" kindref="compound">redundancy_manager.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stddef.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>uint32_t<sp/>g_flash_log_write_ptr<sp/>=<sp/><ref refid="logging_8h_1a3025005b21e0cda48173d89406058ca0" kindref="member">FLASH_LOG_START_ADDR</ref>;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MAX_LOG_ENTRIES_PER_FLUSH<sp/>5</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOG_FLUSH_INTERVAL_CYCLES<sp/>600</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOG_STORAGE_SIZE<sp/>4096</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>uint8_t<sp/>log_storage[<ref refid="logging_8c_1a85c7ebc840d55bb1c48d81cfca9ba1b8" kindref="member">LOG_STORAGE_SIZE</ref>];</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structosusat__ring__buffer__t" kindref="compound">osusat_ring_buffer_t</ref><sp/>log_ring_buffer;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>uint32_t<sp/>tick_counter;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="comment">//<sp/>pointer<sp/>to<sp/>the<sp/>CAN<sp/>service<sp/>instance<sp/>we<sp/>use<sp/>for<sp/>flushing</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structcan__events__t" kindref="compound">can_events_t</ref><sp/>*g_primary_can<sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structcan__events__t" kindref="compound">can_events_t</ref><sp/>*g_aux_can<sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structcan__events__t" kindref="compound">can_events_t</ref><sp/>*g_active_can<sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOG_PACKET_MAX_PAYLOAD<sp/>200</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="structlog__flush__context__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/>sequence;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>payload_buffer[<ref refid="logging_8c_1add9bb394bbf2ed6839e75bfeddf4a9e2" kindref="member">LOG_PACKET_MAX_PAYLOAD</ref>];</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>payload_offset;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>entries_processed;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">}<sp/><ref refid="structlog__flush__context__t" kindref="compound">log_flush_context_t</ref>;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>logging_handle_tick(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structosusat__event__t" kindref="compound">osusat_event_t</ref><sp/>*e,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*ctx);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>logging_handle_request(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structosusat__event__t" kindref="compound">osusat_event_t</ref><sp/>*e,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*ctx);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>logging_handle_redundancy(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structosusat__event__t" kindref="compound">osusat_event_t</ref><sp/>*e,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*ctx);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>send_log_packet(<ref refid="structlog__flush__context__t" kindref="compound">log_flush_context_t</ref><sp/>*ctx,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>is_last);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>write_log_to_flash(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>*data,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>size);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__logging__api_1gacfa3b63f33f6b41229b7293c37ffef4e" kindref="member">logging_init</ref>(<ref refid="group__osusat__slog__types_1gafe0f1801f6e3827f06165e284313814b" kindref="member">osusat_slog_level_t</ref><sp/>min_level,<sp/><ref refid="structcan__events__t" kindref="compound">can_events_t</ref><sp/>*primary_can,</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structcan__events__t" kindref="compound">can_events_t</ref><sp/>*aux_can)<sp/>{</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>g_primary_can<sp/>=<sp/>primary_can;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>g_aux_can<sp/>=<sp/>aux_can;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>g_active_can<sp/>=<sp/>g_primary_can;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__osusat__ring__buffer__api_1ga0042234225cbcdf0809fb285062ec630" kindref="member">osusat_ring_buffer_init</ref>(&amp;log_ring_buffer,<sp/>log_storage,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(log_storage),</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__osusat__slog__api_1ga82f8335121202a3fd24d6b96e3eb1f4e" kindref="member">osusat_slog_init</ref>(&amp;log_ring_buffer,<sp/><ref refid="group__hal__time__api_1ga697ad15eedc3e4ef194c93f24734e0a2" kindref="member">hal_time_get_ms</ref>,<sp/>min_level);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__osusat__event__bus__api_1gae83611a56e85f92a045e85cb804a4fde" kindref="member">osusat_event_bus_subscribe</ref>(<ref refid="group__osusat__event__bus__types_1gaaa9fd284ba6ed1757d6ec8dc1bd19379" kindref="member">EVENT_SYSTICK</ref>,<sp/>logging_handle_tick,<sp/>NULL);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__osusat__event__bus__api_1gae83611a56e85f92a045e85cb804a4fde" kindref="member">osusat_event_bus_subscribe</ref>(<ref refid="group__app__events_1gaee164eb77455601ad6c6552196c4f329" kindref="member">APP_EVENT_REQUEST_LOGGING_FLUSH_LOGS</ref>,</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>logging_handle_request,<sp/>NULL);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hal__flash_8h_1a6d1bc234d5c14adc798f1197afd2c0a8" kindref="member">hal_flash_init</ref>();</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hal__flash_8h_1a498d2d995b8c58347b7d9cfc5040d808" kindref="member">hal_flash_erase_sector</ref>(<ref refid="logging_8h_1a3025005b21e0cda48173d89406058ca0" kindref="member">FLASH_LOG_START_ADDR</ref>);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>g_flash_log_write_ptr<sp/>=<sp/><ref refid="logging_8h_1a3025005b21e0cda48173d89406058ca0" kindref="member">FLASH_LOG_START_ADDR</ref>;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__osusat__event__bus__api_1gae83611a56e85f92a045e85cb804a4fde" kindref="member">osusat_event_bus_subscribe</ref>(<ref refid="group__redundancy__manager__types_1ga0703a5d8b01d91c047750772fa7b4f7e" kindref="member">REDUNDANCY_EVENT_COMPONENT_DEGRADED</ref>,</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>logging_handle_redundancy,<sp/>NULL);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__osusat__event__bus__api_1gae83611a56e85f92a045e85cb804a4fde" kindref="member">osusat_event_bus_subscribe</ref>(<ref refid="group__redundancy__manager__types_1ga6fd0a894e1c636d95d6b39883dd032bc" kindref="member">REDUNDANCY_EVENT_COMPONENT_RECOVERED</ref>,</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>logging_handle_redundancy,<sp/>NULL);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__osusat__slog__api_1ga7bbefdd3b087c6a39b6f677b63f25d94" kindref="member">LOG_INFO</ref>(<ref refid="group__logging__types_1ga57bb7714cca858a4d242e4faae4d16be" kindref="member">EPS_COMPONENT_MAIN</ref>,</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Logging<sp/>service<sp/>initialized<sp/>(Primary:<sp/>CAN%d,<sp/>Aux:<sp/>CAN%d)&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>primary_can-&gt;<ref refid="structcan__events__t_1a56d9525c9f252749c6f2875852faeb74" kindref="member">port</ref><sp/>+<sp/>1,<sp/>aux_can-&gt;<ref refid="structcan__events__t_1a56d9525c9f252749c6f2875852faeb74" kindref="member">port</ref><sp/>+<sp/>1);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>write_log_to_flash(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>*data,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>size)<sp/>{</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>current_page<sp/>=<sp/>g_flash_log_write_ptr<sp/>/<sp/><ref refid="logging_8h_1a971402e62be701c2a0a2951e3aa4f69c" kindref="member">FLASH_LOG_SECTOR_SIZE</ref>;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>end_page<sp/>=<sp/>(g_flash_log_write_ptr<sp/>+<sp/>size)<sp/>/<sp/><ref refid="logging_8h_1a971402e62be701c2a0a2951e3aa4f69c" kindref="member">FLASH_LOG_SECTOR_SIZE</ref>;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(g_flash_log_write_ptr<sp/>+<sp/>size<sp/>&gt;=<sp/><ref refid="logging_8h_1a7430e0a1ce317f72fe3d91fa388165ca" kindref="member">FLASH_LOG_END_ADDR</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>g_flash_log_write_ptr<sp/>=<sp/><ref refid="logging_8h_1a3025005b21e0cda48173d89406058ca0" kindref="member">FLASH_LOG_START_ADDR</ref>;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>current_page<sp/>=<sp/>g_flash_log_write_ptr<sp/>/<sp/><ref refid="logging_8h_1a971402e62be701c2a0a2951e3aa4f69c" kindref="member">FLASH_LOG_SECTOR_SIZE</ref>;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>end_page<sp/>=<sp/>(g_flash_log_write_ptr<sp/>+<sp/>size)<sp/>/<sp/><ref refid="logging_8h_1a971402e62be701c2a0a2951e3aa4f69c" kindref="member">FLASH_LOG_SECTOR_SIZE</ref>;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="hal__flash_8h_1a498d2d995b8c58347b7d9cfc5040d808" kindref="member">hal_flash_erase_sector</ref>(g_flash_log_write_ptr);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(uint32_t<sp/>page<sp/>=<sp/>current_page<sp/>+<sp/>1;<sp/>page<sp/>&lt;=<sp/>end_page;<sp/>page++)<sp/>{</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="hal__flash_8h_1a498d2d995b8c58347b7d9cfc5040d808" kindref="member">hal_flash_erase_sector</ref>(page<sp/>*<sp/><ref refid="logging_8h_1a971402e62be701c2a0a2951e3aa4f69c" kindref="member">FLASH_LOG_SECTOR_SIZE</ref>);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hal__flash_8h_1abf5c5b65a57e51e24bcbe72ba9743773" kindref="member">hal_flash_write</ref>(g_flash_log_write_ptr,<sp/>data,<sp/>size);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>g_flash_log_write_ptr<sp/>+=<sp/>size;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>send_log_packet(<ref refid="structlog__flush__context__t" kindref="compound">log_flush_context_t</ref><sp/>*ctx,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>is_last)<sp/>{</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ctx-&gt;<ref refid="structlog__flush__context__t_1af12b3dc41b5601c4b98ed0c5f244981a" kindref="member">payload_offset</ref><sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structOSUSatPacket" kindref="compound">OSUSatPacket</ref><sp/>packet<sp/>=<sp/>{.<ref refid="structOSUSatPacket_1ad0150165698e87a142b9d36a35f77a16" kindref="member">version</ref><sp/>=<sp/>1,</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.destination<sp/>=<sp/><ref refid="messages_8h_1ad9e5def05db5323e9a4cfc3f4fa2cd75acf567abd8ab54a24566b2364c2848656" kindref="member">OSUSatDestination_OBC</ref>,</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.source<sp/>=<sp/><ref refid="messages_8h_1ad9e5def05db5323e9a4cfc3f4fa2cd75ac374ac666d2a7b44aad05fc568c4e956" kindref="member">OSUSatDestination_EPS</ref>,</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.message_type<sp/>=<sp/><ref refid="messages_8h_1aa4306448e95ae3e6a1080809b6e268baa7057888c8aa2fcc5d2c7578bcb755ed6" kindref="member">OSUSatMessageType_LOG</ref>,</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.command_id<sp/>=<sp/><ref refid="messages_8h_1a8b33f5c663e3564d970047eb16af430daf36e6671da64e39fb9d4f5dd41c8adf7" kindref="member">OSUSatCommonCommand_LOG</ref>,</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.sequence<sp/>=<sp/>ctx-&gt;<ref refid="structlog__flush__context__t_1a65cf8d879be40ab429200ef0c99a8732" kindref="member">sequence</ref>,</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.is_last_chunk<sp/>=<sp/>is_last,</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.payload_len<sp/>=<sp/>(uint8_t)ctx-&gt;<ref refid="structlog__flush__context__t_1af12b3dc41b5601c4b98ed0c5f244981a" kindref="member">payload_offset</ref>,</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.payload<sp/>=<sp/>ctx-&gt;<ref refid="structlog__flush__context__t_1ad03d5586fbb7c7cc36d939dc66fa2cf7" kindref="member">payload_buffer</ref>};</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>serialize<sp/>packet<sp/>to<sp/>write<sp/>to<sp/>flash</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>packed_buf[<ref refid="group__can__events_1ga88e27f0a4ca340a0aaf618eea9f15dba" kindref="member">CAN_RX_MAX_PACKET_SIZE</ref>];</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/>int16_t<sp/>len<sp/>=<sp/><ref refid="packet_8h_1a93662568ee003d2da0b8e869867834f1" kindref="member">osusat_packet_pack</ref>(&amp;packet,<sp/>packed_buf,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(packed_buf));</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(len<sp/>&gt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>write_log_to_flash(packed_buf,<sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal">)len);</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>try<sp/>to<sp/>send<sp/>over<sp/>CAN<sp/>if<sp/>available</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(g_active_can<sp/>!=<sp/>NULL<sp/>&amp;&amp;<sp/>g_active_can-&gt;<ref refid="structcan__events__t_1a3bcd147172ce242d187edc7b774feeaa" kindref="member">initialized</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__can__events__api_1gad5859ea612b14eb7fda68f5329b0a9e4" kindref="member">can_events_send_packet</ref>(g_active_can,<sp/>&amp;packet);</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/>ctx-&gt;<ref refid="structlog__flush__context__t_1af12b3dc41b5601c4b98ed0c5f244981a" kindref="member">payload_offset</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>log_flush_callback(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structosusat__slog__entry__t" kindref="compound">osusat_slog_entry_t</ref><sp/>*entry,</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*message,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*user_ctx)<sp/>{</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(((<ref refid="structlog__flush__context__t" kindref="compound">log_flush_context_t</ref><sp/>*)user_ctx)-&gt;entries_processed<sp/>&gt;=</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="logging_8c_1a78efd407a87d3179cbfeb9c22bae4d01" kindref="member">MAX_LOG_ENTRIES_PER_FLUSH</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structlog__flush__context__t" kindref="compound">log_flush_context_t</ref><sp/>*ctx<sp/>=<sp/>(<ref refid="structlog__flush__context__t" kindref="compound">log_flush_context_t</ref><sp/>*)user_ctx;</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>entry_size<sp/>=<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(*entry)<sp/>+<sp/>entry-&gt;message_len<sp/>+<sp/>1;</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ctx-&gt;<ref refid="structlog__flush__context__t_1af12b3dc41b5601c4b98ed0c5f244981a" kindref="member">payload_offset</ref><sp/>+<sp/>entry_size<sp/>&gt;<sp/><ref refid="logging_8c_1add9bb394bbf2ed6839e75bfeddf4a9e2" kindref="member">LOG_PACKET_MAX_PAYLOAD</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>send_log_packet(ctx,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ctx-&gt;<ref refid="structlog__flush__context__t_1a65cf8d879be40ab429200ef0c99a8732" kindref="member">sequence</ref>++;</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/>memcpy(ctx-&gt;<ref refid="structlog__flush__context__t_1ad03d5586fbb7c7cc36d939dc66fa2cf7" kindref="member">payload_buffer</ref><sp/>+<sp/>ctx-&gt;<ref refid="structlog__flush__context__t_1af12b3dc41b5601c4b98ed0c5f244981a" kindref="member">payload_offset</ref>,<sp/>entry,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(*entry));</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/>ctx-&gt;<ref refid="structlog__flush__context__t_1af12b3dc41b5601c4b98ed0c5f244981a" kindref="member">payload_offset</ref><sp/>+=<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(*entry);</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/>memcpy(ctx-&gt;<ref refid="structlog__flush__context__t_1ad03d5586fbb7c7cc36d939dc66fa2cf7" kindref="member">payload_buffer</ref><sp/>+<sp/>ctx-&gt;<ref refid="structlog__flush__context__t_1af12b3dc41b5601c4b98ed0c5f244981a" kindref="member">payload_offset</ref>,<sp/>message,</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>entry-&gt;message_len<sp/>+<sp/>1);</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/>ctx-&gt;<ref refid="structlog__flush__context__t_1af12b3dc41b5601c4b98ed0c5f244981a" kindref="member">payload_offset</ref><sp/>+=<sp/>entry-&gt;message_len<sp/>+<sp/>1;</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/>ctx-&gt;<ref refid="structlog__flush__context__t_1ade1e1b1f8aabab24d8518f742fe2f6a0" kindref="member">entries_processed</ref>++;</highlight></codeline>
+<codeline lineno="157"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>logging_handle_tick(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structosusat__event__t" kindref="compound">osusat_event_t</ref><sp/>*e,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*ctx)<sp/>{</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/>(void)ctx;</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/>(void)e;</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>tick_counter++;</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(tick_counter<sp/>&gt;=<sp/><ref refid="logging_8c_1a98ef9b5aa009c56edf0df1d8c6c0a8a1" kindref="member">LOG_FLUSH_INTERVAL_CYCLES</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tick_counter<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__logging__api_1gae344a717b3119e6abed5c4b75737a337" kindref="member">logging_flush</ref>();</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="169"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>logging_handle_request(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structosusat__event__t" kindref="compound">osusat_event_t</ref><sp/>*e,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*ctx)<sp/>{</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/>(void)ctx;</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/>(void)e;</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__logging__api_1gae344a717b3119e6abed5c4b75737a337" kindref="member">logging_flush</ref>();</highlight></codeline>
+<codeline lineno="175"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="group__logging__api_1gae344a717b3119e6abed5c4b75737a337" kindref="member">logging_flush</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(g_active_can<sp/>==<sp/>NULL<sp/>||<sp/>!g_active_can-&gt;<ref refid="structcan__events__t_1a3bcd147172ce242d187edc7b774feeaa" kindref="member">initialized</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structlog__flush__context__t" kindref="compound">log_flush_context_t</ref><sp/>ctx<sp/>=<sp/>{.<ref refid="structlog__flush__context__t_1a65cf8d879be40ab429200ef0c99a8732" kindref="member">sequence</ref><sp/>=<sp/>0,<sp/>.payload_offset<sp/>=<sp/>0};</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="group__osusat__slog__api_1gaa1dbfea471aa1425ac6e67a1a7ff7768" kindref="member">osusat_slog_pending_count</ref>()<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>count<sp/>=<sp/><ref refid="group__osusat__slog__api_1gac76adcb9d644cb6c538e4e18a92bd133" kindref="member">osusat_slog_flush</ref>(log_flush_callback,<sp/>&amp;ctx);</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ctx.<ref refid="structlog__flush__context__t_1af12b3dc41b5601c4b98ed0c5f244981a" kindref="member">payload_offset</ref><sp/>&gt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>is_last<sp/>=<sp/>(<ref refid="group__osusat__slog__api_1gaa1dbfea471aa1425ac6e67a1a7ff7768" kindref="member">osusat_slog_pending_count</ref>()<sp/>==<sp/>0);</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>send_log_packet(&amp;ctx,<sp/>is_last);</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>count;</highlight></codeline>
+<codeline lineno="196"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__logging__api_1gac5d48d0826af20ccbcfefcae52dab9df" kindref="member">logging_set_level</ref>(<ref refid="group__osusat__slog__types_1gafe0f1801f6e3827f06165e284313814b" kindref="member">osusat_slog_level_t</ref><sp/>level)<sp/>{</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__osusat__slog__api_1ga3209a10ca8341d16f791faa4ebb4483d" kindref="member">osusat_slog_change_min_log_level</ref>(level);</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__osusat__slog__api_1ga7bbefdd3b087c6a39b6f677b63f25d94" kindref="member">LOG_INFO</ref>(<ref refid="group__logging__types_1ga57bb7714cca858a4d242e4faae4d16be" kindref="member">EPS_COMPONENT_MAIN</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Log<sp/>level<sp/>changed<sp/>to<sp/>%d&quot;</highlight><highlight class="normal">,<sp/>level);</highlight></codeline>
+<codeline lineno="201"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="group__logging__api_1ga68313b2800456508351fdf21c8685fbf" kindref="member">logging_pending_count</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__osusat__slog__api_1gaa1dbfea471aa1425ac6e67a1a7ff7768" kindref="member">osusat_slog_pending_count</ref>();<sp/>}</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"></highlight></codeline>
+<codeline lineno="208"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>logging_handle_redundancy(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structosusat__event__t" kindref="compound">osusat_event_t</ref><sp/>*e,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*ctx)<sp/>{</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/>(void)ctx;</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(e-&gt;<ref refid="group__osusat__event__bus_1ga50b8f7dc805b7558c90d8f130c83e73d" kindref="member">id</ref><sp/>==<sp/><ref refid="group__redundancy__manager__types_1ga0703a5d8b01d91c047750772fa7b4f7e" kindref="member">REDUNDANCY_EVENT_COMPONENT_DEGRADED</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structcomponent__degradation__t" kindref="compound">component_degradation_t</ref><sp/>*payload<sp/>=</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(<ref refid="structcomponent__degradation__t" kindref="compound">component_degradation_t</ref><sp/>*)e-&gt;<ref refid="group__osusat__event__bus_1gab6eca2e9d47a2653c6fc53deaff61353" kindref="member">payload</ref>;</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"></highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>if<sp/>primary<sp/>CAN<sp/>failed,<sp/>switch<sp/>to<sp/>AUX</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(payload-&gt;component<sp/>==<sp/><ref refid="group__redundancy__manager__types_1gga7c14751f737d5413dc48d18c920c8053a55ea94a848354cdad8ac11a24646c1c7" kindref="member">COMPONENT_CAN_PRIMARY</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(g_aux_can<sp/>&amp;&amp;<sp/>g_aux_can-&gt;<ref refid="structcan__events__t_1a3bcd147172ce242d187edc7b774feeaa" kindref="member">initialized</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>g_active_can<sp/>=<sp/>g_aux_can;</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(e-&gt;<ref refid="group__osusat__event__bus_1ga50b8f7dc805b7558c90d8f130c83e73d" kindref="member">id</ref><sp/>==<sp/><ref refid="group__redundancy__manager__types_1ga6fd0a894e1c636d95d6b39883dd032bc" kindref="member">REDUNDANCY_EVENT_COMPONENT_RECOVERED</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(e-&gt;<ref refid="group__osusat__event__bus_1gaadb231ddfbc4bb1a2ccd843e0a88b7f4" kindref="member">payload_len</ref><sp/>&gt;=<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<ref refid="group__redundancy__manager__types_1ga7c14751f737d5413dc48d18c920c8053" kindref="member">component_id_t</ref>))<sp/>{</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__redundancy__manager__types_1ga7c14751f737d5413dc48d18c920c8053" kindref="member">component_id_t</ref><sp/>comp<sp/>=<sp/>*(<ref refid="group__redundancy__manager__types_1ga7c14751f737d5413dc48d18c920c8053" kindref="member">component_id_t</ref><sp/>*)e-&gt;<ref refid="group__osusat__event__bus_1gab6eca2e9d47a2653c6fc53deaff61353" kindref="member">payload</ref>;</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(comp<sp/>==<sp/><ref refid="group__redundancy__manager__types_1gga7c14751f737d5413dc48d18c920c8053a55ea94a848354cdad8ac11a24646c1c7" kindref="member">COMPONENT_CAN_PRIMARY</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>g_active_can<sp/>=<sp/>g_primary_can;</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="230"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/logging.c"/>
+  </compounddef>
+</doxygen>
