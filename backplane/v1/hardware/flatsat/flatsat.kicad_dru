@@ -1,0 +1,9 @@
+# KiCad Custom Design Rules (.kicad_dru)
+# Baseline rules for JLCPCB 4-Layer PCB Fabrication (JLC04161H-7628 stackup)
+
+(version 1)
+
+(rule "Edge Plating Via Clearance"
+  (constraint edge_clearance (min -1mm))
+  (condition "A.Type == 'Graphic' && A.Layer != 'Edge.Cuts'"))
+
