@@ -1,5 +1,5 @@
 Command Handler Application
-==========================
+===========================
 
 .. doxygengroup:: command_handler
    :project: eps_firmware

@@ -5,9 +5,9 @@ OSUSat EPS Firmware documentation
    :maxdepth: 2
    :caption: Applications:
 
-    applications/power_policies
-    applications/command_handler
-    applications/events
+   applications/power_policies
+   applications/command_handler
+   applications/events
 
 .. toctree::
    :maxdepth: 2
