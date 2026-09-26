@@ -99,6 +99,7 @@ This document outlines general guidelines that must be followed when designing P
 
 - Trace width vs. current rule of thumb
     - 1A continuous = 1mm trace with 1oz copper, 10°C temperature rise
+- Place vias first during fanout before routing the whole trace
 - Use KiCad's calculator tools
 - Avoid 90 degree corners on high-speed or high-current traces
 - Route clocks and oscillators away from switching signals
