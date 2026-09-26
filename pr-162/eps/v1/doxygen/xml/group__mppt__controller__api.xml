@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="group__mppt__controller__api" kind="group">
+    <compoundname>mppt_controller_api</compoundname>
+    <title>Public API</title>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="group__mppt__controller__api_1ga3fbe17e67243b9cfd0faf034a2a38762" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mppt_init</definition>
+        <argsstring>(mppt_t *mppt)</argsstring>
+        <name>mppt_init</name>
+        <param>
+          <type><ref refid="structmppt__t" kindref="compound">mppt_t</ref> *</type>
+          <declname>mppt</declname>
+        </param>
+        <briefdescription>
+<para>Initialize all MPPT channels. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Configures MPPT hardware interfaces &amp; chips, sets default states, and prepares for voltage/current sensing.</para>
+<para>This must be called once at startup per MPPT device before any other MPPT functions are called.</para>
+<para><simplesect kind="note"><para>If called more than once, the internal MPPT controller state will be reset.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">mppt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The MPPT controller </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/mppt_controller.h" line="151" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/mppt_controller.c" bodystart="42" bodyend="62" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/mppt_controller.h" declline="151" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__mppt__controller__api_1gaab7bbb346aa580d340f9f9999be6d4df" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mppt_enable</definition>
+        <argsstring>(uint8_t ch)</argsstring>
+        <name>mppt_enable</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>ch</declname>
+        </param>
+        <briefdescription>
+<para>Enable a specific MPPT channel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ch</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel index (0 to NUM_MPPT_CHANNELS-1)</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+Enables the MPPT chip via GPIO, clears stale faults, and marks the channel active for telemetry updates. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/mppt_controller.h" line="161" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/mppt_controller.c" bodystart="79" bodyend="86" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/mppt_controller.h" declline="161" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__mppt__controller__api_1ga11f801595b19fe93a5894ee6e37acf3f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mppt_disable</definition>
+        <argsstring>(uint8_t ch)</argsstring>
+        <name>mppt_disable</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>ch</declname>
+        </param>
+        <briefdescription>
+<para>Disable a specific MPPT channel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ch</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel index (0 to NUM_MPPT_CHANNELS-1)</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+Used during power-budget constraints, safe-mode transitions, or thermal protection events. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/mppt_controller.h" line="171" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/mppt_controller.c" bodystart="88" bodyend="95" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/mppt_controller.h" declline="171" declcolumn="6"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>External interface for interacting with the MPPT Controller Service. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

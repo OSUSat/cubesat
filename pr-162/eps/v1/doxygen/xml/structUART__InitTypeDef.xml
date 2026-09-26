@@ -1,0 +1,155 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="structUART__InitTypeDef" kind="struct" language="C++" prot="public">
+    <compoundname>UART_InitTypeDef</compoundname>
+    <includes refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__uart_8h" local="no">stm32l4xx_hal_uart.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structUART__InitTypeDef_1ae460c2e4d7ddc67bca9f5756f45b1d83" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t UART_InitTypeDef::BaudRate</definition>
+        <argsstring></argsstring>
+        <name>BaudRate</name>
+        <qualifiedname>UART_InitTypeDef::BaudRate</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This member configures the UART communication baud rate. The baud rate register is computed using the following formula: <simplesect kind="note"><para>For LPUART : Baud Rate Register = ((256 * lpuart_ker_ckpres) / ((huart-&gt;Init.BaudRate))) where lpuart_ker_ck_pres is the UART input clock (divided by a prescaler if applicable). </para>
+</simplesect>
+<simplesect kind="note"><para>For UART :<itemizedlist>
+<listitem><para>If oversampling is 16 or in LIN mode, Baud Rate Register = ((uart_ker_ckpres) / ((huart-&gt;Init.BaudRate)))</para>
+</listitem><listitem><para>If oversampling is 8, Baud Rate Register[15:4] = ((2 * uart_ker_ckpres) / ((huart-&gt;Init.BaudRate)))[15:4] Baud Rate Register[3] = 0 Baud Rate Register[2:0] = (((2 * uart_ker_ckpres) / ((huart-&gt;Init.BaudRate)))[3:0]) &gt;&gt; 1 where uart_ker_ck_pres is the UART input clock (divided by a prescaler if applicable) </para>
+</listitem></itemizedlist>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="48" column="12" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structUART__InitTypeDef_1a0f1cd85e62aa4fd4b36ee9e610e7789f" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t UART_InitTypeDef::WordLength</definition>
+        <argsstring></argsstring>
+        <name>WordLength</name>
+        <qualifiedname>UART_InitTypeDef::WordLength</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Specifies the number of data bits transmitted or received in a frame. This parameter can be a value of <ref refid="group__UARTEx__Word__Length" kindref="compound">UARTEx Word Length</ref>. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="66" column="12" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structUART__InitTypeDef_1a6717dfe595617c7b2d57139d9cd306ef" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t UART_InitTypeDef::StopBits</definition>
+        <argsstring></argsstring>
+        <name>StopBits</name>
+        <qualifiedname>UART_InitTypeDef::StopBits</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Specifies the number of stop bits transmitted. This parameter can be a value of <ref refid="group__UART__Stop__Bits" kindref="compound">UART Number of Stop Bits</ref>. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="69" column="12" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structUART__InitTypeDef_1adc92243425cb18cb8b5f03692841db48" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t UART_InitTypeDef::Parity</definition>
+        <argsstring></argsstring>
+        <name>Parity</name>
+        <qualifiedname>UART_InitTypeDef::Parity</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Specifies the parity mode. This parameter can be a value of <ref refid="group__UART__Parity" kindref="compound">UART Parity</ref> <simplesect kind="note"><para>When parity is enabled, the computed parity is inserted at the MSB position of the transmitted data (9th bit when the word length is set to 9 data bits; 8th bit when the word length is set to 8 data bits). </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="72" column="12" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structUART__InitTypeDef_1ab2ee6ea5a5d4ca5ee6b759be197bcfcb" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t UART_InitTypeDef::Mode</definition>
+        <argsstring></argsstring>
+        <name>Mode</name>
+        <qualifiedname>UART_InitTypeDef::Mode</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Specifies whether the Receive or Transmit mode is enabled or disabled. This parameter can be a value of <ref refid="group__UART__Mode" kindref="compound">UART Transfer Mode</ref>. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="79" column="12" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structUART__InitTypeDef_1adbf4734130666b94201c6658464c1622" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t UART_InitTypeDef::HwFlowCtl</definition>
+        <argsstring></argsstring>
+        <name>HwFlowCtl</name>
+        <qualifiedname>UART_InitTypeDef::HwFlowCtl</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Specifies whether the hardware flow control mode is enabled or disabled. This parameter can be a value of <ref refid="group__UART__Hardware__Flow__Control" kindref="compound">UART Hardware Flow Control</ref>. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="82" column="12" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structUART__InitTypeDef_1a77c2c86a2186e09cbf022e27c0c82324" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t UART_InitTypeDef::OverSampling</definition>
+        <argsstring></argsstring>
+        <name>OverSampling</name>
+        <qualifiedname>UART_InitTypeDef::OverSampling</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Specifies whether the Over sampling 8 is enabled or disabled, to achieve higher speed (up to f_PCLK/8). This parameter can be a value of <ref refid="group__UART__Over__Sampling" kindref="compound">UART Over Sampling</ref>. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="86" column="12" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structUART__InitTypeDef_1a1662b82dc43d9137c3a4485794c94388" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t UART_InitTypeDef::OneBitSampling</definition>
+        <argsstring></argsstring>
+        <name>OneBitSampling</name>
+        <qualifiedname>UART_InitTypeDef::OneBitSampling</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Specifies whether a single sample or three samples&apos; majority vote is selected. Selecting the single sample method increases the receiver tolerance to clock deviations. This parameter can be a value of <ref refid="group__UART__OneBit__Sampling" kindref="compound">UART One Bit Sampling Method</ref>. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="90" column="12" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="90" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>UART Init Structure definition. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="46" column="1" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="47" bodyend="99"/>
+    <listofallmembers>
+      <member refid="structUART__InitTypeDef_1ae460c2e4d7ddc67bca9f5756f45b1d83" prot="public" virt="non-virtual"><scope>UART_InitTypeDef</scope><name>BaudRate</name></member>
+      <member refid="structUART__InitTypeDef_1adbf4734130666b94201c6658464c1622" prot="public" virt="non-virtual"><scope>UART_InitTypeDef</scope><name>HwFlowCtl</name></member>
+      <member refid="structUART__InitTypeDef_1ab2ee6ea5a5d4ca5ee6b759be197bcfcb" prot="public" virt="non-virtual"><scope>UART_InitTypeDef</scope><name>Mode</name></member>
+      <member refid="structUART__InitTypeDef_1a1662b82dc43d9137c3a4485794c94388" prot="public" virt="non-virtual"><scope>UART_InitTypeDef</scope><name>OneBitSampling</name></member>
+      <member refid="structUART__InitTypeDef_1a77c2c86a2186e09cbf022e27c0c82324" prot="public" virt="non-virtual"><scope>UART_InitTypeDef</scope><name>OverSampling</name></member>
+      <member refid="structUART__InitTypeDef_1adc92243425cb18cb8b5f03692841db48" prot="public" virt="non-virtual"><scope>UART_InitTypeDef</scope><name>Parity</name></member>
+      <member refid="structUART__InitTypeDef_1a6717dfe595617c7b2d57139d9cd306ef" prot="public" virt="non-virtual"><scope>UART_InitTypeDef</scope><name>StopBits</name></member>
+      <member refid="structUART__InitTypeDef_1a0f1cd85e62aa4fd4b36ee9e610e7789f" prot="public" virt="non-virtual"><scope>UART_InitTypeDef</scope><name>WordLength</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

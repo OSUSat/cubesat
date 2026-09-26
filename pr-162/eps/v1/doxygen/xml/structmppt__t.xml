@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="structmppt__t" kind="struct" language="C++" prot="public">
+    <compoundname>mppt_t</compoundname>
+    <includes refid="mppt__controller_8h" local="no">mppt_controller.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structmppt__t_1a90a260fa3d0df80dca794292f899eec2" prot="public" static="no" mutable="no">
+        <type><ref refid="structmppt__channel__t" kindref="compound">mppt_channel_t</ref> *</type>
+        <definition>mppt_channel_t* mppt_t::channels</definition>
+        <argsstring></argsstring>
+        <name>channels</name>
+        <qualifiedname>mppt_t::channels</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>List of MPPT channels for this device </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/mppt_controller.h" line="119" column="20" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/mppt_controller.h" bodystart="119" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structmppt__t_1aaa1713fead4afca1d758b8ebc7decd3a" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t mppt_t::num_channels</definition>
+        <argsstring></argsstring>
+        <name>num_channels</name>
+        <qualifiedname>mppt_t::num_channels</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Number of MPPT channels </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/mppt_controller.h" line="120" column="12" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/mppt_controller.h" bodystart="120" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structmppt__t_1a9d418ef32740cd08f52e1a15e627d879" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t mppt_t::tick_counter</definition>
+        <argsstring></argsstring>
+        <name>tick_counter</name>
+        <qualifiedname>mppt_t::tick_counter</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Internal counter for update loop </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/mppt_controller.h" line="121" column="14" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/mppt_controller.h" bodystart="121" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structmppt__t_1ac37a0b483eb82b8c47bc71a3ddd6904a" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t mppt_t::telemetry_tick_counter</definition>
+        <argsstring></argsstring>
+        <name>telemetry_tick_counter</name>
+        <qualifiedname>mppt_t::telemetry_tick_counter</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Internal counter for telemetry publish timing </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/mppt_controller.h" line="122" column="14" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/mppt_controller.h" bodystart="122" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structmppt__t_1a70ba2ca72ad6deb5901e586732782ec9" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool mppt_t::initialized</definition>
+        <argsstring></argsstring>
+        <name>initialized</name>
+        <qualifiedname>mppt_t::initialized</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>True if this device has been initialized </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/mppt_controller.h" line="124" column="10" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/mppt_controller.h" bodystart="124" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Individual MPPT device. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Each MPPT device must be initialized with <ref refid="group__mppt__controller__api_1ga3fbe17e67243b9cfd0faf034a2a38762" kindref="member">mppt_init</ref> </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2">
+        <label>mppt_channel_t</label>
+        <link refid="structmppt__channel__t"/>
+      </node>
+      <node id="1">
+        <label>mppt_t</label>
+        <link refid="structmppt__t"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>channels</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/mppt_controller.h" line="118" column="1" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/mppt_controller.h" bodystart="118" bodyend="125"/>
+    <listofallmembers>
+      <member refid="structmppt__t_1a90a260fa3d0df80dca794292f899eec2" prot="public" virt="non-virtual"><scope>mppt_t</scope><name>channels</name></member>
+      <member refid="structmppt__t_1a70ba2ca72ad6deb5901e586732782ec9" prot="public" virt="non-virtual"><scope>mppt_t</scope><name>initialized</name></member>
+      <member refid="structmppt__t_1aaa1713fead4afca1d758b8ebc7decd3a" prot="public" virt="non-virtual"><scope>mppt_t</scope><name>num_channels</name></member>
+      <member refid="structmppt__t_1ac37a0b483eb82b8c47bc71a3ddd6904a" prot="public" virt="non-virtual"><scope>mppt_t</scope><name>telemetry_tick_counter</name></member>
+      <member refid="structmppt__t_1a9d418ef32740cd08f52e1a15e627d879" prot="public" virt="non-virtual"><scope>mppt_t</scope><name>tick_counter</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

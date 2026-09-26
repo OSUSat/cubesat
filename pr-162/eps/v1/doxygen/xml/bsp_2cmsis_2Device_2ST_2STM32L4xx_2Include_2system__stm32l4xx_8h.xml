@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="bsp_2cmsis_2Device_2ST_2STM32L4xx_2Include_2system__stm32l4xx_8h" kind="file" language="C++">
+    <compoundname>system_stm32l4xx.h</compoundname>
+    <includedby refid="bsp_2cmsis_2Device_2ST_2STM32L4xx_2Include_2stm32l496xx_8h" local="yes">/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/cmsis/Device/ST/STM32L4xx/Include/stm32l496xx.h</includedby>
+    <invincdepgraph>
+      <node id="2">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/cmsis/Device/ST/STM32L4xx/Include/stm32l496xx.h</label>
+        <link refid="bsp_2cmsis_2Device_2ST_2STM32L4xx_2Include_2stm32l496xx_8h"/>
+      </node>
+      <node id="1">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/cmsis/Device/ST/STM32L4xx/Include/system_stm32l4xx.h</label>
+        <link refid="bsp_2cmsis_2Device_2ST_2STM32L4xx_2Include_2system__stm32l4xx_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <sectiondef kind="var">
+      <member refid="group__STM32L4xx__System__Exported__Variables_1gaa3cd3e43291e81e795d642b79b6088e6" kind="variable"><name>SystemCoreClock</name></member>
+      <member refid="group__STM32L4xx__System__Exported__Variables_1ga6e1d9cd666f0eacbfde31e9932a93466" kind="variable"><name>AHBPrescTable</name></member>
+      <member refid="group__STM32L4xx__System__Exported__Variables_1ga5b4f8b768465842cf854a8f993b375e9" kind="variable"><name>APBPrescTable</name></member>
+      <member refid="group__STM32L4xx__System__Exported__Variables_1ga4d9e663c3c5bd4ca3361bf97d48158bf" kind="variable"><name>MSIRangeTable</name></member>
+    </sectiondef>
+    <sectiondef kind="func">
+      <member refid="group__STM32L4xx__System__Exported__Functions_1ga93f514700ccf00d08dbdcff7f1224eb2" kind="function"><name>SystemInit</name></member>
+      <member refid="group__STM32L4xx__System__Exported__Functions_1gae0c36a9591fe6e9c45ecb21a794f0f0f" kind="function"><name>SystemCoreClockUpdate</name></member>
+    </sectiondef>
+    <briefdescription>
+<para>CMSIS Cortex-M4 Device System Source File for STM32L4xx devices. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>MCD Application Team </para>
+</simplesect>
+<simplesect kind="attention"><para></para>
+</simplesect>
+Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
+<para>This software is licensed under terms that can be found in the LICENSE file in the root directory of this software component. If no LICENSE file comes with this software, it is provided AS-IS. </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>__SYSTEM_STM32L4XX_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__SYSTEM_STM32L4XX_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>The<sp/>SystemCoreClock<sp/>variable<sp/>is<sp/>updated<sp/>in<sp/>three<sp/>ways:</highlight></codeline>
+<codeline lineno="50"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/>1)<sp/>by<sp/>calling<sp/>CMSIS<sp/>function<sp/>SystemCoreClockUpdate()</highlight></codeline>
+<codeline lineno="51"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/>2)<sp/>by<sp/>calling<sp/>HAL<sp/>API<sp/>function<sp/>HAL_RCC_GetSysClockFreq()</highlight></codeline>
+<codeline lineno="52"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/>3)<sp/>each<sp/>time<sp/>HAL_RCC_ClockConfig()<sp/>is<sp/>called<sp/>to<sp/>configure<sp/>the<sp/>system<sp/>clock<sp/>frequency</highlight></codeline>
+<codeline lineno="53"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Note:<sp/>If<sp/>you<sp/>use<sp/>this<sp/>function<sp/>to<sp/>configure<sp/>the<sp/>system<sp/>clock;<sp/>then<sp/>there</highlight></codeline>
+<codeline lineno="54"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>is<sp/>no<sp/>need<sp/>to<sp/>call<sp/>the<sp/>2<sp/>first<sp/>functions<sp/>listed<sp/>above,<sp/>since<sp/>SystemCoreClock</highlight></codeline>
+<codeline lineno="55"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>variable<sp/>is<sp/>updated<sp/>automatically.</highlight></codeline>
+<codeline lineno="56"><highlight class="comment"><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>uint32_t<sp/><ref refid="group__STM32L4xx__System__Exported__Variables_1gaa3cd3e43291e81e795d642b79b6088e6" kindref="member">SystemCoreClock</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/><sp/><ref refid="group__STM32L4xx__System__Exported__Variables_1ga6e1d9cd666f0eacbfde31e9932a93466" kindref="member">AHBPrescTable</ref>[16];<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/><sp/><ref refid="group__STM32L4xx__System__Exported__Variables_1ga5b4f8b768465842cf854a8f993b375e9" kindref="member">APBPrescTable</ref>[8];<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint32_t<sp/><ref refid="group__STM32L4xx__System__Exported__Variables_1ga4d9e663c3c5bd4ca3361bf97d48158bf" kindref="member">MSIRangeTable</ref>[12];<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__STM32L4xx__System__Exported__Functions_1ga93f514700ccf00d08dbdcff7f1224eb2" kindref="member">SystemInit</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__STM32L4xx__System__Exported__Functions_1gae0c36a9591fe6e9c45ecb21a794f0f0f" kindref="member">SystemCoreClockUpdate</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*__SYSTEM_STM32L4XX_H<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/cmsis/Device/ST/STM32L4xx/Include/system_stm32l4xx.h"/>
+  </compounddef>
+</doxygen>

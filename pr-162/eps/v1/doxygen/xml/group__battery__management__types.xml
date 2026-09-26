@@ -1,0 +1,175 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="group__battery__management__types" kind="group">
+    <compoundname>battery_management_types</compoundname>
+    <title>Structures</title>
+    <innerclass refid="structbattery__status__t" prot="public">battery_status_t</innerclass>
+    <innerclass refid="structbattery__management__t" prot="public">battery_management_t</innerclass>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="group__battery__management__types_1ga2f33f8497203b52f72a9f33fd8c17af3" prot="public" static="no" strong="no">
+        <type></type>
+        <name>battery_event_id_t</name>
+        <enumvalue id="group__battery__management__types_1gga2f33f8497203b52f72a9f33fd8c17af3a07a0e57da134a1538866c7c1e64f7c2f" prot="public">
+          <name>BATTERY_FAULT_DETECTED</name>
+          <initializer>= 0x10</initializer>
+          <briefdescription>
+<para>Published when a critical fault is detected. Payload: <ref refid="structbattery__status__t" kindref="compound">battery_status_t</ref> (Snapshot at time of failure) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__battery__management__types_1gga2f33f8497203b52f72a9f33fd8c17af3a4c8451780b0447a0b14194500dcd7253" prot="public">
+          <name>BATTERY_SELF_CHECK_PASSED</name>
+          <briefdescription>
+<para>Published when the battery management service passes its self-check. Payload: NULL. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__battery__management__types_1gga2f33f8497203b52f72a9f33fd8c17af3a90a5761df089450462a3ccab926b9b80" prot="public">
+          <name>BATTERY_SELF_CHECK_FAILED</name>
+          <briefdescription>
+<para>Published when the battery management service fails its self-check. Payload: failure mode. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__battery__management__types_1gga2f33f8497203b52f72a9f33fd8c17af3af86e6bbb72100232b01a51b4e093c06c" prot="public">
+          <name>BATTERY_CRITICAL_LOW</name>
+          <briefdescription>
+<para>Published when voltage drops below critical threshold. Payload: float (Current Voltage) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__battery__management__types_1gga2f33f8497203b52f72a9f33fd8c17af3adad9578440c9893a39bb1bc71efb9d82" prot="public">
+          <name>BATTERY_CHARGING_CHANGE</name>
+          <briefdescription>
+<para>Published when charging starts or stops. Payload: bool (true = charging started, false = stopped) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__battery__management__types_1gga2f33f8497203b52f72a9f33fd8c17af3aed0819dccfcf0b61a7c66847b5fe54a9" prot="public">
+          <name>BATTERY_FULLY_CHARGED</name>
+          <briefdescription>
+<para>Published when battery reaches 100% SoC. Payload: NULL. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__battery__management__types_1gga2f33f8497203b52f72a9f33fd8c17af3a5e6f1db30a24d15a6fc29f8be1f79348" prot="public">
+          <name>BATTERY_TELEMETRY</name>
+          <briefdescription>
+<para>Periodic telemetry broadcast (e.g., every 10s or 1 min). Payload: <ref refid="structbattery__status__t" kindref="compound">battery_status_t</ref>. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/battery_management.h" line="55" column="1" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/battery_management.h" bodystart="55" bodyend="97"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="group__battery__management__types_1gafff0ce24627e80f6ff4a9c28051b2085" prot="public" static="no">
+        <name>BATTERY_SERVICE_UID</name>
+        <initializer>0xBA77</initializer>
+        <briefdescription>
+<para>Service Unique Identifier (16-bit). Used to construct unique Event IDs. &quot;BA77&quot; = BATT. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/battery_management.h" line="53" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/battery_management.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__battery__management__types_1gab24d24185749fde8c2995766ece636ee" prot="public" static="no">
+        <name>BATTERY_EVENT_FAULT_DETECTED</name>
+        <initializer>    <ref refid="group__osusat__event__bus__types_1ga6fb66ede3b29d386fec6f57800d3e980" kindref="member">OSUSAT_BUILD_EVENT_ID</ref>(<ref refid="group__battery__management__types_1gafff0ce24627e80f6ff4a9c28051b2085" kindref="member">BATTERY_SERVICE_UID</ref>, <ref refid="group__battery__management__types_1gga2f33f8497203b52f72a9f33fd8c17af3a07a0e57da134a1538866c7c1e64f7c2f" kindref="member">BATTERY_FAULT_DETECTED</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/battery_management.h" line="99" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/battery_management.h" bodystart="99" bodyend="100"/>
+      </memberdef>
+      <memberdef kind="define" id="group__battery__management__types_1gad7d8c430783f35c8db6b3aebf67b6f57" prot="public" static="no">
+        <name>BATTERY_EVENT_SELF_CHECK_PASSED</name>
+        <initializer>    <ref refid="group__osusat__event__bus__types_1ga6fb66ede3b29d386fec6f57800d3e980" kindref="member">OSUSAT_BUILD_EVENT_ID</ref>(<ref refid="group__battery__management__types_1gafff0ce24627e80f6ff4a9c28051b2085" kindref="member">BATTERY_SERVICE_UID</ref>, <ref refid="group__battery__management__types_1gga2f33f8497203b52f72a9f33fd8c17af3a4c8451780b0447a0b14194500dcd7253" kindref="member">BATTERY_SELF_CHECK_PASSED</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/battery_management.h" line="101" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/battery_management.h" bodystart="101" bodyend="102"/>
+      </memberdef>
+      <memberdef kind="define" id="group__battery__management__types_1gaedac1bd0dfaf601fdf25de82903106c8" prot="public" static="no">
+        <name>BATTERY_EVENT_SELF_CHECK_FAILED</name>
+        <initializer>    <ref refid="group__osusat__event__bus__types_1ga6fb66ede3b29d386fec6f57800d3e980" kindref="member">OSUSAT_BUILD_EVENT_ID</ref>(<ref refid="group__battery__management__types_1gafff0ce24627e80f6ff4a9c28051b2085" kindref="member">BATTERY_SERVICE_UID</ref>, <ref refid="group__battery__management__types_1gga2f33f8497203b52f72a9f33fd8c17af3a90a5761df089450462a3ccab926b9b80" kindref="member">BATTERY_SELF_CHECK_FAILED</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/battery_management.h" line="103" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/battery_management.h" bodystart="103" bodyend="104"/>
+      </memberdef>
+      <memberdef kind="define" id="group__battery__management__types_1ga71d2f807c933117718b2982526b15bcc" prot="public" static="no">
+        <name>BATTERY_EVENT_CRITICAL_LOW</name>
+        <initializer>    <ref refid="group__osusat__event__bus__types_1ga6fb66ede3b29d386fec6f57800d3e980" kindref="member">OSUSAT_BUILD_EVENT_ID</ref>(<ref refid="group__battery__management__types_1gafff0ce24627e80f6ff4a9c28051b2085" kindref="member">BATTERY_SERVICE_UID</ref>, <ref refid="group__battery__management__types_1gga2f33f8497203b52f72a9f33fd8c17af3af86e6bbb72100232b01a51b4e093c06c" kindref="member">BATTERY_CRITICAL_LOW</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/battery_management.h" line="105" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/battery_management.h" bodystart="105" bodyend="106"/>
+      </memberdef>
+      <memberdef kind="define" id="group__battery__management__types_1ga2bd033ba4e99b3c12a7f3160e2863280" prot="public" static="no">
+        <name>BATTERY_EVENT_CHARGING_CHANGE</name>
+        <initializer>    <ref refid="group__osusat__event__bus__types_1ga6fb66ede3b29d386fec6f57800d3e980" kindref="member">OSUSAT_BUILD_EVENT_ID</ref>(<ref refid="group__battery__management__types_1gafff0ce24627e80f6ff4a9c28051b2085" kindref="member">BATTERY_SERVICE_UID</ref>, <ref refid="group__battery__management__types_1gga2f33f8497203b52f72a9f33fd8c17af3adad9578440c9893a39bb1bc71efb9d82" kindref="member">BATTERY_CHARGING_CHANGE</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/battery_management.h" line="107" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/battery_management.h" bodystart="107" bodyend="108"/>
+      </memberdef>
+      <memberdef kind="define" id="group__battery__management__types_1ga1c6299df5d6efa71ae1dd2e9d8cb98fb" prot="public" static="no">
+        <name>BATTERY_EVENT_FULLY_CHARGED</name>
+        <initializer>    <ref refid="group__osusat__event__bus__types_1ga6fb66ede3b29d386fec6f57800d3e980" kindref="member">OSUSAT_BUILD_EVENT_ID</ref>(<ref refid="group__battery__management__types_1gafff0ce24627e80f6ff4a9c28051b2085" kindref="member">BATTERY_SERVICE_UID</ref>, <ref refid="group__battery__management__types_1gga2f33f8497203b52f72a9f33fd8c17af3aed0819dccfcf0b61a7c66847b5fe54a9" kindref="member">BATTERY_FULLY_CHARGED</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/battery_management.h" line="109" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/battery_management.h" bodystart="109" bodyend="110"/>
+      </memberdef>
+      <memberdef kind="define" id="group__battery__management__types_1gaafc9e07e74733f402534815fc8c85b9f" prot="public" static="no">
+        <name>BATTERY_EVENT_TELEMETRY</name>
+        <initializer>    <ref refid="group__osusat__event__bus__types_1ga6fb66ede3b29d386fec6f57800d3e980" kindref="member">OSUSAT_BUILD_EVENT_ID</ref>(<ref refid="group__battery__management__types_1gafff0ce24627e80f6ff4a9c28051b2085" kindref="member">BATTERY_SERVICE_UID</ref>, <ref refid="group__battery__management__types_1gga2f33f8497203b52f72a9f33fd8c17af3a5e6f1db30a24d15a6fc29f8be1f79348" kindref="member">BATTERY_TELEMETRY</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/battery_management.h" line="111" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/battery_management.h" bodystart="111" bodyend="112"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Structures used by the Battery Management Service. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

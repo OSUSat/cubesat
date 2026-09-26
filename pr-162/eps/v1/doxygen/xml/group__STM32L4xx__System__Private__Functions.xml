@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="group__STM32L4xx__System__Private__Functions" kind="group">
+    <compoundname>STM32L4xx_System_Private_Functions</compoundname>
+    <title>STM32L4xx_System_Private_Functions</title>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="group__STM32L4xx__System__Private__Functions_1ga93f514700ccf00d08dbdcff7f1224eb2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void SystemInit</definition>
+        <argsstring>(void)</argsstring>
+        <name>SystemInit</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Setup the microcontroller system. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Core/Src/system_stm32l4xx.c" line="199" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Core/Src/system_stm32l4xx.c" bodystart="199" bodyend="210"/>
+      </memberdef>
+      <memberdef kind="function" id="group__STM32L4xx__System__Private__Functions_1gae0c36a9591fe6e9c45ecb21a794f0f0f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void SystemCoreClockUpdate</definition>
+        <argsstring>(void)</argsstring>
+        <name>SystemCoreClockUpdate</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Update SystemCoreClock variable according to Clock Register Values. The SystemCoreClock variable contains the core clock (HCLK), it can be used by the user application to setup the SysTick timer or configure other parameters. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>Each time the core clock (HCLK) changes, this function must be called to update SystemCoreClock variable value. Otherwise, any configuration based on this variable will be incorrect.</para>
+</simplesect>
+<simplesect kind="note"><para>- The system frequency computed by this function is not the real frequency in the chip. It is calculated based on the predefined constant and the selected clock source:</para>
+</simplesect>
+<itemizedlist>
+<listitem><para>If SYSCLK source is MSI, SystemCoreClock will contain the <ref refid="group__STM32L4xx__System__Private__Defines_1ga90e2a73d7fe4a7425c6e31fef5ce7263" kindref="member">MSI_VALUE(*)</ref></para>
+</listitem><listitem><para>If SYSCLK source is HSI, SystemCoreClock will contain the <ref refid="group__STM32L4xx__System__Private__Defines_1gaaa8c76e274d0f6dd2cefb5d0b17fbc37" kindref="member">HSI_VALUE(**)</ref></para>
+</listitem><listitem><para>If SYSCLK source is HSE, SystemCoreClock will contain the <ref refid="group__STM32L4xx__System__Private__Defines_1gaeafcff4f57440c60e64812dddd13e7cb" kindref="member">HSE_VALUE(***)</ref></para>
+</listitem><listitem><para>If SYSCLK source is PLL, SystemCoreClock will contain the <ref refid="group__STM32L4xx__System__Private__Defines_1gaeafcff4f57440c60e64812dddd13e7cb" kindref="member">HSE_VALUE(***)</ref> or <ref refid="group__STM32L4xx__System__Private__Defines_1gaaa8c76e274d0f6dd2cefb5d0b17fbc37" kindref="member">HSI_VALUE(*)</ref> or <ref refid="group__STM32L4xx__System__Private__Defines_1ga90e2a73d7fe4a7425c6e31fef5ce7263" kindref="member">MSI_VALUE(*)</ref> multiplied/divided by the PLL factors.</para>
+</listitem></itemizedlist>
+</para>
+<para>(*) MSI_VALUE is a constant defined in stm32l4xx_hal.h file (default value 4 MHz) but the real value may vary depending on the variations in voltage and temperature.</para>
+<para>(**) HSI_VALUE is a constant defined in stm32l4xx_hal.h file (default value 16 MHz) but the real value may vary depending on the variations in voltage and temperature.</para>
+<para>(***) HSE_VALUE is a constant defined in stm32l4xx_hal.h file (default value 8 MHz), user has to ensure that HSE_VALUE is same as the real frequency of the crystal used. Otherwise, this function may have wrong result.</para>
+<para><itemizedlist>
+<listitem><para>The result of this function could be not correct when using fractional value for HSE crystal.</para>
+</listitem></itemizedlist>
+</para>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Core/Src/system_stm32l4xx.c" line="253" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Core/Src/system_stm32l4xx.c" bodystart="253" bodyend="319"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

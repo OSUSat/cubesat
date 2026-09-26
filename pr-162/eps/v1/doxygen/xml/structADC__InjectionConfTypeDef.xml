@@ -1,0 +1,269 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="structADC__InjectionConfTypeDef" kind="struct" language="C++" prot="public">
+    <compoundname>ADC_InjectionConfTypeDef</compoundname>
+    <includes refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__adc__ex_8h" local="no">stm32l4xx_hal_adc_ex.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structADC__InjectionConfTypeDef_1aad0cab6ed3f66e8ffa4bd0490298b715" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t ADC_InjectionConfTypeDef::InjectedChannel</definition>
+        <argsstring></argsstring>
+        <name>InjectedChannel</name>
+        <qualifiedname>ADC_InjectionConfTypeDef::InjectedChannel</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Specifies the channel to configure into ADC group injected. This parameter can be a value of <ref refid="group__ADC__HAL__EC__CHANNEL" kindref="compound">ADC instance - Channel number</ref> Note: Depending on devices and ADC instances, some channels may not be available on device package pins. Refer to device datasheet for channels availability. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc_ex.h" line="81" column="12" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc_ex.h" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structADC__InjectionConfTypeDef_1af8a1717c0f5a5d0c7a705224f28a844f" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t ADC_InjectionConfTypeDef::InjectedRank</definition>
+        <argsstring></argsstring>
+        <name>InjectedRank</name>
+        <qualifiedname>ADC_InjectionConfTypeDef::InjectedRank</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Specifies the rank in the ADC group injected sequencer. This parameter must be a value of <ref refid="group__ADC__INJ__SEQ__RANKS" kindref="compound">ADC group injected - Sequencer ranks</ref>. Note: to disable a channel or change order of conversion sequencer, rank containing a previous channel setting can be overwritten by the new channel setting (or parameter number of conversions adjusted) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc_ex.h" line="87" column="12" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc_ex.h" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structADC__InjectionConfTypeDef_1a3d15c0590dbafc9e99e21ea4df5b0c6b" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t ADC_InjectionConfTypeDef::InjectedSamplingTime</definition>
+        <argsstring></argsstring>
+        <name>InjectedSamplingTime</name>
+        <qualifiedname>ADC_InjectionConfTypeDef::InjectedSamplingTime</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sampling time value to be set for the selected channel. Unit: ADC clock cycles. Conversion time is the addition of sampling time and processing time (12.5 ADC clock cycles at ADC resolution 12 bits, 10.5 cycles at 10 bits, 8.5 cycles at 8 bits, 6.5 cycles at 6 bits). This parameter can be a value of <ref refid="group__ADC__HAL__EC__CHANNEL__SAMPLINGTIME" kindref="compound">Channel - Sampling time</ref>. Caution: This parameter applies to a channel that can be used in a regular and/or injected group. It overwrites the last setting. Note: In case of usage of internal measurement channels (VrefInt, ...), sampling time constraints must be respected (sampling time can be adjusted in function of ADC clock frequency and sampling time setting). Refer to device datasheet for timings values. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc_ex.h" line="94" column="12" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc_ex.h" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structADC__InjectionConfTypeDef_1a327f85bebdb260f9fff0d28b69020df6" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t ADC_InjectionConfTypeDef::InjectedSingleDiff</definition>
+        <argsstring></argsstring>
+        <name>InjectedSingleDiff</name>
+        <qualifiedname>ADC_InjectionConfTypeDef::InjectedSingleDiff</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Selection of single-ended or differential input. In differential mode: Differential measurement is between the selected channel &apos;i&apos; (positive input) and channel &apos;i+1&apos; (negative input). Only channel &apos;i&apos; has to be configured, channel &apos;i+1&apos; is configured automatically. This parameter must be a value of <ref refid="group__ADC__HAL__EC__CHANNEL__SINGLE__DIFF__ENDING" kindref="compound">Channel - Single or differential ending</ref>. Caution: This parameter applies to a channel that can be used in a regular and/or injected group. It overwrites the last setting. Note: Refer to Reference Manual to ensure the selected channel is available in differential mode. Note: When configuring a channel &apos;i&apos; in differential mode, the channel &apos;i+1&apos; is not usable separately. Note: This parameter must be modified when ADC is disabled (before ADC start conversion or after ADC stop conversion). If ADC is enabled, this parameter setting is bypassed without error reporting (as it can be the expected behavior in case of another parameter update on the fly) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc_ex.h" line="107" column="12" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc_ex.h" bodystart="107" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structADC__InjectionConfTypeDef_1a24170a1b3dcf5798d3b9e76fc4f83789" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t ADC_InjectionConfTypeDef::InjectedOffsetNumber</definition>
+        <argsstring></argsstring>
+        <name>InjectedOffsetNumber</name>
+        <qualifiedname>ADC_InjectionConfTypeDef::InjectedOffsetNumber</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Selects the offset number. This parameter can be a value of <ref refid="group__ADC__HAL__EC__OFFSET__NB" kindref="compound">ADC instance - Offset number</ref>. Caution: Only one offset is allowed per channel. This parameter overwrites the last setting. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc_ex.h" line="126" column="12" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc_ex.h" bodystart="126" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structADC__InjectionConfTypeDef_1ac7d28d71ec3aec4d1587ee04fc585f09" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t ADC_InjectionConfTypeDef::InjectedOffset</definition>
+        <argsstring></argsstring>
+        <name>InjectedOffset</name>
+        <qualifiedname>ADC_InjectionConfTypeDef::InjectedOffset</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Defines the offset to be subtracted from the raw converted data. Offset value must be a positive number. Depending of ADC resolution selected (12, 10, 8 or 6 bits), this parameter must be a number between Min_Data = 0x000 and Max_Data = 0xFFF, 0x3FF, 0xFF or 0x3F respectively. Note: This parameter must be modified when no conversion is on going on both regular and injected groups (ADC disabled, or ADC enabled without continuous mode or external trigger that could launch a conversion). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc_ex.h" line="131" column="12" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc_ex.h" bodystart="131" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structADC__InjectionConfTypeDef_1ac59f9795b1b8c4ce6745d99f8231b768" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t ADC_InjectionConfTypeDef::InjectedNbrOfConversion</definition>
+        <argsstring></argsstring>
+        <name>InjectedNbrOfConversion</name>
+        <qualifiedname>ADC_InjectionConfTypeDef::InjectedNbrOfConversion</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Specifies the number of ranks that will be converted within the ADC group injected sequencer. To use the injected group sequencer and convert several ranks, parameter &apos;ScanConvMode&apos; must be enabled. This parameter must be a number between Min_Data = 1 and Max_Data = 4. Caution: this setting impacts the entire injected group. Therefore, call of <ref refid="group__ADCEx__Exported__Functions__Group2_1ga09b616247441feb2799a94a4b3815ebe" kindref="member">HAL_ADCEx_InjectedConfigChannel()</ref> to configure a channel on injected group can impact the configuration of other channels previously set. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc_ex.h" line="141" column="12" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc_ex.h" bodystart="141" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structADC__InjectionConfTypeDef_1ab842abce605e1eaf11077fd3825379e0" prot="public" static="no" mutable="no">
+        <type><ref refid="group__Exported__types_1gac9a7e9a35d2513ec15c3b537aaa4fba1" kindref="member">FunctionalState</ref></type>
+        <definition>FunctionalState ADC_InjectionConfTypeDef::InjectedDiscontinuousConvMode</definition>
+        <argsstring></argsstring>
+        <name>InjectedDiscontinuousConvMode</name>
+        <qualifiedname>ADC_InjectionConfTypeDef::InjectedDiscontinuousConvMode</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Specifies whether the conversions sequence of ADC group injected is performed in Complete-sequence/Discontinuous-sequence (main sequence subdivided in successive parts). Discontinuous mode is used only if sequencer is enabled (parameter &apos;ScanConvMode&apos;). If sequencer is disabled, this parameter is discarded. Discontinuous mode can be enabled only if continuous mode is disabled. This parameter can be set to ENABLE or DISABLE. Note: This parameter must be modified when ADC is disabled (before ADC start conversion or after ADC stop conversion). Note: For injected group, discontinuous mode converts the sequence channel by channel (discontinuous length fixed to 1 rank). Caution: this setting impacts the entire injected group. Therefore, call of <ref refid="group__ADCEx__Exported__Functions__Group2_1ga09b616247441feb2799a94a4b3815ebe" kindref="member">HAL_ADCEx_InjectedConfigChannel()</ref> to configure a channel on injected group can impact the configuration of other channels previously set. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc_ex.h" line="151" column="19" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc_ex.h" bodystart="151" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structADC__InjectionConfTypeDef_1a39b2ddf75be46eb2d474e261e7b1c875" prot="public" static="no" mutable="no">
+        <type><ref refid="group__Exported__types_1gac9a7e9a35d2513ec15c3b537aaa4fba1" kindref="member">FunctionalState</ref></type>
+        <definition>FunctionalState ADC_InjectionConfTypeDef::AutoInjectedConv</definition>
+        <argsstring></argsstring>
+        <name>AutoInjectedConv</name>
+        <qualifiedname>ADC_InjectionConfTypeDef::AutoInjectedConv</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Enables or disables the selected ADC group injected automatic conversion after regular one This parameter can be set to ENABLE or DISABLE. Note: To use Automatic injected conversion, discontinuous mode must be disabled (&apos;DiscontinuousConvMode&apos; and &apos;InjectedDiscontinuousConvMode&apos; set to DISABLE) Note: To use Automatic injected conversion, injected group external triggers must be disabled (&apos;ExternalTrigInjecConv&apos; set to ADC_INJECTED_SOFTWARE_START) Note: In case of DMA used with regular group: if DMA configured in normal mode (single shot) JAUTO will be stopped upon DMA transfer complete. To maintain JAUTO always enabled, DMA must be configured in circular mode. Caution: this setting impacts the entire injected group. Therefore, call of <ref refid="group__ADCEx__Exported__Functions__Group2_1ga09b616247441feb2799a94a4b3815ebe" kindref="member">HAL_ADCEx_InjectedConfigChannel()</ref> to configure a channel on injected group can impact the configuration of other channels previously set. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc_ex.h" line="167" column="19" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc_ex.h" bodystart="167" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structADC__InjectionConfTypeDef_1a58d9e1955c804425c2889e08999da5e2" prot="public" static="no" mutable="no">
+        <type><ref refid="group__Exported__types_1gac9a7e9a35d2513ec15c3b537aaa4fba1" kindref="member">FunctionalState</ref></type>
+        <definition>FunctionalState ADC_InjectionConfTypeDef::QueueInjectedContext</definition>
+        <argsstring></argsstring>
+        <name>QueueInjectedContext</name>
+        <qualifiedname>ADC_InjectionConfTypeDef::QueueInjectedContext</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Specifies whether the context queue feature is enabled. This parameter can be set to ENABLE or DISABLE. If context queue is enabled, injected sequencer&amp;channels configurations are queued on up to 2 contexts. If a new injected context is set when queue is full, error is triggered by interruption and through function &apos;HAL_ADCEx_InjectedQueueOverflowCallback&apos;. Caution: This feature request that the sequence is fully configured before injected conversion start. Therefore, configure channels with as many calls to <ref refid="group__ADCEx__Exported__Functions__Group2_1ga09b616247441feb2799a94a4b3815ebe" kindref="member">HAL_ADCEx_InjectedConfigChannel()</ref> as the &apos;InjectedNbrOfConversion&apos; parameter. Caution: this setting impacts the entire injected group. Therefore, call of <ref refid="group__ADCEx__Exported__Functions__Group2_1ga09b616247441feb2799a94a4b3815ebe" kindref="member">HAL_ADCEx_InjectedConfigChannel()</ref> to configure a channel on injected group can impact the configuration of other channels previously set. Note: This parameter must be modified when ADC is disabled (before ADC start conversion or after ADC stop conversion). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc_ex.h" line="186" column="19" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc_ex.h" bodystart="186" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structADC__InjectionConfTypeDef_1ac3431d4d3e3089f0db271bfb06dbffc0" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t ADC_InjectionConfTypeDef::ExternalTrigInjecConv</definition>
+        <argsstring></argsstring>
+        <name>ExternalTrigInjecConv</name>
+        <qualifiedname>ADC_InjectionConfTypeDef::ExternalTrigInjecConv</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Selects the external event used to trigger the conversion start of injected group. If set to ADC_INJECTED_SOFTWARE_START, external triggers are disabled and software trigger is used instead. This parameter can be a value of <ref refid="group__ADC__injected__external__trigger__source" kindref="compound">ADC group injected trigger source</ref>. Caution: this setting impacts the entire injected group. Therefore, call of <ref refid="group__ADCEx__Exported__Functions__Group2_1ga09b616247441feb2799a94a4b3815ebe" kindref="member">HAL_ADCEx_InjectedConfigChannel()</ref> to configure a channel on injected group can impact the configuration of other channels previously set. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc_ex.h" line="205" column="12" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc_ex.h" bodystart="205" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structADC__InjectionConfTypeDef_1a4f2cfa808b5ace1e47fc3f94da7b850f" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t ADC_InjectionConfTypeDef::ExternalTrigInjecConvEdge</definition>
+        <argsstring></argsstring>
+        <name>ExternalTrigInjecConvEdge</name>
+        <qualifiedname>ADC_InjectionConfTypeDef::ExternalTrigInjecConvEdge</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Selects the external trigger edge of injected group. This parameter can be a value of <ref refid="group__ADC__injected__external__trigger__edge" kindref="compound">ADC group injected trigger edge (when external trigger is selected)</ref>. If trigger source is set to ADC_INJECTED_SOFTWARE_START, this parameter is discarded. Caution: this setting impacts the entire injected group. Therefore, call of <ref refid="group__ADCEx__Exported__Functions__Group2_1ga09b616247441feb2799a94a4b3815ebe" kindref="member">HAL_ADCEx_InjectedConfigChannel()</ref> to configure a channel on injected group can impact the configuration of other channels previously set. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc_ex.h" line="216" column="12" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc_ex.h" bodystart="216" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structADC__InjectionConfTypeDef_1aea0ef83c31a7b6883b4ddda2b8968af3" prot="public" static="no" mutable="no">
+        <type><ref refid="group__Exported__types_1gac9a7e9a35d2513ec15c3b537aaa4fba1" kindref="member">FunctionalState</ref></type>
+        <definition>FunctionalState ADC_InjectionConfTypeDef::InjecOversamplingMode</definition>
+        <argsstring></argsstring>
+        <name>InjecOversamplingMode</name>
+        <qualifiedname>ADC_InjectionConfTypeDef::InjecOversamplingMode</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Specifies whether the oversampling feature is enabled or disabled. This parameter can be set to ENABLE or DISABLE. Note: This parameter can be modified only if there is no conversion is ongoing (both ADSTART and JADSTART cleared). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc_ex.h" line="225" column="19" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc_ex.h" bodystart="225" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structADC__InjectionConfTypeDef_1a59799df22a6e54106242263e694b9670" prot="public" static="no" mutable="no">
+        <type><ref refid="structADC__InjOversamplingTypeDef" kindref="compound">ADC_InjOversamplingTypeDef</ref></type>
+        <definition>ADC_InjOversamplingTypeDef ADC_InjectionConfTypeDef::InjecOversampling</definition>
+        <argsstring></argsstring>
+        <name>InjecOversampling</name>
+        <qualifiedname>ADC_InjectionConfTypeDef::InjecOversampling</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Specifies the Oversampling parameters. Caution: this setting overwrites the previous oversampling configuration if oversampling already enabled. Note: This parameter can be modified only if there is no conversion is ongoing (both ADSTART and JADSTART cleared). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc_ex.h" line="230" column="31" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc_ex.h" bodystart="230" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Structure definition of ADC group injected and ADC channel affected to ADC group injected. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="note"><para>Parameters of this structure are shared within 2 scopes:<itemizedlist>
+<listitem><para>Scope channel: InjectedChannel, InjectedRank, InjectedSamplingTime , InjectedSingleDiff, InjectedOffsetNumber, InjectedOffset</para>
+</listitem><listitem><para>Scope ADC group injected (affects all channels of injected group): InjectedNbrOfConversion, InjectedDiscontinuousConvMode, AutoInjectedConv, QueueInjectedContext, ExternalTrigInjecConv, ExternalTrigInjecConvEdge, InjecOversamplingMode, InjecOversampling. </para>
+</listitem></itemizedlist>
+</para>
+</simplesect>
+<simplesect kind="note"><para>The setting of these parameters by function <ref refid="group__ADCEx__Exported__Functions__Group2_1ga09b616247441feb2799a94a4b3815ebe" kindref="member">HAL_ADCEx_InjectedConfigChannel()</ref> is conditioned to ADC state. ADC state can be either:<itemizedlist>
+<listitem><para>For all parameters: ADC disabled (this is the only possible ADC state to modify parameter &apos;InjectedSingleDiff&apos;)</para>
+</listitem><listitem><para>For parameters &apos;InjectedDiscontinuousConvMode&apos;, &apos;QueueInjectedContext&apos;, &apos;InjecOversampling&apos;: ADC enabled without conversion on going on injected group.</para>
+</listitem><listitem><para>For parameters &apos;InjectedSamplingTime&apos;, &apos;InjectedOffset&apos;, &apos;InjectedOffsetNumber&apos;, &apos;AutoInjectedConv&apos;: ADC enabled without conversion on going on regular and injected groups.</para>
+</listitem><listitem><para>For parameters &apos;InjectedChannel&apos;, &apos;InjectedRank&apos;, &apos;InjectedNbrOfConversion&apos;, &apos;ExternalTrigInjecConv&apos;, &apos;ExternalTrigInjecConvEdge&apos;: ADC enabled and while conversion on going on ADC groups regular and injected. If ADC is not in the appropriate state to modify some parameters, these parameters setting is bypassed without error reporting (as it can be the expected behavior in case of intended action to update another parameter (which fulfills the ADC state condition) on the fly). </para>
+</listitem></itemizedlist>
+</para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2">
+        <label>ADC_InjOversamplingTypeDef</label>
+        <link refid="structADC__InjOversamplingTypeDef"/>
+      </node>
+      <node id="1">
+        <label>ADC_InjectionConfTypeDef</label>
+        <link refid="structADC__InjectionConfTypeDef"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>InjecOversampling</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc_ex.h" line="79" column="1" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc_ex.h" bodystart="80" bodyend="235"/>
+    <listofallmembers>
+      <member refid="structADC__InjectionConfTypeDef_1a39b2ddf75be46eb2d474e261e7b1c875" prot="public" virt="non-virtual"><scope>ADC_InjectionConfTypeDef</scope><name>AutoInjectedConv</name></member>
+      <member refid="structADC__InjectionConfTypeDef_1ac3431d4d3e3089f0db271bfb06dbffc0" prot="public" virt="non-virtual"><scope>ADC_InjectionConfTypeDef</scope><name>ExternalTrigInjecConv</name></member>
+      <member refid="structADC__InjectionConfTypeDef_1a4f2cfa808b5ace1e47fc3f94da7b850f" prot="public" virt="non-virtual"><scope>ADC_InjectionConfTypeDef</scope><name>ExternalTrigInjecConvEdge</name></member>
+      <member refid="structADC__InjectionConfTypeDef_1a59799df22a6e54106242263e694b9670" prot="public" virt="non-virtual"><scope>ADC_InjectionConfTypeDef</scope><name>InjecOversampling</name></member>
+      <member refid="structADC__InjectionConfTypeDef_1aea0ef83c31a7b6883b4ddda2b8968af3" prot="public" virt="non-virtual"><scope>ADC_InjectionConfTypeDef</scope><name>InjecOversamplingMode</name></member>
+      <member refid="structADC__InjectionConfTypeDef_1aad0cab6ed3f66e8ffa4bd0490298b715" prot="public" virt="non-virtual"><scope>ADC_InjectionConfTypeDef</scope><name>InjectedChannel</name></member>
+      <member refid="structADC__InjectionConfTypeDef_1ab842abce605e1eaf11077fd3825379e0" prot="public" virt="non-virtual"><scope>ADC_InjectionConfTypeDef</scope><name>InjectedDiscontinuousConvMode</name></member>
+      <member refid="structADC__InjectionConfTypeDef_1ac59f9795b1b8c4ce6745d99f8231b768" prot="public" virt="non-virtual"><scope>ADC_InjectionConfTypeDef</scope><name>InjectedNbrOfConversion</name></member>
+      <member refid="structADC__InjectionConfTypeDef_1ac7d28d71ec3aec4d1587ee04fc585f09" prot="public" virt="non-virtual"><scope>ADC_InjectionConfTypeDef</scope><name>InjectedOffset</name></member>
+      <member refid="structADC__InjectionConfTypeDef_1a24170a1b3dcf5798d3b9e76fc4f83789" prot="public" virt="non-virtual"><scope>ADC_InjectionConfTypeDef</scope><name>InjectedOffsetNumber</name></member>
+      <member refid="structADC__InjectionConfTypeDef_1af8a1717c0f5a5d0c7a705224f28a844f" prot="public" virt="non-virtual"><scope>ADC_InjectionConfTypeDef</scope><name>InjectedRank</name></member>
+      <member refid="structADC__InjectionConfTypeDef_1a3d15c0590dbafc9e99e21ea4df5b0c6b" prot="public" virt="non-virtual"><scope>ADC_InjectionConfTypeDef</scope><name>InjectedSamplingTime</name></member>
+      <member refid="structADC__InjectionConfTypeDef_1a327f85bebdb260f9fff0d28b69020df6" prot="public" virt="non-virtual"><scope>ADC_InjectionConfTypeDef</scope><name>InjectedSingleDiff</name></member>
+      <member refid="structADC__InjectionConfTypeDef_1a58d9e1955c804425c2889e08999da5e2" prot="public" virt="non-virtual"><scope>ADC_InjectionConfTypeDef</scope><name>QueueInjectedContext</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

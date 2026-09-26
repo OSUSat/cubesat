@@ -1,0 +1,572 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="group__redundancy__manager__types" kind="group">
+    <compoundname>redundancy_manager_types</compoundname>
+    <title>Types</title>
+    <innerclass refid="structfault__t" prot="public">fault_t</innerclass>
+    <innerclass refid="structcomponent__degradation__t" prot="public">component_degradation_t</innerclass>
+    <innerclass refid="structhealth__response__t" prot="public">health_response_t</innerclass>
+    <innerclass refid="structcomponent__status__request__t" prot="public">component_status_request_t</innerclass>
+    <innerclass refid="structcomponent__status__response__t" prot="public">component_status_response_t</innerclass>
+    <innerclass refid="structfault__list__response__t" prot="public">fault_list_response_t</innerclass>
+    <innerclass refid="structredundancy__telemetry__t" prot="public">redundancy_telemetry_t</innerclass>
+    <innerclass refid="structredundancy__manager__t" prot="public">redundancy_manager_t</innerclass>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="group__redundancy__manager__types_1ga88dbce3650b91fe162147fa11d03c50d" prot="public" static="no" strong="no">
+        <type></type>
+        <name>redundancy_manager_event_id_t</name>
+        <enumvalue id="group__redundancy__manager__types_1gga88dbce3650b91fe162147fa11d03c50da1f6b5397fa23ebba81aa4ff7c9e41733" prot="public">
+          <name>REDUNDANCY_EVENT_CRITICAL_HEALTH</name>
+          <initializer>= 0x10</initializer>
+          <briefdescription>
+<para>Published when system enters critical health state. </para>
+          </briefdescription>
+          <detaileddescription>
+<para>Applications should initiate Safe Mode transition.</para>
+<para>Payload: system_health_t (always SYSTEM_HEALTH_FAULT) </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__redundancy__manager__types_1gga88dbce3650b91fe162147fa11d03c50da8e12e4458b810b4fa6c4f7b1a4f23dca" prot="public">
+          <name>REDUNDANCY_EVENT_HEALTH_DEGRADED</name>
+          <briefdescription>
+<para>Published when system health becomes degraded. </para>
+          </briefdescription>
+          <detaileddescription>
+<para>Mission can continue with reduced capability. Services may need to adapt (e.g., reduce power consumption, disable non-critical features).</para>
+<para>Payload: system_health_t (always SYSTEM_HEALTH_DEGRADED) </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__redundancy__manager__types_1gga88dbce3650b91fe162147fa11d03c50da8a44504bc25e771803f2ccc78222f6a5" prot="public">
+          <name>REDUNDANCY_EVENT_HEALTH_RECOVERED</name>
+          <briefdescription>
+<para>Published when system recovers to nominal health. </para>
+          </briefdescription>
+          <detaileddescription>
+<para>All critical and degraded faults have been cleared.</para>
+<para>Payload: system_health_t (always SYSTEM_HEALTH_OK) </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__redundancy__manager__types_1gga88dbce3650b91fe162147fa11d03c50da38cc2206b60033af1cbec7efa14142cc" prot="public">
+          <name>REDUNDANCY_EVENT_COMPONENT_DEGRADED</name>
+          <briefdescription>
+<para>Published when a specific component becomes degraded. </para>
+          </briefdescription>
+          <detaileddescription>
+<para>Indicates a component failure with fallback available. Affected services should switch to backup/redundant hardware.</para>
+<para>Example: Primary UART fails → switch to auxiliary UART</para>
+<para>Payload: <ref refid="structcomponent__degradation__t" kindref="compound">component_degradation_t</ref> </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__redundancy__manager__types_1gga88dbce3650b91fe162147fa11d03c50da0c7a31bad4666871ab004f94b96e3f9c" prot="public">
+          <name>REDUNDANCY_EVENT_COMPONENT_RECOVERED</name>
+          <briefdescription>
+<para>Published when a degraded component recovers. </para>
+          </briefdescription>
+          <detaileddescription>
+<para>Services may optionally switch back to primary hardware.</para>
+<para>Payload: component_id_t </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__redundancy__manager__types_1gga88dbce3650b91fe162147fa11d03c50da8ac58c81eb6c8e3e5b1fa7969fa63938" prot="public">
+          <name>REDUNDANCY_EVENT_HEALTH_RESPONSE</name>
+          <briefdescription>
+<para>Published in response to REQUEST_REDUNDANCY_HEALTH query. </para>
+          </briefdescription>
+          <detaileddescription>
+<para>Payload: <ref refid="structhealth__response__t" kindref="compound">health_response_t</ref> </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__redundancy__manager__types_1gga88dbce3650b91fe162147fa11d03c50da192670d611aff778affe0632a42fbac1" prot="public">
+          <name>REDUNDANCY_EVENT_COMPONENT_STATUS_RESPONSE</name>
+          <briefdescription>
+<para>Published in response to REQUEST_REDUNDANCY_COMPONENT_STATUS query. </para>
+          </briefdescription>
+          <detaileddescription>
+<para>Payload: <ref refid="structcomponent__status__response__t" kindref="compound">component_status_response_t</ref> </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__redundancy__manager__types_1gga88dbce3650b91fe162147fa11d03c50da3e6db82d4e45f7aa21b52f7d98dc7807" prot="public">
+          <name>REDUNDANCY_EVENT_FAULT_LIST_RESPONSE</name>
+          <briefdescription>
+<para>Published in response to REQUEST_REDUNDANCY_FAULT_LIST query. </para>
+          </briefdescription>
+          <detaileddescription>
+<para>May require multiple events if fault list is large (chunked response).</para>
+<para>Payload: <ref refid="structfault__list__response__t" kindref="compound">fault_list_response_t</ref> </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__redundancy__manager__types_1gga88dbce3650b91fe162147fa11d03c50da136fa9c2702bcefcd52faa5b5af29063" prot="public">
+          <name>REDUNDANCY_EVENT_TELEMETRY</name>
+          <briefdescription>
+<para>Periodic telemetry broadcast (e.g., every 30 seconds). </para>
+          </briefdescription>
+          <detaileddescription>
+<para>Contains summary of system health and fault counts.</para>
+<para>Payload: <ref refid="structredundancy__telemetry__t" kindref="compound">redundancy_telemetry_t</ref> </para>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Events published by the Redundancy Manager. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/redundancy_manager.h" line="63" column="1" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/redundancy_manager.h" bodystart="63" bodyend="145"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__redundancy__manager__types_1ga4f4a3b75aaca29d932cb4e0c4153f78a" prot="public" static="no" strong="no">
+        <type></type>
+        <name>fault_source_t</name>
+        <enumvalue id="group__redundancy__manager__types_1gga4f4a3b75aaca29d932cb4e0c4153f78aa14152b8c6d5aef9e1e6ec3bbdabb89ed" prot="public">
+          <name>FAULT_SOURCE_BATTERY</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>BMS issues (voltage, temperature, etc.) </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__redundancy__manager__types_1gga4f4a3b75aaca29d932cb4e0c4153f78aa027341fd026034b1fd35adf0bef2a936" prot="public">
+          <name>FAULT_SOURCE_MPPT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Solar charging failures </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__redundancy__manager__types_1gga4f4a3b75aaca29d932cb4e0c4153f78aac5b6371520a80a1c00485d3c8a72e190" prot="public">
+          <name>FAULT_SOURCE_RAIL</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Rail controller (overcurrent, enable failures) </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__redundancy__manager__types_1gga4f4a3b75aaca29d932cb4e0c4153f78aa459a409859262ba490b7cdf6de3241e9" prot="public">
+          <name>FAULT_SOURCE_SENSOR</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>I2C/SPI sensor timeouts or bad data </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__redundancy__manager__types_1gga4f4a3b75aaca29d932cb4e0c4153f78aa5701f743715c4bdbd4771346ba7aea9a" prot="public">
+          <name>FAULT_SOURCE_UART</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>UART communication errors </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__redundancy__manager__types_1gga4f4a3b75aaca29d932cb4e0c4153f78aa6cfc60c7131eb7014e227f7140e4e3d7" prot="public">
+          <name>FAULT_SOURCE_CAN</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>CANBus communication errors </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__redundancy__manager__types_1gga4f4a3b75aaca29d932cb4e0c4153f78aa8dfcd9f77f6f4a2652c2b158edd00675" prot="public">
+          <name>FAULT_SOURCE_WATCHDOG</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Watchdog timeout or service hang </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__redundancy__manager__types_1gga4f4a3b75aaca29d932cb4e0c4153f78aa36420a9c23ade08c294e4ec9628811d9" prot="public">
+          <name>FAULT_SOURCE_MEMORY</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Flash/EEPROM errors </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__redundancy__manager__types_1gga4f4a3b75aaca29d932cb4e0c4153f78aa7eb91ab07ab9b46ccaed2da541909ce5" prot="public">
+          <name>FAULT_SOURCE_COUNT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Number of fault sources </para>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Identifies the subsystem reporting a failure. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/redundancy_manager.h" line="179" column="1" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/redundancy_manager.h" bodystart="179" bodyend="189"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__redundancy__manager__types_1ga6b28c58c34989f0b268f274421ecd0fb" prot="public" static="no" strong="no">
+        <type></type>
+        <name>fault_severity_t</name>
+        <enumvalue id="group__redundancy__manager__types_1gga6b28c58c34989f0b268f274421ecd0fbaddaf53e458153663592f6f3a912497fd" prot="public">
+          <name>FAULT_SEVERITY_INFO</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Informational, no action required </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__redundancy__manager__types_1gga6b28c58c34989f0b268f274421ecd0fbaab84fc586f34534c5305214192ff7826" prot="public">
+          <name>FAULT_SEVERITY_WARNING</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Potential issue, monitor closely </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__redundancy__manager__types_1gga6b28c58c34989f0b268f274421ecd0fba74c24ab20c9b59d0420832a0c3919c14" prot="public">
+          <name>FAULT_SEVERITY_DEGRADED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Component degraded, fallback available </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__redundancy__manager__types_1gga6b28c58c34989f0b268f274421ecd0fbaade5d77e601d06be284fac305c3787b4" prot="public">
+          <name>FAULT_SEVERITY_CRITICAL</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Critical failure, Safe Mode required </para>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Severity classification for individual faults. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/redundancy_manager.h" line="204" column="1" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/redundancy_manager.h" bodystart="204" bodyend="209"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__redundancy__manager__types_1ga0e80690e3278646a3c63a266cbd9269d" prot="public" static="no" strong="no">
+        <type></type>
+        <name>system_health_t</name>
+        <enumvalue id="group__redundancy__manager__types_1gga0e80690e3278646a3c63a266cbd9269da360de3d607746c5dd7896c63bf872782" prot="public">
+          <name>SYSTEM_HEALTH_OK</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>All systems nominal </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__redundancy__manager__types_1gga0e80690e3278646a3c63a266cbd9269daf77b2e1057865c8995d84a139d27feae" prot="public">
+          <name>SYSTEM_HEALTH_DEGRADED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Non-critical faults, mission continues </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__redundancy__manager__types_1gga0e80690e3278646a3c63a266cbd9269da53eff3058895568141e582b9034798d8" prot="public">
+          <name>SYSTEM_HEALTH_FAULT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Critical failure, requires Safe Mode </para>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>High-level classification of EPS health. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Used by applications to drive state transitions. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/redundancy_manager.h" line="217" column="1" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/redundancy_manager.h" bodystart="217" bodyend="221"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__redundancy__manager__types_1ga7c14751f737d5413dc48d18c920c8053" prot="public" static="no" strong="no">
+        <type></type>
+        <name>component_id_t</name>
+        <enumvalue id="group__redundancy__manager__types_1gga7c14751f737d5413dc48d18c920c8053a086fb8e4b7319cdb4596ba9294fd72a9" prot="public">
+          <name>COMPONENT_UART_PRIMARY</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Primary UART (port 1) </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__redundancy__manager__types_1gga7c14751f737d5413dc48d18c920c8053abfaa7c036c8099afcc7f7c733f390b95" prot="public">
+          <name>COMPONENT_UART_SECONDARY</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Secondary UART (port 3) </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__redundancy__manager__types_1gga7c14751f737d5413dc48d18c920c8053a81d8a8f2cd5c302bdffda6db95e72957" prot="public">
+          <name>COMPONENT_I2C_BUS_1</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>I2C bus 1 </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__redundancy__manager__types_1gga7c14751f737d5413dc48d18c920c8053aca0ca1dec3e7172aba83d1f4e85bcff0" prot="public">
+          <name>COMPONENT_I2C_BUS_2</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>I2C bus 2 </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__redundancy__manager__types_1gga7c14751f737d5413dc48d18c920c8053ab56dcd20835ac7a08cbab422f064027e" prot="public">
+          <name>COMPONENT_I2C_BUS_3</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>I2C bus 3 </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__redundancy__manager__types_1gga7c14751f737d5413dc48d18c920c8053a27bd853d2263651006d16e74e7e4cde9" prot="public">
+          <name>COMPONENT_I2C_BUS_4</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>I2C bus 4 </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__redundancy__manager__types_1gga7c14751f737d5413dc48d18c920c8053aa2f7f5642d9fc84c6952d43ac1944ffd" prot="public">
+          <name>COMPONENT_SOLAR_STRING_1</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Solar panel string 1 </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__redundancy__manager__types_1gga7c14751f737d5413dc48d18c920c8053a967c6ef5003243ba11d45b13a380c680" prot="public">
+          <name>COMPONENT_SOLAR_STRING_2</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Solar panel string 2 </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__redundancy__manager__types_1gga7c14751f737d5413dc48d18c920c8053a2ebd1d5067621539fbb34af449f73d89" prot="public">
+          <name>COMPONENT_SOLAR_STRING_3</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Solar panel string 3 </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__redundancy__manager__types_1gga7c14751f737d5413dc48d18c920c8053a219c6a85901372d1e438fe91c8a10282" prot="public">
+          <name>COMPONENT_SOLAR_STRING_4</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Solar panel string 4 </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__redundancy__manager__types_1gga7c14751f737d5413dc48d18c920c8053ac1ba1e68de086845c6616800c13f2711" prot="public">
+          <name>COMPONENT_SOLAR_STRING_5</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Solar panel string 5 </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__redundancy__manager__types_1gga7c14751f737d5413dc48d18c920c8053a9910333463cb228616e2e2bf251685a2" prot="public">
+          <name>COMPONENT_SOLAR_STRING_6</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Solar panel string 6 </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__redundancy__manager__types_1gga7c14751f737d5413dc48d18c920c8053a55ea94a848354cdad8ac11a24646c1c7" prot="public">
+          <name>COMPONENT_CAN_PRIMARY</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Primary CAN (port 1) </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__redundancy__manager__types_1gga7c14751f737d5413dc48d18c920c8053a2fb2b429a2821302190a347900a0b5ac" prot="public">
+          <name>COMPONENT_CAN_SECONDARY</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Secondary CAN (port 2) </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__redundancy__manager__types_1gga7c14751f737d5413dc48d18c920c8053afeab75e995867b121186c2050ac7c442" prot="public">
+          <name>COMPONENT_COUNT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Number of tracked components </para>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Identifiers for components with redundancy/fallback options. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/redundancy_manager.h" line="227" column="1" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/redundancy_manager.h" bodystart="227" bodyend="243"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group__redundancy__manager__types_1gae3f1b00192fdb0e53f5e0058986de5e8" prot="public" static="no">
+        <type>uint32_t</type>
+        <definition>fault_code_t</definition>
+        <argsstring></argsstring>
+        <name>fault_code_t</name>
+        <briefdescription>
+<para>Service-specific error code. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Specific codes are defined in the reporting service&apos;s header. Example: A FAULT_SOURCE_RAIL might report RAIL_FAULT_OVERCURRENT. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/redundancy_manager.h" line="198" column="18" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/redundancy_manager.h" bodystart="198" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="group__redundancy__manager__types_1gaf614f70344df01b701e0f3e20e5eac72" prot="public" static="no">
+        <name>REDUNDANCY_MANAGER_MAX_FAULTS</name>
+        <initializer>16</initializer>
+        <briefdescription>
+<para>Maximum number of active faults to track simultaneously. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/redundancy_manager.h" line="50" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/redundancy_manager.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__redundancy__manager__types_1ga35fa18a9fe2fed2607e28574ccba5e94" prot="public" static="no">
+        <name>REDUNDANCY_MANAGER_SERVICE_UID</name>
+        <initializer>0x5366</initializer>
+        <briefdescription>
+<para>Service Unique Identifier (16-bit). Used to construct unique Event IDs. 0x5366 = &quot;Sf&quot; (SafeMode/System Fault) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/redundancy_manager.h" line="57" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/redundancy_manager.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__redundancy__manager__types_1gad1cf7a8c70f1567a5639c1b6b5657e1b" prot="public" static="no">
+        <name>REDUNDANCY_EVENT_CRITICAL_HEALTH</name>
+        <initializer>    <ref refid="group__osusat__event__bus__types_1ga6fb66ede3b29d386fec6f57800d3e980" kindref="member">OSUSAT_BUILD_EVENT_ID</ref>(<ref refid="group__redundancy__manager__types_1ga35fa18a9fe2fed2607e28574ccba5e94" kindref="member">REDUNDANCY_MANAGER_SERVICE_UID</ref>,                      \
+                          REDUNDANCY_EVENT_CRITICAL_HEALTH)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/redundancy_manager.h" line="147" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/redundancy_manager.h" bodystart="147" bodyend="149"/>
+      </memberdef>
+      <memberdef kind="define" id="group__redundancy__manager__types_1ga8ee8d7a92214b4ad2fca804a49f0828e" prot="public" static="no">
+        <name>REDUNDANCY_EVENT_HEALTH_DEGRADED</name>
+        <initializer>    <ref refid="group__osusat__event__bus__types_1ga6fb66ede3b29d386fec6f57800d3e980" kindref="member">OSUSAT_BUILD_EVENT_ID</ref>(<ref refid="group__redundancy__manager__types_1ga35fa18a9fe2fed2607e28574ccba5e94" kindref="member">REDUNDANCY_MANAGER_SERVICE_UID</ref>,                      \
+                          REDUNDANCY_EVENT_HEALTH_DEGRADED)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/redundancy_manager.h" line="150" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/redundancy_manager.h" bodystart="150" bodyend="152"/>
+      </memberdef>
+      <memberdef kind="define" id="group__redundancy__manager__types_1ga7d31ffd6c8f4bb9281cc976808212d38" prot="public" static="no">
+        <name>REDUNDANCY_EVENT_HEALTH_RECOVERED</name>
+        <initializer>    <ref refid="group__osusat__event__bus__types_1ga6fb66ede3b29d386fec6f57800d3e980" kindref="member">OSUSAT_BUILD_EVENT_ID</ref>(<ref refid="group__redundancy__manager__types_1ga35fa18a9fe2fed2607e28574ccba5e94" kindref="member">REDUNDANCY_MANAGER_SERVICE_UID</ref>,                      \
+                          REDUNDANCY_EVENT_HEALTH_RECOVERED)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/redundancy_manager.h" line="153" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/redundancy_manager.h" bodystart="153" bodyend="155"/>
+      </memberdef>
+      <memberdef kind="define" id="group__redundancy__manager__types_1ga0703a5d8b01d91c047750772fa7b4f7e" prot="public" static="no">
+        <name>REDUNDANCY_EVENT_COMPONENT_DEGRADED</name>
+        <initializer>    <ref refid="group__osusat__event__bus__types_1ga6fb66ede3b29d386fec6f57800d3e980" kindref="member">OSUSAT_BUILD_EVENT_ID</ref>(<ref refid="group__redundancy__manager__types_1ga35fa18a9fe2fed2607e28574ccba5e94" kindref="member">REDUNDANCY_MANAGER_SERVICE_UID</ref>,                      \
+                          REDUNDANCY_EVENT_COMPONENT_DEGRADED)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/redundancy_manager.h" line="156" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/redundancy_manager.h" bodystart="156" bodyend="158"/>
+      </memberdef>
+      <memberdef kind="define" id="group__redundancy__manager__types_1ga6fd0a894e1c636d95d6b39883dd032bc" prot="public" static="no">
+        <name>REDUNDANCY_EVENT_COMPONENT_RECOVERED</name>
+        <initializer>    <ref refid="group__osusat__event__bus__types_1ga6fb66ede3b29d386fec6f57800d3e980" kindref="member">OSUSAT_BUILD_EVENT_ID</ref>(<ref refid="group__redundancy__manager__types_1ga35fa18a9fe2fed2607e28574ccba5e94" kindref="member">REDUNDANCY_MANAGER_SERVICE_UID</ref>,                      \
+                          REDUNDANCY_EVENT_COMPONENT_RECOVERED)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/redundancy_manager.h" line="159" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/redundancy_manager.h" bodystart="159" bodyend="161"/>
+      </memberdef>
+      <memberdef kind="define" id="group__redundancy__manager__types_1ga8ae6a65ed084c4202f77f0c32c23d37f" prot="public" static="no">
+        <name>REDUNDANCY_EVENT_HEALTH_RESPONSE</name>
+        <initializer>    <ref refid="group__osusat__event__bus__types_1ga6fb66ede3b29d386fec6f57800d3e980" kindref="member">OSUSAT_BUILD_EVENT_ID</ref>(<ref refid="group__redundancy__manager__types_1ga35fa18a9fe2fed2607e28574ccba5e94" kindref="member">REDUNDANCY_MANAGER_SERVICE_UID</ref>,                      \
+                          REDUNDANCY_EVENT_HEALTH_RESPONSE)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/redundancy_manager.h" line="162" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/redundancy_manager.h" bodystart="162" bodyend="164"/>
+      </memberdef>
+      <memberdef kind="define" id="group__redundancy__manager__types_1ga9ab400321dc14e375139c72c0e29e765" prot="public" static="no">
+        <name>REDUNDANCY_EVENT_COMPONENT_STATUS_RESPONSE</name>
+        <initializer>    <ref refid="group__osusat__event__bus__types_1ga6fb66ede3b29d386fec6f57800d3e980" kindref="member">OSUSAT_BUILD_EVENT_ID</ref>(<ref refid="group__redundancy__manager__types_1ga35fa18a9fe2fed2607e28574ccba5e94" kindref="member">REDUNDANCY_MANAGER_SERVICE_UID</ref>,                      \
+                          REDUNDANCY_EVENT_COMPONENT_STATUS_RESPONSE)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/redundancy_manager.h" line="165" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/redundancy_manager.h" bodystart="165" bodyend="167"/>
+      </memberdef>
+      <memberdef kind="define" id="group__redundancy__manager__types_1ga9fba97d6fffe96ad05c926d9b9a4c884" prot="public" static="no">
+        <name>REDUNDANCY_EVENT_FAULT_LIST_RESPONSE</name>
+        <initializer>    <ref refid="group__osusat__event__bus__types_1ga6fb66ede3b29d386fec6f57800d3e980" kindref="member">OSUSAT_BUILD_EVENT_ID</ref>(<ref refid="group__redundancy__manager__types_1ga35fa18a9fe2fed2607e28574ccba5e94" kindref="member">REDUNDANCY_MANAGER_SERVICE_UID</ref>,                      \
+                          REDUNDANCY_EVENT_FAULT_LIST_RESPONSE)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/redundancy_manager.h" line="168" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/redundancy_manager.h" bodystart="168" bodyend="170"/>
+      </memberdef>
+      <memberdef kind="define" id="group__redundancy__manager__types_1gacd49e06c78402e31c5c5615522682d45" prot="public" static="no">
+        <name>REDUNDANCY_EVENT_TELEMETRY</name>
+        <initializer>    <ref refid="group__osusat__event__bus__types_1ga6fb66ede3b29d386fec6f57800d3e980" kindref="member">OSUSAT_BUILD_EVENT_ID</ref>(<ref refid="group__redundancy__manager__types_1ga35fa18a9fe2fed2607e28574ccba5e94" kindref="member">REDUNDANCY_MANAGER_SERVICE_UID</ref>,                      \
+                          REDUNDANCY_EVENT_TELEMETRY)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/redundancy_manager.h" line="171" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/redundancy_manager.h" bodystart="171" bodyend="173"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Enumerations for fault sources and system states. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

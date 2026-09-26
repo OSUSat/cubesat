@@ -1,0 +1,304 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="hal__uart__mock_8c" kind="file" language="C++">
+    <compoundname>hal_uart_mock.c</compoundname>
+    <includes refid="hal__uart__mock_8h" local="yes">hal_uart_mock.h</includes>
+    <includes refid="ring__buffer_8h" local="yes">osusat/ring_buffer.h</includes>
+    <includes local="no">stdint.h</includes>
+    <includes local="no">stdio.h</includes>
+    <includes local="no">string.h</includes>
+    <incdepgraph>
+      <node id="3">
+        <label>hal_uart.h</label>
+        <link refid="hal__uart_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>osusat/ring_buffer.h</label>
+        <link refid="ring__buffer_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/mocks/hal_uart_mock.c</label>
+        <link refid="hal__uart__mock_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>hal_uart_mock.h</label>
+        <link refid="hal__uart__mock_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>stdbool.h</label>
+      </node>
+      <node id="5">
+        <label>stddef.h</label>
+      </node>
+      <node id="6">
+        <label>stdint.h</label>
+      </node>
+      <node id="8">
+        <label>stdio.h</label>
+      </node>
+      <node id="9">
+        <label>string.h</label>
+      </node>
+    </incdepgraph>
+    <innerclass refid="structuart__mock__port__t" prot="public">uart_mock_port_t</innerclass>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="hal__uart__mock_8c_1a4fe68f2ac93662dbb8d9e1a9e1e1d4ed" prot="public" static="no">
+        <name>UART_MOCK_TX_CAPACITY</name>
+        <initializer>256</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/mocks/hal_uart_mock.c" line="8" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/mocks/hal_uart_mock.c" bodystart="8" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="hal__uart__mock_8c_1a9b41c9c57aaf7d16b790f3bb5cdbf5a4" prot="public" static="yes" mutable="no">
+        <type><ref refid="structuart__mock__port__t" kindref="compound">uart_mock_port_t</ref></type>
+        <definition>uart_mock_port_t uart_ports[UART_PORT_MAX]</definition>
+        <argsstring>[UART_PORT_MAX]</argsstring>
+        <name>uart_ports</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/mocks/hal_uart_mock.c" line="28" column="25" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/mocks/hal_uart_mock.c" bodystart="28" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <member refid="group__uart__api_1ga68658cc0c2481518a87da03f5678f1bd" kind="function"><name>hal_uart_init</name></member>
+      <member refid="group__uart__api_1ga6958ec0e88f16a944298998d1772c71e" kind="function"><name>hal_uart_register_rx_callback</name></member>
+      <member refid="group__uart__api_1gafe2074ec1f9a6a3a4fbf73cd8f8ec41c" kind="function"><name>hal_uart_register_error_callback</name></member>
+      <member refid="group__uart__api_1ga4483e54b3d76f3f0b2bb91f2d28ccd62" kind="function"><name>hal_uart_write</name></member>
+      <member refid="group__uart__api_1gac1a9051d3daf0c76f550edc36e95db4b" kind="function"><name>hal_uart_read</name></member>
+      <member refid="group__uart__mock_1gaed7ac0a4088132d82e5f0b94e545d470" kind="function"><name>mock_uart_receive_byte_from_isr</name></member>
+      <memberdef kind="function" id="hal__uart__mock_8c_1a645279f01bec4f06926436bd6a88714b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool mock_uart_inject_error</definition>
+        <argsstring>(uart_port_t port, uart_error_t err)</argsstring>
+        <name>mock_uart_inject_error</name>
+        <param>
+          <type><ref refid="group__uart__types_1ga7f28644638bd57536eb5260695e83de9" kindref="member">uart_port_t</ref></type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type><ref refid="group__uart__types_1ga74b95f81faa4de6d75094e95783b2cc4" kindref="member">uart_error_t</ref></type>
+          <declname>err</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/mocks/hal_uart_mock.c" line="125" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/mocks/hal_uart_mock.c" bodystart="125" bodyend="137"/>
+      </memberdef>
+      <member refid="group__uart__mock_1gafc12f9b07a496b2f0f974a7712648984" kind="function"><name>mock_uart_get_tx</name></member>
+      <member refid="group__uart__mock_1gaec38e25a0cd2afcaa5e63fb72542311d" kind="function"><name>mock_uart_reset</name></member>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="hal__uart__mock_8h" kindref="compound">hal_uart_mock.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="ring__buffer_8h" kindref="compound">osusat/ring_buffer.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdio.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>UART_MOCK_TX_CAPACITY<sp/>256</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10" refid="structuart__mock__port__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>initialized;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>RX<sp/>handling<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__uart__types_1ga98671ef10144eb8b0da339ca06dd03b4" kindref="member">uart_rx_callback_t</ref><sp/>rx_cb;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*rx_cb_ctx;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Error<sp/>handling<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__uart__types_1ga657936db7b6e3c8b4a3d9122c76987ae" kindref="member">uart_hal_error_cb_t</ref><sp/>err_cb;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*err_cb_ctx;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>rx_storage[<ref refid="hal__uart_8h_1a3e2f064113760a6f6a5283f8f0e49fe5" kindref="member">UART_RX_CAPACITY</ref>];</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structosusat__ring__buffer__t" kindref="compound">osusat_ring_buffer_t</ref><sp/>rx_rb;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>tx_storage[<ref refid="hal__uart__mock_8c_1a4fe68f2ac93662dbb8d9e1a9e1e1d4ed" kindref="member">UART_MOCK_TX_CAPACITY</ref>];</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structosusat__ring__buffer__t" kindref="compound">osusat_ring_buffer_t</ref><sp/>tx_rb;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal">}<sp/><ref refid="structuart__mock__port__t" kindref="compound">uart_mock_port_t</ref>;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structuart__mock__port__t" kindref="compound">uart_mock_port_t</ref><sp/>uart_ports[<ref refid="group__uart__types_1gga7f28644638bd57536eb5260695e83de9aa9786d8f9cf4c84f4ac9b594979ea194" kindref="member">UART_PORT_MAX</ref>];</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__uart__api_1ga68658cc0c2481518a87da03f5678f1bd" kindref="member">hal_uart_init</ref>(<ref refid="group__uart__types_1ga7f28644638bd57536eb5260695e83de9" kindref="member">uart_port_t</ref><sp/>port,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structuart__config__t" kindref="compound">uart_config_t</ref><sp/>*config)<sp/>{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(port<sp/>&gt;=<sp/><ref refid="group__uart__types_1gga7f28644638bd57536eb5260695e83de9aa9786d8f9cf4c84f4ac9b594979ea194" kindref="member">UART_PORT_MAX</ref><sp/>||<sp/>config<sp/>==<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structuart__mock__port__t" kindref="compound">uart_mock_port_t</ref><sp/>*p<sp/>=<sp/>&amp;uart_ports[port];</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>memset(p,<sp/>0,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(*p));</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__osusat__ring__buffer__api_1ga0042234225cbcdf0809fb285062ec630" kindref="member">osusat_ring_buffer_init</ref>(&amp;p-&gt;<ref refid="structuart__mock__port__t_1ae656723b7b8e57098068c5b38b3e2626" kindref="member">rx_rb</ref>,<sp/>p-&gt;<ref refid="structuart__mock__port__t_1ad257229c4152b1dc6f7069ab66ffd961" kindref="member">rx_storage</ref>,<sp/><ref refid="hal__uart_8h_1a3e2f064113760a6f6a5283f8f0e49fe5" kindref="member">UART_RX_CAPACITY</ref>,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__osusat__ring__buffer__api_1ga0042234225cbcdf0809fb285062ec630" kindref="member">osusat_ring_buffer_init</ref>(&amp;p-&gt;<ref refid="structuart__mock__port__t_1a5d7632ea6a7060256e810ff6013dbf2a" kindref="member">tx_rb</ref>,<sp/>p-&gt;<ref refid="structuart__mock__port__t_1a7103ada01fe4bf17a828cc9ebe79eaf4" kindref="member">tx_storage</ref>,<sp/><ref refid="hal__uart__mock_8c_1a4fe68f2ac93662dbb8d9e1a9e1e1d4ed" kindref="member">UART_MOCK_TX_CAPACITY</ref>,</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>p-&gt;<ref refid="structuart__mock__port__t_1accb6249eb4b9a1de7ae8a630f66fae30" kindref="member">initialized</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;MOCK<sp/>UART%u<sp/>initialized<sp/>@<sp/>%lu<sp/>baud\n&quot;</highlight><highlight class="normal">,<sp/>port<sp/>+<sp/>1,</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal">)config-&gt;<ref refid="structuart__config__t_1a736260dfb0b24aa8bf3bee3ada0d4a4e" kindref="member">baudrate</ref>);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__uart__api_1ga6958ec0e88f16a944298998d1772c71e" kindref="member">hal_uart_register_rx_callback</ref>(<ref refid="group__uart__types_1ga7f28644638bd57536eb5260695e83de9" kindref="member">uart_port_t</ref><sp/>port,<sp/><ref refid="group__uart__types_1ga98671ef10144eb8b0da339ca06dd03b4" kindref="member">uart_rx_callback_t</ref><sp/>cb,</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*ctx)<sp/>{</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(port<sp/>&gt;=<sp/><ref refid="group__uart__types_1gga7f28644638bd57536eb5260695e83de9aa9786d8f9cf4c84f4ac9b594979ea194" kindref="member">UART_PORT_MAX</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>uart_ports[port].<ref refid="structuart__mock__port__t_1a589e61f84cf01cdabed0fbfccb6f5d1a" kindref="member">rx_cb</ref><sp/>=<sp/>cb;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>uart_ports[port].<ref refid="structuart__mock__port__t_1af75d9291356f4ae24517f69f60824552" kindref="member">rx_cb_ctx</ref><sp/>=<sp/>ctx;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__uart__api_1gafe2074ec1f9a6a3a4fbf73cd8f8ec41c" kindref="member">hal_uart_register_error_callback</ref>(<ref refid="group__uart__types_1ga7f28644638bd57536eb5260695e83de9" kindref="member">uart_port_t</ref><sp/>port,<sp/><ref refid="group__uart__types_1ga657936db7b6e3c8b4a3d9122c76987ae" kindref="member">uart_hal_error_cb_t</ref><sp/>cb,</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*ctx)<sp/>{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(port<sp/>&gt;=<sp/><ref refid="group__uart__types_1gga7f28644638bd57536eb5260695e83de9aa9786d8f9cf4c84f4ac9b594979ea194" kindref="member">UART_PORT_MAX</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>uart_ports[port].<ref refid="structuart__mock__port__t_1a591368f007cf142cf4c8c656be847e5e" kindref="member">err_cb</ref><sp/>=<sp/>cb;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>uart_ports[port].<ref refid="structuart__mock__port__t_1a85e3531f7a6113748ca16b0c0e55f524" kindref="member">err_cb_ctx</ref><sp/>=<sp/>ctx;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__uart__api_1ga4483e54b3d76f3f0b2bb91f2d28ccd62" kindref="member">hal_uart_write</ref>(<ref refid="group__uart__types_1ga7f28644638bd57536eb5260695e83de9" kindref="member">uart_port_t</ref><sp/>port,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>*data,<sp/>uint16_t<sp/>len)<sp/>{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(port<sp/>&gt;=<sp/><ref refid="group__uart__types_1gga7f28644638bd57536eb5260695e83de9aa9786d8f9cf4c84f4ac9b594979ea194" kindref="member">UART_PORT_MAX</ref><sp/>||<sp/>data<sp/>==<sp/>NULL<sp/>||<sp/>len<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structuart__mock__port__t" kindref="compound">uart_mock_port_t</ref><sp/>*p<sp/>=<sp/>&amp;uart_ports[port];</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!p-&gt;<ref refid="structuart__mock__port__t_1accb6249eb4b9a1de7ae8a630f66fae30" kindref="member">initialized</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(uint16_t<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>len;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__osusat__ring__buffer__api_1ga24d294734f61bf4558d82a332060af67" kindref="member">osusat_ring_buffer_push</ref>(&amp;p-&gt;<ref refid="structuart__mock__port__t_1a5d7632ea6a7060256e810ff6013dbf2a" kindref="member">tx_rb</ref>,<sp/>data[i]);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;MOCK<sp/>UART%u<sp/>wrote<sp/>%u<sp/>bytes\n&quot;</highlight><highlight class="normal">,<sp/>port<sp/>+<sp/>1,<sp/>len);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal">uint16_t<sp/><ref refid="group__uart__api_1gac1a9051d3daf0c76f550edc36e95db4b" kindref="member">hal_uart_read</ref>(<ref refid="group__uart__types_1ga7f28644638bd57536eb5260695e83de9" kindref="member">uart_port_t</ref><sp/>port,<sp/>uint8_t<sp/>*out,<sp/>uint16_t<sp/>len)<sp/>{</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(port<sp/>&gt;=<sp/><ref refid="group__uart__types_1gga7f28644638bd57536eb5260695e83de9aa9786d8f9cf4c84f4ac9b594979ea194" kindref="member">UART_PORT_MAX</ref><sp/>||<sp/>out<sp/>==<sp/>NULL<sp/>||<sp/>len<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structuart__mock__port__t" kindref="compound">uart_mock_port_t</ref><sp/>*p<sp/>=<sp/>&amp;uart_ports[port];</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!p-&gt;<ref refid="structuart__mock__port__t_1accb6249eb4b9a1de7ae8a630f66fae30" kindref="member">initialized</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/>count<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(count<sp/>&lt;<sp/>len)<sp/>{</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="group__osusat__ring__buffer__api_1ga5f006e082a5e7caddda22ffd638b12da" kindref="member">osusat_ring_buffer_pop</ref>(&amp;p-&gt;<ref refid="structuart__mock__port__t_1ae656723b7b8e57098068c5b38b3e2626" kindref="member">rx_rb</ref>,<sp/>&amp;out[count]))<sp/>{</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>count++;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>count;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="group__uart__mock_1gaed7ac0a4088132d82e5f0b94e545d470" kindref="member">mock_uart_receive_byte_from_isr</ref>(<ref refid="group__uart__types_1ga7f28644638bd57536eb5260695e83de9" kindref="member">uart_port_t</ref><sp/>port,<sp/>uint8_t<sp/></highlight><highlight class="keywordtype">byte</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(port<sp/>&gt;=<sp/><ref refid="group__uart__types_1gga7f28644638bd57536eb5260695e83de9aa9786d8f9cf4c84f4ac9b594979ea194" kindref="member">UART_PORT_MAX</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structuart__mock__port__t" kindref="compound">uart_mock_port_t</ref><sp/>*p<sp/>=<sp/>&amp;uart_ports[port];</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!p-&gt;<ref refid="structuart__mock__port__t_1accb6249eb4b9a1de7ae8a630f66fae30" kindref="member">initialized</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>ok<sp/>=<sp/><ref refid="group__osusat__ring__buffer__api_1ga24d294734f61bf4558d82a332060af67" kindref="member">osusat_ring_buffer_push</ref>(&amp;p-&gt;<ref refid="structuart__mock__port__t_1ae656723b7b8e57098068c5b38b3e2626" kindref="member">rx_rb</ref>,<sp/></highlight><highlight class="keywordtype">byte</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ok<sp/>&amp;&amp;<sp/>p-&gt;<ref refid="structuart__mock__port__t_1a589e61f84cf01cdabed0fbfccb6f5d1a" kindref="member">rx_cb</ref><sp/>!=<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>p-&gt;<ref refid="structuart__mock__port__t_1a589e61f84cf01cdabed0fbfccb6f5d1a" kindref="member">rx_cb</ref>(port,<sp/>p-&gt;<ref refid="structuart__mock__port__t_1af75d9291356f4ae24517f69f60824552" kindref="member">rx_cb_ctx</ref>);</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ok;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="hal__uart__mock_8c_1a645279f01bec4f06926436bd6a88714b" kindref="member">mock_uart_inject_error</ref>(<ref refid="group__uart__types_1ga7f28644638bd57536eb5260695e83de9" kindref="member">uart_port_t</ref><sp/>port,<sp/><ref refid="group__uart__types_1ga74b95f81faa4de6d75094e95783b2cc4" kindref="member">uart_error_t</ref><sp/>err)<sp/>{</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(port<sp/>&gt;=<sp/><ref refid="group__uart__types_1gga7f28644638bd57536eb5260695e83de9aa9786d8f9cf4c84f4ac9b594979ea194" kindref="member">UART_PORT_MAX</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structuart__mock__port__t" kindref="compound">uart_mock_port_t</ref><sp/>*p<sp/>=<sp/>&amp;uart_ports[port];</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!p-&gt;<ref refid="structuart__mock__port__t_1accb6249eb4b9a1de7ae8a630f66fae30" kindref="member">initialized</ref><sp/>||<sp/>p-&gt;<ref refid="structuart__mock__port__t_1a591368f007cf142cf4c8c656be847e5e" kindref="member">err_cb</ref><sp/>==<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/>p-&gt;<ref refid="structuart__mock__port__t_1a591368f007cf142cf4c8c656be847e5e" kindref="member">err_cb</ref>(port,<sp/>err,<sp/>p-&gt;<ref refid="structuart__mock__port__t_1a85e3531f7a6113748ca16b0c0e55f524" kindref="member">err_cb_ctx</ref>);</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="137"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="group__uart__mock_1gafc12f9b07a496b2f0f974a7712648984" kindref="member">mock_uart_get_tx</ref>(<ref refid="group__uart__types_1ga7f28644638bd57536eb5260695e83de9" kindref="member">uart_port_t</ref><sp/>port,<sp/>uint8_t<sp/>*out,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>max_len)<sp/>{</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(port<sp/>&gt;=<sp/><ref refid="group__uart__types_1gga7f28644638bd57536eb5260695e83de9aa9786d8f9cf4c84f4ac9b594979ea194" kindref="member">UART_PORT_MAX</ref><sp/>||<sp/>out<sp/>==<sp/>NULL<sp/>||<sp/>max_len<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structuart__mock__port__t" kindref="compound">uart_mock_port_t</ref><sp/>*p<sp/>=<sp/>&amp;uart_ports[port];</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!p-&gt;<ref refid="structuart__mock__port__t_1accb6249eb4b9a1de7ae8a630f66fae30" kindref="member">initialized</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>count<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(count<sp/>&lt;<sp/>max_len)<sp/>{</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="group__osusat__ring__buffer__api_1ga5f006e082a5e7caddda22ffd638b12da" kindref="member">osusat_ring_buffer_pop</ref>(&amp;p-&gt;<ref refid="structuart__mock__port__t_1a5d7632ea6a7060256e810ff6013dbf2a" kindref="member">tx_rb</ref>,<sp/>&amp;out[count]))<sp/>{</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>count++;</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>count;</highlight></codeline>
+<codeline lineno="158"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__uart__mock_1gaec38e25a0cd2afcaa5e63fb72542311d" kindref="member">mock_uart_reset</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="group__uart__types_1gga7f28644638bd57536eb5260695e83de9aa9786d8f9cf4c84f4ac9b594979ea194" kindref="member">UART_PORT_MAX</ref>;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__osusat__ring__buffer__api_1ga6f508b20f1112d2e279c87219d11a0fb" kindref="member">osusat_ring_buffer_clear</ref>(&amp;uart_ports[i].rx_rb);</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__osusat__ring__buffer__api_1ga6f508b20f1112d2e279c87219d11a0fb" kindref="member">osusat_ring_buffer_clear</ref>(&amp;uart_ports[i].tx_rb);</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="165"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/mocks/hal_uart_mock.c"/>
+  </compounddef>
+</doxygen>

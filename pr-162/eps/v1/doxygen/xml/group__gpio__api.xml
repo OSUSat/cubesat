@@ -1,0 +1,239 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="group__gpio__api" kind="group">
+    <compoundname>gpio_api</compoundname>
+    <title>Public API</title>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="group__gpio__api_1gab5ae6f712980fbf6f16ecb6dc8ae1a36" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void hal_gpio_init</definition>
+        <argsstring>(void)</argsstring>
+        <name>hal_gpio_init</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Initialize the GPIO driver. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This should be called before using any other GPIO functions. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_gpio.h" line="69" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_gpio.c" bodystart="152" bodyend="162" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_gpio.h" declline="69" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__gpio__api_1ga4e1c7c73211d9c5c4a5314453aafed8c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void hal_gpio_set_mode</definition>
+        <argsstring>(uint8_t pin, gpio_mode_t mode)</argsstring>
+        <name>hal_gpio_set_mode</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>pin</declname>
+        </param>
+        <param>
+          <type><ref refid="hal__gpio__types_8h_1a491a2cbfb4e94f2afcc0d5bdef2dc454" kindref="member">gpio_mode_t</ref></type>
+          <declname>mode</declname>
+        </param>
+        <briefdescription>
+<para>Set the mode of a GPIO pin. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>If an interrupt mode is selected, this function will configure the NVIC (Interrupt Controller) but will NOT enable the callback until gpio_register_callback() is called.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">pin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The GPIO pin </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The GPIO mode </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_gpio.h" line="81" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_gpio.c" bodystart="164" bodyend="224" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_gpio.h" declline="81" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__gpio__api_1ga9add8d838aee6a869270f6e5c731d481" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void hal_gpio_register_callback</definition>
+        <argsstring>(uint8_t pin, gpio_callback_t callback, void *ctx)</argsstring>
+        <name>hal_gpio_register_callback</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>pin</declname>
+        </param>
+        <param>
+          <type><ref refid="group__gpio__types_1gaa6522fb9760184b5f293ad42375be160" kindref="member">gpio_callback_t</ref></type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>ctx</declname>
+        </param>
+        <briefdescription>
+<para>Register a software callback for a GPIO interrupt. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>When the hardware interrupt fires, the driver will look up this function and execute it.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">pin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The GPIO pin ID. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The function to call when interrupt triggers. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">ctx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional context pointer (e.g., Service struct or Event Bus). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_gpio.h" line="94" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_gpio.c" bodystart="259" bodyend="269" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_gpio.h" declline="94" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__gpio__api_1gaa314f8a9a4b7b51a49361b942b7d2c3b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void hal_gpio_write</definition>
+        <argsstring>(uint8_t pin, gpio_state_t state)</argsstring>
+        <name>hal_gpio_write</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>pin</declname>
+        </param>
+        <param>
+          <type><ref refid="hal__gpio__types_8h_1a2ff5468d5ab752db6fa1fb95363392a6" kindref="member">gpio_state_t</ref></type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+<para>Drive a GPIO pin. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">pin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The pin to drive </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">state</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The state to drive the pin to </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_gpio.h" line="103" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_gpio.c" bodystart="226" bodyend="235" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_gpio.h" declline="103" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__gpio__api_1ga6c1cff12f9dda7780aeb06202056d529" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="hal__gpio__types_8h_1a2ff5468d5ab752db6fa1fb95363392a6" kindref="member">gpio_state_t</ref></type>
+        <definition>gpio_state_t hal_gpio_read</definition>
+        <argsstring>(uint8_t pin)</argsstring>
+        <name>hal_gpio_read</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>pin</declname>
+        </param>
+        <briefdescription>
+<para>Read the state of a GPIO pin. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">pin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The pin to read</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>GPIO_STATE_LOW</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the GPIO pin is currently low </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>GPIO_STATE_HIGH</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the GPIO pin is currently high </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_gpio.h" line="113" column="14" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_gpio.c" bodystart="247" bodyend="257" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_gpio.h" declline="113" declcolumn="14"/>
+      </memberdef>
+      <memberdef kind="function" id="group__gpio__api_1ga8d567a689867d0c1be8f447cca081242" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void hal_gpio_toggle</definition>
+        <argsstring>(uint8_t pin)</argsstring>
+        <name>hal_gpio_toggle</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>pin</declname>
+        </param>
+        <briefdescription>
+<para>Toggle a GPIO pin from its current state. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">pin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The pin to toggle </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_gpio.h" line="120" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_gpio.c" bodystart="237" bodyend="245" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_gpio.h" declline="120" declcolumn="6"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>External interface for interacting with the GPIO drvier. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,267 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="group__UARTEx__Private__Macros" kind="group">
+    <compoundname>UARTEx_Private_Macros</compoundname>
+    <title>UARTEx Private Macros</title>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="group__UARTEx__Private__Macros_1gad9330184a8bd9399a36bcc93215a50d1" prot="public" static="no">
+        <name>UART_MASK_COMPUTATION</name>
+        <param><defname>__HANDLE__</defname></param>
+        <briefdescription>
+<para>Report the UART clock source. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the UART Handle. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>__CLOCKSOURCE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>output variable. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>UART</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>clocking source, written in <bold>CLOCKSOURCE</bold>.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+Report the UART mask to apply to retrieve the received data according to the word length and to the parity bits activation. <simplesect kind="note"><para>If PCE = 1, the parity bit is not included in the data extracted by the reception API(). This masking operation is not carried out in the case of DMA transfers. </para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the UART Handle. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+<parametername>the</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>mask to apply to UART RDR register is stored in (<bold>HANDLE</bold>)-&gt;Mask field. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart_ex.h" line="645" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart_ex.h" bodystart="645" bodyend="684"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UARTEx__Private__Macros_1gaf856254e5a61d2ee81086918bffabde5" prot="public" static="no">
+        <name>IS_UART_WORD_LENGTH</name>
+        <param><defname>__LENGTH__</defname></param>
+        <initializer>                                         (((__LENGTH__) == <ref refid="group__UARTEx__Word__Length_1gadaec9a23646032a333a5327d66aae4fe" kindref="member">UART_WORDLENGTH_7B</ref>) || \
+                                         ((__LENGTH__) == <ref refid="group__UARTEx__Word__Length_1gaf394e9abaf17932ee89591f990fe6407" kindref="member">UART_WORDLENGTH_8B</ref>) || \
+                                         ((__LENGTH__) == <ref refid="group__UARTEx__Word__Length_1gaf867be43de35fd3c32fe0b4dd4058f7e" kindref="member">UART_WORDLENGTH_9B</ref>))</initializer>
+        <briefdescription>
+<para>Ensure that UART frame length is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__LENGTH__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART frame length. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>LENGTH</bold> is valid) or RESET (<bold>LENGTH</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart_ex.h" line="691" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart_ex.h" bodystart="691" bodyend="693"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UARTEx__Private__Macros_1gaa4cf2a15ad7ae46e2905debeef35a908" prot="public" static="no">
+        <name>IS_UART_ADDRESSLENGTH_DETECT</name>
+        <param><defname>__ADDRESS__</defname></param>
+        <initializer>                                                   (((__ADDRESS__) == <ref refid="group__UARTEx__WakeUp__Address__Length_1ga6599292020c484faeea894307d9dc6d5" kindref="member">UART_ADDRESS_DETECT_4B</ref>) || \
+                                                   ((__ADDRESS__) == <ref refid="group__UARTEx__WakeUp__Address__Length_1ga4dbd5995e0e4998cb1a312c183d7cbb0" kindref="member">UART_ADDRESS_DETECT_7B</ref>))</initializer>
+        <briefdescription>
+<para>Ensure that UART wake-up address length is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__ADDRESS__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART wake-up address length. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>ADDRESS</bold> is valid) or RESET (<bold>ADDRESS</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart_ex.h" line="700" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart_ex.h" bodystart="700" bodyend="701"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UARTEx__Private__Macros_1gad9330184a8bd9399a36bcc93215a50d1" prot="public" static="no">
+        <name>UART_MASK_COMPUTATION</name>
+        <param><defname>__HANDLE__</defname></param>
+        <briefdescription>
+<para>Report the UART clock source. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the UART Handle. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>__CLOCKSOURCE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>output variable. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>UART</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>clocking source, written in <bold>CLOCKSOURCE</bold>.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+Report the UART mask to apply to retrieve the received data according to the word length and to the parity bits activation. <simplesect kind="note"><para>If PCE = 1, the parity bit is not included in the data extracted by the reception API(). This masking operation is not carried out in the case of DMA transfers. </para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the UART Handle. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+<parametername>the</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>mask to apply to UART RDR register is stored in (<bold>HANDLE</bold>)-&gt;Mask field. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart_ex.h" line="645" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart_ex.h" bodystart="645" bodyend="684"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UARTEx__Private__Macros_1gaf856254e5a61d2ee81086918bffabde5" prot="public" static="no">
+        <name>IS_UART_WORD_LENGTH</name>
+        <param><defname>__LENGTH__</defname></param>
+        <initializer>                                         (((__LENGTH__) == <ref refid="group__UARTEx__Word__Length_1gadaec9a23646032a333a5327d66aae4fe" kindref="member">UART_WORDLENGTH_7B</ref>) || \
+                                         ((__LENGTH__) == <ref refid="group__UARTEx__Word__Length_1gaf394e9abaf17932ee89591f990fe6407" kindref="member">UART_WORDLENGTH_8B</ref>) || \
+                                         ((__LENGTH__) == <ref refid="group__UARTEx__Word__Length_1gaf867be43de35fd3c32fe0b4dd4058f7e" kindref="member">UART_WORDLENGTH_9B</ref>))</initializer>
+        <briefdescription>
+<para>Ensure that UART frame length is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__LENGTH__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART frame length. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>LENGTH</bold> is valid) or RESET (<bold>LENGTH</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart_ex.h" line="691" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart_ex.h" bodystart="691" bodyend="693"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UARTEx__Private__Macros_1gaa4cf2a15ad7ae46e2905debeef35a908" prot="public" static="no">
+        <name>IS_UART_ADDRESSLENGTH_DETECT</name>
+        <param><defname>__ADDRESS__</defname></param>
+        <initializer>                                                   (((__ADDRESS__) == <ref refid="group__UARTEx__WakeUp__Address__Length_1ga6599292020c484faeea894307d9dc6d5" kindref="member">UART_ADDRESS_DETECT_4B</ref>) || \
+                                                   ((__ADDRESS__) == <ref refid="group__UARTEx__WakeUp__Address__Length_1ga4dbd5995e0e4998cb1a312c183d7cbb0" kindref="member">UART_ADDRESS_DETECT_7B</ref>))</initializer>
+        <briefdescription>
+<para>Ensure that UART wake-up address length is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__ADDRESS__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART wake-up address length. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>SET</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(<bold>ADDRESS</bold> is valid) or RESET (<bold>ADDRESS</bold> is invalid) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart_ex.h" line="700" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart_ex.h" bodystart="700" bodyend="701"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

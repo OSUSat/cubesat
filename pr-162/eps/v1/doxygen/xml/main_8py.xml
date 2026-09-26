@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="main_8py" kind="file" language="Python">
+    <compoundname>main.py</compoundname>
+    <innernamespace refid="namespacemain">main</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1" refid="namespacemain" refkind="compound"><highlight class="keyword">from</highlight><highlight class="normal"><sp/>osusat_messaging<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>Destination,<sp/>MessageType,<sp/>EPSCommand,<sp/>OSUSatPacket</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/><ref refid="namespaceosusat__messaging_1_1messages" kindref="compound">osusat_messaging.messages</ref><sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>PAYLOADCommand</highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal">command_payload<sp/>=<sp/>b</highlight><highlight class="stringliteral">&apos;\x00&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal">packet_to_send<sp/>=<sp/><ref refid="classosusat__messaging_1_1packet_1_1OSUSatPacket" kindref="compound">OSUSatPacket</ref>(</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/>version=1,</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/>destination=Destination.PAYLOAD,</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/>source=Destination.OBC,</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/>message_type=MessageType.COMMAND,</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/>command_id=PAYLOADCommand.TRANSFER_IMAGE,</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/>payload=command_payload</highlight></codeline>
+<codeline lineno="13"><highlight class="normal">)</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal">print(f</highlight><highlight class="stringliteral">&quot;Created<sp/>Packet:<sp/>{packet_to_send}&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="16"><highlight class="normal">encoded_bytes<sp/>=<sp/>packet_to_send.pack()</highlight></codeline>
+<codeline lineno="17"><highlight class="normal">print(f</highlight><highlight class="stringliteral">&quot;Encoded<sp/>Bytes:<sp/>{encoded_bytes.hex(&apos;<sp/>&apos;)}&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keywordflow">try</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>decoded_packet<sp/>=<sp/>OSUSatPacket.unpack(encoded_bytes)</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>print(f</highlight><highlight class="stringliteral">&quot;Decoded<sp/>Packet:<sp/>{decoded_packet}&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>print(f</highlight><highlight class="stringliteral">&quot;Payload:<sp/>{decoded_packet.payload.hex(&apos;<sp/>&apos;)}&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keywordflow">except</highlight><highlight class="normal"><sp/>ValueError<sp/></highlight><highlight class="keyword">as</highlight><highlight class="normal"><sp/>e:</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>print(f</highlight><highlight class="stringliteral">&quot;Error:<sp/>{e}&quot;</highlight><highlight class="normal">)</highlight></codeline>
+    </programlisting>
+    <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/lib/messaging/examples/python/main.py"/>
+  </compounddef>
+</doxygen>

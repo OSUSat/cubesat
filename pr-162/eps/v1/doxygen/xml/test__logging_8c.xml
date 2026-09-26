@@ -1,0 +1,394 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="test__logging_8c" kind="file" language="C++">
+    <compoundname>test_logging.c</compoundname>
+    <includes refid="event__bus__mock_8h" local="yes">event_bus_mock.h</includes>
+    <includes refid="hal__can__mock_8h" local="yes">mocks/hal_can_mock.h</includes>
+    <includes refid="slog_8h" local="yes">osusat/slog.h</includes>
+    <includes refid="packet_8h" local="yes">packet.h</includes>
+    <includes refid="can__events_8h" local="yes">services/can_events.h</includes>
+    <includes refid="logging_8h" local="yes">services/logging.h</includes>
+    <includes refid="hal__flash_8h" local="yes">hal_flash.h</includes>
+    <includes local="no">assert.h</includes>
+    <includes local="no">stdio.h</includes>
+    <includes local="no">string.h</includes>
+    <incdepgraph>
+      <node id="8">
+        <label>hal_can.h</label>
+        <link refid="hal__can_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>hal_flash.h</label>
+        <link refid="hal__flash_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>osusat/event_bus.h</label>
+        <link refid="event__bus_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>ring_buffer.h</label>
+        <link refid="ring__buffer_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>osusat/slog.h</label>
+        <link refid="slog_8h"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>messages.h</label>
+        <link refid="messages_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>packet.h</label>
+        <link refid="packet_8h"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>mocks/hal_can_mock.h</label>
+        <link refid="hal__can__mock_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>services/can_events.h</label>
+        <link refid="can__events_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>services/logging.h</label>
+        <link refid="logging_8h"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>event_bus_mock.h</label>
+        <link refid="event__bus__mock_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/tests/test_logging.c</label>
+        <link refid="test__logging_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>assert.h</label>
+      </node>
+      <node id="11">
+        <label>stdarg.h</label>
+      </node>
+      <node id="4">
+        <label>stdbool.h</label>
+      </node>
+      <node id="5">
+        <label>stddef.h</label>
+      </node>
+      <node id="6">
+        <label>stdint.h</label>
+      </node>
+      <node id="18">
+        <label>stdio.h</label>
+      </node>
+      <node id="19">
+        <label>string.h</label>
+      </node>
+    </incdepgraph>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="test__logging_8c_1a502890914fb052b44ac87ab2c90f5963" prot="public" static="yes" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t current_time_ms</definition>
+        <argsstring></argsstring>
+        <name>current_time_ms</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/tests/test_logging.c" line="12" column="17" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/tests/test_logging.c" bodystart="12" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <member refid="group__hal__time__api_1ga697ad15eedc3e4ef194c93f24734e0a2" kind="function"><name>hal_time_get_ms</name></member>
+      <memberdef kind="function" id="test__logging_8c_1ac77f00fa6da12ccaf1ab6c9c0239ce09" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void test_logging_init</definition>
+        <argsstring>(void)</argsstring>
+        <name>test_logging_init</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/tests/test_logging.c" line="15" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/tests/test_logging.c" bodystart="15" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="test__logging_8c_1a47eadcbf07d3beadb8bfdebbba49a161" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void test_logging_flush</definition>
+        <argsstring>(void)</argsstring>
+        <name>test_logging_flush</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/tests/test_logging.c" line="38" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/tests/test_logging.c" bodystart="38" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="function" id="test__logging_8c_1a00606eeaf43e03293081ea521f3457e6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void test_logging_flash_backup</definition>
+        <argsstring>(void)</argsstring>
+        <name>test_logging_flash_backup</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/tests/test_logging.c" line="79" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/tests/test_logging.c" bodystart="79" bodyend="132"/>
+      </memberdef>
+      <memberdef kind="function" id="test__logging_8c_1a840291bc02cba5474a4cb46a9b9566fe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int main</definition>
+        <argsstring>(void)</argsstring>
+        <name>main</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/tests/test_logging.c" line="134" column="5" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/tests/test_logging.c" bodystart="134" bodyend="139"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="event__bus__mock_8h" kindref="compound">event_bus_mock.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="hal__can__mock_8h" kindref="compound">mocks/hal_can_mock.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="slog_8h" kindref="compound">osusat/slog.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="packet_8h" kindref="compound">packet.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="can__events_8h" kindref="compound">services/can_events.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="logging_8h" kindref="compound">services/logging.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="hal__flash_8h" kindref="compound">hal_flash.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;assert.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdio.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>uint32_t<sp/>current_time_ms<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal">uint32_t<sp/><ref refid="group__hal__time__api_1ga697ad15eedc3e4ef194c93f24734e0a2" kindref="member">hal_time_get_ms</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>current_time_ms;<sp/>}</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="test__logging_8c_1ac77f00fa6da12ccaf1ab6c9c0239ce09" kindref="member">test_logging_init</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Running<sp/>test:<sp/>%s\n&quot;</highlight><highlight class="normal">,<sp/>__func__);</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__can__mock_1ga7b0f9cb84a6d3e153e6c5648666297b1" kindref="member">mock_can_reset</ref>();</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="event__bus__mock_8c_1af889bdec63ff87df66cd5e9efb904804" kindref="member">mock_event_bus_reset</ref>();</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>initialize<sp/>CAN<sp/>ports</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structhal__can__config__t" kindref="compound">hal_can_config_t</ref><sp/>config<sp/>=<sp/>{.<ref refid="structhal__can__config__t_1a035fe2ebe68ac9cdd0992070679002df" kindref="member">baudrate</ref><sp/>=<sp/>250000};</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__can__api_1gaee75487bc1a6b3c93fc347d818d5fd18" kindref="member">hal_can_init</ref>(<ref refid="group__can__types_1gga83a77f224d5e726b32e0c7e7acff1163aac46ad8f66070ccf930a4b21f5512039" kindref="member">HAL_CAN_PORT_1</ref>,<sp/>&amp;config);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__can__api_1gaee75487bc1a6b3c93fc347d818d5fd18" kindref="member">hal_can_init</ref>(<ref refid="group__can__types_1gga83a77f224d5e726b32e0c7e7acff1163a2428504723e2f469d58bc3bbade475a9" kindref="member">HAL_CAN_PORT_2</ref>,<sp/>&amp;config);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structcan__events__t" kindref="compound">can_events_t</ref><sp/>primary_can;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structcan__events__t" kindref="compound">can_events_t</ref><sp/>aux_can;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__can__events__api_1ga4db1fa5defe1a1618ead802defedd4f7" kindref="member">can_events_init</ref>(&amp;primary_can,<sp/><ref refid="group__can__types_1gga83a77f224d5e726b32e0c7e7acff1163aac46ad8f66070ccf930a4b21f5512039" kindref="member">HAL_CAN_PORT_1</ref>);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__can__events__api_1ga4db1fa5defe1a1618ead802defedd4f7" kindref="member">can_events_init</ref>(&amp;aux_can,<sp/><ref refid="group__can__types_1gga83a77f224d5e726b32e0c7e7acff1163a2428504723e2f469d58bc3bbade475a9" kindref="member">HAL_CAN_PORT_2</ref>);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__logging__api_1gacfa3b63f33f6b41229b7293c37ffef4e" kindref="member">logging_init</ref>(<ref refid="group__osusat__slog__types_1ggafe0f1801f6e3827f06165e284313814ba0910e0bc044406b4a8be8fbd9198bb24" kindref="member">OSUSAT_SLOG_INFO</ref>,<sp/>&amp;primary_can,<sp/>&amp;aux_can);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(<ref refid="group__logging__api_1ga68313b2800456508351fdf21c8685fbf" kindref="member">logging_pending_count</ref>()<sp/>==<sp/>1);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__logging__api_1gae344a717b3119e6abed5c4b75737a337" kindref="member">logging_flush</ref>();</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(<ref refid="group__logging__api_1ga68313b2800456508351fdf21c8685fbf" kindref="member">logging_pending_count</ref>()<sp/>==<sp/>0);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Test<sp/>passed.\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="test__logging_8c_1a47eadcbf07d3beadb8bfdebbba49a161" kindref="member">test_logging_flush</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Running<sp/>test:<sp/>%s\n&quot;</highlight><highlight class="normal">,<sp/>__func__);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__can__mock_1ga7b0f9cb84a6d3e153e6c5648666297b1" kindref="member">mock_can_reset</ref>();</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="event__bus__mock_8c_1af889bdec63ff87df66cd5e9efb904804" kindref="member">mock_event_bus_reset</ref>();</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>initialize<sp/>CAN<sp/>port</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structhal__can__config__t" kindref="compound">hal_can_config_t</ref><sp/>config<sp/>=<sp/>{.<ref refid="structhal__can__config__t_1a035fe2ebe68ac9cdd0992070679002df" kindref="member">baudrate</ref><sp/>=<sp/>250000};</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__can__api_1gaee75487bc1a6b3c93fc347d818d5fd18" kindref="member">hal_can_init</ref>(<ref refid="group__can__types_1gga83a77f224d5e726b32e0c7e7acff1163aac46ad8f66070ccf930a4b21f5512039" kindref="member">HAL_CAN_PORT_1</ref>,<sp/>&amp;config);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__can__api_1gaee75487bc1a6b3c93fc347d818d5fd18" kindref="member">hal_can_init</ref>(<ref refid="group__can__types_1gga83a77f224d5e726b32e0c7e7acff1163a2428504723e2f469d58bc3bbade475a9" kindref="member">HAL_CAN_PORT_2</ref>,<sp/>&amp;config);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structcan__events__t" kindref="compound">can_events_t</ref><sp/>primary_can;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structcan__events__t" kindref="compound">can_events_t</ref><sp/>aux_can;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__can__events__api_1ga4db1fa5defe1a1618ead802defedd4f7" kindref="member">can_events_init</ref>(&amp;primary_can,<sp/><ref refid="group__can__types_1gga83a77f224d5e726b32e0c7e7acff1163aac46ad8f66070ccf930a4b21f5512039" kindref="member">HAL_CAN_PORT_1</ref>);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__can__events__api_1ga4db1fa5defe1a1618ead802defedd4f7" kindref="member">can_events_init</ref>(&amp;aux_can,<sp/><ref refid="group__can__types_1gga83a77f224d5e726b32e0c7e7acff1163a2428504723e2f469d58bc3bbade475a9" kindref="member">HAL_CAN_PORT_2</ref>);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__logging__api_1gacfa3b63f33f6b41229b7293c37ffef4e" kindref="member">logging_init</ref>(<ref refid="group__osusat__slog__types_1ggafe0f1801f6e3827f06165e284313814ba0910e0bc044406b4a8be8fbd9198bb24" kindref="member">OSUSAT_SLOG_INFO</ref>,<sp/>&amp;primary_can,<sp/>&amp;aux_can);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>flush<sp/>the<sp/>initialization<sp/>log<sp/>message<sp/>first</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__logging__api_1gae344a717b3119e6abed5c4b75737a337" kindref="member">logging_flush</ref>();</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(<ref refid="group__logging__api_1ga68313b2800456508351fdf21c8685fbf" kindref="member">logging_pending_count</ref>()<sp/>==<sp/>0);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>log<sp/>something<sp/>long<sp/>enough<sp/>to<sp/>exceed<sp/>40<sp/>bytes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__osusat__slog__api_1ga7bbefdd3b087c6a39b6f677b63f25d94" kindref="member">LOG_INFO</ref>(<ref refid="group__logging__types_1ga57bb7714cca858a4d242e4faae4d16be" kindref="member">EPS_COMPONENT_MAIN</ref>,</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Test<sp/>log<sp/>message!<sp/>This<sp/>is<sp/>a<sp/>long<sp/>message<sp/>to<sp/>ensure<sp/>that<sp/>the<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;pending<sp/>count<sp/>is<sp/>greater<sp/>than<sp/>zero.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Pending<sp/>count:<sp/>%zu\n&quot;</highlight><highlight class="normal">,<sp/><ref refid="group__logging__api_1ga68313b2800456508351fdf21c8685fbf" kindref="member">logging_pending_count</ref>());</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(<ref refid="group__logging__api_1ga68313b2800456508351fdf21c8685fbf" kindref="member">logging_pending_count</ref>()<sp/>&gt;=<sp/>1);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>flush</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>count<sp/>=<sp/><ref refid="group__logging__api_1gae344a717b3119e6abed5c4b75737a337" kindref="member">logging_flush</ref>();</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(count<sp/>==<sp/>1);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(<ref refid="group__logging__api_1ga68313b2800456508351fdf21c8685fbf" kindref="member">logging_pending_count</ref>()<sp/>==<sp/>0);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Retrieve<sp/>transmitted<sp/>CAN<sp/>frames<sp/>from<sp/>mock</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structhal__can__msg__t" kindref="compound">hal_can_msg_t</ref><sp/>tx_msgs[10];</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>tx_count<sp/>=<sp/><ref refid="group__can__mock_1ga6871d37aa0f5ba3ecd6b5b1062899031" kindref="member">mock_can_get_tx</ref>(<ref refid="group__can__types_1gga83a77f224d5e726b32e0c7e7acff1163aac46ad8f66070ccf930a4b21f5512039" kindref="member">HAL_CAN_PORT_1</ref>,<sp/>tx_msgs,<sp/>10);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(tx_count<sp/>&gt;<sp/>0);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Test<sp/>passed.\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="test__logging_8c_1a00606eeaf43e03293081ea521f3457e6" kindref="member">test_logging_flash_backup</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Running<sp/>test:<sp/>%s\n&quot;</highlight><highlight class="normal">,<sp/>__func__);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__can__mock_1ga7b0f9cb84a6d3e153e6c5648666297b1" kindref="member">mock_can_reset</ref>();</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="event__bus__mock_8c_1af889bdec63ff87df66cd5e9efb904804" kindref="member">mock_event_bus_reset</ref>();</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>initialize<sp/>CAN<sp/>port</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structhal__can__config__t" kindref="compound">hal_can_config_t</ref><sp/>config<sp/>=<sp/>{.<ref refid="structhal__can__config__t_1a035fe2ebe68ac9cdd0992070679002df" kindref="member">baudrate</ref><sp/>=<sp/>250000};</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__can__api_1gaee75487bc1a6b3c93fc347d818d5fd18" kindref="member">hal_can_init</ref>(<ref refid="group__can__types_1gga83a77f224d5e726b32e0c7e7acff1163aac46ad8f66070ccf930a4b21f5512039" kindref="member">HAL_CAN_PORT_1</ref>,<sp/>&amp;config);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__can__api_1gaee75487bc1a6b3c93fc347d818d5fd18" kindref="member">hal_can_init</ref>(<ref refid="group__can__types_1gga83a77f224d5e726b32e0c7e7acff1163a2428504723e2f469d58bc3bbade475a9" kindref="member">HAL_CAN_PORT_2</ref>,<sp/>&amp;config);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structcan__events__t" kindref="compound">can_events_t</ref><sp/>primary_can;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structcan__events__t" kindref="compound">can_events_t</ref><sp/>aux_can;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__can__events__api_1ga4db1fa5defe1a1618ead802defedd4f7" kindref="member">can_events_init</ref>(&amp;primary_can,<sp/><ref refid="group__can__types_1gga83a77f224d5e726b32e0c7e7acff1163aac46ad8f66070ccf930a4b21f5512039" kindref="member">HAL_CAN_PORT_1</ref>);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__can__events__api_1ga4db1fa5defe1a1618ead802defedd4f7" kindref="member">can_events_init</ref>(&amp;aux_can,<sp/><ref refid="group__can__types_1gga83a77f224d5e726b32e0c7e7acff1163a2428504723e2f469d58bc3bbade475a9" kindref="member">HAL_CAN_PORT_2</ref>);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__logging__api_1gacfa3b63f33f6b41229b7293c37ffef4e" kindref="member">logging_init</ref>(<ref refid="group__osusat__slog__types_1ggafe0f1801f6e3827f06165e284313814ba0910e0bc044406b4a8be8fbd9198bb24" kindref="member">OSUSAT_SLOG_INFO</ref>,<sp/>&amp;primary_can,<sp/>&amp;aux_can);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>flush<sp/>the<sp/>initialization<sp/>log<sp/>message<sp/>first</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>count1<sp/>=<sp/><ref refid="group__logging__api_1gae344a717b3119e6abed5c4b75737a337" kindref="member">logging_flush</ref>();</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(count1<sp/>==<sp/>1);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>log<sp/>something<sp/>long<sp/>enough</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__osusat__slog__api_1ga7bbefdd3b087c6a39b6f677b63f25d94" kindref="member">LOG_INFO</ref>(<ref refid="group__logging__types_1ga57bb7714cca858a4d242e4faae4d16be" kindref="member">EPS_COMPONENT_MAIN</ref>,</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Test<sp/>log<sp/>message!<sp/>This<sp/>is<sp/>a<sp/>long<sp/>message<sp/>to<sp/>ensure<sp/>that<sp/>the<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;pending<sp/>count<sp/>is<sp/>greater<sp/>than<sp/>zero.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>flush</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>count2<sp/>=<sp/><ref refid="group__logging__api_1gae344a717b3119e6abed5c4b75737a337" kindref="member">logging_flush</ref>();</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(count2<sp/>==<sp/>1);<sp/></highlight><highlight class="comment">//<sp/>1<sp/>test<sp/>log</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Read<sp/>back<sp/>mock<sp/>flash</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>flash_buf[512];</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hal__flash_8h_1a8c13713f405a05fee337edaea8397089" kindref="member">hal_flash_read</ref>(<ref refid="logging_8h_1a3025005b21e0cda48173d89406058ca0" kindref="member">FLASH_LOG_START_ADDR</ref>,<sp/>flash_buf,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(flash_buf));</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structOSUSatPacket" kindref="compound">OSUSatPacket</ref><sp/>first_packet;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="packet_8h_1a39a219748971c184f958c6b6de4cd6a3" kindref="member">OSUSatPacketResult</ref><sp/>res1<sp/>=</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="packet_8h_1a9dd74a9f3320a826e2081fbf68df701f" kindref="member">osusat_packet_unpack</ref>(&amp;first_packet,<sp/>flash_buf,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(flash_buf));</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(res1<sp/>==<sp/><ref refid="packet_8h_1a39a219748971c184f958c6b6de4cd6a3a561600c3bb1e99e5753ea2e01ca8f774" kindref="member">OSUSAT_PACKET_OK</ref>);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>first_packet_size<sp/>=<sp/><ref refid="packet_8h_1a713e49ffab48f6407bc923d5a27b0fdd" kindref="member">OSUSAT_FRAME_OVERHEAD</ref><sp/>+<sp/>first_packet.<ref refid="structOSUSatPacket_1a9d41915bf256f5894d7330ba95143b98" kindref="member">payload_len</ref>;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structOSUSatPacket" kindref="compound">OSUSatPacket</ref><sp/>second_packet;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="packet_8h_1a39a219748971c184f958c6b6de4cd6a3" kindref="member">OSUSatPacketResult</ref><sp/>res2<sp/>=</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="packet_8h_1a9dd74a9f3320a826e2081fbf68df701f" kindref="member">osusat_packet_unpack</ref>(&amp;second_packet,<sp/>flash_buf<sp/>+<sp/>first_packet_size,</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(flash_buf)<sp/>-<sp/>first_packet_size);</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(res2<sp/>==<sp/><ref refid="packet_8h_1a39a219748971c184f958c6b6de4cd6a3a561600c3bb1e99e5753ea2e01ca8f774" kindref="member">OSUSAT_PACKET_OK</ref>);</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(second_packet.<ref refid="structOSUSatPacket_1ad0150165698e87a142b9d36a35f77a16" kindref="member">version</ref><sp/>==<sp/>1);</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(second_packet.<ref refid="structOSUSatPacket_1ab2bbaebb9304cab0b32286027ba55782" kindref="member">destination</ref><sp/>==<sp/><ref refid="messages_8h_1ad9e5def05db5323e9a4cfc3f4fa2cd75acf567abd8ab54a24566b2364c2848656" kindref="member">OSUSatDestination_OBC</ref>);</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(second_packet.<ref refid="structOSUSatPacket_1a61e3b18ed5402f85e6da8424e664c93b" kindref="member">source</ref><sp/>==<sp/><ref refid="messages_8h_1ad9e5def05db5323e9a4cfc3f4fa2cd75ac374ac666d2a7b44aad05fc568c4e956" kindref="member">OSUSatDestination_EPS</ref>);</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(second_packet.<ref refid="structOSUSatPacket_1a2b46a0908d4d55c9bc73b5b1f5f9e294" kindref="member">message_type</ref><sp/>==<sp/><ref refid="messages_8h_1aa4306448e95ae3e6a1080809b6e268baa7057888c8aa2fcc5d2c7578bcb755ed6" kindref="member">OSUSatMessageType_LOG</ref>);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(second_packet.<ref refid="structOSUSatPacket_1a9c303077dac399dcb7a85274a855182b" kindref="member">command_id</ref><sp/>==<sp/><ref refid="messages_8h_1a8b33f5c663e3564d970047eb16af430daf36e6671da64e39fb9d4f5dd41c8adf7" kindref="member">OSUSatCommonCommand_LOG</ref>);</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Test<sp/>passed.\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="132"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="test__logging_8c_1a840291bc02cba5474a4cb46a9b9566fe" kindref="member">main</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="test__logging_8c_1ac77f00fa6da12ccaf1ab6c9c0239ce09" kindref="member">test_logging_init</ref>();</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="test__logging_8c_1a47eadcbf07d3beadb8bfdebbba49a161" kindref="member">test_logging_flush</ref>();</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="test__logging_8c_1a00606eeaf43e03293081ea521f3457e6" kindref="member">test_logging_flash_backup</ref>();</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/tests/test_logging.c"/>
+  </compounddef>
+</doxygen>

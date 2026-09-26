@@ -1,0 +1,177 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="md__2home_2runner_2work_2cubesat_2cubesat_2eps_2v1_2firmware_2README" kind="page">
+    <compoundname>md__2home_2runner_2work_2cubesat_2cubesat_2eps_2v1_2firmware_2README</compoundname>
+    <title>eps-firmware</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><anchor id="md__2home_2runner_2work_2cubesat_2cubesat_2eps_2v1_2firmware_2README_1autotoc_md68"/> This directory contains the firmware for the EPS board.</para>
+<sect1 id="md__2home_2runner_2work_2cubesat_2cubesat_2eps_2v1_2firmware_2README_1autotoc_md69">
+<title>Setup &amp; Building</title>
+<sect2 id="md__2home_2runner_2work_2cubesat_2cubesat_2eps_2v1_2firmware_2README_1autotoc_md70">
+<title>Compilation Dependencies</title>
+<para><itemizedlist>
+<listitem><para>arm-none-eabi toolchain</para>
+</listitem></itemizedlist>
+</para>
+</sect2>
+<sect2 id="md__2home_2runner_2work_2cubesat_2cubesat_2eps_2v1_2firmware_2README_1autotoc_md71">
+<title>Submodule Initialization</title>
+<para><programlisting><codeline><highlight class="normal">git<sp/>submodule<sp/>update<sp/>--init<sp/>--recursive</highlight></codeline>
+</programlisting></para>
+</sect2>
+<sect2 id="md__2home_2runner_2work_2cubesat_2cubesat_2eps_2v1_2firmware_2README_1autotoc_md72">
+<title>Building</title>
+<para><programlisting><codeline><highlight class="normal">mkdir<sp/>build</highlight></codeline>
+<codeline><highlight class="normal">cd<sp/>build</highlight></codeline>
+<codeline><highlight class="normal">cmake<sp/>-DCMAKE_TOOLCHAIN_FILE=../arm-none-eabi-toolchain.cmake<sp/>..</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>or:<sp/>cmake<sp/>-DCMAKE_TOOLCHAIN_FILE=../arm-none-eabi-toolchain.cmake<sp/>-DBUILD_HITL=ON<sp/>..</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>or:<sp/>cmake<sp/>-DTARGET_ARCH=HOST</highlight></codeline>
+<codeline><highlight class="normal">make</highlight></codeline>
+</programlisting></para>
+</sect2>
+</sect1>
+<sect1 id="md__2home_2runner_2work_2cubesat_2cubesat_2eps_2v1_2firmware_2README_1autotoc_md73">
+<title>Firmware Scope &amp; Component Specifications</title>
+<para><itemizedlist>
+<listitem><para>For general firmware philosophy, please refer to the HITL document</para>
+</listitem></itemizedlist>
+</para>
+<sect2 id="md__2home_2runner_2work_2cubesat_2cubesat_2eps_2v1_2firmware_2README_1autotoc_md74">
+<title>Application Layer Modules</title>
+<sect3 id="md__2home_2runner_2work_2cubesat_2cubesat_2eps_2v1_2firmware_2README_1autotoc_md75">
+<title>Command Handler</title>
+<para><itemizedlist>
+<listitem><para>The command handler will be responsible for responding to commands over UART from other subsystems</para>
+</listitem><listitem><para>Interacts with the UART events interface service to listen for incoming packets</para>
+</listitem><listitem><para>Case handler that calls out to other services based on the requested action</para>
+</listitem><listitem><para>Interacts directly with <ref refid="namespaceOSUSat" kindref="compound">OSUSat</ref> messaging packet structures passed from the UART listener service</para>
+</listitem></itemizedlist>
+</para>
+</sect3>
+<sect3 id="md__2home_2runner_2work_2cubesat_2cubesat_2eps_2v1_2firmware_2README_1autotoc_md76">
+<title>Power Policies</title>
+<para><itemizedlist>
+<listitem><para>The high-level decision maker for the EPS</para>
+</listitem><listitem><para>Rules/logic for system/satellite-wide power sequencing &amp; transitions</para>
+</listitem><listitem><para>State machine managing:<itemizedlist>
+<listitem><para>Startup/boot</para>
+</listitem><listitem><para>Safe mode</para>
+</listitem><listitem><para>Nominal operation</para>
+</listitem><listitem><para>Charging mode</para>
+</listitem><listitem><para>Fault/recovery</para>
+</listitem><listitem><para>Shutdown/inhibits</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para>Defines and transitions between EPS states based on system conditions like voltage, current, and other subsystem commands</para>
+</listitem><listitem><para>Controls which power rails come up and in what order to enable stable startup</para>
+</listitem><listitem><para>Stop battery charging/discharging if limits (voltage, temperature, current) are exceeded</para>
+</listitem><listitem><para>Respond to OBC commands and requests like:<itemizedlist>
+<listitem><para>Enabling power rails</para>
+</listitem><listitem><para>Entering safe mode</para>
+</listitem><listitem><para>Restarts/telemetry</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para>Detect and handle critical faults and transition to safe states<itemizedlist>
+<listitem><para>Many faults can be detected using teh <computeroutput>redundancy_manager</computeroutput> service</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para>Watches system health, pets watchdogs, and responds to OBC heartbeat requests</para>
+</listitem></itemizedlist>
+</para>
+</sect3>
+</sect2>
+<sect2 id="md__2home_2runner_2work_2cubesat_2cubesat_2eps_2v1_2firmware_2README_1autotoc_md77">
+<title>Service Layer Modules</title>
+<sect3 id="md__2home_2runner_2work_2cubesat_2cubesat_2eps_2v1_2firmware_2README_1autotoc_md78">
+<title>Battery Management</title>
+<para><itemizedlist>
+<listitem><para>Uses HAL drivers to read sensors (voltage/current monitors, charger status)</para>
+</listitem><listitem><para>Provides interfaces to the application layer to:<itemizedlist>
+<listitem><para>Fetch battery voltage</para>
+</listitem><listitem><para>Start charging</para>
+</listitem><listitem><para>Stop charging</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para>Cooperates with MPPT and rail controller services to balance input and power draw</para>
+</listitem><listitem><para>Reads, collects, and packages voltage, current, temperature, and other sensors for use by the power policy application</para>
+</listitem><listitem><para>Estimate remaining battery capacity (state of charge)</para>
+</listitem><listitem><para>Enable/disable charging circuitry using HAL GPIO drivers</para>
+</listitem><listitem><para>Manages battery balancing circuitry</para>
+</listitem><listitem><para>Enforces protection thresholds by disabling rails if overcurrents, overvoltages, or temperature ratings are too high</para>
+</listitem><listitem><para>Also exposes general telemetry for the power policy application</para>
+</listitem><listitem><para>Notifies redundancy manager about sensor or charge failures</para>
+</listitem></itemizedlist>
+</para>
+</sect3>
+<sect3 id="md__2home_2runner_2work_2cubesat_2cubesat_2eps_2v1_2firmware_2README_1autotoc_md79">
+<title>MPPT Controller</title>
+<para><itemizedlist>
+<listitem><para>Configures MPPT chip parameters if necessary using HAL drivers</para>
+</listitem><listitem><para>Enables/disables MPPT IC, monitors status pins using GPIO HAL interface</para>
+</listitem><listitem><para>Reads and packages telemetry from the chip</para>
+</listitem></itemizedlist>
+</para>
+</sect3>
+<sect3 id="md__2home_2runner_2work_2cubesat_2cubesat_2eps_2v1_2firmware_2README_1autotoc_md80">
+<title>Rail Controller</title>
+<para><itemizedlist>
+<listitem><para>Abstraction for load switches and current monitors on each power rail</para>
+</listitem><listitem><para>Provides interfaces to enable/disable power rails and read their status</para>
+</listitem><listitem><para>Monitors for overcurrent events and automatically disables rails if necessary</para>
+</listitem><listitem><para>Notifies the redundancy manager of any rail faults</para>
+</listitem></itemizedlist>
+</para>
+</sect3>
+<sect3 id="md__2home_2runner_2work_2cubesat_2cubesat_2eps_2v1_2firmware_2README_1autotoc_md81">
+<title>Redundancy Manager</title>
+<para><itemizedlist>
+<listitem><para>Acts as a centralized fault detection and response service</para>
+</listitem><listitem><para>Aggregates health statuses from other services (battery, MPPT, rails)</para>
+</listitem><listitem><para>Maintains a system wide health status</para>
+</listitem><listitem><para>Can trigger a transition to safe mode via the power policies application if a critical fault is detected</para>
+</listitem><listitem><para>Manages redundant hardware components (switching between sensors upon failures)</para>
+</listitem><listitem><para>Individual services detect their own faults, but the redundancy manager determines the system level response</para>
+</listitem><listitem><para>Simplifies complex faults into higher-level faults to make decision making in the application clearer</para>
+</listitem></itemizedlist>
+</para>
+</sect3>
+<sect3 id="md__2home_2runner_2work_2cubesat_2cubesat_2eps_2v1_2firmware_2README_1autotoc_md82">
+<title>Telemetry</title>
+<para><itemizedlist>
+<listitem><para>Gathers and packages data from all other services</para>
+</listitem><listitem><para>Provides a unified interface for the application layer to access all system telemetry</para>
+</listitem><listitem><para>Formats data into packets for transmission (using <ref refid="namespaceOSUSat" kindref="compound">OSUSat</ref> messaging)</para>
+</listitem></itemizedlist>
+</para>
+</sect3>
+<sect3 id="md__2home_2runner_2work_2cubesat_2cubesat_2eps_2v1_2firmware_2README_1autotoc_md83">
+<title>UART Events</title>
+<para><itemizedlist>
+<listitem><para>Manages communication with other subsystems via the UART bus</para>
+</listitem><listitem><para>Uses the messaging library to encode and decode packets</para>
+</listitem><listitem><para>Used by the command handler application to detect and process new commands<itemizedlist>
+<listitem><para>This service is polled in the application layer. The interface allows the user to check if packets are available, and to fetch them</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para>Provides an interface for other services to send and receive packets</para>
+</listitem></itemizedlist>
+</para>
+</sect3>
+<sect3 id="md__2home_2runner_2work_2cubesat_2cubesat_2eps_2v1_2firmware_2README_1autotoc_md84">
+<title>Watchdog</title>
+<para><itemizedlist>
+<listitem><para>Manages the hardware watchdog timer</para>
+</listitem><listitem><para>Provides an interface for the application layer to pet the watchdog</para>
+</listitem><listitem><para>If the watchdog is not petted within a certain time frame, it will trigger a system reset</para>
+</listitem><listitem><para>This is a critical safety feature to prevent the system from getting stuck in a bad state </para>
+</listitem></itemizedlist>
+</para>
+</sect3>
+</sect2>
+</sect1>
+    </detaileddescription>
+    <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/README.md"/>
+  </compounddef>
+</doxygen>
