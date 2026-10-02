@@ -10,8 +10,8 @@ fi
 CHANGED_FILES=()
 if [ "${GITHUB_EVENT_NAME:-}" = "pull_request" ]; then
     # fetch base ref to make sure it's available for diffing
-    git fetch origin "${GITHUB_BASE_REF}" --depth=1 || true
-    base_ref="origin/${GITHUB_BASE_REF}"
+    git fetch origin "${GITHUB_BASE_REF:-main}" --depth=1 || true
+    base_ref="origin/${GITHUB_BASE_REF:-main}"
 
     echo "Comparing against base branch: ${base_ref}"
 
@@ -174,7 +174,7 @@ for fw_dir in $firmware_dirs; do
 
             # generate preview links for PR comments
             if [ "${GITHUB_EVENT_NAME:-}" = "pull_request" ]; then
-                owner_repo="${GITHUB_REPOSITORY}"
+                owner_repo="${GITHUB_REPOSITORY:-osusat/cubesat}"
                 owner="${owner_repo%/*}"
                 repo="${owner_repo#*/}"
                 pr_num="${GITHUB_EVENT_NUMBER:-}"

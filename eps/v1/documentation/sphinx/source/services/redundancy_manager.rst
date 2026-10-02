@@ -1,5 +1,5 @@
 Redundancy Manager Service
-=======================
+==========================
 
 .. doxygengroup:: redundancy_manager
    :project: eps_firmware
