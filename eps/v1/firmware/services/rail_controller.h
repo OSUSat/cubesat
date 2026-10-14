@@ -16,6 +16,7 @@
 #define RAIL_CONTROLLER_H
 
 #include "eps_config.h"
+#include "osusat/event_bus.h"
 #include <stdbool.h>
 #include <stdint.h>
 
@@ -39,6 +40,9 @@
  */
 
 #define RAIL_CONTROLLER_SERVICE_ID 0xAC25
+
+#define RAIL_CONTROLLER_UPDATE_INTERVAL_TICKS 10
+#define RAIL_CONTROLLER_TELEMETRY_INTERVAL_TICKS 600
 
 typedef enum {
     /**
@@ -93,6 +97,8 @@ typedef enum {
 #define RAIL_CONTROLLER_EVENT_RAIL_FAULT_DETECTED                              \
     OSUSAT_BUILD_EVENT_ID(RAIL_CONTROLLER_SERVICE_ID,                          \
                           RAIL_CONTROLLER_RAIL_FAULT_DETECTED)
+#define RAIL_CONTROLLER_EVENT_TELEMETRY                                        \
+    OSUSAT_BUILD_EVENT_ID(RAIL_CONTROLLER_SERVICE_ID, RAIL_CONTROLLER_TELEMETRY)
 
 /**
  * @enum rail_status_t
@@ -139,6 +145,8 @@ typedef struct {
     bool initialized;      /**< True if controller has been initialized */
     uint32_t tick_counter; /**< Internal counter for update loop */
     uint32_t telemetry_tick_counter; /**< Internal counter for telemetry */
+    osusat_event_id_t pending_fault[NUM_POWER_RAILS]; /**< Fault event still
+                                                         to publish, 0 if none */
 } rail_controller_t;
 
 /** @} */ // end rail_controller_types
@@ -159,7 +167,8 @@ typedef struct {
  *
  * @param[controller] The rail controller
  *
- * @note This function is idempotent.
+ * @warning Drives every load switch off, including the OBC rail. Calling it
+ * again at runtime cuts power to all rails.
  */
 void rail_controller_init(rail_controller_t *manager);
 

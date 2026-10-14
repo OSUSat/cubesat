@@ -123,6 +123,44 @@ add_test(
     NAME test_telemetry
     COMMAND test_telemetry
 )
+# test_power_policies
+
+add_executable(test_power_policies
+    test_power_policies.c
+    ../app/power_policies.c
+    mocks/event_bus_mock.c
+)
+
+target_link_libraries(test_power_policies PRIVATE
+    ${TEST_COMMON_LIBS}
+)
+
+add_test(
+    NAME test_power_policies
+    COMMAND test_power_policies
+)
+
+# test_rail_controller
+
+if(NOT TARGET_ARCH STREQUAL "ARM")
+    add_executable(test_rail_controller
+        test_rail_controller.c
+        ../services/rail_controller.c
+        ../mocks/hal_gpio_mock.c
+        ../mocks/hal_adc_mock.c
+        mocks/event_bus_mock.c
+    )
+
+    target_link_libraries(test_rail_controller PRIVATE
+        ${TEST_COMMON_LIBS}
+    )
+
+    add_test(
+        NAME test_rail_controller
+        COMMAND test_rail_controller
+    )
+endif()
+
 # test_watchdog
 
 if(NOT TARGET_ARCH STREQUAL "ARM")

@@ -190,6 +190,8 @@ static const gpio_config_t gpio_board_config[NUM_GPIO_PINS] = {
 #define WATCHDOG_SET0_PIN 17
 #define WATCHDOG_SET1_PIN 18
 #define RAIL_RESET_PIN_START 23
+#define RAIL_ENABLE_PIN_START 8 // load switch ON pins, index 8-15 (PD0-PD14)
+#define RAIL_ENABLE_PIN(rail) (RAIL_ENABLE_PIN_START + (rail))
 
 static const rail_config_t RAIL_CONFIGS[NUM_POWER_RAILS] = {
     [RAIL_OBC] = {.rail_id = RAIL_OBC,

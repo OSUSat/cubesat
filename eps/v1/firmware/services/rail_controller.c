@@ -8,9 +8,6 @@
 #include <stdio.h>
 #include <string.h>
 
-#define RAIL_CONTROLLER_UPDATE_INTERVAL_TICKS 10
-#define TELEMETRY_INTERVAL_CYCLES 600
-
 /**
  * @brief System Tick Handler.
  * Called automatically by the Event Bus.
@@ -29,6 +26,12 @@ static void rail_controller_handle_update(rail_controller_t *manager);
  * @brief Event handler for when a new request is received from the application
  */
 static void handle_profile_request_event(const osusat_event_t *e, void *ctx);
+
+/**
+ * @brief Publish a rail's pending fault, keeping it pending if the queue is
+ * full so the next update retries it.
+ */
+static void publish_pending_fault(rail_controller_t *manager, size_t rail);
 
 static void rail_monitor_callback(uint8_t pin, void *ctx) {
     rail_controller_t *manager = (rail_controller_t *)ctx;
@@ -54,6 +57,7 @@ void rail_controller_init(rail_controller_t *manager) {
         manager->rails[rail].rail_id = (power_rail_t)rail;
         manager->rails[rail].status = RAIL_STATUS_DISABLED;
         manager->rails[rail].enabled = false;
+        hal_gpio_write(RAIL_ENABLE_PIN(rail), HAL_GPIO_STATE_LOW);
 
         // Register EXTI monitoring callbacks for the rails (pins 0 to 7 correspond to PB8-PB15)
         if (rail < 8) {
@@ -101,7 +105,7 @@ void rail_controller_enable(rail_controller_t *controller, power_rail_t rail) {
     }
 
     LOG_INFO(EPS_COMPONENT_RAIL, "Enabling rail %d", rail);
-    hal_gpio_write(8 + rail, HAL_GPIO_STATE_HIGH);
+    hal_gpio_write(RAIL_ENABLE_PIN(rail), HAL_GPIO_STATE_HIGH);
 
     controller->rails[rail].enabled = true;
     controller->rails[rail].status = RAIL_STATUS_OK;
@@ -113,7 +117,7 @@ void rail_controller_disable(rail_controller_t *controller, power_rail_t rail) {
     }
 
     LOG_INFO(EPS_COMPONENT_RAIL, "Disabling rail %d", rail);
-    hal_gpio_write(8 + rail, HAL_GPIO_STATE_LOW);
+    hal_gpio_write(RAIL_ENABLE_PIN(rail), HAL_GPIO_STATE_LOW);
 
     controller->rails[rail].enabled = false;
     controller->rails[rail].status = RAIL_STATUS_DISABLED;
@@ -135,11 +139,12 @@ static void rail_controller_handle_tick(const osusat_event_t *e, void *ctx) {
 
     manager->telemetry_tick_counter++;
 
-    if (manager->telemetry_tick_counter >= TELEMETRY_INTERVAL_CYCLES) {
+    if (manager->telemetry_tick_counter >=
+        RAIL_CONTROLLER_TELEMETRY_INTERVAL_TICKS) {
         manager->telemetry_tick_counter = 0;
 
         for (size_t rail = 0; rail < NUM_POWER_RAILS; rail++) {
-            osusat_event_bus_publish(RAIL_CONTROLLER_TELEMETRY,
+            osusat_event_bus_publish(RAIL_CONTROLLER_EVENT_TELEMETRY,
                                      &manager->rails[rail], sizeof(rail_t));
         }
     }
@@ -147,6 +152,11 @@ static void rail_controller_handle_tick(const osusat_event_t *e, void *ctx) {
 
 void rail_controller_handle_update(rail_controller_t *manager) {
     for (size_t rail = 0; rail < NUM_POWER_RAILS; rail++) {
+        // retry before the snapshot below is overwritten
+        if (manager->pending_fault[rail] != 0) {
+            publish_pending_fault(manager, rail);
+        }
+
         float voltage = 0.0f;
         float current = 0.0f;
 
@@ -197,14 +207,23 @@ void rail_controller_handle_update(rail_controller_t *manager) {
                    voltage, config->voltage_max);
         }
 
-        if (new_status != manager->rails[rail].status) {
+        // an enabled rail is always RAIL_STATUS_OK, so any fault is new
+        if (new_status != RAIL_STATUS_OK) {
+            rail_controller_disable(manager, (power_rail_t)rail);
             manager->rails[rail].status = new_status;
 
-            if (new_status != RAIL_STATUS_OK) {
-                osusat_event_bus_publish(event_id, &rail, sizeof(size_t));
-
-                manager->rails[rail].enabled = false;
-            }
+            manager->pending_fault[rail] = event_id;
+            publish_pending_fault(manager, rail);
         }
+    }
+}
+
+static void publish_pending_fault(rail_controller_t *manager, size_t rail) {
+    if (osusat_event_bus_publish(manager->pending_fault[rail],
+                                 &manager->rails[rail], sizeof(rail_t))) {
+        manager->pending_fault[rail] = 0;
+    } else {
+        LOG_ERROR(EPS_COMPONENT_RAIL,
+                  "Event queue full, will retry fault for rail %d", (int)rail);
     }
 }
