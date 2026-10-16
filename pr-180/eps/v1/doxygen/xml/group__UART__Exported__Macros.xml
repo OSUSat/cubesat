@@ -1,0 +1,2299 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="group__UART__Exported__Macros" kind="group">
+    <compoundname>UART_Exported_Macros</compoundname>
+    <title>UART Exported Macros</title>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="group__UART__Exported__Macros_1ga19deab848407b106998416c78092fa9b" prot="public" static="no">
+        <name>__HAL_UART_RESET_HANDLE_STATE</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer>                                                       do{                                                   \
+                                                       (__HANDLE__)-&gt;gState = <ref refid="group__UART__State__Definition_1gacd81aeb745b71fc1c121cc686369600d" kindref="member">HAL_UART_STATE_RESET</ref>;      \
+                                                       (__HANDLE__)-&gt;RxState = <ref refid="group__UART__State__Definition_1gacd81aeb745b71fc1c121cc686369600d" kindref="member">HAL_UART_STATE_RESET</ref>;     \
+                                                     } while(0U)</initializer>
+        <briefdescription>
+<para>Reset UART handle states. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART handle. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="891" column="10" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="891" bodyend="894"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Exported__Macros_1gafc4f20cb0f29ba146c9bc14167c52744" prot="public" static="no">
+        <name>__HAL_UART_FLUSH_DRREGISTER</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer>  do{                \
+    <ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>((__HANDLE__)-&gt;Instance-&gt;RQR, <ref refid="group__UART__Request__Parameters_1gaf2ee2d4b1bdcbc7772ddc0da89566936" kindref="member">UART_RXDATA_FLUSH_REQUEST</ref>); \
+    <ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>((__HANDLE__)-&gt;Instance-&gt;RQR, <ref refid="group__UART__Request__Parameters_1gafecbd800f456ed666a42ac0842cd2c4b" kindref="member">UART_TXDATA_FLUSH_REQUEST</ref>); \
+  }  while(0U)</initializer>
+        <briefdescription>
+<para>Flush the UART Data registers. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the UART Handle. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="901" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="901" bodyend="905"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Exported__Macros_1ga9bd035161d41cde4f2568c7af06493bf" prot="public" static="no">
+        <name>__HAL_UART_CLEAR_FLAG</name>
+        <param><defname>__HANDLE__</defname></param>
+        <param><defname>__FLAG__</defname></param>
+        <initializer>((__HANDLE__)-&gt;Instance-&gt;ICR = (__FLAG__))</initializer>
+        <briefdescription>
+<para>Clear the specified UART pending flag. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the UART Handle. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>__FLAG__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the flag to check. This parameter can be any combination of the following values: <itemizedlist>
+<listitem><para><ref refid="group__UART__IT__CLEAR__Flags_1ga9c2aef8048dd09ea5e72d69c63026f02" kindref="member">UART_CLEAR_PEF</ref> Parity Error Clear Flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__IT__CLEAR__Flags_1ga2040edf7a1daa2e9f352364e285ef5c3" kindref="member">UART_CLEAR_FEF</ref> Framing Error Clear Flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__IT__CLEAR__Flags_1gad5b9aafb495296d917a5d85e63383396" kindref="member">UART_CLEAR_NEF</ref> Noise detected Clear Flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__IT__CLEAR__Flags_1ga3bc97b70293f9a7bf8cc21a74094afad" kindref="member">UART_CLEAR_OREF</ref> Overrun Error Clear Flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__IT__CLEAR__Flags_1ga75ee9be0ac2236931ef3d9514e7dedf4" kindref="member">UART_CLEAR_IDLEF</ref> IDLE line detected Clear Flag </para>
+</listitem>
+<listitem><para>UART_CLEAR_TXFECF TXFIFO empty clear Flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__IT__CLEAR__Flags_1gadfbfe4df408d1d09ff2adc1ddad3de09" kindref="member">UART_CLEAR_TCF</ref> Transmission Complete Clear Flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__IT__CLEAR__Flags_1ga2735a415d2c7930fdf2818943fd7ddd2" kindref="member">UART_CLEAR_RTOF</ref> Receiver Timeout clear flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__IT__CLEAR__Flags_1ga030414d9a93ad994156210644634b73c" kindref="member">UART_CLEAR_LBDF</ref> LIN Break Detection Clear Flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__IT__CLEAR__Flags_1gabe0f3bc774ad0b9319732da3be8374cf" kindref="member">UART_CLEAR_CTSF</ref> CTS Interrupt Clear Flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__IT__CLEAR__Flags_1ga5815698abf54d69b752bd2c43c2d6ad3" kindref="member">UART_CLEAR_CMF</ref> Character Match Clear Flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__IT__CLEAR__Flags_1ga5081c579f9956a7712248430f3fe129b" kindref="member">UART_CLEAR_WUF</ref> Wake Up from stop mode Clear Flag </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="925" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="925" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Exported__Macros_1gaba5e19c60e0f37341b1585a380b84d49" prot="public" static="no">
+        <name>__HAL_UART_CLEAR_PEFLAG</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer><ref refid="group__UART__Exported__Macros_1ga9bd035161d41cde4f2568c7af06493bf" kindref="member">__HAL_UART_CLEAR_FLAG</ref>((__HANDLE__), <ref refid="group__UART__IT__CLEAR__Flags_1ga9c2aef8048dd09ea5e72d69c63026f02" kindref="member">UART_CLEAR_PEF</ref>)</initializer>
+        <briefdescription>
+<para>Clear the UART PE pending flag. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the UART Handle. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="931" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="931" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Exported__Macros_1gae1dfc7777b089a10464841045b524caa" prot="public" static="no">
+        <name>__HAL_UART_CLEAR_FEFLAG</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer><ref refid="group__UART__Exported__Macros_1ga9bd035161d41cde4f2568c7af06493bf" kindref="member">__HAL_UART_CLEAR_FLAG</ref>((__HANDLE__), <ref refid="group__UART__IT__CLEAR__Flags_1ga2040edf7a1daa2e9f352364e285ef5c3" kindref="member">UART_CLEAR_FEF</ref>)</initializer>
+        <briefdescription>
+<para>Clear the UART FE pending flag. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the UART Handle. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="937" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="937" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Exported__Macros_1gaa1f69421585b3ada4d2b81d502a3ae6b" prot="public" static="no">
+        <name>__HAL_UART_CLEAR_NEFLAG</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer><ref refid="group__UART__Exported__Macros_1ga9bd035161d41cde4f2568c7af06493bf" kindref="member">__HAL_UART_CLEAR_FLAG</ref>((__HANDLE__), <ref refid="group__UART__IT__CLEAR__Flags_1gad5b9aafb495296d917a5d85e63383396" kindref="member">UART_CLEAR_NEF</ref>)</initializer>
+        <briefdescription>
+<para>Clear the UART NE pending flag. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the UART Handle. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="943" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="943" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Exported__Macros_1ga9cdc2f2d55eaaa7895996bf6848df42e" prot="public" static="no">
+        <name>__HAL_UART_CLEAR_OREFLAG</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer><ref refid="group__UART__Exported__Macros_1ga9bd035161d41cde4f2568c7af06493bf" kindref="member">__HAL_UART_CLEAR_FLAG</ref>((__HANDLE__), <ref refid="group__UART__IT__CLEAR__Flags_1ga3bc97b70293f9a7bf8cc21a74094afad" kindref="member">UART_CLEAR_OREF</ref>)</initializer>
+        <briefdescription>
+<para>Clear the UART ORE pending flag. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the UART Handle. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="949" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="949" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Exported__Macros_1ga1345aa0af53d82269b13835c225e91d0" prot="public" static="no">
+        <name>__HAL_UART_CLEAR_IDLEFLAG</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer><ref refid="group__UART__Exported__Macros_1ga9bd035161d41cde4f2568c7af06493bf" kindref="member">__HAL_UART_CLEAR_FLAG</ref>((__HANDLE__), <ref refid="group__UART__IT__CLEAR__Flags_1ga75ee9be0ac2236931ef3d9514e7dedf4" kindref="member">UART_CLEAR_IDLEF</ref>)</initializer>
+        <briefdescription>
+<para>Clear the UART IDLE pending flag. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the UART Handle. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="955" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="955" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Exported__Macros_1ga261fe8a2afe84ec048113654266c5bf6" prot="public" static="no">
+        <name>__HAL_UART_GET_FLAG</name>
+        <param><defname>__HANDLE__</defname></param>
+        <param><defname>__FLAG__</defname></param>
+        <initializer>(((__HANDLE__)-&gt;Instance-&gt;ISR &amp; (__FLAG__)) == (__FLAG__))</initializer>
+        <briefdescription>
+<para>Check whether the specified UART flag is set or not. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the UART Handle. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>__FLAG__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the flag to check. This parameter can be one of the following values: <itemizedlist>
+<listitem><para>UART_FLAG_TXFT TXFIFO threshold flag </para>
+</listitem>
+<listitem><para>UART_FLAG_RXFT RXFIFO threshold flag </para>
+</listitem>
+<listitem><para>UART_FLAG_RXFF RXFIFO Full flag </para>
+</listitem>
+<listitem><para>UART_FLAG_TXFE TXFIFO Empty flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Flags_1ga18f2d6a153838d8fd53911352a4d87ad" kindref="member">UART_FLAG_REACK</ref> Receive enable acknowledge flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Flags_1gaf4a4ade6fd987ea7f22786269317f94a" kindref="member">UART_FLAG_TEACK</ref> Transmit enable acknowledge flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Flags_1gada80ee73404da204801766e42cbf7163" kindref="member">UART_FLAG_WUF</ref> Wake up from stop mode flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Flags_1ga5d5f6f91093bfb222baa277a86f6b75b" kindref="member">UART_FLAG_RWU</ref> Receiver wake up flag (if the UART in mute mode) </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Flags_1gaea7a67e1f6a8af78e2adfaed59d1a4be" kindref="member">UART_FLAG_SBKF</ref> Send Break flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Flags_1ga01f2c67d8999a9ee8d91ac3cb5e7fbfe" kindref="member">UART_FLAG_CMF</ref> Character match flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Flags_1ga2d1387d412382a345097acb403748ba3" kindref="member">UART_FLAG_BUSY</ref> Busy flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Flags_1ga9e309874f2c8f71e4049ae6cb702a2eb" kindref="member">UART_FLAG_ABRF</ref> Auto Baud rate detection flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Flags_1ga87853efaab808377c8acb9e8b671a2e8" kindref="member">UART_FLAG_ABRE</ref> Auto Baud rate detection error flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Flags_1ga5435edd22ff23de7187654362c48e0b1" kindref="member">UART_FLAG_CTS</ref> CTS Change flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Flags_1ga77b81c3c843b49af940862fe4d6ab933" kindref="member">UART_FLAG_LBDF</ref> LIN Break detection flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Flags_1gad39c017d415a7774c82eb07413a9dbe4" kindref="member">UART_FLAG_TXE</ref> Transmit data register empty flag </para>
+</listitem>
+<listitem><para>UART_FLAG_TXFNF UART TXFIFO not full flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Flags_1ga82e68a0ee4a8b987a47c66fc6f744894" kindref="member">UART_FLAG_TC</ref> Transmission Complete flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Flags_1ga9d1b2860d84a87abb05c3b2fed3c108c" kindref="member">UART_FLAG_RXNE</ref> Receive data register not empty flag </para>
+</listitem>
+<listitem><para>UART_FLAG_RXFNE UART RXFIFO not empty flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Flags_1ga69afec3b174a6b5969e71ea25d973958" kindref="member">UART_FLAG_RTOF</ref> Receiver Timeout flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Flags_1ga5d7a320c505672f7508e3bd99f532a69" kindref="member">UART_FLAG_IDLE</ref> Idle Line detection flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Flags_1ga335a5b0f61512223bbc406b38c95b2d6" kindref="member">UART_FLAG_ORE</ref> Overrun Error flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Flags_1ga665981434d02ff5296361782c1a7d4b5" kindref="member">UART_FLAG_NE</ref> Noise Error flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Flags_1gafba4891ce21cf5223ca5fede0eac388d" kindref="member">UART_FLAG_FE</ref> Framing Error flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Flags_1gad5b96f73f6d3a0b58f07e2e9d7bf14d9" kindref="member">UART_FLAG_PE</ref> Parity Error flag </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>The</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>new state of <bold>FLAG</bold> (TRUE or FALSE). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="997" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="997" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Exported__Macros_1gaba94165ed584d49c1ec12df9819bd4bb" prot="public" static="no">
+        <name>__HAL_UART_ENABLE_IT</name>
+        <param><defname>__HANDLE__</defname></param>
+        <param><defname>__INTERRUPT__</defname></param>
+        <initializer>                                                           (\
+                                                           ((((uint8_t)(__INTERRUPT__)) &gt;&gt; 5U) == 1U)?\
+                                                           ((__HANDLE__)-&gt;Instance-&gt;CR1 |= (1U &lt;&lt;\
+                                                               ((__INTERRUPT__) &amp; <ref refid="group__UART__Interruption__Mask_1ga869439269c26e8dee93d49b1c7e67448" kindref="member">UART_IT_MASK</ref>))): \
+                                                           ((((uint8_t)(__INTERRUPT__)) &gt;&gt; 5U) == 2U)?\
+                                                           ((__HANDLE__)-&gt;Instance-&gt;CR2 |= (1U &lt;&lt;\
+                                                               ((__INTERRUPT__) &amp; <ref refid="group__UART__Interruption__Mask_1ga869439269c26e8dee93d49b1c7e67448" kindref="member">UART_IT_MASK</ref>))): \
+                                                           ((__HANDLE__)-&gt;Instance-&gt;CR3 |= (1U &lt;&lt;\
+                                                               ((__INTERRUPT__) &amp; <ref refid="group__UART__Interruption__Mask_1ga869439269c26e8dee93d49b1c7e67448" kindref="member">UART_IT_MASK</ref>))))</initializer>
+        <briefdescription>
+<para>Enable the specified UART interrupt. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the UART Handle. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>__INTERRUPT__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the UART interrupt source to enable. This parameter can be one of the following values: <itemizedlist>
+<listitem><para>UART_IT_RXFF RXFIFO Full interrupt </para>
+</listitem>
+<listitem><para>UART_IT_TXFE TXFIFO Empty interrupt </para>
+</listitem>
+<listitem><para>UART_IT_RXFT RXFIFO threshold interrupt </para>
+</listitem>
+<listitem><para>UART_IT_TXFT TXFIFO threshold interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1gab8899f6307781779f65a7c18aabb3204" kindref="member">UART_IT_WUF</ref> Wakeup from stop mode interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1ga4c22e866bce68975a180828012489106" kindref="member">UART_IT_CM</ref> Character match interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1ga986d271478550f9afa918262ca642333" kindref="member">UART_IT_CTS</ref> CTS change interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1gabca5e77508dc2dd9aa26fcb683d9b988" kindref="member">UART_IT_LBD</ref> LIN Break detection interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1ga552636e2af516d578856f5ee2ba71ed7" kindref="member">UART_IT_TXE</ref> Transmit Data Register empty interrupt </para>
+</listitem>
+<listitem><para>UART_IT_TXFNF TX FIFO not full interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1gab9a4dc4e8cea354fd60f4117513b2004" kindref="member">UART_IT_TC</ref> Transmission complete interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1gac1bedf7a65eb8c3f3c4b52bdb24b139d" kindref="member">UART_IT_RXNE</ref> Receive Data register not empty interrupt </para>
+</listitem>
+<listitem><para>UART_IT_RXFNE RXFIFO not empty interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1gaa04d4eba7501b3a0a54d90fe40e626a0" kindref="member">UART_IT_RTO</ref> Receive Timeout interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1ga9781808d4f9999061fc2da36572191d9" kindref="member">UART_IT_IDLE</ref> Idle line detection interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1ga55f922ddcf513509710ade5d7c40a1db" kindref="member">UART_IT_PE</ref> Parity Error interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1ga8eb26d8edd9bf78ae8d3ad87dd51b618" kindref="member">UART_IT_ERR</ref> Error interrupt (frame error, noise error, overrun error) </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="1022" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="1022" bodyend="1030"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Exported__Macros_1ga3c29b33f38658acbf592e9aaf84c6f33" prot="public" static="no">
+        <name>__HAL_UART_DISABLE_IT</name>
+        <param><defname>__HANDLE__</defname></param>
+        <param><defname>__INTERRUPT__</defname></param>
+        <initializer>                                                           (\
+                                                           ((((uint8_t)(__INTERRUPT__)) &gt;&gt; 5U) == 1U)?\
+                                                           ((__HANDLE__)-&gt;Instance-&gt;CR1 &amp;= ~ (1U &lt;&lt;\
+                                                               ((__INTERRUPT__) &amp; <ref refid="group__UART__Interruption__Mask_1ga869439269c26e8dee93d49b1c7e67448" kindref="member">UART_IT_MASK</ref>))): \
+                                                           ((((uint8_t)(__INTERRUPT__)) &gt;&gt; 5U) == 2U)?\
+                                                           ((__HANDLE__)-&gt;Instance-&gt;CR2 &amp;= ~ (1U &lt;&lt;\
+                                                               ((__INTERRUPT__) &amp; <ref refid="group__UART__Interruption__Mask_1ga869439269c26e8dee93d49b1c7e67448" kindref="member">UART_IT_MASK</ref>))): \
+                                                           ((__HANDLE__)-&gt;Instance-&gt;CR3 &amp;= ~ (1U &lt;&lt;\
+                                                               ((__INTERRUPT__) &amp; <ref refid="group__UART__Interruption__Mask_1ga869439269c26e8dee93d49b1c7e67448" kindref="member">UART_IT_MASK</ref>))))</initializer>
+        <briefdescription>
+<para>Disable the specified UART interrupt. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the UART Handle. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>__INTERRUPT__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the UART interrupt source to disable. This parameter can be one of the following values: <itemizedlist>
+<listitem><para>UART_IT_RXFF RXFIFO Full interrupt </para>
+</listitem>
+<listitem><para>UART_IT_TXFE TXFIFO Empty interrupt </para>
+</listitem>
+<listitem><para>UART_IT_RXFT RXFIFO threshold interrupt </para>
+</listitem>
+<listitem><para>UART_IT_TXFT TXFIFO threshold interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1gab8899f6307781779f65a7c18aabb3204" kindref="member">UART_IT_WUF</ref> Wakeup from stop mode interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1ga4c22e866bce68975a180828012489106" kindref="member">UART_IT_CM</ref> Character match interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1ga986d271478550f9afa918262ca642333" kindref="member">UART_IT_CTS</ref> CTS change interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1gabca5e77508dc2dd9aa26fcb683d9b988" kindref="member">UART_IT_LBD</ref> LIN Break detection interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1ga552636e2af516d578856f5ee2ba71ed7" kindref="member">UART_IT_TXE</ref> Transmit Data Register empty interrupt </para>
+</listitem>
+<listitem><para>UART_IT_TXFNF TX FIFO not full interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1gab9a4dc4e8cea354fd60f4117513b2004" kindref="member">UART_IT_TC</ref> Transmission complete interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1gac1bedf7a65eb8c3f3c4b52bdb24b139d" kindref="member">UART_IT_RXNE</ref> Receive Data register not empty interrupt </para>
+</listitem>
+<listitem><para>UART_IT_RXFNE RXFIFO not empty interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1gaa04d4eba7501b3a0a54d90fe40e626a0" kindref="member">UART_IT_RTO</ref> Receive Timeout interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1ga9781808d4f9999061fc2da36572191d9" kindref="member">UART_IT_IDLE</ref> Idle line detection interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1ga55f922ddcf513509710ade5d7c40a1db" kindref="member">UART_IT_PE</ref> Parity Error interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1ga8eb26d8edd9bf78ae8d3ad87dd51b618" kindref="member">UART_IT_ERR</ref> Error interrupt (Frame error, noise error, overrun error) </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="1055" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="1055" bodyend="1063"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Exported__Macros_1ga89c4cb1b623c15cfdea2c0a864c8b1e4" prot="public" static="no">
+        <name>__HAL_UART_GET_IT</name>
+        <param><defname>__HANDLE__</defname></param>
+        <param><defname>__INTERRUPT__</defname></param>
+        <initializer>                                                        ((((__HANDLE__)-&gt;Instance-&gt;ISR\
+                                                        &amp; (1U &lt;&lt; ((__INTERRUPT__)&gt;&gt; 8U))) != <ref refid="group__Exported__types_1gga89136caac2e14c55151f527ac02daaffa589b7d94a3d91d145720e2fed0eb3a05" kindref="member">RESET</ref>) ? <ref refid="group__Exported__types_1gga89136caac2e14c55151f527ac02daaffab44c8101cc294c074709ec1b14211792" kindref="member">SET</ref> : <ref refid="group__Exported__types_1gga89136caac2e14c55151f527ac02daaffa589b7d94a3d91d145720e2fed0eb3a05" kindref="member">RESET</ref>)</initializer>
+        <briefdescription>
+<para>Check whether the specified UART interrupt has occurred or not. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the UART Handle. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>__INTERRUPT__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the UART interrupt to check. This parameter can be one of the following values: <itemizedlist>
+<listitem><para>UART_IT_RXFF RXFIFO Full interrupt </para>
+</listitem>
+<listitem><para>UART_IT_TXFE TXFIFO Empty interrupt </para>
+</listitem>
+<listitem><para>UART_IT_RXFT RXFIFO threshold interrupt </para>
+</listitem>
+<listitem><para>UART_IT_TXFT TXFIFO threshold interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1gab8899f6307781779f65a7c18aabb3204" kindref="member">UART_IT_WUF</ref> Wakeup from stop mode interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1ga4c22e866bce68975a180828012489106" kindref="member">UART_IT_CM</ref> Character match interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1ga986d271478550f9afa918262ca642333" kindref="member">UART_IT_CTS</ref> CTS change interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1gabca5e77508dc2dd9aa26fcb683d9b988" kindref="member">UART_IT_LBD</ref> LIN Break detection interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1ga552636e2af516d578856f5ee2ba71ed7" kindref="member">UART_IT_TXE</ref> Transmit Data Register empty interrupt </para>
+</listitem>
+<listitem><para>UART_IT_TXFNF TX FIFO not full interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1gab9a4dc4e8cea354fd60f4117513b2004" kindref="member">UART_IT_TC</ref> Transmission complete interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1gac1bedf7a65eb8c3f3c4b52bdb24b139d" kindref="member">UART_IT_RXNE</ref> Receive Data register not empty interrupt </para>
+</listitem>
+<listitem><para>UART_IT_RXFNE RXFIFO not empty interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1gaa04d4eba7501b3a0a54d90fe40e626a0" kindref="member">UART_IT_RTO</ref> Receive Timeout interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1ga9781808d4f9999061fc2da36572191d9" kindref="member">UART_IT_IDLE</ref> Idle line detection interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1ga55f922ddcf513509710ade5d7c40a1db" kindref="member">UART_IT_PE</ref> Parity Error interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1ga8eb26d8edd9bf78ae8d3ad87dd51b618" kindref="member">UART_IT_ERR</ref> Error interrupt (Frame error, noise error, overrun error) </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>The</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>new state of <bold>INTERRUPT</bold> (SET or RESET). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="1088" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="1088" bodyend="1089"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Exported__Macros_1gab53dbf1d75f241330428bf426b2963d1" prot="public" static="no">
+        <name>__HAL_UART_GET_IT_SOURCE</name>
+        <param><defname>__HANDLE__</defname></param>
+        <param><defname>__INTERRUPT__</defname></param>
+        <initializer>                                                                ((((((((uint8_t)(__INTERRUPT__)) &gt;&gt; 5U) == 1U) ?\
+                                                                (__HANDLE__)-&gt;Instance-&gt;CR1 : \
+                                                                (((((uint8_t)(__INTERRUPT__)) &gt;&gt; 5U) == 2U) ?\
+                                                                 (__HANDLE__)-&gt;Instance-&gt;CR2 : \
+                                                                 (__HANDLE__)-&gt;Instance-&gt;CR3)) &amp; (1U &lt;&lt;\
+                                                                     (((uint16_t)(__INTERRUPT__)) &amp;\
+                                                                      <ref refid="group__UART__Interruption__Mask_1ga869439269c26e8dee93d49b1c7e67448" kindref="member">UART_IT_MASK</ref>)))  != <ref refid="group__Exported__types_1gga89136caac2e14c55151f527ac02daaffa589b7d94a3d91d145720e2fed0eb3a05" kindref="member">RESET</ref>) ? <ref refid="group__Exported__types_1gga89136caac2e14c55151f527ac02daaffab44c8101cc294c074709ec1b14211792" kindref="member">SET</ref> : <ref refid="group__Exported__types_1gga89136caac2e14c55151f527ac02daaffa589b7d94a3d91d145720e2fed0eb3a05" kindref="member">RESET</ref>)</initializer>
+        <briefdescription>
+<para>Check whether the specified UART interrupt source is enabled or not. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the UART Handle. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>__INTERRUPT__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the UART interrupt source to check. This parameter can be one of the following values: <itemizedlist>
+<listitem><para>UART_IT_RXFF RXFIFO Full interrupt </para>
+</listitem>
+<listitem><para>UART_IT_TXFE TXFIFO Empty interrupt </para>
+</listitem>
+<listitem><para>UART_IT_RXFT RXFIFO threshold interrupt </para>
+</listitem>
+<listitem><para>UART_IT_TXFT TXFIFO threshold interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1gab8899f6307781779f65a7c18aabb3204" kindref="member">UART_IT_WUF</ref> Wakeup from stop mode interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1ga4c22e866bce68975a180828012489106" kindref="member">UART_IT_CM</ref> Character match interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1ga986d271478550f9afa918262ca642333" kindref="member">UART_IT_CTS</ref> CTS change interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1gabca5e77508dc2dd9aa26fcb683d9b988" kindref="member">UART_IT_LBD</ref> LIN Break detection interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1ga552636e2af516d578856f5ee2ba71ed7" kindref="member">UART_IT_TXE</ref> Transmit Data Register empty interrupt </para>
+</listitem>
+<listitem><para>UART_IT_TXFNF TX FIFO not full interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1gab9a4dc4e8cea354fd60f4117513b2004" kindref="member">UART_IT_TC</ref> Transmission complete interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1gac1bedf7a65eb8c3f3c4b52bdb24b139d" kindref="member">UART_IT_RXNE</ref> Receive Data register not empty interrupt </para>
+</listitem>
+<listitem><para>UART_IT_RXFNE RXFIFO not empty interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1gaa04d4eba7501b3a0a54d90fe40e626a0" kindref="member">UART_IT_RTO</ref> Receive Timeout interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1ga9781808d4f9999061fc2da36572191d9" kindref="member">UART_IT_IDLE</ref> Idle line detection interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1ga55f922ddcf513509710ade5d7c40a1db" kindref="member">UART_IT_PE</ref> Parity Error interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1ga8eb26d8edd9bf78ae8d3ad87dd51b618" kindref="member">UART_IT_ERR</ref> Error interrupt (Frame error, noise error, overrun error) </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>The</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>new state of <bold>INTERRUPT</bold> (SET or RESET). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="1114" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="1114" bodyend="1120"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Exported__Macros_1gaa81e0f2503bd2a699e7e478507946bb2" prot="public" static="no">
+        <name>__HAL_UART_CLEAR_IT</name>
+        <param><defname>__HANDLE__</defname></param>
+        <param><defname>__IT_CLEAR__</defname></param>
+        <initializer>((__HANDLE__)-&gt;Instance-&gt;ICR = (uint32_t)(__IT_CLEAR__))</initializer>
+        <briefdescription>
+<para>Clear the specified UART ISR flag, in setting the proper ICR register flag. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the UART Handle. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>__IT_CLEAR__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the interrupt clear register flag that needs to be set to clear the corresponding interrupt This parameter can be one of the following values: <itemizedlist>
+<listitem><para><ref refid="group__UART__IT__CLEAR__Flags_1ga9c2aef8048dd09ea5e72d69c63026f02" kindref="member">UART_CLEAR_PEF</ref> Parity Error Clear Flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__IT__CLEAR__Flags_1ga2040edf7a1daa2e9f352364e285ef5c3" kindref="member">UART_CLEAR_FEF</ref> Framing Error Clear Flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__IT__CLEAR__Flags_1gad5b9aafb495296d917a5d85e63383396" kindref="member">UART_CLEAR_NEF</ref> Noise detected Clear Flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__IT__CLEAR__Flags_1ga3bc97b70293f9a7bf8cc21a74094afad" kindref="member">UART_CLEAR_OREF</ref> Overrun Error Clear Flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__IT__CLEAR__Flags_1ga75ee9be0ac2236931ef3d9514e7dedf4" kindref="member">UART_CLEAR_IDLEF</ref> IDLE line detected Clear Flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__IT__CLEAR__Flags_1ga2735a415d2c7930fdf2818943fd7ddd2" kindref="member">UART_CLEAR_RTOF</ref> Receiver timeout clear flag </para>
+</listitem>
+<listitem><para>UART_CLEAR_TXFECF TXFIFO empty Clear Flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__IT__CLEAR__Flags_1gadfbfe4df408d1d09ff2adc1ddad3de09" kindref="member">UART_CLEAR_TCF</ref> Transmission Complete Clear Flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__IT__CLEAR__Flags_1ga030414d9a93ad994156210644634b73c" kindref="member">UART_CLEAR_LBDF</ref> LIN Break Detection Clear Flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__IT__CLEAR__Flags_1gabe0f3bc774ad0b9319732da3be8374cf" kindref="member">UART_CLEAR_CTSF</ref> CTS Interrupt Clear Flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__IT__CLEAR__Flags_1ga5815698abf54d69b752bd2c43c2d6ad3" kindref="member">UART_CLEAR_CMF</ref> Character Match Clear Flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__IT__CLEAR__Flags_1ga5081c579f9956a7712248430f3fe129b" kindref="member">UART_CLEAR_WUF</ref> Wake Up from stop mode Clear Flag </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="1141" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="1141" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Exported__Macros_1ga568a15495a9e2a9d230474b9e8bcc8e4" prot="public" static="no">
+        <name>__HAL_UART_SEND_REQ</name>
+        <param><defname>__HANDLE__</defname></param>
+        <param><defname>__REQ__</defname></param>
+        <initializer>((__HANDLE__)-&gt;Instance-&gt;RQR |= (uint16_t)(__REQ__))</initializer>
+        <briefdescription>
+<para>Set a specific UART request flag. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the UART Handle. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>__REQ__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the request flag to set This parameter can be one of the following values: <itemizedlist>
+<listitem><para><ref refid="group__UART__Request__Parameters_1ga8cdce81a934ab7d0c2eecb4d85300d4e" kindref="member">UART_AUTOBAUD_REQUEST</ref> Auto-Baud Rate Request </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Request__Parameters_1ga52ced88a9f4ce90f3725901cf91f38b3" kindref="member">UART_SENDBREAK_REQUEST</ref> Send Break Request </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Request__Parameters_1gadd5f511803928fd042f7fc6ef99f9cfb" kindref="member">UART_MUTE_MODE_REQUEST</ref> Mute Mode Request </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Request__Parameters_1gaf2ee2d4b1bdcbc7772ddc0da89566936" kindref="member">UART_RXDATA_FLUSH_REQUEST</ref> Receive Data flush Request </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Request__Parameters_1gafecbd800f456ed666a42ac0842cd2c4b" kindref="member">UART_TXDATA_FLUSH_REQUEST</ref> Transmit data flush Request </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="1154" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="1154" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Exported__Macros_1ga3524747e5896296ab066d786431503ce" prot="public" static="no">
+        <name>__HAL_UART_ONE_BIT_SAMPLE_ENABLE</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer>((__HANDLE__)-&gt;Instance-&gt;CR3|= <ref refid="group__Peripheral__Registers__Bits__Definition_1ga9a96fb1a7beab602cbc8cb0393593826" kindref="member">USART_CR3_ONEBIT</ref>)</initializer>
+        <briefdescription>
+<para>Enable the UART one bit sample method. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the UART Handle. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="1160" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="1160" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Exported__Macros_1ga2dbd7e6592e8c5999f817b69f0fd24bb" prot="public" static="no">
+        <name>__HAL_UART_ONE_BIT_SAMPLE_DISABLE</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer>((__HANDLE__)-&gt;Instance-&gt;CR3 &amp;= ~<ref refid="group__Peripheral__Registers__Bits__Definition_1ga9a96fb1a7beab602cbc8cb0393593826" kindref="member">USART_CR3_ONEBIT</ref>)</initializer>
+        <briefdescription>
+<para>Disable the UART one bit sample method. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the UART Handle. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="1166" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="1166" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Exported__Macros_1ga49eb5ea4996a957afeb8be2793ba3fe9" prot="public" static="no">
+        <name>__HAL_UART_ENABLE</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer>((__HANDLE__)-&gt;Instance-&gt;CR1 |= <ref refid="group__Peripheral__Registers__Bits__Definition_1ga2bb650676aaae4a5203f372d497d5947" kindref="member">USART_CR1_UE</ref>)</initializer>
+        <briefdescription>
+<para>Enable UART. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the UART Handle. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="1172" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="1172" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Exported__Macros_1gad2f9fbdb4adf3a09939e201eaeea072f" prot="public" static="no">
+        <name>__HAL_UART_DISABLE</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer>((__HANDLE__)-&gt;Instance-&gt;CR1 &amp;= ~<ref refid="group__Peripheral__Registers__Bits__Definition_1ga2bb650676aaae4a5203f372d497d5947" kindref="member">USART_CR1_UE</ref>)</initializer>
+        <briefdescription>
+<para>Disable UART. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the UART Handle. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="1178" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="1178" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Exported__Macros_1ga4a77213945844bca4c22ba6a14b7ee4c" prot="public" static="no">
+        <name>__HAL_UART_HWCONTROL_CTS_ENABLE</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer>  do{                                                             \
+    <ref refid="group__Exported__macros_1ga5daccb3b4245b833e81ff60fd1f4cf80" kindref="member">ATOMIC_SET_BIT</ref>((__HANDLE__)-&gt;Instance-&gt;CR3, <ref refid="group__Peripheral__Registers__Bits__Definition_1gaa125f026b1ca2d76eab48b191baed265" kindref="member">USART_CR3_CTSE</ref>);  \
+    (__HANDLE__)-&gt;Init.HwFlowCtl |= <ref refid="group__Peripheral__Registers__Bits__Definition_1gaa125f026b1ca2d76eab48b191baed265" kindref="member">USART_CR3_CTSE</ref>;               \
+  } while(0U)</initializer>
+        <briefdescription>
+<para>Enable CTS flow control. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>This macro allows to enable CTS hardware flow control for a given UART instance, without need to call <ref refid="group__UART__Exported__Functions__Group1_1gabe47045024787099b0bfa82bbe7b0b6a" kindref="member">HAL_UART_Init()</ref> function. As involving direct access to UART registers, usage of this macro should be fully endorsed by user. </para>
+</simplesect>
+<simplesect kind="note"><para>As macro is expected to be used for modifying CTS Hw flow control feature activation, without need for USART instance Deinit/Init, following conditions for macro call should be fulfilled :<itemizedlist>
+<listitem><para>UART instance should have already been initialised (through call of <ref refid="group__UART__Exported__Functions__Group1_1gabe47045024787099b0bfa82bbe7b0b6a" kindref="member">HAL_UART_Init()</ref> )</para>
+</listitem><listitem><para>macro could only be called when corresponding UART instance is disabled (i.e. <bold>HAL_UART_DISABLE(__HANDLE</bold>)) and should be followed by an Enable macro (i.e. <bold>HAL_UART_ENABLE(__HANDLE</bold>)). </para>
+</listitem></itemizedlist>
+</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the UART Handle. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="1193" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="1193" bodyend="1197"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Exported__Macros_1ga0a26cb3a576c2700f76a7c697c86a499" prot="public" static="no">
+        <name>__HAL_UART_HWCONTROL_CTS_DISABLE</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer>  do{                                                              \
+    <ref refid="group__Exported__macros_1ga08dfef58d3b054b80745eda49e8907fb" kindref="member">ATOMIC_CLEAR_BIT</ref>((__HANDLE__)-&gt;Instance-&gt;CR3, <ref refid="group__Peripheral__Registers__Bits__Definition_1gaa125f026b1ca2d76eab48b191baed265" kindref="member">USART_CR3_CTSE</ref>); \
+    (__HANDLE__)-&gt;Init.HwFlowCtl &amp;= ~(<ref refid="group__Peripheral__Registers__Bits__Definition_1gaa125f026b1ca2d76eab48b191baed265" kindref="member">USART_CR3_CTSE</ref>);             \
+  } while(0U)</initializer>
+        <briefdescription>
+<para>Disable CTS flow control. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>This macro allows to disable CTS hardware flow control for a given UART instance, without need to call <ref refid="group__UART__Exported__Functions__Group1_1gabe47045024787099b0bfa82bbe7b0b6a" kindref="member">HAL_UART_Init()</ref> function. As involving direct access to UART registers, usage of this macro should be fully endorsed by user. </para>
+</simplesect>
+<simplesect kind="note"><para>As macro is expected to be used for modifying CTS Hw flow control feature activation, without need for USART instance Deinit/Init, following conditions for macro call should be fulfilled :<itemizedlist>
+<listitem><para>UART instance should have already been initialised (through call of <ref refid="group__UART__Exported__Functions__Group1_1gabe47045024787099b0bfa82bbe7b0b6a" kindref="member">HAL_UART_Init()</ref> )</para>
+</listitem><listitem><para>macro could only be called when corresponding UART instance is disabled (i.e. <bold>HAL_UART_DISABLE(__HANDLE</bold>)) and should be followed by an Enable macro (i.e. <bold>HAL_UART_ENABLE(__HANDLE</bold>)). </para>
+</listitem></itemizedlist>
+</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the UART Handle. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="1212" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="1212" bodyend="1216"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Exported__Macros_1ga017ec9001ff33136f87cc4034b2709a6" prot="public" static="no">
+        <name>__HAL_UART_HWCONTROL_RTS_ENABLE</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer>  do{                                                            \
+    <ref refid="group__Exported__macros_1ga5daccb3b4245b833e81ff60fd1f4cf80" kindref="member">ATOMIC_SET_BIT</ref>((__HANDLE__)-&gt;Instance-&gt;CR3, <ref refid="group__Peripheral__Registers__Bits__Definition_1ga7c5d6fcd84a4728cda578a0339b4cac2" kindref="member">USART_CR3_RTSE</ref>); \
+    (__HANDLE__)-&gt;Init.HwFlowCtl |= <ref refid="group__Peripheral__Registers__Bits__Definition_1ga7c5d6fcd84a4728cda578a0339b4cac2" kindref="member">USART_CR3_RTSE</ref>;              \
+  } while(0U)</initializer>
+        <briefdescription>
+<para>Enable RTS flow control. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>This macro allows to enable RTS hardware flow control for a given UART instance, without need to call <ref refid="group__UART__Exported__Functions__Group1_1gabe47045024787099b0bfa82bbe7b0b6a" kindref="member">HAL_UART_Init()</ref> function. As involving direct access to UART registers, usage of this macro should be fully endorsed by user. </para>
+</simplesect>
+<simplesect kind="note"><para>As macro is expected to be used for modifying RTS Hw flow control feature activation, without need for USART instance Deinit/Init, following conditions for macro call should be fulfilled :<itemizedlist>
+<listitem><para>UART instance should have already been initialised (through call of <ref refid="group__UART__Exported__Functions__Group1_1gabe47045024787099b0bfa82bbe7b0b6a" kindref="member">HAL_UART_Init()</ref> )</para>
+</listitem><listitem><para>macro could only be called when corresponding UART instance is disabled (i.e. <bold>HAL_UART_DISABLE(__HANDLE</bold>)) and should be followed by an Enable macro (i.e. <bold>HAL_UART_ENABLE(__HANDLE</bold>)). </para>
+</listitem></itemizedlist>
+</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the UART Handle. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="1231" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="1231" bodyend="1235"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Exported__Macros_1ga8c034e96ad8f263cafeb5898ff7311fd" prot="public" static="no">
+        <name>__HAL_UART_HWCONTROL_RTS_DISABLE</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer>  do{                                                             \
+    <ref refid="group__Exported__macros_1ga08dfef58d3b054b80745eda49e8907fb" kindref="member">ATOMIC_CLEAR_BIT</ref>((__HANDLE__)-&gt;Instance-&gt;CR3, <ref refid="group__Peripheral__Registers__Bits__Definition_1ga7c5d6fcd84a4728cda578a0339b4cac2" kindref="member">USART_CR3_RTSE</ref>);\
+    (__HANDLE__)-&gt;Init.HwFlowCtl &amp;= ~(<ref refid="group__Peripheral__Registers__Bits__Definition_1ga7c5d6fcd84a4728cda578a0339b4cac2" kindref="member">USART_CR3_RTSE</ref>);            \
+  } while(0U)</initializer>
+        <briefdescription>
+<para>Disable RTS flow control. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>This macro allows to disable RTS hardware flow control for a given UART instance, without need to call <ref refid="group__UART__Exported__Functions__Group1_1gabe47045024787099b0bfa82bbe7b0b6a" kindref="member">HAL_UART_Init()</ref> function. As involving direct access to UART registers, usage of this macro should be fully endorsed by user. </para>
+</simplesect>
+<simplesect kind="note"><para>As macro is expected to be used for modifying RTS Hw flow control feature activation, without need for USART instance Deinit/Init, following conditions for macro call should be fulfilled :<itemizedlist>
+<listitem><para>UART instance should have already been initialised (through call of <ref refid="group__UART__Exported__Functions__Group1_1gabe47045024787099b0bfa82bbe7b0b6a" kindref="member">HAL_UART_Init()</ref> )</para>
+</listitem><listitem><para>macro could only be called when corresponding UART instance is disabled (i.e. <bold>HAL_UART_DISABLE(__HANDLE</bold>)) and should be followed by an Enable macro (i.e. <bold>HAL_UART_ENABLE(__HANDLE</bold>)). </para>
+</listitem></itemizedlist>
+</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the UART Handle. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" line="1250" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h" bodystart="1250" bodyend="1254"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Exported__Macros_1ga19deab848407b106998416c78092fa9b" prot="public" static="no">
+        <name>__HAL_UART_RESET_HANDLE_STATE</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer>                                                       do{                                                   \
+                                                       (__HANDLE__)-&gt;gState = <ref refid="group__UART__State__Definition_1gacd81aeb745b71fc1c121cc686369600d" kindref="member">HAL_UART_STATE_RESET</ref>;      \
+                                                       (__HANDLE__)-&gt;RxState = <ref refid="group__UART__State__Definition_1gacd81aeb745b71fc1c121cc686369600d" kindref="member">HAL_UART_STATE_RESET</ref>;     \
+                                                     } while(0U)</initializer>
+        <briefdescription>
+<para>Reset UART handle states. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART handle. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" line="891" column="10" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" bodystart="891" bodyend="894"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Exported__Macros_1gafc4f20cb0f29ba146c9bc14167c52744" prot="public" static="no">
+        <name>__HAL_UART_FLUSH_DRREGISTER</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer>  do{                \
+    <ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>((__HANDLE__)-&gt;Instance-&gt;RQR, <ref refid="group__UART__Request__Parameters_1gaf2ee2d4b1bdcbc7772ddc0da89566936" kindref="member">UART_RXDATA_FLUSH_REQUEST</ref>); \
+    <ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>((__HANDLE__)-&gt;Instance-&gt;RQR, <ref refid="group__UART__Request__Parameters_1gafecbd800f456ed666a42ac0842cd2c4b" kindref="member">UART_TXDATA_FLUSH_REQUEST</ref>); \
+  }  while(0U)</initializer>
+        <briefdescription>
+<para>Flush the UART Data registers. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the UART Handle. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" line="901" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" bodystart="901" bodyend="905"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Exported__Macros_1ga9bd035161d41cde4f2568c7af06493bf" prot="public" static="no">
+        <name>__HAL_UART_CLEAR_FLAG</name>
+        <param><defname>__HANDLE__</defname></param>
+        <param><defname>__FLAG__</defname></param>
+        <initializer>((__HANDLE__)-&gt;Instance-&gt;ICR = (__FLAG__))</initializer>
+        <briefdescription>
+<para>Clear the specified UART pending flag. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the UART Handle. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>__FLAG__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the flag to check. This parameter can be any combination of the following values: <itemizedlist>
+<listitem><para><ref refid="group__UART__IT__CLEAR__Flags_1ga9c2aef8048dd09ea5e72d69c63026f02" kindref="member">UART_CLEAR_PEF</ref> Parity Error Clear Flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__IT__CLEAR__Flags_1ga2040edf7a1daa2e9f352364e285ef5c3" kindref="member">UART_CLEAR_FEF</ref> Framing Error Clear Flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__IT__CLEAR__Flags_1gad5b9aafb495296d917a5d85e63383396" kindref="member">UART_CLEAR_NEF</ref> Noise detected Clear Flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__IT__CLEAR__Flags_1ga3bc97b70293f9a7bf8cc21a74094afad" kindref="member">UART_CLEAR_OREF</ref> Overrun Error Clear Flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__IT__CLEAR__Flags_1ga75ee9be0ac2236931ef3d9514e7dedf4" kindref="member">UART_CLEAR_IDLEF</ref> IDLE line detected Clear Flag </para>
+</listitem>
+<listitem><para>UART_CLEAR_TXFECF TXFIFO empty clear Flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__IT__CLEAR__Flags_1gadfbfe4df408d1d09ff2adc1ddad3de09" kindref="member">UART_CLEAR_TCF</ref> Transmission Complete Clear Flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__IT__CLEAR__Flags_1ga2735a415d2c7930fdf2818943fd7ddd2" kindref="member">UART_CLEAR_RTOF</ref> Receiver Timeout clear flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__IT__CLEAR__Flags_1ga030414d9a93ad994156210644634b73c" kindref="member">UART_CLEAR_LBDF</ref> LIN Break Detection Clear Flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__IT__CLEAR__Flags_1gabe0f3bc774ad0b9319732da3be8374cf" kindref="member">UART_CLEAR_CTSF</ref> CTS Interrupt Clear Flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__IT__CLEAR__Flags_1ga5815698abf54d69b752bd2c43c2d6ad3" kindref="member">UART_CLEAR_CMF</ref> Character Match Clear Flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__IT__CLEAR__Flags_1ga5081c579f9956a7712248430f3fe129b" kindref="member">UART_CLEAR_WUF</ref> Wake Up from stop mode Clear Flag </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" line="925" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" bodystart="925" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Exported__Macros_1gaba5e19c60e0f37341b1585a380b84d49" prot="public" static="no">
+        <name>__HAL_UART_CLEAR_PEFLAG</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer><ref refid="group__UART__Exported__Macros_1ga9bd035161d41cde4f2568c7af06493bf" kindref="member">__HAL_UART_CLEAR_FLAG</ref>((__HANDLE__), <ref refid="group__UART__IT__CLEAR__Flags_1ga9c2aef8048dd09ea5e72d69c63026f02" kindref="member">UART_CLEAR_PEF</ref>)</initializer>
+        <briefdescription>
+<para>Clear the UART PE pending flag. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the UART Handle. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" line="931" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" bodystart="931" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Exported__Macros_1gae1dfc7777b089a10464841045b524caa" prot="public" static="no">
+        <name>__HAL_UART_CLEAR_FEFLAG</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer><ref refid="group__UART__Exported__Macros_1ga9bd035161d41cde4f2568c7af06493bf" kindref="member">__HAL_UART_CLEAR_FLAG</ref>((__HANDLE__), <ref refid="group__UART__IT__CLEAR__Flags_1ga2040edf7a1daa2e9f352364e285ef5c3" kindref="member">UART_CLEAR_FEF</ref>)</initializer>
+        <briefdescription>
+<para>Clear the UART FE pending flag. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the UART Handle. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" line="937" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" bodystart="937" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Exported__Macros_1gaa1f69421585b3ada4d2b81d502a3ae6b" prot="public" static="no">
+        <name>__HAL_UART_CLEAR_NEFLAG</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer><ref refid="group__UART__Exported__Macros_1ga9bd035161d41cde4f2568c7af06493bf" kindref="member">__HAL_UART_CLEAR_FLAG</ref>((__HANDLE__), <ref refid="group__UART__IT__CLEAR__Flags_1gad5b9aafb495296d917a5d85e63383396" kindref="member">UART_CLEAR_NEF</ref>)</initializer>
+        <briefdescription>
+<para>Clear the UART NE pending flag. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the UART Handle. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" line="943" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" bodystart="943" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Exported__Macros_1ga9cdc2f2d55eaaa7895996bf6848df42e" prot="public" static="no">
+        <name>__HAL_UART_CLEAR_OREFLAG</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer><ref refid="group__UART__Exported__Macros_1ga9bd035161d41cde4f2568c7af06493bf" kindref="member">__HAL_UART_CLEAR_FLAG</ref>((__HANDLE__), <ref refid="group__UART__IT__CLEAR__Flags_1ga3bc97b70293f9a7bf8cc21a74094afad" kindref="member">UART_CLEAR_OREF</ref>)</initializer>
+        <briefdescription>
+<para>Clear the UART ORE pending flag. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the UART Handle. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" line="949" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" bodystart="949" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Exported__Macros_1ga1345aa0af53d82269b13835c225e91d0" prot="public" static="no">
+        <name>__HAL_UART_CLEAR_IDLEFLAG</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer><ref refid="group__UART__Exported__Macros_1ga9bd035161d41cde4f2568c7af06493bf" kindref="member">__HAL_UART_CLEAR_FLAG</ref>((__HANDLE__), <ref refid="group__UART__IT__CLEAR__Flags_1ga75ee9be0ac2236931ef3d9514e7dedf4" kindref="member">UART_CLEAR_IDLEF</ref>)</initializer>
+        <briefdescription>
+<para>Clear the UART IDLE pending flag. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the UART Handle. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" line="955" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" bodystart="955" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Exported__Macros_1ga261fe8a2afe84ec048113654266c5bf6" prot="public" static="no">
+        <name>__HAL_UART_GET_FLAG</name>
+        <param><defname>__HANDLE__</defname></param>
+        <param><defname>__FLAG__</defname></param>
+        <initializer>(((__HANDLE__)-&gt;Instance-&gt;ISR &amp; (__FLAG__)) == (__FLAG__))</initializer>
+        <briefdescription>
+<para>Check whether the specified UART flag is set or not. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the UART Handle. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>__FLAG__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the flag to check. This parameter can be one of the following values: <itemizedlist>
+<listitem><para>UART_FLAG_TXFT TXFIFO threshold flag </para>
+</listitem>
+<listitem><para>UART_FLAG_RXFT RXFIFO threshold flag </para>
+</listitem>
+<listitem><para>UART_FLAG_RXFF RXFIFO Full flag </para>
+</listitem>
+<listitem><para>UART_FLAG_TXFE TXFIFO Empty flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Flags_1ga18f2d6a153838d8fd53911352a4d87ad" kindref="member">UART_FLAG_REACK</ref> Receive enable acknowledge flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Flags_1gaf4a4ade6fd987ea7f22786269317f94a" kindref="member">UART_FLAG_TEACK</ref> Transmit enable acknowledge flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Flags_1gada80ee73404da204801766e42cbf7163" kindref="member">UART_FLAG_WUF</ref> Wake up from stop mode flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Flags_1ga5d5f6f91093bfb222baa277a86f6b75b" kindref="member">UART_FLAG_RWU</ref> Receiver wake up flag (if the UART in mute mode) </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Flags_1gaea7a67e1f6a8af78e2adfaed59d1a4be" kindref="member">UART_FLAG_SBKF</ref> Send Break flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Flags_1ga01f2c67d8999a9ee8d91ac3cb5e7fbfe" kindref="member">UART_FLAG_CMF</ref> Character match flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Flags_1ga2d1387d412382a345097acb403748ba3" kindref="member">UART_FLAG_BUSY</ref> Busy flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Flags_1ga9e309874f2c8f71e4049ae6cb702a2eb" kindref="member">UART_FLAG_ABRF</ref> Auto Baud rate detection flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Flags_1ga87853efaab808377c8acb9e8b671a2e8" kindref="member">UART_FLAG_ABRE</ref> Auto Baud rate detection error flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Flags_1ga5435edd22ff23de7187654362c48e0b1" kindref="member">UART_FLAG_CTS</ref> CTS Change flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Flags_1ga77b81c3c843b49af940862fe4d6ab933" kindref="member">UART_FLAG_LBDF</ref> LIN Break detection flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Flags_1gad39c017d415a7774c82eb07413a9dbe4" kindref="member">UART_FLAG_TXE</ref> Transmit data register empty flag </para>
+</listitem>
+<listitem><para>UART_FLAG_TXFNF UART TXFIFO not full flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Flags_1ga82e68a0ee4a8b987a47c66fc6f744894" kindref="member">UART_FLAG_TC</ref> Transmission Complete flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Flags_1ga9d1b2860d84a87abb05c3b2fed3c108c" kindref="member">UART_FLAG_RXNE</ref> Receive data register not empty flag </para>
+</listitem>
+<listitem><para>UART_FLAG_RXFNE UART RXFIFO not empty flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Flags_1ga69afec3b174a6b5969e71ea25d973958" kindref="member">UART_FLAG_RTOF</ref> Receiver Timeout flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Flags_1ga5d7a320c505672f7508e3bd99f532a69" kindref="member">UART_FLAG_IDLE</ref> Idle Line detection flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Flags_1ga335a5b0f61512223bbc406b38c95b2d6" kindref="member">UART_FLAG_ORE</ref> Overrun Error flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Flags_1ga665981434d02ff5296361782c1a7d4b5" kindref="member">UART_FLAG_NE</ref> Noise Error flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Flags_1gafba4891ce21cf5223ca5fede0eac388d" kindref="member">UART_FLAG_FE</ref> Framing Error flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Flags_1gad5b96f73f6d3a0b58f07e2e9d7bf14d9" kindref="member">UART_FLAG_PE</ref> Parity Error flag </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>The</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>new state of <bold>FLAG</bold> (TRUE or FALSE). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" line="997" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" bodystart="997" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Exported__Macros_1gaba94165ed584d49c1ec12df9819bd4bb" prot="public" static="no">
+        <name>__HAL_UART_ENABLE_IT</name>
+        <param><defname>__HANDLE__</defname></param>
+        <param><defname>__INTERRUPT__</defname></param>
+        <initializer>                                                           (\
+                                                           ((((uint8_t)(__INTERRUPT__)) &gt;&gt; 5U) == 1U)?\
+                                                           ((__HANDLE__)-&gt;Instance-&gt;CR1 |= (1U &lt;&lt;\
+                                                               ((__INTERRUPT__) &amp; <ref refid="group__UART__Interruption__Mask_1ga869439269c26e8dee93d49b1c7e67448" kindref="member">UART_IT_MASK</ref>))): \
+                                                           ((((uint8_t)(__INTERRUPT__)) &gt;&gt; 5U) == 2U)?\
+                                                           ((__HANDLE__)-&gt;Instance-&gt;CR2 |= (1U &lt;&lt;\
+                                                               ((__INTERRUPT__) &amp; <ref refid="group__UART__Interruption__Mask_1ga869439269c26e8dee93d49b1c7e67448" kindref="member">UART_IT_MASK</ref>))): \
+                                                           ((__HANDLE__)-&gt;Instance-&gt;CR3 |= (1U &lt;&lt;\
+                                                               ((__INTERRUPT__) &amp; <ref refid="group__UART__Interruption__Mask_1ga869439269c26e8dee93d49b1c7e67448" kindref="member">UART_IT_MASK</ref>))))</initializer>
+        <briefdescription>
+<para>Enable the specified UART interrupt. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the UART Handle. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>__INTERRUPT__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the UART interrupt source to enable. This parameter can be one of the following values: <itemizedlist>
+<listitem><para>UART_IT_RXFF RXFIFO Full interrupt </para>
+</listitem>
+<listitem><para>UART_IT_TXFE TXFIFO Empty interrupt </para>
+</listitem>
+<listitem><para>UART_IT_RXFT RXFIFO threshold interrupt </para>
+</listitem>
+<listitem><para>UART_IT_TXFT TXFIFO threshold interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1gab8899f6307781779f65a7c18aabb3204" kindref="member">UART_IT_WUF</ref> Wakeup from stop mode interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1ga4c22e866bce68975a180828012489106" kindref="member">UART_IT_CM</ref> Character match interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1ga986d271478550f9afa918262ca642333" kindref="member">UART_IT_CTS</ref> CTS change interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1gabca5e77508dc2dd9aa26fcb683d9b988" kindref="member">UART_IT_LBD</ref> LIN Break detection interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1ga552636e2af516d578856f5ee2ba71ed7" kindref="member">UART_IT_TXE</ref> Transmit Data Register empty interrupt </para>
+</listitem>
+<listitem><para>UART_IT_TXFNF TX FIFO not full interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1gab9a4dc4e8cea354fd60f4117513b2004" kindref="member">UART_IT_TC</ref> Transmission complete interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1gac1bedf7a65eb8c3f3c4b52bdb24b139d" kindref="member">UART_IT_RXNE</ref> Receive Data register not empty interrupt </para>
+</listitem>
+<listitem><para>UART_IT_RXFNE RXFIFO not empty interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1gaa04d4eba7501b3a0a54d90fe40e626a0" kindref="member">UART_IT_RTO</ref> Receive Timeout interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1ga9781808d4f9999061fc2da36572191d9" kindref="member">UART_IT_IDLE</ref> Idle line detection interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1ga55f922ddcf513509710ade5d7c40a1db" kindref="member">UART_IT_PE</ref> Parity Error interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1ga8eb26d8edd9bf78ae8d3ad87dd51b618" kindref="member">UART_IT_ERR</ref> Error interrupt (frame error, noise error, overrun error) </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" line="1022" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" bodystart="1022" bodyend="1030"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Exported__Macros_1ga3c29b33f38658acbf592e9aaf84c6f33" prot="public" static="no">
+        <name>__HAL_UART_DISABLE_IT</name>
+        <param><defname>__HANDLE__</defname></param>
+        <param><defname>__INTERRUPT__</defname></param>
+        <initializer>                                                           (\
+                                                           ((((uint8_t)(__INTERRUPT__)) &gt;&gt; 5U) == 1U)?\
+                                                           ((__HANDLE__)-&gt;Instance-&gt;CR1 &amp;= ~ (1U &lt;&lt;\
+                                                               ((__INTERRUPT__) &amp; <ref refid="group__UART__Interruption__Mask_1ga869439269c26e8dee93d49b1c7e67448" kindref="member">UART_IT_MASK</ref>))): \
+                                                           ((((uint8_t)(__INTERRUPT__)) &gt;&gt; 5U) == 2U)?\
+                                                           ((__HANDLE__)-&gt;Instance-&gt;CR2 &amp;= ~ (1U &lt;&lt;\
+                                                               ((__INTERRUPT__) &amp; <ref refid="group__UART__Interruption__Mask_1ga869439269c26e8dee93d49b1c7e67448" kindref="member">UART_IT_MASK</ref>))): \
+                                                           ((__HANDLE__)-&gt;Instance-&gt;CR3 &amp;= ~ (1U &lt;&lt;\
+                                                               ((__INTERRUPT__) &amp; <ref refid="group__UART__Interruption__Mask_1ga869439269c26e8dee93d49b1c7e67448" kindref="member">UART_IT_MASK</ref>))))</initializer>
+        <briefdescription>
+<para>Disable the specified UART interrupt. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the UART Handle. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>__INTERRUPT__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the UART interrupt source to disable. This parameter can be one of the following values: <itemizedlist>
+<listitem><para>UART_IT_RXFF RXFIFO Full interrupt </para>
+</listitem>
+<listitem><para>UART_IT_TXFE TXFIFO Empty interrupt </para>
+</listitem>
+<listitem><para>UART_IT_RXFT RXFIFO threshold interrupt </para>
+</listitem>
+<listitem><para>UART_IT_TXFT TXFIFO threshold interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1gab8899f6307781779f65a7c18aabb3204" kindref="member">UART_IT_WUF</ref> Wakeup from stop mode interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1ga4c22e866bce68975a180828012489106" kindref="member">UART_IT_CM</ref> Character match interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1ga986d271478550f9afa918262ca642333" kindref="member">UART_IT_CTS</ref> CTS change interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1gabca5e77508dc2dd9aa26fcb683d9b988" kindref="member">UART_IT_LBD</ref> LIN Break detection interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1ga552636e2af516d578856f5ee2ba71ed7" kindref="member">UART_IT_TXE</ref> Transmit Data Register empty interrupt </para>
+</listitem>
+<listitem><para>UART_IT_TXFNF TX FIFO not full interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1gab9a4dc4e8cea354fd60f4117513b2004" kindref="member">UART_IT_TC</ref> Transmission complete interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1gac1bedf7a65eb8c3f3c4b52bdb24b139d" kindref="member">UART_IT_RXNE</ref> Receive Data register not empty interrupt </para>
+</listitem>
+<listitem><para>UART_IT_RXFNE RXFIFO not empty interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1gaa04d4eba7501b3a0a54d90fe40e626a0" kindref="member">UART_IT_RTO</ref> Receive Timeout interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1ga9781808d4f9999061fc2da36572191d9" kindref="member">UART_IT_IDLE</ref> Idle line detection interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1ga55f922ddcf513509710ade5d7c40a1db" kindref="member">UART_IT_PE</ref> Parity Error interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1ga8eb26d8edd9bf78ae8d3ad87dd51b618" kindref="member">UART_IT_ERR</ref> Error interrupt (Frame error, noise error, overrun error) </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" line="1055" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" bodystart="1055" bodyend="1063"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Exported__Macros_1ga89c4cb1b623c15cfdea2c0a864c8b1e4" prot="public" static="no">
+        <name>__HAL_UART_GET_IT</name>
+        <param><defname>__HANDLE__</defname></param>
+        <param><defname>__INTERRUPT__</defname></param>
+        <initializer>                                                        ((((__HANDLE__)-&gt;Instance-&gt;ISR\
+                                                        &amp; (1U &lt;&lt; ((__INTERRUPT__)&gt;&gt; 8U))) != <ref refid="group__Exported__types_1gga89136caac2e14c55151f527ac02daaffa589b7d94a3d91d145720e2fed0eb3a05" kindref="member">RESET</ref>) ? <ref refid="group__Exported__types_1gga89136caac2e14c55151f527ac02daaffab44c8101cc294c074709ec1b14211792" kindref="member">SET</ref> : <ref refid="group__Exported__types_1gga89136caac2e14c55151f527ac02daaffa589b7d94a3d91d145720e2fed0eb3a05" kindref="member">RESET</ref>)</initializer>
+        <briefdescription>
+<para>Check whether the specified UART interrupt has occurred or not. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the UART Handle. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>__INTERRUPT__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the UART interrupt to check. This parameter can be one of the following values: <itemizedlist>
+<listitem><para>UART_IT_RXFF RXFIFO Full interrupt </para>
+</listitem>
+<listitem><para>UART_IT_TXFE TXFIFO Empty interrupt </para>
+</listitem>
+<listitem><para>UART_IT_RXFT RXFIFO threshold interrupt </para>
+</listitem>
+<listitem><para>UART_IT_TXFT TXFIFO threshold interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1gab8899f6307781779f65a7c18aabb3204" kindref="member">UART_IT_WUF</ref> Wakeup from stop mode interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1ga4c22e866bce68975a180828012489106" kindref="member">UART_IT_CM</ref> Character match interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1ga986d271478550f9afa918262ca642333" kindref="member">UART_IT_CTS</ref> CTS change interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1gabca5e77508dc2dd9aa26fcb683d9b988" kindref="member">UART_IT_LBD</ref> LIN Break detection interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1ga552636e2af516d578856f5ee2ba71ed7" kindref="member">UART_IT_TXE</ref> Transmit Data Register empty interrupt </para>
+</listitem>
+<listitem><para>UART_IT_TXFNF TX FIFO not full interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1gab9a4dc4e8cea354fd60f4117513b2004" kindref="member">UART_IT_TC</ref> Transmission complete interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1gac1bedf7a65eb8c3f3c4b52bdb24b139d" kindref="member">UART_IT_RXNE</ref> Receive Data register not empty interrupt </para>
+</listitem>
+<listitem><para>UART_IT_RXFNE RXFIFO not empty interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1gaa04d4eba7501b3a0a54d90fe40e626a0" kindref="member">UART_IT_RTO</ref> Receive Timeout interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1ga9781808d4f9999061fc2da36572191d9" kindref="member">UART_IT_IDLE</ref> Idle line detection interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1ga55f922ddcf513509710ade5d7c40a1db" kindref="member">UART_IT_PE</ref> Parity Error interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1ga8eb26d8edd9bf78ae8d3ad87dd51b618" kindref="member">UART_IT_ERR</ref> Error interrupt (Frame error, noise error, overrun error) </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>The</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>new state of <bold>INTERRUPT</bold> (SET or RESET). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" line="1088" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" bodystart="1088" bodyend="1089"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Exported__Macros_1gab53dbf1d75f241330428bf426b2963d1" prot="public" static="no">
+        <name>__HAL_UART_GET_IT_SOURCE</name>
+        <param><defname>__HANDLE__</defname></param>
+        <param><defname>__INTERRUPT__</defname></param>
+        <initializer>                                                                ((((((((uint8_t)(__INTERRUPT__)) &gt;&gt; 5U) == 1U) ?\
+                                                                (__HANDLE__)-&gt;Instance-&gt;CR1 : \
+                                                                (((((uint8_t)(__INTERRUPT__)) &gt;&gt; 5U) == 2U) ?\
+                                                                 (__HANDLE__)-&gt;Instance-&gt;CR2 : \
+                                                                 (__HANDLE__)-&gt;Instance-&gt;CR3)) &amp; (1U &lt;&lt;\
+                                                                     (((uint16_t)(__INTERRUPT__)) &amp;\
+                                                                      <ref refid="group__UART__Interruption__Mask_1ga869439269c26e8dee93d49b1c7e67448" kindref="member">UART_IT_MASK</ref>)))  != <ref refid="group__Exported__types_1gga89136caac2e14c55151f527ac02daaffa589b7d94a3d91d145720e2fed0eb3a05" kindref="member">RESET</ref>) ? <ref refid="group__Exported__types_1gga89136caac2e14c55151f527ac02daaffab44c8101cc294c074709ec1b14211792" kindref="member">SET</ref> : <ref refid="group__Exported__types_1gga89136caac2e14c55151f527ac02daaffa589b7d94a3d91d145720e2fed0eb3a05" kindref="member">RESET</ref>)</initializer>
+        <briefdescription>
+<para>Check whether the specified UART interrupt source is enabled or not. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the UART Handle. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>__INTERRUPT__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the UART interrupt source to check. This parameter can be one of the following values: <itemizedlist>
+<listitem><para>UART_IT_RXFF RXFIFO Full interrupt </para>
+</listitem>
+<listitem><para>UART_IT_TXFE TXFIFO Empty interrupt </para>
+</listitem>
+<listitem><para>UART_IT_RXFT RXFIFO threshold interrupt </para>
+</listitem>
+<listitem><para>UART_IT_TXFT TXFIFO threshold interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1gab8899f6307781779f65a7c18aabb3204" kindref="member">UART_IT_WUF</ref> Wakeup from stop mode interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1ga4c22e866bce68975a180828012489106" kindref="member">UART_IT_CM</ref> Character match interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1ga986d271478550f9afa918262ca642333" kindref="member">UART_IT_CTS</ref> CTS change interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1gabca5e77508dc2dd9aa26fcb683d9b988" kindref="member">UART_IT_LBD</ref> LIN Break detection interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1ga552636e2af516d578856f5ee2ba71ed7" kindref="member">UART_IT_TXE</ref> Transmit Data Register empty interrupt </para>
+</listitem>
+<listitem><para>UART_IT_TXFNF TX FIFO not full interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1gab9a4dc4e8cea354fd60f4117513b2004" kindref="member">UART_IT_TC</ref> Transmission complete interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1gac1bedf7a65eb8c3f3c4b52bdb24b139d" kindref="member">UART_IT_RXNE</ref> Receive Data register not empty interrupt </para>
+</listitem>
+<listitem><para>UART_IT_RXFNE RXFIFO not empty interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1gaa04d4eba7501b3a0a54d90fe40e626a0" kindref="member">UART_IT_RTO</ref> Receive Timeout interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1ga9781808d4f9999061fc2da36572191d9" kindref="member">UART_IT_IDLE</ref> Idle line detection interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1ga55f922ddcf513509710ade5d7c40a1db" kindref="member">UART_IT_PE</ref> Parity Error interrupt </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Interrupt__definition_1ga8eb26d8edd9bf78ae8d3ad87dd51b618" kindref="member">UART_IT_ERR</ref> Error interrupt (Frame error, noise error, overrun error) </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>The</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>new state of <bold>INTERRUPT</bold> (SET or RESET). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" line="1114" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" bodystart="1114" bodyend="1120"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Exported__Macros_1gaa81e0f2503bd2a699e7e478507946bb2" prot="public" static="no">
+        <name>__HAL_UART_CLEAR_IT</name>
+        <param><defname>__HANDLE__</defname></param>
+        <param><defname>__IT_CLEAR__</defname></param>
+        <initializer>((__HANDLE__)-&gt;Instance-&gt;ICR = (uint32_t)(__IT_CLEAR__))</initializer>
+        <briefdescription>
+<para>Clear the specified UART ISR flag, in setting the proper ICR register flag. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the UART Handle. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>__IT_CLEAR__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the interrupt clear register flag that needs to be set to clear the corresponding interrupt This parameter can be one of the following values: <itemizedlist>
+<listitem><para><ref refid="group__UART__IT__CLEAR__Flags_1ga9c2aef8048dd09ea5e72d69c63026f02" kindref="member">UART_CLEAR_PEF</ref> Parity Error Clear Flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__IT__CLEAR__Flags_1ga2040edf7a1daa2e9f352364e285ef5c3" kindref="member">UART_CLEAR_FEF</ref> Framing Error Clear Flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__IT__CLEAR__Flags_1gad5b9aafb495296d917a5d85e63383396" kindref="member">UART_CLEAR_NEF</ref> Noise detected Clear Flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__IT__CLEAR__Flags_1ga3bc97b70293f9a7bf8cc21a74094afad" kindref="member">UART_CLEAR_OREF</ref> Overrun Error Clear Flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__IT__CLEAR__Flags_1ga75ee9be0ac2236931ef3d9514e7dedf4" kindref="member">UART_CLEAR_IDLEF</ref> IDLE line detected Clear Flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__IT__CLEAR__Flags_1ga2735a415d2c7930fdf2818943fd7ddd2" kindref="member">UART_CLEAR_RTOF</ref> Receiver timeout clear flag </para>
+</listitem>
+<listitem><para>UART_CLEAR_TXFECF TXFIFO empty Clear Flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__IT__CLEAR__Flags_1gadfbfe4df408d1d09ff2adc1ddad3de09" kindref="member">UART_CLEAR_TCF</ref> Transmission Complete Clear Flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__IT__CLEAR__Flags_1ga030414d9a93ad994156210644634b73c" kindref="member">UART_CLEAR_LBDF</ref> LIN Break Detection Clear Flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__IT__CLEAR__Flags_1gabe0f3bc774ad0b9319732da3be8374cf" kindref="member">UART_CLEAR_CTSF</ref> CTS Interrupt Clear Flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__IT__CLEAR__Flags_1ga5815698abf54d69b752bd2c43c2d6ad3" kindref="member">UART_CLEAR_CMF</ref> Character Match Clear Flag </para>
+</listitem>
+<listitem><para><ref refid="group__UART__IT__CLEAR__Flags_1ga5081c579f9956a7712248430f3fe129b" kindref="member">UART_CLEAR_WUF</ref> Wake Up from stop mode Clear Flag </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" line="1141" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" bodystart="1141" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Exported__Macros_1ga568a15495a9e2a9d230474b9e8bcc8e4" prot="public" static="no">
+        <name>__HAL_UART_SEND_REQ</name>
+        <param><defname>__HANDLE__</defname></param>
+        <param><defname>__REQ__</defname></param>
+        <initializer>((__HANDLE__)-&gt;Instance-&gt;RQR |= (uint16_t)(__REQ__))</initializer>
+        <briefdescription>
+<para>Set a specific UART request flag. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the UART Handle. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>__REQ__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the request flag to set This parameter can be one of the following values: <itemizedlist>
+<listitem><para><ref refid="group__UART__Request__Parameters_1ga8cdce81a934ab7d0c2eecb4d85300d4e" kindref="member">UART_AUTOBAUD_REQUEST</ref> Auto-Baud Rate Request </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Request__Parameters_1ga52ced88a9f4ce90f3725901cf91f38b3" kindref="member">UART_SENDBREAK_REQUEST</ref> Send Break Request </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Request__Parameters_1gadd5f511803928fd042f7fc6ef99f9cfb" kindref="member">UART_MUTE_MODE_REQUEST</ref> Mute Mode Request </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Request__Parameters_1gaf2ee2d4b1bdcbc7772ddc0da89566936" kindref="member">UART_RXDATA_FLUSH_REQUEST</ref> Receive Data flush Request </para>
+</listitem>
+<listitem><para><ref refid="group__UART__Request__Parameters_1gafecbd800f456ed666a42ac0842cd2c4b" kindref="member">UART_TXDATA_FLUSH_REQUEST</ref> Transmit data flush Request </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" line="1154" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" bodystart="1154" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Exported__Macros_1ga3524747e5896296ab066d786431503ce" prot="public" static="no">
+        <name>__HAL_UART_ONE_BIT_SAMPLE_ENABLE</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer>((__HANDLE__)-&gt;Instance-&gt;CR3|= <ref refid="group__Peripheral__Registers__Bits__Definition_1ga9a96fb1a7beab602cbc8cb0393593826" kindref="member">USART_CR3_ONEBIT</ref>)</initializer>
+        <briefdescription>
+<para>Enable the UART one bit sample method. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the UART Handle. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" line="1160" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" bodystart="1160" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Exported__Macros_1ga2dbd7e6592e8c5999f817b69f0fd24bb" prot="public" static="no">
+        <name>__HAL_UART_ONE_BIT_SAMPLE_DISABLE</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer>((__HANDLE__)-&gt;Instance-&gt;CR3 &amp;= ~<ref refid="group__Peripheral__Registers__Bits__Definition_1ga9a96fb1a7beab602cbc8cb0393593826" kindref="member">USART_CR3_ONEBIT</ref>)</initializer>
+        <briefdescription>
+<para>Disable the UART one bit sample method. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the UART Handle. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" line="1166" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" bodystart="1166" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Exported__Macros_1ga49eb5ea4996a957afeb8be2793ba3fe9" prot="public" static="no">
+        <name>__HAL_UART_ENABLE</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer>((__HANDLE__)-&gt;Instance-&gt;CR1 |= <ref refid="group__Peripheral__Registers__Bits__Definition_1ga2bb650676aaae4a5203f372d497d5947" kindref="member">USART_CR1_UE</ref>)</initializer>
+        <briefdescription>
+<para>Enable UART. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the UART Handle. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" line="1172" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" bodystart="1172" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Exported__Macros_1gad2f9fbdb4adf3a09939e201eaeea072f" prot="public" static="no">
+        <name>__HAL_UART_DISABLE</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer>((__HANDLE__)-&gt;Instance-&gt;CR1 &amp;= ~<ref refid="group__Peripheral__Registers__Bits__Definition_1ga2bb650676aaae4a5203f372d497d5947" kindref="member">USART_CR1_UE</ref>)</initializer>
+        <briefdescription>
+<para>Disable UART. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the UART Handle. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" line="1178" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" bodystart="1178" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Exported__Macros_1ga4a77213945844bca4c22ba6a14b7ee4c" prot="public" static="no">
+        <name>__HAL_UART_HWCONTROL_CTS_ENABLE</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer>  do{                                                             \
+    <ref refid="group__Exported__macros_1ga5daccb3b4245b833e81ff60fd1f4cf80" kindref="member">ATOMIC_SET_BIT</ref>((__HANDLE__)-&gt;Instance-&gt;CR3, <ref refid="group__Peripheral__Registers__Bits__Definition_1gaa125f026b1ca2d76eab48b191baed265" kindref="member">USART_CR3_CTSE</ref>);  \
+    (__HANDLE__)-&gt;Init.HwFlowCtl |= <ref refid="group__Peripheral__Registers__Bits__Definition_1gaa125f026b1ca2d76eab48b191baed265" kindref="member">USART_CR3_CTSE</ref>;               \
+  } while(0U)</initializer>
+        <briefdescription>
+<para>Enable CTS flow control. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>This macro allows to enable CTS hardware flow control for a given UART instance, without need to call <ref refid="group__UART__Exported__Functions__Group1_1gabe47045024787099b0bfa82bbe7b0b6a" kindref="member">HAL_UART_Init()</ref> function. As involving direct access to UART registers, usage of this macro should be fully endorsed by user. </para>
+</simplesect>
+<simplesect kind="note"><para>As macro is expected to be used for modifying CTS Hw flow control feature activation, without need for USART instance Deinit/Init, following conditions for macro call should be fulfilled :<itemizedlist>
+<listitem><para>UART instance should have already been initialised (through call of <ref refid="group__UART__Exported__Functions__Group1_1gabe47045024787099b0bfa82bbe7b0b6a" kindref="member">HAL_UART_Init()</ref> )</para>
+</listitem><listitem><para>macro could only be called when corresponding UART instance is disabled (i.e. <bold>HAL_UART_DISABLE(__HANDLE</bold>)) and should be followed by an Enable macro (i.e. <bold>HAL_UART_ENABLE(__HANDLE</bold>)). </para>
+</listitem></itemizedlist>
+</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the UART Handle. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" line="1193" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" bodystart="1193" bodyend="1197"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Exported__Macros_1ga0a26cb3a576c2700f76a7c697c86a499" prot="public" static="no">
+        <name>__HAL_UART_HWCONTROL_CTS_DISABLE</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer>  do{                                                              \
+    <ref refid="group__Exported__macros_1ga08dfef58d3b054b80745eda49e8907fb" kindref="member">ATOMIC_CLEAR_BIT</ref>((__HANDLE__)-&gt;Instance-&gt;CR3, <ref refid="group__Peripheral__Registers__Bits__Definition_1gaa125f026b1ca2d76eab48b191baed265" kindref="member">USART_CR3_CTSE</ref>); \
+    (__HANDLE__)-&gt;Init.HwFlowCtl &amp;= ~(<ref refid="group__Peripheral__Registers__Bits__Definition_1gaa125f026b1ca2d76eab48b191baed265" kindref="member">USART_CR3_CTSE</ref>);             \
+  } while(0U)</initializer>
+        <briefdescription>
+<para>Disable CTS flow control. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>This macro allows to disable CTS hardware flow control for a given UART instance, without need to call <ref refid="group__UART__Exported__Functions__Group1_1gabe47045024787099b0bfa82bbe7b0b6a" kindref="member">HAL_UART_Init()</ref> function. As involving direct access to UART registers, usage of this macro should be fully endorsed by user. </para>
+</simplesect>
+<simplesect kind="note"><para>As macro is expected to be used for modifying CTS Hw flow control feature activation, without need for USART instance Deinit/Init, following conditions for macro call should be fulfilled :<itemizedlist>
+<listitem><para>UART instance should have already been initialised (through call of <ref refid="group__UART__Exported__Functions__Group1_1gabe47045024787099b0bfa82bbe7b0b6a" kindref="member">HAL_UART_Init()</ref> )</para>
+</listitem><listitem><para>macro could only be called when corresponding UART instance is disabled (i.e. <bold>HAL_UART_DISABLE(__HANDLE</bold>)) and should be followed by an Enable macro (i.e. <bold>HAL_UART_ENABLE(__HANDLE</bold>)). </para>
+</listitem></itemizedlist>
+</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the UART Handle. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" line="1212" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" bodystart="1212" bodyend="1216"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Exported__Macros_1ga017ec9001ff33136f87cc4034b2709a6" prot="public" static="no">
+        <name>__HAL_UART_HWCONTROL_RTS_ENABLE</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer>  do{                                                            \
+    <ref refid="group__Exported__macros_1ga5daccb3b4245b833e81ff60fd1f4cf80" kindref="member">ATOMIC_SET_BIT</ref>((__HANDLE__)-&gt;Instance-&gt;CR3, <ref refid="group__Peripheral__Registers__Bits__Definition_1ga7c5d6fcd84a4728cda578a0339b4cac2" kindref="member">USART_CR3_RTSE</ref>); \
+    (__HANDLE__)-&gt;Init.HwFlowCtl |= <ref refid="group__Peripheral__Registers__Bits__Definition_1ga7c5d6fcd84a4728cda578a0339b4cac2" kindref="member">USART_CR3_RTSE</ref>;              \
+  } while(0U)</initializer>
+        <briefdescription>
+<para>Enable RTS flow control. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>This macro allows to enable RTS hardware flow control for a given UART instance, without need to call <ref refid="group__UART__Exported__Functions__Group1_1gabe47045024787099b0bfa82bbe7b0b6a" kindref="member">HAL_UART_Init()</ref> function. As involving direct access to UART registers, usage of this macro should be fully endorsed by user. </para>
+</simplesect>
+<simplesect kind="note"><para>As macro is expected to be used for modifying RTS Hw flow control feature activation, without need for USART instance Deinit/Init, following conditions for macro call should be fulfilled :<itemizedlist>
+<listitem><para>UART instance should have already been initialised (through call of <ref refid="group__UART__Exported__Functions__Group1_1gabe47045024787099b0bfa82bbe7b0b6a" kindref="member">HAL_UART_Init()</ref> )</para>
+</listitem><listitem><para>macro could only be called when corresponding UART instance is disabled (i.e. <bold>HAL_UART_DISABLE(__HANDLE</bold>)) and should be followed by an Enable macro (i.e. <bold>HAL_UART_ENABLE(__HANDLE</bold>)). </para>
+</listitem></itemizedlist>
+</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the UART Handle. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" line="1231" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" bodystart="1231" bodyend="1235"/>
+      </memberdef>
+      <memberdef kind="define" id="group__UART__Exported__Macros_1ga8c034e96ad8f263cafeb5898ff7311fd" prot="public" static="no">
+        <name>__HAL_UART_HWCONTROL_RTS_DISABLE</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer>  do{                                                             \
+    <ref refid="group__Exported__macros_1ga08dfef58d3b054b80745eda49e8907fb" kindref="member">ATOMIC_CLEAR_BIT</ref>((__HANDLE__)-&gt;Instance-&gt;CR3, <ref refid="group__Peripheral__Registers__Bits__Definition_1ga7c5d6fcd84a4728cda578a0339b4cac2" kindref="member">USART_CR3_RTSE</ref>);\
+    (__HANDLE__)-&gt;Init.HwFlowCtl &amp;= ~(<ref refid="group__Peripheral__Registers__Bits__Definition_1ga7c5d6fcd84a4728cda578a0339b4cac2" kindref="member">USART_CR3_RTSE</ref>);            \
+  } while(0U)</initializer>
+        <briefdescription>
+<para>Disable RTS flow control. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>This macro allows to disable RTS hardware flow control for a given UART instance, without need to call <ref refid="group__UART__Exported__Functions__Group1_1gabe47045024787099b0bfa82bbe7b0b6a" kindref="member">HAL_UART_Init()</ref> function. As involving direct access to UART registers, usage of this macro should be fully endorsed by user. </para>
+</simplesect>
+<simplesect kind="note"><para>As macro is expected to be used for modifying RTS Hw flow control feature activation, without need for USART instance Deinit/Init, following conditions for macro call should be fulfilled :<itemizedlist>
+<listitem><para>UART instance should have already been initialised (through call of <ref refid="group__UART__Exported__Functions__Group1_1gabe47045024787099b0bfa82bbe7b0b6a" kindref="member">HAL_UART_Init()</ref> )</para>
+</listitem><listitem><para>macro could only be called when corresponding UART instance is disabled (i.e. <bold>HAL_UART_DISABLE(__HANDLE</bold>)) and should be followed by an Enable macro (i.e. <bold>HAL_UART_ENABLE(__HANDLE</bold>)). </para>
+</listitem></itemizedlist>
+</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the UART Handle. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" line="1250" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_uart.h" bodystart="1250" bodyend="1254"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

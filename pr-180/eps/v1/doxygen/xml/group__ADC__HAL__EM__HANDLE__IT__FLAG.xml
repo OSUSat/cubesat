@@ -1,0 +1,727 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="group__ADC__HAL__EM__HANDLE__IT__FLAG" kind="group">
+    <compoundname>ADC_HAL_EM_HANDLE_IT_FLAG</compoundname>
+    <title>HAL ADC macro to manage HAL ADC handle, IT and flags.</title>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="group__ADC__HAL__EM__HANDLE__IT__FLAG_1gacb290bae25b972942021331122a3600f" prot="public" static="no">
+        <name>__HAL_ADC_RESET_HANDLE_STATE</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer>  ((__HANDLE__)-&gt;State = <ref refid="group__ADC__States_1ga3f995b6dedd7366d0663f852511b9104" kindref="member">HAL_ADC_STATE_RESET</ref>)</initializer>
+        <briefdescription>
+<para>Reset ADC handle state. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ADC handle </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" line="1238" column="10" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" bodystart="1238" bodyend="1239"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ADC__HAL__EM__HANDLE__IT__FLAG_1ga650073de508d335d0a1c7bf9b4d07afe" prot="public" static="no">
+        <name>__HAL_ADC_ENABLE_IT</name>
+        <param><defname>__HANDLE__</defname></param>
+        <param><defname>__INTERRUPT__</defname></param>
+        <initializer>  (((__HANDLE__)-&gt;Instance-&gt;IER) |= (__INTERRUPT__))</initializer>
+        <briefdescription>
+<para>Enable ADC interrupt. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ADC handle </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>__INTERRUPT__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ADC Interrupt This parameter can be one of the following values: <itemizedlist>
+<listitem><para><ref refid="group__ADC__interrupts__definition_1gad46aa18aeb55285ecda24956c9811936" kindref="member">ADC_IT_RDY</ref> ADC Ready interrupt source </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__interrupts__definition_1ga955e4c06483055cade95fc849ff3af29" kindref="member">ADC_IT_EOSMP</ref> ADC End of Sampling interrupt source </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__interrupts__definition_1ga0ad335d835f54415194d448019569e00" kindref="member">ADC_IT_EOC</ref> ADC End of Regular Conversion interrupt source </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__interrupts__definition_1gaefebf69110054387451593d4d52ce197" kindref="member">ADC_IT_EOS</ref> ADC End of Regular sequence of Conversions interrupt source </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__interrupts__definition_1gac3852b7789860e0ea79b82115ab877a0" kindref="member">ADC_IT_OVR</ref> ADC overrun interrupt source </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__interrupts__definition_1gad439fc0cd69706704d47aeabfeddb631" kindref="member">ADC_IT_JEOC</ref> ADC End of Injected Conversion interrupt source </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__interrupts__definition_1gaa4a17b2f33af88b894f54e68e4f9148b" kindref="member">ADC_IT_JEOS</ref> ADC End of Injected sequence of Conversions interrupt source </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__interrupts__definition_1gaaed0d609d1e547913724a13cb000fc31" kindref="member">ADC_IT_AWD1</ref> ADC Analog watchdog 1 interrupt source (main analog watchdog) </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__interrupts__definition_1gacacb81c883fcee6f00f993300fff6461" kindref="member">ADC_IT_AWD2</ref> ADC Analog watchdog 2 interrupt source (additional analog watchdog) </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__interrupts__definition_1gae843883bdd162d68cc36c3735bdd8a12" kindref="member">ADC_IT_AWD3</ref> ADC Analog watchdog 3 interrupt source (additional analog watchdog) </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__interrupts__definition_1gad12ccf04090f488ec0dfa92d96a51dd9" kindref="member">ADC_IT_JQOVF</ref> ADC Injected Context Queue Overflow interrupt source. </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" line="1260" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" bodystart="1260" bodyend="1261"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ADC__HAL__EM__HANDLE__IT__FLAG_1gadcec48b44a2133effd20f41ab227edb9" prot="public" static="no">
+        <name>__HAL_ADC_DISABLE_IT</name>
+        <param><defname>__HANDLE__</defname></param>
+        <param><defname>__INTERRUPT__</defname></param>
+        <initializer>  (((__HANDLE__)-&gt;Instance-&gt;IER) &amp;= ~(__INTERRUPT__))</initializer>
+        <briefdescription>
+<para>Disable ADC interrupt. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ADC handle </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>__INTERRUPT__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ADC Interrupt This parameter can be one of the following values: <itemizedlist>
+<listitem><para><ref refid="group__ADC__interrupts__definition_1gad46aa18aeb55285ecda24956c9811936" kindref="member">ADC_IT_RDY</ref> ADC Ready interrupt source </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__interrupts__definition_1ga955e4c06483055cade95fc849ff3af29" kindref="member">ADC_IT_EOSMP</ref> ADC End of Sampling interrupt source </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__interrupts__definition_1ga0ad335d835f54415194d448019569e00" kindref="member">ADC_IT_EOC</ref> ADC End of Regular Conversion interrupt source </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__interrupts__definition_1gaefebf69110054387451593d4d52ce197" kindref="member">ADC_IT_EOS</ref> ADC End of Regular sequence of Conversions interrupt source </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__interrupts__definition_1gac3852b7789860e0ea79b82115ab877a0" kindref="member">ADC_IT_OVR</ref> ADC overrun interrupt source </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__interrupts__definition_1gad439fc0cd69706704d47aeabfeddb631" kindref="member">ADC_IT_JEOC</ref> ADC End of Injected Conversion interrupt source </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__interrupts__definition_1gaa4a17b2f33af88b894f54e68e4f9148b" kindref="member">ADC_IT_JEOS</ref> ADC End of Injected sequence of Conversions interrupt source </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__interrupts__definition_1gaaed0d609d1e547913724a13cb000fc31" kindref="member">ADC_IT_AWD1</ref> ADC Analog watchdog 1 interrupt source (main analog watchdog) </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__interrupts__definition_1gacacb81c883fcee6f00f993300fff6461" kindref="member">ADC_IT_AWD2</ref> ADC Analog watchdog 2 interrupt source (additional analog watchdog) </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__interrupts__definition_1gae843883bdd162d68cc36c3735bdd8a12" kindref="member">ADC_IT_AWD3</ref> ADC Analog watchdog 3 interrupt source (additional analog watchdog) </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__interrupts__definition_1gad12ccf04090f488ec0dfa92d96a51dd9" kindref="member">ADC_IT_JQOVF</ref> ADC Injected Context Queue Overflow interrupt source. </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" line="1281" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" bodystart="1281" bodyend="1282"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ADC__HAL__EM__HANDLE__IT__FLAG_1gaf29cd943cb451e4ed1f07bd7d4854fb0" prot="public" static="no">
+        <name>__HAL_ADC_GET_IT_SOURCE</name>
+        <param><defname>__HANDLE__</defname></param>
+        <param><defname>__INTERRUPT__</defname></param>
+        <initializer>  (((__HANDLE__)-&gt;Instance-&gt;IER &amp; (__INTERRUPT__)) == (__INTERRUPT__))</initializer>
+        <briefdescription>
+<para>Checks if the specified ADC interrupt source is enabled or disabled. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ADC handle </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>__INTERRUPT__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ADC interrupt source to check This parameter can be one of the following values: <itemizedlist>
+<listitem><para><ref refid="group__ADC__interrupts__definition_1gad46aa18aeb55285ecda24956c9811936" kindref="member">ADC_IT_RDY</ref> ADC Ready interrupt source </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__interrupts__definition_1ga955e4c06483055cade95fc849ff3af29" kindref="member">ADC_IT_EOSMP</ref> ADC End of Sampling interrupt source </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__interrupts__definition_1ga0ad335d835f54415194d448019569e00" kindref="member">ADC_IT_EOC</ref> ADC End of Regular Conversion interrupt source </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__interrupts__definition_1gaefebf69110054387451593d4d52ce197" kindref="member">ADC_IT_EOS</ref> ADC End of Regular sequence of Conversions interrupt source </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__interrupts__definition_1gac3852b7789860e0ea79b82115ab877a0" kindref="member">ADC_IT_OVR</ref> ADC overrun interrupt source </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__interrupts__definition_1gad439fc0cd69706704d47aeabfeddb631" kindref="member">ADC_IT_JEOC</ref> ADC End of Injected Conversion interrupt source </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__interrupts__definition_1gaa4a17b2f33af88b894f54e68e4f9148b" kindref="member">ADC_IT_JEOS</ref> ADC End of Injected sequence of Conversions interrupt source </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__interrupts__definition_1gaaed0d609d1e547913724a13cb000fc31" kindref="member">ADC_IT_AWD1</ref> ADC Analog watchdog 1 interrupt source (main analog watchdog) </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__interrupts__definition_1gacacb81c883fcee6f00f993300fff6461" kindref="member">ADC_IT_AWD2</ref> ADC Analog watchdog 2 interrupt source (additional analog watchdog) </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__interrupts__definition_1gae843883bdd162d68cc36c3735bdd8a12" kindref="member">ADC_IT_AWD3</ref> ADC Analog watchdog 3 interrupt source (additional analog watchdog) </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__interrupts__definition_1gad12ccf04090f488ec0dfa92d96a51dd9" kindref="member">ADC_IT_JQOVF</ref> ADC Injected Context Queue Overflow interrupt source. </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>State</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>of interruption (SET or RESET) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" line="1301" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" bodystart="1301" bodyend="1302"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ADC__HAL__EM__HANDLE__IT__FLAG_1gaff951862689bb92173f803577cf2d447" prot="public" static="no">
+        <name>__HAL_ADC_GET_FLAG</name>
+        <param><defname>__HANDLE__</defname></param>
+        <param><defname>__FLAG__</defname></param>
+        <initializer>  ((((__HANDLE__)-&gt;Instance-&gt;ISR) &amp; (__FLAG__)) == (__FLAG__))</initializer>
+        <briefdescription>
+<para>Check whether the specified ADC flag is set or not. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ADC handle </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>__FLAG__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ADC flag This parameter can be one of the following values: <itemizedlist>
+<listitem><para><ref refid="group__ADC__flags__definition_1gaf1a4a140115121cc0ec1f821d2c8c199" kindref="member">ADC_FLAG_RDY</ref> ADC Ready flag </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__flags__definition_1gacf79acb4682b5c104fe38f9dff035656" kindref="member">ADC_FLAG_EOSMP</ref> ADC End of Sampling flag </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__flags__definition_1gaf2c6fdf7e9ab63b778149e5fb56413d4" kindref="member">ADC_FLAG_EOC</ref> ADC End of Regular Conversion flag </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__flags__definition_1gac3acbfd08e72d33bc520dac5998f7e52" kindref="member">ADC_FLAG_EOS</ref> ADC End of Regular sequence of Conversions flag </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__flags__definition_1ga6e8f399d2af342bd18b9f5803cb986e7" kindref="member">ADC_FLAG_OVR</ref> ADC overrun flag </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__flags__definition_1ga4df8eea8ab83d98104ee15a339743a4e" kindref="member">ADC_FLAG_JEOC</ref> ADC End of Injected Conversion flag </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__flags__definition_1gadecc793b0a121e763d373454cf23d6e4" kindref="member">ADC_FLAG_JEOS</ref> ADC End of Injected sequence of Conversions flag </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__flags__definition_1ga93c3537ba0c71001d07e40df4fdb3e35" kindref="member">ADC_FLAG_AWD1</ref> ADC Analog watchdog 1 flag (main analog watchdog) </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__flags__definition_1ga15447535e0916abe29a370578d4266e7" kindref="member">ADC_FLAG_AWD2</ref> ADC Analog watchdog 2 flag (additional analog watchdog) </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__flags__definition_1gae75b7f1aeae23999d37023cd8970b68e" kindref="member">ADC_FLAG_AWD3</ref> ADC Analog watchdog 3 flag (additional analog watchdog) </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__flags__definition_1ga69a66d3b5476bbea4c7481b63523583c" kindref="member">ADC_FLAG_JQOVF</ref> ADC Injected Context Queue Overflow flag. </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>State</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>of flag (TRUE or FALSE). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" line="1322" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" bodystart="1322" bodyend="1323"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ADC__HAL__EM__HANDLE__IT__FLAG_1gafe44e1e66141bca3665bb82981a81a17" prot="public" static="no">
+        <name>__HAL_ADC_CLEAR_FLAG</name>
+        <param><defname>__HANDLE__</defname></param>
+        <param><defname>__FLAG__</defname></param>
+        <initializer>  (((__HANDLE__)-&gt;Instance-&gt;ISR) = (__FLAG__))</initializer>
+        <briefdescription>
+<para>Clear the specified ADC flag. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ADC handle </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>__FLAG__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ADC flag This parameter can be one of the following values: <itemizedlist>
+<listitem><para><ref refid="group__ADC__flags__definition_1gaf1a4a140115121cc0ec1f821d2c8c199" kindref="member">ADC_FLAG_RDY</ref> ADC Ready flag </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__flags__definition_1gacf79acb4682b5c104fe38f9dff035656" kindref="member">ADC_FLAG_EOSMP</ref> ADC End of Sampling flag </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__flags__definition_1gaf2c6fdf7e9ab63b778149e5fb56413d4" kindref="member">ADC_FLAG_EOC</ref> ADC End of Regular Conversion flag </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__flags__definition_1gac3acbfd08e72d33bc520dac5998f7e52" kindref="member">ADC_FLAG_EOS</ref> ADC End of Regular sequence of Conversions flag </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__flags__definition_1ga6e8f399d2af342bd18b9f5803cb986e7" kindref="member">ADC_FLAG_OVR</ref> ADC overrun flag </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__flags__definition_1ga4df8eea8ab83d98104ee15a339743a4e" kindref="member">ADC_FLAG_JEOC</ref> ADC End of Injected Conversion flag </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__flags__definition_1gadecc793b0a121e763d373454cf23d6e4" kindref="member">ADC_FLAG_JEOS</ref> ADC End of Injected sequence of Conversions flag </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__flags__definition_1ga93c3537ba0c71001d07e40df4fdb3e35" kindref="member">ADC_FLAG_AWD1</ref> ADC Analog watchdog 1 flag (main analog watchdog) </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__flags__definition_1ga15447535e0916abe29a370578d4266e7" kindref="member">ADC_FLAG_AWD2</ref> ADC Analog watchdog 2 flag (additional analog watchdog) </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__flags__definition_1gae75b7f1aeae23999d37023cd8970b68e" kindref="member">ADC_FLAG_AWD3</ref> ADC Analog watchdog 3 flag (additional analog watchdog) </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__flags__definition_1ga69a66d3b5476bbea4c7481b63523583c" kindref="member">ADC_FLAG_JQOVF</ref> ADC Injected Context Queue Overflow flag. </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" line="1344" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" bodystart="1344" bodyend="1345"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ADC__HAL__EM__HANDLE__IT__FLAG_1gacb290bae25b972942021331122a3600f" prot="public" static="no">
+        <name>__HAL_ADC_RESET_HANDLE_STATE</name>
+        <param><defname>__HANDLE__</defname></param>
+        <initializer>  ((__HANDLE__)-&gt;State = <ref refid="group__ADC__States_1ga3f995b6dedd7366d0663f852511b9104" kindref="member">HAL_ADC_STATE_RESET</ref>)</initializer>
+        <briefdescription>
+<para>Reset ADC handle state. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ADC handle </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_adc.h" line="1238" column="10" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_adc.h" bodystart="1238" bodyend="1239"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ADC__HAL__EM__HANDLE__IT__FLAG_1ga650073de508d335d0a1c7bf9b4d07afe" prot="public" static="no">
+        <name>__HAL_ADC_ENABLE_IT</name>
+        <param><defname>__HANDLE__</defname></param>
+        <param><defname>__INTERRUPT__</defname></param>
+        <initializer>  (((__HANDLE__)-&gt;Instance-&gt;IER) |= (__INTERRUPT__))</initializer>
+        <briefdescription>
+<para>Enable ADC interrupt. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ADC handle </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>__INTERRUPT__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ADC Interrupt This parameter can be one of the following values: <itemizedlist>
+<listitem><para><ref refid="group__ADC__interrupts__definition_1gad46aa18aeb55285ecda24956c9811936" kindref="member">ADC_IT_RDY</ref> ADC Ready interrupt source </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__interrupts__definition_1ga955e4c06483055cade95fc849ff3af29" kindref="member">ADC_IT_EOSMP</ref> ADC End of Sampling interrupt source </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__interrupts__definition_1ga0ad335d835f54415194d448019569e00" kindref="member">ADC_IT_EOC</ref> ADC End of Regular Conversion interrupt source </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__interrupts__definition_1gaefebf69110054387451593d4d52ce197" kindref="member">ADC_IT_EOS</ref> ADC End of Regular sequence of Conversions interrupt source </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__interrupts__definition_1gac3852b7789860e0ea79b82115ab877a0" kindref="member">ADC_IT_OVR</ref> ADC overrun interrupt source </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__interrupts__definition_1gad439fc0cd69706704d47aeabfeddb631" kindref="member">ADC_IT_JEOC</ref> ADC End of Injected Conversion interrupt source </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__interrupts__definition_1gaa4a17b2f33af88b894f54e68e4f9148b" kindref="member">ADC_IT_JEOS</ref> ADC End of Injected sequence of Conversions interrupt source </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__interrupts__definition_1gaaed0d609d1e547913724a13cb000fc31" kindref="member">ADC_IT_AWD1</ref> ADC Analog watchdog 1 interrupt source (main analog watchdog) </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__interrupts__definition_1gacacb81c883fcee6f00f993300fff6461" kindref="member">ADC_IT_AWD2</ref> ADC Analog watchdog 2 interrupt source (additional analog watchdog) </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__interrupts__definition_1gae843883bdd162d68cc36c3735bdd8a12" kindref="member">ADC_IT_AWD3</ref> ADC Analog watchdog 3 interrupt source (additional analog watchdog) </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__interrupts__definition_1gad12ccf04090f488ec0dfa92d96a51dd9" kindref="member">ADC_IT_JQOVF</ref> ADC Injected Context Queue Overflow interrupt source. </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_adc.h" line="1260" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_adc.h" bodystart="1260" bodyend="1261"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ADC__HAL__EM__HANDLE__IT__FLAG_1gadcec48b44a2133effd20f41ab227edb9" prot="public" static="no">
+        <name>__HAL_ADC_DISABLE_IT</name>
+        <param><defname>__HANDLE__</defname></param>
+        <param><defname>__INTERRUPT__</defname></param>
+        <initializer>  (((__HANDLE__)-&gt;Instance-&gt;IER) &amp;= ~(__INTERRUPT__))</initializer>
+        <briefdescription>
+<para>Disable ADC interrupt. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ADC handle </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>__INTERRUPT__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ADC Interrupt This parameter can be one of the following values: <itemizedlist>
+<listitem><para><ref refid="group__ADC__interrupts__definition_1gad46aa18aeb55285ecda24956c9811936" kindref="member">ADC_IT_RDY</ref> ADC Ready interrupt source </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__interrupts__definition_1ga955e4c06483055cade95fc849ff3af29" kindref="member">ADC_IT_EOSMP</ref> ADC End of Sampling interrupt source </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__interrupts__definition_1ga0ad335d835f54415194d448019569e00" kindref="member">ADC_IT_EOC</ref> ADC End of Regular Conversion interrupt source </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__interrupts__definition_1gaefebf69110054387451593d4d52ce197" kindref="member">ADC_IT_EOS</ref> ADC End of Regular sequence of Conversions interrupt source </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__interrupts__definition_1gac3852b7789860e0ea79b82115ab877a0" kindref="member">ADC_IT_OVR</ref> ADC overrun interrupt source </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__interrupts__definition_1gad439fc0cd69706704d47aeabfeddb631" kindref="member">ADC_IT_JEOC</ref> ADC End of Injected Conversion interrupt source </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__interrupts__definition_1gaa4a17b2f33af88b894f54e68e4f9148b" kindref="member">ADC_IT_JEOS</ref> ADC End of Injected sequence of Conversions interrupt source </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__interrupts__definition_1gaaed0d609d1e547913724a13cb000fc31" kindref="member">ADC_IT_AWD1</ref> ADC Analog watchdog 1 interrupt source (main analog watchdog) </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__interrupts__definition_1gacacb81c883fcee6f00f993300fff6461" kindref="member">ADC_IT_AWD2</ref> ADC Analog watchdog 2 interrupt source (additional analog watchdog) </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__interrupts__definition_1gae843883bdd162d68cc36c3735bdd8a12" kindref="member">ADC_IT_AWD3</ref> ADC Analog watchdog 3 interrupt source (additional analog watchdog) </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__interrupts__definition_1gad12ccf04090f488ec0dfa92d96a51dd9" kindref="member">ADC_IT_JQOVF</ref> ADC Injected Context Queue Overflow interrupt source. </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_adc.h" line="1281" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_adc.h" bodystart="1281" bodyend="1282"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ADC__HAL__EM__HANDLE__IT__FLAG_1gaf29cd943cb451e4ed1f07bd7d4854fb0" prot="public" static="no">
+        <name>__HAL_ADC_GET_IT_SOURCE</name>
+        <param><defname>__HANDLE__</defname></param>
+        <param><defname>__INTERRUPT__</defname></param>
+        <initializer>  (((__HANDLE__)-&gt;Instance-&gt;IER &amp; (__INTERRUPT__)) == (__INTERRUPT__))</initializer>
+        <briefdescription>
+<para>Checks if the specified ADC interrupt source is enabled or disabled. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ADC handle </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>__INTERRUPT__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ADC interrupt source to check This parameter can be one of the following values: <itemizedlist>
+<listitem><para><ref refid="group__ADC__interrupts__definition_1gad46aa18aeb55285ecda24956c9811936" kindref="member">ADC_IT_RDY</ref> ADC Ready interrupt source </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__interrupts__definition_1ga955e4c06483055cade95fc849ff3af29" kindref="member">ADC_IT_EOSMP</ref> ADC End of Sampling interrupt source </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__interrupts__definition_1ga0ad335d835f54415194d448019569e00" kindref="member">ADC_IT_EOC</ref> ADC End of Regular Conversion interrupt source </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__interrupts__definition_1gaefebf69110054387451593d4d52ce197" kindref="member">ADC_IT_EOS</ref> ADC End of Regular sequence of Conversions interrupt source </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__interrupts__definition_1gac3852b7789860e0ea79b82115ab877a0" kindref="member">ADC_IT_OVR</ref> ADC overrun interrupt source </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__interrupts__definition_1gad439fc0cd69706704d47aeabfeddb631" kindref="member">ADC_IT_JEOC</ref> ADC End of Injected Conversion interrupt source </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__interrupts__definition_1gaa4a17b2f33af88b894f54e68e4f9148b" kindref="member">ADC_IT_JEOS</ref> ADC End of Injected sequence of Conversions interrupt source </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__interrupts__definition_1gaaed0d609d1e547913724a13cb000fc31" kindref="member">ADC_IT_AWD1</ref> ADC Analog watchdog 1 interrupt source (main analog watchdog) </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__interrupts__definition_1gacacb81c883fcee6f00f993300fff6461" kindref="member">ADC_IT_AWD2</ref> ADC Analog watchdog 2 interrupt source (additional analog watchdog) </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__interrupts__definition_1gae843883bdd162d68cc36c3735bdd8a12" kindref="member">ADC_IT_AWD3</ref> ADC Analog watchdog 3 interrupt source (additional analog watchdog) </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__interrupts__definition_1gad12ccf04090f488ec0dfa92d96a51dd9" kindref="member">ADC_IT_JQOVF</ref> ADC Injected Context Queue Overflow interrupt source. </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>State</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>of interruption (SET or RESET) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_adc.h" line="1301" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_adc.h" bodystart="1301" bodyend="1302"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ADC__HAL__EM__HANDLE__IT__FLAG_1gaff951862689bb92173f803577cf2d447" prot="public" static="no">
+        <name>__HAL_ADC_GET_FLAG</name>
+        <param><defname>__HANDLE__</defname></param>
+        <param><defname>__FLAG__</defname></param>
+        <initializer>  ((((__HANDLE__)-&gt;Instance-&gt;ISR) &amp; (__FLAG__)) == (__FLAG__))</initializer>
+        <briefdescription>
+<para>Check whether the specified ADC flag is set or not. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ADC handle </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>__FLAG__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ADC flag This parameter can be one of the following values: <itemizedlist>
+<listitem><para><ref refid="group__ADC__flags__definition_1gaf1a4a140115121cc0ec1f821d2c8c199" kindref="member">ADC_FLAG_RDY</ref> ADC Ready flag </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__flags__definition_1gacf79acb4682b5c104fe38f9dff035656" kindref="member">ADC_FLAG_EOSMP</ref> ADC End of Sampling flag </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__flags__definition_1gaf2c6fdf7e9ab63b778149e5fb56413d4" kindref="member">ADC_FLAG_EOC</ref> ADC End of Regular Conversion flag </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__flags__definition_1gac3acbfd08e72d33bc520dac5998f7e52" kindref="member">ADC_FLAG_EOS</ref> ADC End of Regular sequence of Conversions flag </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__flags__definition_1ga6e8f399d2af342bd18b9f5803cb986e7" kindref="member">ADC_FLAG_OVR</ref> ADC overrun flag </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__flags__definition_1ga4df8eea8ab83d98104ee15a339743a4e" kindref="member">ADC_FLAG_JEOC</ref> ADC End of Injected Conversion flag </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__flags__definition_1gadecc793b0a121e763d373454cf23d6e4" kindref="member">ADC_FLAG_JEOS</ref> ADC End of Injected sequence of Conversions flag </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__flags__definition_1ga93c3537ba0c71001d07e40df4fdb3e35" kindref="member">ADC_FLAG_AWD1</ref> ADC Analog watchdog 1 flag (main analog watchdog) </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__flags__definition_1ga15447535e0916abe29a370578d4266e7" kindref="member">ADC_FLAG_AWD2</ref> ADC Analog watchdog 2 flag (additional analog watchdog) </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__flags__definition_1gae75b7f1aeae23999d37023cd8970b68e" kindref="member">ADC_FLAG_AWD3</ref> ADC Analog watchdog 3 flag (additional analog watchdog) </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__flags__definition_1ga69a66d3b5476bbea4c7481b63523583c" kindref="member">ADC_FLAG_JQOVF</ref> ADC Injected Context Queue Overflow flag. </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>State</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>of flag (TRUE or FALSE). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_adc.h" line="1322" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_adc.h" bodystart="1322" bodyend="1323"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ADC__HAL__EM__HANDLE__IT__FLAG_1gafe44e1e66141bca3665bb82981a81a17" prot="public" static="no">
+        <name>__HAL_ADC_CLEAR_FLAG</name>
+        <param><defname>__HANDLE__</defname></param>
+        <param><defname>__FLAG__</defname></param>
+        <initializer>  (((__HANDLE__)-&gt;Instance-&gt;ISR) = (__FLAG__))</initializer>
+        <briefdescription>
+<para>Clear the specified ADC flag. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__HANDLE__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ADC handle </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>__FLAG__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ADC flag This parameter can be one of the following values: <itemizedlist>
+<listitem><para><ref refid="group__ADC__flags__definition_1gaf1a4a140115121cc0ec1f821d2c8c199" kindref="member">ADC_FLAG_RDY</ref> ADC Ready flag </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__flags__definition_1gacf79acb4682b5c104fe38f9dff035656" kindref="member">ADC_FLAG_EOSMP</ref> ADC End of Sampling flag </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__flags__definition_1gaf2c6fdf7e9ab63b778149e5fb56413d4" kindref="member">ADC_FLAG_EOC</ref> ADC End of Regular Conversion flag </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__flags__definition_1gac3acbfd08e72d33bc520dac5998f7e52" kindref="member">ADC_FLAG_EOS</ref> ADC End of Regular sequence of Conversions flag </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__flags__definition_1ga6e8f399d2af342bd18b9f5803cb986e7" kindref="member">ADC_FLAG_OVR</ref> ADC overrun flag </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__flags__definition_1ga4df8eea8ab83d98104ee15a339743a4e" kindref="member">ADC_FLAG_JEOC</ref> ADC End of Injected Conversion flag </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__flags__definition_1gadecc793b0a121e763d373454cf23d6e4" kindref="member">ADC_FLAG_JEOS</ref> ADC End of Injected sequence of Conversions flag </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__flags__definition_1ga93c3537ba0c71001d07e40df4fdb3e35" kindref="member">ADC_FLAG_AWD1</ref> ADC Analog watchdog 1 flag (main analog watchdog) </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__flags__definition_1ga15447535e0916abe29a370578d4266e7" kindref="member">ADC_FLAG_AWD2</ref> ADC Analog watchdog 2 flag (additional analog watchdog) </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__flags__definition_1gae75b7f1aeae23999d37023cd8970b68e" kindref="member">ADC_FLAG_AWD3</ref> ADC Analog watchdog 3 flag (additional analog watchdog) </para>
+</listitem>
+<listitem><para><ref refid="group__ADC__flags__definition_1ga69a66d3b5476bbea4c7481b63523583c" kindref="member">ADC_FLAG_JQOVF</ref> ADC Injected Context Queue Overflow flag. </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_adc.h" line="1344" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_adc.h" bodystart="1344" bodyend="1345"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

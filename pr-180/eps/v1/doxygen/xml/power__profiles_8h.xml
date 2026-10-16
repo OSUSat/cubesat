@@ -1,0 +1,162 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="power__profiles_8h" kind="file" language="C++">
+    <compoundname>power_profiles.h</compoundname>
+    <includes refid="rail__controller_8h" local="yes">rail_controller.h</includes>
+    <includes local="no">stdbool.h</includes>
+    <includes local="no">stddef.h</includes>
+    <includedby refid="power__policies_8h" local="yes">/home/runner/work/cubesat/cubesat/eps/v1/firmware/app/power_policies.h</includedby>
+    <includedby refid="main_8c" local="yes">/home/runner/work/cubesat/cubesat/eps/v1/firmware/main.c</includedby>
+    <includedby refid="power__profiles_8c" local="yes">/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/power_profiles.c</includedby>
+    <includedby refid="test__power__profiles_8c" local="yes">/home/runner/work/cubesat/cubesat/eps/v1/firmware/tests/test_power_profiles.c</includedby>
+    <incdepgraph>
+      <node id="3">
+        <label>eps_config.h</label>
+        <link refid="eps__config_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>hal_gpio_types.h</label>
+        <link refid="hal__gpio__types_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/power_profiles.h</label>
+        <link refid="power__profiles_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>rail_controller.h</label>
+        <link refid="rail__controller_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>stdbool.h</label>
+      </node>
+      <node id="7">
+        <label>stddef.h</label>
+      </node>
+      <node id="6">
+        <label>stdint.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="3">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/app/power_policies.c</label>
+        <link refid="power__policies_8c"/>
+      </node>
+      <node id="2">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/app/power_policies.h</label>
+        <link refid="power__policies_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/main.c</label>
+        <link refid="main_8c"/>
+      </node>
+      <node id="5">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/power_profiles.c</label>
+        <link refid="power__profiles_8c"/>
+      </node>
+      <node id="1">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/power_profiles.h</label>
+        <link refid="power__profiles_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/tests/test_power_profiles.c</label>
+        <link refid="test__power__profiles_8c"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structpower__profile__info__t" prot="public">power_profile_info_t</innerclass>
+    <innerclass refid="structpower__profiles__t" prot="public">power_profiles_t</innerclass>
+    <sectiondef kind="enum">
+      <member refid="group__power__profiles__types_1gaaa76c374d83ff47037a4930b2a616025" kind="enum"><name>power_profile_t</name></member>
+      <member refid="group__power__profiles__types_1gaffe08cae8739332391c30af934a68280" kind="enum"><name>power_profile_status_t</name></member>
+    </sectiondef>
+    <sectiondef kind="func">
+      <member refid="group__power__profiles__api_1gab8448eefa1b2c48c6385e8ab507ffce4" kind="function"><name>power_profiles_init</name></member>
+      <member refid="group__power__profiles__api_1gad7c6a83ce0113bd858d66ca7b2c91f45" kind="function"><name>power_profiles_enable</name></member>
+      <member refid="group__power__profiles__api_1ga9fc78b2b700a9edb2843ffea8ad17f8c" kind="function"><name>power_profiles_disable</name></member>
+    </sectiondef>
+    <briefdescription>
+<para>Power Profiles abstraction layer &amp; API. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This service allows the application layer (Power Policies) to manage groups of power rails collectively. Instead of micromanaging individual rails, the application can request high-level system states like &quot;nominal&quot; or &quot;safe,&quot; and this service ensures the correct combination of rails is enabled or disabled. </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>POWER_PROFILES_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>POWER_PROFILES_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="rail__controller_8h" kindref="compound">rail_controller.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdbool.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stddef.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46" refid="group__power__profiles__types_1gaaa76c374d83ff47037a4930b2a616025" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="47" refid="group__power__profiles__types_1ggaaa76c374d83ff47037a4930b2a616025a94c0466438e870a5895ae082f37d1c7c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__power__profiles__types_1ggaaa76c374d83ff47037a4930b2a616025a94c0466438e870a5895ae082f37d1c7c" kindref="member">POWER_PROFILE_NOMINAL</ref>,<sp/></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__power__profiles__types_1ggaaa76c374d83ff47037a4930b2a616025a8e3f2e879a8ec11926814ea8cb5e403f" kindref="member">POWER_PROFILE_SAFE</ref>,<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>add<sp/>more<sp/>profiles<sp/>as<sp/>needed</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal">}<sp/><ref refid="group__power__profiles__types_1gaaa76c374d83ff47037a4930b2a616025" kindref="member">power_profile_t</ref>;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60" refid="structpower__profile__info__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="61" refid="structpower__profile__info__t_1a7b1b1387a4be433665337202fa407ca4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="eps__config_8h_1a73c39de4f420a491a24f9b39649a2455" kindref="member">power_rail_t</ref><sp/>*<ref refid="structpower__profile__info__t_1a7b1b1387a4be433665337202fa407ca4" kindref="member">rails</ref>;<sp/></highlight></codeline>
+<codeline lineno="62" refid="structpower__profile__info__t_1a85186541bdd9d1bc8972e53213337255" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structpower__profile__info__t_1a85186541bdd9d1bc8972e53213337255" kindref="member">count</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="63"><highlight class="normal">}<sp/><ref refid="structpower__profile__info__t" kindref="compound">power_profile_info_t</ref>;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69" refid="group__power__profiles__types_1gaffe08cae8739332391c30af934a68280" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="70" refid="group__power__profiles__types_1ggaffe08cae8739332391c30af934a68280a4f32efdb8273667595d5b1827aa42ac8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__power__profiles__types_1ggaffe08cae8739332391c30af934a68280a4f32efdb8273667595d5b1827aa42ac8" kindref="member">POWER_PROFILE_SUCCESS</ref>,<sp/></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__power__profiles__types_1ggaffe08cae8739332391c30af934a68280acfc21d8e61e3345d86db66660e26620e" kindref="member">POWER_PROFILE_ERROR_INVALID_PROFILE</ref><sp/></highlight></codeline>
+<codeline lineno="73" refid="group__power__profiles__types_1ggaffe08cae8739332391c30af934a68280acfc21d8e61e3345d86db66660e26620e" refkind="member"><highlight class="normal">}<sp/><ref refid="group__power__profiles__types_1gaffe08cae8739332391c30af934a68280" kindref="member">power_profile_status_t</ref>;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79" refid="structpower__profiles__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structrail__controller__t" kindref="compound">rail_controller_t</ref></highlight></codeline>
+<codeline lineno="81" refid="structpower__profiles__t_1a43f735344dc5923fd95329aa83d4d230" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="structpower__profiles__t_1a43f735344dc5923fd95329aa83d4d230" kindref="member">rail_controller</ref>;<sp/></highlight></codeline>
+<codeline lineno="82" refid="structpower__profiles__t_1aa161369cef5e6f219067f40f2b356d90" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__power__profiles__types_1gaaa76c374d83ff47037a4930b2a616025" kindref="member">power_profile_t</ref><sp/><ref refid="structpower__profiles__t_1aa161369cef5e6f219067f40f2b356d90" kindref="member">current_profile</ref>;<sp/></highlight></codeline>
+<codeline lineno="83" refid="structpower__profiles__t_1a356afb85cead295316ba22d1f55e646d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structpower__profiles__t_1a356afb85cead295316ba22d1f55e646d" kindref="member">initialized</ref>;<sp/></highlight></codeline>
+<codeline lineno="84"><highlight class="normal">}<sp/><ref refid="structpower__profiles__t" kindref="compound">power_profiles_t</ref>;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<sp/><highlight class="comment">//<sp/>end<sp/>power_profiles_types</highlight><codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__power__profiles__api_1gab8448eefa1b2c48c6385e8ab507ffce4" kindref="member">power_profiles_init</ref>(<ref refid="structpower__profiles__t" kindref="compound">power_profiles_t</ref><sp/>*profiles,</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structrail__controller__t" kindref="compound">rail_controller_t</ref><sp/>*controller);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><ref refid="group__power__profiles__types_1gaffe08cae8739332391c30af934a68280" kindref="member">power_profile_status_t</ref><sp/><ref refid="group__power__profiles__api_1gad7c6a83ce0113bd858d66ca7b2c91f45" kindref="member">power_profiles_enable</ref>(<ref refid="structpower__profiles__t" kindref="compound">power_profiles_t</ref><sp/>*profiles,</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__power__profiles__types_1gaaa76c374d83ff47037a4930b2a616025" kindref="member">power_profile_t</ref><sp/>profile);</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><ref refid="group__power__profiles__types_1gaffe08cae8739332391c30af934a68280" kindref="member">power_profile_status_t</ref><sp/><ref refid="group__power__profiles__api_1ga9fc78b2b700a9edb2843ffea8ad17f8c" kindref="member">power_profiles_disable</ref>(<ref refid="structpower__profiles__t" kindref="compound">power_profiles_t</ref><sp/>*profiles,</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__power__profiles__types_1gaaa76c374d83ff47037a4930b2a616025" kindref="member">power_profile_t</ref><sp/>profile);</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<sp/><highlight class="comment">//<sp/>end<sp/>power_profiles_api</highlight><codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<sp/><highlight class="comment">//<sp/>end<sp/>power_profiles</highlight><codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>POWER_PROFILES_H</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/power_profiles.h"/>
+  </compounddef>
+</doxygen>
