@@ -1,0 +1,169 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="group__EXTI__Private__Macros" kind="group">
+    <compoundname>EXTI_Private_Macros</compoundname>
+    <title>EXTI Private Macros</title>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="group__EXTI__Private__Macros_1gad1612a68c70ca4cdd0cbd3554e359af5" prot="public" static="no">
+        <name>IS_EXTI_LINE</name>
+        <param><defname>__EXTI_LINE__</defname></param>
+        <initializer>                                        ((((__EXTI_LINE__) &amp; ~(<ref refid="group__EXTI__Private__Constants_1ga6aa8e044ea8987b6839f419123734e4b" kindref="member">EXTI_PROPERTY_MASK</ref> | <ref refid="group__EXTI__Private__Constants_1ga34a030aa06cdf8b312993663d910a4b3" kindref="member">EXTI_EVENT_PRESENCE_MASK</ref> | <ref refid="group__EXTI__Private__Constants_1ga1aa525d078e0b4ba049f08d9f06f4012" kindref="member">EXTI_REG_MASK</ref> | <ref refid="group__EXTI__Private__Constants_1ga755405defae45017e19a17fd0279869c" kindref="member">EXTI_PIN_MASK</ref>)) == 0x00u) &amp;&amp; \
+                                        ((((__EXTI_LINE__) &amp; <ref refid="group__EXTI__Private__Constants_1ga6aa8e044ea8987b6839f419123734e4b" kindref="member">EXTI_PROPERTY_MASK</ref>) == <ref refid="group__EXTI__Private__Constants_1ga6a646555edd627e1e7b43aa4e87b4aa7" kindref="member">EXTI_DIRECT</ref>)   || \
+                                         (((__EXTI_LINE__) &amp; <ref refid="group__EXTI__Private__Constants_1ga6aa8e044ea8987b6839f419123734e4b" kindref="member">EXTI_PROPERTY_MASK</ref>) == <ref refid="group__EXTI__Private__Constants_1ga6f245ca02e17c1798fe43a66ea5b7fa4" kindref="member">EXTI_CONFIG</ref>)   || \
+                                         (((__EXTI_LINE__) &amp; <ref refid="group__EXTI__Private__Constants_1ga6aa8e044ea8987b6839f419123734e4b" kindref="member">EXTI_PROPERTY_MASK</ref>) == <ref refid="group__EXTI__Private__Constants_1gacfa322960fc87db022536119cabb4d2a" kindref="member">EXTI_GPIO</ref>))    &amp;&amp; \
+                                         (((__EXTI_LINE__) &amp; (<ref refid="group__EXTI__Private__Constants_1ga1aa525d078e0b4ba049f08d9f06f4012" kindref="member">EXTI_REG_MASK</ref> | <ref refid="group__EXTI__Private__Constants_1ga755405defae45017e19a17fd0279869c" kindref="member">EXTI_PIN_MASK</ref>))      &lt; \
+                                         (((<ref refid="group__EXTI__Private__Constants_1ga577c4d3186ba6dd303761b23510595ef" kindref="member">EXTI_LINE_NB</ref> / 32u) &lt;&lt; <ref refid="group__EXTI__Private__Constants_1ga187f8b65fedba7cc4a5662552dd0eb40" kindref="member">EXTI_REG_SHIFT</ref>) | (<ref refid="group__EXTI__Private__Constants_1ga577c4d3186ba6dd303761b23510595ef" kindref="member">EXTI_LINE_NB</ref> % 32u))))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_exti.h" line="703" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_exti.h" bodystart="703" bodyend="708"/>
+      </memberdef>
+      <memberdef kind="define" id="group__EXTI__Private__Macros_1gaa19d2fffcd305b75bf037aaf8f071ba7" prot="public" static="no">
+        <name>IS_EXTI_MODE</name>
+        <param><defname>__EXTI_LINE__</defname></param>
+        <initializer>                                         ((((__EXTI_LINE__) &amp; <ref refid="group__EXTI__Private__Constants_1ga657f081646b552ee10bdfc7af94b5cdf" kindref="member">EXTI_MODE_MASK</ref>) != 0x00u) &amp;&amp; \
+                                         (((__EXTI_LINE__) &amp; ~<ref refid="group__EXTI__Private__Constants_1ga657f081646b552ee10bdfc7af94b5cdf" kindref="member">EXTI_MODE_MASK</ref>) == 0x00u))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_exti.h" line="710" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_exti.h" bodystart="710" bodyend="711"/>
+      </memberdef>
+      <memberdef kind="define" id="group__EXTI__Private__Macros_1gaba684e88699639398fb59c361c13c113" prot="public" static="no">
+        <name>IS_EXTI_TRIGGER</name>
+        <param><defname>__EXTI_LINE__</defname></param>
+        <initializer>(((__EXTI_LINE__) &amp; ~<ref refid="group__EXTI__Private__Constants_1ga3e14df666414849fd5a3907a96a2a892" kindref="member">EXTI_TRIGGER_MASK</ref>) == 0x00u)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_exti.h" line="713" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_exti.h" bodystart="713" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__EXTI__Private__Macros_1ga8fc9a0110e16df06c61b51d46e50eb3f" prot="public" static="no">
+        <name>IS_EXTI_PENDING_EDGE</name>
+        <param><defname>__EXTI_LINE__</defname></param>
+        <initializer>((__EXTI_LINE__) == <ref refid="group__EXTI__Trigger_1ga481cea6a2aafe107e5657b65887c81d5" kindref="member">EXTI_TRIGGER_RISING_FALLING</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_exti.h" line="715" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_exti.h" bodystart="715" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__EXTI__Private__Macros_1ga1ec20cce9b1da8e1bd3de992511ccc1e" prot="public" static="no">
+        <name>IS_EXTI_CONFIG_LINE</name>
+        <param><defname>__EXTI_LINE__</defname></param>
+        <initializer>(((__EXTI_LINE__) &amp; <ref refid="group__EXTI__Private__Constants_1ga6f245ca02e17c1798fe43a66ea5b7fa4" kindref="member">EXTI_CONFIG</ref>) != 0x00u)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_exti.h" line="717" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_exti.h" bodystart="717" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__EXTI__Private__Macros_1ga82f191b2ea96948f302dc6c2108ea534" prot="public" static="no">
+        <name>IS_EXTI_GPIO_PIN</name>
+        <param><defname>__PIN__</defname></param>
+        <initializer>((__PIN__) &lt; 16u)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_exti.h" line="801" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_exti.h" bodystart="801" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__EXTI__Private__Macros_1gad1612a68c70ca4cdd0cbd3554e359af5" prot="public" static="no">
+        <name>IS_EXTI_LINE</name>
+        <param><defname>__EXTI_LINE__</defname></param>
+        <initializer>                                        ((((__EXTI_LINE__) &amp; ~(<ref refid="group__EXTI__Private__Constants_1ga6aa8e044ea8987b6839f419123734e4b" kindref="member">EXTI_PROPERTY_MASK</ref> | <ref refid="group__EXTI__Private__Constants_1ga34a030aa06cdf8b312993663d910a4b3" kindref="member">EXTI_EVENT_PRESENCE_MASK</ref> | <ref refid="group__EXTI__Private__Constants_1ga1aa525d078e0b4ba049f08d9f06f4012" kindref="member">EXTI_REG_MASK</ref> | <ref refid="group__EXTI__Private__Constants_1ga755405defae45017e19a17fd0279869c" kindref="member">EXTI_PIN_MASK</ref>)) == 0x00u) &amp;&amp; \
+                                        ((((__EXTI_LINE__) &amp; <ref refid="group__EXTI__Private__Constants_1ga6aa8e044ea8987b6839f419123734e4b" kindref="member">EXTI_PROPERTY_MASK</ref>) == <ref refid="group__EXTI__Private__Constants_1ga6a646555edd627e1e7b43aa4e87b4aa7" kindref="member">EXTI_DIRECT</ref>)   || \
+                                         (((__EXTI_LINE__) &amp; <ref refid="group__EXTI__Private__Constants_1ga6aa8e044ea8987b6839f419123734e4b" kindref="member">EXTI_PROPERTY_MASK</ref>) == <ref refid="group__EXTI__Private__Constants_1ga6f245ca02e17c1798fe43a66ea5b7fa4" kindref="member">EXTI_CONFIG</ref>)   || \
+                                         (((__EXTI_LINE__) &amp; <ref refid="group__EXTI__Private__Constants_1ga6aa8e044ea8987b6839f419123734e4b" kindref="member">EXTI_PROPERTY_MASK</ref>) == <ref refid="group__EXTI__Private__Constants_1gacfa322960fc87db022536119cabb4d2a" kindref="member">EXTI_GPIO</ref>))    &amp;&amp; \
+                                         (((__EXTI_LINE__) &amp; (<ref refid="group__EXTI__Private__Constants_1ga1aa525d078e0b4ba049f08d9f06f4012" kindref="member">EXTI_REG_MASK</ref> | <ref refid="group__EXTI__Private__Constants_1ga755405defae45017e19a17fd0279869c" kindref="member">EXTI_PIN_MASK</ref>))      &lt; \
+                                         (((<ref refid="group__EXTI__Private__Constants_1ga577c4d3186ba6dd303761b23510595ef" kindref="member">EXTI_LINE_NB</ref> / 32u) &lt;&lt; <ref refid="group__EXTI__Private__Constants_1ga187f8b65fedba7cc4a5662552dd0eb40" kindref="member">EXTI_REG_SHIFT</ref>) | (<ref refid="group__EXTI__Private__Constants_1ga577c4d3186ba6dd303761b23510595ef" kindref="member">EXTI_LINE_NB</ref> % 32u))))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_exti.h" line="703" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_exti.h" bodystart="703" bodyend="708"/>
+      </memberdef>
+      <memberdef kind="define" id="group__EXTI__Private__Macros_1gaa19d2fffcd305b75bf037aaf8f071ba7" prot="public" static="no">
+        <name>IS_EXTI_MODE</name>
+        <param><defname>__EXTI_LINE__</defname></param>
+        <initializer>                                         ((((__EXTI_LINE__) &amp; <ref refid="group__EXTI__Private__Constants_1ga657f081646b552ee10bdfc7af94b5cdf" kindref="member">EXTI_MODE_MASK</ref>) != 0x00u) &amp;&amp; \
+                                         (((__EXTI_LINE__) &amp; ~<ref refid="group__EXTI__Private__Constants_1ga657f081646b552ee10bdfc7af94b5cdf" kindref="member">EXTI_MODE_MASK</ref>) == 0x00u))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_exti.h" line="710" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_exti.h" bodystart="710" bodyend="711"/>
+      </memberdef>
+      <memberdef kind="define" id="group__EXTI__Private__Macros_1gaba684e88699639398fb59c361c13c113" prot="public" static="no">
+        <name>IS_EXTI_TRIGGER</name>
+        <param><defname>__EXTI_LINE__</defname></param>
+        <initializer>(((__EXTI_LINE__) &amp; ~<ref refid="group__EXTI__Private__Constants_1ga3e14df666414849fd5a3907a96a2a892" kindref="member">EXTI_TRIGGER_MASK</ref>) == 0x00u)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_exti.h" line="713" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_exti.h" bodystart="713" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__EXTI__Private__Macros_1ga8fc9a0110e16df06c61b51d46e50eb3f" prot="public" static="no">
+        <name>IS_EXTI_PENDING_EDGE</name>
+        <param><defname>__EXTI_LINE__</defname></param>
+        <initializer>((__EXTI_LINE__) == <ref refid="group__EXTI__Trigger_1ga481cea6a2aafe107e5657b65887c81d5" kindref="member">EXTI_TRIGGER_RISING_FALLING</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_exti.h" line="715" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_exti.h" bodystart="715" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__EXTI__Private__Macros_1ga1ec20cce9b1da8e1bd3de992511ccc1e" prot="public" static="no">
+        <name>IS_EXTI_CONFIG_LINE</name>
+        <param><defname>__EXTI_LINE__</defname></param>
+        <initializer>(((__EXTI_LINE__) &amp; <ref refid="group__EXTI__Private__Constants_1ga6f245ca02e17c1798fe43a66ea5b7fa4" kindref="member">EXTI_CONFIG</ref>) != 0x00u)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_exti.h" line="717" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_exti.h" bodystart="717" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__EXTI__Private__Macros_1ga82f191b2ea96948f302dc6c2108ea534" prot="public" static="no">
+        <name>IS_EXTI_GPIO_PIN</name>
+        <param><defname>__PIN__</defname></param>
+        <initializer>((__PIN__) &lt; 16u)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_exti.h" line="801" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_exti.h" bodystart="801" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

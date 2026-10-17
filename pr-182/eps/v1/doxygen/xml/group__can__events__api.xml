@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="group__can__events__api" kind="group">
+    <compoundname>can_events_api</compoundname>
+    <title>Public API</title>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="group__can__events__api_1ga4db1fa5defe1a1618ead802defedd4f7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void can_events_init</definition>
+        <argsstring>(can_events_t *can, hal_can_port_t port)</argsstring>
+        <name>can_events_init</name>
+        <param>
+          <type><ref refid="structcan__events__t" kindref="compound">can_events_t</ref> *</type>
+          <declname>can</declname>
+        </param>
+        <param>
+          <type><ref refid="group__can__types_1ga83a77f224d5e726b32e0c7e7acff1163" kindref="member">hal_can_port_t</ref></type>
+          <declname>port</declname>
+        </param>
+        <briefdescription>
+<para>Initialize the CAN events service. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">can</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Service instance </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Physical HAL CAN port to use </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/can_events.h" line="103" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/can_events.c" bodystart="22" bodyend="36" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/can_events.h" declline="103" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__can__events__api_1gad5859ea612b14eb7fda68f5329b0a9e4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void can_events_send_packet</definition>
+        <argsstring>(can_events_t *can, const OSUSatPacket *packet)</argsstring>
+        <name>can_events_send_packet</name>
+        <param>
+          <type><ref refid="structcan__events__t" kindref="compound">can_events_t</ref> *</type>
+          <declname>can</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structOSUSatPacket" kindref="compound">OSUSatPacket</ref> *</type>
+          <declname>packet</declname>
+        </param>
+        <briefdescription>
+<para>Queue a packet for transmission over CAN. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Uses <ref refid="packet_8h_1a93662568ee003d2da0b8e869867834f1" kindref="member">osusat_packet_pack()</ref> to serialize before sending.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">can</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Service instance </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">packet</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the packet to send </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/can_events.h" line="113" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/can_events.c" bodystart="38" bodyend="84" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/can_events.h" declline="113" declcolumn="6"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

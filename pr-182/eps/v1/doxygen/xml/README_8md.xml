@@ -1,0 +1,136 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="README_8md" kind="file" language="Markdown">
+    <compoundname>README.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">#<sp/>eps-firmware</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">This<sp/>directory<sp/>contains<sp/>the<sp/>firmware<sp/>for<sp/>the<sp/>EPS<sp/>board.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>Setup<sp/>&amp;<sp/>Building</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Compilation<sp/>Dependencies</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>arm-none-eabi<sp/>toolchain</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Submodule<sp/>Initialization</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">git<sp/>submodule<sp/>update<sp/>--init<sp/>--recursive</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Building</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">mkdir<sp/>build</highlight></codeline>
+<codeline><highlight class="normal">cd<sp/>build</highlight></codeline>
+<codeline><highlight class="normal">cmake<sp/>-DCMAKE_TOOLCHAIN_FILE=../arm-none-eabi-toolchain.cmake<sp/>..</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>or:<sp/>cmake<sp/>-DCMAKE_TOOLCHAIN_FILE=../arm-none-eabi-toolchain.cmake<sp/>-DBUILD_HITL=ON<sp/>..</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>or:<sp/>cmake<sp/>-DTARGET_ARCH=HOST</highlight></codeline>
+<codeline><highlight class="normal">make</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>Firmware<sp/>Scope<sp/>&amp;<sp/>Component<sp/>Specifications</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>For<sp/>general<sp/>firmware<sp/>philosophy,<sp/>please<sp/>refer<sp/>to<sp/>[the<sp/>HITL<sp/>document](../../documentation/design_guidelines/hitl.md)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Application<sp/>Layer<sp/>Modules</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Command<sp/>Handler</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>The<sp/>command<sp/>handler<sp/>will<sp/>be<sp/>responsible<sp/>for<sp/>responding<sp/>to<sp/>commands<sp/>over<sp/>UART<sp/>from<sp/>other<sp/>subsystems</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Interacts<sp/>with<sp/>the<sp/>UART<sp/>events<sp/>interface<sp/>service<sp/>to<sp/>listen<sp/>for<sp/>incoming<sp/>packets</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Case<sp/>handler<sp/>that<sp/>calls<sp/>out<sp/>to<sp/>other<sp/>services<sp/>based<sp/>on<sp/>the<sp/>requested<sp/>action</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Interacts<sp/>directly<sp/>with<sp/>OSUSat<sp/>messaging<sp/>packet<sp/>structures<sp/>passed<sp/>from<sp/>the<sp/>UART<sp/>listener<sp/>service</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Power<sp/>Policies</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>The<sp/>high-level<sp/>decision<sp/>maker<sp/>for<sp/>the<sp/>EPS</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Rules/logic<sp/>for<sp/>system/satellite-wide<sp/>power<sp/>sequencing<sp/>&amp;<sp/>transitions</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>State<sp/>machine<sp/>managing:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>Startup/boot</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>Safe<sp/>mode</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>Nominal<sp/>operation</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>Charging<sp/>mode</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>Fault/recovery</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>Shutdown/inhibits</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Defines<sp/>and<sp/>transitions<sp/>between<sp/>EPS<sp/>states<sp/>based<sp/>on<sp/>system<sp/>conditions<sp/>like<sp/>voltage,<sp/>current,<sp/>and<sp/>other<sp/>subsystem<sp/>commands</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Controls<sp/>which<sp/>power<sp/>rails<sp/>come<sp/>up<sp/>and<sp/>in<sp/>what<sp/>order<sp/>to<sp/>enable<sp/>stable<sp/>startup</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Stop<sp/>battery<sp/>charging/discharging<sp/>if<sp/>limits<sp/>(voltage,<sp/>temperature,<sp/>current)<sp/>are<sp/>exceeded</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Respond<sp/>to<sp/>OBC<sp/>commands<sp/>and<sp/>requests<sp/>like:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>Enabling<sp/>power<sp/>rails</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>Entering<sp/>safe<sp/>mode</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>Restarts/telemetry</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Detect<sp/>and<sp/>handle<sp/>critical<sp/>faults<sp/>and<sp/>transition<sp/>to<sp/>safe<sp/>states</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>Many<sp/>faults<sp/>can<sp/>be<sp/>detected<sp/>using<sp/>teh<sp/>`redundancy_manager`<sp/>service</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Watches<sp/>system<sp/>health,<sp/>pets<sp/>watchdogs,<sp/>and<sp/>responds<sp/>to<sp/>OBC<sp/>heartbeat<sp/>requests</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Service<sp/>Layer<sp/>Modules</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Battery<sp/>Management</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Uses<sp/>HAL<sp/>drivers<sp/>to<sp/>read<sp/>sensors<sp/>(voltage/current<sp/>monitors,<sp/>charger<sp/>status)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Provides<sp/>interfaces<sp/>to<sp/>the<sp/>application<sp/>layer<sp/>to:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>Fetch<sp/>battery<sp/>voltage</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>Start<sp/>charging</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>Stop<sp/>charging</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Cooperates<sp/>with<sp/>MPPT<sp/>and<sp/>rail<sp/>controller<sp/>services<sp/>to<sp/>balance<sp/>input<sp/>and<sp/>power<sp/>draw</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Reads,<sp/>collects,<sp/>and<sp/>packages<sp/>voltage,<sp/>current,<sp/>temperature,<sp/>and<sp/>other<sp/>sensors<sp/>for<sp/>use<sp/>by<sp/>the<sp/>power<sp/>policy<sp/>application</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Estimate<sp/>remaining<sp/>battery<sp/>capacity<sp/>(state<sp/>of<sp/>charge)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Enable/disable<sp/>charging<sp/>circuitry<sp/>using<sp/>HAL<sp/>GPIO<sp/>drivers</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Manages<sp/>battery<sp/>balancing<sp/>circuitry</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Enforces<sp/>protection<sp/>thresholds<sp/>by<sp/>disabling<sp/>rails<sp/>if<sp/>overcurrents,<sp/>overvoltages,<sp/>or<sp/>temperature<sp/>ratings<sp/>are<sp/>too<sp/>high</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Also<sp/>exposes<sp/>general<sp/>telemetry<sp/>for<sp/>the<sp/>power<sp/>policy<sp/>application</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Notifies<sp/>redundancy<sp/>manager<sp/>about<sp/>sensor<sp/>or<sp/>charge<sp/>failures</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>MPPT<sp/>Controller</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Configures<sp/>MPPT<sp/>chip<sp/>parameters<sp/>if<sp/>necessary<sp/>using<sp/>HAL<sp/>drivers</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Enables/disables<sp/>MPPT<sp/>IC,<sp/>monitors<sp/>status<sp/>pins<sp/>using<sp/>GPIO<sp/>HAL<sp/>interface</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Reads<sp/>and<sp/>packages<sp/>telemetry<sp/>from<sp/>the<sp/>chip</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Rail<sp/>Controller</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Abstraction<sp/>for<sp/>load<sp/>switches<sp/>and<sp/>current<sp/>monitors<sp/>on<sp/>each<sp/>power<sp/>rail</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Provides<sp/>interfaces<sp/>to<sp/>enable/disable<sp/>power<sp/>rails<sp/>and<sp/>read<sp/>their<sp/>status</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Monitors<sp/>for<sp/>overcurrent<sp/>events<sp/>and<sp/>automatically<sp/>disables<sp/>rails<sp/>if<sp/>necessary</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Notifies<sp/>the<sp/>redundancy<sp/>manager<sp/>of<sp/>any<sp/>rail<sp/>faults</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Redundancy<sp/>Manager</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Acts<sp/>as<sp/>a<sp/>centralized<sp/>fault<sp/>detection<sp/>and<sp/>response<sp/>service</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Aggregates<sp/>health<sp/>statuses<sp/>from<sp/>other<sp/>services<sp/>(battery,<sp/>MPPT,<sp/>rails)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Maintains<sp/>a<sp/>system<sp/>wide<sp/>health<sp/>status</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Can<sp/>trigger<sp/>a<sp/>transition<sp/>to<sp/>safe<sp/>mode<sp/>via<sp/>the<sp/>power<sp/>policies<sp/>application<sp/>if<sp/>a<sp/>critical<sp/>fault<sp/>is<sp/>detected</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Manages<sp/>redundant<sp/>hardware<sp/>components<sp/>(switching<sp/>between<sp/>sensors<sp/>upon<sp/>failures)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Individual<sp/>services<sp/>detect<sp/>their<sp/>own<sp/>faults,<sp/>but<sp/>the<sp/>redundancy<sp/>manager<sp/>determines<sp/>the<sp/>system<sp/>level<sp/>response</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Simplifies<sp/>complex<sp/>faults<sp/>into<sp/>higher-level<sp/>faults<sp/>to<sp/>make<sp/>decision<sp/>making<sp/>in<sp/>the<sp/>application<sp/>clearer</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Telemetry</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Gathers<sp/>and<sp/>packages<sp/>data<sp/>from<sp/>all<sp/>other<sp/>services</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Provides<sp/>a<sp/>unified<sp/>interface<sp/>for<sp/>the<sp/>application<sp/>layer<sp/>to<sp/>access<sp/>all<sp/>system<sp/>telemetry</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Formats<sp/>data<sp/>into<sp/>packets<sp/>for<sp/>transmission<sp/>(using<sp/>OSUSat<sp/>messaging)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>UART<sp/>Events</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Manages<sp/>communication<sp/>with<sp/>other<sp/>subsystems<sp/>via<sp/>the<sp/>UART<sp/>bus</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Uses<sp/>the<sp/>messaging<sp/>library<sp/>to<sp/>encode<sp/>and<sp/>decode<sp/>packets</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Used<sp/>by<sp/>the<sp/>command<sp/>handler<sp/>application<sp/>to<sp/>detect<sp/>and<sp/>process<sp/>new<sp/>commands</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>This<sp/>service<sp/>is<sp/>polled<sp/>in<sp/>the<sp/>application<sp/>layer.<sp/>The<sp/>interface<sp/>allows<sp/>the<sp/>user<sp/>to<sp/>check<sp/>if<sp/>packets<sp/>are<sp/>available,<sp/>and<sp/>to<sp/>fetch<sp/>them</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Provides<sp/>an<sp/>interface<sp/>for<sp/>other<sp/>services<sp/>to<sp/>send<sp/>and<sp/>receive<sp/>packets</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Watchdog</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Manages<sp/>the<sp/>hardware<sp/>watchdog<sp/>timer</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Provides<sp/>an<sp/>interface<sp/>for<sp/>the<sp/>application<sp/>layer<sp/>to<sp/>pet<sp/>the<sp/>watchdog</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>If<sp/>the<sp/>watchdog<sp/>is<sp/>not<sp/>petted<sp/>within<sp/>a<sp/>certain<sp/>time<sp/>frame,<sp/>it<sp/>will<sp/>trigger<sp/>a<sp/>system<sp/>reset</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>This<sp/>is<sp/>a<sp/>critical<sp/>safety<sp/>feature<sp/>to<sp/>prevent<sp/>the<sp/>system<sp/>from<sp/>getting<sp/>stuck<sp/>in<sp/>a<sp/>bad<sp/>state</highlight></codeline>
+    </programlisting>
+    <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/README.md"/>
+  </compounddef>
+</doxygen>

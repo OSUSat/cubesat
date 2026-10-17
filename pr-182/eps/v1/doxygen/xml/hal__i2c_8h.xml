@@ -1,0 +1,156 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="hal__i2c_8h" kind="file" language="C++">
+    <compoundname>hal_i2c.h</compoundname>
+    <includes local="no">stdbool.h</includes>
+    <includes local="no">stdint.h</includes>
+    <includedby refid="bsp_2mcu_2Src_2stm32l4xx__it_8c" local="yes">/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/mcu/Src/stm32l4xx_it.c</includedby>
+    <includedby refid="hal__i2c_8c" local="yes">/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_i2c.c</includedby>
+    <includedby refid="hal__i2c__mock_8c" local="yes">/home/runner/work/cubesat/cubesat/eps/v1/firmware/mocks/hal_i2c_mock.c</includedby>
+    <includedby refid="hal__i2c__mock_8h" local="yes">/home/runner/work/cubesat/cubesat/eps/v1/firmware/mocks/hal_i2c_mock.h</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_i2c.h</label>
+        <link refid="hal__i2c_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>stdbool.h</label>
+      </node>
+      <node id="3">
+        <label>stdint.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/mcu/Src/stm32l4xx_it.c</label>
+        <link refid="bsp_2mcu_2Src_2stm32l4xx__it_8c"/>
+      </node>
+      <node id="3">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_i2c.c</label>
+        <link refid="hal__i2c_8c"/>
+      </node>
+      <node id="1">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_i2c.h</label>
+        <link refid="hal__i2c_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/mocks/hal_i2c_mock.c</label>
+        <link refid="hal__i2c__mock_8c"/>
+      </node>
+      <node id="5">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/mocks/hal_i2c_mock.h</label>
+        <link refid="hal__i2c__mock_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <sectiondef kind="define">
+      <member refid="group__i2c__types_1gaae5978c2bde83102a43386f40b5098e1" kind="define"><name>I2C_RX_CAPACITY</name></member>
+    </sectiondef>
+    <sectiondef kind="enum">
+      <member refid="group__i2c__types_1ga29c2ef19c960dcf416306806f97d1250" kind="enum"><name>i2c_bus_t</name></member>
+      <member refid="group__i2c__types_1gada1e8e589688e2d6626421d8d85d9c53" kind="enum"><name>i2c_status_t</name></member>
+      <member refid="group__i2c__types_1ga4e07871ca4ae83f158fa20d135b309b2" kind="enum"><name>i2c_error_t</name></member>
+    </sectiondef>
+    <sectiondef kind="typedef">
+      <member refid="group__i2c__types_1gac79efc826177e385f296336ca66522bd" kind="typedef"><name>i2c_rx_callback_t</name></member>
+      <member refid="group__i2c__types_1gac2d88f9efda78f33b98be08bfb51efb6" kind="typedef"><name>i2c_tx_callback_t</name></member>
+      <member refid="group__i2c__types_1ga9de1a575fb98bd4f4333b8c24922cf33" kind="typedef"><name>i2c_error_cb_t</name></member>
+    </sectiondef>
+    <sectiondef kind="func">
+      <member refid="group__i2c__api_1ga9883371a45c5f264b1924250f2186ea8" kind="function"><name>hal_i2c_init</name></member>
+      <member refid="group__i2c__api_1gadfa9915830eb6c75a08aec4f316a2afd" kind="function"><name>hal_i2c_write</name></member>
+      <member refid="group__i2c__api_1ga4c8684bd894c0b2e8e98770f9d4441b2" kind="function"><name>hal_i2c_mem_write</name></member>
+      <member refid="group__i2c__api_1ga4096fcca633c30375f7eb6498b0c5349" kind="function"><name>hal_i2c_read</name></member>
+      <member refid="group__i2c__api_1ga261b1117be4ef49aed7919ca80f4f93a" kind="function"><name>hal_i2c_mem_read</name></member>
+      <member refid="group__i2c__api_1gae01bf06db1ae22542c580edf46b633b8" kind="function"><name>hal_i2c_isr_handler</name></member>
+    </sectiondef>
+    <briefdescription>
+<para>I2C hardware abstraction public API. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This driver provides a high-level interface for I2C communication. </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>HAL_I2C_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HAL_I2C_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdbool.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29" refid="group__i2c__types_1gaae5978c2bde83102a43386f40b5098e1" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>I2C_RX_CAPACITY<sp/>128</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="group__i2c__types_1ga29c2ef19c960dcf416306806f97d1250" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="36" refid="group__i2c__types_1gga29c2ef19c960dcf416306806f97d1250a07c37428b7cf297f03d72ce88616bed8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__i2c__types_1gga29c2ef19c960dcf416306806f97d1250a07c37428b7cf297f03d72ce88616bed8" kindref="member">I2C_BUS_1</ref><sp/>=<sp/>1,</highlight></codeline>
+<codeline lineno="37" refid="group__i2c__types_1gga29c2ef19c960dcf416306806f97d1250a3abbf3238dc4cd408421ae3c47512a60" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__i2c__types_1gga29c2ef19c960dcf416306806f97d1250a3abbf3238dc4cd408421ae3c47512a60" kindref="member">I2C_BUS_2</ref>,</highlight></codeline>
+<codeline lineno="38" refid="group__i2c__types_1gga29c2ef19c960dcf416306806f97d1250a39a03801edca55547e0247165daa3a99" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__i2c__types_1gga29c2ef19c960dcf416306806f97d1250a39a03801edca55547e0247165daa3a99" kindref="member">I2C_BUS_3</ref>,</highlight></codeline>
+<codeline lineno="39" refid="group__i2c__types_1gga29c2ef19c960dcf416306806f97d1250ae015440a834e8eea4ff2f889389722f3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__i2c__types_1gga29c2ef19c960dcf416306806f97d1250ae015440a834e8eea4ff2f889389722f3" kindref="member">I2C_BUS_4</ref>,</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__i2c__types_1gga29c2ef19c960dcf416306806f97d1250ad42f860e750a71008a9d2d5813015839" kindref="member">I2C_BUS_COUNT</ref></highlight></codeline>
+<codeline lineno="41" refid="group__i2c__types_1gga29c2ef19c960dcf416306806f97d1250ad42f860e750a71008a9d2d5813015839" refkind="member"><highlight class="normal">}<sp/><ref refid="group__i2c__types_1ga29c2ef19c960dcf416306806f97d1250" kindref="member">i2c_bus_t</ref>;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47" refid="group__i2c__types_1gada1e8e589688e2d6626421d8d85d9c53" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="48" refid="group__i2c__types_1ggada1e8e589688e2d6626421d8d85d9c53aeceba296bdda2b90e8835c431fe7a72a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__i2c__types_1ggada1e8e589688e2d6626421d8d85d9c53aeceba296bdda2b90e8835c431fe7a72a" kindref="member">I2C_OK</ref><sp/>=<sp/>0,<sp/><sp/></highlight></codeline>
+<codeline lineno="49" refid="group__i2c__types_1ggada1e8e589688e2d6626421d8d85d9c53a2e4932a1868432bff23103fac0127fdc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__i2c__types_1ggada1e8e589688e2d6626421d8d85d9c53a2e4932a1868432bff23103fac0127fdc" kindref="member">I2C_ERROR</ref>,<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="50" refid="group__i2c__types_1ggada1e8e589688e2d6626421d8d85d9c53a1056d6a4b037e383132309c2898a2fc8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__i2c__types_1ggada1e8e589688e2d6626421d8d85d9c53a1056d6a4b037e383132309c2898a2fc8" kindref="member">I2C_TIMEOUT</ref>,<sp/></highlight></codeline>
+<codeline lineno="51" refid="group__i2c__types_1ggada1e8e589688e2d6626421d8d85d9c53a49e65f3960437d80b8328e7898cc90de" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__i2c__types_1ggada1e8e589688e2d6626421d8d85d9c53a49e65f3960437d80b8328e7898cc90de" kindref="member">I2C_BUSY</ref>,<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__i2c__types_1ggada1e8e589688e2d6626421d8d85d9c53ae869b289c6b9b73b95dd1b40cbc9d651" kindref="member">I2C_NACK</ref><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="53" refid="group__i2c__types_1ggada1e8e589688e2d6626421d8d85d9c53ae869b289c6b9b73b95dd1b40cbc9d651" refkind="member"><highlight class="normal">}<sp/><ref refid="group__i2c__types_1gada1e8e589688e2d6626421d8d85d9c53" kindref="member">i2c_status_t</ref>;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59" refid="group__i2c__types_1ga4e07871ca4ae83f158fa20d135b309b2" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="60" refid="group__i2c__types_1gga4e07871ca4ae83f158fa20d135b309b2a5a55f611028ff20051febdad13c4a857" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__i2c__types_1gga4e07871ca4ae83f158fa20d135b309b2a5a55f611028ff20051febdad13c4a857" kindref="member">I2C_HAL_ERR_BUS</ref>,</highlight></codeline>
+<codeline lineno="61" refid="group__i2c__types_1gga4e07871ca4ae83f158fa20d135b309b2a7e7c51f13149b843e8f63684922f4516" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__i2c__types_1gga4e07871ca4ae83f158fa20d135b309b2a7e7c51f13149b843e8f63684922f4516" kindref="member">I2C_HAL_ERR_ARBITRATION</ref>,</highlight></codeline>
+<codeline lineno="62" refid="group__i2c__types_1gga4e07871ca4ae83f158fa20d135b309b2a3fabcd7b50395ce72b9472b518ef7ac7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__i2c__types_1gga4e07871ca4ae83f158fa20d135b309b2a3fabcd7b50395ce72b9472b518ef7ac7" kindref="member">I2C_HAL_ERR_NACK</ref>,</highlight></codeline>
+<codeline lineno="63" refid="group__i2c__types_1gga4e07871ca4ae83f158fa20d135b309b2ad56b4fd6ff581a5221d42a3ee6734d9f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__i2c__types_1gga4e07871ca4ae83f158fa20d135b309b2ad56b4fd6ff581a5221d42a3ee6734d9f" kindref="member">I2C_HAL_ERR_OVERRUN</ref>,</highlight></codeline>
+<codeline lineno="64" refid="group__i2c__types_1gga4e07871ca4ae83f158fa20d135b309b2a188c7598674e04cf753964c3383d82ca" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__i2c__types_1gga4e07871ca4ae83f158fa20d135b309b2a188c7598674e04cf753964c3383d82ca" kindref="member">I2C_HAL_ERR_TIMEOUT</ref>,</highlight></codeline>
+<codeline lineno="65" refid="group__i2c__types_1gga4e07871ca4ae83f158fa20d135b309b2ae47984b590895353d65473ef35c79d89" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__i2c__types_1gga4e07871ca4ae83f158fa20d135b309b2ae47984b590895353d65473ef35c79d89" kindref="member">I2C_HAL_ERR_UNKNOWN</ref>,</highlight></codeline>
+<codeline lineno="66" refid="group__i2c__types_1gga4e07871ca4ae83f158fa20d135b309b2aac6a14c5dd65d7af54b45190d535846d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__i2c__types_1gga4e07871ca4ae83f158fa20d135b309b2aac6a14c5dd65d7af54b45190d535846d" kindref="member">I2C_HAL_ERR_BUSY</ref>,</highlight></codeline>
+<codeline lineno="67" refid="group__i2c__types_1gga4e07871ca4ae83f158fa20d135b309b2aa719be3f319ec607a76330479bf15c18" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__i2c__types_1gga4e07871ca4ae83f158fa20d135b309b2aa719be3f319ec607a76330479bf15c18" kindref="member">I2C_HAL_ERR_TOO_LARGE</ref>,</highlight></codeline>
+<codeline lineno="68" refid="group__i2c__types_1gga4e07871ca4ae83f158fa20d135b309b2a6970ddd5df03ea81e4f4f5ce96bfe8f5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__i2c__types_1gga4e07871ca4ae83f158fa20d135b309b2a6970ddd5df03ea81e4f4f5ce96bfe8f5" kindref="member">I2C_HAL_ERR_NONE</ref>,</highlight></codeline>
+<codeline lineno="69"><highlight class="normal">}<sp/><ref refid="group__i2c__types_1ga4e07871ca4ae83f158fa20d135b309b2" kindref="member">i2c_error_t</ref>;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77" refid="group__i2c__types_1gac79efc826177e385f296336ca66522bd" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>void<sp/>(*<ref refid="group__i2c__types_1gac79efc826177e385f296336ca66522bd" kindref="member">i2c_rx_callback_t</ref>)(<ref refid="group__i2c__types_1ga29c2ef19c960dcf416306806f97d1250" kindref="member">i2c_bus_t</ref><sp/>bus,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*ctx);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85" refid="group__i2c__types_1gac2d88f9efda78f33b98be08bfb51efb6" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>void<sp/>(*<ref refid="group__i2c__types_1gac2d88f9efda78f33b98be08bfb51efb6" kindref="member">i2c_tx_callback_t</ref>)(<ref refid="group__i2c__types_1ga29c2ef19c960dcf416306806f97d1250" kindref="member">i2c_bus_t</ref><sp/>bus,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*ctx);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94" refid="group__i2c__types_1ga9de1a575fb98bd4f4333b8c24922cf33" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>void<sp/>(*<ref refid="group__i2c__types_1ga9de1a575fb98bd4f4333b8c24922cf33" kindref="member">i2c_error_cb_t</ref>)(<ref refid="group__i2c__types_1ga29c2ef19c960dcf416306806f97d1250" kindref="member">i2c_bus_t</ref><sp/>bus,<sp/><ref refid="group__i2c__types_1ga4e07871ca4ae83f158fa20d135b309b2" kindref="member">i2c_error_t</ref><sp/>err,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*ctx);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<sp/><highlight class="comment">//<sp/>end<sp/>i2c_types</highlight><codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__i2c__api_1ga9883371a45c5f264b1924250f2186ea8" kindref="member">hal_i2c_init</ref>(<ref refid="group__i2c__types_1ga29c2ef19c960dcf416306806f97d1250" kindref="member">i2c_bus_t</ref><sp/>bus);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><ref refid="group__i2c__types_1ga4e07871ca4ae83f158fa20d135b309b2" kindref="member">i2c_error_t</ref><sp/><ref refid="group__i2c__api_1gadfa9915830eb6c75a08aec4f316a2afd" kindref="member">hal_i2c_write</ref>(<ref refid="group__i2c__types_1ga29c2ef19c960dcf416306806f97d1250" kindref="member">i2c_bus_t</ref><sp/>bus,<sp/>uint8_t<sp/>addr,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>*data,</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint16_t<sp/>len,<sp/><ref refid="group__i2c__types_1gac2d88f9efda78f33b98be08bfb51efb6" kindref="member">i2c_tx_callback_t</ref><sp/>cb,</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__i2c__types_1ga9de1a575fb98bd4f4333b8c24922cf33" kindref="member">i2c_error_cb_t</ref><sp/>err_cb,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*ctx);</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><ref refid="group__i2c__types_1ga4e07871ca4ae83f158fa20d135b309b2" kindref="member">i2c_error_t</ref><sp/><ref refid="group__i2c__api_1ga4c8684bd894c0b2e8e98770f9d4441b2" kindref="member">hal_i2c_mem_write</ref>(<ref refid="group__i2c__types_1ga29c2ef19c960dcf416306806f97d1250" kindref="member">i2c_bus_t</ref><sp/>bus,<sp/>uint8_t<sp/>addr,<sp/>uint8_t<sp/>reg,</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>*data,<sp/>uint16_t<sp/>len,<sp/><ref refid="group__i2c__types_1gac2d88f9efda78f33b98be08bfb51efb6" kindref="member">i2c_tx_callback_t</ref><sp/>cb,</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__i2c__types_1ga9de1a575fb98bd4f4333b8c24922cf33" kindref="member">i2c_error_cb_t</ref><sp/>err_cb,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*ctx);</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><ref refid="group__i2c__types_1ga4e07871ca4ae83f158fa20d135b309b2" kindref="member">i2c_error_t</ref><sp/><ref refid="group__i2c__api_1ga4096fcca633c30375f7eb6498b0c5349" kindref="member">hal_i2c_read</ref>(<ref refid="group__i2c__types_1ga29c2ef19c960dcf416306806f97d1250" kindref="member">i2c_bus_t</ref><sp/>bus,<sp/>uint8_t<sp/>addr,<sp/>uint8_t<sp/>*data,</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint16_t<sp/>len,<sp/><ref refid="group__i2c__types_1gac79efc826177e385f296336ca66522bd" kindref="member">i2c_rx_callback_t</ref><sp/>cb,</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__i2c__types_1ga9de1a575fb98bd4f4333b8c24922cf33" kindref="member">i2c_error_cb_t</ref><sp/>err_cb,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*ctx);</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><ref refid="group__i2c__types_1ga4e07871ca4ae83f158fa20d135b309b2" kindref="member">i2c_error_t</ref><sp/><ref refid="group__i2c__api_1ga261b1117be4ef49aed7919ca80f4f93a" kindref="member">hal_i2c_mem_read</ref>(<ref refid="group__i2c__types_1ga29c2ef19c960dcf416306806f97d1250" kindref="member">i2c_bus_t</ref><sp/>bus,<sp/>uint8_t<sp/>addr,<sp/>uint8_t<sp/>reg,</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>*data,<sp/>uint16_t<sp/>len,<sp/><ref refid="group__i2c__types_1gac79efc826177e385f296336ca66522bd" kindref="member">i2c_rx_callback_t</ref><sp/>cb,</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__i2c__types_1ga9de1a575fb98bd4f4333b8c24922cf33" kindref="member">i2c_error_cb_t</ref><sp/>err_cb,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*ctx);</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__i2c__api_1gae01bf06db1ae22542c580edf46b633b8" kindref="member">hal_i2c_isr_handler</ref>(<ref refid="group__i2c__types_1ga29c2ef19c960dcf416306806f97d1250" kindref="member">i2c_bus_t</ref><sp/>bus);</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"></highlight></codeline>
+<sp/><highlight class="comment">//<sp/>end<sp/>i2c_api<sp/>//<sp/>end<sp/>i2c</highlight><codeline lineno="188"><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>HAL_I2C_H</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/hal/hal_i2c.h"/>
+  </compounddef>
+</doxygen>

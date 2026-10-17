@@ -1,0 +1,164 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="group__can__events" kind="group">
+    <compoundname>can_events</compoundname>
+    <title>CAN Events Service</title>
+    <innerclass refid="structcan__events__t" prot="public">can_events_t</innerclass>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="group__can__events_1ga201f30da47f8a58bc169f9d8037d779b" prot="public" static="no" strong="no">
+        <type></type>
+        <name>can_event_id_t</name>
+        <enumvalue id="group__can__events_1gga201f30da47f8a58bc169f9d8037d779ba050f050c867c65c367cd56a87eba6f45" prot="public">
+          <name>CAN_PACKET_RECEIVED</name>
+          <initializer>= 0x10</initializer>
+          <briefdescription>
+<para>Published when a valid <ref refid="structOSUSatPacket" kindref="compound">OSUSatPacket</ref> is decoded. Payload: <ref refid="structOSUSatPacket" kindref="compound">OSUSatPacket</ref>. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__can__events_1gga201f30da47f8a58bc169f9d8037d779ba43059ce8a0ed9e7f8a09f29d6b9c3b5a" prot="public">
+          <name>CAN_ERROR_DETECTED</name>
+          <briefdescription>
+<para>Published on hardware errors or CRC/decoding failures. Payload: int (or generic error code) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__can__events_1gga201f30da47f8a58bc169f9d8037d779ba0c7e35c85d6cfc253ab0b6c0ae7dfff5" prot="public">
+          <name>CAN_TX_COMPLETE</name>
+          <briefdescription>
+<para>Published when a packet is successfully transmitted. Payload: NULL. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/can_events.h" line="24" column="1" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/can_events.h" bodystart="24" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__can__events_1gab3023e61bf5338816035b06a9a47e06d" prot="public" static="no" strong="no">
+        <type></type>
+        <name>can_rx_state_t</name>
+        <enumvalue id="group__can__events_1ggab3023e61bf5338816035b06a9a47e06da036a08e2a41d630387d6679500291c1c" prot="public">
+          <name>CAN_RX_STATE_WAIT_START_BYTE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Waiting until a start byte is received </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__can__events_1ggab3023e61bf5338816035b06a9a47e06da3fd6791e1c2684bc7a9bec4c2603dd7f" prot="public">
+          <name>CAN_RX_STATE_READ_HEADER</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Currently reading the packet header </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__can__events_1ggab3023e61bf5338816035b06a9a47e06dae859f84b37adb0ee6a38e7a48bf80242" prot="public">
+          <name>CAN_RX_STATE_READ_PAYLOAD</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Currently reading the packet payload </para>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/can_events.h" line="51" column="1" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/can_events.h" bodystart="51" bodyend="55"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="group__can__events_1gae78c8a0992faf7486946e476112fec22" prot="public" static="no">
+        <name>CAN_SERVICE_UID</name>
+        <initializer>0xC0C4</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/can_events.h" line="22" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/can_events.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__can__events_1gaa9a71b015be8a38d48d31407718e391d" prot="public" static="no">
+        <name>CAN_EVENT_PACKET_RECEIVED</name>
+        <initializer>    <ref refid="group__osusat__event__bus__types_1ga6fb66ede3b29d386fec6f57800d3e980" kindref="member">OSUSAT_BUILD_EVENT_ID</ref>(<ref refid="group__can__events_1gae78c8a0992faf7486946e476112fec22" kindref="member">CAN_SERVICE_UID</ref>, <ref refid="group__can__events_1gga201f30da47f8a58bc169f9d8037d779ba050f050c867c65c367cd56a87eba6f45" kindref="member">CAN_PACKET_RECEIVED</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/can_events.h" line="44" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/can_events.h" bodystart="44" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="define" id="group__can__events_1ga894b32b3b6d7f94687a16a9c1d6fa8f4" prot="public" static="no">
+        <name>CAN_EVENT_ERROR_DETECTED</name>
+        <initializer>    <ref refid="group__osusat__event__bus__types_1ga6fb66ede3b29d386fec6f57800d3e980" kindref="member">OSUSAT_BUILD_EVENT_ID</ref>(<ref refid="group__can__events_1gae78c8a0992faf7486946e476112fec22" kindref="member">CAN_SERVICE_UID</ref>, <ref refid="group__can__events_1gga201f30da47f8a58bc169f9d8037d779ba43059ce8a0ed9e7f8a09f29d6b9c3b5a" kindref="member">CAN_ERROR_DETECTED</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/can_events.h" line="46" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/can_events.h" bodystart="46" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="define" id="group__can__events_1ga016f642f1a7d100fa75dffd227d19d97" prot="public" static="no">
+        <name>CAN_EVENT_TX_COMPLETE</name>
+        <initializer>    <ref refid="group__osusat__event__bus__types_1ga6fb66ede3b29d386fec6f57800d3e980" kindref="member">OSUSAT_BUILD_EVENT_ID</ref>(<ref refid="group__can__events_1gae78c8a0992faf7486946e476112fec22" kindref="member">CAN_SERVICE_UID</ref>, <ref refid="group__can__events_1gga201f30da47f8a58bc169f9d8037d779ba0c7e35c85d6cfc253ab0b6c0ae7dfff5" kindref="member">CAN_TX_COMPLETE</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/can_events.h" line="48" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/can_events.h" bodystart="48" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="define" id="group__can__events_1ga88e27f0a4ca340a0aaf618eea9f15dba" prot="public" static="no">
+        <name>CAN_RX_MAX_PACKET_SIZE</name>
+        <initializer>300</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/can_events.h" line="59" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/can_events.h" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__can__events_1gae1d7d4da63d31d28fb41b833193571cd" prot="public" static="no">
+        <name>CAN_PACKET_POOL_SIZE</name>
+        <initializer>4</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/can_events.h" line="62" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/can_events.h" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__can__events_1ga0057abfd4726f2c660c1306e15012c28" prot="public" static="no">
+        <name>CAN_MSG_ID_BASE</name>
+        <initializer>0x100</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/can_events.h" line="65" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/can_events.h" bodystart="65" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

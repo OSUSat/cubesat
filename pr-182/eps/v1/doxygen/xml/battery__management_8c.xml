@@ -1,0 +1,402 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="battery__management_8c" kind="file" language="C++">
+    <compoundname>battery_management.c</compoundname>
+    <includes refid="battery__management_8h" local="yes">battery_management.h</includes>
+    <includes refid="eps__config_8h" local="yes">eps_config.h</includes>
+    <includes refid="logging_8h" local="yes">logging.h</includes>
+    <includes refid="event__bus_8h" local="yes">osusat/event_bus.h</includes>
+    <includes local="no">stddef.h</includes>
+    <includes local="no">stdint.h</includes>
+    <includes local="no">string.h</includes>
+    <incdepgraph>
+      <node id="5">
+        <label>eps_config.h</label>
+        <link refid="eps__config_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>hal_can.h</label>
+        <link refid="hal__can_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>hal_gpio_types.h</label>
+        <link refid="hal__gpio__types_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>osusat/event_bus.h</label>
+        <link refid="event__bus_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>ring_buffer.h</label>
+        <link refid="ring__buffer_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>osusat/slog.h</label>
+        <link refid="slog_8h"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>messages.h</label>
+        <link refid="messages_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>packet.h</label>
+        <link refid="packet_8h"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/battery_management.c</label>
+        <link refid="battery__management_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>battery_management.h</label>
+        <link refid="battery__management_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>can_events.h</label>
+        <link refid="can__events_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>logging.h</label>
+        <link refid="logging_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>stdarg.h</label>
+      </node>
+      <node id="3">
+        <label>stdbool.h</label>
+      </node>
+      <node id="11">
+        <label>stddef.h</label>
+      </node>
+      <node id="4">
+        <label>stdint.h</label>
+      </node>
+      <node id="17">
+        <label>string.h</label>
+      </node>
+    </incdepgraph>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="battery__management_8c_1a44ab53d331fa55563013301846375ff5" prot="public" static="no">
+        <name>BATTERY_UPDATE_INTERVAL_TICKS</name>
+        <initializer>10</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/battery_management.c" line="16" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/battery_management.c" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="battery__management_8c_1a1698f471c01665aceb32162c31ef6701" prot="public" static="no">
+        <name>TELEMETRY_INTERVAL_CYCLES</name>
+        <initializer>600</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/battery_management.c" line="17" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/battery_management.c" bodystart="17" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="battery__management_8c_1a4d75a18121307f35c2d8f17a223349fd" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void battery_handle_tick</definition>
+        <argsstring>(const osusat_event_t *e, void *ctx)</argsstring>
+        <name>battery_handle_tick</name>
+        <param>
+          <type>const <ref refid="structosusat__event__t" kindref="compound">osusat_event_t</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>ctx</declname>
+        </param>
+        <briefdescription>
+<para>System Tick Handler. Called automatically by the Event Bus. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The event (SYSTICK). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ctx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The context pointer (points to <ref refid="structbattery__management__t" kindref="compound">battery_management_t</ref>). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/battery_management.c" line="96" column="13" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/battery_management.c" bodystart="96" bodyend="111" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/battery_management.c" declline="26" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="battery__management_8c_1aadc132340b7989965e90ae10f520017f" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void battery_perform_update</definition>
+        <argsstring>(battery_management_t *manager)</argsstring>
+        <name>battery_perform_update</name>
+        <param>
+          <type><ref refid="structbattery__management__t" kindref="compound">battery_management_t</ref> *</type>
+          <declname>manager</declname>
+        </param>
+        <briefdescription>
+<para>Internal update logic (reads sensors). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/battery_management.c" line="117" column="13" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/battery_management.c" bodystart="117" bodyend="148" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/battery_management.c" declline="31" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="battery__management_8c_1ae8424828aaeba7081dc24d8230786540" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool battery_run_diagnostics</definition>
+        <argsstring>(battery_management_t *manager)</argsstring>
+        <name>battery_run_diagnostics</name>
+        <param>
+          <type><ref refid="structbattery__management__t" kindref="compound">battery_management_t</ref> *</type>
+          <declname>manager</declname>
+        </param>
+        <briefdescription>
+<para>Hardware self-check (I2C comms, initial voltage). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/battery_management.c" line="150" column="13" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/battery_management.c" bodystart="150" bodyend="156" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/battery_management.c" declline="36" declcolumn="13"/>
+      </memberdef>
+      <member refid="group__battery__management__api_1gacad3a3de8e213994954cb9ce6a55f0ef" kind="function"><name>battery_init</name></member>
+      <member refid="group__battery__management__api_1ga8f086f5628c0498505e56661ffd04ff1" kind="function"><name>battery_charge_control</name></member>
+      <member refid="group__battery__management__api_1ga903c812782a956a3300006154b17c839" kind="function"><name>battery_protect_mode</name></member>
+    </sectiondef>
+    <briefdescription>
+<para>Battery Management Service Implementation. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="battery__management_8h" kindref="compound">battery_management.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="eps__config_8h" kindref="compound">eps_config.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="logging_8h" kindref="compound">logging.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="event__bus_8h" kindref="compound">osusat/event_bus.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stddef.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="comment">//<sp/>TODO:<sp/>ensure<sp/>system<sp/>tick<sp/>fires<sp/>every<sp/>100Hz<sp/>(10ms)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">//<sp/>this<sp/>way<sp/>we<sp/>can<sp/>update<sp/>the<sp/>battery<sp/>loop<sp/>every<sp/>100ms</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATTERY_UPDATE_INTERVAL_TICKS<sp/>10</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TELEMETRY_INTERVAL_CYCLES<sp/>600</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>battery_handle_tick(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structosusat__event__t" kindref="compound">osusat_event_t</ref><sp/>*e,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*ctx);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>battery_perform_update(<ref refid="structbattery__management__t" kindref="compound">battery_management_t</ref><sp/>*manager);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>battery_run_diagnostics(<ref refid="structbattery__management__t" kindref="compound">battery_management_t</ref><sp/>*manager);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__battery__management__api_1gacad3a3de8e213994954cb9ce6a55f0ef" kindref="member">battery_init</ref>(<ref refid="structbattery__management__t" kindref="compound">battery_management_t</ref><sp/>*manager)<sp/>{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(manager<sp/>==<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>memset(manager,<sp/>0,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<ref refid="structbattery__management__t" kindref="compound">battery_management_t</ref>));</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>healthy<sp/>=<sp/>battery_run_diagnostics(manager);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(healthy)<sp/>{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>manager-&gt;<ref refid="structbattery__management__t_1a1c41ec6059fe36ce0931bd296f6163a8" kindref="member">initialized</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__osusat__slog__api_1ga7bbefdd3b087c6a39b6f677b63f25d94" kindref="member">LOG_INFO</ref>(<ref refid="group__logging__types_1ga57bb7714cca858a4d242e4faae4d16be" kindref="member">EPS_COMPONENT_MAIN</ref>,</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Battery<sp/>management<sp/>initialized<sp/>successfully&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__osusat__event__bus__api_1ga9a19dc997602dd4c0a2bd006b51e2486" kindref="member">osusat_event_bus_publish</ref>(<ref refid="group__battery__management__types_1gad7d8c430783f35c8db6b3aebf67b6f57" kindref="member">BATTERY_EVENT_SELF_CHECK_PASSED</ref>,<sp/>NULL,<sp/>0);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>manager-&gt;<ref refid="structbattery__management__t_1a1c41ec6059fe36ce0931bd296f6163a8" kindref="member">initialized</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__osusat__slog__api_1gac0e47ba70b120fad351ebed1c2f3d848" kindref="member">LOG_ERROR</ref>(<ref refid="group__logging__types_1ga57bb7714cca858a4d242e4faae4d16be" kindref="member">EPS_COMPONENT_MAIN</ref>,</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Battery<sp/>self-check<sp/>failed<sp/>on<sp/>initialization&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>failure_code<sp/>=<sp/>0x01;<sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>replace<sp/>with<sp/>real<sp/>failure<sp/>code</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__osusat__event__bus__api_1ga9a19dc997602dd4c0a2bd006b51e2486" kindref="member">osusat_event_bus_publish</ref>(<ref refid="group__battery__management__types_1gaedac1bd0dfaf601fdf25de82903106c8" kindref="member">BATTERY_EVENT_SELF_CHECK_FAILED</ref>,<sp/>&amp;failure_code,</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__osusat__event__bus__api_1gae83611a56e85f92a045e85cb804a4fde" kindref="member">osusat_event_bus_subscribe</ref>(<ref refid="group__osusat__event__bus__types_1gaaa9fd284ba6ed1757d6ec8dc1bd19379" kindref="member">EVENT_SYSTICK</ref>,<sp/>battery_handle_tick,<sp/>manager);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__battery__management__api_1ga8f086f5628c0498505e56661ffd04ff1" kindref="member">battery_charge_control</ref>(<ref refid="structbattery__management__t" kindref="compound">battery_management_t</ref><sp/>*manager,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>enable)<sp/>{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!manager<sp/>||<sp/>!manager-&gt;<ref refid="structbattery__management__t_1a1c41ec6059fe36ce0931bd296f6163a8" kindref="member">initialized</ref>)</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>manager-&gt;<ref refid="structbattery__management__t_1aa3abfd687121b5f1b518fbf88f54bc3f" kindref="member">battery_status</ref>.<ref refid="structbattery__status__t_1a7c6991fffe727d2720cb06ceb96d2f7f" kindref="member">charging</ref><sp/>=<sp/>enable;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__osusat__slog__api_1ga7bbefdd3b087c6a39b6f677b63f25d94" kindref="member">LOG_INFO</ref>(<ref refid="group__logging__types_1ga57bb7714cca858a4d242e4faae4d16be" kindref="member">EPS_COMPONENT_MAIN</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Battery<sp/>charge<sp/>control<sp/>state<sp/>set<sp/>to<sp/>%d&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>enable);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>perform<sp/>hardware<sp/>action</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__osusat__event__bus__api_1ga9a19dc997602dd4c0a2bd006b51e2486" kindref="member">osusat_event_bus_publish</ref>(<ref refid="group__battery__management__types_1ga2bd033ba4e99b3c12a7f3160e2863280" kindref="member">BATTERY_EVENT_CHARGING_CHANGE</ref>,<sp/>&amp;enable,<sp/>1);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__battery__management__api_1ga903c812782a956a3300006154b17c839" kindref="member">battery_protect_mode</ref>(<ref refid="structbattery__management__t" kindref="compound">battery_management_t</ref><sp/>*manager)<sp/>{</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!manager)</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>figure<sp/>out<sp/>functionality</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__battery__management__api_1ga8f086f5628c0498505e56661ffd04ff1" kindref="member">battery_charge_control</ref>(manager,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>manager-&gt;<ref refid="structbattery__management__t_1aa3abfd687121b5f1b518fbf88f54bc3f" kindref="member">battery_status</ref>.<ref refid="structbattery__status__t_1a55780291c9bceaeff355e3df82b0aeb1" kindref="member">protection</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__osusat__slog__api_1gac0e47ba70b120fad351ebed1c2f3d848" kindref="member">LOG_ERROR</ref>(<ref refid="group__logging__types_1ga57bb7714cca858a4d242e4faae4d16be" kindref="member">EPS_COMPONENT_MAIN</ref>,</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Battery<sp/>protection<sp/>mode<sp/>triggered!<sp/>Voltage:<sp/>%.2fV&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>manager-&gt;<ref refid="structbattery__management__t_1aa3abfd687121b5f1b518fbf88f54bc3f" kindref="member">battery_status</ref>.<ref refid="structbattery__status__t_1adf660474d9cef3d3aaa3ba0a214070d2" kindref="member">voltage</ref>);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__osusat__event__bus__api_1ga9a19dc997602dd4c0a2bd006b51e2486" kindref="member">osusat_event_bus_publish</ref>(<ref refid="group__battery__management__types_1gab24d24185749fde8c2995766ece636ee" kindref="member">BATTERY_EVENT_FAULT_DETECTED</ref>,</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;manager-&gt;<ref refid="structbattery__management__t_1aa3abfd687121b5f1b518fbf88f54bc3f" kindref="member">battery_status</ref>,</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<ref refid="structbattery__status__t" kindref="compound">battery_status_t</ref>));</highlight></codeline>
+<codeline lineno="94"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>battery_handle_tick(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structosusat__event__t" kindref="compound">osusat_event_t</ref><sp/>*e,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*ctx)<sp/>{</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>(void)e;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structbattery__management__t" kindref="compound">battery_management_t</ref><sp/>*manager<sp/>=<sp/>(<ref refid="structbattery__management__t" kindref="compound">battery_management_t</ref><sp/>*)ctx;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(manager<sp/>==<sp/>NULL<sp/>||<sp/>!manager-&gt;<ref refid="structbattery__management__t_1a1c41ec6059fe36ce0931bd296f6163a8" kindref="member">initialized</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>manager-&gt;<ref refid="structbattery__management__t_1a1d53888ce2917c193fc4a9a774b35447" kindref="member">tick_counter</ref>++;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(manager-&gt;<ref refid="structbattery__management__t_1a1d53888ce2917c193fc4a9a774b35447" kindref="member">tick_counter</ref><sp/>&gt;=<sp/><ref refid="battery__management_8c_1a44ab53d331fa55563013301846375ff5" kindref="member">BATTERY_UPDATE_INTERVAL_TICKS</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>manager-&gt;<ref refid="structbattery__management__t_1a1d53888ce2917c193fc4a9a774b35447" kindref="member">tick_counter</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>battery_perform_update(manager);</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="111"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>HITL</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="test__battery__management_8c_1a710edae47271179a140d7cedb55613e2" kindref="member">g_mock_battery_voltage</ref><sp/>=<sp/>3.8f;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>battery_perform_update(<ref refid="structbattery__management__t" kindref="compound">battery_management_t</ref><sp/>*manager)<sp/>{</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>HITL</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>voltage<sp/>=<sp/><ref refid="test__battery__management_8c_1a710edae47271179a140d7cedb55613e2" kindref="member">g_mock_battery_voltage</ref>;</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>voltage<sp/>=<sp/>3.8f;<sp/></highlight><highlight class="comment">//<sp/>Mock<sp/>nominal<sp/>battery<sp/>voltage<sp/>for<sp/>testing</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/>manager-&gt;<ref refid="structbattery__management__t_1aa3abfd687121b5f1b518fbf88f54bc3f" kindref="member">battery_status</ref>.<ref refid="structbattery__status__t_1adf660474d9cef3d3aaa3ba0a214070d2" kindref="member">voltage</ref><sp/>=<sp/>voltage;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(voltage<sp/>&lt;<sp/><ref refid="eps__config_8h_1a1ea4cfe202536fc513a2bbd496310189" kindref="member">CRITICAL_BATTERY_VOLTAGE_THRESHOLD</ref><sp/>&amp;&amp;</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>!manager-&gt;<ref refid="structbattery__management__t_1aa3abfd687121b5f1b518fbf88f54bc3f" kindref="member">battery_status</ref>.<ref refid="structbattery__status__t_1a55780291c9bceaeff355e3df82b0aeb1" kindref="member">protection</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__osusat__slog__api_1ga6f4ae2de6e3a56df741f6213ab6ad72f" kindref="member">LOG_WARN</ref>(<ref refid="group__logging__types_1ga57bb7714cca858a4d242e4faae4d16be" kindref="member">EPS_COMPONENT_MAIN</ref>,</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Critical<sp/>low<sp/>battery<sp/>voltage<sp/>detected:<sp/>%.2fV&quot;</highlight><highlight class="normal">,<sp/>voltage);</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__battery__management__api_1ga903c812782a956a3300006154b17c839" kindref="member">battery_protect_mode</ref>(manager);</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__osusat__event__bus__api_1ga9a19dc997602dd4c0a2bd006b51e2486" kindref="member">osusat_event_bus_publish</ref>(<ref refid="group__battery__management__types_1ga71d2f807c933117718b2982526b15bcc" kindref="member">BATTERY_EVENT_CRITICAL_LOW</ref>,<sp/>&amp;voltage,</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/>manager-&gt;<ref refid="structbattery__management__t_1aed3cf7b02e2c28c98756d2e3a08305ed" kindref="member">telemetry_tick_counter</ref>++;</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(manager-&gt;<ref refid="structbattery__management__t_1aed3cf7b02e2c28c98756d2e3a08305ed" kindref="member">telemetry_tick_counter</ref><sp/>&gt;=<sp/><ref refid="battery__management_8c_1a1698f471c01665aceb32162c31ef6701" kindref="member">TELEMETRY_INTERVAL_CYCLES</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>manager-&gt;<ref refid="structbattery__management__t_1aed3cf7b02e2c28c98756d2e3a08305ed" kindref="member">telemetry_tick_counter</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__osusat__slog__api_1ga7bbefdd3b087c6a39b6f677b63f25d94" kindref="member">LOG_INFO</ref>(</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__logging__types_1ga57bb7714cca858a4d242e4faae4d16be" kindref="member">EPS_COMPONENT_MAIN</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Battery<sp/>update<sp/>telemetry:<sp/>V=%.2fV,<sp/>I=%.2fA&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>manager-&gt;<ref refid="structbattery__management__t_1aa3abfd687121b5f1b518fbf88f54bc3f" kindref="member">battery_status</ref>.<ref refid="structbattery__status__t_1adf660474d9cef3d3aaa3ba0a214070d2" kindref="member">voltage</ref>,<sp/>manager-&gt;<ref refid="structbattery__management__t_1aa3abfd687121b5f1b518fbf88f54bc3f" kindref="member">battery_status</ref>.<ref refid="structbattery__status__t_1a0a2a19f24f79b8a9bc8b9997f5e7a01b" kindref="member">current</ref>);</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__osusat__event__bus__api_1ga9a19dc997602dd4c0a2bd006b51e2486" kindref="member">osusat_event_bus_publish</ref>(<ref refid="group__battery__management__types_1gaafc9e07e74733f402534815fc8c85b9f" kindref="member">BATTERY_EVENT_TELEMETRY</ref>,</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;manager-&gt;<ref refid="structbattery__management__t_1aa3abfd687121b5f1b518fbf88f54bc3f" kindref="member">battery_status</ref>,</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<ref refid="structbattery__status__t" kindref="compound">battery_status_t</ref>));</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="148"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>battery_run_diagnostics(<ref refid="structbattery__management__t" kindref="compound">battery_management_t</ref><sp/>*manager)<sp/>{</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/>(void)manager;</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>perform<sp/>real<sp/>checks</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="156"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/battery_management.c"/>
+  </compounddef>
+</doxygen>
