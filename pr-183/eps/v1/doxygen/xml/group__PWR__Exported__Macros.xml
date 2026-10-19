@@ -1,0 +1,855 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="group__PWR__Exported__Macros" kind="group">
+    <compoundname>PWR_Exported_Macros</compoundname>
+    <title>PWR Exported Macros</title>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="group__PWR__Exported__Macros_1ga2977135bbea35b786805eea640d1c884" prot="public" static="no">
+        <name>__HAL_PWR_GET_FLAG</name>
+        <param><defname>__FLAG__</defname></param>
+        <initializer>                                      ( ((((uint8_t)(__FLAG__)) &gt;&gt; 5U) == 1)  ?\
+                                      (<ref refid="group__Peripheral__declaration_1ga04651c526497822a859942b928e57f8e" kindref="member">PWR</ref>-&gt;SR1 &amp; (1U &lt;&lt; ((__FLAG__) &amp; 31U))) :\
+                                      (<ref refid="group__Peripheral__declaration_1ga04651c526497822a859942b928e57f8e" kindref="member">PWR</ref>-&gt;SR2 &amp; (1U &lt;&lt; ((__FLAG__) &amp; 31U))) )</initializer>
+        <briefdescription>
+<para>Check whether or not a specific PWR flag is set. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__FLAG__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the flag to check. This parameter can be one of the following values: <itemizedlist>
+<listitem><para><ref refid="group__PWREx__Flag_1gaa3527e755c08ac2b2d95edd7adc4ee70" kindref="member">PWR_FLAG_WUF1</ref> Wake Up Flag 1. Indicates that a wakeup event was received from the WKUP pin 1. </para>
+</listitem>
+<listitem><para><ref refid="group__PWREx__Flag_1ga6be7514eb20788bbd92e78eed13c551c" kindref="member">PWR_FLAG_WUF2</ref> Wake Up Flag 2. Indicates that a wakeup event was received from the WKUP pin 2. </para>
+</listitem>
+<listitem><para><ref refid="group__PWREx__Flag_1ga76716079ff7849bddcbbe8f429d70db3" kindref="member">PWR_FLAG_WUF3</ref> Wake Up Flag 3. Indicates that a wakeup event was received from the WKUP pin 3. </para>
+</listitem>
+<listitem><para><ref refid="group__PWREx__Flag_1gad406114253e536be4850a82229988d9c" kindref="member">PWR_FLAG_WUF4</ref> Wake Up Flag 4. Indicates that a wakeup event was received from the WKUP pin 4. </para>
+</listitem>
+<listitem><para><ref refid="group__PWREx__Flag_1gafc27b8a8062b22eb570af0cbce49c452" kindref="member">PWR_FLAG_WUF5</ref> Wake Up Flag 5. Indicates that a wakeup event was received from the WKUP pin 5. </para>
+</listitem>
+<listitem><para><ref refid="group__PWREx__Flag_1ga9e55f0b5dec2346d5c8dee3ab3c0c2df" kindref="member">PWR_FLAG_SB</ref> StandBy Flag. Indicates that the system entered StandBy mode. </para>
+</listitem>
+<listitem><para>PWR_FLAG_EXT_SMPS External SMPS Ready Flag. When available on device, indicates that external switch can be closed to connect to the external SMPS, when the Range 2 of internal regulator is ready. </para>
+</listitem>
+<listitem><para><ref refid="group__PWREx__Flag_1ga6be01d28369a777d1d372baa9ed5b488" kindref="member">PWR_FLAG_WUFI</ref> Wake-Up Flag Internal. Set when a wakeup is detected on the internal wakeup line. </para>
+</listitem>
+<listitem><para><ref refid="group__PWREx__Flag_1ga83a0e30086ec21630b8a175ae48a2672" kindref="member">PWR_FLAG_REGLPS</ref> Low Power Regulator Started. Indicates whether or not the low-power regulator is ready. </para>
+</listitem>
+<listitem><para><ref refid="group__PWREx__Flag_1ga8ed9097fdb76809257ecc0e398a2904f" kindref="member">PWR_FLAG_REGLPF</ref> Low Power Regulator Flag. Indicates whether the regulator is ready in main mode or is in low-power mode. </para>
+</listitem>
+<listitem><para><ref refid="group__PWREx__Flag_1gadad469c6c3a277918f869cd20613b3a9" kindref="member">PWR_FLAG_VOSF</ref> Voltage Scaling Flag. Indicates whether the regulator is ready in the selected voltage range or is still changing to the required voltage level. </para>
+</listitem>
+<listitem><para><ref refid="group__PWREx__Flag_1gaefd05d58cc050eeef83a1b5c520b2c2a" kindref="member">PWR_FLAG_PVDO</ref> Power Voltage Detector Output. Indicates whether VDD voltage is below or above the selected PVD threshold. </para>
+</listitem>
+<listitem><para>PWR_FLAG_PVMO1 Peripheral Voltage Monitoring Output 1. Indicates whether VDDUSB voltage is is below or above PVM1 threshold (applicable when USB feature is supported).  </para>
+</listitem>
+<listitem><para><ref refid="group__PWREx__Flag_1ga383cf87db3c18c7e15cf048ecc4a329e" kindref="member">PWR_FLAG_PVMO3</ref> Peripheral Voltage Monitoring Output 3. Indicates whether VDDA voltage is is below or above PVM3 threshold. </para>
+</listitem>
+<listitem><para><ref refid="group__PWREx__Flag_1ga9f34874ebc6cb71933e0b845f0c001e3" kindref="member">PWR_FLAG_PVMO4</ref> Peripheral Voltage Monitoring Output 4. Indicates whether VDDA voltage is is below or above PVM4 threshold.</para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>The</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>new state of <bold>FLAG</bold> (TRUE or FALSE). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr.h" line="194" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr.h" bodystart="194" bodyend="196"/>
+      </memberdef>
+      <memberdef kind="define" id="group__PWR__Exported__Macros_1ga96f24bf4b16c9f944cd829100bf746e5" prot="public" static="no">
+        <name>__HAL_PWR_CLEAR_FLAG</name>
+        <param><defname>__FLAG__</defname></param>
+        <initializer>                                         ( (((uint8_t)(__FLAG__)) == <ref refid="group__PWREx__Flag_1ga2d06760a5769e729b06d41e37036d58e" kindref="member">PWR_FLAG_WU</ref>) ?\
+                                         (<ref refid="group__Peripheral__declaration_1ga04651c526497822a859942b928e57f8e" kindref="member">PWR</ref>-&gt;SCR  = (__FLAG__)) :\
+                                         (<ref refid="group__Peripheral__declaration_1ga04651c526497822a859942b928e57f8e" kindref="member">PWR</ref>-&gt;SCR = (1U &lt;&lt; ((__FLAG__) &amp; 31U))) )</initializer>
+        <briefdescription>
+<para>Clear a specific PWR flag. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__FLAG__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the flag to clear. This parameter can be one of the following values: <itemizedlist>
+<listitem><para><ref refid="group__PWREx__Flag_1gaa3527e755c08ac2b2d95edd7adc4ee70" kindref="member">PWR_FLAG_WUF1</ref> Wake Up Flag 1. Indicates that a wakeup event was received from the WKUP pin 1. </para>
+</listitem>
+<listitem><para><ref refid="group__PWREx__Flag_1ga6be7514eb20788bbd92e78eed13c551c" kindref="member">PWR_FLAG_WUF2</ref> Wake Up Flag 2. Indicates that a wakeup event was received from the WKUP pin 2. </para>
+</listitem>
+<listitem><para><ref refid="group__PWREx__Flag_1ga76716079ff7849bddcbbe8f429d70db3" kindref="member">PWR_FLAG_WUF3</ref> Wake Up Flag 3. Indicates that a wakeup event was received from the WKUP pin 3. </para>
+</listitem>
+<listitem><para><ref refid="group__PWREx__Flag_1gad406114253e536be4850a82229988d9c" kindref="member">PWR_FLAG_WUF4</ref> Wake Up Flag 4. Indicates that a wakeup event was received from the WKUP pin 4. </para>
+</listitem>
+<listitem><para><ref refid="group__PWREx__Flag_1gafc27b8a8062b22eb570af0cbce49c452" kindref="member">PWR_FLAG_WUF5</ref> Wake Up Flag 5. Indicates that a wakeup event was received from the WKUP pin 5. </para>
+</listitem>
+<listitem><para><ref refid="group__PWREx__Flag_1ga2d06760a5769e729b06d41e37036d58e" kindref="member">PWR_FLAG_WU</ref> Encompasses all five Wake Up Flags. </para>
+</listitem>
+<listitem><para><ref refid="group__PWREx__Flag_1ga9e55f0b5dec2346d5c8dee3ab3c0c2df" kindref="member">PWR_FLAG_SB</ref> Standby Flag. Indicates that the system entered Standby mode. </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr.h" line="216" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr.h" bodystart="216" bodyend="218"/>
+      </memberdef>
+      <memberdef kind="define" id="group__PWR__Exported__Macros_1ga3180f039cf14ef78a64089f387f8f9c2" prot="public" static="no">
+        <name>__HAL_PWR_PVD_EXTI_ENABLE_IT</name>
+        <param></param>
+        <initializer><ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga9189e770cd9b63dadd36683eb9843cac" kindref="member">EXTI</ref>-&gt;IMR1, <ref refid="group__PWR__PVD__EXTI__LINE_1ga43a49255649e03d2d2b6b12c5c379d2b" kindref="member">PWR_EXTI_LINE_PVD</ref>)</initializer>
+        <briefdescription>
+<para>Enable the PVD Extended Interrupt Line. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr.h" line="223" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr.h" bodystart="223" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__PWR__Exported__Macros_1gad240d7bf8f15191b068497b9aead1f1f" prot="public" static="no">
+        <name>__HAL_PWR_PVD_EXTI_DISABLE_IT</name>
+        <param></param>
+        <initializer><ref refid="group__Exported__macros_1ga133aae6fc0d41bffab39ab223a7001de" kindref="member">CLEAR_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga9189e770cd9b63dadd36683eb9843cac" kindref="member">EXTI</ref>-&gt;IMR1, <ref refid="group__PWR__PVD__EXTI__LINE_1ga43a49255649e03d2d2b6b12c5c379d2b" kindref="member">PWR_EXTI_LINE_PVD</ref>)</initializer>
+        <briefdescription>
+<para>Disable the PVD Extended Interrupt Line. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr.h" line="229" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr.h" bodystart="229" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__PWR__Exported__Macros_1gae5ba5672fe8cb7c1686c7f2cc211b128" prot="public" static="no">
+        <name>__HAL_PWR_PVD_EXTI_ENABLE_EVENT</name>
+        <param></param>
+        <initializer><ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga9189e770cd9b63dadd36683eb9843cac" kindref="member">EXTI</ref>-&gt;EMR1, <ref refid="group__PWR__PVD__EVENT__LINE_1ga115f7f93268a51617cd821a4f1de0fcd" kindref="member">PWR_EVENT_LINE_PVD</ref>)</initializer>
+        <briefdescription>
+<para>Enable the PVD Event Line. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr.h" line="235" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr.h" bodystart="235" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__PWR__Exported__Macros_1ga8bd379e960497722450c7cea474a7e7a" prot="public" static="no">
+        <name>__HAL_PWR_PVD_EXTI_DISABLE_EVENT</name>
+        <param></param>
+        <initializer><ref refid="group__Exported__macros_1ga133aae6fc0d41bffab39ab223a7001de" kindref="member">CLEAR_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga9189e770cd9b63dadd36683eb9843cac" kindref="member">EXTI</ref>-&gt;EMR1, <ref refid="group__PWR__PVD__EVENT__LINE_1ga115f7f93268a51617cd821a4f1de0fcd" kindref="member">PWR_EVENT_LINE_PVD</ref>)</initializer>
+        <briefdescription>
+<para>Disable the PVD Event Line. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr.h" line="241" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr.h" bodystart="241" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__PWR__Exported__Macros_1ga7bef3f30c9fe267c99d5240fbf3f878c" prot="public" static="no">
+        <name>__HAL_PWR_PVD_EXTI_ENABLE_RISING_EDGE</name>
+        <param></param>
+        <initializer><ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga9189e770cd9b63dadd36683eb9843cac" kindref="member">EXTI</ref>-&gt;RTSR1, <ref refid="group__PWR__PVD__EXTI__LINE_1ga43a49255649e03d2d2b6b12c5c379d2b" kindref="member">PWR_EXTI_LINE_PVD</ref>)</initializer>
+        <briefdescription>
+<para>Enable the PVD Extended Interrupt Rising Trigger. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr.h" line="247" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr.h" bodystart="247" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__PWR__Exported__Macros_1ga1ca8fd7f3286a176f6be540c75a004c6" prot="public" static="no">
+        <name>__HAL_PWR_PVD_EXTI_DISABLE_RISING_EDGE</name>
+        <param></param>
+        <initializer><ref refid="group__Exported__macros_1ga133aae6fc0d41bffab39ab223a7001de" kindref="member">CLEAR_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga9189e770cd9b63dadd36683eb9843cac" kindref="member">EXTI</ref>-&gt;RTSR1, <ref refid="group__PWR__PVD__EXTI__LINE_1ga43a49255649e03d2d2b6b12c5c379d2b" kindref="member">PWR_EXTI_LINE_PVD</ref>)</initializer>
+        <briefdescription>
+<para>Disable the PVD Extended Interrupt Rising Trigger. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr.h" line="253" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr.h" bodystart="253" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__PWR__Exported__Macros_1ga5b971478563a00e1ee1a9d8ca8054e08" prot="public" static="no">
+        <name>__HAL_PWR_PVD_EXTI_ENABLE_FALLING_EDGE</name>
+        <param></param>
+        <initializer><ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga9189e770cd9b63dadd36683eb9843cac" kindref="member">EXTI</ref>-&gt;FTSR1, <ref refid="group__PWR__PVD__EXTI__LINE_1ga43a49255649e03d2d2b6b12c5c379d2b" kindref="member">PWR_EXTI_LINE_PVD</ref>)</initializer>
+        <briefdescription>
+<para>Enable the PVD Extended Interrupt Falling Trigger. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr.h" line="259" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr.h" bodystart="259" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__PWR__Exported__Macros_1ga1ca57168205f8cd8d1014e6eb9465f2d" prot="public" static="no">
+        <name>__HAL_PWR_PVD_EXTI_DISABLE_FALLING_EDGE</name>
+        <param></param>
+        <initializer><ref refid="group__Exported__macros_1ga133aae6fc0d41bffab39ab223a7001de" kindref="member">CLEAR_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga9189e770cd9b63dadd36683eb9843cac" kindref="member">EXTI</ref>-&gt;FTSR1, <ref refid="group__PWR__PVD__EXTI__LINE_1ga43a49255649e03d2d2b6b12c5c379d2b" kindref="member">PWR_EXTI_LINE_PVD</ref>)</initializer>
+        <briefdescription>
+<para>Disable the PVD Extended Interrupt Falling Trigger. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr.h" line="266" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr.h" bodystart="266" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__PWR__Exported__Macros_1ga638033d236eb78c1e5ecb9b49c4e7f36" prot="public" static="no">
+        <name>__HAL_PWR_PVD_EXTI_ENABLE_RISING_FALLING_EDGE</name>
+        <param></param>
+        <initializer>  do {                                                   \
+    <ref refid="group__PWR__Exported__Macros_1ga7bef3f30c9fe267c99d5240fbf3f878c" kindref="member">__HAL_PWR_PVD_EXTI_ENABLE_RISING_EDGE</ref>();             \
+    <ref refid="group__PWR__Exported__Macros_1ga5b971478563a00e1ee1a9d8ca8054e08" kindref="member">__HAL_PWR_PVD_EXTI_ENABLE_FALLING_EDGE</ref>();            \
+  } while(0)</initializer>
+        <briefdescription>
+<para>Enable the PVD Extended Interrupt Rising &amp; Falling Trigger. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr.h" line="273" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr.h" bodystart="273" bodyend="277"/>
+      </memberdef>
+      <memberdef kind="define" id="group__PWR__Exported__Macros_1ga3f66c9c0c214cd08c24674904dcdc4e0" prot="public" static="no">
+        <name>__HAL_PWR_PVD_EXTI_DISABLE_RISING_FALLING_EDGE</name>
+        <param></param>
+        <initializer>  do {                                                    \
+    <ref refid="group__PWR__Exported__Macros_1ga1ca8fd7f3286a176f6be540c75a004c6" kindref="member">__HAL_PWR_PVD_EXTI_DISABLE_RISING_EDGE</ref>();             \
+    <ref refid="group__PWR__Exported__Macros_1ga1ca57168205f8cd8d1014e6eb9465f2d" kindref="member">__HAL_PWR_PVD_EXTI_DISABLE_FALLING_EDGE</ref>();            \
+  } while(0)</initializer>
+        <briefdescription>
+<para>Disable the PVD Extended Interrupt Rising &amp; Falling Trigger. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr.h" line="283" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr.h" bodystart="283" bodyend="287"/>
+      </memberdef>
+      <memberdef kind="define" id="group__PWR__Exported__Macros_1gaba4a7968f5c4c4ca6a7047b147ba18d4" prot="public" static="no">
+        <name>__HAL_PWR_PVD_EXTI_GENERATE_SWIT</name>
+        <param></param>
+        <initializer><ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga9189e770cd9b63dadd36683eb9843cac" kindref="member">EXTI</ref>-&gt;SWIER1, <ref refid="group__PWR__PVD__EXTI__LINE_1ga43a49255649e03d2d2b6b12c5c379d2b" kindref="member">PWR_EXTI_LINE_PVD</ref>)</initializer>
+        <briefdescription>
+<para>Generate a Software interrupt on selected EXTI line. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr.h" line="293" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr.h" bodystart="293" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__PWR__Exported__Macros_1ga5e66fa75359b51066e0731ac1e5ae438" prot="public" static="no">
+        <name>__HAL_PWR_PVD_EXTI_GET_FLAG</name>
+        <param></param>
+        <initializer>(<ref refid="group__Peripheral__declaration_1ga9189e770cd9b63dadd36683eb9843cac" kindref="member">EXTI</ref>-&gt;PR1 &amp; <ref refid="group__PWR__PVD__EXTI__LINE_1ga43a49255649e03d2d2b6b12c5c379d2b" kindref="member">PWR_EXTI_LINE_PVD</ref>)</initializer>
+        <briefdescription>
+<para>Check whether or not the PVD EXTI interrupt flag is set. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>EXTI</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>PVD Line Status. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr.h" line="299" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr.h" bodystart="299" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__PWR__Exported__Macros_1gac0fb2218bc050f5d8fdb1a3f28590352" prot="public" static="no">
+        <name>__HAL_PWR_PVD_EXTI_CLEAR_FLAG</name>
+        <param></param>
+        <initializer><ref refid="group__Exported__macros_1ga32f78bffcaf6d13023dcd7f05e0c4d57" kindref="member">WRITE_REG</ref>(<ref refid="group__Peripheral__declaration_1ga9189e770cd9b63dadd36683eb9843cac" kindref="member">EXTI</ref>-&gt;PR1, <ref refid="group__PWR__PVD__EXTI__LINE_1ga43a49255649e03d2d2b6b12c5c379d2b" kindref="member">PWR_EXTI_LINE_PVD</ref>)</initializer>
+        <briefdescription>
+<para>Clear the PVD EXTI interrupt flag. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr.h" line="305" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr.h" bodystart="305" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__PWR__Exported__Macros_1ga2977135bbea35b786805eea640d1c884" prot="public" static="no">
+        <name>__HAL_PWR_GET_FLAG</name>
+        <param><defname>__FLAG__</defname></param>
+        <initializer>                                      ( ((((uint8_t)(__FLAG__)) &gt;&gt; 5U) == 1)  ?\
+                                      (<ref refid="group__Peripheral__declaration_1ga04651c526497822a859942b928e57f8e" kindref="member">PWR</ref>-&gt;SR1 &amp; (1U &lt;&lt; ((__FLAG__) &amp; 31U))) :\
+                                      (<ref refid="group__Peripheral__declaration_1ga04651c526497822a859942b928e57f8e" kindref="member">PWR</ref>-&gt;SR2 &amp; (1U &lt;&lt; ((__FLAG__) &amp; 31U))) )</initializer>
+        <briefdescription>
+<para>Check whether or not a specific PWR flag is set. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__FLAG__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the flag to check. This parameter can be one of the following values: <itemizedlist>
+<listitem><para><ref refid="group__PWREx__Flag_1gaa3527e755c08ac2b2d95edd7adc4ee70" kindref="member">PWR_FLAG_WUF1</ref> Wake Up Flag 1. Indicates that a wakeup event was received from the WKUP pin 1. </para>
+</listitem>
+<listitem><para><ref refid="group__PWREx__Flag_1ga6be7514eb20788bbd92e78eed13c551c" kindref="member">PWR_FLAG_WUF2</ref> Wake Up Flag 2. Indicates that a wakeup event was received from the WKUP pin 2. </para>
+</listitem>
+<listitem><para><ref refid="group__PWREx__Flag_1ga76716079ff7849bddcbbe8f429d70db3" kindref="member">PWR_FLAG_WUF3</ref> Wake Up Flag 3. Indicates that a wakeup event was received from the WKUP pin 3. </para>
+</listitem>
+<listitem><para><ref refid="group__PWREx__Flag_1gad406114253e536be4850a82229988d9c" kindref="member">PWR_FLAG_WUF4</ref> Wake Up Flag 4. Indicates that a wakeup event was received from the WKUP pin 4. </para>
+</listitem>
+<listitem><para><ref refid="group__PWREx__Flag_1gafc27b8a8062b22eb570af0cbce49c452" kindref="member">PWR_FLAG_WUF5</ref> Wake Up Flag 5. Indicates that a wakeup event was received from the WKUP pin 5. </para>
+</listitem>
+<listitem><para><ref refid="group__PWREx__Flag_1ga9e55f0b5dec2346d5c8dee3ab3c0c2df" kindref="member">PWR_FLAG_SB</ref> StandBy Flag. Indicates that the system entered StandBy mode. </para>
+</listitem>
+<listitem><para>PWR_FLAG_EXT_SMPS External SMPS Ready Flag. When available on device, indicates that external switch can be closed to connect to the external SMPS, when the Range 2 of internal regulator is ready. </para>
+</listitem>
+<listitem><para><ref refid="group__PWREx__Flag_1ga6be01d28369a777d1d372baa9ed5b488" kindref="member">PWR_FLAG_WUFI</ref> Wake-Up Flag Internal. Set when a wakeup is detected on the internal wakeup line. </para>
+</listitem>
+<listitem><para><ref refid="group__PWREx__Flag_1ga83a0e30086ec21630b8a175ae48a2672" kindref="member">PWR_FLAG_REGLPS</ref> Low Power Regulator Started. Indicates whether or not the low-power regulator is ready. </para>
+</listitem>
+<listitem><para><ref refid="group__PWREx__Flag_1ga8ed9097fdb76809257ecc0e398a2904f" kindref="member">PWR_FLAG_REGLPF</ref> Low Power Regulator Flag. Indicates whether the regulator is ready in main mode or is in low-power mode. </para>
+</listitem>
+<listitem><para><ref refid="group__PWREx__Flag_1gadad469c6c3a277918f869cd20613b3a9" kindref="member">PWR_FLAG_VOSF</ref> Voltage Scaling Flag. Indicates whether the regulator is ready in the selected voltage range or is still changing to the required voltage level. </para>
+</listitem>
+<listitem><para><ref refid="group__PWREx__Flag_1gaefd05d58cc050eeef83a1b5c520b2c2a" kindref="member">PWR_FLAG_PVDO</ref> Power Voltage Detector Output. Indicates whether VDD voltage is below or above the selected PVD threshold. </para>
+</listitem>
+<listitem><para>PWR_FLAG_PVMO1 Peripheral Voltage Monitoring Output 1. Indicates whether VDDUSB voltage is is below or above PVM1 threshold (applicable when USB feature is supported).  </para>
+</listitem>
+<listitem><para><ref refid="group__PWREx__Flag_1ga383cf87db3c18c7e15cf048ecc4a329e" kindref="member">PWR_FLAG_PVMO3</ref> Peripheral Voltage Monitoring Output 3. Indicates whether VDDA voltage is is below or above PVM3 threshold. </para>
+</listitem>
+<listitem><para><ref refid="group__PWREx__Flag_1ga9f34874ebc6cb71933e0b845f0c001e3" kindref="member">PWR_FLAG_PVMO4</ref> Peripheral Voltage Monitoring Output 4. Indicates whether VDDA voltage is is below or above PVM4 threshold.</para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>The</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>new state of <bold>FLAG</bold> (TRUE or FALSE). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_pwr.h" line="194" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_pwr.h" bodystart="194" bodyend="196"/>
+      </memberdef>
+      <memberdef kind="define" id="group__PWR__Exported__Macros_1ga96f24bf4b16c9f944cd829100bf746e5" prot="public" static="no">
+        <name>__HAL_PWR_CLEAR_FLAG</name>
+        <param><defname>__FLAG__</defname></param>
+        <initializer>                                         ( (((uint8_t)(__FLAG__)) == <ref refid="group__PWREx__Flag_1ga2d06760a5769e729b06d41e37036d58e" kindref="member">PWR_FLAG_WU</ref>) ?\
+                                         (<ref refid="group__Peripheral__declaration_1ga04651c526497822a859942b928e57f8e" kindref="member">PWR</ref>-&gt;SCR  = (__FLAG__)) :\
+                                         (<ref refid="group__Peripheral__declaration_1ga04651c526497822a859942b928e57f8e" kindref="member">PWR</ref>-&gt;SCR = (1U &lt;&lt; ((__FLAG__) &amp; 31U))) )</initializer>
+        <briefdescription>
+<para>Clear a specific PWR flag. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>__FLAG__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the flag to clear. This parameter can be one of the following values: <itemizedlist>
+<listitem><para><ref refid="group__PWREx__Flag_1gaa3527e755c08ac2b2d95edd7adc4ee70" kindref="member">PWR_FLAG_WUF1</ref> Wake Up Flag 1. Indicates that a wakeup event was received from the WKUP pin 1. </para>
+</listitem>
+<listitem><para><ref refid="group__PWREx__Flag_1ga6be7514eb20788bbd92e78eed13c551c" kindref="member">PWR_FLAG_WUF2</ref> Wake Up Flag 2. Indicates that a wakeup event was received from the WKUP pin 2. </para>
+</listitem>
+<listitem><para><ref refid="group__PWREx__Flag_1ga76716079ff7849bddcbbe8f429d70db3" kindref="member">PWR_FLAG_WUF3</ref> Wake Up Flag 3. Indicates that a wakeup event was received from the WKUP pin 3. </para>
+</listitem>
+<listitem><para><ref refid="group__PWREx__Flag_1gad406114253e536be4850a82229988d9c" kindref="member">PWR_FLAG_WUF4</ref> Wake Up Flag 4. Indicates that a wakeup event was received from the WKUP pin 4. </para>
+</listitem>
+<listitem><para><ref refid="group__PWREx__Flag_1gafc27b8a8062b22eb570af0cbce49c452" kindref="member">PWR_FLAG_WUF5</ref> Wake Up Flag 5. Indicates that a wakeup event was received from the WKUP pin 5. </para>
+</listitem>
+<listitem><para><ref refid="group__PWREx__Flag_1ga2d06760a5769e729b06d41e37036d58e" kindref="member">PWR_FLAG_WU</ref> Encompasses all five Wake Up Flags. </para>
+</listitem>
+<listitem><para><ref refid="group__PWREx__Flag_1ga9e55f0b5dec2346d5c8dee3ab3c0c2df" kindref="member">PWR_FLAG_SB</ref> Standby Flag. Indicates that the system entered Standby mode. </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_pwr.h" line="216" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_pwr.h" bodystart="216" bodyend="218"/>
+      </memberdef>
+      <memberdef kind="define" id="group__PWR__Exported__Macros_1ga3180f039cf14ef78a64089f387f8f9c2" prot="public" static="no">
+        <name>__HAL_PWR_PVD_EXTI_ENABLE_IT</name>
+        <param></param>
+        <initializer><ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga9189e770cd9b63dadd36683eb9843cac" kindref="member">EXTI</ref>-&gt;IMR1, <ref refid="group__PWR__PVD__EXTI__LINE_1ga43a49255649e03d2d2b6b12c5c379d2b" kindref="member">PWR_EXTI_LINE_PVD</ref>)</initializer>
+        <briefdescription>
+<para>Enable the PVD Extended Interrupt Line. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_pwr.h" line="223" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_pwr.h" bodystart="223" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__PWR__Exported__Macros_1gad240d7bf8f15191b068497b9aead1f1f" prot="public" static="no">
+        <name>__HAL_PWR_PVD_EXTI_DISABLE_IT</name>
+        <param></param>
+        <initializer><ref refid="group__Exported__macros_1ga133aae6fc0d41bffab39ab223a7001de" kindref="member">CLEAR_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga9189e770cd9b63dadd36683eb9843cac" kindref="member">EXTI</ref>-&gt;IMR1, <ref refid="group__PWR__PVD__EXTI__LINE_1ga43a49255649e03d2d2b6b12c5c379d2b" kindref="member">PWR_EXTI_LINE_PVD</ref>)</initializer>
+        <briefdescription>
+<para>Disable the PVD Extended Interrupt Line. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_pwr.h" line="229" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_pwr.h" bodystart="229" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__PWR__Exported__Macros_1gae5ba5672fe8cb7c1686c7f2cc211b128" prot="public" static="no">
+        <name>__HAL_PWR_PVD_EXTI_ENABLE_EVENT</name>
+        <param></param>
+        <initializer><ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga9189e770cd9b63dadd36683eb9843cac" kindref="member">EXTI</ref>-&gt;EMR1, <ref refid="group__PWR__PVD__EVENT__LINE_1ga115f7f93268a51617cd821a4f1de0fcd" kindref="member">PWR_EVENT_LINE_PVD</ref>)</initializer>
+        <briefdescription>
+<para>Enable the PVD Event Line. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_pwr.h" line="235" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_pwr.h" bodystart="235" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__PWR__Exported__Macros_1ga8bd379e960497722450c7cea474a7e7a" prot="public" static="no">
+        <name>__HAL_PWR_PVD_EXTI_DISABLE_EVENT</name>
+        <param></param>
+        <initializer><ref refid="group__Exported__macros_1ga133aae6fc0d41bffab39ab223a7001de" kindref="member">CLEAR_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga9189e770cd9b63dadd36683eb9843cac" kindref="member">EXTI</ref>-&gt;EMR1, <ref refid="group__PWR__PVD__EVENT__LINE_1ga115f7f93268a51617cd821a4f1de0fcd" kindref="member">PWR_EVENT_LINE_PVD</ref>)</initializer>
+        <briefdescription>
+<para>Disable the PVD Event Line. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_pwr.h" line="241" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_pwr.h" bodystart="241" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__PWR__Exported__Macros_1ga7bef3f30c9fe267c99d5240fbf3f878c" prot="public" static="no">
+        <name>__HAL_PWR_PVD_EXTI_ENABLE_RISING_EDGE</name>
+        <param></param>
+        <initializer><ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga9189e770cd9b63dadd36683eb9843cac" kindref="member">EXTI</ref>-&gt;RTSR1, <ref refid="group__PWR__PVD__EXTI__LINE_1ga43a49255649e03d2d2b6b12c5c379d2b" kindref="member">PWR_EXTI_LINE_PVD</ref>)</initializer>
+        <briefdescription>
+<para>Enable the PVD Extended Interrupt Rising Trigger. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_pwr.h" line="247" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_pwr.h" bodystart="247" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__PWR__Exported__Macros_1ga1ca8fd7f3286a176f6be540c75a004c6" prot="public" static="no">
+        <name>__HAL_PWR_PVD_EXTI_DISABLE_RISING_EDGE</name>
+        <param></param>
+        <initializer><ref refid="group__Exported__macros_1ga133aae6fc0d41bffab39ab223a7001de" kindref="member">CLEAR_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga9189e770cd9b63dadd36683eb9843cac" kindref="member">EXTI</ref>-&gt;RTSR1, <ref refid="group__PWR__PVD__EXTI__LINE_1ga43a49255649e03d2d2b6b12c5c379d2b" kindref="member">PWR_EXTI_LINE_PVD</ref>)</initializer>
+        <briefdescription>
+<para>Disable the PVD Extended Interrupt Rising Trigger. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_pwr.h" line="253" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_pwr.h" bodystart="253" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__PWR__Exported__Macros_1ga5b971478563a00e1ee1a9d8ca8054e08" prot="public" static="no">
+        <name>__HAL_PWR_PVD_EXTI_ENABLE_FALLING_EDGE</name>
+        <param></param>
+        <initializer><ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga9189e770cd9b63dadd36683eb9843cac" kindref="member">EXTI</ref>-&gt;FTSR1, <ref refid="group__PWR__PVD__EXTI__LINE_1ga43a49255649e03d2d2b6b12c5c379d2b" kindref="member">PWR_EXTI_LINE_PVD</ref>)</initializer>
+        <briefdescription>
+<para>Enable the PVD Extended Interrupt Falling Trigger. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_pwr.h" line="259" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_pwr.h" bodystart="259" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__PWR__Exported__Macros_1ga1ca57168205f8cd8d1014e6eb9465f2d" prot="public" static="no">
+        <name>__HAL_PWR_PVD_EXTI_DISABLE_FALLING_EDGE</name>
+        <param></param>
+        <initializer><ref refid="group__Exported__macros_1ga133aae6fc0d41bffab39ab223a7001de" kindref="member">CLEAR_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga9189e770cd9b63dadd36683eb9843cac" kindref="member">EXTI</ref>-&gt;FTSR1, <ref refid="group__PWR__PVD__EXTI__LINE_1ga43a49255649e03d2d2b6b12c5c379d2b" kindref="member">PWR_EXTI_LINE_PVD</ref>)</initializer>
+        <briefdescription>
+<para>Disable the PVD Extended Interrupt Falling Trigger. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_pwr.h" line="266" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_pwr.h" bodystart="266" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__PWR__Exported__Macros_1ga638033d236eb78c1e5ecb9b49c4e7f36" prot="public" static="no">
+        <name>__HAL_PWR_PVD_EXTI_ENABLE_RISING_FALLING_EDGE</name>
+        <param></param>
+        <initializer>  do {                                                   \
+    <ref refid="group__PWR__Exported__Macros_1ga7bef3f30c9fe267c99d5240fbf3f878c" kindref="member">__HAL_PWR_PVD_EXTI_ENABLE_RISING_EDGE</ref>();             \
+    <ref refid="group__PWR__Exported__Macros_1ga5b971478563a00e1ee1a9d8ca8054e08" kindref="member">__HAL_PWR_PVD_EXTI_ENABLE_FALLING_EDGE</ref>();            \
+  } while(0)</initializer>
+        <briefdescription>
+<para>Enable the PVD Extended Interrupt Rising &amp; Falling Trigger. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_pwr.h" line="273" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_pwr.h" bodystart="273" bodyend="277"/>
+      </memberdef>
+      <memberdef kind="define" id="group__PWR__Exported__Macros_1ga3f66c9c0c214cd08c24674904dcdc4e0" prot="public" static="no">
+        <name>__HAL_PWR_PVD_EXTI_DISABLE_RISING_FALLING_EDGE</name>
+        <param></param>
+        <initializer>  do {                                                    \
+    <ref refid="group__PWR__Exported__Macros_1ga1ca8fd7f3286a176f6be540c75a004c6" kindref="member">__HAL_PWR_PVD_EXTI_DISABLE_RISING_EDGE</ref>();             \
+    <ref refid="group__PWR__Exported__Macros_1ga1ca57168205f8cd8d1014e6eb9465f2d" kindref="member">__HAL_PWR_PVD_EXTI_DISABLE_FALLING_EDGE</ref>();            \
+  } while(0)</initializer>
+        <briefdescription>
+<para>Disable the PVD Extended Interrupt Rising &amp; Falling Trigger. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_pwr.h" line="283" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_pwr.h" bodystart="283" bodyend="287"/>
+      </memberdef>
+      <memberdef kind="define" id="group__PWR__Exported__Macros_1gaba4a7968f5c4c4ca6a7047b147ba18d4" prot="public" static="no">
+        <name>__HAL_PWR_PVD_EXTI_GENERATE_SWIT</name>
+        <param></param>
+        <initializer><ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga9189e770cd9b63dadd36683eb9843cac" kindref="member">EXTI</ref>-&gt;SWIER1, <ref refid="group__PWR__PVD__EXTI__LINE_1ga43a49255649e03d2d2b6b12c5c379d2b" kindref="member">PWR_EXTI_LINE_PVD</ref>)</initializer>
+        <briefdescription>
+<para>Generate a Software interrupt on selected EXTI line. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_pwr.h" line="293" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_pwr.h" bodystart="293" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__PWR__Exported__Macros_1ga5e66fa75359b51066e0731ac1e5ae438" prot="public" static="no">
+        <name>__HAL_PWR_PVD_EXTI_GET_FLAG</name>
+        <param></param>
+        <initializer>(<ref refid="group__Peripheral__declaration_1ga9189e770cd9b63dadd36683eb9843cac" kindref="member">EXTI</ref>-&gt;PR1 &amp; <ref refid="group__PWR__PVD__EXTI__LINE_1ga43a49255649e03d2d2b6b12c5c379d2b" kindref="member">PWR_EXTI_LINE_PVD</ref>)</initializer>
+        <briefdescription>
+<para>Check whether or not the PVD EXTI interrupt flag is set. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>EXTI</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>PVD Line Status. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_pwr.h" line="299" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_pwr.h" bodystart="299" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__PWR__Exported__Macros_1gac0fb2218bc050f5d8fdb1a3f28590352" prot="public" static="no">
+        <name>__HAL_PWR_PVD_EXTI_CLEAR_FLAG</name>
+        <param></param>
+        <initializer><ref refid="group__Exported__macros_1ga32f78bffcaf6d13023dcd7f05e0c4d57" kindref="member">WRITE_REG</ref>(<ref refid="group__Peripheral__declaration_1ga9189e770cd9b63dadd36683eb9843cac" kindref="member">EXTI</ref>-&gt;PR1, <ref refid="group__PWR__PVD__EXTI__LINE_1ga43a49255649e03d2d2b6b12c5c379d2b" kindref="member">PWR_EXTI_LINE_PVD</ref>)</initializer>
+        <briefdescription>
+<para>Clear the PVD EXTI interrupt flag. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_pwr.h" line="305" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Inc/stm32l4xx_hal_pwr.h" bodystart="305" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

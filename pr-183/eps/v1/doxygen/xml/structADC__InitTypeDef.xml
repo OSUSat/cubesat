@@ -1,0 +1,308 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="structADC__InitTypeDef" kind="struct" language="C++" prot="public">
+    <compoundname>ADC_InitTypeDef</compoundname>
+    <includes refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__adc_8h" local="no">stm32l4xx_hal_adc.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structADC__InitTypeDef_1a7e49d0db9ef7db8806bbfa57a1bd73a6" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t ADC_InitTypeDef::ClockPrescaler</definition>
+        <argsstring></argsstring>
+        <name>ClockPrescaler</name>
+        <qualifiedname>ADC_InitTypeDef::ClockPrescaler</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Select ADC clock source (synchronous clock derived from APB clock or asynchronous clock derived from system clock or PLL (Refer to reference manual for list of clocks available)) and clock prescaler. This parameter can be a value of <ref refid="group__ADC__HAL__EC__COMMON__CLOCK__SOURCE" kindref="compound">ADC common - Clock source</ref>. Note: The ADC clock configuration is common to all ADC instances. Note: In case of usage of channels on injected group, ADC frequency should be lower than AHB clock frequency /4 for resolution 12 or 10 bits, AHB clock frequency /3 for resolution 8 bits, AHB clock frequency /2 for resolution 6 bits. Note: In case of synchronous clock mode based on HCLK/1, the configuration must be enabled only if the system clock has a 50% duty clock cycle (APB prescaler configured inside RCC must be bypassed and PCLK clock must have 50% duty cycle). Refer to reference manual for details. Note: In case of usage of asynchronous clock, the selected clock must be preliminarily enabled at RCC top level. Note: This parameter can be modified only if all ADC instances are disabled. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" line="91" column="12" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structADC__InitTypeDef_1abebb8d3277cb9a5aae72578076762f5d" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t ADC_InitTypeDef::Resolution</definition>
+        <argsstring></argsstring>
+        <name>Resolution</name>
+        <qualifiedname>ADC_InitTypeDef::Resolution</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Configure the ADC resolution. This parameter can be a value of <ref refid="group__ADC__HAL__EC__RESOLUTION" kindref="compound">ADC instance - Resolution</ref> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" line="108" column="12" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" bodystart="108" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structADC__InitTypeDef_1af9ec9040d55aa68c23d92d174b464ac1" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t ADC_InitTypeDef::DataAlign</definition>
+        <argsstring></argsstring>
+        <name>DataAlign</name>
+        <qualifiedname>ADC_InitTypeDef::DataAlign</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Specify ADC data alignment in conversion data register (right or left). Refer to reference manual for alignments formats versus resolutions. This parameter can be a value of <ref refid="group__ADC__HAL__EC__DATA__ALIGN" kindref="compound">ADC conversion data alignment</ref> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" line="111" column="12" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" bodystart="111" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structADC__InitTypeDef_1a47cd689a52562a2481059a5d8ed82788" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t ADC_InitTypeDef::ScanConvMode</definition>
+        <argsstring></argsstring>
+        <name>ScanConvMode</name>
+        <qualifiedname>ADC_InitTypeDef::ScanConvMode</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Configure the sequencer of ADC groups regular and injected. This parameter can be associated to parameter &apos;DiscontinuousConvMode&apos; to have main sequence subdivided in successive parts. If disabled: Conversion is performed in single mode (one channel converted, the one defined in rank 1). Parameters &apos;NbrOfConversion&apos; and &apos;InjectedNbrOfConversion&apos; are discarded (equivalent to set to 1). If enabled: Conversions are performed in sequence mode (multiple ranks defined by &apos;NbrOfConversion&apos; or &apos;InjectedNbrOfConversion&apos; and rank of each channel in sequencer). Scan direction is upward: from rank 1 to rank &apos;n&apos;. This parameter can be a value of <ref refid="group__ADC__Scan__mode" kindref="compound">ADC sequencer scan mode</ref> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" line="115" column="12" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" bodystart="115" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structADC__InitTypeDef_1ae3eedd269c3acc6c6933e8a252c36e71" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t ADC_InitTypeDef::EOCSelection</definition>
+        <argsstring></argsstring>
+        <name>EOCSelection</name>
+        <qualifiedname>ADC_InitTypeDef::EOCSelection</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Specify which EOC (End Of Conversion) flag is used for conversion by polling and interruption: end of unitary conversion or end of sequence conversions. This parameter can be a value of <ref refid="group__ADC__EOCSelection" kindref="compound">ADC sequencer end of unitary conversion or sequence conversions</ref>. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" line="127" column="12" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" bodystart="127" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structADC__InitTypeDef_1afce1d078350e06a4f8850207d0b81271" prot="public" static="no" mutable="no">
+        <type><ref refid="group__Exported__types_1gac9a7e9a35d2513ec15c3b537aaa4fba1" kindref="member">FunctionalState</ref></type>
+        <definition>FunctionalState ADC_InitTypeDef::LowPowerAutoWait</definition>
+        <argsstring></argsstring>
+        <name>LowPowerAutoWait</name>
+        <qualifiedname>ADC_InitTypeDef::LowPowerAutoWait</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Select the dynamic low power Auto Delay: new conversion start only when the previous conversion (for ADC group regular) or previous sequence (for ADC group injected) has been retrieved by user software, using function <ref refid="group__ADC__Exported__Functions__Group2_1ga28d14ed45ffdd9bbb7b234bf5f21a739" kindref="member">HAL_ADC_GetValue()</ref> or <ref refid="group__ADCEx__Exported__Functions__Group1_1gafd2cd8d547255edb84a050f1833c603a" kindref="member">HAL_ADCEx_InjectedGetValue()</ref>. This feature automatically adapts the frequency of ADC conversions triggers to the speed of the system that reads the data. Moreover, this avoids risk of overrun for low frequency applications. This parameter can be set to ENABLE or DISABLE. Note: It is not recommended to use with interruption or DMA (<ref refid="group__ADC__Exported__Functions__Group2_1gaeb53035f47a937d54de2164d6c939a04" kindref="member">HAL_ADC_Start_IT()</ref>, <ref refid="group__ADC__Exported__Functions__Group2_1ga7c3ef5532dddebe7fd76bb8f589d11fd" kindref="member">HAL_ADC_Start_DMA()</ref>) since these modes have to clear immediately the EOC flag (by CPU to free the IRQ pending event or by DMA). Auto wait will work but fort a very short time, discarding its intended benefit (except specific case of high load of CPU or DMA transfers which can justify usage of auto wait). Do use with polling: 1. Start conversion with <ref refid="group__ADC__Exported__Functions__Group2_1ga193666e3bde978627c9ee1e2073c69c0" kindref="member">HAL_ADC_Start()</ref>, 2. Later on, when ADC conversion data is needed: use <ref refid="group__ADC__Exported__Functions__Group2_1gad9c0b5763ab75357407e22d310befc30" kindref="member">HAL_ADC_PollForConversion()</ref> to ensure that conversion is completed and <ref refid="group__ADC__Exported__Functions__Group2_1ga28d14ed45ffdd9bbb7b234bf5f21a739" kindref="member">HAL_ADC_GetValue()</ref> to retrieve conversion result and trig another conversion start. (in case of usage of ADC group injected, use the equivalent functions HAL_ADCExInjected_Start(), <ref refid="group__ADCEx__Exported__Functions__Group1_1gafd2cd8d547255edb84a050f1833c603a" kindref="member">HAL_ADCEx_InjectedGetValue()</ref>, ...). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" line="131" column="19" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" bodystart="131" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structADC__InitTypeDef_1a1fc1365e223886a079d7c673f0f90b56" prot="public" static="no" mutable="no">
+        <type><ref refid="group__Exported__types_1gac9a7e9a35d2513ec15c3b537aaa4fba1" kindref="member">FunctionalState</ref></type>
+        <definition>FunctionalState ADC_InitTypeDef::ContinuousConvMode</definition>
+        <argsstring></argsstring>
+        <name>ContinuousConvMode</name>
+        <qualifiedname>ADC_InitTypeDef::ContinuousConvMode</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Specify whether the conversion is performed in single mode (one conversion) or continuous mode for ADC group regular, after the first ADC conversion start trigger occurred (software start or external trigger). This parameter can be set to ENABLE or DISABLE. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" line="153" column="19" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" bodystart="153" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structADC__InitTypeDef_1aa72b0cc3e8dac3a30097cf12093c42a7" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t ADC_InitTypeDef::NbrOfConversion</definition>
+        <argsstring></argsstring>
+        <name>NbrOfConversion</name>
+        <qualifiedname>ADC_InitTypeDef::NbrOfConversion</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Specify the number of ranks that will be converted within the regular group sequencer. This parameter is dependent on ScanConvMode:<itemizedlist>
+<listitem><para>sequencer configured to fully configurable: Number of ranks in the scan sequence is configurable using this parameter. Note: After the first call of &apos;<ref refid="group__ADC__Exported__Functions__Group1_1ga33ddb73d4880bd425aaa43c5c52bb13a" kindref="member">HAL_ADC_Init()</ref>&apos;, each rank corresponding to parameter &quot;NbrOfConversion&quot; must be set using &apos;<ref refid="group__ADC__Exported__Functions__Group3_1ga96f4317420984bec9226f7d93cb36f1b" kindref="member">HAL_ADC_ConfigChannel()</ref>&apos;. Afterwards, when all needed sequencer ranks are set, parameter &apos;NbrOfConversion&apos; can be updated without modifying configuration of sequencer ranks (sequencer ranks above &apos;NbrOfConversion&apos; are discarded).</para>
+</listitem><listitem><para>sequencer configured to not fully configurable: Number of ranks in the scan sequence is defined by number of channels set in the sequence. This parameter is discarded. This parameter must be a number between Min_Data = 1 and Max_Data = 8. Note: This parameter must be modified when no conversion is on going on regular group (ADC disabled, or ADC enabled without continuous mode or external trigger that could launch a conversion). </para>
+</listitem></itemizedlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" line="158" column="12" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" bodystart="158" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structADC__InitTypeDef_1afb62fa7128d7c97d53d2eb170ad467eb" prot="public" static="no" mutable="no">
+        <type><ref refid="group__Exported__types_1gac9a7e9a35d2513ec15c3b537aaa4fba1" kindref="member">FunctionalState</ref></type>
+        <definition>FunctionalState ADC_InitTypeDef::DiscontinuousConvMode</definition>
+        <argsstring></argsstring>
+        <name>DiscontinuousConvMode</name>
+        <qualifiedname>ADC_InitTypeDef::DiscontinuousConvMode</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Specify whether the conversions sequence of ADC group regular is performed in Complete-sequence/Discontinuous-sequence (main sequence subdivided in successive parts). Discontinuous mode is used only if sequencer is enabled (parameter &apos;ScanConvMode&apos;). If sequencer is disabled, this parameter is discarded. Discontinuous mode can be enabled only if continuous mode is disabled. If continuous mode is enabled, this parameter setting is discarded. This parameter can be set to ENABLE or DISABLE. Note: On this STM32 series, ADC group regular number of discontinuous ranks increment is fixed to one-by-one. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" line="176" column="19" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" bodystart="176" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structADC__InitTypeDef_1a5c0078be814bfe2608ae5758826eafb8" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t ADC_InitTypeDef::NbrOfDiscConversion</definition>
+        <argsstring></argsstring>
+        <name>NbrOfDiscConversion</name>
+        <qualifiedname>ADC_InitTypeDef::NbrOfDiscConversion</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Specifies the number of discontinuous conversions in which the main sequence of ADC group regular (parameter NbrOfConversion) will be subdivided. If parameter &apos;DiscontinuousConvMode&apos; is disabled, this parameter is discarded. This parameter must be a number between Min_Data = 1 and Max_Data = 8. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" line="187" column="12" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" bodystart="187" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structADC__InitTypeDef_1a47aba277f9d8f3c5774983de4ce9455b" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t ADC_InitTypeDef::ExternalTrigConv</definition>
+        <argsstring></argsstring>
+        <name>ExternalTrigConv</name>
+        <qualifiedname>ADC_InitTypeDef::ExternalTrigConv</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Select the external event source used to trigger ADC group regular conversion start. If set to ADC_SOFTWARE_START, external triggers are disabled and software trigger is used instead. This parameter can be a value of <ref refid="group__ADC__regular__external__trigger__source" kindref="compound">ADC group regular trigger source</ref>. Caution: external trigger source is common to all ADC instances. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" line="192" column="12" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" bodystart="192" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structADC__InitTypeDef_1aeed14631d5f1d118a252ea24edd68ede" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t ADC_InitTypeDef::ExternalTrigConvEdge</definition>
+        <argsstring></argsstring>
+        <name>ExternalTrigConvEdge</name>
+        <qualifiedname>ADC_InitTypeDef::ExternalTrigConvEdge</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Select the external event edge used to trigger ADC group regular conversion start If trigger source is set to ADC_SOFTWARE_START, this parameter is discarded. This parameter can be a value of <ref refid="group__ADC__regular__external__trigger__edge" kindref="compound">ADC group regular trigger edge (when external trigger is selected)</ref> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" line="199" column="12" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" bodystart="199" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structADC__InitTypeDef_1a2c35c52d6f47c62915fa7d011e526510" prot="public" static="no" mutable="no">
+        <type><ref refid="group__Exported__types_1gac9a7e9a35d2513ec15c3b537aaa4fba1" kindref="member">FunctionalState</ref></type>
+        <definition>FunctionalState ADC_InitTypeDef::DMAContinuousRequests</definition>
+        <argsstring></argsstring>
+        <name>DMAContinuousRequests</name>
+        <qualifiedname>ADC_InitTypeDef::DMAContinuousRequests</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Specify whether the DMA requests are performed in one shot mode (DMA transfer stops when number of conversions is reached) or in continuous mode (DMA transfer unlimited, whatever number of conversions). This parameter can be set to ENABLE or DISABLE. Note: In continuous mode, DMA must be configured in circular mode. Otherwise an overrun will be triggered when DMA buffer maximum pointer is reached. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" line="203" column="19" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" bodystart="203" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structADC__InitTypeDef_1a63237364ceaf8692adea5dd58420086a" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t ADC_InitTypeDef::Overrun</definition>
+        <argsstring></argsstring>
+        <name>Overrun</name>
+        <qualifiedname>ADC_InitTypeDef::Overrun</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Select the behavior in case of overrun: data overwritten or preserved (default). This parameter applies to ADC group regular only. This parameter can be a value of <ref refid="group__ADC__HAL__EC__REG__OVR__DATA__BEHAVIOR" kindref="compound">ADC group regular - Overrun behavior on conversion data</ref>. Note: In case of overrun set to data preserved and usage with programming model with interruption (HAL_Start_IT()): ADC IRQ handler has to clear end of conversion flags, this induces the release of the preserved data. If needed, this data can be saved in function <ref refid="group__ADC__Exported__Functions__Group2_1gaf20a88180db1113be1e89266917d148b" kindref="member">HAL_ADC_ConvCpltCallback()</ref>, placed in user program code (called before end of conversion flags clear) Note: Error reporting with respect to the conversion mode:<itemizedlist>
+<listitem><para>Usage with ADC conversion by polling for event or interruption: Error is reported only if overrun is set to data preserved. If overrun is set to data overwritten, user can willingly not read all the converted data, this is not considered as an erroneous case.</para>
+</listitem><listitem><para>Usage with ADC conversion by DMA: Error is reported whatever overrun setting (DMA is expected to process all data from data register). </para>
+</listitem></itemizedlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" line="211" column="12" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" bodystart="211" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structADC__InitTypeDef_1a693ef3079c6f2c8588beacb44fce185f" prot="public" static="no" mutable="no">
+        <type><ref refid="group__Exported__types_1gac9a7e9a35d2513ec15c3b537aaa4fba1" kindref="member">FunctionalState</ref></type>
+        <definition>FunctionalState ADC_InitTypeDef::OversamplingMode</definition>
+        <argsstring></argsstring>
+        <name>OversamplingMode</name>
+        <qualifiedname>ADC_InitTypeDef::OversamplingMode</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Specify whether the oversampling feature is enabled or disabled. This parameter can be set to ENABLE or DISABLE. Note: This parameter can be modified only if there is no conversion is ongoing on ADC groups regular and injected </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" line="227" column="19" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" bodystart="227" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structADC__InitTypeDef_1af2b1be3b90d94f331e3688b8f3df528d" prot="public" static="no" mutable="no">
+        <type><ref refid="structADC__OversamplingTypeDef" kindref="compound">ADC_OversamplingTypeDef</ref></type>
+        <definition>ADC_OversamplingTypeDef ADC_InitTypeDef::Oversampling</definition>
+        <argsstring></argsstring>
+        <name>Oversampling</name>
+        <qualifiedname>ADC_InitTypeDef::Oversampling</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Specify the Oversampling parameters. Caution: this setting overwrites the previous oversampling configuration if oversampling is already enabled. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" line="232" column="27" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" bodystart="232" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Structure definition of ADC instance and ADC group regular. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="note"><para>Parameters of this structure are shared within 2 scopes:<itemizedlist>
+<listitem><para>Scope entire ADC (affects ADC groups regular and injected): ClockPrescaler, Resolution, DataAlign, ScanConvMode, EOCSelection, LowPowerAutoWait.</para>
+</listitem><listitem><para>Scope ADC group regular: ContinuousConvMode, NbrOfConversion, DiscontinuousConvMode, NbrOfDiscConversion, ExternalTrigConv, ExternalTrigConvEdge, DMAContinuousRequests, Overrun, OversamplingMode, Oversampling. </para>
+</listitem></itemizedlist>
+</para>
+</simplesect>
+<simplesect kind="note"><para>The setting of these parameters by function <ref refid="group__ADC__Exported__Functions__Group1_1ga33ddb73d4880bd425aaa43c5c52bb13a" kindref="member">HAL_ADC_Init()</ref> is conditioned to ADC state. ADC state can be either:<itemizedlist>
+<listitem><para>For all parameters: ADC disabled</para>
+</listitem><listitem><para>For all parameters except &apos;LowPowerAutoWait&apos;, &apos;DMAContinuousRequests&apos; and &apos;Oversampling&apos;: ADC enabled without conversion on going on group regular.</para>
+</listitem><listitem><para>For parameters &apos;LowPowerAutoWait&apos; and &apos;DMAContinuousRequests&apos;: ADC enabled without conversion on going on groups regular and injected. If ADC is not in the appropriate state to modify some parameters, these parameters setting is bypassed without error reporting (as it can be the expected behavior in case of intended action to update another parameter (which fulfills the ADC state condition) on the fly). </para>
+</listitem></itemizedlist>
+</para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>ADC_InitTypeDef</label>
+        <link refid="structADC__InitTypeDef"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>Oversampling</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>ADC_OversamplingTypeDef</label>
+        <link refid="structADC__OversamplingTypeDef"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" line="89" column="1" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h" bodystart="90" bodyend="243"/>
+    <listofallmembers>
+      <member refid="structADC__InitTypeDef_1a7e49d0db9ef7db8806bbfa57a1bd73a6" prot="public" virt="non-virtual"><scope>ADC_InitTypeDef</scope><name>ClockPrescaler</name></member>
+      <member refid="structADC__InitTypeDef_1a1fc1365e223886a079d7c673f0f90b56" prot="public" virt="non-virtual"><scope>ADC_InitTypeDef</scope><name>ContinuousConvMode</name></member>
+      <member refid="structADC__InitTypeDef_1af9ec9040d55aa68c23d92d174b464ac1" prot="public" virt="non-virtual"><scope>ADC_InitTypeDef</scope><name>DataAlign</name></member>
+      <member refid="structADC__InitTypeDef_1afb62fa7128d7c97d53d2eb170ad467eb" prot="public" virt="non-virtual"><scope>ADC_InitTypeDef</scope><name>DiscontinuousConvMode</name></member>
+      <member refid="structADC__InitTypeDef_1a2c35c52d6f47c62915fa7d011e526510" prot="public" virt="non-virtual"><scope>ADC_InitTypeDef</scope><name>DMAContinuousRequests</name></member>
+      <member refid="structADC__InitTypeDef_1ae3eedd269c3acc6c6933e8a252c36e71" prot="public" virt="non-virtual"><scope>ADC_InitTypeDef</scope><name>EOCSelection</name></member>
+      <member refid="structADC__InitTypeDef_1a47aba277f9d8f3c5774983de4ce9455b" prot="public" virt="non-virtual"><scope>ADC_InitTypeDef</scope><name>ExternalTrigConv</name></member>
+      <member refid="structADC__InitTypeDef_1aeed14631d5f1d118a252ea24edd68ede" prot="public" virt="non-virtual"><scope>ADC_InitTypeDef</scope><name>ExternalTrigConvEdge</name></member>
+      <member refid="structADC__InitTypeDef_1afce1d078350e06a4f8850207d0b81271" prot="public" virt="non-virtual"><scope>ADC_InitTypeDef</scope><name>LowPowerAutoWait</name></member>
+      <member refid="structADC__InitTypeDef_1aa72b0cc3e8dac3a30097cf12093c42a7" prot="public" virt="non-virtual"><scope>ADC_InitTypeDef</scope><name>NbrOfConversion</name></member>
+      <member refid="structADC__InitTypeDef_1a5c0078be814bfe2608ae5758826eafb8" prot="public" virt="non-virtual"><scope>ADC_InitTypeDef</scope><name>NbrOfDiscConversion</name></member>
+      <member refid="structADC__InitTypeDef_1a63237364ceaf8692adea5dd58420086a" prot="public" virt="non-virtual"><scope>ADC_InitTypeDef</scope><name>Overrun</name></member>
+      <member refid="structADC__InitTypeDef_1af2b1be3b90d94f331e3688b8f3df528d" prot="public" virt="non-virtual"><scope>ADC_InitTypeDef</scope><name>Oversampling</name></member>
+      <member refid="structADC__InitTypeDef_1a693ef3079c6f2c8588beacb44fce185f" prot="public" virt="non-virtual"><scope>ADC_InitTypeDef</scope><name>OversamplingMode</name></member>
+      <member refid="structADC__InitTypeDef_1abebb8d3277cb9a5aae72578076762f5d" prot="public" virt="non-virtual"><scope>ADC_InitTypeDef</scope><name>Resolution</name></member>
+      <member refid="structADC__InitTypeDef_1a47cd689a52562a2481059a5d8ed82788" prot="public" virt="non-virtual"><scope>ADC_InitTypeDef</scope><name>ScanConvMode</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

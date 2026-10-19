@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="group__battery__management__api" kind="group">
+    <compoundname>battery_management_api</compoundname>
+    <title>Public API</title>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="group__battery__management__api_1gacad3a3de8e213994954cb9ce6a55f0ef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void battery_init</definition>
+        <argsstring>(battery_management_t *manager)</argsstring>
+        <name>battery_init</name>
+        <param>
+          <type><ref refid="structbattery__management__t" kindref="compound">battery_management_t</ref> *</type>
+          <declname>manager</declname>
+        </param>
+        <briefdescription>
+<para>Initialize the Battery Management Service. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This must be called once at startup before any other BMS functions. Initializes internal state, and performs a startup self-check.</para>
+<para><simplesect kind="note"><para>If called more than once, the internal battery state will be reset.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">manager</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The battery manager </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/battery_management.h" line="165" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/battery_management.c" bodystart="38" bodyend="63" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/battery_management.h" declline="165" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__battery__management__api_1ga8f086f5628c0498505e56661ffd04ff1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void battery_charge_control</definition>
+        <argsstring>(battery_management_t *manager, bool enable)</argsstring>
+        <name>battery_charge_control</name>
+        <param>
+          <type><ref refid="structbattery__management__t" kindref="compound">battery_management_t</ref> *</type>
+          <declname>manager</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>enable</declname>
+        </param>
+        <briefdescription>
+<para>Apply charge-control policy. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Enables or disables charging circuits based on SoC, temperature, EPS power budget, and safety limits.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">manager</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The battery manager </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/battery_management.h" line="175" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/battery_management.c" bodystart="65" bodyend="76" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/battery_management.h" declline="175" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__battery__management__api_1ga903c812782a956a3300006154b17c839" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void battery_protect_mode</definition>
+        <argsstring>(battery_management_t *manager)</argsstring>
+        <name>battery_protect_mode</name>
+        <param>
+          <type><ref refid="structbattery__management__t" kindref="compound">battery_management_t</ref> *</type>
+          <declname>manager</declname>
+        </param>
+        <briefdescription>
+<para>Enter battery protection mode. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Used during overvoltage, deep discharge, or other critical conditions. May disable EPS rails or charging.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">manager</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The battery manager </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/battery_management.h" line="185" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/battery_management.c" bodystart="78" bodyend="94" declfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/battery_management.h" declline="185" declcolumn="6"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>External interface for interacting with the Battery Management Service. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

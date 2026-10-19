@@ -1,0 +1,153 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="group__uart__events__types" kind="group">
+    <compoundname>uart_events_types</compoundname>
+    <title>Structures</title>
+    <innerclass refid="structuart__events__t" prot="public">uart_events_t</innerclass>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="group__uart__events__types_1ga832a34af945169115e69b8a9b46d0f6d" prot="public" static="no" strong="no">
+        <type></type>
+        <name>uart_event_id_t</name>
+        <enumvalue id="group__uart__events__types_1gga832a34af945169115e69b8a9b46d0f6da9f2f73b1eecfbd3ececddea1704e1ee5" prot="public">
+          <name>UART_PACKET_RECEIVED</name>
+          <initializer>= 0x10</initializer>
+          <briefdescription>
+<para>Published when a valid <ref refid="structOSUSatPacket" kindref="compound">OSUSatPacket</ref> is decoded. Payload: <ref refid="structOSUSatPacket" kindref="compound">OSUSatPacket</ref>. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__uart__events__types_1gga832a34af945169115e69b8a9b46d0f6da35efeb7f8ddf6e15f796de99a4f66a71" prot="public">
+          <name>UART_ERROR_DETECTED</name>
+          <briefdescription>
+<para>Published on hardware errors (Overrun, Noise) or CRC failures. Payload: uart_error_t (or generic error code) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__uart__events__types_1gga832a34af945169115e69b8a9b46d0f6dad0138ae2b7d3814fa3462f28e8489591" prot="public">
+          <name>UART_TX_COMPLETE</name>
+          <briefdescription>
+<para>Published when a packet is successfully transmitted. Payload: NULL. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/uart_events.h" line="30" column="1" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/uart_events.h" bodystart="30" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__uart__events__types_1gaf0d6ead56ef385028dc0138bc816c2a3" prot="public" static="no" strong="no">
+        <type></type>
+        <name>rx_state_t</name>
+        <enumvalue id="group__uart__events__types_1ggaf0d6ead56ef385028dc0138bc816c2a3a587888300c36514d75196c26fd8c0f8a" prot="public">
+          <name>RX_STATE_WAIT_START_BYTE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Waiting until a start byte is received </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__uart__events__types_1ggaf0d6ead56ef385028dc0138bc816c2a3ad034637fb737ee5493fedb195cba9f42" prot="public">
+          <name>RX_STATE_READ_HEADER</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Currently reading the packet header </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__uart__events__types_1ggaf0d6ead56ef385028dc0138bc816c2a3a585ff0920506b11196b6984fe3225885" prot="public">
+          <name>RX_STATE_READ_PAYLOAD</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Currently reading the packet payload </para>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/uart_events.h" line="57" column="1" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/uart_events.h" bodystart="57" bodyend="61"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="group__uart__events__types_1ga0319158435eee3e9ed018667858f93fc" prot="public" static="no">
+        <name>UART_SERVICE_UID</name>
+        <initializer>0xC044</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/uart_events.h" line="28" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/uart_events.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__uart__events__types_1ga09a5fb4024645a4042df5c85d6ecb8a6" prot="public" static="no">
+        <name>UART_EVENT_PACKET_RECEIVED</name>
+        <initializer>    <ref refid="group__osusat__event__bus__types_1ga6fb66ede3b29d386fec6f57800d3e980" kindref="member">OSUSAT_BUILD_EVENT_ID</ref>(<ref refid="group__uart__events__types_1ga0319158435eee3e9ed018667858f93fc" kindref="member">UART_SERVICE_UID</ref>, <ref refid="group__uart__events__types_1gga832a34af945169115e69b8a9b46d0f6da9f2f73b1eecfbd3ececddea1704e1ee5" kindref="member">UART_PACKET_RECEIVED</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/uart_events.h" line="50" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/uart_events.h" bodystart="50" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="define" id="group__uart__events__types_1ga9aff7da89cbac87342e5d952eb250318" prot="public" static="no">
+        <name>UART_EVENT_ERROR_DETECTED</name>
+        <initializer>    <ref refid="group__osusat__event__bus__types_1ga6fb66ede3b29d386fec6f57800d3e980" kindref="member">OSUSAT_BUILD_EVENT_ID</ref>(<ref refid="group__uart__events__types_1ga0319158435eee3e9ed018667858f93fc" kindref="member">UART_SERVICE_UID</ref>, <ref refid="group__uart__events__types_1gga832a34af945169115e69b8a9b46d0f6da35efeb7f8ddf6e15f796de99a4f66a71" kindref="member">UART_ERROR_DETECTED</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/uart_events.h" line="52" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/uart_events.h" bodystart="52" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="define" id="group__uart__events__types_1ga6bd09ceb54a8e2e8e323de3508e36e82" prot="public" static="no">
+        <name>UART_EVENT_TX_COMPLETE</name>
+        <initializer>    <ref refid="group__osusat__event__bus__types_1ga6fb66ede3b29d386fec6f57800d3e980" kindref="member">OSUSAT_BUILD_EVENT_ID</ref>(<ref refid="group__uart__events__types_1ga0319158435eee3e9ed018667858f93fc" kindref="member">UART_SERVICE_UID</ref>, <ref refid="group__uart__events__types_1gga832a34af945169115e69b8a9b46d0f6dad0138ae2b7d3814fa3462f28e8489591" kindref="member">UART_TX_COMPLETE</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/uart_events.h" line="54" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/uart_events.h" bodystart="54" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="define" id="group__uart__events__types_1gaed578dfde00c8d7335f60947a7352835" prot="public" static="no">
+        <name>UART_RX_MAX_PACKET_SIZE</name>
+        <initializer>300</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/uart_events.h" line="65" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/uart_events.h" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__uart__events__types_1gaef7200bd5b3732fe7c7c69df0b5e7caf" prot="public" static="no">
+        <name>UART_PACKET_POOL_SIZE</name>
+        <initializer>4</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/uart_events.h" line="69" column="9" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/uart_events.h" bodystart="69" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

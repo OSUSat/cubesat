@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="error_8c" kind="file" language="C++">
+    <compoundname>error.c</compoundname>
+    <includes refid="error_8h" local="yes">error.h</includes>
+    <includes local="yes">stm32l496xx.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/system/error.c</label>
+        <link refid="error_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>error.h</label>
+        <link refid="error_8h"/>
+      </node>
+      <node id="3">
+        <label>stm32l496xx.h</label>
+      </node>
+    </incdepgraph>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="error_8c_1a1b6824bfd4ec0404a4f875ed8db0274e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>__attribute__</definition>
+        <argsstring>((noreturn))</argsstring>
+        <name>__attribute__</name>
+        <param>
+          <type>(noreturn)</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/system/error.c" line="4" column="1" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/system/error.c" bodystart="4" bodyend="9"/>
+      </memberdef>
+      <memberdef kind="function" id="error_8c_1a1730ffe1e560465665eb47d9264826f9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Error_Handler</definition>
+        <argsstring>(void)</argsstring>
+        <name>Error_Handler</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>This function is executed in case of error occurrence. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>None</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/system/error.c" line="15" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/system/error.c" bodystart="15" bodyend="20"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="error_8h" kindref="compound">error.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;stm32l496xx.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"><ref refid="error_8c_1a1b6824bfd4ec0404a4f875ed8db0274e" kindref="member">__attribute__</ref>((noreturn))<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="error_8h_1a190cafefd54161ce37e78025557ef700" kindref="member">bsp_error_trap</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="bootstrap_2Drivers_2CMSIS_2Include_2cmsis__iccarm_8h_1a6cb98c1adc8a28bc3b48649a3421195d" kindref="member">__disable_irq</ref>();</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(1)<sp/>{</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>optionally<sp/>kick<sp/>external<sp/>watchdog</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="9"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="error_8c_1a1730ffe1e560465665eb47d9264826f9" kindref="member">Error_Handler</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="bootstrap_2Drivers_2CMSIS_2Include_2cmsis__iccarm_8h_1a6cb98c1adc8a28bc3b48649a3421195d" kindref="member">__disable_irq</ref>();</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(1)<sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>optional:<sp/>blink<sp/>an<sp/>LED<sp/>or<sp/>log<sp/>error<sp/>to<sp/>persistent<sp/>storage</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="20"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/system/error.c"/>
+  </compounddef>
+</doxygen>
