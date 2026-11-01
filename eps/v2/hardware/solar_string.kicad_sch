@@ -5,7 +5,7 @@
 	(uuid "3285f2e2-333f-4c6b-9f2a-aa2ca780b1b6")
 	(paper "A4")
 	(lib_symbols
-		(symbol "Device:D_Schottky"
+		(symbol "Diode:1N5711UR"
 			(pin_numbers
 				(hide yes)
 			)
@@ -28,7 +28,7 @@
 					)
 				)
 			)
-			(property "Value" "D_Schottky"
+			(property "Value" "1N5711UR"
 				(at 0 -2.54 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -38,7 +38,18 @@
 					)
 				)
 			)
-			(property "Footprint" ""
+			(property "Footprint" "Diode_SMD:D_MELF"
+				(at 0 -4.445 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://www.microsemi.com/document-portal/doc_download/131890-lds-0040-1-datasheet"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -49,18 +60,7 @@
 					)
 				)
 			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" "Schottky diode"
+			(property "Description" "70V 33mA Schottky diode, MELF(DO-213AA)"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -82,7 +82,7 @@
 					)
 				)
 			)
-			(property "ki_fp_filters" "TO-???* *_Diode_* *SingleDiode* D_*"
+			(property "ki_fp_filters" "D?MELF*"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -93,7 +93,7 @@
 					)
 				)
 			)
-			(symbol "D_Schottky_0_1"
+			(symbol "1N5711UR_0_1"
 				(polyline
 					(pts
 						(xy -1.905 0.635) (xy -1.905 1.27) (xy -1.27 1.27) (xy -1.27 -1.27) (xy -0.635 -1.27) (xy -0.635 -0.635)
@@ -131,7 +131,7 @@
 					)
 				)
 			)
-			(symbol "D_Schottky_1_1"
+			(symbol "1N5711UR_1_1"
 				(pin passive line
 					(at -3.81 0 0)
 					(length 2.54)
@@ -489,19 +489,32 @@
 			(embedded_fonts no)
 		)
 	)
-	(wire
-		(pts
-			(xy 191.77 109.22) (xy 193.04 109.22)
+	(text "Solar String\n"
+		(exclude_from_sim no)
+		(at 141.224 66.802 0)
+		(effects
+			(font
+				(size 3.81 3.81)
+				(thickness 0.762)
+				(bold yes)
+			)
 		)
-		(stroke
-			(width 0)
-			(type default)
+		(uuid "b86c3681-9122-4b82-83fe-b8f3f12e7b5c")
+	)
+	(text "TVS Diode rating TBD once solar configs are chosen. \nCurrent placeholder's working voltage 15V and clamping \nvoltage of 24V\n"
+		(exclude_from_sim no)
+		(at 116.332 103.378 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
 		)
-		(uuid "872db75b-ccf7-4787-adfc-8e81ac6ce862")
+		(uuid "d21721c0-9abc-41cb-a073-946b6ef7803d")
 	)
 	(wire
 		(pts
-			(xy 173.99 100.33) (xy 179.07 100.33)
+			(xy 166.37 86.36) (xy 171.45 86.36)
 		)
 		(stroke
 			(width 0)
@@ -511,7 +524,7 @@
 	)
 	(wire
 		(pts
-			(xy 173.99 109.22) (xy 184.15 109.22)
+			(xy 166.37 88.9) (xy 181.61 88.9)
 		)
 		(stroke
 			(width 0)
@@ -521,17 +534,17 @@
 	)
 	(wire
 		(pts
-			(xy 173.99 102.87) (xy 173.99 109.22)
+			(xy 193.04 88.9) (xy 189.23 88.9)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "de242816-b2fd-4b90-bc51-147fbf86578f")
+		(uuid "afe3ab82-7c2d-42f5-9523-ab164ef2c78e")
 	)
 	(hierarchical_label "SOLAR_IN"
 		(shape input)
-		(at 123.19 100.33 180)
+		(at 115.57 86.36 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -542,7 +555,7 @@
 	)
 	(hierarchical_label "SOLAR_OUT"
 		(shape input)
-		(at 193.04 109.22 0)
+		(at 193.04 88.9 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -552,88 +565,8 @@
 		(uuid "c5f55da4-34ca-4f8f-a927-221aafbeb7be")
 	)
 	(symbol
-		(lib_id "Device:D_Schottky")
-		(at 187.96 109.22 180)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "a57aa478-00ea-4e93-9c44-78888ac666ae")
-		(property "Reference" "D1"
-			(at 188.2775 102.87 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "D_Schottky"
-			(at 188.2775 105.41 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 187.96 109.22 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 187.96 109.22 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Schottky diode"
-			(at 187.96 109.22 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "090c89ff-3fd2-420d-8737-5292ef75b1bd")
-		)
-		(pin "2"
-			(uuid "f4d59786-3890-499c-95f5-4ff78eba2ef3")
-		)
-		(instances
-			(project "eps"
-				(path "/b20f5a9e-495e-48d8-8648-bd5c7d9b4620/05024e51-5550-4764-9a0e-13fb005df0dc"
-					(reference "D1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:GND")
-		(at 179.07 100.33 0)
+		(at 171.45 86.36 180)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -644,7 +577,7 @@
 		(fields_autoplaced yes)
 		(uuid "d8131490-6e66-476b-9c0e-1ff0e999f066")
 		(property "Reference" "#PWR051"
-			(at 179.07 106.68 0)
+			(at 171.45 80.01 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -655,17 +588,18 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 179.07 105.41 0)
+			(at 173.99 85.0899 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify right)
 			)
 		)
 		(property "Footprint" "SOT-23-3_1P4X3P040_ONS"
-			(at 179.07 100.33 0)
+			(at 171.45 86.36 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -676,7 +610,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 179.07 100.33 0)
+			(at 171.45 86.36 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -687,7 +621,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 179.07 100.33 0)
+			(at 171.45 86.36 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -711,7 +645,7 @@
 	)
 	(symbol
 		(lib_id "OSUSAT:SM15T1G")
-		(at 123.19 100.33 0)
+		(at 115.57 86.36 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -722,7 +656,7 @@
 		(fields_autoplaced yes)
 		(uuid "f76428b6-2922-4c3e-ad9c-334303ef5a60")
 		(property "Reference" "U2"
-			(at 148.59 90.17 0)
+			(at 140.97 76.2 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -732,7 +666,7 @@
 			)
 		)
 		(property "Value" "SM15T1G"
-			(at 148.59 92.71 0)
+			(at 140.97 78.74 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -742,7 +676,7 @@
 			)
 		)
 		(property "Footprint" "SOT-23-3_1P4X3P040_ONS"
-			(at 123.19 100.33 0)
+			(at 115.57 86.36 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -754,7 +688,7 @@
 			)
 		)
 		(property "Datasheet" "SM15T1G"
-			(at 123.19 100.33 0)
+			(at 115.57 86.36 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -766,7 +700,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 123.19 100.33 0)
+			(at 115.57 86.36 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -789,6 +723,86 @@
 			(project "eps"
 				(path "/b20f5a9e-495e-48d8-8648-bd5c7d9b4620/05024e51-5550-4764-9a0e-13fb005df0dc"
 					(reference "U2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Diode:1N5711UR")
+		(at 185.42 88.9 180)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "fce89bc9-f697-4626-a7fd-d84ee293cc42")
+		(property "Reference" "D1"
+			(at 185.7375 82.55 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "1N5711UR"
+			(at 185.7375 85.09 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Diode_SMD:D_MELF"
+			(at 185.42 84.455 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.microsemi.com/document-portal/doc_download/131890-lds-0040-1-datasheet"
+			(at 185.42 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "70V 33mA Schottky diode, MELF(DO-213AA)"
+			(at 185.42 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "e34a4cc6-77ee-4f8a-b25f-9bb40e82105f")
+		)
+		(pin "2"
+			(uuid "84925a4d-1267-4d14-903b-3f4b7235de64")
+		)
+		(instances
+			(project "eps"
+				(path "/b20f5a9e-495e-48d8-8648-bd5c7d9b4620/05024e51-5550-4764-9a0e-13fb005df0dc"
+					(reference "D1")
 					(unit 1)
 				)
 			)
