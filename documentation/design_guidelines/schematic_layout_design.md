@@ -26,6 +26,7 @@ This document outlines general guidelines that must be followed when designing P
 - Include tolerances on passives like resistors
 - Include breakdown voltage for capacitors
 - Include saturation current for inductors
+- Include the package for all passives
 - Toggle on inter-sheet-references
 - IC Component datasheets included in `documentation/datasheets/`
 
