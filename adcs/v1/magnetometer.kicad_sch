@@ -774,6 +774,145 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "power:+3V3"
+			(power global)
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "#PWR"
+				(at 0 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "+3V3"
+				(at 0 3.556 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Power symbol creates a global label with name \"+3V3\""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "global power"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "+3V3_0_1"
+				(polyline
+					(pts
+						(xy -0.762 1.27) (xy 0 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 2.54) (xy 0.762 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "+3V3_1_1"
+				(pin power_in line
+					(at 0 0 90)
+					(length 0)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "power:GND"
 			(power global)
 			(pin_numbers
@@ -902,7 +1041,7 @@
 	)
 	(text "I2C External Pull-ups\n"
 		(exclude_from_sim no)
-		(at 107.696 70.866 0)
+		(at 106.426 65.786 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -956,7 +1095,7 @@
 		(at 105.41 77.47)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "b834f969-ec17-46c6-af72-73bbfec01b5f")
+		(uuid "e838c023-17e2-4166-bbb0-de9a1ef0e626")
 	)
 	(junction
 		(at 101.6 101.6)
@@ -983,16 +1122,6 @@
 			(type default)
 		)
 		(uuid "0903defb-73c7-4916-8351-9a32fa4d063e")
-	)
-	(wire
-		(pts
-			(xy 107.95 77.47) (xy 105.41 77.47)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "2263fc30-f27f-428e-bcd5-0e1957b58a35")
 	)
 	(wire
 		(pts
@@ -1163,6 +1292,16 @@
 			(type default)
 		)
 		(uuid "a53cb0f4-1cc6-4a03-95de-6a7edb6ff8fb")
+	)
+	(wire
+		(pts
+			(xy 105.41 74.93) (xy 105.41 77.47)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a7d31a69-4b3d-41ed-a1d9-d3ee6e5ef952")
 	)
 	(wire
 		(pts
@@ -2027,17 +2166,6 @@
 			"vulv1cQwuPwHfiEPIQxCKIoi7IUQ9vL98P+Ocud1NL9UHwAAAABJRU5ErkJggg=="
 		)
 	)
-	(hierarchical_label "3V3_Rail_6"
-		(shape input)
-		(at 107.95 77.47 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "3cb2a48e-2f80-4e74-9407-f23dd60eac80")
-	)
 	(hierarchical_label "MNT_INT"
 		(shape output)
 		(at 161.29 96.52 0)
@@ -2638,6 +2766,84 @@
 			(project "adcs"
 				(path "/d4fa1041-51e8-429a-8be3-f1e5a35c2607/01ba61db-633c-493f-91fd-893a7e2ba37c"
 					(reference "R8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 105.41 74.93 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "ce77e0f4-6297-46e5-b66e-da608b3e076a")
+		(property "Reference" "#PWR079"
+			(at 105.41 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 105.41 69.85 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_DFN_QFN:Diodes_UDFN3810-9_TYPE_B"
+			(at 105.41 74.93 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 105.41 74.93 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3V3\""
+			(at 105.41 74.93 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "343286c2-796d-4756-b000-6a8a8fcebf51")
+		)
+		(instances
+			(project "adcs"
+				(path "/d4fa1041-51e8-429a-8be3-f1e5a35c2607/01ba61db-633c-493f-91fd-893a7e2ba37c"
+					(reference "#PWR079")
 					(unit 1)
 				)
 			)
