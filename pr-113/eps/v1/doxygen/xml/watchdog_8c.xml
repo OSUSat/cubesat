@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="watchdog_8c" kind="file" language="C++">
     <compoundname>watchdog.c</compoundname>
     <includes refid="watchdog_8h" local="yes">watchdog.h</includes>
@@ -217,6 +217,7 @@
     </detaileddescription>
     <programlisting>
 <codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
 <codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="watchdog_8h" kindref="compound">watchdog.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="eps__config_8h" kindref="compound">eps_config.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="hal__gpio_8h" kindref="compound">hal_gpio.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
@@ -233,9 +234,9 @@
 <codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="28"><highlight class="normal"></highlight></codeline>
-<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>watchdog-&gt;<ref refid="structwatchdog__t_1a289656ba2813aa4c7592c9037d93400f" kindref="member">timeout_ms</ref><sp/>=<sp/>512;</highlight></codeline>
-<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>watchdog-&gt;<ref refid="structwatchdog__t_1a42b206e511eb9c1e7bce8d3babf07727" kindref="member">last_pet_tick</ref><sp/>=<sp/><ref refid="group__hal__time__api_1ga697ad15eedc3e4ef194c93f24734e0a2" kindref="member">hal_time_get_ms</ref>();</highlight></codeline>
-<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>watchdog-&gt;<ref refid="structwatchdog__t_1acfc1a715a7b689c0d802dc45a9897470" kindref="member">enabled</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>watchdog-&gt;timeout_ms<sp/>=<sp/>512;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>watchdog-&gt;last_pet_tick<sp/>=<sp/><ref refid="group__hal__time__api_1ga697ad15eedc3e4ef194c93f24734e0a2" kindref="member">hal_time_get_ms</ref>();</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>watchdog-&gt;enabled<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="32"><highlight class="normal"></highlight></codeline>
 <codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>initialize<sp/>watchdog<sp/>scaling<sp/>configuration<sp/>pins</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__gpio__api_1gaa314f8a9a4b7b51a49361b942b7d2c3b" kindref="member">hal_gpio_write</ref>(<ref refid="eps__config_8h_1ad1f5a8468c0cf4caba795c04625af830" kindref="member">WATCHDOG_SET0_PIN</ref>,<sp/><ref refid="hal__gpio__types_8h_1a2ff5468d5ab752db6fa1fb95363392a6affc092bc9a8100f9f19da09884087ee5" kindref="member">HAL_GPIO_STATE_HIGH</ref>);</highlight></codeline>
@@ -248,7 +249,7 @@
 <codeline lineno="41"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="42"><highlight class="normal"></highlight></codeline>
 <codeline lineno="43"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__watchdog__api_1ga98d1081b076ba58b41c102cfb296cb9e" kindref="member">watchdog_pet</ref>(<ref refid="structwatchdog__t" kindref="compound">watchdog_t</ref><sp/>*watchdog)<sp/>{</highlight></codeline>
-<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(watchdog<sp/>==<sp/>NULL<sp/>||<sp/>!watchdog-&gt;<ref refid="structwatchdog__t_1acfc1a715a7b689c0d802dc45a9897470" kindref="member">enabled</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(watchdog<sp/>==<sp/>NULL<sp/>||<sp/>!watchdog-&gt;enabled)<sp/>{</highlight></codeline>
 <codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="47"><highlight class="normal"></highlight></codeline>
@@ -258,7 +259,7 @@
 <codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="52"><highlight class="normal"></highlight></codeline>
 <codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__gpio__api_1ga8d567a689867d0c1be8f447cca081242" kindref="member">hal_gpio_toggle</ref>(<ref refid="eps__config_8h_1a2c9730eef0a8783d8e23316e6e16697f" kindref="member">WATCHDOG_WDI_PIN</ref>);</highlight></codeline>
-<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>watchdog-&gt;<ref refid="structwatchdog__t_1a42b206e511eb9c1e7bce8d3babf07727" kindref="member">last_pet_tick</ref><sp/>=<sp/><ref refid="group__hal__time__api_1ga697ad15eedc3e4ef194c93f24734e0a2" kindref="member">hal_time_get_ms</ref>();</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>watchdog-&gt;last_pet_tick<sp/>=<sp/><ref refid="group__hal__time__api_1ga697ad15eedc3e4ef194c93f24734e0a2" kindref="member">hal_time_get_ms</ref>();</highlight></codeline>
 <codeline lineno="55"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="56"><highlight class="normal"></highlight></codeline>
 <codeline lineno="57"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__watchdog__api_1ga6c17c5d5849e0fcca77e95c67b97ba30" kindref="member">watchdog_force_reset</ref>(<ref refid="structwatchdog__t" kindref="compound">watchdog_t</ref><sp/>*watchdog)<sp/>{</highlight></codeline>
@@ -276,7 +277,7 @@
 <codeline lineno="69"><highlight class="normal"></highlight></codeline>
 <codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structwatchdog__t" kindref="compound">watchdog_t</ref><sp/>*watchdog<sp/>=<sp/>(<ref refid="structwatchdog__t" kindref="compound">watchdog_t</ref><sp/>*)ctx;</highlight></codeline>
 <codeline lineno="71"><highlight class="normal"></highlight></codeline>
-<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(watchdog<sp/>==<sp/>NULL<sp/>||<sp/>!watchdog-&gt;<ref refid="structwatchdog__t_1acfc1a715a7b689c0d802dc45a9897470" kindref="member">enabled</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(watchdog<sp/>==<sp/>NULL<sp/>||<sp/>!watchdog-&gt;enabled)<sp/>{</highlight></codeline>
 <codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="75"><highlight class="normal"></highlight></codeline>

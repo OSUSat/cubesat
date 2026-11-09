@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="battery__management_8h" kind="file" language="C++">
     <compoundname>battery_management.h</compoundname>
     <includes local="no">stdbool.h</includes>
@@ -120,12 +120,15 @@
     </detaileddescription>
     <programlisting>
 <codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
 <codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>BATTERY_MANAGEMENT_H</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATTERY_MANAGEMENT_H</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="20"><highlight class="normal"></highlight></codeline>
 <codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdbool.h&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
 <codeline lineno="53" refid="group__battery__management__types_1gafff0ce24627e80f6ff4a9c28051b2085" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATTERY_SERVICE_UID<sp/>0xBA77</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="54"><highlight class="normal"></highlight></codeline>
 <codeline lineno="55" refid="group__battery__management__types_1ga2f33f8497203b52f72a9f33fd8c17af3" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
@@ -141,8 +144,8 @@
 <codeline lineno="85"><highlight class="normal"></highlight></codeline>
 <codeline lineno="90" refid="group__battery__management__types_1gga2f33f8497203b52f72a9f33fd8c17af3aed0819dccfcf0b61a7c66847b5fe54a9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__battery__management__types_1gga2f33f8497203b52f72a9f33fd8c17af3aed0819dccfcf0b61a7c66847b5fe54a9" kindref="member">BATTERY_FULLY_CHARGED</ref>,</highlight></codeline>
 <codeline lineno="91"><highlight class="normal"></highlight></codeline>
-<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__battery__management__types_1gga2f33f8497203b52f72a9f33fd8c17af3a5e6f1db30a24d15a6fc29f8be1f79348" kindref="member">BATTERY_TELEMETRY</ref></highlight></codeline>
-<codeline lineno="97" refid="group__battery__management__types_1gga2f33f8497203b52f72a9f33fd8c17af3a5e6f1db30a24d15a6fc29f8be1f79348" refkind="member"><highlight class="normal">}<sp/><ref refid="group__battery__management__types_1ga2f33f8497203b52f72a9f33fd8c17af3" kindref="member">battery_event_id_t</ref>;</highlight></codeline>
+<codeline lineno="96" refid="group__battery__management__types_1gga2f33f8497203b52f72a9f33fd8c17af3a5e6f1db30a24d15a6fc29f8be1f79348" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__battery__management__types_1gga2f33f8497203b52f72a9f33fd8c17af3a5e6f1db30a24d15a6fc29f8be1f79348" kindref="member">BATTERY_TELEMETRY</ref></highlight></codeline>
+<codeline lineno="97"><highlight class="normal">}<sp/><ref refid="group__battery__management__types_1ga2f33f8497203b52f72a9f33fd8c17af3" kindref="member">battery_event_id_t</ref>;</highlight></codeline>
 <codeline lineno="98"><highlight class="normal"></highlight></codeline>
 <codeline lineno="99" refid="group__battery__management__types_1gab24d24185749fde8c2995766ece636ee" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BATTERY_EVENT_FAULT_DETECTED<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
 <codeline lineno="100"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>OSUSAT_BUILD_EVENT_ID(BATTERY_SERVICE_UID,<sp/>BATTERY_FAULT_DETECTED)</highlight><highlight class="normal"></highlight></codeline>
@@ -176,16 +179,17 @@
 <codeline lineno="140" refid="structbattery__management__t_1a1d53888ce2917c193fc4a9a774b35447" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structbattery__management__t_1a1d53888ce2917c193fc4a9a774b35447" kindref="member">tick_counter</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="141" refid="structbattery__management__t_1aed3cf7b02e2c28c98756d2e3a08305ed" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structbattery__management__t_1aed3cf7b02e2c28c98756d2e3a08305ed" kindref="member">telemetry_tick_counter</ref>;<sp/></highlight></codeline>
 <codeline lineno="142"><highlight class="normal">}<sp/><ref refid="structbattery__management__t" kindref="compound">battery_management_t</ref>;</highlight></codeline>
-<codeline lineno="143"><highlight class="normal"></highlight></codeline>
-<sp/><highlight class="comment">//<sp/>end<sp/>battery_management_types</highlight><codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>end<sp/>battery_management_types</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
 <codeline lineno="165"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__battery__management__api_1gacad3a3de8e213994954cb9ce6a55f0ef" kindref="member">battery_init</ref>(<ref refid="structbattery__management__t" kindref="compound">battery_management_t</ref><sp/>*manager);</highlight></codeline>
 <codeline lineno="166"><highlight class="normal"></highlight></codeline>
 <codeline lineno="175"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__battery__management__api_1ga8f086f5628c0498505e56661ffd04ff1" kindref="member">battery_charge_control</ref>(<ref refid="structbattery__management__t" kindref="compound">battery_management_t</ref><sp/>*manager,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>enable);</highlight></codeline>
 <codeline lineno="176"><highlight class="normal"></highlight></codeline>
 <codeline lineno="185"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__battery__management__api_1ga903c812782a956a3300006154b17c839" kindref="member">battery_protect_mode</ref>(<ref refid="structbattery__management__t" kindref="compound">battery_management_t</ref><sp/>*manager);</highlight></codeline>
-<codeline lineno="186"><highlight class="normal"></highlight></codeline>
-<sp/><highlight class="comment">//<sp/>end<sp/>battery_management_api</highlight><codeline lineno="188"><highlight class="normal"></highlight></codeline>
-<sp/><highlight class="comment">//<sp/>end<sp/>battery_management</highlight><codeline lineno="190"><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>end<sp/>battery_management_api</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>end<sp/>battery_management</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight></codeline>
 <codeline lineno="191"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>BATTERY_MANAGEMENT_H</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/battery_management.h"/>

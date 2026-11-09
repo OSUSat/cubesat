@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="uart__events_8c" kind="file" language="C++">
     <compoundname>uart_events.c</compoundname>
     <includes refid="uart__events_8h" local="yes">uart_events.h</includes>
@@ -334,6 +334,7 @@
     </detaileddescription>
     <programlisting>
 <codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
 <codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="uart__events_8h" kindref="compound">uart_events.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="hal__uart_8h" kindref="compound">hal_uart.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="event__bus_8h" kindref="compound">osusat/event_bus.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
@@ -435,8 +436,8 @@
 <codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="group__uart__events__types_1ggaf0d6ead56ef385028dc0138bc816c2a3ad034637fb737ee5493fedb195cba9f42" kindref="member">RX_STATE_READ_HEADER</ref>:</highlight></codeline>
 <codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>current_buf[uart-&gt;<ref refid="structuart__events__t_1a965a8f0f5c4b72d3b97d1a4ced013772" kindref="member">decode_index</ref>++]<sp/>=<sp/>byte;</highlight></codeline>
 <codeline lineno="135"><highlight class="normal"></highlight></codeline>
-<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(uart-&gt;<ref refid="structuart__events__t_1a965a8f0f5c4b72d3b97d1a4ced013772" kindref="member">decode_index</ref><sp/>&gt;=<sp/><ref refid="uart__events_8c_1a3c7162dd6b23a3f711326e86c0c41556" kindref="member">MIN_HEADER_BYTES</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>payload_len<sp/>=<sp/>current_buf[<ref refid="uart__events_8c_1a3c7162dd6b23a3f711326e86c0c41556" kindref="member">MIN_HEADER_BYTES</ref><sp/>-<sp/>1];</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(uart-&gt;<ref refid="structuart__events__t_1a965a8f0f5c4b72d3b97d1a4ced013772" kindref="member">decode_index</ref><sp/>&gt;=<sp/><ref refid="can__events_8c_1a3c7162dd6b23a3f711326e86c0c41556" kindref="member">MIN_HEADER_BYTES</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>payload_len<sp/>=<sp/>current_buf[<ref refid="can__events_8c_1a3c7162dd6b23a3f711326e86c0c41556" kindref="member">MIN_HEADER_BYTES</ref><sp/>-<sp/>1];</highlight></codeline>
 <codeline lineno="138"><highlight class="normal"></highlight></codeline>
 <codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uart-&gt;<ref refid="structuart__events__t_1ab7cc7737b55472ff31e8fa38f14b0b55" kindref="member">expected_packet_len</ref><sp/>=<sp/><ref refid="packet_8h_1a713e49ffab48f6407bc923d5a27b0fdd" kindref="member">OSUSAT_FRAME_OVERHEAD</ref><sp/>+<sp/>payload_len;</highlight></codeline>
 <codeline lineno="140"><highlight class="normal"></highlight></codeline>

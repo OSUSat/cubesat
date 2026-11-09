@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="slog_8h" kind="file" language="C++">
     <compoundname>slog.h</compoundname>
     <includes refid="ring__buffer_8h" local="yes">ring_buffer.h</includes>
@@ -187,6 +187,7 @@
     </detaileddescription>
     <programlisting>
 <codeline lineno="1" refid="group__osusat__slog__types_1gab898071398b359603a35c202e9c65f3b" refkind="member"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
 <codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>OSUSAT_SLOG_H</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OSUSAT_SLOG_H</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="19"><highlight class="normal"></highlight></codeline>
@@ -198,6 +199,8 @@
 <codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
 <codeline lineno="57" refid="group__osusat__slog__types_1ga57883fd5885c295959cb476989be0b94" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OSUSAT_SLOG_MAX_MESSAGE_LEN<sp/>128</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="58"><highlight class="normal"></highlight></codeline>
 <codeline lineno="62" refid="group__osusat__slog__types_1gafe0f1801f6e3827f06165e284313814b" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
@@ -205,23 +208,24 @@
 <codeline lineno="64" refid="group__osusat__slog__types_1ggafe0f1801f6e3827f06165e284313814ba0910e0bc044406b4a8be8fbd9198bb24" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__osusat__slog__types_1ggafe0f1801f6e3827f06165e284313814ba0910e0bc044406b4a8be8fbd9198bb24" kindref="member">OSUSAT_SLOG_INFO</ref><sp/>=<sp/>1,<sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="65" refid="group__osusat__slog__types_1ggafe0f1801f6e3827f06165e284313814ba4331435d3b641ebbb3a79f5dde6f3d6e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__osusat__slog__types_1ggafe0f1801f6e3827f06165e284313814ba4331435d3b641ebbb3a79f5dde6f3d6e" kindref="member">OSUSAT_SLOG_WARN</ref><sp/>=<sp/>2,<sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="66" refid="group__osusat__slog__types_1ggafe0f1801f6e3827f06165e284313814baaaae4bb5016bcadcae7bf6d772e3f193" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__osusat__slog__types_1ggafe0f1801f6e3827f06165e284313814baaaae4bb5016bcadcae7bf6d772e3f193" kindref="member">OSUSAT_SLOG_ERROR</ref><sp/>=<sp/>3,<sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__osusat__slog__types_1ggafe0f1801f6e3827f06165e284313814ba02b6fdc266af82fa9d529477846cab24" kindref="member">OSUSAT_SLOG_CRITICAL</ref><sp/>=<sp/>4<sp/></highlight></codeline>
-<codeline lineno="68" refid="group__osusat__slog__types_1ggafe0f1801f6e3827f06165e284313814ba02b6fdc266af82fa9d529477846cab24" refkind="member"><highlight class="normal">}<sp/><ref refid="group__osusat__slog__types_1gafe0f1801f6e3827f06165e284313814b" kindref="member">osusat_slog_level_t</ref>;</highlight></codeline>
+<codeline lineno="67" refid="group__osusat__slog__types_1ggafe0f1801f6e3827f06165e284313814ba02b6fdc266af82fa9d529477846cab24" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__osusat__slog__types_1ggafe0f1801f6e3827f06165e284313814ba02b6fdc266af82fa9d529477846cab24" kindref="member">OSUSAT_SLOG_CRITICAL</ref><sp/>=<sp/>4<sp/></highlight></codeline>
+<codeline lineno="68"><highlight class="normal">}<sp/><ref refid="group__osusat__slog__types_1gafe0f1801f6e3827f06165e284313814b" kindref="member">osusat_slog_level_t</ref>;</highlight></codeline>
 <codeline lineno="69"><highlight class="normal"></highlight></codeline>
-<codeline lineno="77"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="group__osusat__slog__types_1gab898071398b359603a35c202e9c65f3b" kindref="member">__attribute__</ref>((packed))<sp/>{</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="bootstrap_2Core_2Src_2syscalls_8c_1af9aace1b44b73111e15aa39f06f43456" kindref="member">__attribute__</ref>((packed))<sp/>{</highlight></codeline>
 <codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>timestamp_ms;<sp/></highlight></codeline>
 <codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>level;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>component_id;<sp/><sp/></highlight></codeline>
 <codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/>line;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/>message_len;<sp/><sp/></highlight></codeline>
-<codeline lineno="83" refid="group__osusat__slog__types_1gae687057651841f31f03c8710710929f6" refkind="member"><highlight class="normal">}<sp/><ref refid="group__osusat__slog__types_1gae687057651841f31f03c8710710929f6" kindref="member">osusat_slog_entry_t</ref>;</highlight></codeline>
+<codeline lineno="83" refid="group__osusat__slog__types_1gae687057651841f31f03c8710710929f6" refkind="member"><highlight class="normal">}<sp/><ref refid="structosusat__slog__entry__t" kindref="compound">osusat_slog_entry_t</ref>;</highlight></codeline>
 <codeline lineno="84"><highlight class="normal"></highlight></codeline>
 <codeline lineno="90" refid="group__osusat__slog__types_1ga39b7ea30f55831ceddb5ab6bc8f316c3" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>uint32_t<sp/>(*<ref refid="group__osusat__slog__types_1ga39b7ea30f55831ceddb5ab6bc8f316c3" kindref="member">osusat_slog_timestamp_fn_t</ref>)(void);</highlight></codeline>
 <codeline lineno="91"><highlight class="normal"></highlight></codeline>
 <codeline lineno="102" refid="group__osusat__slog__types_1ga920f6ea1f2d1a7ff05e2e926cdaa2afa" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>void<sp/>(*<ref refid="group__osusat__slog__types_1ga920f6ea1f2d1a7ff05e2e926cdaa2afa" kindref="member">osusat_slog_flush_fn_t</ref>)(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structosusat__slog__entry__t" kindref="compound">osusat_slog_entry_t</ref><sp/>*entry,</highlight></codeline>
 <codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*message,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*ctx);</highlight></codeline>
-<codeline lineno="104"><highlight class="normal"></highlight></codeline>
-<sp/><highlight class="comment">//<sp/>end<sp/>osusat_slog_types</highlight><codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>end<sp/>osusat_slog_types</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
 <codeline lineno="128"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__osusat__slog__api_1ga82f8335121202a3fd24d6b96e3eb1f4e" kindref="member">osusat_slog_init</ref>(<ref refid="structosusat__ring__buffer__t" kindref="compound">osusat_ring_buffer_t</ref><sp/>*log_buf,</highlight></codeline>
 <codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__osusat__slog__types_1ga39b7ea30f55831ceddb5ab6bc8f316c3" kindref="member">osusat_slog_timestamp_fn_t</ref><sp/>timestamp_fn,</highlight></codeline>
 <codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__osusat__slog__types_1gafe0f1801f6e3827f06165e284313814b" kindref="member">osusat_slog_level_t</ref><sp/>min_level);</highlight></codeline>
@@ -252,9 +256,9 @@
 <codeline lineno="237"><highlight class="normal"></highlight></codeline>
 <codeline lineno="245" refid="group__osusat__slog__api_1ga721347567e0cfddaedf2c2229682f665" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOG_CRITICAL(component,<sp/>fmt,<sp/>...)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
 <codeline lineno="246"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>OSUSAT_SLOG(OSUSAT_SLOG_CRITICAL,<sp/>component,<sp/>fmt,<sp/>##__VA_ARGS__)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="247"><highlight class="normal"></highlight></codeline>
-<sp/><highlight class="comment">//<sp/>end<sp/>osusat_slog_api</highlight><codeline lineno="249"><highlight class="normal"></highlight></codeline>
-<sp/><highlight class="comment">//<sp/>end<sp/>osusat_slog</highlight><codeline lineno="251"><highlight class="normal"></highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>end<sp/>osusat_slog_api</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>end<sp/>osusat_slog</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="251"><highlight class="normal"></highlight></codeline>
 <codeline lineno="252"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="253"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="254"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>

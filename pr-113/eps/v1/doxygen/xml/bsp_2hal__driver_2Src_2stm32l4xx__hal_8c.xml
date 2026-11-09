@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="bsp_2hal__driver_2Src_2stm32l4xx__hal_8c" kind="file" language="C++">
     <compoundname>stm32l4xx_hal.c</compoundname>
     <includes local="yes">stm32l4xx_hal.h</includes>
@@ -33,21 +33,25 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
   [..]
   The HAL contains two APIs&apos; categories:
        (+) Common HAL APIs
-       (+) Services HAL APIs</verbatim> </para>
+       (+) Services HAL APIs
+</verbatim> </para>
     </detaileddescription>
     <programlisting>
 <codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
 <codeline lineno="35"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Includes<sp/>------------------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;stm32l4xx_hal.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
 <codeline lineno="47"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>HAL_MODULE_ENABLED</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="48"><highlight class="normal"></highlight></codeline>
 <codeline lineno="49"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>typedef<sp/>-----------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="50"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>define<sp/>------------------------------------------------------------*/</highlight></codeline>
-<codeline lineno="54"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>STM32L4XX_HAL_VERSION_MAIN<sp/><sp/><sp/>(0x01UL)<sp/></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="55"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>STM32L4XX_HAL_VERSION_SUB1<sp/><sp/><sp/>(0x0DUL)<sp/></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="56"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>STM32L4XX_HAL_VERSION_SUB2<sp/><sp/><sp/>(0x06UL)<sp/></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="57"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>STM32L4XX_HAL_VERSION_RC<sp/><sp/><sp/><sp/><sp/>(0x00U)<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>define<sp/>------------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>STM32L4XX_HAL_VERSION_MAIN<sp/><sp/><sp/>(0x01UL)<sp/></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>STM32L4XX_HAL_VERSION_SUB1<sp/><sp/><sp/>(0x0DUL)<sp/></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>STM32L4XX_HAL_VERSION_SUB2<sp/><sp/><sp/>(0x06UL)<sp/></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>STM32L4XX_HAL_VERSION_RC<sp/><sp/><sp/><sp/><sp/>(0x00U)<sp/></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="58"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>STM32L4XX_HAL_VERSION<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((STM32L4XX_HAL_VERSION_MAIN<sp/><sp/>&lt;&lt;<sp/>24U)\</highlight></codeline>
 <codeline lineno="59"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|(STM32L4XX_HAL_VERSION_SUB1<sp/>&lt;&lt;<sp/>16U)\</highlight></codeline>
 <codeline lineno="60"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|(STM32L4XX_HAL_VERSION_SUB2<sp/>&lt;&lt;<sp/>8U)\</highlight></codeline>
@@ -79,9 +83,12 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="86"><highlight class="normal"></highlight></codeline>
 <codeline lineno="90"><highlight class="normal"><ref refid="bootstrap_2Drivers_2CMSIS_2Include_2core__armv81mml_8h_1aec43007d9998a0a0e01faede4133d6be" kindref="member">__IO</ref><sp/>uint32_t<sp/><ref refid="group__HAL__Exported__Variables_1ga9d411ea525781e633bf7ea7ef2f90728" kindref="member">uwTick</ref>;</highlight></codeline>
 <codeline lineno="91"><highlight class="normal">uint32_t<sp/><ref refid="group__HAL__Exported__Variables_1ga3000c5e83924ed2debb1849c738d4be2" kindref="member">uwTickPrio</ref><sp/>=<sp/>(1UL<sp/>&lt;&lt;<sp/><ref refid="group__Configuration__section__for__CMSIS_1gae3fe3587d5100c787e02102ce3944460" kindref="member">__NVIC_PRIO_BITS</ref>);<sp/></highlight><highlight class="comment">/*<sp/>Invalid<sp/>priority<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="92"><highlight class="normal"><ref refid="group__HAL__TICK__FREQ_1gab36ec81674817249c46734772ff3b73a" kindref="member">HAL_TickFreqTypeDef</ref><sp/><ref refid="group__HAL__Exported__Variables_1ga84a0c55c4d0bff06a085b4fcfd6531cd" kindref="member">uwTickFreq</ref><sp/>=<sp/><ref refid="group__HAL__TICK__FREQ_1ggab36ec81674817249c46734772ff3b73aa94e043d780eb1c36291338f6d6314e42" kindref="member">HAL_TICK_FREQ_DEFAULT</ref>;<sp/><sp/></highlight><highlight class="comment">/*<sp/>1KHz<sp/>*/</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><ref refid="group__HAL__TICK__FREQ_1gab36ec81674817249c46734772ff3b73a" kindref="member">HAL_TickFreqTypeDef</ref><sp/><ref refid="group__HAL__Exported__Variables_1ga84a0c55c4d0bff06a085b4fcfd6531cd" kindref="member">uwTickFreq</ref><sp/>=<sp/><ref refid="group__HAL__TICK__FREQ_1ggab36ec81674817249c46734772ff3b73aa94e043d780eb1c36291338f6d6314e42" kindref="member">HAL_TICK_FREQ_DEFAULT</ref>;<sp/><sp/></highlight><highlight class="comment">/*<sp/>1KHz<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
 <codeline lineno="97"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Exported<sp/>functions<sp/>--------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
 <codeline lineno="152"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/><ref refid="group__HAL__Exported__Functions__Group1_1gaecac54d350c3730e6831eb404e557dc4" kindref="member">HAL_Init</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
 <codeline lineno="153"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="154"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/><sp/>status<sp/>=<sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>;</highlight></codeline>
@@ -195,6 +202,8 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="291"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>status;</highlight></codeline>
 <codeline lineno="292"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="293"><highlight class="normal"></highlight></codeline>
+<codeline lineno="297"><highlight class="normal"></highlight></codeline>
+<codeline lineno="317"><highlight class="normal"></highlight></codeline>
 <codeline lineno="327"><highlight class="normal">__weak<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__HAL__Exported__Functions__Group2_1gaa8361d44d76b7f6256834f828165837a" kindref="member">HAL_IncTick</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
 <codeline lineno="328"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="329"><highlight class="normal"><sp/><sp/><ref refid="group__HAL__Exported__Variables_1ga9d411ea525781e633bf7ea7ef2f90728" kindref="member">uwTick</ref><sp/>+=<sp/>(uint32_t)<ref refid="group__HAL__Exported__Variables_1ga84a0c55c4d0bff06a085b4fcfd6531cd" kindref="member">uwTickFreq</ref>;</highlight></codeline>
@@ -259,7 +268,7 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="429"><highlight class="normal">__weak<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__HAL__Exported__Functions__Group2_1gaaf651af2afe688a991c657f64f8fa5f9" kindref="member">HAL_SuspendTick</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
 <codeline lineno="430"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="431"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Disable<sp/>SysTick<sp/>Interrupt<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="432"><highlight class="normal"><sp/><sp/><ref refid="group__CMSIS__CORE_1gacd96c53beeaff8f603fcda425eb295de" kindref="member">SysTick</ref>-&gt;CTRL<sp/>&amp;=<sp/>~SysTick_CTRL_TICKINT_Msk;</highlight></codeline>
+<codeline lineno="432"><highlight class="normal"><sp/><sp/><ref refid="group__CMSIS__CORE_1gacd96c53beeaff8f603fcda425eb295de" kindref="member">SysTick</ref>-&gt;CTRL<sp/>&amp;=<sp/><ref refid="group__CMSIS__CORE_1ga95bb984266ca764024836a870238a027" kindref="member">~SysTick_CTRL_TICKINT_Msk</ref>;</highlight></codeline>
 <codeline lineno="433"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="434"><highlight class="normal"></highlight></codeline>
 <codeline lineno="445"><highlight class="normal">__weak<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__HAL__Exported__Functions__Group2_1ga24e0ee9dae1ec0f9d19200f5575ff790" kindref="member">HAL_ResumeTick</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
@@ -298,6 +307,8 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="502"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">(<ref refid="group__Exported__macros_1gae7f188a4d26c9e713a48414783421071" kindref="member">READ_REG</ref>(*((uint32_t<sp/>*)(<ref refid="group__Peripheral__memory__map_1ga664eda42b83c919b153b07b23348be67" kindref="member">UID_BASE</ref><sp/>+<sp/>8U))));</highlight></codeline>
 <codeline lineno="503"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="504"><highlight class="normal"></highlight></codeline>
+<codeline lineno="508"><highlight class="normal"></highlight></codeline>
+<codeline lineno="524"><highlight class="normal"></highlight></codeline>
 <codeline lineno="529"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__HAL__Exported__Functions__Group3_1gaf031bcc71ebad9b7edf405547efd762b" kindref="member">HAL_DBGMCU_EnableDBGSleepMode</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
 <codeline lineno="530"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="531"><highlight class="normal"><sp/><sp/><ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga92ec6d9ec2251fda7d4ce09748cd74b4" kindref="member">DBGMCU</ref>-&gt;CR,<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1ga037c80fe1d7308cee68245715ef6cd9a" kindref="member">DBGMCU_CR_DBG_SLEEP</ref>);</highlight></codeline>
@@ -328,6 +339,8 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="576"><highlight class="normal"><sp/><sp/><ref refid="group__Exported__macros_1ga133aae6fc0d41bffab39ab223a7001de" kindref="member">CLEAR_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga92ec6d9ec2251fda7d4ce09748cd74b4" kindref="member">DBGMCU</ref>-&gt;CR,<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1ga107a9396d63c892a8e614897c9d0b132" kindref="member">DBGMCU_CR_DBG_STANDBY</ref>);</highlight></codeline>
 <codeline lineno="577"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="578"><highlight class="normal"></highlight></codeline>
+<codeline lineno="582"><highlight class="normal"></highlight></codeline>
+<codeline lineno="600"><highlight class="normal"></highlight></codeline>
 <codeline lineno="607"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__HAL__Exported__Functions__Group4_1gaa1bda45e550d89db1bc107c1249cf4c8" kindref="member">HAL_SYSCFG_SRAM2Erase</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
 <codeline lineno="608"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="609"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>unlock<sp/>the<sp/>write<sp/>protection<sp/>of<sp/>the<sp/>SRAM2ER<sp/>bit<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
@@ -348,7 +361,7 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="644"><highlight class="normal"><sp/><sp/>*(<ref refid="bootstrap_2Drivers_2CMSIS_2Include_2core__armv81mml_8h_1aec43007d9998a0a0e01faede4133d6be" kindref="member">__IO</ref><sp/>uint32_t<sp/>*)FB_MODE_BB<sp/>=<sp/>0x00000000UL;</highlight></codeline>
 <codeline lineno="645"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="646"><highlight class="normal"></highlight></codeline>
-<codeline lineno="647"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(VREFBUF)</highlight></codeline>
+<codeline lineno="647"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(VREFBUF)</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="658"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>HAL_SYSCFG_VREFBUF_VoltageScalingConfig(uint32_t<sp/>VoltageScaling)</highlight></codeline>
 <codeline lineno="659"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="660"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>the<sp/>parameters<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
@@ -410,7 +423,10 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="747"><highlight class="normal"><sp/><sp/><ref refid="group__Exported__macros_1ga133aae6fc0d41bffab39ab223a7001de" kindref="member">CLEAR_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga3c833fe1c486cb62250ccbca32899cb8" kindref="member">SYSCFG</ref>-&gt;CFGR1,<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1ga948471b86a4c7bf56000670b10b203ab" kindref="member">SYSCFG_CFGR1_BOOSTEN</ref>);</highlight></codeline>
 <codeline lineno="748"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="749"><highlight class="normal"></highlight></codeline>
-<codeline lineno="758"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>HAL_MODULE_ENABLED<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="753"><highlight class="normal"></highlight></codeline>
+<codeline lineno="757"><highlight class="normal"></highlight></codeline>
+<codeline lineno="758"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>HAL_MODULE_ENABLED<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="762"><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Src/stm32l4xx_hal.c"/>
   </compounddef>

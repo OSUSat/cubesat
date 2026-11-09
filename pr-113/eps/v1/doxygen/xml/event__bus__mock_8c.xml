@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="event__bus__mock_8c" kind="file" language="C++">
     <compoundname>event_bus_mock.c</compoundname>
     <includes refid="event__bus__mock_8h" local="yes">event_bus_mock.h</includes>
@@ -254,9 +254,9 @@
 <codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MAX_PUBLISHED_EVENTS<sp/>16</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="7"><highlight class="normal"></highlight></codeline>
 <codeline lineno="8" refid="structsubscription__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__osusat__event__bus__types_1gac1bdf9439b2f075299a2f98e80fe4264" kindref="member">osusat_event_id_t</ref><sp/>id;</highlight></codeline>
-<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__osusat__event__bus__types_1gaccccae08b2fbb1acea7a6cb888e36c01" kindref="member">osusat_event_handler_t</ref><sp/>handler;</highlight></codeline>
-<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*ctx;</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__osusat__event__bus__types_1gac1bdf9439b2f075299a2f98e80fe4264" kindref="member">osusat_event_id_t</ref><sp/><ref refid="structsubscription__t_1a34e5bca03ea8cf21d194304c45257b1f" kindref="member">id</ref>;</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__osusat__event__bus__types_1gaccccae08b2fbb1acea7a6cb888e36c01" kindref="member">osusat_event_handler_t</ref><sp/><ref refid="structsubscription__t_1ab9654c832fe016903fb30c520d907e6b" kindref="member">handler</ref>;</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<ref refid="structsubscription__t_1a3ef582cd9d7f0d769cb5424c4d47a40e" kindref="member">ctx</ref>;</highlight></codeline>
 <codeline lineno="12"><highlight class="normal">}<sp/><ref refid="structsubscription__t" kindref="compound">subscription_t</ref>;</highlight></codeline>
 <codeline lineno="13"><highlight class="normal"></highlight></codeline>
 <codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structsubscription__t" kindref="compound">subscription_t</ref><sp/>subscriptions[<ref refid="event__bus__mock_8c_1ace926d2a7c63c15f7b7fa0b1ae8ca717" kindref="member">MAX_SUBSCRIBERS</ref>];</highlight></codeline>
@@ -341,7 +341,7 @@
 <codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>memcpy(event.<ref refid="group__osusat__event__bus_1gab6eca2e9d47a2653c6fc53deaff61353" kindref="member">payload</ref>,<sp/>payload,<sp/>len);</highlight></codeline>
 <codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="95"><highlight class="normal"></highlight></codeline>
-<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>subscriptions[i].<ref refid="structsubscription__t_1ab9654c832fe016903fb30c520d907e6b" kindref="member">handler</ref>(&amp;event,<sp/>subscriptions[i].ctx);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>subscriptions[i].handler(&amp;event,<sp/>subscriptions[i].ctx);</highlight></codeline>
 <codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="99"><highlight class="normal">}</highlight></codeline>

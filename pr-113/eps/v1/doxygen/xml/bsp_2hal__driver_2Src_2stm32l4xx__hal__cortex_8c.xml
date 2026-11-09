@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="bsp_2hal__driver_2Src_2stm32l4xx__hal__cortex_8c" kind="file" language="C++">
     <compoundname>stm32l4xx_hal_cortex.c</compoundname>
     <includes local="yes">stm32l4xx_hal.h</includes>
@@ -75,33 +75,28 @@
 
      Reload Value = SysTick Counter Clock (Hz) x  Desired Time base (s)
      (++) Reload Value is the parameter to be passed for HAL_SYSTICK_Config() function
-     (++) Reload Value should not exceed 0xFFFFFF</verbatim></para>
+     (++) Reload Value should not exceed 0xFFFFFF
+</verbatim></para>
 <para>The table below gives the allowed values of the pre-emption priority and subpriority according to the Priority Grouping configuration performed by <ref refid="group__CORTEX__Exported__Functions__Group1_1gad9be53e08b1498adea006e5e037f238f" kindref="member">HAL_NVIC_SetPriorityGrouping()</ref> function.</para>
 <para><hruler/>
  </para>
 <sect1 id="bsp_2hal__driver_2Src_2stm32l4xx__hal__cortex_8c_1autotoc_md27">
-<title>NVIC_PriorityGroup   | NVIC_IRQChannelPreemptionPriority | NVIC_IRQChannelSubPriority  |       Description</title>
-<para>NVIC_PRIORITYGROUP_0 | 0 | 0-15 | 0 bit for pre-emption priority </para>
+<title>NVIC_PriorityGroup | NVIC_IRQChannelPreemptionPriority | NVIC_IRQChannelSubPriority | Description</title><para>NVIC_PRIORITYGROUP_0 | 0 | 0-15 | 0 bit for pre-emption priority </para>
 <sect2 id="bsp_2hal__driver_2Src_2stm32l4xx__hal__cortex_8c_1autotoc_md28">
-<title>|                                   |                             | 4 bits for subpriority</title>
-<para>NVIC_PRIORITYGROUP_1 | 0-1 | 0-7 | 1 bit for pre-emption priority </para>
+<title>| | | 4 bits for subpriority</title><para>NVIC_PRIORITYGROUP_1 | 0-1 | 0-7 | 1 bit for pre-emption priority </para>
 </sect2>
 <sect2 id="bsp_2hal__driver_2Src_2stm32l4xx__hal__cortex_8c_1autotoc_md29">
-<title>|                                   |                             | 3 bits for subpriority</title>
-<para>NVIC_PRIORITYGROUP_2 | 0-3 | 0-3 | 2 bits for pre-emption priority </para>
+<title>| | | 3 bits for subpriority</title><para>NVIC_PRIORITYGROUP_2 | 0-3 | 0-3 | 2 bits for pre-emption priority </para>
 </sect2>
 <sect2 id="bsp_2hal__driver_2Src_2stm32l4xx__hal__cortex_8c_1autotoc_md30">
-<title>|                                   |                             | 2 bits for subpriority</title>
-<para>NVIC_PRIORITYGROUP_3 | 0-7 | 0-1 | 3 bits for pre-emption priority </para>
+<title>| | | 2 bits for subpriority</title><para>NVIC_PRIORITYGROUP_3 | 0-7 | 0-1 | 3 bits for pre-emption priority </para>
 </sect2>
 <sect2 id="bsp_2hal__driver_2Src_2stm32l4xx__hal__cortex_8c_1autotoc_md31">
-<title>|                                   |                             | 1 bit for subpriority</title>
-<para>NVIC_PRIORITYGROUP_4 | 0-15 | 0 | 4 bits for pre-emption priority </para>
+<title>| | | 1 bit for subpriority</title><para>NVIC_PRIORITYGROUP_4 | 0-15 | 0 | 4 bits for pre-emption priority </para>
 </sect2>
 </sect1>
 <sect1 id="bsp_2hal__driver_2Src_2stm32l4xx__hal__cortex_8c_1autotoc_md32">
-<title>|                                   |                             | 0 bit for subpriority</title>
-<para><simplesect kind="attention"><para></para>
+<title>| | | 0 bit for subpriority</title><para><simplesect kind="attention"><para></para>
 </simplesect>
 Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <para>This software is licensed under terms that can be found in the LICENSE file in the root directory of this software component. If no LICENSE file comes with this software, it is provided AS-IS. </para>
@@ -109,9 +104,12 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
     </detaileddescription>
     <programlisting>
 <codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
 <codeline lineno="103"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Includes<sp/>------------------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="104"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;stm32l4xx_hal.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
 <codeline lineno="114"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>HAL_CORTEX_MODULE_ENABLED</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="115"><highlight class="normal"></highlight></codeline>
 <codeline lineno="116"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>types<sp/>-------------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
@@ -121,6 +119,10 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="120"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>functions<sp/>---------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="121"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Exported<sp/>functions<sp/>--------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
 <codeline lineno="163"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__CORTEX__Exported__Functions__Group1_1gad9be53e08b1498adea006e5e037f238f" kindref="member">HAL_NVIC_SetPriorityGrouping</ref>(uint32_t<sp/>PriorityGroup)</highlight></codeline>
 <codeline lineno="164"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="165"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>the<sp/>parameters<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
@@ -171,6 +173,8 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="250"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>SysTick_Config(TicksNumb);</highlight></codeline>
 <codeline lineno="252"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"></highlight></codeline>
+<codeline lineno="272"><highlight class="normal"></highlight></codeline>
 <codeline lineno="277"><highlight class="normal">uint32_t<sp/><ref refid="group__CORTEX__Exported__Functions__Group2_1gaa02bc953fd4fce22248c491a93c4ce40" kindref="member">HAL_NVIC_GetPriorityGrouping</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
 <codeline lineno="278"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="279"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Get<sp/>the<sp/>PRIGROUP[10:8]<sp/>field<sp/>value<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
@@ -228,7 +232,7 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="391"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="392"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="393"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
-<codeline lineno="394"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__CMSIS__CORE_1gacd96c53beeaff8f603fcda425eb295de" kindref="member">SysTick</ref>-&gt;CTRL<sp/>&amp;=<sp/>~SYSTICK_CLKSOURCE_HCLK;</highlight></codeline>
+<codeline lineno="394"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__CMSIS__CORE_1gacd96c53beeaff8f603fcda425eb295de" kindref="member">SysTick</ref>-&gt;CTRL<sp/>&amp;=<sp/><ref refid="group__CORTEX__SysTick__clock__source_1ga6f6582df23b6fbc578325e453b9893b7" kindref="member">~SYSTICK_CLKSOURCE_HCLK</ref>;</highlight></codeline>
 <codeline lineno="395"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="396"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="397"><highlight class="normal"></highlight></codeline>
@@ -244,7 +248,7 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="415"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="416"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="417"><highlight class="normal"></highlight></codeline>
-<codeline lineno="418"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>(__MPU_PRESENT<sp/>==<sp/>1)</highlight></codeline>
+<codeline lineno="418"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>(__MPU_PRESENT<sp/>==<sp/>1)</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="430"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>HAL_MPU_Enable(uint32_t<sp/>MPU_Control)</highlight></codeline>
 <codeline lineno="431"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="432"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Enable<sp/>the<sp/>MPU<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
@@ -322,7 +326,11 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="522"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="523"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>__MPU_PRESENT<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="524"><highlight class="normal"></highlight></codeline>
-<codeline lineno="533"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>HAL_CORTEX_MODULE_ENABLED<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="528"><highlight class="normal"></highlight></codeline>
+<codeline lineno="532"><highlight class="normal"></highlight></codeline>
+<codeline lineno="533"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>HAL_CORTEX_MODULE_ENABLED<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="537"><highlight class="normal"></highlight></codeline>
+<codeline lineno="541"><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Src/stm32l4xx_hal_cortex.c"/>
   </compounddef>

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="bsp_2hal__driver_2Src_2stm32l4xx__hal__dma_8c" kind="file" language="C++">
     <compoundname>stm32l4xx_hal_dma.c</compoundname>
     <includes local="yes">stm32l4xx_hal.h</includes>
@@ -89,13 +89,17 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
      (+) __HAL_DMA_GET_IT_SOURCE: Check whether the specified DMA Channel interrupt is enabled or not.
 
    [..]
-    (@) You can refer to the DMA HAL driver header file for more useful macros</verbatim> </para>
+    (@) You can refer to the DMA HAL driver header file for more useful macros
+</verbatim> </para>
     </detaileddescription>
     <programlisting>
 <codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
 <codeline lineno="90"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Includes<sp/>------------------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="91"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;stm32l4xx_hal.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
 <codeline lineno="102"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>HAL_DMA_MODULE_ENABLED</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="103"><highlight class="normal"></highlight></codeline>
 <codeline lineno="104"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>typedef<sp/>-----------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
@@ -104,15 +108,18 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="107"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>variables<sp/>---------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="108"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>function<sp/>prototypes<sp/>-----------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="109"><highlight class="normal"></highlight></codeline>
-<codeline lineno="113"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>DMA_SetConfig(<ref refid="struct____DMA__HandleTypeDef" kindref="compound">DMA_HandleTypeDef</ref><sp/>*hdma,<sp/>uint32_t<sp/>SrcAddress,<sp/>uint32_t<sp/>DstAddress,<sp/>uint32_t<sp/>DataLength);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>DMA_SetConfig(<ref refid="group__DMA__Exported__Types_1ga41b754a906b86bce54dc79938970138b" kindref="member">DMA_HandleTypeDef</ref><sp/>*hdma,<sp/>uint32_t<sp/>SrcAddress,<sp/>uint32_t<sp/>DstAddress,<sp/>uint32_t<sp/>DataLength);</highlight></codeline>
 <codeline lineno="114"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(DMAMUX1)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="115"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>DMA_CalcDMAMUXChannelBaseAndMask(<ref refid="struct____DMA__HandleTypeDef" kindref="compound">DMA_HandleTypeDef</ref><sp/>*hdma);</highlight></codeline>
-<codeline lineno="116"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>DMA_CalcDMAMUXRequestGenBaseAndMask(<ref refid="struct____DMA__HandleTypeDef" kindref="compound">DMA_HandleTypeDef</ref><sp/>*hdma);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>DMA_CalcDMAMUXChannelBaseAndMask(<ref refid="group__DMA__Exported__Types_1ga41b754a906b86bce54dc79938970138b" kindref="member">DMA_HandleTypeDef</ref><sp/>*hdma);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>DMA_CalcDMAMUXRequestGenBaseAndMask(<ref refid="group__DMA__Exported__Types_1ga41b754a906b86bce54dc79938970138b" kindref="member">DMA_HandleTypeDef</ref><sp/>*hdma);</highlight></codeline>
 <codeline lineno="117"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>DMAMUX1<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
 <codeline lineno="123"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Exported<sp/>functions<sp/>---------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="124"><highlight class="normal"></highlight></codeline>
-<codeline lineno="155"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/><ref refid="group__DMA__Exported__Functions__Group1_1ga0fbcb690074233a03f2fa366dc22ff01" kindref="member">HAL_DMA_Init</ref>(<ref refid="struct____DMA__HandleTypeDef" kindref="compound">DMA_HandleTypeDef</ref><sp/>*hdma)</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/><ref refid="group__DMA__Exported__Functions__Group1_1ga0fbcb690074233a03f2fa366dc22ff01" kindref="member">HAL_DMA_Init</ref>(<ref refid="group__DMA__Exported__Types_1ga41b754a906b86bce54dc79938970138b" kindref="member">DMA_HandleTypeDef</ref><sp/>*hdma)</highlight></codeline>
 <codeline lineno="156"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="157"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>the<sp/>DMA<sp/>handle<sp/>allocation<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="158"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(hdma<sp/>==<sp/>NULL)</highlight></codeline>
@@ -233,7 +240,7 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="273"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>;</highlight></codeline>
 <codeline lineno="274"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="275"><highlight class="normal"></highlight></codeline>
-<codeline lineno="282"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/><ref refid="group__DMA__Exported__Functions__Group1_1ga7bb8587d642da11252a97f5c41c389ef" kindref="member">HAL_DMA_DeInit</ref>(<ref refid="struct____DMA__HandleTypeDef" kindref="compound">DMA_HandleTypeDef</ref><sp/>*hdma)</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/><ref refid="group__DMA__Exported__Functions__Group1_1ga7bb8587d642da11252a97f5c41c389ef" kindref="member">HAL_DMA_DeInit</ref>(<ref refid="group__DMA__Exported__Types_1ga41b754a906b86bce54dc79938970138b" kindref="member">DMA_HandleTypeDef</ref><sp/>*hdma)</highlight></codeline>
 <codeline lineno="283"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="284"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>the<sp/>DMA<sp/>handle<sp/>allocation<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="285"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(NULL<sp/>==<sp/>hdma)</highlight></codeline>
@@ -329,7 +336,9 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="375"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>;</highlight></codeline>
 <codeline lineno="376"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="377"><highlight class="normal"></highlight></codeline>
-<codeline lineno="411"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/><ref refid="group__DMA__Exported__Functions__Group2_1ga96fbd9c285135f558fd9283a57406330" kindref="member">HAL_DMA_Start</ref>(<ref refid="struct____DMA__HandleTypeDef" kindref="compound">DMA_HandleTypeDef</ref><sp/>*hdma,<sp/>uint32_t<sp/>SrcAddress,<sp/>uint32_t<sp/>DstAddress,<sp/>uint32_t<sp/>DataLength)</highlight></codeline>
+<codeline lineno="381"><highlight class="normal"></highlight></codeline>
+<codeline lineno="401"><highlight class="normal"></highlight></codeline>
+<codeline lineno="411"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/><ref refid="group__DMA__Exported__Functions__Group2_1ga96fbd9c285135f558fd9283a57406330" kindref="member">HAL_DMA_Start</ref>(<ref refid="group__DMA__Exported__Types_1ga41b754a906b86bce54dc79938970138b" kindref="member">DMA_HandleTypeDef</ref><sp/>*hdma,<sp/>uint32_t<sp/>SrcAddress,<sp/>uint32_t<sp/>DstAddress,<sp/>uint32_t<sp/>DataLength)</highlight></codeline>
 <codeline lineno="412"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="413"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/>status<sp/>=<sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>;</highlight></codeline>
 <codeline lineno="414"><highlight class="normal"></highlight></codeline>
@@ -371,7 +380,7 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="450"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>status;</highlight></codeline>
 <codeline lineno="451"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="452"><highlight class="normal"></highlight></codeline>
-<codeline lineno="462"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/><ref refid="group__DMA__Exported__Functions__Group2_1ga7eddc0931ac8a3d77b23d6d5e68407c7" kindref="member">HAL_DMA_Start_IT</ref>(<ref refid="struct____DMA__HandleTypeDef" kindref="compound">DMA_HandleTypeDef</ref><sp/>*hdma,<sp/>uint32_t<sp/>SrcAddress,<sp/>uint32_t<sp/>DstAddress,</highlight></codeline>
+<codeline lineno="462"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/><ref refid="group__DMA__Exported__Functions__Group2_1ga7eddc0931ac8a3d77b23d6d5e68407c7" kindref="member">HAL_DMA_Start_IT</ref>(<ref refid="group__DMA__Exported__Types_1ga41b754a906b86bce54dc79938970138b" kindref="member">DMA_HandleTypeDef</ref><sp/>*hdma,<sp/>uint32_t<sp/>SrcAddress,<sp/>uint32_t<sp/>DstAddress,</highlight></codeline>
 <codeline lineno="463"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>DataLength)</highlight></codeline>
 <codeline lineno="464"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="465"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/>status<sp/>=<sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>;</highlight></codeline>
@@ -441,7 +450,7 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="529"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>status;</highlight></codeline>
 <codeline lineno="530"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="531"><highlight class="normal"></highlight></codeline>
-<codeline lineno="538"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/><ref refid="group__DMA__Exported__Functions__Group2_1ga001f9fb04328a7460f9ff16908ff987c" kindref="member">HAL_DMA_Abort</ref>(<ref refid="struct____DMA__HandleTypeDef" kindref="compound">DMA_HandleTypeDef</ref><sp/>*hdma)</highlight></codeline>
+<codeline lineno="538"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/><ref refid="group__DMA__Exported__Functions__Group2_1ga001f9fb04328a7460f9ff16908ff987c" kindref="member">HAL_DMA_Abort</ref>(<ref refid="group__DMA__Exported__Types_1ga41b754a906b86bce54dc79938970138b" kindref="member">DMA_HandleTypeDef</ref><sp/>*hdma)</highlight></codeline>
 <codeline lineno="539"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="540"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>the<sp/>DMA<sp/>peripheral<sp/>handle<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="541"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(NULL<sp/>==<sp/>hdma)</highlight></codeline>
@@ -500,7 +509,7 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="594"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>;</highlight></codeline>
 <codeline lineno="595"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="596"><highlight class="normal"></highlight></codeline>
-<codeline lineno="603"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/><ref refid="group__DMA__Exported__Functions__Group2_1ga6677d7e614747341a58ffd7a048fd390" kindref="member">HAL_DMA_Abort_IT</ref>(<ref refid="struct____DMA__HandleTypeDef" kindref="compound">DMA_HandleTypeDef</ref><sp/>*hdma)</highlight></codeline>
+<codeline lineno="603"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/><ref refid="group__DMA__Exported__Functions__Group2_1ga6677d7e614747341a58ffd7a048fd390" kindref="member">HAL_DMA_Abort_IT</ref>(<ref refid="group__DMA__Exported__Types_1ga41b754a906b86bce54dc79938970138b" kindref="member">DMA_HandleTypeDef</ref><sp/>*hdma)</highlight></codeline>
 <codeline lineno="604"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="605"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/>status<sp/>=<sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>;</highlight></codeline>
 <codeline lineno="606"><highlight class="normal"></highlight></codeline>
@@ -558,7 +567,7 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="658"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>status;</highlight></codeline>
 <codeline lineno="659"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="660"><highlight class="normal"></highlight></codeline>
-<codeline lineno="669"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/><ref refid="group__DMA__Exported__Functions__Group2_1ga976a30472df973e3ad983f21289c9b5d" kindref="member">HAL_DMA_PollForTransfer</ref>(<ref refid="struct____DMA__HandleTypeDef" kindref="compound">DMA_HandleTypeDef</ref><sp/>*hdma,<sp/><ref refid="group__DMA__Exported__Types_1gaee3245eea8fa938edeb35a6c9596fd86" kindref="member">HAL_DMA_LevelCompleteTypeDef</ref><sp/>CompleteLevel,</highlight></codeline>
+<codeline lineno="669"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/><ref refid="group__DMA__Exported__Functions__Group2_1ga976a30472df973e3ad983f21289c9b5d" kindref="member">HAL_DMA_PollForTransfer</ref>(<ref refid="group__DMA__Exported__Types_1ga41b754a906b86bce54dc79938970138b" kindref="member">DMA_HandleTypeDef</ref><sp/>*hdma,<sp/><ref refid="group__DMA__Exported__Types_1gaee3245eea8fa938edeb35a6c9596fd86" kindref="member">HAL_DMA_LevelCompleteTypeDef</ref><sp/>CompleteLevel,</highlight></codeline>
 <codeline lineno="670"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>Timeout)</highlight></codeline>
 <codeline lineno="671"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="672"><highlight class="normal"><sp/><sp/>uint32_t<sp/>temp;</highlight></codeline>
@@ -683,7 +692,7 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="791"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>;</highlight></codeline>
 <codeline lineno="792"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="793"><highlight class="normal"></highlight></codeline>
-<codeline lineno="800"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__DMA__Exported__Functions__Group2_1ga8c8564d06f6d39b702af1c5cbb7dd54a" kindref="member">HAL_DMA_IRQHandler</ref>(<ref refid="struct____DMA__HandleTypeDef" kindref="compound">DMA_HandleTypeDef</ref><sp/>*hdma)</highlight></codeline>
+<codeline lineno="800"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__DMA__Exported__Functions__Group2_1ga8c8564d06f6d39b702af1c5cbb7dd54a" kindref="member">HAL_DMA_IRQHandler</ref>(<ref refid="group__DMA__Exported__Types_1ga41b754a906b86bce54dc79938970138b" kindref="member">DMA_HandleTypeDef</ref><sp/>*hdma)</highlight></codeline>
 <codeline lineno="801"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="802"><highlight class="normal"><sp/><sp/>uint32_t<sp/>flag_it<sp/>=<sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a998405f672c54246acdeba8c1d5318ec" kindref="member">DmaBaseAddress</ref>-&gt;<ref refid="structDMA__TypeDef_1aa341a859df2f59bf6c0f7a000ab8734b" kindref="member">ISR</ref>;</highlight></codeline>
 <codeline lineno="803"><highlight class="normal"><sp/><sp/>uint32_t<sp/>source_it<sp/>=<sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a08f5d05c6daa9d6e2dfc4945f01c8510" kindref="member">Instance</ref>-&gt;<ref refid="structDMA__Channel__TypeDef_1aa4938d438293f76ff6d9a262715c23eb" kindref="member">CCR</ref>;</highlight></codeline>
@@ -767,7 +776,7 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="881"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="882"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="883"><highlight class="normal"></highlight></codeline>
-<codeline lineno="894"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/><ref refid="group__DMA__Exported__Functions__Group2_1gaabec77de08a59c94f2c6265ce7ae8261" kindref="member">HAL_DMA_RegisterCallback</ref>(<ref refid="struct____DMA__HandleTypeDef" kindref="compound">DMA_HandleTypeDef</ref><sp/>*hdma,<sp/><ref refid="group__DMA__Exported__Types_1gafbe8b2bd9ce2128de6cdc08ccde7e8ad" kindref="member">HAL_DMA_CallbackIDTypeDef</ref><sp/>CallbackID,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>(*<sp/>pCallback)(<ref refid="struct____DMA__HandleTypeDef" kindref="compound">DMA_HandleTypeDef</ref><sp/>*_hdma))</highlight></codeline>
+<codeline lineno="894"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/><ref refid="group__DMA__Exported__Functions__Group2_1gaabec77de08a59c94f2c6265ce7ae8261" kindref="member">HAL_DMA_RegisterCallback</ref>(<ref refid="group__DMA__Exported__Types_1ga41b754a906b86bce54dc79938970138b" kindref="member">DMA_HandleTypeDef</ref><sp/>*hdma,<sp/><ref refid="group__DMA__Exported__Types_1gafbe8b2bd9ce2128de6cdc08ccde7e8ad" kindref="member">HAL_DMA_CallbackIDTypeDef</ref><sp/>CallbackID,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>(*<sp/>pCallback)(<ref refid="group__DMA__Exported__Types_1ga41b754a906b86bce54dc79938970138b" kindref="member">DMA_HandleTypeDef</ref><sp/>*_hdma))</highlight></codeline>
 <codeline lineno="895"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="896"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/>status<sp/>=<sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>;</highlight></codeline>
 <codeline lineno="897"><highlight class="normal"></highlight></codeline>
@@ -810,7 +819,7 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="934"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>status;</highlight></codeline>
 <codeline lineno="935"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="936"><highlight class="normal"></highlight></codeline>
-<codeline lineno="945"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/><ref refid="group__DMA__Exported__Functions__Group2_1ga87842d3780f0e54c7fb29a003e6b5ac4" kindref="member">HAL_DMA_UnRegisterCallback</ref>(<ref refid="struct____DMA__HandleTypeDef" kindref="compound">DMA_HandleTypeDef</ref><sp/>*hdma,<sp/><ref refid="group__DMA__Exported__Types_1gafbe8b2bd9ce2128de6cdc08ccde7e8ad" kindref="member">HAL_DMA_CallbackIDTypeDef</ref><sp/>CallbackID)</highlight></codeline>
+<codeline lineno="945"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/><ref refid="group__DMA__Exported__Functions__Group2_1ga87842d3780f0e54c7fb29a003e6b5ac4" kindref="member">HAL_DMA_UnRegisterCallback</ref>(<ref refid="group__DMA__Exported__Types_1ga41b754a906b86bce54dc79938970138b" kindref="member">DMA_HandleTypeDef</ref><sp/>*hdma,<sp/><ref refid="group__DMA__Exported__Types_1gafbe8b2bd9ce2128de6cdc08ccde7e8ad" kindref="member">HAL_DMA_CallbackIDTypeDef</ref><sp/>CallbackID)</highlight></codeline>
 <codeline lineno="946"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="947"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/>status<sp/>=<sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>;</highlight></codeline>
 <codeline lineno="948"><highlight class="normal"></highlight></codeline>
@@ -860,19 +869,25 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="992"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>status;</highlight></codeline>
 <codeline lineno="993"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="994"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1022"><highlight class="normal"><ref refid="group__DMA__Exported__Types_1ga9c012af359987a240826f29073bbe463" kindref="member">HAL_DMA_StateTypeDef</ref><sp/><ref refid="group__DMA__Exported__Functions__Group3_1gaef09509c41da57dc118c8ffb9533ce3f" kindref="member">HAL_DMA_GetState</ref>(<ref refid="struct____DMA__HandleTypeDef" kindref="compound">DMA_HandleTypeDef</ref><sp/>*hdma)</highlight></codeline>
+<codeline lineno="998"><highlight class="normal"></highlight></codeline>
+<codeline lineno="999"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1015"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1022"><highlight class="normal"><ref refid="group__DMA__Exported__Types_1ga9c012af359987a240826f29073bbe463" kindref="member">HAL_DMA_StateTypeDef</ref><sp/><ref refid="group__DMA__Exported__Functions__Group3_1gaef09509c41da57dc118c8ffb9533ce3f" kindref="member">HAL_DMA_GetState</ref>(<ref refid="group__DMA__Exported__Types_1ga41b754a906b86bce54dc79938970138b" kindref="member">DMA_HandleTypeDef</ref><sp/>*hdma)</highlight></codeline>
 <codeline lineno="1023"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="1024"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Return<sp/>DMA<sp/>handle<sp/>state<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1025"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a9759b676141bec799cdab94c3e08e6e4" kindref="member">State</ref>;</highlight></codeline>
 <codeline lineno="1026"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="1027"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1034"><highlight class="normal">uint32_t<sp/><ref refid="group__DMA__Exported__Functions__Group3_1gabc0735694a0dd08e352b796d7fa7634f" kindref="member">HAL_DMA_GetError</ref>(<ref refid="struct____DMA__HandleTypeDef" kindref="compound">DMA_HandleTypeDef</ref><sp/>*hdma)</highlight></codeline>
+<codeline lineno="1034"><highlight class="normal">uint32_t<sp/><ref refid="group__DMA__Exported__Functions__Group3_1gabc0735694a0dd08e352b796d7fa7634f" kindref="member">HAL_DMA_GetError</ref>(<ref refid="group__DMA__Exported__Types_1ga41b754a906b86bce54dc79938970138b" kindref="member">DMA_HandleTypeDef</ref><sp/>*hdma)</highlight></codeline>
 <codeline lineno="1035"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="1036"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Return<sp/>the<sp/>DMA<sp/>error<sp/>code<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1037"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a67a2a8b907bc9b5c0af87f9de2bffc29" kindref="member">ErrorCode</ref>;</highlight></codeline>
 <codeline lineno="1038"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="1039"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1061"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>DMA_SetConfig(<ref refid="struct____DMA__HandleTypeDef" kindref="compound">DMA_HandleTypeDef</ref><sp/>*hdma,<sp/>uint32_t<sp/>SrcAddress,<sp/>uint32_t<sp/>DstAddress,<sp/>uint32_t<sp/>DataLength)</highlight></codeline>
+<codeline lineno="1043"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1047"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1051"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1061"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>DMA_SetConfig(<ref refid="group__DMA__Exported__Types_1ga41b754a906b86bce54dc79938970138b" kindref="member">DMA_HandleTypeDef</ref><sp/>*hdma,<sp/>uint32_t<sp/>SrcAddress,<sp/>uint32_t<sp/>DstAddress,<sp/>uint32_t<sp/>DataLength)</highlight></codeline>
 <codeline lineno="1062"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="1063"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(DMAMUX1)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1064"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Clear<sp/>the<sp/>DMAMUX<sp/>synchro<sp/>overrun<sp/>flag<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
@@ -912,7 +927,7 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="1098"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="1099"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(DMAMUX1)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1100"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1107"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>DMA_CalcDMAMUXChannelBaseAndMask(<ref refid="struct____DMA__HandleTypeDef" kindref="compound">DMA_HandleTypeDef</ref><sp/>*hdma)</highlight></codeline>
+<codeline lineno="1107"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>DMA_CalcDMAMUXChannelBaseAndMask(<ref refid="group__DMA__Exported__Types_1ga41b754a906b86bce54dc79938970138b" kindref="member">DMA_HandleTypeDef</ref><sp/>*hdma)</highlight></codeline>
 <codeline lineno="1108"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="1109"><highlight class="normal"><sp/><sp/>uint32_t<sp/>channel_number;</highlight></codeline>
 <codeline lineno="1110"><highlight class="normal"></highlight></codeline>
@@ -943,7 +958,8 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="1135"><highlight class="normal"><sp/><sp/>hdma-&gt;DMAmuxChannelStatusMask<sp/>=<sp/>1UL<sp/>&lt;&lt;<sp/>(channel_number<sp/>&amp;<sp/>0x1FU);</highlight></codeline>
 <codeline lineno="1136"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="1137"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1145"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>DMA_CalcDMAMUXRequestGenBaseAndMask(<ref refid="struct____DMA__HandleTypeDef" kindref="compound">DMA_HandleTypeDef</ref><sp/>*hdma)</highlight></codeline>
+<codeline lineno="1144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1145"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>DMA_CalcDMAMUXRequestGenBaseAndMask(<ref refid="group__DMA__Exported__Types_1ga41b754a906b86bce54dc79938970138b" kindref="member">DMA_HandleTypeDef</ref><sp/>*hdma)</highlight></codeline>
 <codeline lineno="1146"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="1147"><highlight class="normal"><sp/><sp/>uint32_t<sp/>request<sp/>=<sp/><sp/>hdma-&gt;<ref refid="struct____DMA__HandleTypeDef_1a3792cb34cedb0e2ab204e41b53ef75ad" kindref="member">Init</ref>.<ref refid="structDMA__InitTypeDef_1a74997b2fac5607fafbb958d4311b9017" kindref="member">Request</ref><sp/>&amp;<sp/>DMAMUX_CxCR_DMAREQ_ID;</highlight></codeline>
 <codeline lineno="1148"><highlight class="normal"></highlight></codeline>
@@ -957,7 +973,11 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="1156"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="1157"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>DMAMUX1<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1158"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1167"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>HAL_DMA_MODULE_ENABLED<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="1162"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1166"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1167"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>HAL_DMA_MODULE_ENABLED<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1171"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1175"><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Src/stm32l4xx_hal_dma.c"/>
   </compounddef>

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="packet_8py" kind="file" language="Python">
     <compoundname>packet.py</compoundname>
     <innerclass refid="classosusat__messaging_1_1packet_1_1OSUSatPacket" prot="public">osusat_messaging::packet::OSUSatPacket</innerclass>
@@ -27,7 +27,7 @@
 <codeline lineno="15"><highlight class="normal"></highlight></codeline>
 <codeline lineno="16"><highlight class="normal">MIN_PACKET_SIZE<sp/>=<sp/>1<sp/>+<sp/>HEADER_SIZE<sp/>+<sp/>LENGTH_SIZE<sp/>+<sp/>CRC_SIZE</highlight></codeline>
 <codeline lineno="17"><highlight class="normal"></highlight></codeline>
-<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal">calculate_crc(data:<sp/>bytes)<sp/>-&gt;<sp/>int:</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespaceosusat__messaging_1_1packet_1a68d176e0130756e43302da5f0bbd98c0" kindref="member">calculate_crc</ref>(data:<sp/>bytes)<sp/>-&gt;<sp/>int:</highlight></codeline>
 <codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
 <codeline lineno="20"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Calculates<sp/>the<sp/>CRC-16-CCITT<sp/>CRC<sp/>for<sp/>the<sp/>given<sp/>data.</highlight></codeline>
 <codeline lineno="21"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
@@ -81,7 +81,7 @@
 <codeline lineno="69"><highlight class="normal"></highlight></codeline>
 <codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>data<sp/>for<sp/>CRC<sp/>includes<sp/>header<sp/>and<sp/>payload</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data_for_crc<sp/>=<sp/>header<sp/>+<sp/>self.<ref refid="classosusat__messaging_1_1packet_1_1OSUSatPacket_1a440909dcde2128c5863b5549f1d9dcf6" kindref="member">payload</ref></highlight></codeline>
-<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>crc<sp/>=<sp/>calculate_crc(data_for_crc)</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>crc<sp/>=<sp/><ref refid="namespaceosusat__messaging_1_1packet_1a68d176e0130756e43302da5f0bbd98c0" kindref="member">calculate_crc</ref>(data_for_crc)</highlight></codeline>
 <codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>packed_crc<sp/>=<sp/>struct.pack(CRC_FORMAT,<sp/>crc)</highlight></codeline>
 <codeline lineno="74"><highlight class="normal"></highlight></codeline>
 <codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>bytes([START_BYTE])<sp/>+<sp/>data_for_crc<sp/>+<sp/>packed_crc</highlight></codeline>
@@ -103,7 +103,7 @@
 <codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>verify<sp/>CRC</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>received_crc<sp/>=<sp/>struct.unpack(CRC_FORMAT,<sp/>packet_bytes[-CRC_SIZE:])[0]</highlight></codeline>
 <codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data_to_check<sp/>=<sp/>packet_bytes[1:-CRC_SIZE]</highlight></codeline>
-<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>calculated_crc<sp/>=<sp/>calculate_crc(data_to_check)</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>calculated_crc<sp/>=<sp/><ref refid="namespaceosusat__messaging_1_1packet_1a68d176e0130756e43302da5f0bbd98c0" kindref="member">calculate_crc</ref>(data_to_check)</highlight></codeline>
 <codeline lineno="95"><highlight class="normal"></highlight></codeline>
 <codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>received_crc<sp/>!=<sp/>calculated_crc:</highlight></codeline>
 <codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">raise</highlight><highlight class="normal"><sp/>ValueError(f</highlight><highlight class="stringliteral">&quot;CRC<sp/>mismatch.<sp/>Received<sp/>{received_crc},<sp/>calculated<sp/>{calculated_crc}.&quot;</highlight><highlight class="normal">)</highlight></codeline>

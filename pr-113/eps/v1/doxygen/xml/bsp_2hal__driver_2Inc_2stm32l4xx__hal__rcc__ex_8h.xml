@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="bsp_2hal__driver_2Inc_2stm32l4xx__hal__rcc__ex_8h" kind="file" language="C++">
     <compoundname>stm32l4xx_hal_rcc_ex.h</compoundname>
     <includes refid="bsp_2hal__driver_2Inc_2stm32l4xx__hal__def_8h" local="yes">stm32l4xx_hal_def.h</includes>
@@ -162,6 +162,7 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
     </detaileddescription>
     <programlisting>
 <codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
 <codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Define<sp/>to<sp/>prevent<sp/>recursive<sp/>inclusion<sp/>-------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>STM32L4xx_HAL_RCC_EX_H</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>STM32L4xx_HAL_RCC_EX_H</highlight><highlight class="normal"></highlight></codeline>
@@ -173,13 +174,17 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="26"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Includes<sp/>------------------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="bsp_2hal__driver_2Inc_2stm32l4xx__hal__def_8h" kindref="compound">stm32l4xx_hal_def.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
 <codeline lineno="37"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Exported<sp/>types<sp/>------------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="38"><highlight class="normal"></highlight></codeline>
-<codeline lineno="43"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(RCC_PLLSAI1_SUPPORT)</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(RCC_PLLSAI1_SUPPORT)</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="47"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="48"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="49"><highlight class="normal"></highlight></codeline>
 <codeline lineno="50"><highlight class="normal"><sp/><sp/>uint32_t<sp/>PLLSAI1Source;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
 <codeline lineno="53"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(RCC_PLLSAI1M_DIV_1_16_SUPPORT)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="54"><highlight class="normal"><sp/><sp/>uint32_t<sp/>PLLSAI1M;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="56"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
@@ -187,18 +192,23 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="59"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="60"><highlight class="normal"></highlight></codeline>
 <codeline lineno="61"><highlight class="normal"><sp/><sp/>uint32_t<sp/>PLLSAI1N;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
 <codeline lineno="64"><highlight class="normal"><sp/><sp/>uint32_t<sp/>PLLSAI1P;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
 <codeline lineno="67"><highlight class="normal"><sp/><sp/>uint32_t<sp/>PLLSAI1Q;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
 <codeline lineno="70"><highlight class="normal"><sp/><sp/>uint32_t<sp/>PLLSAI1R;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
 <codeline lineno="73"><highlight class="normal"><sp/><sp/>uint32_t<sp/>PLLSAI1ClockOut;<sp/><sp/></highlight></codeline>
 <codeline lineno="75"><highlight class="normal">}RCC_PLLSAI1InitTypeDef;</highlight></codeline>
 <codeline lineno="76"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>RCC_PLLSAI1_SUPPORT<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="77"><highlight class="normal"></highlight></codeline>
-<codeline lineno="78"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(RCC_PLLSAI2_SUPPORT)</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(RCC_PLLSAI2_SUPPORT)</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="82"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="83"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="84"><highlight class="normal"></highlight></codeline>
 <codeline lineno="85"><highlight class="normal"><sp/><sp/>uint32_t<sp/>PLLSAI2Source;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
 <codeline lineno="88"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(RCC_PLLSAI2M_DIV_1_16_SUPPORT)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="89"><highlight class="normal"><sp/><sp/>uint32_t<sp/>PLLSAI2M;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="91"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
@@ -206,12 +216,15 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="94"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="95"><highlight class="normal"></highlight></codeline>
 <codeline lineno="96"><highlight class="normal"><sp/><sp/>uint32_t<sp/>PLLSAI2N;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
 <codeline lineno="99"><highlight class="normal"><sp/><sp/>uint32_t<sp/>PLLSAI2P;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
 <codeline lineno="102"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(RCC_PLLSAI2Q_DIV_SUPPORT)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="103"><highlight class="normal"><sp/><sp/>uint32_t<sp/>PLLSAI2Q;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="105"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="106"><highlight class="normal"></highlight></codeline>
 <codeline lineno="107"><highlight class="normal"><sp/><sp/>uint32_t<sp/>PLLSAI2R;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
 <codeline lineno="110"><highlight class="normal"><sp/><sp/>uint32_t<sp/>PLLSAI2ClockOut;<sp/><sp/></highlight></codeline>
 <codeline lineno="112"><highlight class="normal">}RCC_PLLSAI2InitTypeDef;</highlight></codeline>
 <codeline lineno="113"><highlight class="normal"></highlight></codeline>
@@ -227,39 +240,51 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="128"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(RCC_PLLSAI2_SUPPORT)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="129"><highlight class="normal"></highlight></codeline>
 <codeline lineno="130"><highlight class="normal"><sp/><sp/>RCC_PLLSAI2InitTypeDef<sp/>PLLSAI2;<sp/><sp/></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
 <codeline lineno="133"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>RCC_PLLSAI2_SUPPORT<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="134"><highlight class="normal"></highlight></codeline>
 <codeline lineno="135"><highlight class="normal"><sp/><sp/>uint32_t<sp/>Usart1ClockSelection;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
 <codeline lineno="138"><highlight class="normal"><sp/><sp/>uint32_t<sp/>Usart2ClockSelection;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
 <codeline lineno="141"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(USART3)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="142"><highlight class="normal"></highlight></codeline>
 <codeline lineno="143"><highlight class="normal"><sp/><sp/>uint32_t<sp/>Usart3ClockSelection;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
 <codeline lineno="146"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>USART3<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="147"><highlight class="normal"></highlight></codeline>
 <codeline lineno="148"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(UART4)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="149"><highlight class="normal"></highlight></codeline>
 <codeline lineno="150"><highlight class="normal"><sp/><sp/>uint32_t<sp/>Uart4ClockSelection;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
 <codeline lineno="153"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>UART4<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="154"><highlight class="normal"></highlight></codeline>
 <codeline lineno="155"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(UART5)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="156"><highlight class="normal"></highlight></codeline>
 <codeline lineno="157"><highlight class="normal"><sp/><sp/>uint32_t<sp/>Uart5ClockSelection;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight></codeline>
 <codeline lineno="160"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>UART5<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="161"><highlight class="normal"></highlight></codeline>
 <codeline lineno="162"><highlight class="normal"><sp/><sp/>uint32_t<sp/>Lpuart1ClockSelection;<sp/><sp/></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight></codeline>
 <codeline lineno="165"><highlight class="normal"><sp/><sp/>uint32_t<sp/>I2c1ClockSelection;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight></codeline>
 <codeline lineno="168"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(I2C2)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="169"><highlight class="normal"></highlight></codeline>
 <codeline lineno="170"><highlight class="normal"><sp/><sp/>uint32_t<sp/>I2c2ClockSelection;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight></codeline>
 <codeline lineno="173"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>I2C2<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="174"><highlight class="normal"></highlight></codeline>
 <codeline lineno="175"><highlight class="normal"><sp/><sp/>uint32_t<sp/>I2c3ClockSelection;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight></codeline>
 <codeline lineno="178"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(I2C4)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="179"><highlight class="normal"></highlight></codeline>
 <codeline lineno="180"><highlight class="normal"><sp/><sp/>uint32_t<sp/>I2c4ClockSelection;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight></codeline>
 <codeline lineno="183"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>I2C4<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="184"><highlight class="normal"></highlight></codeline>
 <codeline lineno="185"><highlight class="normal"><sp/><sp/>uint32_t<sp/>Lptim1ClockSelection;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight></codeline>
 <codeline lineno="188"><highlight class="normal"><sp/><sp/>uint32_t<sp/>Lptim2ClockSelection;<sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="190"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(SAI1)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="191"><highlight class="normal"></highlight></codeline>
@@ -269,19 +294,23 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="196"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(SAI2)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="197"><highlight class="normal"></highlight></codeline>
 <codeline lineno="198"><highlight class="normal"><sp/><sp/>uint32_t<sp/>Sai2ClockSelection;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight></codeline>
 <codeline lineno="201"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>SAI2<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="202"><highlight class="normal"></highlight></codeline>
 <codeline lineno="203"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(USB_OTG_FS)<sp/>||<sp/>defined(USB)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="204"><highlight class="normal"></highlight></codeline>
 <codeline lineno="205"><highlight class="normal"><sp/><sp/>uint32_t<sp/>UsbClockSelection;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="207"><highlight class="normal"></highlight></codeline>
 <codeline lineno="208"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>USB_OTG_FS<sp/>||<sp/>USB<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="209"><highlight class="normal"></highlight></codeline>
 <codeline lineno="210"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(SDMMC1)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="211"><highlight class="normal"></highlight></codeline>
 <codeline lineno="212"><highlight class="normal"><sp/><sp/>uint32_t<sp/>Sdmmc1ClockSelection;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="214"><highlight class="normal"></highlight></codeline>
 <codeline lineno="215"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>SDMMC1<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="216"><highlight class="normal"></highlight></codeline>
 <codeline lineno="217"><highlight class="normal"><sp/><sp/>uint32_t<sp/>RngClockSelection;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="219"><highlight class="normal"></highlight></codeline>
 <codeline lineno="220"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>!defined(STM32L412xx)<sp/>&amp;&amp;<sp/>!defined(STM32L422xx)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="221"><highlight class="normal"><sp/><sp/>uint32_t<sp/>AdcClockSelection;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="223"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>!STM32L412xx<sp/>&amp;&amp;<sp/>!STM32L422xx<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
@@ -289,13 +318,16 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="225"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(SWPMI1)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="226"><highlight class="normal"></highlight></codeline>
 <codeline lineno="227"><highlight class="normal"><sp/><sp/>uint32_t<sp/>Swpmi1ClockSelection;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="229"><highlight class="normal"></highlight></codeline>
 <codeline lineno="230"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>SWPMI1<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="231"><highlight class="normal"></highlight></codeline>
 <codeline lineno="232"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(DFSDM1_Filter0)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="233"><highlight class="normal"></highlight></codeline>
 <codeline lineno="234"><highlight class="normal"><sp/><sp/>uint32_t<sp/>Dfsdm1ClockSelection;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="236"><highlight class="normal"></highlight></codeline>
 <codeline lineno="237"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(STM32L4P5xx)<sp/>||<sp/>defined(STM32L4Q5xx)<sp/>||<sp/>defined(STM32L4R5xx)<sp/>||<sp/>defined(STM32L4R7xx)<sp/>||<sp/>defined(STM32L4R9xx)<sp/>||<sp/>defined(STM32L4S5xx)<sp/>||<sp/>defined(STM32L4S7xx)<sp/>||<sp/>defined(STM32L4S9xx)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="238"><highlight class="normal"><sp/><sp/>uint32_t<sp/>Dfsdm1AudioClockSelection;<sp/></highlight></codeline>
+<codeline lineno="240"><highlight class="normal"></highlight></codeline>
 <codeline lineno="241"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>STM32L4P5xx<sp/>||<sp/>STM32L4Q5xx<sp/>||<sp/>STM32L4R5xx<sp/>||<sp/>STM32L4R7xx<sp/>||<sp/>STM32L4R9xx<sp/>||<sp/>STM32L4S5xx<sp/>||<sp/>STM32L4S7xx<sp/>||<sp/>STM32L4S9xx<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="242"><highlight class="normal"></highlight></codeline>
 <codeline lineno="243"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>DFSDM1_Filter0<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
@@ -303,16 +335,19 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="245"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(LTDC)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="246"><highlight class="normal"></highlight></codeline>
 <codeline lineno="247"><highlight class="normal"><sp/><sp/>uint32_t<sp/>LtdcClockSelection;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="249"><highlight class="normal"></highlight></codeline>
 <codeline lineno="250"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>LTDC<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="251"><highlight class="normal"></highlight></codeline>
 <codeline lineno="252"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(DSI)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="253"><highlight class="normal"></highlight></codeline>
 <codeline lineno="254"><highlight class="normal"><sp/><sp/>uint32_t<sp/>DsiClockSelection;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="256"><highlight class="normal"></highlight></codeline>
 <codeline lineno="257"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>DSI<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="258"><highlight class="normal"></highlight></codeline>
 <codeline lineno="259"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(OCTOSPI1)<sp/>||<sp/>defined(OCTOSPI2)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="260"><highlight class="normal"></highlight></codeline>
 <codeline lineno="261"><highlight class="normal"><sp/><sp/>uint32_t<sp/>OspiClockSelection;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="263"><highlight class="normal"></highlight></codeline>
 <codeline lineno="264"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="265"><highlight class="normal"></highlight></codeline>
 <codeline lineno="266"><highlight class="normal"><sp/><sp/>uint32_t<sp/>RTCClockSelection;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
@@ -323,25 +358,38 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="275"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="276"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="277"><highlight class="normal"><sp/><sp/>uint32_t<sp/>Prescaler;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="279"><highlight class="normal"></highlight></codeline>
 <codeline lineno="280"><highlight class="normal"><sp/><sp/>uint32_t<sp/>Source;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="282"><highlight class="normal"></highlight></codeline>
 <codeline lineno="283"><highlight class="normal"><sp/><sp/>uint32_t<sp/>Polarity;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="285"><highlight class="normal"></highlight></codeline>
 <codeline lineno="286"><highlight class="normal"><sp/><sp/>uint32_t<sp/>ReloadValue;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="289"><highlight class="normal"></highlight></codeline>
 <codeline lineno="290"><highlight class="normal"><sp/><sp/>uint32_t<sp/>ErrorLimitValue;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="292"><highlight class="normal"></highlight></codeline>
 <codeline lineno="293"><highlight class="normal"><sp/><sp/>uint32_t<sp/>HSI48CalibrationValue;<sp/></highlight></codeline>
+<codeline lineno="296"><highlight class="normal"></highlight></codeline>
 <codeline lineno="297"><highlight class="normal">}RCC_CRSInitTypeDef;</highlight></codeline>
 <codeline lineno="298"><highlight class="normal"></highlight></codeline>
 <codeline lineno="302"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="303"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="304"><highlight class="normal"><sp/><sp/>uint32_t<sp/>ReloadValue;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="306"><highlight class="normal"></highlight></codeline>
 <codeline lineno="307"><highlight class="normal"><sp/><sp/>uint32_t<sp/>HSI48CalibrationValue;<sp/></highlight></codeline>
+<codeline lineno="309"><highlight class="normal"></highlight></codeline>
 <codeline lineno="310"><highlight class="normal"><sp/><sp/>uint32_t<sp/>FreqErrorCapture;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="313"><highlight class="normal"></highlight></codeline>
 <codeline lineno="314"><highlight class="normal"><sp/><sp/>uint32_t<sp/>FreqErrorDirection;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="318"><highlight class="normal"></highlight></codeline>
 <codeline lineno="319"><highlight class="normal">}RCC_CRSSynchroInfoTypeDef;</highlight></codeline>
 <codeline lineno="320"><highlight class="normal"></highlight></codeline>
-<codeline lineno="321"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>CRS<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
-<codeline lineno="326"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Exported<sp/>constants<sp/>--------------------------------------------------------*/</highlight></codeline>
-<codeline lineno="334" refid="group__RCCEx__LSCO__Clock__Source_1ga50b7a89596fc4a355b8b895a96956998" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_LSCOSOURCE_LSI<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x00000000U<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="335" refid="group__RCCEx__LSCO__Clock__Source_1gaab2c71c02c7b79c1f12d2952e7cdba53" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_LSCOSOURCE_LSE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RCC_BDCR_LSCOSEL<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="321"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>CRS<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="325"><highlight class="normal"></highlight></codeline>
+<codeline lineno="326"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Exported<sp/>constants<sp/>--------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="330"><highlight class="normal"></highlight></codeline>
+<codeline lineno="334" refid="group__RCCEx__LSCO__Clock__Source_1ga50b7a89596fc4a355b8b895a96956998" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_LSCOSOURCE_LSI<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x00000000U<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="335" refid="group__RCCEx__LSCO__Clock__Source_1gaab2c71c02c7b79c1f12d2952e7cdba53" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_LSCOSOURCE_LSE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RCC_BDCR_LSCOSEL<sp/><sp/><sp/><sp/></highlight><highlight class="preprocessor"></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="339"><highlight class="normal"></highlight></codeline>
 <codeline lineno="343" refid="group__RCCEx__Periph__Clock__Selection_1ga45390869c206531ea6d98baefb2315ac" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_PERIPHCLK_USART1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x00000001U</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="344" refid="group__RCCEx__Periph__Clock__Selection_1ga5d259e3e1607db6e547d525043246387" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_PERIPHCLK_USART2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x00000002U</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="345"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(USART3)</highlight><highlight class="normal"></highlight></codeline>
@@ -396,59 +444,66 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="394"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="395"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(OCTOSPI1)<sp/>||<sp/>defined(OCTOSPI2)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="396"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_PERIPHCLK_OSPI<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x01000000U</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="397"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="397"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="401"><highlight class="normal"></highlight></codeline>
+<codeline lineno="402"><highlight class="normal"></highlight></codeline>
 <codeline lineno="406" refid="group__RCCEx__USART1__Clock__Source_1ga0b28509687786167271f0eb84b80b124" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_USART1CLKSOURCE_PCLK2<sp/><sp/><sp/><sp/><sp/><sp/>0x00000000U</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="407" refid="group__RCCEx__USART1__Clock__Source_1ga50441be9ccc8a7abbdba23cfd7f7286c" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_USART1CLKSOURCE_SYSCLK<sp/><sp/><sp/><sp/><sp/>RCC_CCIPR_USART1SEL_0</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="408" refid="group__RCCEx__USART1__Clock__Source_1ga15818f4637d9721117cf6751ad79af28" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_USART1CLKSOURCE_HSI<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RCC_CCIPR_USART1SEL_1</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="409" refid="group__RCCEx__USART1__Clock__Source_1gac2e82299a4295d0e5bf42950f99ddb39" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_USART1CLKSOURCE_LSE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(RCC_CCIPR_USART1SEL_0<sp/>|<sp/>RCC_CCIPR_USART1SEL_1)</highlight></codeline>
+<codeline lineno="409" refid="group__RCCEx__USART1__Clock__Source_1gac2e82299a4295d0e5bf42950f99ddb39" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_USART1CLKSOURCE_LSE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(RCC_CCIPR_USART1SEL_0<sp/>|<sp/>RCC_CCIPR_USART1SEL_1)</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="413"><highlight class="normal"></highlight></codeline>
 <codeline lineno="417" refid="group__RCCEx__USART2__Clock__Source_1gab289cffbef2f41c7df1866d7da23e8ec" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_USART2CLKSOURCE_PCLK1<sp/><sp/><sp/><sp/><sp/><sp/>0x00000000U</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="418" refid="group__RCCEx__USART2__Clock__Source_1gab06c008b4b6015e3a13fbbdbfe8d0121" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_USART2CLKSOURCE_SYSCLK<sp/><sp/><sp/><sp/><sp/>RCC_CCIPR_USART2SEL_0</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="419" refid="group__RCCEx__USART2__Clock__Source_1gae2ca7c150d24aa19b3cdfff9859872fc" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_USART2CLKSOURCE_HSI<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RCC_CCIPR_USART2SEL_1</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="420" refid="group__RCCEx__USART2__Clock__Source_1gae95fa6fc4e888e6ea48d8f83ea4c0f4b" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_USART2CLKSOURCE_LSE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(RCC_CCIPR_USART2SEL_0<sp/>|<sp/>RCC_CCIPR_USART2SEL_1)</highlight></codeline>
-<codeline lineno="425"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(USART3)</highlight></codeline>
+<codeline lineno="420" refid="group__RCCEx__USART2__Clock__Source_1gae95fa6fc4e888e6ea48d8f83ea4c0f4b" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_USART2CLKSOURCE_LSE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(RCC_CCIPR_USART2SEL_0<sp/>|<sp/>RCC_CCIPR_USART2SEL_1)</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="424"><highlight class="normal"></highlight></codeline>
+<codeline lineno="425"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(USART3)</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="429"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_USART3CLKSOURCE_PCLK1<sp/><sp/><sp/><sp/><sp/><sp/>0x00000000U</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="430"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_USART3CLKSOURCE_SYSCLK<sp/><sp/><sp/><sp/><sp/>RCC_CCIPR_USART3SEL_0</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="431"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_USART3CLKSOURCE_HSI<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RCC_CCIPR_USART3SEL_1</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="432"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_USART3CLKSOURCE_LSE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(RCC_CCIPR_USART3SEL_0<sp/>|<sp/>RCC_CCIPR_USART3SEL_1)</highlight></codeline>
+<codeline lineno="432"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_USART3CLKSOURCE_LSE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(RCC_CCIPR_USART3SEL_0<sp/>|<sp/>RCC_CCIPR_USART3SEL_1)</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="436"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>USART3<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="437"><highlight class="normal"></highlight></codeline>
-<codeline lineno="438"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(UART4)</highlight></codeline>
+<codeline lineno="438"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(UART4)</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="442"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_UART4CLKSOURCE_PCLK1<sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x00000000U</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="443"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_UART4CLKSOURCE_SYSCLK<sp/><sp/><sp/><sp/><sp/><sp/>RCC_CCIPR_UART4SEL_0</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="444"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_UART4CLKSOURCE_HSI<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RCC_CCIPR_UART4SEL_1</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="445"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_UART4CLKSOURCE_LSE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(RCC_CCIPR_UART4SEL_0<sp/>|<sp/>RCC_CCIPR_UART4SEL_1)</highlight></codeline>
+<codeline lineno="445"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_UART4CLKSOURCE_LSE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(RCC_CCIPR_UART4SEL_0<sp/>|<sp/>RCC_CCIPR_UART4SEL_1)</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="449"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>UART4<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="450"><highlight class="normal"></highlight></codeline>
-<codeline lineno="451"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(UART5)</highlight></codeline>
+<codeline lineno="451"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(UART5)</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="455"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_UART5CLKSOURCE_PCLK1<sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x00000000U</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="456"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_UART5CLKSOURCE_SYSCLK<sp/><sp/><sp/><sp/><sp/><sp/>RCC_CCIPR_UART5SEL_0</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="457"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_UART5CLKSOURCE_HSI<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RCC_CCIPR_UART5SEL_1</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="458"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_UART5CLKSOURCE_LSE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(RCC_CCIPR_UART5SEL_0<sp/>|<sp/>RCC_CCIPR_UART5SEL_1)</highlight></codeline>
+<codeline lineno="458"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_UART5CLKSOURCE_LSE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(RCC_CCIPR_UART5SEL_0<sp/>|<sp/>RCC_CCIPR_UART5SEL_1)</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="462"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>UART5<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="463"><highlight class="normal"></highlight></codeline>
 <codeline lineno="467" refid="group__RCCEx__LPUART1__Clock__Source_1ga8158f86dafbb5879aed91b766f64f360" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_LPUART1CLKSOURCE_PCLK1<sp/><sp/><sp/><sp/><sp/>0x00000000U</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="468" refid="group__RCCEx__LPUART1__Clock__Source_1gaec4723bf0172e21fcd0a1f85404c370d" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_LPUART1CLKSOURCE_SYSCLK<sp/><sp/><sp/><sp/>RCC_CCIPR_LPUART1SEL_0</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="469" refid="group__RCCEx__LPUART1__Clock__Source_1gacbe5b8226a6804b33af9409d3de4986d" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_LPUART1CLKSOURCE_HSI<sp/><sp/><sp/><sp/><sp/><sp/><sp/>RCC_CCIPR_LPUART1SEL_1</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="470" refid="group__RCCEx__LPUART1__Clock__Source_1gaf12ce77cb8bf9ec5b4053c7c3df8d8a0" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_LPUART1CLKSOURCE_LSE<sp/><sp/><sp/><sp/><sp/><sp/><sp/>(RCC_CCIPR_LPUART1SEL_0<sp/>|<sp/>RCC_CCIPR_LPUART1SEL_1)</highlight></codeline>
+<codeline lineno="470" refid="group__RCCEx__LPUART1__Clock__Source_1gaf12ce77cb8bf9ec5b4053c7c3df8d8a0" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_LPUART1CLKSOURCE_LSE<sp/><sp/><sp/><sp/><sp/><sp/><sp/>(RCC_CCIPR_LPUART1SEL_0<sp/>|<sp/>RCC_CCIPR_LPUART1SEL_1)</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="474"><highlight class="normal"></highlight></codeline>
 <codeline lineno="478" refid="group__RCCEx__I2C1__Clock__Source_1ga2fc90800e3059c5e65977746386f651c" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_I2C1CLKSOURCE_PCLK1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x00000000U</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="479" refid="group__RCCEx__I2C1__Clock__Source_1ga1a04c52a4f4665188e40cd7f4018ea3f" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_I2C1CLKSOURCE_SYSCLK<sp/><sp/><sp/><sp/><sp/><sp/><sp/>RCC_CCIPR_I2C1SEL_0</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="480" refid="group__RCCEx__I2C1__Clock__Source_1ga5645524b292048cfe127da02ba9b3df7" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_I2C1CLKSOURCE_HSI<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RCC_CCIPR_I2C1SEL_1</highlight></codeline>
-<codeline lineno="485"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(I2C2)</highlight></codeline>
+<codeline lineno="480" refid="group__RCCEx__I2C1__Clock__Source_1ga5645524b292048cfe127da02ba9b3df7" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_I2C1CLKSOURCE_HSI<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RCC_CCIPR_I2C1SEL_1</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="484"><highlight class="normal"></highlight></codeline>
+<codeline lineno="485"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(I2C2)</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="489"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_I2C2CLKSOURCE_PCLK1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x00000000U</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="490"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_I2C2CLKSOURCE_SYSCLK<sp/><sp/><sp/><sp/><sp/><sp/><sp/>RCC_CCIPR_I2C2SEL_0</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="491"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_I2C2CLKSOURCE_HSI<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RCC_CCIPR_I2C2SEL_1</highlight></codeline>
+<codeline lineno="491"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_I2C2CLKSOURCE_HSI<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RCC_CCIPR_I2C2SEL_1</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="495"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>I2C2<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="496"><highlight class="normal"></highlight></codeline>
 <codeline lineno="500" refid="group__RCCEx__I2C3__Clock__Source_1ga32cf2e3b0c2d7988833577547ba5ad76" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_I2C3CLKSOURCE_PCLK1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x00000000U</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="501" refid="group__RCCEx__I2C3__Clock__Source_1ga3d4bde7e23e661154eee079f3ef57c09" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_I2C3CLKSOURCE_SYSCLK<sp/><sp/><sp/><sp/><sp/><sp/><sp/>RCC_CCIPR_I2C3SEL_0</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="502" refid="group__RCCEx__I2C3__Clock__Source_1ga15d4072c90a04b2393e49f05dc3c8fd2" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_I2C3CLKSOURCE_HSI<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RCC_CCIPR_I2C3SEL_1</highlight></codeline>
-<codeline lineno="507"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(I2C4)</highlight></codeline>
+<codeline lineno="502" refid="group__RCCEx__I2C3__Clock__Source_1ga15d4072c90a04b2393e49f05dc3c8fd2" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_I2C3CLKSOURCE_HSI<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RCC_CCIPR_I2C3SEL_1</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="506"><highlight class="normal"></highlight></codeline>
+<codeline lineno="507"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(I2C4)</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="511"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_I2C4CLKSOURCE_PCLK1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x00000000U</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="512"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_I2C4CLKSOURCE_SYSCLK<sp/><sp/><sp/><sp/><sp/><sp/><sp/>RCC_CCIPR2_I2C4SEL_0</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="513"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_I2C4CLKSOURCE_HSI<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RCC_CCIPR2_I2C4SEL_1</highlight></codeline>
+<codeline lineno="513"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_I2C4CLKSOURCE_HSI<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RCC_CCIPR2_I2C4SEL_1</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="517"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>I2C4<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="518"><highlight class="normal"></highlight></codeline>
-<codeline lineno="519"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(SAI1)</highlight></codeline>
+<codeline lineno="519"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(SAI1)</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="523"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_SAI1CLKSOURCE_PLLSAI1<sp/><sp/><sp/><sp/><sp/><sp/>0x00000000U</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="524"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(RCC_PLLSAI2_SUPPORT)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="525"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(STM32L4P5xx)<sp/>||<sp/>defined(STM32L4Q5xx)<sp/>||<sp/>defined(STM32L4R5xx)<sp/>||<sp/>defined(STM32L4R7xx)<sp/>||<sp/>defined(STM32L4R9xx)<sp/>||<sp/>defined(STM32L4S5xx)<sp/>||<sp/>defined(STM32L4S7xx)<sp/>||<sp/>defined(STM32L4S9xx)</highlight><highlight class="normal"></highlight></codeline>
@@ -464,10 +519,10 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="535"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="536"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_SAI1CLKSOURCE_PLL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RCC_CCIPR_SAI1SEL_1</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="537"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_SAI1CLKSOURCE_PIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RCC_CCIPR_SAI1SEL</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="538"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>STM32L4P5xx<sp/>||<sp/>STM32L4Q5xx<sp/>||<sp/>STM32L4R5xx<sp/>||<sp/>STM32L4R7xx<sp/>||<sp/>STM32L4R9xx<sp/>||<sp/>STM32L4S5xx<sp/>||<sp/>STM32L4S7xx<sp/>||<sp/>STM32L4S9xx<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="538"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>STM32L4P5xx<sp/>||<sp/>STM32L4Q5xx<sp/>||<sp/>STM32L4R5xx<sp/>||<sp/>STM32L4R7xx<sp/>||<sp/>STM32L4R9xx<sp/>||<sp/>STM32L4S5xx<sp/>||<sp/>STM32L4S7xx<sp/>||<sp/>STM32L4S9xx<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="542"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>SAI1<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="543"><highlight class="normal"></highlight></codeline>
-<codeline lineno="544"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(SAI2)</highlight></codeline>
+<codeline lineno="544"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(SAI2)</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="548"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_SAI2CLKSOURCE_PLLSAI1<sp/><sp/><sp/><sp/><sp/><sp/>0x00000000U</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="549"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(STM32L4P5xx)<sp/>||<sp/>defined(STM32L4Q5xx)<sp/>||<sp/>defined(STM32L4R5xx)<sp/>||<sp/>defined(STM32L4R7xx)<sp/>||<sp/>defined(STM32L4R9xx)<sp/>||<sp/>defined(STM32L4S5xx)<sp/>||<sp/>defined(STM32L4S7xx)<sp/>||<sp/>defined(STM32L4S9xx)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="550"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_SAI2CLKSOURCE_PLLSAI2<sp/><sp/><sp/><sp/><sp/><sp/>RCC_CCIPR2_SAI2SEL_0</highlight><highlight class="normal"></highlight></codeline>
@@ -478,29 +533,31 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="555"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_SAI2CLKSOURCE_PLLSAI2<sp/><sp/><sp/><sp/><sp/><sp/>RCC_CCIPR_SAI2SEL_0</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="556"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_SAI2CLKSOURCE_PLL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RCC_CCIPR_SAI2SEL_1</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="557"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_SAI2CLKSOURCE_PIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RCC_CCIPR_SAI2SEL</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="558"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>STM32L4P5xx<sp/>||<sp/>STM32L4Q5xx<sp/>||<sp/>STM32L4R5xx<sp/>||<sp/>STM32L4R7xx<sp/>||<sp/>STM32L4R9xx<sp/>||<sp/>STM32L4S5xx<sp/>||<sp/>STM32L4S7xx<sp/>||<sp/>STM32L4S9xx<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="558"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>STM32L4P5xx<sp/>||<sp/>STM32L4Q5xx<sp/>||<sp/>STM32L4R5xx<sp/>||<sp/>STM32L4R7xx<sp/>||<sp/>STM32L4R9xx<sp/>||<sp/>STM32L4S5xx<sp/>||<sp/>STM32L4S7xx<sp/>||<sp/>STM32L4S9xx<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="562"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>SAI2<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="563"><highlight class="normal"></highlight></codeline>
 <codeline lineno="567" refid="group__RCCEx__LPTIM1__Clock__Source_1ga40cdb170aad26d4c4d0860ad5b35b455" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_LPTIM1CLKSOURCE_PCLK1<sp/><sp/><sp/><sp/><sp/><sp/>0x00000000U</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="568" refid="group__RCCEx__LPTIM1__Clock__Source_1gac6dc141d42b90f46a14f6dc653856055" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_LPTIM1CLKSOURCE_LSI<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RCC_CCIPR_LPTIM1SEL_0</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="569" refid="group__RCCEx__LPTIM1__Clock__Source_1ga3194a321e6699246642dd78dcdefa7b9" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_LPTIM1CLKSOURCE_HSI<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RCC_CCIPR_LPTIM1SEL_1</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="570" refid="group__RCCEx__LPTIM1__Clock__Source_1ga6f268c170b61a50711db963c02356874" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_LPTIM1CLKSOURCE_LSE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RCC_CCIPR_LPTIM1SEL</highlight></codeline>
+<codeline lineno="570" refid="group__RCCEx__LPTIM1__Clock__Source_1ga6f268c170b61a50711db963c02356874" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_LPTIM1CLKSOURCE_LSE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RCC_CCIPR_LPTIM1SEL</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="574"><highlight class="normal"></highlight></codeline>
 <codeline lineno="578" refid="group__RCCEx__LPTIM2__Clock__Source_1ga8eb7d869a9d33f91c8732ec27dc461b7" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_LPTIM2CLKSOURCE_PCLK1<sp/><sp/><sp/><sp/><sp/><sp/>0x00000000U</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="579" refid="group__RCCEx__LPTIM2__Clock__Source_1ga56818e296ec1095f2449787e98ae8b56" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_LPTIM2CLKSOURCE_LSI<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RCC_CCIPR_LPTIM2SEL_0</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="580" refid="group__RCCEx__LPTIM2__Clock__Source_1gaae54e9f89db84dabcd02b56c56cd1b74" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_LPTIM2CLKSOURCE_HSI<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RCC_CCIPR_LPTIM2SEL_1</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="581" refid="group__RCCEx__LPTIM2__Clock__Source_1ga9a2d055b3c47d3ef219b44b2819317e6" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_LPTIM2CLKSOURCE_LSE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RCC_CCIPR_LPTIM2SEL</highlight></codeline>
-<codeline lineno="586"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(SDMMC1)</highlight></codeline>
+<codeline lineno="581" refid="group__RCCEx__LPTIM2__Clock__Source_1ga9a2d055b3c47d3ef219b44b2819317e6" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_LPTIM2CLKSOURCE_LSE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RCC_CCIPR_LPTIM2SEL</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="585"><highlight class="normal"></highlight></codeline>
+<codeline lineno="586"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(SDMMC1)</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="590"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(RCC_HSI48_SUPPORT)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="591"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_SDMMC1CLKSOURCE_HSI48<sp/><sp/><sp/><sp/><sp/><sp/>0x00000000U<sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="591"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_SDMMC1CLKSOURCE_HSI48<sp/><sp/><sp/><sp/><sp/><sp/>0x00000000U<sp/><sp/></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="592"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="593"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_SDMMC1CLKSOURCE_NONE<sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x00000000U<sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="593"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_SDMMC1CLKSOURCE_NONE<sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x00000000U<sp/><sp/></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="594"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>RCC_HSI48_SUPPORT<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="595"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_SDMMC1CLKSOURCE_PLLSAI1<sp/><sp/><sp/><sp/>RCC_CCIPR_CLK48SEL_0<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="596"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_SDMMC1CLKSOURCE_PLL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RCC_CCIPR_CLK48SEL_1<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="597"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_SDMMC1CLKSOURCE_MSI<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RCC_CCIPR_CLK48SEL<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="595"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_SDMMC1CLKSOURCE_PLLSAI1<sp/><sp/><sp/><sp/>RCC_CCIPR_CLK48SEL_0<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="596"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_SDMMC1CLKSOURCE_PLL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RCC_CCIPR_CLK48SEL_1<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="597"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_SDMMC1CLKSOURCE_MSI<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RCC_CCIPR_CLK48SEL<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="598"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(RCC_CCIPR2_SDMMCSEL)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="599"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_SDMMC1CLKSOURCE_PLLP<sp/><sp/><sp/><sp/><sp/><sp/><sp/>RCC_CCIPR2_SDMMCSEL<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="600"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>RCC_CCIPR2_SDMMCSEL<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="599"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_SDMMC1CLKSOURCE_PLLP<sp/><sp/><sp/><sp/><sp/><sp/><sp/>RCC_CCIPR2_SDMMCSEL<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="600"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>RCC_CCIPR2_SDMMCSEL<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="604"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>SDMMC1<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="605"><highlight class="normal"></highlight></codeline>
 <codeline lineno="609"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(RCC_HSI48_SUPPORT)</highlight><highlight class="normal"></highlight></codeline>
@@ -512,8 +569,9 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="615"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_RNGCLKSOURCE_PLLSAI1<sp/><sp/><sp/><sp/><sp/><sp/><sp/>RCC_CCIPR_CLK48SEL_0</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="616"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>RCC_PLLSAI1_SUPPORT<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="617" refid="group__RCCEx__RNG__Clock__Source_1ga600007fdf65479d864fe0144cfbc260f" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_RNGCLKSOURCE_PLL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RCC_CCIPR_CLK48SEL_1</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="618" refid="group__RCCEx__RNG__Clock__Source_1ga636e63cf17475059091a1c1d8633f37f" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_RNGCLKSOURCE_MSI<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RCC_CCIPR_CLK48SEL</highlight></codeline>
-<codeline lineno="623"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(USB_OTG_FS)<sp/>||<sp/>defined(USB)</highlight></codeline>
+<codeline lineno="618" refid="group__RCCEx__RNG__Clock__Source_1ga636e63cf17475059091a1c1d8633f37f" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_RNGCLKSOURCE_MSI<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RCC_CCIPR_CLK48SEL</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="622"><highlight class="normal"></highlight></codeline>
+<codeline lineno="623"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(USB_OTG_FS)<sp/>||<sp/>defined(USB)</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="627"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(RCC_HSI48_SUPPORT)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="628"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_USBCLKSOURCE_HSI48<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x00000000U</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="629"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
@@ -523,7 +581,7 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="633"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_USBCLKSOURCE_PLLSAI1<sp/><sp/><sp/><sp/><sp/><sp/><sp/>RCC_CCIPR_CLK48SEL_0</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="634"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>RCC_PLLSAI1_SUPPORT<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="635"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_USBCLKSOURCE_PLL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RCC_CCIPR_CLK48SEL_1</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="636"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_USBCLKSOURCE_MSI<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RCC_CCIPR_CLK48SEL</highlight></codeline>
+<codeline lineno="636"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_USBCLKSOURCE_MSI<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RCC_CCIPR_CLK48SEL</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="640"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>USB_OTG_FS<sp/>||<sp/>USB<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="641"><highlight class="normal"></highlight></codeline>
 <codeline lineno="645" refid="group__RCCEx__ADC__Clock__Source_1ga451dec253c6ead337ba6e7058d9dbff0" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_ADCCLKSOURCE_NONE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x00000000U</highlight><highlight class="normal"></highlight></codeline>
@@ -537,45 +595,48 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="653"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_ADCCLKSOURCE_SYSCLK<sp/><sp/><sp/><sp/><sp/><sp/><sp/>RCC_CCIPR_ADCSEL</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="654"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="655" refid="group__RCCEx__ADC__Clock__Source_1ga2c5e64b7af7f986894c430da219d1356" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_ADCCLKSOURCE_SYSCLK<sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x30000000U</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="656"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>RCC_CCIPR_ADCSEL<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
-<codeline lineno="661"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(SWPMI1)</highlight></codeline>
+<codeline lineno="656"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>RCC_CCIPR_ADCSEL<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="660"><highlight class="normal"></highlight></codeline>
+<codeline lineno="661"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(SWPMI1)</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="665"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_SWPMI1CLKSOURCE_PCLK1<sp/><sp/><sp/><sp/><sp/><sp/>0x00000000U</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="666"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_SWPMI1CLKSOURCE_HSI<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RCC_CCIPR_SWPMI1SEL</highlight></codeline>
+<codeline lineno="666"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_SWPMI1CLKSOURCE_HSI<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RCC_CCIPR_SWPMI1SEL</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="670"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>SWPMI1<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="671"><highlight class="normal"></highlight></codeline>
-<codeline lineno="672"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(DFSDM1_Filter0)</highlight></codeline>
+<codeline lineno="672"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(DFSDM1_Filter0)</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="676"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_DFSDM1CLKSOURCE_PCLK2<sp/><sp/><sp/><sp/><sp/><sp/>0x00000000U</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="677"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(STM32L4P5xx)<sp/>||<sp/>defined(STM32L4Q5xx)<sp/>||<sp/>defined(STM32L4R5xx)<sp/>||<sp/>defined(STM32L4R7xx)<sp/>||<sp/>defined(STM32L4R9xx)<sp/>||<sp/>defined(STM32L4S5xx)<sp/>||<sp/>defined(STM32L4S7xx)<sp/>||<sp/>defined(STM32L4S9xx)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="678"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_DFSDM1CLKSOURCE_SYSCLK<sp/><sp/><sp/><sp/><sp/>RCC_CCIPR2_DFSDM1SEL</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="679"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="680"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_DFSDM1CLKSOURCE_SYSCLK<sp/><sp/><sp/><sp/><sp/>RCC_CCIPR_DFSDM1SEL</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="681"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>STM32L4P5xx<sp/>||<sp/>STM32L4Q5xx<sp/>||<sp/>STM32L4R5xx<sp/>||<sp/>STM32L4R7xx<sp/>||<sp/>STM32L4R9xx<sp/>||<sp/>STM32L4S5xx<sp/>||<sp/>STM32L4S7xx<sp/>||<sp/>STM32L4S9xx<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
-<codeline lineno="686"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(STM32L4P5xx)<sp/>||<sp/>defined(STM32L4Q5xx)<sp/>||<sp/>defined(STM32L4R5xx)<sp/>||<sp/>defined(STM32L4R7xx)<sp/>||<sp/>defined(STM32L4R9xx)<sp/>||<sp/>defined(STM32L4S5xx)<sp/>||<sp/>defined(STM32L4S7xx)<sp/>||<sp/>defined(STM32L4S9xx)</highlight></codeline>
+<codeline lineno="681"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>STM32L4P5xx<sp/>||<sp/>STM32L4Q5xx<sp/>||<sp/>STM32L4R5xx<sp/>||<sp/>STM32L4R7xx<sp/>||<sp/>STM32L4R9xx<sp/>||<sp/>STM32L4S5xx<sp/>||<sp/>STM32L4S7xx<sp/>||<sp/>STM32L4S9xx<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="685"><highlight class="normal"></highlight></codeline>
+<codeline lineno="686"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(STM32L4P5xx)<sp/>||<sp/>defined(STM32L4Q5xx)<sp/>||<sp/>defined(STM32L4R5xx)<sp/>||<sp/>defined(STM32L4R7xx)<sp/>||<sp/>defined(STM32L4R9xx)<sp/>||<sp/>defined(STM32L4S5xx)<sp/>||<sp/>defined(STM32L4S7xx)<sp/>||<sp/>defined(STM32L4S9xx)</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="690"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_DFSDM1AUDIOCLKSOURCE_SAI1<sp/><sp/><sp/>0x00000000U</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="691"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_DFSDM1AUDIOCLKSOURCE_HSI<sp/><sp/><sp/><sp/>RCC_CCIPR2_ADFSDM1SEL_0</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="692"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_DFSDM1AUDIOCLKSOURCE_MSI<sp/><sp/><sp/><sp/>RCC_CCIPR2_ADFSDM1SEL_1</highlight></codeline>
+<codeline lineno="692"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_DFSDM1AUDIOCLKSOURCE_MSI<sp/><sp/><sp/><sp/>RCC_CCIPR2_ADFSDM1SEL_1</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="696"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>STM32L4P5xx<sp/>||<sp/>STM32L4Q5xx<sp/>||<sp/>STM32L4R5xx<sp/>||<sp/>STM32L4R7xx<sp/>||<sp/>STM32L4R9xx<sp/>||<sp/>STM32L4S5xx<sp/>||<sp/>STM32L4S7xx<sp/>||<sp/>STM32L4S9xx<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="697"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>DFSDM1_Filter0<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="698"><highlight class="normal"></highlight></codeline>
-<codeline lineno="699"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(LTDC)</highlight></codeline>
+<codeline lineno="699"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(LTDC)</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="703"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_LTDCCLKSOURCE_PLLSAI2_DIV2<sp/><sp/>0x00000000U</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="704"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_LTDCCLKSOURCE_PLLSAI2_DIV4<sp/><sp/>RCC_CCIPR2_PLLSAI2DIVR_0</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="705"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_LTDCCLKSOURCE_PLLSAI2_DIV8<sp/><sp/>RCC_CCIPR2_PLLSAI2DIVR_1</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="706"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_LTDCCLKSOURCE_PLLSAI2_DIV16<sp/>RCC_CCIPR2_PLLSAI2DIVR</highlight></codeline>
+<codeline lineno="706"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_LTDCCLKSOURCE_PLLSAI2_DIV16<sp/>RCC_CCIPR2_PLLSAI2DIVR</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="710"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>LTDC<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="711"><highlight class="normal"></highlight></codeline>
-<codeline lineno="712"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(DSI)</highlight></codeline>
+<codeline lineno="712"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(DSI)</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="716"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_DSICLKSOURCE_DSIPHY<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x00000000U</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="717"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_DSICLKSOURCE_PLLSAI2<sp/><sp/><sp/><sp/><sp/><sp/><sp/>RCC_CCIPR2_DSISEL</highlight></codeline>
+<codeline lineno="717"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_DSICLKSOURCE_PLLSAI2<sp/><sp/><sp/><sp/><sp/><sp/><sp/>RCC_CCIPR2_DSISEL</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="721"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>DSI<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="722"><highlight class="normal"></highlight></codeline>
-<codeline lineno="723"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(OCTOSPI1)<sp/>||<sp/>defined(OCTOSPI2)</highlight></codeline>
+<codeline lineno="723"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(OCTOSPI1)<sp/>||<sp/>defined(OCTOSPI2)</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="727"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_OSPICLKSOURCE_SYSCLK<sp/><sp/><sp/><sp/>0x00000000U</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="728"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_OSPICLKSOURCE_MSI<sp/><sp/><sp/><sp/><sp/><sp/><sp/>RCC_CCIPR2_OSPISEL_0</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="729"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_OSPICLKSOURCE_PLL<sp/><sp/><sp/><sp/><sp/><sp/><sp/>RCC_CCIPR2_OSPISEL_1</highlight></codeline>
+<codeline lineno="729"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_OSPICLKSOURCE_PLL<sp/><sp/><sp/><sp/><sp/><sp/><sp/>RCC_CCIPR2_OSPISEL_1</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="733"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>OCTOSPI1<sp/>||<sp/>OCTOSPI2<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="734"><highlight class="normal"></highlight></codeline>
-<codeline lineno="738" refid="group__RCCEx__EXTI__LINE__LSECSS_1ga9b28da23df63fe2a235536edd669d8e9" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_EXTI_LINE_LSECSS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR1_IM19<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="738" refid="group__RCCEx__EXTI__LINE__LSECSS_1ga9b28da23df63fe2a235536edd669d8e9" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_EXTI_LINE_LSECSS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EXTI_IMR1_IM19<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="preprocessor"></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="742"><highlight class="normal"></highlight></codeline>
 <codeline lineno="743"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(CRS)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="744"><highlight class="normal"></highlight></codeline>
 <codeline lineno="748"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_NONE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x00000000U</highlight><highlight class="normal"></highlight></codeline>
@@ -584,46 +645,60 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="751"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_SYNCWARN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x00000004U</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="752"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_SYNCERR<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x00000008U</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="753"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_SYNCMISS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x00000010U</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="754"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_TRIMOVF<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x00000020U</highlight></codeline>
-<codeline lineno="762"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_SYNC_SOURCE_GPIO<sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x00000000U<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="763"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_SYNC_SOURCE_LSE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CRS_CFGR_SYNCSRC_0<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="764"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_SYNC_SOURCE_USB<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CRS_CFGR_SYNCSRC_1<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="772"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_SYNC_DIV1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x00000000U<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="773"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_SYNC_DIV2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CRS_CFGR_SYNCDIV_0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="774"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_SYNC_DIV4<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CRS_CFGR_SYNCDIV_1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="775"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_SYNC_DIV8<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(CRS_CFGR_SYNCDIV_1<sp/>|<sp/>CRS_CFGR_SYNCDIV_0)<sp/></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="776"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_SYNC_DIV16<sp/><sp/><sp/><sp/><sp/><sp/><sp/>CRS_CFGR_SYNCDIV_2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="777"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_SYNC_DIV32<sp/><sp/><sp/><sp/><sp/><sp/><sp/>(CRS_CFGR_SYNCDIV_2<sp/>|<sp/>CRS_CFGR_SYNCDIV_0)<sp/></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="778"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_SYNC_DIV64<sp/><sp/><sp/><sp/><sp/><sp/><sp/>(CRS_CFGR_SYNCDIV_2<sp/>|<sp/>CRS_CFGR_SYNCDIV_1)<sp/></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="779"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_SYNC_DIV128<sp/><sp/><sp/><sp/><sp/><sp/>CRS_CFGR_SYNCDIV<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="787"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_SYNC_POLARITY_RISING<sp/><sp/><sp/>0x00000000U<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="788"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_SYNC_POLARITY_FALLING<sp/><sp/>CRS_CFGR_SYNCPOL<sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="796"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_RELOADVALUE_DEFAULT<sp/><sp/><sp/><sp/>0x0000BB7FU<sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="805"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_ERRORLIMIT_DEFAULT<sp/><sp/><sp/><sp/><sp/>0x00000022U<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="754"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_TRIMOVF<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x00000020U</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="758"><highlight class="normal"></highlight></codeline>
+<codeline lineno="762"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_SYNC_SOURCE_GPIO<sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x00000000U<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="763"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_SYNC_SOURCE_LSE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CRS_CFGR_SYNCSRC_0<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="764"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_SYNC_SOURCE_USB<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CRS_CFGR_SYNCSRC_1<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="preprocessor"></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="768"><highlight class="normal"></highlight></codeline>
+<codeline lineno="772"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_SYNC_DIV1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x00000000U<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="773"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_SYNC_DIV2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CRS_CFGR_SYNCDIV_0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="774"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_SYNC_DIV4<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CRS_CFGR_SYNCDIV_1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="775"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_SYNC_DIV8<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(CRS_CFGR_SYNCDIV_1<sp/>|<sp/>CRS_CFGR_SYNCDIV_0)<sp/></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="776"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_SYNC_DIV16<sp/><sp/><sp/><sp/><sp/><sp/><sp/>CRS_CFGR_SYNCDIV_2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="777"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_SYNC_DIV32<sp/><sp/><sp/><sp/><sp/><sp/><sp/>(CRS_CFGR_SYNCDIV_2<sp/>|<sp/>CRS_CFGR_SYNCDIV_0)<sp/></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="778"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_SYNC_DIV64<sp/><sp/><sp/><sp/><sp/><sp/><sp/>(CRS_CFGR_SYNCDIV_2<sp/>|<sp/>CRS_CFGR_SYNCDIV_1)<sp/></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="779"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_SYNC_DIV128<sp/><sp/><sp/><sp/><sp/><sp/>CRS_CFGR_SYNCDIV<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="preprocessor"></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="783"><highlight class="normal"></highlight></codeline>
+<codeline lineno="787"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_SYNC_POLARITY_RISING<sp/><sp/><sp/>0x00000000U<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="788"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_SYNC_POLARITY_FALLING<sp/><sp/>CRS_CFGR_SYNCPOL<sp/><sp/><sp/><sp/></highlight><highlight class="preprocessor"></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="792"><highlight class="normal"></highlight></codeline>
+<codeline lineno="796"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_RELOADVALUE_DEFAULT<sp/><sp/><sp/><sp/>0x0000BB7FU<sp/><sp/><sp/></highlight><highlight class="preprocessor"></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="801"><highlight class="normal"></highlight></codeline>
+<codeline lineno="805"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_ERRORLIMIT_DEFAULT<sp/><sp/><sp/><sp/><sp/>0x00000022U<sp/><sp/><sp/></highlight><highlight class="preprocessor"></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="809"><highlight class="normal"></highlight></codeline>
 <codeline lineno="813"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(STM32L412xx)<sp/>||<sp/>defined(STM32L422xx)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="814"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_HSI48CALIBRATION_DEFAULT<sp/>0x00000040U<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="814"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_HSI48CALIBRATION_DEFAULT<sp/>0x00000040U<sp/></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="817"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="818"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_HSI48CALIBRATION_DEFAULT<sp/>0x00000020U<sp/></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="821"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
-<codeline lineno="829"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_FREQERRORDIR_UP<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x00000000U<sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="830"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_FREQERRORDIR_DOWN<sp/><sp/><sp/><sp/><sp/><sp/>CRS_ISR_FEDIR<sp/></highlight></codeline>
-<codeline lineno="838"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_IT_SYNCOK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CRS_CR_SYNCOKIE<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="839"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_IT_SYNCWARN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CRS_CR_SYNCWARNIE<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="840"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_IT_ERR<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CRS_CR_ERRIE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="841"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_IT_ESYNC<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CRS_CR_ESYNCIE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="842"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_IT_SYNCERR<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CRS_CR_ERRIE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="843"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_IT_SYNCMISS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CRS_CR_ERRIE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="844"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_IT_TRIMOVF<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CRS_CR_ERRIE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="853"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_FLAG_SYNCOK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CRS_ISR_SYNCOKF<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="854"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_FLAG_SYNCWARN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CRS_ISR_SYNCWARNF<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="855"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_FLAG_ERR<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CRS_ISR_ERRF<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="856"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_FLAG_ESYNC<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CRS_ISR_ESYNCF<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="857"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_FLAG_SYNCERR<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CRS_ISR_SYNCERR<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="858"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_FLAG_SYNCMISS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CRS_ISR_SYNCMISS<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="859"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_FLAG_TRIMOVF<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CRS_ISR_TRIMOVF<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="818"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_HSI48CALIBRATION_DEFAULT<sp/>0x00000020U<sp/></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="821"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="825"><highlight class="normal"></highlight></codeline>
+<codeline lineno="829"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_FREQERRORDIR_UP<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x00000000U<sp/><sp/><sp/></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="830"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_FREQERRORDIR_DOWN<sp/><sp/><sp/><sp/><sp/><sp/>CRS_ISR_FEDIR<sp/></highlight><highlight class="preprocessor"></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="834"><highlight class="normal"></highlight></codeline>
+<codeline lineno="838"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_IT_SYNCOK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CRS_CR_SYNCOKIE<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="839"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_IT_SYNCWARN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CRS_CR_SYNCWARNIE<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="840"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_IT_ERR<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CRS_CR_ERRIE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="841"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_IT_ESYNC<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CRS_CR_ESYNCIE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="842"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_IT_SYNCERR<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CRS_CR_ERRIE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="843"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_IT_SYNCMISS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CRS_CR_ERRIE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="844"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_IT_TRIMOVF<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CRS_CR_ERRIE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="845"><highlight class="normal"></highlight></codeline>
+<codeline lineno="849"><highlight class="normal"></highlight></codeline>
+<codeline lineno="853"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_FLAG_SYNCOK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CRS_ISR_SYNCOKF<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="854"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_FLAG_SYNCWARN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CRS_ISR_SYNCWARNF<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="855"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_FLAG_ERR<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CRS_ISR_ERRF<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="856"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_FLAG_ESYNC<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CRS_ISR_ESYNCF<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="857"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_FLAG_SYNCERR<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CRS_ISR_SYNCERR<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="858"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_FLAG_SYNCMISS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CRS_ISR_SYNCMISS<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="859"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_FLAG_TRIMOVF<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CRS_ISR_TRIMOVF<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="860"><highlight class="normal"></highlight></codeline>
+<codeline lineno="864"><highlight class="normal"></highlight></codeline>
 <codeline lineno="865"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>CRS<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="866"><highlight class="normal"></highlight></codeline>
-<codeline lineno="871"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Exported<sp/>macros<sp/>-----------------------------------------------------------*/</highlight></codeline>
+<codeline lineno="870"><highlight class="normal"></highlight></codeline>
+<codeline lineno="871"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Exported<sp/>macros<sp/>-----------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="875"><highlight class="normal"></highlight></codeline>
 <codeline lineno="876"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(RCC_PLLSAI1_SUPPORT)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="877"><highlight class="normal"></highlight></codeline>
 <codeline lineno="911"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(RCC_PLLSAI1M_DIV_1_16_SUPPORT)</highlight><highlight class="normal"></highlight></codeline>
@@ -687,6 +762,7 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="984"><highlight class="normal"></highlight></codeline>
 <codeline lineno="985"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(RCC_PLLSAI1M_DIV_1_16_SUPPORT)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="986"><highlight class="normal"></highlight></codeline>
+<codeline lineno="998"><highlight class="normal"></highlight></codeline>
 <codeline lineno="999"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__HAL_RCC_PLLSAI1_DIVM_CONFIG(__PLLSAI1M__)<sp/>\</highlight></codeline>
 <codeline lineno="1000"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>MODIFY_REG(RCC-&gt;PLLSAI1CFGR,<sp/>RCC_PLLSAI1CFGR_PLLSAI1M,<sp/>((__PLLSAI1M__)<sp/>-<sp/>1U)<sp/>&lt;&lt;<sp/>RCC_PLLSAI1CFGR_PLLSAI1M_Pos)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1001"><highlight class="normal"></highlight></codeline>
@@ -710,10 +786,12 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="1056"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__HAL_RCC_PLLSAI1_DIVR_CONFIG(__PLLSAI1R__)<sp/>\</highlight></codeline>
 <codeline lineno="1057"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>MODIFY_REG(RCC-&gt;PLLSAI1CFGR,<sp/>RCC_PLLSAI1CFGR_PLLSAI1R,<sp/>(((__PLLSAI1R__)<sp/>&gt;&gt;<sp/>1U)<sp/>-<sp/>1U)<sp/>&lt;&lt;<sp/>RCC_PLLSAI1CFGR_PLLSAI1R_Pos)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1058"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1064"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1065"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__HAL_RCC_PLLSAI1_ENABLE()<sp/><sp/>SET_BIT(RCC-&gt;CR,<sp/>RCC_CR_PLLSAI1ON)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1066"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1067"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__HAL_RCC_PLLSAI1_DISABLE()<sp/>CLEAR_BIT(RCC-&gt;CR,<sp/>RCC_CR_PLLSAI1ON)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1068"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1082"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1083"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__HAL_RCC_PLLSAI1CLKOUT_ENABLE(__PLLSAI1_CLOCKOUT__)<sp/><sp/><sp/>SET_BIT(RCC-&gt;PLLSAI1CFGR,<sp/>(__PLLSAI1_CLOCKOUT__))</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1084"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1085"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__HAL_RCC_PLLSAI1CLKOUT_DISABLE(__PLLSAI1_CLOCKOUT__)<sp/><sp/>CLEAR_BIT(RCC-&gt;PLLSAI1CFGR,<sp/>(__PLLSAI1_CLOCKOUT__))</highlight><highlight class="normal"></highlight></codeline>
@@ -724,6 +802,7 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="1101"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1102"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(RCC_PLLSAI2_SUPPORT)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1137"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1138"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(RCC_PLLSAI2M_DIV_1_16_SUPPORT)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1139"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1140"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/>if<sp/>defined(RCC_PLLSAI2P_DIV_2_31_SUPPORT)<sp/>&amp;&amp;<sp/>defined(RCC_PLLSAI2Q_DIV_SUPPORT)</highlight><highlight class="normal"></highlight></codeline>
@@ -805,6 +884,7 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="1231"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1232"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(RCC_PLLSAI2M_DIV_1_16_SUPPORT)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1233"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1245"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1246"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__HAL_RCC_PLLSAI2_DIVM_CONFIG(__PLLSAI2M__)<sp/>\</highlight></codeline>
 <codeline lineno="1247"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>MODIFY_REG(RCC-&gt;PLLSAI2CFGR,<sp/>RCC_PLLSAI2CFGR_PLLSAI2M,<sp/><sp/>((__PLLSAI2M__)<sp/>-<sp/>1U)<sp/>&lt;&lt;<sp/>RCC_PLLSAI2CFGR_PLLSAI2M_Pos)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1248"><highlight class="normal"></highlight></codeline>
@@ -823,10 +903,12 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="1297"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__HAL_RCC_PLLSAI2_DIVR_CONFIG(__PLLSAI2R__)<sp/>\</highlight></codeline>
 <codeline lineno="1298"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>MODIFY_REG(RCC-&gt;PLLSAI2CFGR,<sp/>RCC_PLLSAI2CFGR_PLLSAI2R,<sp/>(((__PLLSAI2R__)<sp/>&gt;&gt;<sp/>1U)<sp/>-<sp/>1U)<sp/>&lt;&lt;<sp/>RCC_PLLSAI2CFGR_PLLSAI2R_Pos)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1299"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1305"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1306"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__HAL_RCC_PLLSAI2_ENABLE()<sp/><sp/>SET_BIT(RCC-&gt;CR,<sp/>RCC_CR_PLLSAI2ON)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1307"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1308"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__HAL_RCC_PLLSAI2_DISABLE()<sp/>CLEAR_BIT(RCC-&gt;CR,<sp/>RCC_CR_PLLSAI2ON)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1309"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1333"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1334"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__HAL_RCC_PLLSAI2CLKOUT_ENABLE(__PLLSAI2_CLOCKOUT__)<sp/><sp/>SET_BIT(RCC-&gt;PLLSAI2CFGR,<sp/>(__PLLSAI2_CLOCKOUT__))</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1335"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1336"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__HAL_RCC_PLLSAI2CLKOUT_DISABLE(__PLLSAI2_CLOCKOUT__)<sp/>CLEAR_BIT(RCC-&gt;PLLSAI2CFGR,<sp/>(__PLLSAI2_CLOCKOUT__))</highlight><highlight class="normal"></highlight></codeline>
@@ -1018,7 +1100,7 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="1941"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1942"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>SWPMI1<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1943"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1944"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(DFSDM1_Filter0)</highlight></codeline>
+<codeline lineno="1944"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(DFSDM1_Filter0)</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1952"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(STM32L4P5xx)<sp/>||<sp/>defined(STM32L4Q5xx)<sp/>||<sp/>defined(STM32L4R5xx)<sp/>||<sp/>defined(STM32L4R7xx)<sp/>||<sp/>defined(STM32L4R9xx)<sp/>||<sp/>defined(STM32L4S5xx)<sp/>||<sp/>defined(STM32L4S7xx)<sp/>||<sp/>defined(STM32L4S9xx)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1953"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__HAL_RCC_DFSDM1_CONFIG(__DFSDM1_CLKSOURCE__)<sp/>\</highlight></codeline>
 <codeline lineno="1954"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>MODIFY_REG(RCC-&gt;CCIPR2,<sp/>RCC_CCIPR2_DFSDM1SEL,<sp/>(__DFSDM1_CLKSOURCE__))</highlight><highlight class="normal"></highlight></codeline>
@@ -1162,6 +1244,7 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="2279"><highlight class="normal"></highlight></codeline>
 <codeline lineno="2293"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__HAL_RCC_CRS_GET_FLAG(__FLAG__)<sp/><sp/>(READ_BIT(CRS-&gt;ISR,<sp/>(__FLAG__))<sp/>==<sp/>(__FLAG__))</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2294"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2309"><highlight class="normal"></highlight></codeline>
 <codeline lineno="2310"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>CRS<sp/>Flag<sp/>Error<sp/>Mask<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2311"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_CRS_FLAG_ERROR_MASK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(RCC_CRS_FLAG_TRIMOVF<sp/>|<sp/>RCC_CRS_FLAG_SYNCERR<sp/>|<sp/>RCC_CRS_FLAG_SYNCMISS)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2312"><highlight class="normal"></highlight></codeline>
@@ -1178,6 +1261,7 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="2323"><highlight class="normal"></highlight></codeline>
 <codeline lineno="2324"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>CRS<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2325"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2329"><highlight class="normal"></highlight></codeline>
 <codeline lineno="2330"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(CRS)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2331"><highlight class="normal"></highlight></codeline>
 <codeline lineno="2340"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__HAL_RCC_CRS_FREQ_ERROR_COUNTER_ENABLE()<sp/><sp/>SET_BIT(CRS-&gt;CR,<sp/>CRS_CR_CEN)</highlight><highlight class="normal"></highlight></codeline>
@@ -1190,10 +1274,12 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="2360"><highlight class="normal"></highlight></codeline>
 <codeline lineno="2371"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__HAL_RCC_CRS_RELOADVALUE_CALCULATE(__FTARGET__,<sp/>__FSYNC__)<sp/><sp/>(((__FTARGET__)<sp/>/<sp/>(__FSYNC__))<sp/>-<sp/>1U)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2372"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2376"><highlight class="normal"></highlight></codeline>
 <codeline lineno="2377"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>CRS<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2378"><highlight class="normal"></highlight></codeline>
 <codeline lineno="2379"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(PSSI)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2380"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2384"><highlight class="normal"></highlight></codeline>
 <codeline lineno="2385"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__HAL_RCC_PSSI_CLK_ENABLE()<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__HAL_RCC_DCMI_CLK_ENABLE()</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2386"><highlight class="normal"></highlight></codeline>
 <codeline lineno="2387"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__HAL_RCC_PSSI_CLK_DISABLE()<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__HAL_RCC_DCMI_CLK_DISABLE()</highlight><highlight class="normal"></highlight></codeline>
@@ -1214,13 +1300,18 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="2402"><highlight class="normal"></highlight></codeline>
 <codeline lineno="2403"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__HAL_RCC_PSSI_IS_CLK_SLEEP_DISABLED()<sp/><sp/>__HAL_RCC_DCMI_IS_CLK_SLEEP_DISABLED()</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2404"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2408"><highlight class="normal"></highlight></codeline>
 <codeline lineno="2409"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>PSSI<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2410"><highlight class="normal"></highlight></codeline>
-<codeline lineno="2415"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Exported<sp/>functions<sp/>--------------------------------------------------------*/</highlight></codeline>
+<codeline lineno="2414"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2415"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Exported<sp/>functions<sp/>--------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2419"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2423"><highlight class="normal"></highlight></codeline>
 <codeline lineno="2424"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/><ref refid="group__RCCEx__Exported__Functions__Group1_1ga0c0f61a1e2f47cc81bc43d83ba3e0d95" kindref="member">HAL_RCCEx_PeriphCLKConfig</ref>(<ref refid="structRCC__PeriphCLKInitTypeDef" kindref="compound">RCC_PeriphCLKInitTypeDef</ref><sp/><sp/>*PeriphClkInit);</highlight></codeline>
 <codeline lineno="2425"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__RCCEx__Exported__Functions__Group1_1ga754fc5136c63ad52b7c459aafc8a3927" kindref="member">HAL_RCCEx_GetPeriphCLKConfig</ref>(<ref refid="structRCC__PeriphCLKInitTypeDef" kindref="compound">RCC_PeriphCLKInitTypeDef</ref><sp/><sp/>*PeriphClkInit);</highlight></codeline>
 <codeline lineno="2426"><highlight class="normal">uint32_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__RCCEx__Exported__Functions__Group1_1ga14acaeb88163a6bb0839470b753ba1bd" kindref="member">HAL_RCCEx_GetPeriphCLKFreq</ref>(uint32_t<sp/>PeriphClk);</highlight></codeline>
 <codeline lineno="2427"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2431"><highlight class="normal"></highlight></codeline>
 <codeline lineno="2435"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(RCC_PLLSAI1_SUPPORT)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2436"><highlight class="normal"></highlight></codeline>
 <codeline lineno="2437"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/>HAL_RCCEx_EnablePLLSAI1(RCC_PLLSAI1InitTypeDef<sp/><sp/>*PLLSAI1Init);</highlight></codeline>
@@ -1250,8 +1341,10 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="2461"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HAL_RCCEx_OCTOSPIDelayConfig(uint32_t<sp/>Delay1,<sp/>uint32_t<sp/>Delay2);</highlight></codeline>
 <codeline lineno="2462"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>OCTOSPI1<sp/>&amp;&amp;<sp/>OCTOSPI2<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2463"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2467"><highlight class="normal"></highlight></codeline>
 <codeline lineno="2468"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(CRS)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2469"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2473"><highlight class="normal"></highlight></codeline>
 <codeline lineno="2474"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HAL_RCCEx_CRSConfig(RCC_CRSInitTypeDef<sp/>*pInit);</highlight></codeline>
 <codeline lineno="2475"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HAL_RCCEx_CRSSoftwareSynchronizationGenerate(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="2476"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HAL_RCCEx_CRSGetSynchronizationInfo(RCC_CRSSynchroInfoTypeDef<sp/>*pSynchroInfo);</highlight></codeline>
@@ -1262,9 +1355,11 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="2481"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HAL_RCCEx_CRS_ExpectedSyncCallback(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="2482"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HAL_RCCEx_CRS_ErrorCallback(uint32_t<sp/>Error);</highlight></codeline>
 <codeline lineno="2483"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2487"><highlight class="normal"></highlight></codeline>
 <codeline lineno="2488"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>CRS<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2489"><highlight class="normal"></highlight></codeline>
-<codeline lineno="2494"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>constants<sp/>---------------------------------------------------------*/</highlight></codeline>
+<codeline lineno="2493"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2494"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>constants<sp/>---------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2498"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Define<sp/>used<sp/>for<sp/>IS_RCC_*<sp/>macros<sp/>below<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2499"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(STM32L412xx)<sp/>||<sp/>defined(STM32L422xx)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2500"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RCC_PERIPHCLOCK_ALL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(RCC_PERIPHCLK_USART1<sp/>|<sp/>RCC_PERIPHCLK_USART2<sp/>|<sp/>RCC_PERIPHCLK_USART3<sp/>|<sp/>\</highlight></codeline>
@@ -1397,7 +1492,9 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="2627"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RCC_PERIPHCLK_RTC<sp/>|<sp/>RCC_PERIPHCLK_RNG<sp/>|<sp/>RCC_PERIPHCLK_SDMMC1)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2628"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>STM32L412xx<sp/>||<sp/>STM32L422xx<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2629"><highlight class="normal"></highlight></codeline>
-<codeline lineno="2634"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>macros<sp/>------------------------------------------------------------*/</highlight></codeline>
+<codeline lineno="2633"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2634"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>macros<sp/>------------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2638"><highlight class="normal"></highlight></codeline>
 <codeline lineno="2639" refid="group__RCCEx__Private__Macros_1ga8fb006f66c765cfb0b4b53a05d3d13a0" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>IS_RCC_LSCOSOURCE(__SOURCE__)<sp/>(((__SOURCE__)<sp/>==<sp/>RCC_LSCOSOURCE_LSI)<sp/>||<sp/>\</highlight></codeline>
 <codeline lineno="2640"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((__SOURCE__)<sp/>==<sp/>RCC_LSCOSOURCE_LSE))</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2641"><highlight class="normal"></highlight></codeline>
@@ -1787,6 +1884,9 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="3025"><highlight class="normal"></highlight></codeline>
 <codeline lineno="3026"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>CRS<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="3027"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3031"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3035"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3039"><highlight class="normal"></highlight></codeline>
 <codeline lineno="3040"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="3041"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="3042"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>

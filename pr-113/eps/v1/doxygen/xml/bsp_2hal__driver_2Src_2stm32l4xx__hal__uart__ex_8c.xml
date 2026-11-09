@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="bsp_2hal__driver_2Src_2stm32l4xx__hal__uart__ex_8c" kind="file" language="C++">
     <compoundname>stm32l4xx_hal_uart_ex.c</compoundname>
     <includes local="yes">stm32l4xx_hal.h</includes>
@@ -41,34 +41,41 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 
       -@- When UART operates in FIFO mode, FIFO mode must be enabled prior
           starting RX/TX transfers. Also RX/TX FIFO thresholds must be
-          configured prior starting RX/TX transfers.</verbatim> </para>
+          configured prior starting RX/TX transfers.
+</verbatim> </para>
     </detaileddescription>
     <programlisting>
 <codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
 <codeline lineno="43"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Includes<sp/>------------------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;stm32l4xx_hal.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
 <codeline lineno="55"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>HAL_UART_MODULE_ENABLED</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="56"><highlight class="normal"></highlight></codeline>
 <codeline lineno="57"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>typedef<sp/>-----------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="58"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>define<sp/>------------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="59"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(USART_CR1_FIFOEN)</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(USART_CR1_FIFOEN)</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="63"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>UART<sp/>RX<sp/>FIFO<sp/>depth<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="64"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RX_FIFO_DEPTH<sp/>8U</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="65"><highlight class="normal"></highlight></codeline>
 <codeline lineno="66"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>UART<sp/>TX<sp/>FIFO<sp/>depth<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="67"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TX_FIFO_DEPTH<sp/>8U</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TX_FIFO_DEPTH<sp/>8U</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="71"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>USART_CR1_FIFOEN<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="72"><highlight class="normal"></highlight></codeline>
 <codeline lineno="73"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>macros<sp/>------------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="74"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>variables<sp/>---------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="75"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>function<sp/>prototypes<sp/>-----------------------------------------------*/</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>function<sp/>prototypes<sp/>-----------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="79"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>UARTEx_Wakeup_AddressConfig(<ref refid="structUART__HandleTypeDef" kindref="compound">UART_HandleTypeDef</ref><sp/>*huart,<sp/><ref refid="structUART__WakeUpTypeDef" kindref="compound">UART_WakeUpTypeDef</ref><sp/>WakeUpSelection);</highlight></codeline>
 <codeline lineno="80"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(USART_CR1_FIFOEN)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="81"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>UARTEx_SetNbDataToProcess(<ref refid="structUART__HandleTypeDef" kindref="compound">UART_HandleTypeDef</ref><sp/>*huart);</highlight></codeline>
-<codeline lineno="82"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>USART_CR1_FIFOEN<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>USART_CR1_FIFOEN<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
 <codeline lineno="87"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Exported<sp/>functions<sp/>--------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
 <codeline lineno="170"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/><ref refid="group__UARTEx__Exported__Functions__Group1_1ga27862dc24258939a758a877b674977af" kindref="member">HAL_RS485Ex_Init</ref>(<ref refid="structUART__HandleTypeDef" kindref="compound">UART_HandleTypeDef</ref><sp/>*huart,<sp/>uint32_t<sp/>Polarity,<sp/>uint32_t<sp/>AssertionTime,</highlight></codeline>
 <codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>DeassertionTime)</highlight></codeline>
 <codeline lineno="172"><highlight class="normal">{</highlight></codeline>
@@ -148,6 +155,8 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="246"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(<ref refid="group__UART__Private__Functions_1gad945067db34d4e1c3bd27a14fa8d7d25" kindref="member">UART_CheckIdleState</ref>(huart));</highlight></codeline>
 <codeline lineno="247"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="248"><highlight class="normal"></highlight></codeline>
+<codeline lineno="252"><highlight class="normal"></highlight></codeline>
+<codeline lineno="270"><highlight class="normal"></highlight></codeline>
 <codeline lineno="276"><highlight class="normal">__weak<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__UARTEx__Exported__Functions__Group2_1ga44d09cdf66fec468d956c64a23f61856" kindref="member">HAL_UARTEx_WakeupCallback</ref>(<ref refid="structUART__HandleTypeDef" kindref="compound">UART_HandleTypeDef</ref><sp/>*huart)</highlight></codeline>
 <codeline lineno="277"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="278"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Prevent<sp/>unused<sp/>argument(s)<sp/>compilation<sp/>warning<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
@@ -158,7 +167,7 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="283"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="284"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="285"><highlight class="normal"></highlight></codeline>
-<codeline lineno="286"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(USART_CR1_FIFOEN)</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(USART_CR1_FIFOEN)</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="292"><highlight class="normal">__weak<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>HAL_UARTEx_RxFifoFullCallback(<ref refid="structUART__HandleTypeDef" kindref="compound">UART_HandleTypeDef</ref><sp/>*huart)</highlight></codeline>
 <codeline lineno="293"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="294"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Prevent<sp/>unused<sp/>argument(s)<sp/>compilation<sp/>warning<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
@@ -180,7 +189,9 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="315"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="316"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>USART_CR1_FIFOEN<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="317"><highlight class="normal"></highlight></codeline>
-<codeline lineno="382"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(USART_CR3_UCESM)</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"></highlight></codeline>
+<codeline lineno="381"><highlight class="normal"></highlight></codeline>
+<codeline lineno="382"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(USART_CR3_UCESM)</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="392"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/>HAL_UARTEx_EnableClockStopMode(<ref refid="structUART__HandleTypeDef" kindref="compound">UART_HandleTypeDef</ref><sp/>*huart)</highlight></codeline>
 <codeline lineno="393"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="394"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Process<sp/>Locked<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
@@ -209,7 +220,7 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="422"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>;</highlight></codeline>
 <codeline lineno="423"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="424"><highlight class="normal"></highlight></codeline>
-<codeline lineno="425"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>USART_CR3_UCESM<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="425"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>USART_CR3_UCESM<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="439"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/><ref refid="group__UARTEx__Exported__Functions__Group3_1gabb9d4edfed47241a86a304856cb4e3c6" kindref="member">HAL_MultiProcessorEx_AddressLength_Set</ref>(<ref refid="structUART__HandleTypeDef" kindref="compound">UART_HandleTypeDef</ref><sp/>*huart,<sp/>uint32_t<sp/>AddressLength)</highlight></codeline>
 <codeline lineno="440"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="441"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>the<sp/>UART<sp/>handle<sp/>allocation<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
@@ -313,7 +324,7 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="562"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>;</highlight></codeline>
 <codeline lineno="563"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="564"><highlight class="normal"></highlight></codeline>
-<codeline lineno="565"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(USART_CR1_FIFOEN)</highlight></codeline>
+<codeline lineno="565"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(USART_CR1_FIFOEN)</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="571"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/>HAL_UARTEx_EnableFifoMode(<ref refid="structUART__HandleTypeDef" kindref="compound">UART_HandleTypeDef</ref><sp/>*huart)</highlight></codeline>
 <codeline lineno="572"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="573"><highlight class="normal"><sp/><sp/>uint32_t<sp/>tmpcr1;</highlight></codeline>
@@ -455,7 +466,7 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="740"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>;</highlight></codeline>
 <codeline lineno="741"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="742"><highlight class="normal"></highlight></codeline>
-<codeline lineno="743"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>USART_CR1_FIFOEN<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="743"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>USART_CR1_FIFOEN<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="765"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/><ref refid="group__UARTEx__Exported__Functions__Group3_1ga33da590bebd5fd13ce9020ac1fc05e15" kindref="member">HAL_UARTEx_ReceiveToIdle</ref>(<ref refid="structUART__HandleTypeDef" kindref="compound">UART_HandleTypeDef</ref><sp/>*huart,<sp/>uint8_t<sp/>*pData,<sp/>uint16_t<sp/>Size,<sp/>uint16_t<sp/>*RxLen,</highlight></codeline>
 <codeline lineno="766"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>Timeout)</highlight></codeline>
 <codeline lineno="767"><highlight class="normal">{</highlight></codeline>
@@ -655,6 +666,9 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="1014"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(huart-&gt;RxEventType);</highlight></codeline>
 <codeline lineno="1015"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="1016"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1020"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1024"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1028"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1035"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>UARTEx_Wakeup_AddressConfig(<ref refid="structUART__HandleTypeDef" kindref="compound">UART_HandleTypeDef</ref><sp/>*huart,<sp/><ref refid="structUART__WakeUpTypeDef" kindref="compound">UART_WakeUpTypeDef</ref><sp/>WakeUpSelection)</highlight></codeline>
 <codeline lineno="1036"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="1037"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(<ref refid="group__UARTEx__Private__Macros_1gaa4cf2a15ad7ae46e2905debeef35a908" kindref="member">IS_UART_ADDRESSLENGTH_DETECT</ref>(WakeUpSelection.<ref refid="structUART__WakeUpTypeDef_1afe40f631bfda42d05bcfd6b0fedda5ee" kindref="member">AddressLength</ref>));</highlight></codeline>
@@ -666,7 +680,7 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="1043"><highlight class="normal"><sp/><sp/><ref refid="group__Exported__macros_1ga6553c99f510c3bab8cc0a91602053247" kindref="member">MODIFY_REG</ref>(huart-&gt;<ref refid="structUART__HandleTypeDef_1ab64e6e60083b52e205164c18aa3ee5af" kindref="member">Instance</ref>-&gt;CR2,<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1ga3ee77fac25142271ad56d49685e518b3" kindref="member">USART_CR2_ADD</ref>,<sp/>((uint32_t)WakeUpSelection.<ref refid="structUART__WakeUpTypeDef_1a333f9f0794b455f5a4b55cd9bbe69cfd" kindref="member">Address</ref><sp/>&lt;&lt;<sp/><ref refid="group__UART__CR2__ADDRESS__LSB__POS_1ga28e21d5a49aa9e9812b870697c554d97" kindref="member">UART_CR2_ADDRESS_LSB_POS</ref>));</highlight></codeline>
 <codeline lineno="1044"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="1045"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1046"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(USART_CR1_FIFOEN)</highlight></codeline>
+<codeline lineno="1046"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(USART_CR1_FIFOEN)</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1054"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>UARTEx_SetNbDataToProcess(<ref refid="structUART__HandleTypeDef" kindref="compound">UART_HandleTypeDef</ref><sp/>*huart)</highlight></codeline>
 <codeline lineno="1055"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="1056"><highlight class="normal"><sp/><sp/>uint8_t<sp/>rx_fifo_depth;</highlight></codeline>
@@ -693,9 +707,12 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="1077"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(uint16_t)denominator[rx_fifo_threshold];</highlight></codeline>
 <codeline lineno="1078"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="1079"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="1080"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>USART_CR1_FIFOEN<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="1080"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>USART_CR1_FIFOEN<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1084"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1085"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>HAL_UART_MODULE_ENABLED<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1086"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1090"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1094"><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Src/stm32l4xx_hal_uart_ex.c"/>
   </compounddef>

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="can_8c" kind="file" language="C++">
     <compoundname>can.c</compoundname>
     <includes refid="can_8h" local="yes">can.h</includes>
@@ -101,8 +101,8 @@
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
-<para>CAN1 GPIO Configuration PA11 ---<mdash/>&gt; CAN1_RX PA12 ---<mdash/>&gt; CAN1_TX</para>
-<para>CAN2 GPIO Configuration PB5 ---<mdash/>&gt; CAN2_RX PB6 ---<mdash/>&gt; CAN2_TX</para>
+<para>CAN1 GPIO Configuration PA11 ------&gt; CAN1_RX PA12 ------&gt; CAN1_TX</para>
+<para>CAN2 GPIO Configuration PB5 ------&gt; CAN2_RX PB6 ------&gt; CAN2_TX</para>
         </inbodydescription>
         <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/mcu/Src/can.c" line="38" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/mcu/Src/can.c" bodystart="38" bodyend="110"/>
       </memberdef>
@@ -120,8 +120,8 @@
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
-<para>CAN1 GPIO Configuration PA11 ---<mdash/>&gt; CAN1_RX PA12 ---<mdash/>&gt; CAN1_TX</para>
-<para>CAN2 GPIO Configuration PB5 ---<mdash/>&gt; CAN2_RX PB6 ---<mdash/>&gt; CAN2_TX</para>
+<para>CAN1 GPIO Configuration PA11 ------&gt; CAN1_RX PA12 ------&gt; CAN1_TX</para>
+<para>CAN2 GPIO Configuration PB5 ------&gt; CAN2_RX PB6 ------&gt; CAN2_TX</para>
         </inbodydescription>
         <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/mcu/Src/can.c" line="112" column="6" bodyfile="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/mcu/Src/can.c" bodystart="112" bodyend="144"/>
       </memberdef>
@@ -133,39 +133,39 @@
     <programlisting>
 <codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="can_8h" kindref="compound">can.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2"><highlight class="normal"></highlight></codeline>
-<codeline lineno="3"><highlight class="normal">CAN_HandleTypeDef<sp/><ref refid="can_8c_1a1618d731d18d69e906e8a357b7cd3c8d" kindref="member">hcan1</ref>;</highlight></codeline>
-<codeline lineno="4"><highlight class="normal">CAN_HandleTypeDef<sp/><ref refid="can_8c_1ab77168d14df04ccca5d48612ee21ced8" kindref="member">hcan2</ref>;</highlight></codeline>
+<codeline lineno="3"><highlight class="normal">CAN_HandleTypeDef<sp/><ref refid="can_8h_1a1618d731d18d69e906e8a357b7cd3c8d" kindref="member">hcan1</ref>;</highlight></codeline>
+<codeline lineno="4"><highlight class="normal">CAN_HandleTypeDef<sp/><ref refid="can_8h_1ab77168d14df04ccca5d48612ee21ced8" kindref="member">hcan2</ref>;</highlight></codeline>
 <codeline lineno="5"><highlight class="normal"></highlight></codeline>
 <codeline lineno="6"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="can_8c_1a030a62a0956ab83394eb8354a0e97902" kindref="member">MX_CAN1_Init</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
-<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="can_8c_1a1618d731d18d69e906e8a357b7cd3c8d" kindref="member">hcan1</ref>.Instance<sp/>=<sp/><ref refid="group__Peripheral__declaration_1ga4964ecb6a5c689aaf8ee2832b8093aac" kindref="member">CAN1</ref>;</highlight></codeline>
-<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="can_8c_1a1618d731d18d69e906e8a357b7cd3c8d" kindref="member">hcan1</ref>.Init.Prescaler<sp/>=<sp/>6;</highlight></codeline>
-<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="can_8c_1a1618d731d18d69e906e8a357b7cd3c8d" kindref="member">hcan1</ref>.Init.Mode<sp/>=<sp/>CAN_MODE_NORMAL;</highlight></codeline>
-<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="can_8c_1a1618d731d18d69e906e8a357b7cd3c8d" kindref="member">hcan1</ref>.Init.SyncJumpWidth<sp/>=<sp/>CAN_SJW_1TQ;</highlight></codeline>
-<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="can_8c_1a1618d731d18d69e906e8a357b7cd3c8d" kindref="member">hcan1</ref>.Init.TimeSeg1<sp/>=<sp/>CAN_BS1_12TQ;</highlight></codeline>
-<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="can_8c_1a1618d731d18d69e906e8a357b7cd3c8d" kindref="member">hcan1</ref>.Init.TimeSeg2<sp/>=<sp/>CAN_BS2_3TQ;</highlight></codeline>
-<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="can_8c_1a1618d731d18d69e906e8a357b7cd3c8d" kindref="member">hcan1</ref>.Init.TimeTriggeredMode<sp/>=<sp/><ref refid="group__Exported__types_1ggac9a7e9a35d2513ec15c3b537aaa4fba1ad3a9df141be0ccf10389b640f492b26d" kindref="member">DISABLE</ref>;</highlight></codeline>
-<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="can_8c_1a1618d731d18d69e906e8a357b7cd3c8d" kindref="member">hcan1</ref>.Init.AutoBusOff<sp/>=<sp/><ref refid="group__Exported__types_1ggac9a7e9a35d2513ec15c3b537aaa4fba1ad3a9df141be0ccf10389b640f492b26d" kindref="member">DISABLE</ref>;</highlight></codeline>
-<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="can_8c_1a1618d731d18d69e906e8a357b7cd3c8d" kindref="member">hcan1</ref>.Init.AutoWakeUp<sp/>=<sp/><ref refid="group__Exported__types_1ggac9a7e9a35d2513ec15c3b537aaa4fba1ad3a9df141be0ccf10389b640f492b26d" kindref="member">DISABLE</ref>;</highlight></codeline>
-<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="can_8c_1a1618d731d18d69e906e8a357b7cd3c8d" kindref="member">hcan1</ref>.Init.AutoRetransmission<sp/>=<sp/><ref refid="group__Exported__types_1ggac9a7e9a35d2513ec15c3b537aaa4fba1ad3a9df141be0ccf10389b640f492b26d" kindref="member">DISABLE</ref>;</highlight></codeline>
-<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="can_8c_1a1618d731d18d69e906e8a357b7cd3c8d" kindref="member">hcan1</ref>.Init.ReceiveFifoLocked<sp/>=<sp/><ref refid="group__Exported__types_1ggac9a7e9a35d2513ec15c3b537aaa4fba1ad3a9df141be0ccf10389b640f492b26d" kindref="member">DISABLE</ref>;</highlight></codeline>
-<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="can_8c_1a1618d731d18d69e906e8a357b7cd3c8d" kindref="member">hcan1</ref>.Init.TransmitFifoPriority<sp/>=<sp/><ref refid="group__Exported__types_1ggac9a7e9a35d2513ec15c3b537aaa4fba1ad3a9df141be0ccf10389b640f492b26d" kindref="member">DISABLE</ref>;</highlight></codeline>
-<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>HAL_CAN_Init(&amp;<ref refid="can_8c_1a1618d731d18d69e906e8a357b7cd3c8d" kindref="member">hcan1</ref>);</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="can_8h_1a1618d731d18d69e906e8a357b7cd3c8d" kindref="member">hcan1</ref>.Instance<sp/>=<sp/><ref refid="group__Peripheral__declaration_1ga4964ecb6a5c689aaf8ee2832b8093aac" kindref="member">CAN1</ref>;</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="can_8h_1a1618d731d18d69e906e8a357b7cd3c8d" kindref="member">hcan1</ref>.Init.Prescaler<sp/>=<sp/>6;</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="can_8h_1a1618d731d18d69e906e8a357b7cd3c8d" kindref="member">hcan1</ref>.Init.Mode<sp/>=<sp/>CAN_MODE_NORMAL;</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="can_8h_1a1618d731d18d69e906e8a357b7cd3c8d" kindref="member">hcan1</ref>.Init.SyncJumpWidth<sp/>=<sp/>CAN_SJW_1TQ;</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="can_8h_1a1618d731d18d69e906e8a357b7cd3c8d" kindref="member">hcan1</ref>.Init.TimeSeg1<sp/>=<sp/>CAN_BS1_12TQ;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="can_8h_1a1618d731d18d69e906e8a357b7cd3c8d" kindref="member">hcan1</ref>.Init.TimeSeg2<sp/>=<sp/>CAN_BS2_3TQ;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="can_8h_1a1618d731d18d69e906e8a357b7cd3c8d" kindref="member">hcan1</ref>.Init.TimeTriggeredMode<sp/>=<sp/><ref refid="group__Exported__types_1ggac9a7e9a35d2513ec15c3b537aaa4fba1ad3a9df141be0ccf10389b640f492b26d" kindref="member">DISABLE</ref>;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="can_8h_1a1618d731d18d69e906e8a357b7cd3c8d" kindref="member">hcan1</ref>.Init.AutoBusOff<sp/>=<sp/><ref refid="group__Exported__types_1ggac9a7e9a35d2513ec15c3b537aaa4fba1ad3a9df141be0ccf10389b640f492b26d" kindref="member">DISABLE</ref>;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="can_8h_1a1618d731d18d69e906e8a357b7cd3c8d" kindref="member">hcan1</ref>.Init.AutoWakeUp<sp/>=<sp/><ref refid="group__Exported__types_1ggac9a7e9a35d2513ec15c3b537aaa4fba1ad3a9df141be0ccf10389b640f492b26d" kindref="member">DISABLE</ref>;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="can_8h_1a1618d731d18d69e906e8a357b7cd3c8d" kindref="member">hcan1</ref>.Init.AutoRetransmission<sp/>=<sp/><ref refid="group__Exported__types_1ggac9a7e9a35d2513ec15c3b537aaa4fba1ad3a9df141be0ccf10389b640f492b26d" kindref="member">DISABLE</ref>;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="can_8h_1a1618d731d18d69e906e8a357b7cd3c8d" kindref="member">hcan1</ref>.Init.ReceiveFifoLocked<sp/>=<sp/><ref refid="group__Exported__types_1ggac9a7e9a35d2513ec15c3b537aaa4fba1ad3a9df141be0ccf10389b640f492b26d" kindref="member">DISABLE</ref>;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="can_8h_1a1618d731d18d69e906e8a357b7cd3c8d" kindref="member">hcan1</ref>.Init.TransmitFifoPriority<sp/>=<sp/><ref refid="group__Exported__types_1ggac9a7e9a35d2513ec15c3b537aaa4fba1ad3a9df141be0ccf10389b640f492b26d" kindref="member">DISABLE</ref>;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>HAL_CAN_Init(&amp;<ref refid="can_8h_1a1618d731d18d69e906e8a357b7cd3c8d" kindref="member">hcan1</ref>);</highlight></codeline>
 <codeline lineno="20"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="21"><highlight class="normal"></highlight></codeline>
 <codeline lineno="22"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="can_8c_1a1ee5cd592134235b6c07f676784d47c3" kindref="member">MX_CAN2_Init</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
-<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="can_8c_1ab77168d14df04ccca5d48612ee21ced8" kindref="member">hcan2</ref>.Instance<sp/>=<sp/><ref refid="group__Peripheral__declaration_1gac5e4c86ed487dc91418b156e24808033" kindref="member">CAN2</ref>;</highlight></codeline>
-<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="can_8c_1ab77168d14df04ccca5d48612ee21ced8" kindref="member">hcan2</ref>.Init.Prescaler<sp/>=<sp/>6;</highlight></codeline>
-<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="can_8c_1ab77168d14df04ccca5d48612ee21ced8" kindref="member">hcan2</ref>.Init.Mode<sp/>=<sp/>CAN_MODE_NORMAL;</highlight></codeline>
-<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="can_8c_1ab77168d14df04ccca5d48612ee21ced8" kindref="member">hcan2</ref>.Init.SyncJumpWidth<sp/>=<sp/>CAN_SJW_1TQ;</highlight></codeline>
-<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="can_8c_1ab77168d14df04ccca5d48612ee21ced8" kindref="member">hcan2</ref>.Init.TimeSeg1<sp/>=<sp/>CAN_BS1_12TQ;</highlight></codeline>
-<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="can_8c_1ab77168d14df04ccca5d48612ee21ced8" kindref="member">hcan2</ref>.Init.TimeSeg2<sp/>=<sp/>CAN_BS2_3TQ;</highlight></codeline>
-<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="can_8c_1ab77168d14df04ccca5d48612ee21ced8" kindref="member">hcan2</ref>.Init.TimeTriggeredMode<sp/>=<sp/><ref refid="group__Exported__types_1ggac9a7e9a35d2513ec15c3b537aaa4fba1ad3a9df141be0ccf10389b640f492b26d" kindref="member">DISABLE</ref>;</highlight></codeline>
-<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="can_8c_1ab77168d14df04ccca5d48612ee21ced8" kindref="member">hcan2</ref>.Init.AutoBusOff<sp/>=<sp/><ref refid="group__Exported__types_1ggac9a7e9a35d2513ec15c3b537aaa4fba1ad3a9df141be0ccf10389b640f492b26d" kindref="member">DISABLE</ref>;</highlight></codeline>
-<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="can_8c_1ab77168d14df04ccca5d48612ee21ced8" kindref="member">hcan2</ref>.Init.AutoWakeUp<sp/>=<sp/><ref refid="group__Exported__types_1ggac9a7e9a35d2513ec15c3b537aaa4fba1ad3a9df141be0ccf10389b640f492b26d" kindref="member">DISABLE</ref>;</highlight></codeline>
-<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="can_8c_1ab77168d14df04ccca5d48612ee21ced8" kindref="member">hcan2</ref>.Init.AutoRetransmission<sp/>=<sp/><ref refid="group__Exported__types_1ggac9a7e9a35d2513ec15c3b537aaa4fba1ad3a9df141be0ccf10389b640f492b26d" kindref="member">DISABLE</ref>;</highlight></codeline>
-<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="can_8c_1ab77168d14df04ccca5d48612ee21ced8" kindref="member">hcan2</ref>.Init.ReceiveFifoLocked<sp/>=<sp/><ref refid="group__Exported__types_1ggac9a7e9a35d2513ec15c3b537aaa4fba1ad3a9df141be0ccf10389b640f492b26d" kindref="member">DISABLE</ref>;</highlight></codeline>
-<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="can_8c_1ab77168d14df04ccca5d48612ee21ced8" kindref="member">hcan2</ref>.Init.TransmitFifoPriority<sp/>=<sp/><ref refid="group__Exported__types_1ggac9a7e9a35d2513ec15c3b537aaa4fba1ad3a9df141be0ccf10389b640f492b26d" kindref="member">DISABLE</ref>;</highlight></codeline>
-<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>HAL_CAN_Init(&amp;<ref refid="can_8c_1ab77168d14df04ccca5d48612ee21ced8" kindref="member">hcan2</ref>);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="can_8h_1ab77168d14df04ccca5d48612ee21ced8" kindref="member">hcan2</ref>.Instance<sp/>=<sp/><ref refid="group__Peripheral__declaration_1gac5e4c86ed487dc91418b156e24808033" kindref="member">CAN2</ref>;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="can_8h_1ab77168d14df04ccca5d48612ee21ced8" kindref="member">hcan2</ref>.Init.Prescaler<sp/>=<sp/>6;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="can_8h_1ab77168d14df04ccca5d48612ee21ced8" kindref="member">hcan2</ref>.Init.Mode<sp/>=<sp/>CAN_MODE_NORMAL;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="can_8h_1ab77168d14df04ccca5d48612ee21ced8" kindref="member">hcan2</ref>.Init.SyncJumpWidth<sp/>=<sp/>CAN_SJW_1TQ;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="can_8h_1ab77168d14df04ccca5d48612ee21ced8" kindref="member">hcan2</ref>.Init.TimeSeg1<sp/>=<sp/>CAN_BS1_12TQ;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="can_8h_1ab77168d14df04ccca5d48612ee21ced8" kindref="member">hcan2</ref>.Init.TimeSeg2<sp/>=<sp/>CAN_BS2_3TQ;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="can_8h_1ab77168d14df04ccca5d48612ee21ced8" kindref="member">hcan2</ref>.Init.TimeTriggeredMode<sp/>=<sp/><ref refid="group__Exported__types_1ggac9a7e9a35d2513ec15c3b537aaa4fba1ad3a9df141be0ccf10389b640f492b26d" kindref="member">DISABLE</ref>;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="can_8h_1ab77168d14df04ccca5d48612ee21ced8" kindref="member">hcan2</ref>.Init.AutoBusOff<sp/>=<sp/><ref refid="group__Exported__types_1ggac9a7e9a35d2513ec15c3b537aaa4fba1ad3a9df141be0ccf10389b640f492b26d" kindref="member">DISABLE</ref>;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="can_8h_1ab77168d14df04ccca5d48612ee21ced8" kindref="member">hcan2</ref>.Init.AutoWakeUp<sp/>=<sp/><ref refid="group__Exported__types_1ggac9a7e9a35d2513ec15c3b537aaa4fba1ad3a9df141be0ccf10389b640f492b26d" kindref="member">DISABLE</ref>;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="can_8h_1ab77168d14df04ccca5d48612ee21ced8" kindref="member">hcan2</ref>.Init.AutoRetransmission<sp/>=<sp/><ref refid="group__Exported__types_1ggac9a7e9a35d2513ec15c3b537aaa4fba1ad3a9df141be0ccf10389b640f492b26d" kindref="member">DISABLE</ref>;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="can_8h_1ab77168d14df04ccca5d48612ee21ced8" kindref="member">hcan2</ref>.Init.ReceiveFifoLocked<sp/>=<sp/><ref refid="group__Exported__types_1ggac9a7e9a35d2513ec15c3b537aaa4fba1ad3a9df141be0ccf10389b640f492b26d" kindref="member">DISABLE</ref>;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="can_8h_1ab77168d14df04ccca5d48612ee21ced8" kindref="member">hcan2</ref>.Init.TransmitFifoPriority<sp/>=<sp/><ref refid="group__Exported__types_1ggac9a7e9a35d2513ec15c3b537aaa4fba1ad3a9df141be0ccf10389b640f492b26d" kindref="member">DISABLE</ref>;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>HAL_CAN_Init(&amp;<ref refid="can_8h_1ab77168d14df04ccca5d48612ee21ced8" kindref="member">hcan2</ref>);</highlight></codeline>
 <codeline lineno="36"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="37"><highlight class="normal"></highlight></codeline>
 <codeline lineno="38"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="can_8c_1a2778ce7f3a2de42769b6de9fec4cedb9" kindref="member">HAL_CAN_MspInit</ref>(CAN_HandleTypeDef<sp/>*canHandle)<sp/>{</highlight></codeline>

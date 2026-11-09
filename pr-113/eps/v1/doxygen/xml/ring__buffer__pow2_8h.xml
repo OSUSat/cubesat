@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="ring__buffer__pow2_8h" kind="file" language="C++">
     <compoundname>ring_buffer_pow2.h</compoundname>
     <includes local="no">stdbool.h</includes>
@@ -70,6 +70,7 @@
     </detaileddescription>
     <programlisting>
 <codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
 <codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>OSUSAT_RING_BUFFER_POW2_H</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OSUSAT_RING_BUFFER_POW2_H</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="16"><highlight class="normal"></highlight></codeline>
@@ -81,6 +82,8 @@
 <codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
 <codeline lineno="44" refid="structosusat__ring__buffer__pow2__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="45" refid="structosusat__ring__buffer__pow2__t_1ab829c44f842b492837cc07bc32c098ff" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>*<ref refid="structosusat__ring__buffer__pow2__t_1ab829c44f842b492837cc07bc32c098ff" kindref="member">buffer</ref>;<sp/></highlight></codeline>
 <codeline lineno="46" refid="structosusat__ring__buffer__pow2__t_1a6a6820b3a7bbe15f8cb72d6a6aa20cca" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="structosusat__ring__buffer__pow2__t_1a6a6820b3a7bbe15f8cb72d6a6aa20cca" kindref="member">capacity</ref>;<sp/></highlight></codeline>
@@ -88,8 +91,9 @@
 <codeline lineno="48" refid="structosusat__ring__buffer__pow2__t_1a1241199b416b62a91b8d97b22d25ae52" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="structosusat__ring__buffer__pow2__t_1a1241199b416b62a91b8d97b22d25ae52" kindref="member">head</ref>;<sp/></highlight></codeline>
 <codeline lineno="49" refid="structosusat__ring__buffer__pow2__t_1a3c217f5f24b71a06f8cee314644454f2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="structosusat__ring__buffer__pow2__t_1a3c217f5f24b71a06f8cee314644454f2" kindref="member">tail</ref>;<sp/></highlight></codeline>
 <codeline lineno="50"><highlight class="normal">}<sp/><ref refid="structosusat__ring__buffer__pow2__t" kindref="compound">osusat_ring_buffer_pow2_t</ref>;</highlight></codeline>
-<codeline lineno="51"><highlight class="normal"></highlight></codeline>
-<sp/><highlight class="comment">//<sp/>end<sp/>osusat_ring_buffer_pow2_types</highlight><codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>end<sp/>osusat_ring_buffer_pow2_types</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
 <codeline lineno="67"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>osusat_is_pow2(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>x)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>x<sp/>&amp;&amp;<sp/>!(x<sp/>&amp;<sp/>(x<sp/>-<sp/>1));<sp/>}</highlight></codeline>
 <codeline lineno="68"><highlight class="normal"></highlight></codeline>
 <codeline lineno="84"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="group__osusat__ring__buffer__pow2__api_1gaccf6d4a50d77d7607c1e8fb534040d30" kindref="member">osusat_ring_buffer_pow2_init</ref>(<ref refid="structosusat__ring__buffer__pow2__t" kindref="compound">osusat_ring_buffer_pow2_t</ref><sp/>*rb,</highlight></codeline>
@@ -116,9 +120,9 @@
 <codeline lineno="146"><highlight class="normal"></highlight></codeline>
 <codeline lineno="156"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="group__osusat__ring__buffer__pow2__api_1ga2b1b17909c98fc21e3bc4b78525f3cfb" kindref="member">osusat_ring_buffer_pow2_peek</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structosusat__ring__buffer__pow2__t" kindref="compound">osusat_ring_buffer_pow2_t</ref><sp/>*rb,</highlight></codeline>
 <codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>*out);</highlight></codeline>
-<codeline lineno="158"><highlight class="normal"></highlight></codeline>
-<sp/><highlight class="comment">//<sp/>end<sp/>osusat_ring_buffer_pow2_api</highlight><codeline lineno="160"><highlight class="normal"></highlight></codeline>
-<sp/><highlight class="comment">//<sp/>end<sp/>osusat_ring_buffer_pow2</highlight><codeline lineno="162"><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>end<sp/>osusat_ring_buffer_pow2_api</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>end<sp/>osusat_ring_buffer_pow2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight></codeline>
 <codeline lineno="163"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="164"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="165"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>

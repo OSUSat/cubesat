@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="telemetry_8h" kind="file" language="C++">
     <compoundname>telemetry.h</compoundname>
     <includes refid="battery__management_8h" local="yes">battery_management.h</includes>
@@ -214,6 +214,7 @@
     </detaileddescription>
     <programlisting>
 <codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
 <codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>TELEMETRY_H</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TELEMETRY_H</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="16"><highlight class="normal"></highlight></codeline>
@@ -226,6 +227,8 @@
 <codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdbool.h&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
 <codeline lineno="45" refid="structuart__telemetry__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="46" refid="structuart__telemetry__t_1aa7286bbbd2be9de7fce61e277dcf1060" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structuart__telemetry__t_1aa7286bbbd2be9de7fce61e277dcf1060" kindref="member">rx_byte_count</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="47" refid="structuart__telemetry__t_1aff32e55fdb28488407ba8a4ab6748058" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structuart__telemetry__t_1aff32e55fdb28488407ba8a4ab6748058" kindref="member">rx_packet_count</ref>;<sp/><sp/><sp/><sp/></highlight></codeline>
@@ -243,8 +246,8 @@
 <codeline lineno="66" refid="structeps__telemetry__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="67" refid="structeps__telemetry__t_1ac2909fdce183537f5c6cef2c474911d1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structbattery__status__t" kindref="compound">battery_status_t</ref><sp/><ref refid="structeps__telemetry__t_1ac2909fdce183537f5c6cef2c474911d1" kindref="member">battery</ref>;<sp/></highlight></codeline>
 <codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structmppt__channel__t" kindref="compound">mppt_channel_t</ref></highlight></codeline>
-<codeline lineno="69" refid="structeps__telemetry__t_1a5e63b7c8de24e2035ea5fbb434649712" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mppt_channels[<ref refid="eps__config_8h_1a92909e21d544059f87c1132d821d979a" kindref="member">NUM_MPPT_CHANNELS</ref>];<sp/></highlight></codeline>
-<codeline lineno="70" refid="structeps__telemetry__t_1ae4aa6d372f495719f37b0e05c9feb312" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structrail__t" kindref="compound">rail_t</ref><sp/>rails[<ref refid="eps__config_8h_1a361cdcbe2e2e5599f8247035a597a520" kindref="member">NUM_POWER_RAILS</ref>];<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="69" refid="structeps__telemetry__t_1a5e63b7c8de24e2035ea5fbb434649712" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structeps__telemetry__t_1a5e63b7c8de24e2035ea5fbb434649712" kindref="member">mppt_channels</ref>[<ref refid="eps__config_8h_1a92909e21d544059f87c1132d821d979a" kindref="member">NUM_MPPT_CHANNELS</ref>];<sp/></highlight></codeline>
+<codeline lineno="70" refid="structeps__telemetry__t_1ae4aa6d372f495719f37b0e05c9feb312" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structrail__t" kindref="compound">rail_t</ref><sp/><ref refid="structeps__telemetry__t_1ae4aa6d372f495719f37b0e05c9feb312" kindref="member">rails</ref>[<ref refid="eps__config_8h_1a361cdcbe2e2e5599f8247035a597a520" kindref="member">NUM_POWER_RAILS</ref>];<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="71" refid="structeps__telemetry__t_1a394cdef01c1748afb6a5156cfd0f7826" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structredundancy__telemetry__t" kindref="compound">redundancy_telemetry_t</ref><sp/><ref refid="structeps__telemetry__t_1a394cdef01c1748afb6a5156cfd0f7826" kindref="member">redundancy</ref>;<sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="72" refid="structeps__telemetry__t_1a410ba2d9cde344bc483d8a6a428dc91a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structuart__telemetry__t" kindref="compound">uart_telemetry_t</ref><sp/><ref refid="structeps__telemetry__t_1a410ba2d9cde344bc483d8a6a428dc91a" kindref="member">uart1</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="73" refid="structeps__telemetry__t_1af249c5a1e5325e78795a9183877aac62" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structuart__telemetry__t" kindref="compound">uart_telemetry_t</ref><sp/><ref refid="structeps__telemetry__t_1af249c5a1e5325e78795a9183877aac62" kindref="member">uart3</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
@@ -269,16 +272,17 @@
 <codeline lineno="99" refid="structtelemetry__t_1a6cd9504186fd897c2f2bce628d3d0d1c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structtelemetry__t_1a6cd9504186fd897c2f2bce628d3d0d1c" kindref="member">tick_counter</ref>;<sp/></highlight></codeline>
 <codeline lineno="100" refid="structtelemetry__t_1aa3d9b21d85d436978a4cdf0bcba84822" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structtelemetry__t_1aa3d9b21d85d436978a4cdf0bcba84822" kindref="member">initialized</ref>;<sp/></highlight></codeline>
 <codeline lineno="101"><highlight class="normal">}<sp/><ref refid="structtelemetry__t" kindref="compound">telemetry_t</ref>;</highlight></codeline>
-<codeline lineno="102"><highlight class="normal"></highlight></codeline>
-<sp/><highlight class="comment">//<sp/>end<sp/>telemetry_types</highlight><codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>end<sp/>telemetry_types</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
 <codeline lineno="123"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__telemetry__api_1gaf5946b1b5aa7e3c784685baa303c9425" kindref="member">telemetry_init</ref>(<ref refid="structtelemetry__t" kindref="compound">telemetry_t</ref><sp/>*telemetry);</highlight></codeline>
 <codeline lineno="124"><highlight class="normal"></highlight></codeline>
 <codeline lineno="134"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__telemetry__api_1ga5b9969fe5b667cfa4c0fcd846ae5e94b" kindref="member">telemetry_update</ref>(<ref refid="structtelemetry__t" kindref="compound">telemetry_t</ref><sp/>*telemetry);</highlight></codeline>
 <codeline lineno="135"><highlight class="normal"></highlight></codeline>
 <codeline lineno="142"><highlight class="normal"><ref refid="structeps__telemetry__t" kindref="compound">eps_telemetry_t</ref><sp/><ref refid="group__telemetry__api_1ga93645f7f57677a9f130e3490586980b8" kindref="member">telemetry_get_all</ref>(<ref refid="structtelemetry__t" kindref="compound">telemetry_t</ref><sp/>*telemetry);</highlight></codeline>
-<codeline lineno="143"><highlight class="normal"></highlight></codeline>
-<sp/><highlight class="comment">//<sp/>end<sp/>telemetry_api</highlight><codeline lineno="145"><highlight class="normal"></highlight></codeline>
-<sp/><highlight class="comment">//<sp/>end<sp/>telemetry</highlight><codeline lineno="147"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>end<sp/>telemetry_api</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>end<sp/>telemetry</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight></codeline>
 <codeline lineno="148"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>TELEMETRY_H</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/services/telemetry.h"/>

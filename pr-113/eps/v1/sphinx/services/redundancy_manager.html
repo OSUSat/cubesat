@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Redundancy Manager Service &#8212; OSUSat EPS Firmware  documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=5ecbeea2" />
     <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
     <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
     <script src="../_static/documentation_options.js?v=5929fcd5"></script>
@@ -56,7 +56,7 @@
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.REDUNDANCY_MANAGER_SERVICE_UID">
 <span class="target" id="group__redundancy__manager__types_1ga35fa18a9fe2fed2607e28574ccba5e94"></span><span class="sig-name descname"><span class="n"><span class="pre">REDUNDANCY_MANAGER_SERVICE_UID</span></span></span><a class="headerlink" href="#c.REDUNDANCY_MANAGER_SERVICE_UID" title="Link to this definition">¶</a><br /></dt>
-<dd><p>Service Unique Identifier (16-bit). Used to construct unique Event IDs. 0x5366 = “Sf” (SafeMode/System Fault) </p>
+<dd><p>Service Unique Identifier (16-bit). Used to construct unique Event IDs. 0x5366 = “Sf” (SafeMode/System Fault). </p>
 </dd></dl>
 
 <dl class="cpp macro">
@@ -109,7 +109,7 @@
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-typedefs">Typedefs</p>
 <dl class="cpp type">
 <dt class="sig sig-object cpp" id="_CPPv412fault_code_t">
-<span id="_CPPv312fault_code_t"></span><span id="_CPPv212fault_code_t"></span><span id="fault_code_t"></span><span class="target" id="group__redundancy__manager__types_1gae3f1b00192fdb0e53f5e0058986de5e8"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fault_code_t</span></span></span><a class="headerlink" href="#_CPPv412fault_code_t" title="Link to this definition">¶</a><br /></dt>
+<span id="_CPPv312fault_code_t"></span><span id="_CPPv212fault_code_t"></span><span id="fault_code_t"></span><span class="target" id="group__redundancy__manager__types_1gac383ae3c52a53ffcfc0473229d66dd0d"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fault_code_t</span></span></span><a class="headerlink" href="#_CPPv412fault_code_t" title="Link to this definition">¶</a><br /></dt>
 <dd><p>Service-specific error code. </p>
 <p>Specific codes are defined in the reporting service’s header. Example: A FAULT_SOURCE_RAIL might report RAIL_FAULT_OVERCURRENT. </p>
 </dd></dl>
@@ -127,7 +127,7 @@
 <span id="_CPPv3N29redundancy_manager_event_id_t32REDUNDANCY_EVENT_CRITICAL_HEALTHE"></span><span id="_CPPv2N29redundancy_manager_event_id_t32REDUNDANCY_EVENT_CRITICAL_HEALTHE"></span><span class="target" id="group__redundancy__manager__types_1gga88dbce3650b91fe162147fa11d03c50da1f6b5397fa23ebba81aa4ff7c9e41733"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">REDUNDANCY_EVENT_CRITICAL_HEALTH</span></span></span><a class="headerlink" href="#_CPPv4N29redundancy_manager_event_id_t32REDUNDANCY_EVENT_CRITICAL_HEALTHE" title="Link to this definition">¶</a><br /></dt>
 <dd><p>Published when system enters critical health state. </p>
 <p>Applications should initiate Safe Mode transition.</p>
-<p>Payload: system_health_t (always SYSTEM_HEALTH_FAULT) </p>
+<p>Payload: <a class="reference internal" href="#group__redundancy__manager__types_1ga0e80690e3278646a3c63a266cbd9269d"><span class="std std-ref">system_health_t</span></a> (always SYSTEM_HEALTH_FAULT) </p>
 </dd></dl>
 
 <dl class="cpp enumerator">
@@ -135,7 +135,7 @@
 <span id="_CPPv3N29redundancy_manager_event_id_t32REDUNDANCY_EVENT_HEALTH_DEGRADEDE"></span><span id="_CPPv2N29redundancy_manager_event_id_t32REDUNDANCY_EVENT_HEALTH_DEGRADEDE"></span><span class="target" id="group__redundancy__manager__types_1gga88dbce3650b91fe162147fa11d03c50da8e12e4458b810b4fa6c4f7b1a4f23dca"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">REDUNDANCY_EVENT_HEALTH_DEGRADED</span></span></span><a class="headerlink" href="#_CPPv4N29redundancy_manager_event_id_t32REDUNDANCY_EVENT_HEALTH_DEGRADEDE" title="Link to this definition">¶</a><br /></dt>
 <dd><p>Published when system health becomes degraded. </p>
 <p>Mission can continue with reduced capability. Services may need to adapt (e.g., reduce power consumption, disable non-critical features).</p>
-<p>Payload: system_health_t (always SYSTEM_HEALTH_DEGRADED) </p>
+<p>Payload: <a class="reference internal" href="#group__redundancy__manager__types_1ga0e80690e3278646a3c63a266cbd9269d"><span class="std std-ref">system_health_t</span></a> (always SYSTEM_HEALTH_DEGRADED) </p>
 </dd></dl>
 
 <dl class="cpp enumerator">
@@ -143,7 +143,7 @@
 <span id="_CPPv3N29redundancy_manager_event_id_t33REDUNDANCY_EVENT_HEALTH_RECOVEREDE"></span><span id="_CPPv2N29redundancy_manager_event_id_t33REDUNDANCY_EVENT_HEALTH_RECOVEREDE"></span><span class="target" id="group__redundancy__manager__types_1gga88dbce3650b91fe162147fa11d03c50da8a44504bc25e771803f2ccc78222f6a5"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">REDUNDANCY_EVENT_HEALTH_RECOVERED</span></span></span><a class="headerlink" href="#_CPPv4N29redundancy_manager_event_id_t33REDUNDANCY_EVENT_HEALTH_RECOVEREDE" title="Link to this definition">¶</a><br /></dt>
 <dd><p>Published when system recovers to nominal health. </p>
 <p>All critical and degraded faults have been cleared.</p>
-<p>Payload: system_health_t (always SYSTEM_HEALTH_OK) </p>
+<p>Payload: <a class="reference internal" href="#group__redundancy__manager__types_1ga0e80690e3278646a3c63a266cbd9269d"><span class="std std-ref">system_health_t</span></a> (always SYSTEM_HEALTH_OK) </p>
 </dd></dl>
 
 <dl class="cpp enumerator">
@@ -160,7 +160,7 @@
 <span id="_CPPv3N29redundancy_manager_event_id_t36REDUNDANCY_EVENT_COMPONENT_RECOVEREDE"></span><span id="_CPPv2N29redundancy_manager_event_id_t36REDUNDANCY_EVENT_COMPONENT_RECOVEREDE"></span><span class="target" id="group__redundancy__manager__types_1gga88dbce3650b91fe162147fa11d03c50da0c7a31bad4666871ab004f94b96e3f9c"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">REDUNDANCY_EVENT_COMPONENT_RECOVERED</span></span></span><a class="headerlink" href="#_CPPv4N29redundancy_manager_event_id_t36REDUNDANCY_EVENT_COMPONENT_RECOVEREDE" title="Link to this definition">¶</a><br /></dt>
 <dd><p>Published when a degraded component recovers. </p>
 <p>Services may optionally switch back to primary hardware.</p>
-<p>Payload: component_id_t </p>
+<p>Payload: <a class="reference internal" href="#group__redundancy__manager__types_1ga7c14751f737d5413dc48d18c920c8053"><span class="std std-ref">component_id_t</span></a></p>
 </dd></dl>
 
 <dl class="cpp enumerator">
@@ -810,7 +810,7 @@
       &#169;2025, FerretCode.
       
       |
-      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.1.0</a>
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.2.0</a>
       &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
       
       |
