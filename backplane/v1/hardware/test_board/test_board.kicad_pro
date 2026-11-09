@@ -40,8 +40,8 @@
         "other_text_upright": false,
         "pads": {
           "drill": 0.0,
-          "height": 0.625,
-          "width": 0.35
+          "height": 0.95,
+          "width": 0.9
         },
         "silk_line_width": 0.1,
         "silk_text_italic": false,
@@ -60,7 +60,7 @@
           "hatch_smoothing_level": 0,
           "hatch_smoothing_value": 0.1,
           "hatch_thickness": 1.0,
-          "min_clearance": 0.3,
+          "min_clearance": 0.2,
           "min_island_area": 10.0,
           "min_thickness": 0.25,
           "pad_connection": 2,
@@ -83,10 +83,6 @@
         ],
         [
           "lib_footprint_mismatch|127000000|65009650|e5bdda01-b222-431c-a6c8-d2c0ac26c68d|00000000-0000-0000-0000-000000000000",
-          ""
-        ],
-        [
-          "lib_footprint_mismatch|168762501|116075000|9541779d-a26d-4958-a3b5-b7fd173daa4a|00000000-0000-0000-0000-000000000000",
           ""
         ]
       ],
@@ -171,10 +167,10 @@
         "min_silk_clearance": 0.0,
         "min_text_height": 0.8,
         "min_text_thickness": 0.08,
-        "min_through_hole_diameter": 0.3,
+        "min_through_hole_diameter": 0.15,
         "min_track_width": 0.1,
-        "min_via_annular_width": 0.1,
-        "min_via_diameter": 0.5,
+        "min_via_annular_width": 0.05,
+        "min_via_diameter": 0.25,
         "solder_mask_to_copper_clearance": 0.005,
         "use_height_for_length_calcs": true
       },
@@ -226,6 +222,7 @@
         0.0,
         0.1,
         0.2,
+        0.3,
         0.5,
         1.0
       ],
@@ -495,7 +492,7 @@
       "field_name_whitespace": "warning",
       "footprint_filter": "ignore",
       "footprint_link_issues": "warning",
-      "four_way_junction": "error",
+      "four_way_junction": "ignore",
       "ground_pin_not_ground": "warning",
       "hier_label_mismatch": "error",
       "isolated_pin_label": "warning",
@@ -750,12 +747,18 @@
           "group_by": false,
           "label": "Breakdown Voltage",
           "name": "Breakdown Voltage",
-          "show": false
+          "show": true
         },
         {
           "group_by": false,
           "label": "Tolerance",
           "name": "Tolerance",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "MPN",
+          "name": "MPN",
           "show": false
         }
       ],
@@ -815,7 +818,7 @@
         "uuid": "b20f5a9e-495e-48d8-8648-bd5c7d9b4620"
       }
     ],
-    "used_designators": "#PWR48,#PWR51,#PWR66-67,#PWR70-71,TP1,R21",
+    "used_designators": "#FLG1,C2-3,C25-26,C33-35,Q1,Q3,U1,U12,#PWR48,#PWR51-53,#PWR58,#PWR66-67,#PWR70-71,TP1,TP3,R21-22,R28-32,R40-43",
     "variants": []
   },
   "sheets": [
@@ -838,6 +841,10 @@
     [
       "0979fcb4-71c4-466b-b95e-0603286419a0",
       "USB & Power OR"
+    ],
+    [
+      "fb94126e-c466-491d-b22f-f50a0ea4b90e",
+      "Burnwire eFuse"
     ]
   ],
   "text_variables": {},
