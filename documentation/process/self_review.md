@@ -2,11 +2,11 @@
 
 ## How to Use This
 
-Before submitting any of your own PRs, design review requests, or ATP sign-offs:
+Before submitting any of your own PRs, changes, or design review requests:
 
-1. Run the relevant one-page checklist against your own work, honestly.
+1. Use the checklists relevant to your work and check against them, honestly.
 2. Add one short entry below.
-3. Get one other person (co-lead, faculty advisor, or a peer team member) to actually look at it and countersign.
+3. Get one other person (co-lead, faculty advisor, or a team member) to actually look at it and sign off.
 
 ## Log
 
@@ -26,5 +26,5 @@ Before submitting any of your own PRs, design review requests, or ATP sign-offs:
 
 ## Guidance for Notes
 
-- "N/A because X" is a fine answer
+- "N/A because X" is a fine answer, just provide a reason
 - Don't skip this even under time pressure; checking yourself will catch mistakes

@@ -45,7 +45,6 @@ Reserve a small number of spare pins (already budgeted in the pin-budget methodo
 ## Open Items
 
 - Define the specific guide pin position/diameter table per slot, and add it to the pinout ICD
-- Confirm the number of spare pins available for the electronic slot-ID scheme against the existing pin-budget worksheet
 - Decide the exact slot-ID encoding (e.g., grounded pin pattern vs. a small resistor-divider ID vs. a single-wire ID read over an ADC pin)
 
 ## References
