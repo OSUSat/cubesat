@@ -1,5 +1,5 @@
 # Bring-Up / Test Checklist
-*One page. Pass/fail only. Full context: [Schematic & Layout Design Guidelines](../design_guidelines/schematic_layout_design.md), [Writing Acceptance Test Procedures](../design_guidelines/writing_atps.md)*
+*Pass/fail only.*
 
 ## Document Control
 
