@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="bsp_2hal__driver_2Src_2stm32l4xx__hal__gpio_8c" kind="file" language="C++">
     <compoundname>stm32l4xx_hal_gpio.c</compoundname>
     <includes local="yes">stm32l4xx_hal.h</includes>
@@ -104,23 +104,30 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 
   (#) The HSE oscillator pins OSC_IN/OSC_OUT can be used as
       general purpose PH0 and PH1, respectively, when the HSE oscillator is off.
-      The HSE has priority over the GPIO function.</verbatim> </para>
+      The HSE has priority over the GPIO function.
+</verbatim> </para>
     </detaileddescription>
     <programlisting>
 <codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
 <codeline lineno="105"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Includes<sp/>------------------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="106"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;stm32l4xx_hal.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
 <codeline lineno="123"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>HAL_GPIO_MODULE_ENABLED</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="124"><highlight class="normal"></highlight></codeline>
 <codeline lineno="125"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>typedef<sp/>-----------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="126"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>defines<sp/>-----------------------------------------------------------*/</highlight></codeline>
-<codeline lineno="130"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>GPIO_NUMBER<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(16u)</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>defines<sp/>-----------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>GPIO_NUMBER<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(16u)</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
 <codeline lineno="135"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>macros<sp/>------------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="136"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>variables<sp/>---------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="137"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>function<sp/>prototypes<sp/>-----------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="138"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Exported<sp/>functions<sp/>--------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
 <codeline lineno="163"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__GPIO__Exported__Functions__Group1_1ga41bda93b6dd639e4905fdb1454eff98e" kindref="member">HAL_GPIO_Init</ref>(<ref refid="structGPIO__TypeDef" kindref="compound">GPIO_TypeDef</ref><sp/><sp/>*GPIOx,<sp/><ref refid="structGPIO__InitTypeDef" kindref="compound">GPIO_InitTypeDef</ref><sp/>*GPIO_Init)</highlight></codeline>
 <codeline lineno="164"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="165"><highlight class="normal"><sp/><sp/>uint32_t<sp/>position<sp/>=<sp/>0x00u;</highlight></codeline>
@@ -321,6 +328,8 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="367"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="368"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="369"><highlight class="normal"></highlight></codeline>
+<codeline lineno="373"><highlight class="normal"></highlight></codeline>
+<codeline lineno="385"><highlight class="normal"></highlight></codeline>
 <codeline lineno="393"><highlight class="normal"><ref refid="group__GPIO__Exported__Types_1ga5b3ef0486b179415581eb342e0ea6b43" kindref="member">GPIO_PinState</ref><sp/><ref refid="group__GPIO__Exported__Functions__Group2_1gaf2b819ea6551319ddd5670db318d2e4e" kindref="member">HAL_GPIO_ReadPin</ref>(<ref refid="structGPIO__TypeDef" kindref="compound">GPIO_TypeDef</ref>*<sp/>GPIOx,<sp/>uint16_t<sp/>GPIO_Pin)</highlight></codeline>
 <codeline lineno="394"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="395"><highlight class="normal"><sp/><sp/><ref refid="group__GPIO__Exported__Types_1ga5b3ef0486b179415581eb342e0ea6b43" kindref="member">GPIO_PinState</ref><sp/>bitstatus;</highlight></codeline>
@@ -419,7 +428,12 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="531"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="532"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="533"><highlight class="normal"></highlight></codeline>
-<codeline lineno="543"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>HAL_GPIO_MODULE_ENABLED<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="537"><highlight class="normal"></highlight></codeline>
+<codeline lineno="538"><highlight class="normal"></highlight></codeline>
+<codeline lineno="542"><highlight class="normal"></highlight></codeline>
+<codeline lineno="543"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>HAL_GPIO_MODULE_ENABLED<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="547"><highlight class="normal"></highlight></codeline>
+<codeline lineno="551"><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Src/stm32l4xx_hal_gpio.c"/>
   </compounddef>

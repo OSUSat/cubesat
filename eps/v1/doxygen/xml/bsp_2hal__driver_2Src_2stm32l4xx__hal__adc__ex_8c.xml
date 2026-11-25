@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="bsp_2hal__driver_2Src_2stm32l4xx__hal__adc__ex_8c" kind="file" language="C++">
     <compoundname>stm32l4xx_hal_adc_ex.c</compoundname>
     <includes local="yes">stm32l4xx_hal.h</includes>
@@ -35,17 +35,22 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
     </detaileddescription>
     <programlisting>
 <codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
 <codeline lineno="32"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Includes<sp/>------------------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;stm32l4xx_hal.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
 <codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>HAL_ADC_MODULE_ENABLED</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="45"><highlight class="normal"></highlight></codeline>
 <codeline lineno="46"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>typedef<sp/>-----------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="47"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>define<sp/>------------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
 <codeline lineno="53"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ADC_JSQR_FIELDS<sp/><sp/><sp/><sp/><sp/><sp/>((ADC_JSQR_JL<sp/>|<sp/>ADC_JSQR_JEXTSEL<sp/>|<sp/>ADC_JSQR_JEXTEN<sp/>|\</highlight></codeline>
 <codeline lineno="54"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ADC_JSQR_JSQ1<sp/><sp/>|<sp/>ADC_JSQR_JSQ2<sp/>|\</highlight></codeline>
-<codeline lineno="55"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ADC_JSQR_JSQ3<sp/>|<sp/>ADC_JSQR_JSQ4<sp/>))<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ADC_JSQR_JSQ3<sp/>|<sp/>ADC_JSQR_JSQ4<sp/>))<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
 <codeline lineno="58"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Fixed<sp/>timeout<sp/>value<sp/>for<sp/>ADC<sp/>calibration.<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="59"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Values<sp/>defined<sp/>to<sp/>be<sp/>higher<sp/>than<sp/>worst<sp/>cases:<sp/>maximum<sp/>ratio<sp/>between<sp/>ADC<sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="60"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>and<sp/>CPU<sp/>clock<sp/>frequencies.<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
@@ -53,12 +58,16 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="62"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>source<sp/>PLL<sp/>SAI<sp/>8MHz,<sp/>ADC<sp/>clock<sp/>prescaler<sp/>256),<sp/>CPU<sp/>frequency<sp/>80MHz.<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="63"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Calibration<sp/>time<sp/>max<sp/>=<sp/>116<sp/>/<sp/>fADC<sp/>(refer<sp/>to<sp/>datasheet)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="64"><highlight class="normal"></highlight><highlight class="comment">/*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>296<sp/>960<sp/>CPU<sp/>cycles<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="65"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ADC_CALIBRATION_TIMEOUT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(296960UL)<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ADC_CALIBRATION_TIMEOUT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(296960UL)<sp/><sp/><sp/></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
 <codeline lineno="71"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>macro<sp/>-------------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="72"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>variables<sp/>---------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="73"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>function<sp/>prototypes<sp/>-----------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="74"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Exported<sp/>functions<sp/>--------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
 <codeline lineno="119"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/><ref refid="group__ADCEx__Exported__Functions__Group1_1ga12d140e07af14ab117239e9d0b4a6545" kindref="member">HAL_ADCEx_Calibration_Start</ref>(<ref refid="structADC__HandleTypeDef" kindref="compound">ADC_HandleTypeDef</ref><sp/>*hadc,<sp/>uint32_t<sp/>SingleDiff)</highlight></codeline>
 <codeline lineno="120"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="121"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/>tmp_hal_status;</highlight></codeline>
@@ -695,7 +704,7 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="836"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>tmp_hal_status;</highlight></codeline>
 <codeline lineno="837"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="838"><highlight class="normal"></highlight></codeline>
-<codeline lineno="839"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(ADC_MULTIMODE_SUPPORT)</highlight></codeline>
+<codeline lineno="839"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(ADC_MULTIMODE_SUPPORT)</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="855"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/>HAL_ADCEx_MultiModeStart_DMA(<ref refid="structADC__HandleTypeDef" kindref="compound">ADC_HandleTypeDef</ref><sp/>*hadc,<sp/>uint32_t<sp/>*pData,<sp/>uint32_t<sp/>Length)</highlight></codeline>
 <codeline lineno="856"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="857"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/>tmp_hal_status;</highlight></codeline>
@@ -1198,7 +1207,7 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="1455"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>tmp_hal_status;</highlight></codeline>
 <codeline lineno="1456"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="1457"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1458"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(ADC_MULTIMODE_SUPPORT)</highlight></codeline>
+<codeline lineno="1458"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(ADC_MULTIMODE_SUPPORT)</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1473"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/>HAL_ADCEx_RegularMultiModeStop_DMA(<ref refid="structADC__HandleTypeDef" kindref="compound">ADC_HandleTypeDef</ref><sp/>*hadc)</highlight></codeline>
 <codeline lineno="1474"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="1475"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/>tmp_hal_status;</highlight></codeline>
@@ -1331,6 +1340,8 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="1602"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="1603"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>ADC_MULTIMODE_SUPPORT<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1604"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1608"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1626"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1661"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/><ref refid="group__ADCEx__Exported__Functions__Group2_1ga09b616247441feb2799a94a4b3815ebe" kindref="member">HAL_ADCEx_InjectedConfigChannel</ref>(<ref refid="structADC__HandleTypeDef" kindref="compound">ADC_HandleTypeDef</ref><sp/>*hadc,</highlight></codeline>
 <codeline lineno="1662"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structADC__InjectionConfTypeDef" kindref="compound">ADC_InjectionConfTypeDef</ref><sp/>*pConfigInjected)</highlight></codeline>
 <codeline lineno="1663"><highlight class="normal">{</highlight></codeline>
@@ -1493,7 +1504,7 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="1820"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>2.<sp/>Continue<sp/>setting<sp/>of<sp/>context<sp/>under<sp/>definition<sp/>with<sp/>parameter<sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1821"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/><sp/><sp/><sp/>related<sp/>to<sp/>each<sp/>channel:<sp/>channel<sp/>rank<sp/>sequence<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1822"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Clear<sp/>the<sp/>old<sp/>JSQx<sp/>bits<sp/>for<sp/>the<sp/>selected<sp/>rank<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="1823"><highlight class="normal"><sp/><sp/><sp/><sp/>tmp_jsqr_context_queue_being_built<sp/>&amp;=<sp/>~ADC_JSQR_RK(<ref refid="group__Peripheral__Registers__Bits__Definition_1ga2f3069fb9d69bfc49bcd3baef5bfb263" kindref="member">ADC_SQR3_SQ10</ref>,<sp/>pConfigInjected-&gt;<ref refid="structADC__InjectionConfTypeDef_1af8a1717c0f5a5d0c7a705224f28a844f" kindref="member">InjectedRank</ref>);</highlight></codeline>
+<codeline lineno="1823"><highlight class="normal"><sp/><sp/><sp/><sp/>tmp_jsqr_context_queue_being_built<sp/>&amp;=<sp/><ref refid="group__ADCEx__Private__Macro__internal__HAL__driver_1ga948d0969ad01f1a26731d03f92080049" kindref="member">~ADC_JSQR_RK</ref>(<ref refid="group__Peripheral__Registers__Bits__Definition_1ga2f3069fb9d69bfc49bcd3baef5bfb263" kindref="member">ADC_SQR3_SQ10</ref>,<sp/>pConfigInjected-&gt;<ref refid="structADC__InjectionConfTypeDef_1af8a1717c0f5a5d0c7a705224f28a844f" kindref="member">InjectedRank</ref>);</highlight></codeline>
 <codeline lineno="1824"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1825"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Set<sp/>the<sp/>JSQx<sp/>bits<sp/>for<sp/>the<sp/>selected<sp/>rank<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1826"><highlight class="normal"><sp/><sp/><sp/><sp/>tmp_jsqr_context_queue_being_built<sp/>|=<sp/><ref refid="group__ADCEx__Private__Macro__internal__HAL__driver_1ga948d0969ad01f1a26731d03f92080049" kindref="member">ADC_JSQR_RK</ref>(pConfigInjected-&gt;<ref refid="structADC__InjectionConfTypeDef_1aad0cab6ed3f66e8ffa4bd0490298b715" kindref="member">InjectedChannel</ref>,<sp/>pConfigInjected-&gt;<ref refid="structADC__InjectionConfTypeDef_1af8a1717c0f5a5d0c7a705224f28a844f" kindref="member">InjectedRank</ref>);</highlight></codeline>
@@ -1769,7 +1780,7 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="2096"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>tmp_hal_status;</highlight></codeline>
 <codeline lineno="2097"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="2098"><highlight class="normal"></highlight></codeline>
-<codeline lineno="2099"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(ADC_MULTIMODE_SUPPORT)</highlight></codeline>
+<codeline lineno="2099"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(ADC_MULTIMODE_SUPPORT)</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2116"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/>HAL_ADCEx_MultiModeConfigChannel(<ref refid="structADC__HandleTypeDef" kindref="compound">ADC_HandleTypeDef</ref><sp/>*hadc,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>ADC_MultiModeTypeDef<sp/>*pMultimode)</highlight></codeline>
 <codeline lineno="2117"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="2118"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/>tmp_hal_status<sp/>=<sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>;</highlight></codeline>
@@ -1980,7 +1991,10 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="2366"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>tmp_hal_status;</highlight></codeline>
 <codeline lineno="2367"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="2368"><highlight class="normal"></highlight></codeline>
-<codeline lineno="2377"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>HAL_ADC_MODULE_ENABLED<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="2372"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2376"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2377"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>HAL_ADC_MODULE_ENABLED<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2381"><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Src/stm32l4xx_hal_adc_ex.c"/>
   </compounddef>

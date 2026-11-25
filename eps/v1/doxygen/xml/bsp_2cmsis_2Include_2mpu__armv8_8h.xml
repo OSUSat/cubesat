@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="bsp_2cmsis_2Include_2mpu__armv8_8h" kind="file" language="C++">
     <compoundname>mpu_armv8.h</compoundname>
     <innerclass refid="structARM__MPU__Region__t" prot="public">ARM_MPU_Region_t</innerclass>
@@ -18,7 +18,7 @@
         <name>ARM_MPU_ATTR_DEVICE</name>
         <initializer>( 0U )</initializer>
         <briefdescription>
-<para>Attribute for device memory (outer only) </para>
+<para>Attribute for device memory (outer only). </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
@@ -46,7 +46,7 @@
         <param><defname>WA</defname></param>
         <initializer>  (((NT &amp; 1U) &lt;&lt; 3U) | ((WB &amp; 1U) &lt;&lt; 2U) | ((RA &amp; 1U) &lt;&lt; 1U) | (WA &amp; 1U))</initializer>
         <briefdescription>
-<para>Attribute for normal memory (outer and inner) </para>
+<para>Attribute for normal memory (outer and inner). </para>
         </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
@@ -172,8 +172,7 @@
         <name>ARM_MPU_SH_NON</name>
         <initializer>(0U)</initializer>
         <briefdescription>
-<para>Normal memory non-shareable <linebreak/>
- </para>
+<para>Normal memory non-shareable. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
@@ -185,8 +184,7 @@
         <name>ARM_MPU_SH_OUTER</name>
         <initializer>(2U)</initializer>
         <briefdescription>
-<para>Normal memory outer shareable <linebreak/>
- </para>
+<para>Normal memory outer shareable. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
@@ -198,8 +196,7 @@
         <name>ARM_MPU_SH_INNER</name>
         <initializer>(3U)</initializer>
         <briefdescription>
-<para>Normal memory inner shareable <linebreak/>
- </para>
+<para>Normal memory inner shareable. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
@@ -912,12 +909,12 @@
 <codeline lineno="143"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="144"><highlight class="normal"><sp/><sp/><ref refid="group__CMSIS__Core__InstructionInterface_1gaf26a64b05700dcf057e3be7a1809ca35" kindref="member">__DMB</ref>();</highlight></codeline>
 <codeline lineno="145"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>SCB_SHCSR_MEMFAULTENA_Msk</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="146"><highlight class="normal"><sp/><sp/><ref refid="group__CMSIS__CORE_1gaaaf6477c2bde2f00f99e3c2fd1060b01" kindref="member">SCB</ref>-&gt;SHCSR<sp/>&amp;=<sp/>~SCB_SHCSR_MEMFAULTENA_Msk;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><ref refid="group__CMSIS__CORE_1gaaaf6477c2bde2f00f99e3c2fd1060b01" kindref="member">SCB</ref>-&gt;SHCSR<sp/>&amp;=<sp/><ref refid="group__CMSIS__CORE_1gaf084424fa1f69bea36a1c44899d83d17" kindref="member">~SCB_SHCSR_MEMFAULTENA_Msk</ref>;</highlight></codeline>
 <codeline lineno="147"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="148"><highlight class="normal"><sp/><sp/>MPU-&gt;CTRL<sp/><sp/>&amp;=<sp/>~MPU_CTRL_ENABLE_Msk;</highlight></codeline>
 <codeline lineno="149"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="150"><highlight class="normal"></highlight></codeline>
-<codeline lineno="151"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>MPU_NS</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>MPU_NS</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="155"><highlight class="normal"><ref refid="bootstrap_2Drivers_2CMSIS_2Include_2cmsis__armcc_8h_1aba87361bfad2ae52cfe2f40c1a1dbf9c" kindref="member">__STATIC_INLINE</ref><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>ARM_MPU_Enable_NS(uint32_t<sp/>MPU_Control)</highlight></codeline>
 <codeline lineno="156"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="157"><highlight class="normal"><sp/><sp/>MPU_NS-&gt;CTRL<sp/>=<sp/>MPU_Control<sp/>|<sp/>MPU_CTRL_ENABLE_Msk;</highlight></codeline>
@@ -932,7 +929,7 @@
 <codeline lineno="168"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="169"><highlight class="normal"><sp/><sp/><ref refid="group__CMSIS__Core__InstructionInterface_1gaf26a64b05700dcf057e3be7a1809ca35" kindref="member">__DMB</ref>();</highlight></codeline>
 <codeline lineno="170"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>SCB_SHCSR_MEMFAULTENA_Msk</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="171"><highlight class="normal"><sp/><sp/>SCB_NS-&gt;SHCSR<sp/>&amp;=<sp/>~SCB_SHCSR_MEMFAULTENA_Msk;</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/>SCB_NS-&gt;SHCSR<sp/>&amp;=<sp/><ref refid="group__CMSIS__CORE_1gaf084424fa1f69bea36a1c44899d83d17" kindref="member">~SCB_SHCSR_MEMFAULTENA_Msk</ref>;</highlight></codeline>
 <codeline lineno="172"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="173"><highlight class="normal"><sp/><sp/>MPU_NS-&gt;CTRL<sp/><sp/>&amp;=<sp/>~MPU_CTRL_ENABLE_Msk;</highlight></codeline>
 <codeline lineno="174"><highlight class="normal">}</highlight></codeline>
@@ -956,7 +953,7 @@
 <codeline lineno="201"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Drivers_2CMSIS_2Include_2mpu__armv8_8h_1a1799413f08a157d636a1491371c15ce2" kindref="member">ARM_MPU_SetMemAttrEx</ref>(MPU,<sp/>idx,<sp/>attr);</highlight></codeline>
 <codeline lineno="202"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="203"><highlight class="normal"></highlight></codeline>
-<codeline lineno="204"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>MPU_NS</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>MPU_NS</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="209"><highlight class="normal"><ref refid="bootstrap_2Drivers_2CMSIS_2Include_2cmsis__armcc_8h_1aba87361bfad2ae52cfe2f40c1a1dbf9c" kindref="member">__STATIC_INLINE</ref><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>ARM_MPU_SetMemAttr_NS(uint8_t<sp/>idx,<sp/>uint8_t<sp/>attr)</highlight></codeline>
 <codeline lineno="210"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="211"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Drivers_2CMSIS_2Include_2mpu__armv8_8h_1a1799413f08a157d636a1491371c15ce2" kindref="member">ARM_MPU_SetMemAttrEx</ref>(MPU_NS,<sp/>idx,<sp/>attr);</highlight></codeline>
@@ -974,26 +971,26 @@
 <codeline lineno="230"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Drivers_2CMSIS_2Include_2mpu__armv8_8h_1a01fa1151c9ec0ba5de76f908c0999316" kindref="member">ARM_MPU_ClrRegionEx</ref>(MPU,<sp/>rnr);</highlight></codeline>
 <codeline lineno="231"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="232"><highlight class="normal"></highlight></codeline>
-<codeline lineno="233"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>MPU_NS</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>MPU_NS</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="237"><highlight class="normal"><ref refid="bootstrap_2Drivers_2CMSIS_2Include_2cmsis__armcc_8h_1aba87361bfad2ae52cfe2f40c1a1dbf9c" kindref="member">__STATIC_INLINE</ref><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>ARM_MPU_ClrRegion_NS(uint32_t<sp/>rnr)</highlight></codeline>
 <codeline lineno="238"><highlight class="normal">{<sp/><sp/></highlight></codeline>
 <codeline lineno="239"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Drivers_2CMSIS_2Include_2mpu__armv8_8h_1a01fa1151c9ec0ba5de76f908c0999316" kindref="member">ARM_MPU_ClrRegionEx</ref>(MPU_NS,<sp/>rnr);</highlight></codeline>
 <codeline lineno="240"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="241"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="242"><highlight class="normal"></highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="249" refid="bsp_2cmsis_2Include_2mpu__armv8_8h_1a3d50ba8546252bea959e45c8fdf16993" refkind="member"><highlight class="normal"><ref refid="bootstrap_2Drivers_2CMSIS_2Include_2cmsis__armcc_8h_1aba87361bfad2ae52cfe2f40c1a1dbf9c" kindref="member">__STATIC_INLINE</ref><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="bootstrap_2Drivers_2CMSIS_2Include_2mpu__armv8_8h_1a3d50ba8546252bea959e45c8fdf16993" kindref="member">ARM_MPU_SetRegionEx</ref>(MPU_Type*<sp/>mpu,<sp/>uint32_t<sp/>rnr,<sp/>uint32_t<sp/>rbar,<sp/>uint32_t<sp/>rlar)</highlight></codeline>
 <codeline lineno="250"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="251"><highlight class="normal"><sp/><sp/>mpu-&gt;RNR<sp/>=<sp/>rnr;</highlight></codeline>
 <codeline lineno="252"><highlight class="normal"><sp/><sp/>mpu-&gt;RBAR<sp/>=<sp/>rbar;</highlight></codeline>
 <codeline lineno="253"><highlight class="normal"><sp/><sp/>mpu-&gt;RLAR<sp/>=<sp/>rlar;</highlight></codeline>
 <codeline lineno="254"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="255"><highlight class="normal"></highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="261" refid="bsp_2cmsis_2Include_2mpu__armv8_8h_1a6d7f220015c070c0e469948c1775ee3d" refkind="member"><highlight class="normal"><ref refid="bootstrap_2Drivers_2CMSIS_2Include_2cmsis__armcc_8h_1aba87361bfad2ae52cfe2f40c1a1dbf9c" kindref="member">__STATIC_INLINE</ref><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="bootstrap_2Drivers_2CMSIS_2Include_2mpu__armv8_8h_1a6d7f220015c070c0e469948c1775ee3d" kindref="member">ARM_MPU_SetRegion</ref>(uint32_t<sp/>rnr,<sp/>uint32_t<sp/>rbar,<sp/>uint32_t<sp/>rlar)</highlight></codeline>
 <codeline lineno="262"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="263"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Drivers_2CMSIS_2Include_2mpu__armv8_8h_1a3d50ba8546252bea959e45c8fdf16993" kindref="member">ARM_MPU_SetRegionEx</ref>(MPU,<sp/>rnr,<sp/>rbar,<sp/>rlar);</highlight></codeline>
 <codeline lineno="264"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="265"><highlight class="normal"></highlight></codeline>
-<codeline lineno="266"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>MPU_NS</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>MPU_NS</highlight><highlight class="preprocessor"><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="272"><highlight class="normal"><ref refid="bootstrap_2Drivers_2CMSIS_2Include_2cmsis__armcc_8h_1aba87361bfad2ae52cfe2f40c1a1dbf9c" kindref="member">__STATIC_INLINE</ref><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>ARM_MPU_SetRegion_NS(uint32_t<sp/>rnr,<sp/>uint32_t<sp/>rbar,<sp/>uint32_t<sp/>rlar)</highlight></codeline>
 <codeline lineno="273"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="274"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Drivers_2CMSIS_2Include_2mpu__armv8_8h_1a3d50ba8546252bea959e45c8fdf16993" kindref="member">ARM_MPU_SetRegionEx</ref>(MPU_NS,<sp/>rnr,<sp/>rbar,<sp/>rlar);<sp/><sp/></highlight></codeline>
@@ -1039,7 +1036,7 @@
 <codeline lineno="330"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Drivers_2CMSIS_2Include_2mpu__armv8_8h_1ab6094419f2abd678f1f3b121cd115049" kindref="member">ARM_MPU_LoadEx</ref>(MPU,<sp/>rnr,<sp/>table,<sp/>cnt);</highlight></codeline>
 <codeline lineno="331"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="332"><highlight class="normal"></highlight></codeline>
-<codeline lineno="333"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>MPU_NS</highlight></codeline>
+<codeline lineno="333"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>MPU_NS</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="339"><highlight class="normal"><ref refid="bootstrap_2Drivers_2CMSIS_2Include_2cmsis__armcc_8h_1aba87361bfad2ae52cfe2f40c1a1dbf9c" kindref="member">__STATIC_INLINE</ref><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>ARM_MPU_Load_NS(uint32_t<sp/>rnr,<sp/><ref refid="structARM__MPU__Region__t" kindref="compound">ARM_MPU_Region_t</ref><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">*<sp/>table,<sp/>uint32_t<sp/>cnt)<sp/></highlight></codeline>
 <codeline lineno="340"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="341"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Drivers_2CMSIS_2Include_2mpu__armv8_8h_1ab6094419f2abd678f1f3b121cd115049" kindref="member">ARM_MPU_LoadEx</ref>(MPU_NS,<sp/>rnr,<sp/>table,<sp/>cnt);</highlight></codeline>

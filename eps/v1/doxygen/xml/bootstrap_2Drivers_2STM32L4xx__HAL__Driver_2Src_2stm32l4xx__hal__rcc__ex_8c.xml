@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Src_2stm32l4xx__hal__rcc__ex_8c" kind="file" language="C++">
     <compoundname>stm32l4xx_hal_rcc_ex.c</compoundname>
     <includes local="yes">stm32l4xx_hal.h</includes>
@@ -32,13 +32,16 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
     </detaileddescription>
     <programlisting>
 <codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
 <codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Includes<sp/>------------------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;stm32l4xx_hal.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
 <codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>HAL_RCC_MODULE_ENABLED</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="37"><highlight class="normal"></highlight></codeline>
 <codeline lineno="38"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>typedef<sp/>-----------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="39"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>defines<sp/>-----------------------------------------------------------*/</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>defines<sp/>-----------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="43"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PLLSAI1_TIMEOUT_VALUE<sp/><sp/><sp/><sp/><sp/>2U<sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>2<sp/>ms<sp/>(minimum<sp/>Tick<sp/>+<sp/>1)<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PLLSAI2_TIMEOUT_VALUE<sp/><sp/><sp/><sp/><sp/>2U<sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>2<sp/>ms<sp/>(minimum<sp/>Tick<sp/>+<sp/>1)<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PLL_TIMEOUT_VALUE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>2U<sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>2<sp/>ms<sp/>(minimum<sp/>Tick<sp/>+<sp/>1)<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
@@ -49,10 +52,11 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="50"><highlight class="normal"></highlight></codeline>
 <codeline lineno="51"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__LSCO_CLK_ENABLE()<sp/><sp/><sp/><sp/><sp/><sp/><sp/>__HAL_RCC_GPIOA_CLK_ENABLE()</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="52"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LSCO_GPIO_PORT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>GPIOA</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="53"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LSCO_PIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>GPIO_PIN_2</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LSCO_PIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>GPIO_PIN_2</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
 <codeline lineno="58"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>macros<sp/>------------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="59"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>variables<sp/>---------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="60"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>function<sp/>prototypes<sp/>-----------------------------------------------*/</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>function<sp/>prototypes<sp/>-----------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="64"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(RCC_PLLSAI1_SUPPORT)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="65"><highlight class="normal"></highlight></codeline>
 <codeline lineno="66"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/>RCCEx_PLLSAI1_Config(RCC_PLLSAI1InitTypeDef<sp/>*PllSai1,<sp/>uint32_t<sp/>Divider);</highlight></codeline>
@@ -69,9 +73,11 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="77"><highlight class="normal"></highlight></codeline>
 <codeline lineno="78"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>uint32_t<sp/>RCCEx_GetSAIxPeriphCLKFreq(uint32_t<sp/>PeriphClk,<sp/>uint32_t<sp/>InputFrequency);</highlight></codeline>
 <codeline lineno="79"><highlight class="normal"></highlight></codeline>
-<codeline lineno="80"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>SAI1<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>SAI1<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
 <codeline lineno="85"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Exported<sp/>functions<sp/>--------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
 <codeline lineno="194"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/><ref refid="group__RCCEx__Exported__Functions__Group1_1ga0c0f61a1e2f47cc81bc43d83ba3e0d95" kindref="member">HAL_RCCEx_PeriphCLKConfig</ref>(<ref refid="structRCC__PeriphCLKInitTypeDef" kindref="compound">RCC_PeriphCLKInitTypeDef</ref><sp/><sp/>*PeriphClkInit)</highlight></codeline>
 <codeline lineno="195"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="196"><highlight class="normal"><sp/><sp/>uint32_t<sp/>tmpregister,<sp/>tickstart;<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>no<sp/>init<sp/>needed<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
@@ -1820,6 +1826,8 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="2028"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">(frequency);</highlight></codeline>
 <codeline lineno="2029"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="2030"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2034"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2049"><highlight class="normal"></highlight></codeline>
 <codeline lineno="2050"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(RCC_PLLSAI1_SUPPORT)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2051"><highlight class="normal"></highlight></codeline>
 <codeline lineno="2058"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/>HAL_RCCEx_EnablePLLSAI1(RCC_PLLSAI1InitTypeDef<sp/><sp/>*PLLSAI1Init)</highlight></codeline>
@@ -2188,7 +2196,7 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="2504"><highlight class="normal"><sp/><sp/><ref refid="group__Exported__macros_1ga133aae6fc0d41bffab39ab223a7001de" kindref="member">CLEAR_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga74944438a086975793d26ae48d5882d4" kindref="member">RCC</ref>-&gt;CR,<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1ga284cff3de5ace8d67ac612240c20421f" kindref="member">RCC_CR_MSIPLLEN</ref>)<sp/>;</highlight></codeline>
 <codeline lineno="2505"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="2506"><highlight class="normal"></highlight></codeline>
-<codeline lineno="2507"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined<sp/>(OCTOSPI1)<sp/>&amp;&amp;<sp/>defined<sp/>(OCTOSPI2)</highlight></codeline>
+<codeline lineno="2507"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined<sp/>(OCTOSPI1)<sp/>&amp;&amp;<sp/>defined<sp/>(OCTOSPI2)</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2515"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>HAL_RCCEx_OCTOSPIDelayConfig(uint32_t<sp/>Delay1,<sp/>uint32_t<sp/>Delay2)</highlight></codeline>
 <codeline lineno="2516"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="2517"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Core_2Inc_2stm32l4xx__hal__conf_8h_1a631dea7b230e600555f979c62af1de21" kindref="member">assert_param</ref>(IS_RCC_OCTOSPIDELAY(Delay1));</highlight></codeline>
@@ -2198,8 +2206,10 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="2521"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="2522"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>OCTOSPI1<sp/>&amp;&amp;<sp/>OCTOSPI2<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2523"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2527"><highlight class="normal"></highlight></codeline>
 <codeline lineno="2528"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(CRS)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2529"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2593"><highlight class="normal"></highlight></codeline>
 <codeline lineno="2599"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>HAL_RCCEx_CRSConfig(RCC_CRSInitTypeDef<sp/>*pInit)</highlight></codeline>
 <codeline lineno="2600"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="2601"><highlight class="normal"><sp/><sp/>uint32_t<sp/>value;<sp/><sp/></highlight><highlight class="comment">/*<sp/>no<sp/>init<sp/>needed<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
@@ -2433,8 +2443,11 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="2878"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2879"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="2880"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2884"><highlight class="normal"></highlight></codeline>
 <codeline lineno="2885"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>CRS<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2886"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2890"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2894"><highlight class="normal"></highlight></codeline>
 <codeline lineno="2895"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(RCC_PLLSAI1_SUPPORT)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2896"><highlight class="normal"></highlight></codeline>
 <codeline lineno="2907"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/>RCCEx_PLLSAI1_Config(RCC_PLLSAI1InitTypeDef<sp/>*PllSai1,<sp/>uint32_t<sp/>Divider)</highlight></codeline>
@@ -3059,7 +3072,12 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="3536"><highlight class="normal"></highlight></codeline>
 <codeline lineno="3537"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>SAI1<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="3538"><highlight class="normal"></highlight></codeline>
-<codeline lineno="3547"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>HAL_RCC_MODULE_ENABLED<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="3542"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3546"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3547"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>HAL_RCC_MODULE_ENABLED<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3551"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3555"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3556"><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rcc_ex.c"/>
   </compounddef>

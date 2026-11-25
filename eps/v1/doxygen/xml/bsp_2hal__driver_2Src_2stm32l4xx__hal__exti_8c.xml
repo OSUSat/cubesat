@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="bsp_2hal__driver_2Src_2stm32l4xx__hal__exti_8c" kind="file" language="C++">
     <compoundname>stm32l4xx_hal_exti.c</compoundname>
     <includes local="yes">stm32l4xx_hal.h</includes>
@@ -85,24 +85,31 @@ Copyright (c) 2018 STMicroelectronics. All rights reserved.</para>
 
   (#) Clear interrupt pending bit using HAL_EXTI_ClearPending().
 
-  (#) Generate software interrupt using HAL_EXTI_GenerateSWI().</verbatim> </para>
+  (#) Generate software interrupt using HAL_EXTI_GenerateSWI().
+</verbatim> </para>
     </detaileddescription>
     <programlisting>
 <codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
 <codeline lineno="85"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Includes<sp/>------------------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="86"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;stm32l4xx_hal.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
 <codeline lineno="103"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>HAL_EXTI_MODULE_ENABLED</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="104"><highlight class="normal"></highlight></codeline>
 <codeline lineno="105"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>typedef<sp/>-----------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="106"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>defines<sp/>------------------------------------------------------------*/</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>defines<sp/>------------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="110"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>EXTI_MODE_OFFSET<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x08u<sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>0x20:<sp/>offset<sp/>between<sp/>MCU<sp/>IMR/EMR<sp/>registers<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="111"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>EXTI_CONFIG_OFFSET<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x08u<sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>0x20:<sp/>offset<sp/>between<sp/>MCU<sp/>Rising/Falling<sp/>configuration<sp/>registers<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>EXTI_CONFIG_OFFSET<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x08u<sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>0x20:<sp/>offset<sp/>between<sp/>MCU<sp/>Rising/Falling<sp/>configuration<sp/>registers<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
 <codeline lineno="116"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>macros<sp/>------------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="117"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>variables<sp/>---------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="118"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>function<sp/>prototypes<sp/>-----------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="119"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Exported<sp/>functions<sp/>--------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
 <codeline lineno="143"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/><ref refid="group__EXTI__Exported__Functions__Group1_1ga21c31dc6d13f1e32b4352e00ab6ad2b3" kindref="member">HAL_EXTI_SetConfigLine</ref>(<ref refid="structEXTI__HandleTypeDef" kindref="compound">EXTI_HandleTypeDef</ref><sp/>*hexti,<sp/><ref refid="structEXTI__ConfigTypeDef" kindref="compound">EXTI_ConfigTypeDef</ref><sp/>*pExtiConfig)</highlight></codeline>
 <codeline lineno="144"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="145"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Drivers_2CMSIS_2Include_2core__armv81mml_8h_1aec43007d9998a0a0e01faede4133d6be" kindref="member">__IO</ref><sp/>uint32_t<sp/>*regaddr;</highlight></codeline>
@@ -408,6 +415,8 @@ Copyright (c) 2018 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="471"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="472"><highlight class="normal"></highlight></codeline>
 <codeline lineno="473"><highlight class="normal"></highlight></codeline>
+<codeline lineno="477"><highlight class="normal"></highlight></codeline>
+<codeline lineno="489"><highlight class="normal"></highlight></codeline>
 <codeline lineno="495"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__EXTI__Exported__Functions__Group2_1ga241422a810a8e2aeb0cd8467145d33bb" kindref="member">HAL_EXTI_IRQHandler</ref>(<ref refid="structEXTI__HandleTypeDef" kindref="compound">EXTI_HandleTypeDef</ref><sp/>*hexti)</highlight></codeline>
 <codeline lineno="496"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="497"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Drivers_2CMSIS_2Include_2core__armv81mml_8h_1aec43007d9998a0a0e01faede4133d6be" kindref="member">__IO</ref><sp/>uint32_t<sp/>*regaddr;</highlight></codeline>
@@ -512,7 +521,11 @@ Copyright (c) 2018 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="619"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="620"><highlight class="normal"></highlight></codeline>
 <codeline lineno="621"><highlight class="normal"></highlight></codeline>
-<codeline lineno="630"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>HAL_EXTI_MODULE_ENABLED<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="625"><highlight class="normal"></highlight></codeline>
+<codeline lineno="629"><highlight class="normal"></highlight></codeline>
+<codeline lineno="630"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>HAL_EXTI_MODULE_ENABLED<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="634"><highlight class="normal"></highlight></codeline>
+<codeline lineno="638"><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Src/stm32l4xx_hal_exti.c"/>
   </compounddef>

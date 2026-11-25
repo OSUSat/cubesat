@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="ring__buffer_8h" kind="file" language="C++">
     <compoundname>ring_buffer.h</compoundname>
     <includes local="no">stdbool.h</includes>
@@ -190,6 +190,7 @@
     </detaileddescription>
     <programlisting>
 <codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
 <codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>OSUSAT_RING_BUFFER_H</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OSUSAT_RING_BUFFER_H</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="19"><highlight class="normal"></highlight></codeline>
@@ -201,6 +202,8 @@
 <codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
 <codeline lineno="50" refid="structosusat__ring__buffer__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="51" refid="structosusat__ring__buffer__t_1a0380d3566dc1a9112ba3ad16a99b8ba7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>*<ref refid="structosusat__ring__buffer__t_1a0380d3566dc1a9112ba3ad16a99b8ba7" kindref="member">buffer</ref>;<sp/></highlight></codeline>
 <codeline lineno="52" refid="structosusat__ring__buffer__t_1af6f2337a4af4734debb8aaafe9a36996" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="structosusat__ring__buffer__t_1af6f2337a4af4734debb8aaafe9a36996" kindref="member">capacity</ref>;<sp/></highlight></codeline>
@@ -208,8 +211,9 @@
 <codeline lineno="54" refid="structosusat__ring__buffer__t_1af3f41d1103b57c2f47cce82d993b09c2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="structosusat__ring__buffer__t_1af3f41d1103b57c2f47cce82d993b09c2" kindref="member">tail</ref>;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="55" refid="structosusat__ring__buffer__t_1ada660c6a2fe8d842a3fba6d11b6eea9d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structosusat__ring__buffer__t_1ada660c6a2fe8d842a3fba6d11b6eea9d" kindref="member">overwrite</ref>;<sp/></highlight></codeline>
 <codeline lineno="57"><highlight class="normal">}<sp/><ref refid="structosusat__ring__buffer__t" kindref="compound">osusat_ring_buffer_t</ref>;</highlight></codeline>
-<codeline lineno="58"><highlight class="normal"></highlight></codeline>
-<sp/><highlight class="comment">//<sp/>end<sp/>osusat_ring_buffer_types</highlight><codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>end<sp/>osusat_ring_buffer_types</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
 <codeline lineno="80"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__osusat__ring__buffer__api_1ga0042234225cbcdf0809fb285062ec630" kindref="member">osusat_ring_buffer_init</ref>(<ref refid="structosusat__ring__buffer__t" kindref="compound">osusat_ring_buffer_t</ref><sp/>*rb,<sp/>uint8_t<sp/>*storage,</highlight></codeline>
 <codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="event__bus_8c_1ad721fc6ca6a3d6ba3bc506576622aab0" kindref="member">capacity</ref>,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>overwrite);</highlight></codeline>
 <codeline lineno="82"><highlight class="normal"></highlight></codeline>
@@ -228,9 +232,9 @@
 <codeline lineno="146"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="147"><highlight class="normal"></highlight></codeline>
 <codeline lineno="155"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="group__osusat__ring__buffer__api_1gaf165940d440c120602d91c2568570b69" kindref="member">osusat_ring_buffer_full</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structosusat__ring__buffer__t" kindref="compound">osusat_ring_buffer_t</ref><sp/>*rb);</highlight></codeline>
-<codeline lineno="156"><highlight class="normal"></highlight></codeline>
-<sp/><highlight class="comment">//<sp/>end<sp/>osusat_ring_buffer_api</highlight><codeline lineno="158"><highlight class="normal"></highlight></codeline>
-<sp/><highlight class="comment">//<sp/>end<sp/>osusat_ring_buffer</highlight><codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>end<sp/>osusat_ring_buffer_api</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>end<sp/>osusat_ring_buffer</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
 <codeline lineno="161"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="162"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="163"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>

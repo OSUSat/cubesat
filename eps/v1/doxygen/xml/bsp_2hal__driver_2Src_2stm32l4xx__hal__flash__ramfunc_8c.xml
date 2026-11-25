@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="bsp_2hal__driver_2Src_2stm32l4xx__hal__flash__ramfunc_8c" kind="file" language="C++">
     <compoundname>stm32l4xx_hal_flash_ramfunc.c</compoundname>
     <includes local="yes">stm32l4xx_hal.h</includes>
@@ -44,7 +44,8 @@
   *** GNU Compiler ***
   --------------------
   [..] RAM functions are defined using a specific toolchain attribute
-       &quot;__attribute__((section(&quot;.RamFunc&quot;)))&quot;.</verbatim></para>
+       &quot;__attribute__((section(&quot;.RamFunc&quot;)))&quot;.
+</verbatim></para>
 <para><simplesect kind="attention"><para></para>
 </simplesect>
 Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
@@ -52,9 +53,12 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
     </detaileddescription>
     <programlisting>
 <codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
 <codeline lineno="47"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Includes<sp/>------------------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;stm32l4xx_hal.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
 <codeline lineno="59"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>HAL_FLASH_MODULE_ENABLED</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="60"><highlight class="normal"></highlight></codeline>
 <codeline lineno="61"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>typedef<sp/>-----------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
@@ -64,6 +68,8 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="65"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>function<sp/>prototypes<sp/>-----------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="66"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Exported<sp/>functions<sp/>-------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
 <codeline lineno="91"><highlight class="normal">__RAM_FUNC<sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/><ref refid="group__FLASH__RAMFUNC__Exported__Functions__Group1_1ga3b58330ebe07fa667a61b23667c3e930" kindref="member">HAL_FLASHEx_EnableRunPowerDown</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
 <codeline lineno="92"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="93"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Enable<sp/>the<sp/>Power<sp/>Down<sp/>in<sp/>Run<sp/>mode*/</highlight><highlight class="normal"></highlight></codeline>
@@ -81,7 +87,7 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="110"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>;</highlight></codeline>
 <codeline lineno="111"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="112"><highlight class="normal"></highlight></codeline>
-<codeline lineno="113"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined<sp/>(STM32L4P5xx)<sp/>||<sp/>defined<sp/>(STM32L4Q5xx)<sp/>||<sp/>defined<sp/>(STM32L4R5xx)<sp/>||<sp/>defined<sp/>(STM32L4R7xx)<sp/>||<sp/>defined<sp/>(STM32L4R9xx)<sp/>||<sp/>defined<sp/>(STM32L4S5xx)<sp/>||<sp/>defined<sp/>(STM32L4S7xx)<sp/>||<sp/>defined<sp/>(STM32L4S9xx)</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined<sp/>(STM32L4P5xx)<sp/>||<sp/>defined<sp/>(STM32L4Q5xx)<sp/>||<sp/>defined<sp/>(STM32L4R5xx)<sp/>||<sp/>defined<sp/>(STM32L4R7xx)<sp/>||<sp/>defined<sp/>(STM32L4R9xx)<sp/>||<sp/>defined<sp/>(STM32L4S5xx)<sp/>||<sp/>defined<sp/>(STM32L4S7xx)<sp/>||<sp/>defined<sp/>(STM32L4S9xx)</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="129"><highlight class="normal">__RAM_FUNC<sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/>HAL_FLASHEx_OB_DBankConfig(uint32_t<sp/>DBankConfig)</highlight></codeline>
 <codeline lineno="130"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="131"><highlight class="normal"><sp/><sp/>uint32_t<sp/>count,<sp/>reg;</highlight></codeline>
@@ -183,10 +189,16 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="227"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="228"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="229"><highlight class="normal"></highlight></codeline>
+<codeline lineno="233"><highlight class="normal"></highlight></codeline>
 <codeline lineno="237"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>HAL_FLASH_MODULE_ENABLED<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="238"><highlight class="normal"></highlight></codeline>
 <codeline lineno="239"><highlight class="normal"></highlight></codeline>
 <codeline lineno="240"><highlight class="normal"></highlight></codeline>
+<codeline lineno="244"><highlight class="normal"></highlight></codeline>
+<codeline lineno="248"><highlight class="normal"></highlight></codeline>
+<codeline lineno="249"><highlight class="normal"></highlight></codeline>
+<codeline lineno="250"><highlight class="normal"></highlight></codeline>
+<codeline lineno="251"><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Src/stm32l4xx_hal_flash_ramfunc.c"/>
   </compounddef>

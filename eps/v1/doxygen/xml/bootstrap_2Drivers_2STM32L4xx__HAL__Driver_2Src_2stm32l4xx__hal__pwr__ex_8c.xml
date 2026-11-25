@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Src_2stm32l4xx__hal__pwr__ex_8c" kind="file" language="C++">
     <compoundname>stm32l4xx_hal_pwr_ex.c</compoundname>
     <includes local="yes">stm32l4xx_hal.h</includes>
@@ -31,9 +31,12 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
     </detaileddescription>
     <programlisting>
 <codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
 <codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Includes<sp/>------------------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;stm32l4xx_hal.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
 <codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>HAL_PWR_MODULE_ENABLED</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="37"><highlight class="normal"></highlight></codeline>
 <codeline lineno="38"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>typedef<sp/>-----------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
@@ -53,16 +56,27 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="52"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PWR_PORTI_AVAILABLE_PINS<sp/><sp/><sp/>((uint32_t)0x00000FFF)<sp/></highlight><highlight class="comment">/*<sp/>PI0..PI11<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="53"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="54"><highlight class="normal"></highlight></codeline>
-<codeline lineno="62"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PVM_MODE_IT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((uint32_t)0x00010000)<sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="63"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PVM_MODE_EVT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((uint32_t)0x00020000)<sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="64"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PVM_RISING_EDGE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((uint32_t)0x00000001)<sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="65"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PVM_FALLING_EDGE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((uint32_t)0x00000002)<sp/><sp/></highlight></codeline>
-<codeline lineno="73"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PWR_FLAG_SETTING_DELAY_US<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>50UL<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PVM_MODE_IT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((uint32_t)0x00010000)<sp/><sp/></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PVM_MODE_EVT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((uint32_t)0x00020000)<sp/><sp/></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PVM_RISING_EDGE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((uint32_t)0x00000001)<sp/><sp/></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PVM_FALLING_EDGE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((uint32_t)0x00000002)<sp/><sp/></highlight><highlight class="preprocessor"></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PWR_FLAG_SETTING_DELAY_US<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>50UL<sp/><sp/><sp/></highlight><highlight class="preprocessor"></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
 <codeline lineno="86"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>macro<sp/>-------------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="87"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>variables<sp/>---------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="88"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>function<sp/>prototypes<sp/>-----------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="89"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Exported<sp/>functions<sp/>--------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
 <codeline lineno="114"><highlight class="normal">uint32_t<sp/><ref refid="group__PWREx__Exported__Functions__Group1_1ga2978c7160c8d166f1bf2bf39e4bf33f7" kindref="member">HAL_PWREx_GetVoltageRange</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
 <codeline lineno="115"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="116"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(PWR_CR5_R1MODE)</highlight><highlight class="normal"></highlight></codeline>
@@ -214,7 +228,7 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="301"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="302"><highlight class="normal"></highlight></codeline>
 <codeline lineno="303"><highlight class="normal"></highlight></codeline>
-<codeline lineno="304"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(PWR_CR2_USV)</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(PWR_CR2_USV)</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="310"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>HAL_PWREx_EnableVddUSB(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
 <codeline lineno="311"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="312"><highlight class="normal"><sp/><sp/><ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga04651c526497822a859942b928e57f8e" kindref="member">PWR</ref>-&gt;CR2,<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1ga54c0c5d806608cabfc4e1b32e404b0fa" kindref="member">PWR_CR2_USV</ref>);</highlight></codeline>
@@ -227,7 +241,7 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="323"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="324"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>PWR_CR2_USV<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="325"><highlight class="normal"></highlight></codeline>
-<codeline lineno="326"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(PWR_CR2_IOSV)</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(PWR_CR2_IOSV)</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="332"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>HAL_PWREx_EnableVddIO2(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
 <codeline lineno="333"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="334"><highlight class="normal"><sp/><sp/><ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga04651c526497822a859942b928e57f8e" kindref="member">PWR</ref>-&gt;CR2,<sp/><ref refid="group__Peripheral__Registers__Bits__Definition_1gae9d8006d773791870872b8b318f3ac14" kindref="member">PWR_CR2_IOSV</ref>);</highlight></codeline>
@@ -555,7 +569,7 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="774"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="775"><highlight class="normal"></highlight></codeline>
 <codeline lineno="776"><highlight class="normal"></highlight></codeline>
-<codeline lineno="777"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(PWR_CR3_ENULP)</highlight></codeline>
+<codeline lineno="777"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(PWR_CR3_ENULP)</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="783"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>HAL_PWREx_EnableBORPVD_ULP(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
 <codeline lineno="784"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="785"><highlight class="normal"><sp/><sp/><ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga04651c526497822a859942b928e57f8e" kindref="member">PWR</ref>-&gt;CR3,<sp/>PWR_CR3_ENULP);</highlight></codeline>
@@ -569,7 +583,7 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="798"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>PWR_CR3_ENULP<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="799"><highlight class="normal"></highlight></codeline>
 <codeline lineno="800"><highlight class="normal"></highlight></codeline>
-<codeline lineno="801"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(PWR_CR4_EXT_SMPS_ON)</highlight></codeline>
+<codeline lineno="801"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(PWR_CR4_EXT_SMPS_ON)</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="808"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>HAL_PWREx_EnableExtSMPS_0V95(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
 <codeline lineno="809"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="810"><highlight class="normal"><sp/><sp/><ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga04651c526497822a859942b928e57f8e" kindref="member">PWR</ref>-&gt;CR4,<sp/>PWR_CR4_EXT_SMPS_ON);</highlight></codeline>
@@ -582,7 +596,7 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="824"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>PWR_CR4_EXT_SMPS_ON<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="825"><highlight class="normal"></highlight></codeline>
 <codeline lineno="826"><highlight class="normal"></highlight></codeline>
-<codeline lineno="827"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(PWR_CR1_RRSTP)</highlight></codeline>
+<codeline lineno="827"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(PWR_CR1_RRSTP)</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="834"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>HAL_PWREx_EnableSRAM3ContentRetention(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
 <codeline lineno="835"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="836"><highlight class="normal"><sp/><sp/><ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga04651c526497822a859942b928e57f8e" kindref="member">PWR</ref>-&gt;CR1,<sp/>PWR_CR1_RRSTP);</highlight></codeline>
@@ -595,7 +609,7 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="849"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="850"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>PWR_CR1_RRSTP<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="851"><highlight class="normal"></highlight></codeline>
-<codeline lineno="852"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(PWR_CR3_DSIPDEN)</highlight></codeline>
+<codeline lineno="852"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(PWR_CR3_DSIPDEN)</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="857"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>HAL_PWREx_EnableDSIPinsPDActivation(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
 <codeline lineno="858"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="859"><highlight class="normal"><sp/><sp/><ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga04651c526497822a859942b928e57f8e" kindref="member">PWR</ref>-&gt;CR3,<sp/>PWR_CR3_DSIPDEN);</highlight></codeline>
@@ -608,7 +622,7 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="870"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="871"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>PWR_CR3_DSIPDEN<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="872"><highlight class="normal"></highlight></codeline>
-<codeline lineno="873"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(PWR_CR2_PVME1)</highlight></codeline>
+<codeline lineno="873"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(PWR_CR2_PVME1)</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="878"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>HAL_PWREx_EnablePVM1(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
 <codeline lineno="879"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="880"><highlight class="normal"><sp/><sp/><ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga04651c526497822a859942b928e57f8e" kindref="member">PWR</ref>-&gt;CR2,<sp/>PWR_PVM_1);</highlight></codeline>
@@ -621,7 +635,7 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="891"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>PWR_CR2_PVME1<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="892"><highlight class="normal"></highlight></codeline>
 <codeline lineno="893"><highlight class="normal"></highlight></codeline>
-<codeline lineno="894"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(PWR_CR2_PVME2)</highlight></codeline>
+<codeline lineno="894"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(PWR_CR2_PVME2)</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="899"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>HAL_PWREx_EnablePVM2(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
 <codeline lineno="900"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="901"><highlight class="normal"><sp/><sp/><ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(<ref refid="group__Peripheral__declaration_1ga04651c526497822a859942b928e57f8e" kindref="member">PWR</ref>-&gt;CR2,<sp/>PWR_PVM_2);</highlight></codeline>
@@ -1003,7 +1017,7 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="1407"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="1408"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1409"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1410"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(PWR_CR2_PVME1)</highlight></codeline>
+<codeline lineno="1410"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(PWR_CR2_PVME1)</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1415"><highlight class="normal">__weak<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>HAL_PWREx_PVM1Callback(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
 <codeline lineno="1416"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="1417"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>NOTE<sp/>:<sp/>This<sp/>function<sp/>should<sp/>not<sp/>be<sp/>modified;<sp/>when<sp/>the<sp/>callback<sp/>is<sp/>needed,</highlight></codeline>
@@ -1012,7 +1026,7 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="1420"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="1421"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>PWR_CR2_PVME1<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1422"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1423"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(PWR_CR2_PVME2)</highlight></codeline>
+<codeline lineno="1423"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(PWR_CR2_PVME2)</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1428"><highlight class="normal">__weak<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>HAL_PWREx_PVM2Callback(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
 <codeline lineno="1429"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="1430"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>NOTE<sp/>:<sp/>This<sp/>function<sp/>should<sp/>not<sp/>be<sp/>modified;<sp/>when<sp/>the<sp/>callback<sp/>is<sp/>needed,</highlight></codeline>
@@ -1036,7 +1050,10 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="1456"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="1457"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1458"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1467"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>HAL_PWR_MODULE_ENABLED<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="1462"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1466"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1467"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>HAL_PWR_MODULE_ENABLED<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1471"><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bootstrap/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_pwr_ex.c"/>
   </compounddef>

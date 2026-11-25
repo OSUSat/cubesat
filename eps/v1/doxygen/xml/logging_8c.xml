@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="logging_8c" kind="file" language="C++">
     <compoundname>logging.c</compoundname>
     <includes refid="logging_8h" local="yes">logging.h</includes>
@@ -463,6 +463,7 @@
     </detaileddescription>
     <programlisting>
 <codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
 <codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="logging_8h" kindref="compound">logging.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="can__events_8h" kindref="compound">can_events.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="events_8h" kindref="compound">events.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
@@ -497,10 +498,10 @@
 <codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOG_PACKET_MAX_PAYLOAD<sp/>200</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="38"><highlight class="normal"></highlight></codeline>
 <codeline lineno="39" refid="structlog__flush__context__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/>sequence;</highlight></codeline>
-<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>payload_buffer[<ref refid="logging_8c_1add9bb394bbf2ed6839e75bfeddf4a9e2" kindref="member">LOG_PACKET_MAX_PAYLOAD</ref>];</highlight></codeline>
-<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>payload_offset;</highlight></codeline>
-<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>entries_processed;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/><ref refid="structlog__flush__context__t_1a65cf8d879be40ab429200ef0c99a8732" kindref="member">sequence</ref>;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structlog__flush__context__t_1ad03d5586fbb7c7cc36d939dc66fa2cf7" kindref="member">payload_buffer</ref>[<ref refid="logging_8c_1add9bb394bbf2ed6839e75bfeddf4a9e2" kindref="member">LOG_PACKET_MAX_PAYLOAD</ref>];</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="structlog__flush__context__t_1af12b3dc41b5601c4b98ed0c5f244981a" kindref="member">payload_offset</ref>;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structlog__flush__context__t_1ade1e1b1f8aabab24d8518f742fe2f6a0" kindref="member">entries_processed</ref>;</highlight></codeline>
 <codeline lineno="44"><highlight class="normal">}<sp/><ref refid="structlog__flush__context__t" kindref="compound">log_flush_context_t</ref>;</highlight></codeline>
 <codeline lineno="45"><highlight class="normal"></highlight></codeline>
 <codeline lineno="46"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>logging_handle_tick(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structosusat__event__t" kindref="compound">osusat_event_t</ref><sp/>*e,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*ctx);</highlight></codeline>
@@ -563,7 +564,7 @@
 <codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="105"><highlight class="normal"></highlight></codeline>
-<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structOSUSatPacket" kindref="compound">OSUSatPacket</ref><sp/>packet<sp/>=<sp/>{.<ref refid="structOSUSatPacket_1ad0150165698e87a142b9d36a35f77a16" kindref="member">version</ref><sp/>=<sp/>1,</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structOSUSatPacket" kindref="compound">OSUSatPacket</ref><sp/>packet<sp/>=<sp/>{.version<sp/>=<sp/>1,</highlight></codeline>
 <codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.destination<sp/>=<sp/><ref refid="messages_8h_1ad9e5def05db5323e9a4cfc3f4fa2cd75acf567abd8ab54a24566b2364c2848656" kindref="member">OSUSatDestination_OBC</ref>,</highlight></codeline>
 <codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.source<sp/>=<sp/><ref refid="messages_8h_1ad9e5def05db5323e9a4cfc3f4fa2cd75ac374ac666d2a7b44aad05fc568c4e956" kindref="member">OSUSatDestination_EPS</ref>,</highlight></codeline>
 <codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.message_type<sp/>=<sp/><ref refid="messages_8h_1aa4306448e95ae3e6a1080809b6e268baa7057888c8aa2fcc5d2c7578bcb755ed6" kindref="member">OSUSatMessageType_LOG</ref>,</highlight></codeline>
@@ -583,7 +584,7 @@
 <codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="124"><highlight class="normal"></highlight></codeline>
 <codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>try<sp/>to<sp/>send<sp/>over<sp/>CAN<sp/>if<sp/>available</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(g_active_can<sp/>!=<sp/>NULL<sp/>&amp;&amp;<sp/>g_active_can-&gt;<ref refid="structcan__events__t_1a3bcd147172ce242d187edc7b774feeaa" kindref="member">initialized</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(g_active_can<sp/>!=<sp/>NULL<sp/>&amp;&amp;<sp/>g_active_can-&gt;initialized)<sp/>{</highlight></codeline>
 <codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__can__events__api_1gad5859ea612b14eb7fda68f5329b0a9e4" kindref="member">can_events_send_packet</ref>(g_active_can,<sp/>&amp;packet);</highlight></codeline>
 <codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="129"><highlight class="normal"></highlight></codeline>
@@ -635,11 +636,11 @@
 <codeline lineno="175"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="176"><highlight class="normal"></highlight></codeline>
 <codeline lineno="177"><highlight class="normal"></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="group__logging__api_1gae344a717b3119e6abed5c4b75737a337" kindref="member">logging_flush</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
-<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(g_active_can<sp/>==<sp/>NULL<sp/>||<sp/>!g_active_can-&gt;<ref refid="structcan__events__t_1a3bcd147172ce242d187edc7b774feeaa" kindref="member">initialized</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(g_active_can<sp/>==<sp/>NULL<sp/>||<sp/>!g_active_can-&gt;initialized)<sp/>{</highlight></codeline>
 <codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
 <codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="181"><highlight class="normal"></highlight></codeline>
-<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structlog__flush__context__t" kindref="compound">log_flush_context_t</ref><sp/>ctx<sp/>=<sp/>{.<ref refid="structlog__flush__context__t_1a65cf8d879be40ab429200ef0c99a8732" kindref="member">sequence</ref><sp/>=<sp/>0,<sp/>.payload_offset<sp/>=<sp/>0};</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structlog__flush__context__t" kindref="compound">log_flush_context_t</ref><sp/>ctx<sp/>=<sp/>{.sequence<sp/>=<sp/>0,<sp/>.payload_offset<sp/>=<sp/>0};</highlight></codeline>
 <codeline lineno="183"><highlight class="normal"></highlight></codeline>
 <codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="group__osusat__slog__api_1gaa1dbfea471aa1425ac6e67a1a7ff7768" kindref="member">osusat_slog_pending_count</ref>()<sp/>==<sp/>0)<sp/>{</highlight></codeline>
 <codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
@@ -671,7 +672,7 @@
 <codeline lineno="214"><highlight class="normal"></highlight></codeline>
 <codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>if<sp/>primary<sp/>CAN<sp/>failed,<sp/>switch<sp/>to<sp/>AUX</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(payload-&gt;component<sp/>==<sp/><ref refid="group__redundancy__manager__types_1gga7c14751f737d5413dc48d18c920c8053a55ea94a848354cdad8ac11a24646c1c7" kindref="member">COMPONENT_CAN_PRIMARY</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(g_aux_can<sp/>&amp;&amp;<sp/>g_aux_can-&gt;<ref refid="structcan__events__t_1a3bcd147172ce242d187edc7b774feeaa" kindref="member">initialized</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(g_aux_can<sp/>&amp;&amp;<sp/>g_aux_can-&gt;initialized)<sp/>{</highlight></codeline>
 <codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>g_active_can<sp/>=<sp/>g_aux_can;</highlight></codeline>
 <codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>

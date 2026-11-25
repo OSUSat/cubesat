@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="hal__i2c_8c" kind="file" language="C++">
     <compoundname>hal_i2c.c</compoundname>
     <includes refid="hal__i2c_8h" local="yes">hal_i2c.h</includes>
@@ -138,7 +138,7 @@
           <declname>bus</declname>
         </param>
         <briefdescription>
-<para>Map i2c_bus_t to STM32 HAL I2C handle. </para>
+<para>Map <ref refid="group__i2c__types_1ga29c2ef19c960dcf416306806f97d1250" kindref="member">i2c_bus_t</ref> to STM32 HAL I2C handle. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
@@ -164,7 +164,7 @@
           <declname>len</declname>
         </param>
         <briefdescription>
-<para>Start reception (used by interrupt-driven RX) </para>
+<para>Start reception (used by interrupt-driven RX). </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
@@ -194,7 +194,7 @@
           <declname>len</declname>
         </param>
         <briefdescription>
-<para>Start reception (used by interrupt-driven RX) </para>
+<para>Start reception (used by interrupt-driven RX). </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
@@ -328,6 +328,7 @@
     </detaileddescription>
     <programlisting>
 <codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
 <codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="hal__i2c_8h" kindref="compound">hal_i2c.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="eps__config_8h" kindref="compound">eps_config.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;stm32l4xx_hal.h&quot;</highlight><highlight class="normal"></highlight></codeline>
@@ -335,43 +336,48 @@
 <codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="13"><highlight class="normal"></highlight></codeline>
 <codeline lineno="18" refid="structi2c__bus__state__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structI2C__HandleTypeDef" kindref="compound">I2C_HandleTypeDef</ref><sp/>*hi2c;<sp/></highlight></codeline>
-<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>rx_buffer[<ref refid="group__i2c__types_1gaae5978c2bde83102a43386f40b5098e1" kindref="member">I2C_RX_CAPACITY</ref>];<sp/></highlight></codeline>
-<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>*rx_user_buffer;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/>rx_len;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__i2c__types_1gac79efc826177e385f296336ca66522bd" kindref="member">i2c_rx_callback_t</ref><sp/>rx_callback;<sp/></highlight></codeline>
-<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*rx_callback_ctx;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__i2c__types_1gac2d88f9efda78f33b98be08bfb51efb6" kindref="member">i2c_tx_callback_t</ref><sp/>tx_callback;<sp/></highlight></codeline>
-<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*tx_callback_ctx;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__i2c__types_1ga9de1a575fb98bd4f4333b8c24922cf33" kindref="member">i2c_error_cb_t</ref><sp/>error_callback;<sp/></highlight></codeline>
-<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*error_callback_ctx;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structI2C__HandleTypeDef" kindref="compound">I2C_HandleTypeDef</ref><sp/>*<ref refid="structi2c__bus__state__t_1ac39000a29e9d81580225a8cf3dccb245" kindref="member">hi2c</ref>;<sp/></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structi2c__bus__state__t_1a155c9dd480f173708e624714e91c24ee" kindref="member">rx_buffer</ref>[<ref refid="group__i2c__types_1gaae5978c2bde83102a43386f40b5098e1" kindref="member">I2C_RX_CAPACITY</ref>];<sp/></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>*<ref refid="structi2c__bus__state__t_1aa3702f2dbde53db1c2581e24f6cd0ee3" kindref="member">rx_user_buffer</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/><ref refid="structi2c__bus__state__t_1ac5019d7815398156c13b174cbb91c7ec" kindref="member">rx_len</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__i2c__types_1gac79efc826177e385f296336ca66522bd" kindref="member">i2c_rx_callback_t</ref><sp/><ref refid="structi2c__bus__state__t_1a8dbab9463a192cfb4f26199eaa362847" kindref="member">rx_callback</ref>;<sp/></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<ref refid="structi2c__bus__state__t_1adc4c30d1b01537157874a1d04ef9070b" kindref="member">rx_callback_ctx</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__i2c__types_1gac2d88f9efda78f33b98be08bfb51efb6" kindref="member">i2c_tx_callback_t</ref><sp/><ref refid="structi2c__bus__state__t_1a4f6ac778984d983b4676c9bbf33e6cd9" kindref="member">tx_callback</ref>;<sp/></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<ref refid="structi2c__bus__state__t_1aabf6db10f8f4317ca733aa6db51ac2cd" kindref="member">tx_callback_ctx</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__i2c__types_1ga9de1a575fb98bd4f4333b8c24922cf33" kindref="member">i2c_error_cb_t</ref><sp/><ref refid="structi2c__bus__state__t_1a14dc8c1b164ee8441b5b9e6431913f9c" kindref="member">error_callback</ref>;<sp/></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<ref refid="structi2c__bus__state__t_1a79ab135d058fd5f964c5410f0b4bb26e" kindref="member">error_callback_ctx</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
 <codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
 <codeline lineno="35"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>This<sp/>field<sp/>is<sp/>accessed<sp/>both<sp/>from<sp/>interrupt<sp/>context<sp/>(ISRs<sp/>like</highlight></codeline>
 <codeline lineno="36"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>HAL_I2C_MasterRxCpltCallback)<sp/>and<sp/>main<sp/>loop<sp/>context<sp/>(e.g.<sp/>hal_i2c_read).</highlight></codeline>
 <codeline lineno="37"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>It<sp/>must<sp/>be<sp/>declared<sp/>volatile<sp/>to<sp/>prevent<sp/>compiler<sp/>optimizations<sp/>from</highlight></codeline>
 <codeline lineno="38"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>caching<sp/>the<sp/>read/write<sp/>accesses.</highlight></codeline>
 <codeline lineno="39"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>busy;<sp/></highlight></codeline>
-<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>initialized;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structi2c__bus__state__t_1ae76c0891003839aa101b3043dfb2e67c" kindref="member">busy</ref>;<sp/></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structi2c__bus__state__t_1a0347e42935b0df07cf96d97e4a4c760c" kindref="member">initialized</ref>;<sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="42"><highlight class="normal">}<sp/><ref refid="structi2c__bus__state__t" kindref="compound">i2c_bus_state_t</ref>;</highlight></codeline>
 <codeline lineno="43"><highlight class="normal"></highlight></codeline>
 <codeline lineno="44"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structi2c__bus__state__t" kindref="compound">i2c_bus_state_t</ref><sp/>g_bus_state[<ref refid="group__i2c__types_1gga29c2ef19c960dcf416306806f97d1250ad42f860e750a71008a9d2d5813015839" kindref="member">I2C_BUS_COUNT</ref>];</highlight></codeline>
 <codeline lineno="45"><highlight class="normal"></highlight></codeline>
-<codeline lineno="46"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="structI2C__HandleTypeDef" kindref="compound">I2C_HandleTypeDef</ref><sp/><ref refid="hal__i2c_8c_1af7b2c26e44dadaaa798a5c3d82914ba7" kindref="member">hi2c1</ref>;</highlight></codeline>
-<codeline lineno="47"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="structI2C__HandleTypeDef" kindref="compound">I2C_HandleTypeDef</ref><sp/><ref refid="hal__i2c_8c_1ac379bcc152d860f08b1279fd3e232295" kindref="member">hi2c2</ref>;</highlight></codeline>
-<codeline lineno="48"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="structI2C__HandleTypeDef" kindref="compound">I2C_HandleTypeDef</ref><sp/><ref refid="hal__i2c_8c_1a5ccf4a01a8d7f08d3190181f843f7515" kindref="member">hi2c3</ref>;</highlight></codeline>
-<codeline lineno="49"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="structI2C__HandleTypeDef" kindref="compound">I2C_HandleTypeDef</ref><sp/><ref refid="hal__i2c_8c_1a818789480a74b70bbcaf6d73e8e763ed" kindref="member">hi2c4</ref>;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="structI2C__HandleTypeDef" kindref="compound">I2C_HandleTypeDef</ref><sp/><ref refid="bootstrap_2Core_2Inc_2i2c_8h_1af7b2c26e44dadaaa798a5c3d82914ba7" kindref="member">hi2c1</ref>;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="structI2C__HandleTypeDef" kindref="compound">I2C_HandleTypeDef</ref><sp/><ref refid="bootstrap_2Core_2Inc_2i2c_8h_1ac379bcc152d860f08b1279fd3e232295" kindref="member">hi2c2</ref>;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="structI2C__HandleTypeDef" kindref="compound">I2C_HandleTypeDef</ref><sp/><ref refid="bootstrap_2Core_2Inc_2i2c_8h_1a5ccf4a01a8d7f08d3190181f843f7515" kindref="member">hi2c3</ref>;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="structI2C__HandleTypeDef" kindref="compound">I2C_HandleTypeDef</ref><sp/><ref refid="bootstrap_2Core_2Inc_2i2c_8h_1a818789480a74b70bbcaf6d73e8e763ed" kindref="member">hi2c4</ref>;</highlight></codeline>
 <codeline lineno="50"><highlight class="normal"></highlight></codeline>
 <codeline lineno="54"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structI2C__HandleTypeDef" kindref="compound">I2C_HandleTypeDef</ref><sp/>*get_hal_handle(<ref refid="group__i2c__types_1ga29c2ef19c960dcf416306806f97d1250" kindref="member">i2c_bus_t</ref><sp/>bus)<sp/>{</highlight></codeline>
 <codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(bus)<sp/>{</highlight></codeline>
 <codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="group__i2c__types_1gga29c2ef19c960dcf416306806f97d1250a07c37428b7cf297f03d72ce88616bed8" kindref="member">I2C_BUS_1</ref>:</highlight></codeline>
-<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>&amp;<ref refid="hal__i2c_8c_1af7b2c26e44dadaaa798a5c3d82914ba7" kindref="member">hi2c1</ref>;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>&amp;<ref refid="bootstrap_2Core_2Inc_2i2c_8h_1af7b2c26e44dadaaa798a5c3d82914ba7" kindref="member">hi2c1</ref>;</highlight></codeline>
 <codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="group__i2c__types_1gga29c2ef19c960dcf416306806f97d1250a3abbf3238dc4cd408421ae3c47512a60" kindref="member">I2C_BUS_2</ref>:</highlight></codeline>
-<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>&amp;<ref refid="hal__i2c_8c_1ac379bcc152d860f08b1279fd3e232295" kindref="member">hi2c2</ref>;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>&amp;<ref refid="bootstrap_2Core_2Inc_2i2c_8h_1ac379bcc152d860f08b1279fd3e232295" kindref="member">hi2c2</ref>;</highlight></codeline>
 <codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="group__i2c__types_1gga29c2ef19c960dcf416306806f97d1250a39a03801edca55547e0247165daa3a99" kindref="member">I2C_BUS_3</ref>:</highlight></codeline>
-<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>&amp;<ref refid="hal__i2c_8c_1a5ccf4a01a8d7f08d3190181f843f7515" kindref="member">hi2c3</ref>;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>&amp;<ref refid="bootstrap_2Core_2Inc_2i2c_8h_1a5ccf4a01a8d7f08d3190181f843f7515" kindref="member">hi2c3</ref>;</highlight></codeline>
 <codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="group__i2c__types_1gga29c2ef19c960dcf416306806f97d1250ae015440a834e8eea4ff2f889389722f3" kindref="member">I2C_BUS_4</ref>:</highlight></codeline>
-<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>&amp;<ref refid="hal__i2c_8c_1a818789480a74b70bbcaf6d73e8e763ed" kindref="member">hi2c4</ref>;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>&amp;<ref refid="bootstrap_2Core_2Inc_2i2c_8h_1a818789480a74b70bbcaf6d73e8e763ed" kindref="member">hi2c4</ref>;</highlight></codeline>
 <codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
 <codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -381,15 +387,15 @@
 <codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint16_t<sp/>len)<sp/>{</highlight></codeline>
 <codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structi2c__bus__state__t" kindref="compound">i2c_bus_state_t</ref><sp/>*state<sp/>=<sp/>&amp;g_bus_state[bus];</highlight></codeline>
 <codeline lineno="75"><highlight class="normal"></highlight></codeline>
-<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(state-&gt;<ref refid="structi2c__bus__state__t_1ae76c0891003839aa101b3043dfb2e67c" kindref="member">busy</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(state-&gt;busy)<sp/>{</highlight></codeline>
 <codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__i2c__types_1ggada1e8e589688e2d6626421d8d85d9c53a49e65f3960437d80b8328e7898cc90de" kindref="member">I2C_BUSY</ref>;</highlight></codeline>
 <codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="79"><highlight class="normal"></highlight></codeline>
 <codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;<ref refid="structi2c__bus__state__t_1ac5019d7815398156c13b174cbb91c7ec" kindref="member">rx_len</ref><sp/>=<sp/>len;</highlight></codeline>
-<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;<ref refid="structi2c__bus__state__t_1ae76c0891003839aa101b3043dfb2e67c" kindref="member">busy</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;busy<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="82"><highlight class="normal"></highlight></codeline>
-<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/>status<sp/>=<sp/><ref refid="group__I2C__Exported__Functions__Group2_1ga2aebdb302ffc0a4dff28dc2c8b59e1e9" kindref="member">HAL_I2C_Master_Receive_IT</ref>(state-&gt;<ref refid="structi2c__bus__state__t_1ac39000a29e9d81580225a8cf3dccb245" kindref="member">hi2c</ref>,<sp/>addr<sp/>&lt;&lt;<sp/>1,</highlight></codeline>
-<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state-&gt;<ref refid="structi2c__bus__state__t_1a155c9dd480f173708e624714e91c24ee" kindref="member">rx_buffer</ref>,<sp/>len);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/>status<sp/>=<sp/><ref refid="group__I2C__Exported__Functions__Group2_1ga2aebdb302ffc0a4dff28dc2c8b59e1e9" kindref="member">HAL_I2C_Master_Receive_IT</ref>(state-&gt;hi2c,<sp/>addr<sp/>&lt;&lt;<sp/>1,</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state-&gt;rx_buffer,<sp/>len);</highlight></codeline>
 <codeline lineno="85"><highlight class="normal"></highlight></codeline>
 <codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(status<sp/>==<sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>)<sp/>?<sp/><ref refid="group__i2c__types_1ggada1e8e589688e2d6626421d8d85d9c53aeceba296bdda2b90e8835c431fe7a72a" kindref="member">I2C_OK</ref><sp/>:<sp/><ref refid="group__i2c__types_1ggada1e8e589688e2d6626421d8d85d9c53a2e4932a1868432bff23103fac0127fdc" kindref="member">I2C_ERROR</ref>;</highlight></codeline>
 <codeline lineno="87"><highlight class="normal">}</highlight></codeline>
@@ -398,15 +404,15 @@
 <codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>reg,<sp/>uint16_t<sp/>len)<sp/>{</highlight></codeline>
 <codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structi2c__bus__state__t" kindref="compound">i2c_bus_state_t</ref><sp/>*state<sp/>=<sp/>&amp;g_bus_state[bus];</highlight></codeline>
 <codeline lineno="95"><highlight class="normal"></highlight></codeline>
-<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(state-&gt;<ref refid="structi2c__bus__state__t_1ae76c0891003839aa101b3043dfb2e67c" kindref="member">busy</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(state-&gt;busy)<sp/>{</highlight></codeline>
 <codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__i2c__types_1ggada1e8e589688e2d6626421d8d85d9c53a49e65f3960437d80b8328e7898cc90de" kindref="member">I2C_BUSY</ref>;</highlight></codeline>
 <codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="99"><highlight class="normal"></highlight></codeline>
 <codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;<ref refid="structi2c__bus__state__t_1ac5019d7815398156c13b174cbb91c7ec" kindref="member">rx_len</ref><sp/>=<sp/>len;</highlight></codeline>
-<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;<ref refid="structi2c__bus__state__t_1ae76c0891003839aa101b3043dfb2e67c" kindref="member">busy</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;busy<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="102"><highlight class="normal"></highlight></codeline>
 <codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/>status<sp/>=<sp/><ref refid="group__I2C__Exported__Functions__Group2_1ga2274a9d894a1dc783bc647f937200f65" kindref="member">HAL_I2C_Mem_Read_IT</ref>(</highlight></codeline>
-<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state-&gt;<ref refid="structi2c__bus__state__t_1ac39000a29e9d81580225a8cf3dccb245" kindref="member">hi2c</ref>,<sp/>addr,<sp/>reg,<sp/><ref refid="group__I2C__MEMORY__ADDRESS__SIZE_1ga44007b689fa80deeab22820ad0b2dc6d" kindref="member">I2C_MEMADD_SIZE_8BIT</ref>,<sp/>state-&gt;<ref refid="structi2c__bus__state__t_1a155c9dd480f173708e624714e91c24ee" kindref="member">rx_buffer</ref>,<sp/>len);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state-&gt;hi2c,<sp/>addr,<sp/>reg,<sp/><ref refid="group__I2C__MEMORY__ADDRESS__SIZE_1ga44007b689fa80deeab22820ad0b2dc6d" kindref="member">I2C_MEMADD_SIZE_8BIT</ref>,<sp/>state-&gt;rx_buffer,<sp/>len);</highlight></codeline>
 <codeline lineno="105"><highlight class="normal"></highlight></codeline>
 <codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(status<sp/>==<sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>)<sp/>?<sp/><ref refid="group__i2c__types_1ggada1e8e589688e2d6626421d8d85d9c53aeceba296bdda2b90e8835c431fe7a72a" kindref="member">I2C_OK</ref><sp/>:<sp/><ref refid="group__i2c__types_1ggada1e8e589688e2d6626421d8d85d9c53a2e4932a1868432bff23103fac0127fdc" kindref="member">I2C_ERROR</ref>;</highlight></codeline>
 <codeline lineno="107"><highlight class="normal">}</highlight></codeline>
@@ -415,14 +421,14 @@
 <codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>*data,<sp/>uint16_t<sp/>len)<sp/>{</highlight></codeline>
 <codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structi2c__bus__state__t" kindref="compound">i2c_bus_state_t</ref><sp/>*state<sp/>=<sp/>&amp;g_bus_state[bus];</highlight></codeline>
 <codeline lineno="115"><highlight class="normal"></highlight></codeline>
-<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(state-&gt;<ref refid="structi2c__bus__state__t_1ae76c0891003839aa101b3043dfb2e67c" kindref="member">busy</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(state-&gt;busy)<sp/>{</highlight></codeline>
 <codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__i2c__types_1ggada1e8e589688e2d6626421d8d85d9c53a49e65f3960437d80b8328e7898cc90de" kindref="member">I2C_BUSY</ref>;</highlight></codeline>
 <codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="119"><highlight class="normal"></highlight></codeline>
 <codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;<ref refid="structi2c__bus__state__t_1ae76c0891003839aa101b3043dfb2e67c" kindref="member">busy</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="121"><highlight class="normal"></highlight></codeline>
 <codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/>status<sp/>=<sp/><ref refid="group__I2C__Exported__Functions__Group2_1ga48b84e0cff0e44d10e10bf9cc5a6726d" kindref="member">HAL_I2C_Master_Transmit_IT</ref>(</highlight></codeline>
-<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state-&gt;<ref refid="structi2c__bus__state__t_1ac39000a29e9d81580225a8cf3dccb245" kindref="member">hi2c</ref>,<sp/>addr<sp/>&lt;&lt;<sp/>1,<sp/>(uint8_t<sp/>*)data,<sp/>len);</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state-&gt;hi2c,<sp/>addr<sp/>&lt;&lt;<sp/>1,<sp/>(uint8_t<sp/>*)data,<sp/>len);</highlight></codeline>
 <codeline lineno="124"><highlight class="normal"></highlight></codeline>
 <codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(status<sp/>==<sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>)<sp/>?<sp/><ref refid="group__i2c__types_1ggada1e8e589688e2d6626421d8d85d9c53aeceba296bdda2b90e8835c431fe7a72a" kindref="member">I2C_OK</ref><sp/>:<sp/><ref refid="group__i2c__types_1ggada1e8e589688e2d6626421d8d85d9c53a2e4932a1868432bff23103fac0127fdc" kindref="member">I2C_ERROR</ref>;</highlight></codeline>
 <codeline lineno="126"><highlight class="normal">}</highlight></codeline>
@@ -432,14 +438,14 @@
 <codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint16_t<sp/>len)<sp/>{</highlight></codeline>
 <codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structi2c__bus__state__t" kindref="compound">i2c_bus_state_t</ref><sp/>*state<sp/>=<sp/>&amp;g_bus_state[bus];</highlight></codeline>
 <codeline lineno="135"><highlight class="normal"></highlight></codeline>
-<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(state-&gt;<ref refid="structi2c__bus__state__t_1ae76c0891003839aa101b3043dfb2e67c" kindref="member">busy</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(state-&gt;busy)<sp/>{</highlight></codeline>
 <codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__i2c__types_1ggada1e8e589688e2d6626421d8d85d9c53a49e65f3960437d80b8328e7898cc90de" kindref="member">I2C_BUSY</ref>;</highlight></codeline>
 <codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="139"><highlight class="normal"></highlight></codeline>
 <codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;<ref refid="structi2c__bus__state__t_1ae76c0891003839aa101b3043dfb2e67c" kindref="member">busy</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="141"><highlight class="normal"></highlight></codeline>
 <codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/>status<sp/>=</highlight></codeline>
-<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__I2C__Exported__Functions__Group2_1gab57ffc32b01392d8bcce3c7ec32b3120" kindref="member">HAL_I2C_Mem_Write_IT</ref>(state-&gt;<ref refid="structi2c__bus__state__t_1ac39000a29e9d81580225a8cf3dccb245" kindref="member">hi2c</ref>,<sp/>addr<sp/>&lt;&lt;<sp/>1,<sp/>reg,<sp/><ref refid="group__I2C__MEMORY__ADDRESS__SIZE_1ga44007b689fa80deeab22820ad0b2dc6d" kindref="member">I2C_MEMADD_SIZE_8BIT</ref>,</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__I2C__Exported__Functions__Group2_1gab57ffc32b01392d8bcce3c7ec32b3120" kindref="member">HAL_I2C_Mem_Write_IT</ref>(state-&gt;hi2c,<sp/>addr<sp/>&lt;&lt;<sp/>1,<sp/>reg,<sp/><ref refid="group__I2C__MEMORY__ADDRESS__SIZE_1ga44007b689fa80deeab22820ad0b2dc6d" kindref="member">I2C_MEMADD_SIZE_8BIT</ref>,</highlight></codeline>
 <codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(uint8_t<sp/>*)data,<sp/>len);</highlight></codeline>
 <codeline lineno="145"><highlight class="normal"></highlight></codeline>
 <codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(status<sp/>==<sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>)<sp/>?<sp/><ref refid="group__i2c__types_1ggada1e8e589688e2d6626421d8d85d9c53aeceba296bdda2b90e8835c431fe7a72a" kindref="member">I2C_OK</ref><sp/>:<sp/><ref refid="group__i2c__types_1ggada1e8e589688e2d6626421d8d85d9c53a2e4932a1868432bff23103fac0127fdc" kindref="member">I2C_ERROR</ref>;</highlight></codeline>
@@ -453,25 +459,25 @@
 <codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structi2c__bus__state__t" kindref="compound">i2c_bus_state_t</ref><sp/>*state<sp/>=<sp/>&amp;g_bus_state[bus];</highlight></codeline>
 <codeline lineno="155"><highlight class="normal"></highlight></codeline>
 <codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;<ref refid="structi2c__bus__state__t_1ac39000a29e9d81580225a8cf3dccb245" kindref="member">hi2c</ref><sp/>=<sp/>get_hal_handle(bus);</highlight></codeline>
-<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(state-&gt;<ref refid="structi2c__bus__state__t_1ac39000a29e9d81580225a8cf3dccb245" kindref="member">hi2c</ref><sp/>==<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(state-&gt;hi2c<sp/>==<sp/>NULL)<sp/>{</highlight></codeline>
 <codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="160"><highlight class="normal"></highlight></codeline>
-<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;<ref refid="structi2c__bus__state__t_1ac39000a29e9d81580225a8cf3dccb245" kindref="member">hi2c</ref>-&gt;<ref refid="structI2C__HandleTypeDef_1af1878331ec7a5a0c4900ddae3152a764" kindref="member">Instance</ref><sp/>=<sp/><ref refid="group__Peripheral__declaration_1gab45d257574da6fe1f091cc45b7eda6cc" kindref="member">I2C1</ref>;</highlight></codeline>
-<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;<ref refid="structi2c__bus__state__t_1ac39000a29e9d81580225a8cf3dccb245" kindref="member">hi2c</ref>-&gt;Init.Timing<sp/>=<sp/><ref refid="eps__config_8h_1abcecdddff1d0c1330461ef68a7ad5bff" kindref="member">I2C_TIMING_BITFIELD</ref>;</highlight></codeline>
-<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;<ref refid="structi2c__bus__state__t_1ac39000a29e9d81580225a8cf3dccb245" kindref="member">hi2c</ref>-&gt;Init.OwnAddress1<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;<ref refid="structi2c__bus__state__t_1ac39000a29e9d81580225a8cf3dccb245" kindref="member">hi2c</ref>-&gt;Init.AddressingMode<sp/>=<sp/><ref refid="group__I2C__ADDRESSING__MODE_1ga28cf3b277595ac15edf383c2574ed18d" kindref="member">I2C_ADDRESSINGMODE_7BIT</ref>;</highlight></codeline>
-<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;<ref refid="structi2c__bus__state__t_1ac39000a29e9d81580225a8cf3dccb245" kindref="member">hi2c</ref>-&gt;Init.DualAddressMode<sp/>=<sp/><ref refid="group__I2C__DUAL__ADDRESSING__MODE_1gacb8f4a1fd543e5ef2c9e7711fc9b5a67" kindref="member">I2C_DUALADDRESS_DISABLE</ref>;</highlight></codeline>
-<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;<ref refid="structi2c__bus__state__t_1ac39000a29e9d81580225a8cf3dccb245" kindref="member">hi2c</ref>-&gt;Init.OwnAddress2<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;<ref refid="structi2c__bus__state__t_1ac39000a29e9d81580225a8cf3dccb245" kindref="member">hi2c</ref>-&gt;Init.OwnAddress2Masks<sp/>=<sp/><ref refid="group__I2C__OWN__ADDRESS2__MASKS_1ga3ca5e6cf8afdde67a7f1b8a0c796f9c9" kindref="member">I2C_OA2_NOMASK</ref>;</highlight></codeline>
-<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;<ref refid="structi2c__bus__state__t_1ac39000a29e9d81580225a8cf3dccb245" kindref="member">hi2c</ref>-&gt;Init.GeneralCallMode<sp/>=<sp/><ref refid="group__I2C__GENERAL__CALL__ADDRESSING__MODE_1ga14918ea7d2b23cd67c66b49ebbf5c0a8" kindref="member">I2C_GENERALCALL_DISABLE</ref>;</highlight></codeline>
-<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;<ref refid="structi2c__bus__state__t_1ac39000a29e9d81580225a8cf3dccb245" kindref="member">hi2c</ref>-&gt;Init.NoStretchMode<sp/>=<sp/><ref refid="group__I2C__NOSTRETCH__MODE_1ga611deefe89e56fa65f853e6796f2cf66" kindref="member">I2C_NOSTRETCH_DISABLE</ref>;</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;hi2c-&gt;Instance<sp/>=<sp/><ref refid="group__Peripheral__declaration_1gab45d257574da6fe1f091cc45b7eda6cc" kindref="member">I2C1</ref>;</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;hi2c-&gt;Init.Timing<sp/>=<sp/><ref refid="eps__config_8h_1abcecdddff1d0c1330461ef68a7ad5bff" kindref="member">I2C_TIMING_BITFIELD</ref>;</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;hi2c-&gt;Init.OwnAddress1<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;hi2c-&gt;Init.AddressingMode<sp/>=<sp/><ref refid="group__I2C__ADDRESSING__MODE_1ga28cf3b277595ac15edf383c2574ed18d" kindref="member">I2C_ADDRESSINGMODE_7BIT</ref>;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;hi2c-&gt;Init.DualAddressMode<sp/>=<sp/><ref refid="group__I2C__DUAL__ADDRESSING__MODE_1gacb8f4a1fd543e5ef2c9e7711fc9b5a67" kindref="member">I2C_DUALADDRESS_DISABLE</ref>;</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;hi2c-&gt;Init.OwnAddress2<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;hi2c-&gt;Init.OwnAddress2Masks<sp/>=<sp/><ref refid="group__I2C__OWN__ADDRESS2__MASKS_1ga3ca5e6cf8afdde67a7f1b8a0c796f9c9" kindref="member">I2C_OA2_NOMASK</ref>;</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;hi2c-&gt;Init.GeneralCallMode<sp/>=<sp/><ref refid="group__I2C__GENERAL__CALL__ADDRESSING__MODE_1ga14918ea7d2b23cd67c66b49ebbf5c0a8" kindref="member">I2C_GENERALCALL_DISABLE</ref>;</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;hi2c-&gt;Init.NoStretchMode<sp/>=<sp/><ref refid="group__I2C__NOSTRETCH__MODE_1ga611deefe89e56fa65f853e6796f2cf66" kindref="member">I2C_NOSTRETCH_DISABLE</ref>;</highlight></codeline>
 <codeline lineno="170"><highlight class="normal"></highlight></codeline>
-<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="group__I2C__Exported__Functions__Group1_1ga9d29159a6da072287fff73743fd93260" kindref="member">HAL_I2C_Init</ref>(state-&gt;<ref refid="structi2c__bus__state__t_1ac39000a29e9d81580225a8cf3dccb245" kindref="member">hi2c</ref>)<sp/>!=<sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="group__I2C__Exported__Functions__Group1_1ga9d29159a6da072287fff73743fd93260" kindref="member">HAL_I2C_Init</ref>(state-&gt;hi2c)<sp/>!=<sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>)<sp/>{</highlight></codeline>
 <codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="174"><highlight class="normal"></highlight></codeline>
-<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;<ref refid="structi2c__bus__state__t_1a0347e42935b0df07cf96d97e4a4c760c" kindref="member">initialized</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;initialized<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="176"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="177"><highlight class="normal"></highlight></codeline>
 <codeline lineno="178"><highlight class="normal"><ref refid="group__i2c__types_1ga4e07871ca4ae83f158fa20d135b309b2" kindref="member">i2c_error_t</ref><sp/><ref refid="group__i2c__api_1ga4096fcca633c30375f7eb6498b0c5349" kindref="member">hal_i2c_read</ref>(<ref refid="group__i2c__types_1ga29c2ef19c960dcf416306806f97d1250" kindref="member">i2c_bus_t</ref><sp/>bus,<sp/>uint8_t<sp/>addr,<sp/>uint8_t<sp/>*data,</highlight></codeline>
@@ -483,11 +489,11 @@
 <codeline lineno="184"><highlight class="normal"></highlight></codeline>
 <codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structi2c__bus__state__t" kindref="compound">i2c_bus_state_t</ref><sp/>*state<sp/>=<sp/>&amp;g_bus_state[bus];</highlight></codeline>
 <codeline lineno="186"><highlight class="normal"></highlight></codeline>
-<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!state-&gt;<ref refid="structi2c__bus__state__t_1a0347e42935b0df07cf96d97e4a4c760c" kindref="member">initialized</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!state-&gt;initialized)<sp/>{</highlight></codeline>
 <codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__i2c__types_1gga4e07871ca4ae83f158fa20d135b309b2ae47984b590895353d65473ef35c79d89" kindref="member">I2C_HAL_ERR_UNKNOWN</ref>;</highlight></codeline>
 <codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="190"><highlight class="normal"></highlight></codeline>
-<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(state-&gt;<ref refid="structi2c__bus__state__t_1ae76c0891003839aa101b3043dfb2e67c" kindref="member">busy</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(state-&gt;busy)<sp/>{</highlight></codeline>
 <codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__i2c__types_1gga4e07871ca4ae83f158fa20d135b309b2aac6a14c5dd65d7af54b45190d535846d" kindref="member">I2C_HAL_ERR_BUSY</ref>;</highlight></codeline>
 <codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="194"><highlight class="normal"></highlight></codeline>
@@ -496,13 +502,13 @@
 <codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="198"><highlight class="normal"></highlight></codeline>
 <codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;<ref refid="structi2c__bus__state__t_1a8dbab9463a192cfb4f26199eaa362847" kindref="member">rx_callback</ref><sp/>=<sp/>cb;</highlight></codeline>
-<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;<ref refid="structi2c__bus__state__t_1adc4c30d1b01537157874a1d04ef9070b" kindref="member">rx_callback_ctx</ref><sp/>=<sp/>ctx;</highlight></codeline>
-<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;<ref refid="structi2c__bus__state__t_1a14dc8c1b164ee8441b5b9e6431913f9c" kindref="member">error_callback</ref><sp/>=<sp/>err_cb;</highlight></codeline>
-<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;<ref refid="structi2c__bus__state__t_1a79ab135d058fd5f964c5410f0b4bb26e" kindref="member">error_callback_ctx</ref><sp/>=<sp/>ctx;</highlight></codeline>
-<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;<ref refid="structi2c__bus__state__t_1aa3702f2dbde53db1c2581e24f6cd0ee3" kindref="member">rx_user_buffer</ref><sp/>=<sp/>data;</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;rx_callback_ctx<sp/>=<sp/>ctx;</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;error_callback<sp/>=<sp/>err_cb;</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;error_callback_ctx<sp/>=<sp/>ctx;</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;rx_user_buffer<sp/>=<sp/>data;</highlight></codeline>
 <codeline lineno="204"><highlight class="normal"></highlight></codeline>
 <codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(uint16_t<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>len;<sp/>i++)<sp/>{</highlight></codeline>
-<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state-&gt;<ref refid="structi2c__bus__state__t_1a155c9dd480f173708e624714e91c24ee" kindref="member">rx_buffer</ref>[i]<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state-&gt;rx_buffer[i]<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="208"><highlight class="normal"></highlight></codeline>
 <codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__i2c__types_1gada1e8e589688e2d6626421d8d85d9c53" kindref="member">i2c_status_t</ref><sp/>status<sp/>=<sp/>start_rx_interrupt(bus,<sp/>addr,<sp/>len);</highlight></codeline>
@@ -522,11 +528,11 @@
 <codeline lineno="223"><highlight class="normal"></highlight></codeline>
 <codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structi2c__bus__state__t" kindref="compound">i2c_bus_state_t</ref><sp/>*state<sp/>=<sp/>&amp;g_bus_state[bus];</highlight></codeline>
 <codeline lineno="225"><highlight class="normal"></highlight></codeline>
-<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!state-&gt;<ref refid="structi2c__bus__state__t_1a0347e42935b0df07cf96d97e4a4c760c" kindref="member">initialized</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!state-&gt;initialized)<sp/>{</highlight></codeline>
 <codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__i2c__types_1gga4e07871ca4ae83f158fa20d135b309b2ae47984b590895353d65473ef35c79d89" kindref="member">I2C_HAL_ERR_UNKNOWN</ref>;</highlight></codeline>
 <codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="229"><highlight class="normal"></highlight></codeline>
-<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(state-&gt;<ref refid="structi2c__bus__state__t_1ae76c0891003839aa101b3043dfb2e67c" kindref="member">busy</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(state-&gt;busy)<sp/>{</highlight></codeline>
 <codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__i2c__types_1gga4e07871ca4ae83f158fa20d135b309b2aac6a14c5dd65d7af54b45190d535846d" kindref="member">I2C_HAL_ERR_BUSY</ref>;</highlight></codeline>
 <codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="233"><highlight class="normal"></highlight></codeline>
@@ -535,13 +541,13 @@
 <codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="237"><highlight class="normal"></highlight></codeline>
 <codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;<ref refid="structi2c__bus__state__t_1a8dbab9463a192cfb4f26199eaa362847" kindref="member">rx_callback</ref><sp/>=<sp/>cb;</highlight></codeline>
-<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;<ref refid="structi2c__bus__state__t_1adc4c30d1b01537157874a1d04ef9070b" kindref="member">rx_callback_ctx</ref><sp/>=<sp/>ctx;</highlight></codeline>
-<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;<ref refid="structi2c__bus__state__t_1a14dc8c1b164ee8441b5b9e6431913f9c" kindref="member">error_callback</ref><sp/>=<sp/>err_cb;</highlight></codeline>
-<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;<ref refid="structi2c__bus__state__t_1a79ab135d058fd5f964c5410f0b4bb26e" kindref="member">error_callback_ctx</ref><sp/>=<sp/>ctx;</highlight></codeline>
-<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;<ref refid="structi2c__bus__state__t_1aa3702f2dbde53db1c2581e24f6cd0ee3" kindref="member">rx_user_buffer</ref><sp/>=<sp/>data;</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;rx_callback_ctx<sp/>=<sp/>ctx;</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;error_callback<sp/>=<sp/>err_cb;</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;error_callback_ctx<sp/>=<sp/>ctx;</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;rx_user_buffer<sp/>=<sp/>data;</highlight></codeline>
 <codeline lineno="243"><highlight class="normal"></highlight></codeline>
 <codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(uint16_t<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>len;<sp/>i++)<sp/>{</highlight></codeline>
-<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state-&gt;<ref refid="structi2c__bus__state__t_1a155c9dd480f173708e624714e91c24ee" kindref="member">rx_buffer</ref>[i]<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state-&gt;rx_buffer[i]<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="247"><highlight class="normal"></highlight></codeline>
 <codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__i2c__types_1gada1e8e589688e2d6626421d8d85d9c53" kindref="member">i2c_status_t</ref><sp/>status<sp/>=<sp/>start_rx_mem_interrupt(bus,<sp/>addr,<sp/>reg,<sp/>len);</highlight></codeline>
@@ -561,18 +567,18 @@
 <codeline lineno="262"><highlight class="normal"></highlight></codeline>
 <codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structi2c__bus__state__t" kindref="compound">i2c_bus_state_t</ref><sp/>*state<sp/>=<sp/>&amp;g_bus_state[bus];</highlight></codeline>
 <codeline lineno="264"><highlight class="normal"></highlight></codeline>
-<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!state-&gt;<ref refid="structi2c__bus__state__t_1a0347e42935b0df07cf96d97e4a4c760c" kindref="member">initialized</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!state-&gt;initialized)<sp/>{</highlight></codeline>
 <codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__i2c__types_1gga4e07871ca4ae83f158fa20d135b309b2ae47984b590895353d65473ef35c79d89" kindref="member">I2C_HAL_ERR_UNKNOWN</ref>;</highlight></codeline>
 <codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="268"><highlight class="normal"></highlight></codeline>
-<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(state-&gt;<ref refid="structi2c__bus__state__t_1ae76c0891003839aa101b3043dfb2e67c" kindref="member">busy</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(state-&gt;busy)<sp/>{</highlight></codeline>
 <codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__i2c__types_1gga4e07871ca4ae83f158fa20d135b309b2aac6a14c5dd65d7af54b45190d535846d" kindref="member">I2C_HAL_ERR_BUSY</ref>;</highlight></codeline>
 <codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="272"><highlight class="normal"></highlight></codeline>
 <codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;<ref refid="structi2c__bus__state__t_1a4f6ac778984d983b4676c9bbf33e6cd9" kindref="member">tx_callback</ref><sp/>=<sp/>cb;</highlight></codeline>
-<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;<ref refid="structi2c__bus__state__t_1aabf6db10f8f4317ca733aa6db51ac2cd" kindref="member">tx_callback_ctx</ref><sp/>=<sp/>ctx;</highlight></codeline>
-<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;<ref refid="structi2c__bus__state__t_1a14dc8c1b164ee8441b5b9e6431913f9c" kindref="member">error_callback</ref><sp/>=<sp/>err_cb;</highlight></codeline>
-<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;<ref refid="structi2c__bus__state__t_1a79ab135d058fd5f964c5410f0b4bb26e" kindref="member">error_callback_ctx</ref><sp/>=<sp/>ctx;</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;tx_callback_ctx<sp/>=<sp/>ctx;</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;error_callback<sp/>=<sp/>err_cb;</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;error_callback_ctx<sp/>=<sp/>ctx;</highlight></codeline>
 <codeline lineno="277"><highlight class="normal"></highlight></codeline>
 <codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__i2c__types_1gada1e8e589688e2d6626421d8d85d9c53" kindref="member">i2c_status_t</ref><sp/>status<sp/>=<sp/>start_tx_interrupt(bus,<sp/>addr,<sp/>data,<sp/>len);</highlight></codeline>
 <codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(status<sp/>!=<sp/><ref refid="group__i2c__types_1ggada1e8e589688e2d6626421d8d85d9c53aeceba296bdda2b90e8835c431fe7a72a" kindref="member">I2C_OK</ref>)<sp/>{</highlight></codeline>
@@ -591,18 +597,18 @@
 <codeline lineno="292"><highlight class="normal"></highlight></codeline>
 <codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structi2c__bus__state__t" kindref="compound">i2c_bus_state_t</ref><sp/>*state<sp/>=<sp/>&amp;g_bus_state[bus];</highlight></codeline>
 <codeline lineno="294"><highlight class="normal"></highlight></codeline>
-<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!state-&gt;<ref refid="structi2c__bus__state__t_1a0347e42935b0df07cf96d97e4a4c760c" kindref="member">initialized</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!state-&gt;initialized)<sp/>{</highlight></codeline>
 <codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__i2c__types_1gga4e07871ca4ae83f158fa20d135b309b2ae47984b590895353d65473ef35c79d89" kindref="member">I2C_HAL_ERR_UNKNOWN</ref>;</highlight></codeline>
 <codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="298"><highlight class="normal"></highlight></codeline>
-<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(state-&gt;<ref refid="structi2c__bus__state__t_1ae76c0891003839aa101b3043dfb2e67c" kindref="member">busy</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(state-&gt;busy)<sp/>{</highlight></codeline>
 <codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__i2c__types_1gga4e07871ca4ae83f158fa20d135b309b2aac6a14c5dd65d7af54b45190d535846d" kindref="member">I2C_HAL_ERR_BUSY</ref>;</highlight></codeline>
 <codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="302"><highlight class="normal"></highlight></codeline>
 <codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;<ref refid="structi2c__bus__state__t_1a4f6ac778984d983b4676c9bbf33e6cd9" kindref="member">tx_callback</ref><sp/>=<sp/>cb;</highlight></codeline>
-<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;<ref refid="structi2c__bus__state__t_1aabf6db10f8f4317ca733aa6db51ac2cd" kindref="member">tx_callback_ctx</ref><sp/>=<sp/>ctx;</highlight></codeline>
-<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;<ref refid="structi2c__bus__state__t_1a14dc8c1b164ee8441b5b9e6431913f9c" kindref="member">error_callback</ref><sp/>=<sp/>err_cb;</highlight></codeline>
-<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;<ref refid="structi2c__bus__state__t_1a79ab135d058fd5f964c5410f0b4bb26e" kindref="member">error_callback_ctx</ref><sp/>=<sp/>ctx;</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;tx_callback_ctx<sp/>=<sp/>ctx;</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;error_callback<sp/>=<sp/>err_cb;</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;error_callback_ctx<sp/>=<sp/>ctx;</highlight></codeline>
 <codeline lineno="307"><highlight class="normal"></highlight></codeline>
 <codeline lineno="308"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__i2c__types_1gada1e8e589688e2d6626421d8d85d9c53" kindref="member">i2c_status_t</ref><sp/>status<sp/>=<sp/>start_tx_mem_interrupt(bus,<sp/>addr,<sp/>reg,<sp/>data,<sp/>len);</highlight></codeline>
 <codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(status<sp/>!=<sp/><ref refid="group__i2c__types_1ggada1e8e589688e2d6626421d8d85d9c53aeceba296bdda2b90e8835c431fe7a72a" kindref="member">I2C_OK</ref>)<sp/>{</highlight></codeline>
@@ -621,7 +627,7 @@
 <codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structi2c__bus__state__t" kindref="compound">i2c_bus_state_t</ref><sp/>*state<sp/>=<sp/>&amp;g_bus_state[bus];</highlight></codeline>
 <codeline lineno="323"><highlight class="normal"></highlight></codeline>
 <codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;<ref refid="structi2c__bus__state__t_1a14dc8c1b164ee8441b5b9e6431913f9c" kindref="member">error_callback</ref><sp/>=<sp/>cb;</highlight></codeline>
-<codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;<ref refid="structi2c__bus__state__t_1a79ab135d058fd5f964c5410f0b4bb26e" kindref="member">error_callback_ctx</ref><sp/>=<sp/>ctx;</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;error_callback_ctx<sp/>=<sp/>ctx;</highlight></codeline>
 <codeline lineno="326"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="327"><highlight class="normal"></highlight></codeline>
 <codeline lineno="328"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__i2c__api_1gae01bf06db1ae22542c580edf46b633b8" kindref="member">hal_i2c_isr_handler</ref>(<ref refid="group__i2c__types_1ga29c2ef19c960dcf416306806f97d1250" kindref="member">i2c_bus_t</ref><sp/>bus)<sp/>{</highlight></codeline>
@@ -630,11 +636,11 @@
 <codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="332"><highlight class="normal"></highlight></codeline>
 <codeline lineno="333"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structi2c__bus__state__t" kindref="compound">i2c_bus_state_t</ref><sp/>*state<sp/>=<sp/>&amp;g_bus_state[bus];</highlight></codeline>
-<codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!state-&gt;<ref refid="structi2c__bus__state__t_1a0347e42935b0df07cf96d97e4a4c760c" kindref="member">initialized</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!state-&gt;initialized)<sp/>{</highlight></codeline>
 <codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="336"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="337"><highlight class="normal"></highlight></codeline>
-<codeline lineno="338"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__I2C__IRQ__Handler__and__Callbacks_1ga0cd3cc56c83b85a65e31c945c854d9d5" kindref="member">HAL_I2C_EV_IRQHandler</ref>(state-&gt;<ref refid="structi2c__bus__state__t_1ac39000a29e9d81580225a8cf3dccb245" kindref="member">hi2c</ref>);</highlight></codeline>
+<codeline lineno="338"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__I2C__IRQ__Handler__and__Callbacks_1ga0cd3cc56c83b85a65e31c945c854d9d5" kindref="member">HAL_I2C_EV_IRQHandler</ref>(state-&gt;hi2c);</highlight></codeline>
 <codeline lineno="339"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="340"><highlight class="normal"></highlight></codeline>
 <codeline lineno="341"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__I2C__IRQ__Handler__and__Callbacks_1ga5782358f977ddf450b203fc075833a1d" kindref="member">HAL_I2C_MasterRxCpltCallback</ref>(<ref refid="structI2C__HandleTypeDef" kindref="compound">I2C_HandleTypeDef</ref><sp/>*hi2c)<sp/>{</highlight></codeline>
@@ -651,14 +657,14 @@
 <codeline lineno="352"><highlight class="normal"></highlight></codeline>
 <codeline lineno="353"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structi2c__bus__state__t" kindref="compound">i2c_bus_state_t</ref><sp/>*state<sp/>=<sp/>&amp;g_bus_state[bus];</highlight></codeline>
 <codeline lineno="354"><highlight class="normal"></highlight></codeline>
-<codeline lineno="355"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(uint16_t<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>state-&gt;<ref refid="structi2c__bus__state__t_1ac5019d7815398156c13b174cbb91c7ec" kindref="member">rx_len</ref>;<sp/>i++)<sp/>{</highlight></codeline>
-<codeline lineno="356"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state-&gt;<ref refid="structi2c__bus__state__t_1aa3702f2dbde53db1c2581e24f6cd0ee3" kindref="member">rx_user_buffer</ref>[i]<sp/>=<sp/>state-&gt;<ref refid="structi2c__bus__state__t_1a155c9dd480f173708e624714e91c24ee" kindref="member">rx_buffer</ref>[i];</highlight></codeline>
+<codeline lineno="355"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(uint16_t<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>state-&gt;rx_len;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="356"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state-&gt;rx_user_buffer[i]<sp/>=<sp/>state-&gt;rx_buffer[i];</highlight></codeline>
 <codeline lineno="357"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="358"><highlight class="normal"></highlight></codeline>
 <codeline lineno="359"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;<ref refid="structi2c__bus__state__t_1ae76c0891003839aa101b3043dfb2e67c" kindref="member">busy</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="360"><highlight class="normal"></highlight></codeline>
-<codeline lineno="361"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(state-&gt;<ref refid="structi2c__bus__state__t_1a8dbab9463a192cfb4f26199eaa362847" kindref="member">rx_callback</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="362"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state-&gt;<ref refid="structi2c__bus__state__t_1a8dbab9463a192cfb4f26199eaa362847" kindref="member">rx_callback</ref>(bus,<sp/>state-&gt;<ref refid="structi2c__bus__state__t_1adc4c30d1b01537157874a1d04ef9070b" kindref="member">rx_callback_ctx</ref>);</highlight></codeline>
+<codeline lineno="361"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(state-&gt;rx_callback)<sp/>{</highlight></codeline>
+<codeline lineno="362"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state-&gt;rx_callback(bus,<sp/>state-&gt;rx_callback_ctx);</highlight></codeline>
 <codeline lineno="363"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="364"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="365"><highlight class="normal"></highlight></codeline>
@@ -677,8 +683,8 @@
 <codeline lineno="378"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structi2c__bus__state__t" kindref="compound">i2c_bus_state_t</ref><sp/>*state<sp/>=<sp/>&amp;g_bus_state[bus];</highlight></codeline>
 <codeline lineno="379"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;<ref refid="structi2c__bus__state__t_1ae76c0891003839aa101b3043dfb2e67c" kindref="member">busy</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="380"><highlight class="normal"></highlight></codeline>
-<codeline lineno="381"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(state-&gt;<ref refid="structi2c__bus__state__t_1a4f6ac778984d983b4676c9bbf33e6cd9" kindref="member">tx_callback</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="382"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state-&gt;<ref refid="structi2c__bus__state__t_1a4f6ac778984d983b4676c9bbf33e6cd9" kindref="member">tx_callback</ref>(bus,<sp/>state-&gt;<ref refid="structi2c__bus__state__t_1aabf6db10f8f4317ca733aa6db51ac2cd" kindref="member">tx_callback_ctx</ref>);</highlight></codeline>
+<codeline lineno="381"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(state-&gt;tx_callback)<sp/>{</highlight></codeline>
+<codeline lineno="382"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state-&gt;tx_callback(bus,<sp/>state-&gt;tx_callback_ctx);</highlight></codeline>
 <codeline lineno="383"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="384"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="385"><highlight class="normal"></highlight></codeline>
@@ -723,8 +729,8 @@
 <codeline lineno="424"><highlight class="normal"></highlight></codeline>
 <codeline lineno="425"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__i2c__types_1ga4e07871ca4ae83f158fa20d135b309b2" kindref="member">i2c_error_t</ref><sp/>err<sp/>=<sp/>hal_error_to_i2c_error(hi2c-&gt;ErrorCode);</highlight></codeline>
 <codeline lineno="426"><highlight class="normal"></highlight></codeline>
-<codeline lineno="427"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(state-&gt;<ref refid="structi2c__bus__state__t_1a14dc8c1b164ee8441b5b9e6431913f9c" kindref="member">error_callback</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="428"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state-&gt;<ref refid="structi2c__bus__state__t_1a14dc8c1b164ee8441b5b9e6431913f9c" kindref="member">error_callback</ref>(bus,<sp/>err,<sp/>state-&gt;<ref refid="structi2c__bus__state__t_1a79ab135d058fd5f964c5410f0b4bb26e" kindref="member">error_callback_ctx</ref>);</highlight></codeline>
+<codeline lineno="427"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(state-&gt;error_callback)<sp/>{</highlight></codeline>
+<codeline lineno="428"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state-&gt;error_callback(bus,<sp/>err,<sp/>state-&gt;error_callback_ctx);</highlight></codeline>
 <codeline lineno="429"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="430"><highlight class="normal">}</highlight></codeline>
     </programlisting>

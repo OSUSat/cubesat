@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="hal__gpio__mock_8c" kind="file" language="C++">
     <compoundname>hal_gpio_mock.c</compoundname>
     <includes refid="hal__gpio__mock_8h" local="yes">hal_gpio_mock.h</includes>
@@ -198,7 +198,7 @@
 <codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="24"><highlight class="normal"></highlight></codeline>
 <codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>fire<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hal__gpio__types_8h_1a491a2cbfb4e94f2afcc0d5bdef2dc454" kindref="member">gpio_mode_t</ref><sp/>mode<sp/>=<sp/>mock_pins[pin].<ref refid="structgpio__pin__t_1afd74d71f1c12d761565460f8d2505455" kindref="member">mode</ref>;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hal__gpio__types_8h_1a491a2cbfb4e94f2afcc0d5bdef2dc454" kindref="member">gpio_mode_t</ref><sp/>mode<sp/>=<sp/>mock_pins[pin].mode;</highlight></codeline>
 <codeline lineno="27"><highlight class="normal"></highlight></codeline>
 <codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>check<sp/>rising<sp/>edge<sp/>(low<sp/>-&gt;<sp/>high)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(old_state<sp/>==<sp/><ref refid="hal__gpio__types_8h_1a2ff5468d5ab752db6fa1fb95363392a6aadd0ec66d8b220c7c3c13866d54c5ef9" kindref="member">HAL_GPIO_STATE_LOW</ref><sp/>&amp;&amp;<sp/>new_state<sp/>==<sp/><ref refid="hal__gpio__types_8h_1a2ff5468d5ab752db6fa1fb95363392a6affc092bc9a8100f9f19da09884087ee5" kindref="member">HAL_GPIO_STATE_HIGH</ref>)<sp/>{</highlight></codeline>
@@ -220,7 +220,7 @@
 <codeline lineno="45"><highlight class="normal"></highlight></codeline>
 <codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(fire)<sp/>{</highlight></codeline>
 <codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>execute<sp/>the<sp/>registered<sp/>callback<sp/>(simulate<sp/>ISR<sp/>jumping<sp/>to<sp/>handler)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mock_pins[pin].<ref refid="structgpio__pin__t_1a9bc4607df40693bcce13a1f926f9d149" kindref="member">cb</ref>(pin,<sp/>mock_pins[pin].ctx);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mock_pins[pin].cb(pin,<sp/>mock_pins[pin].ctx);</highlight></codeline>
 <codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="50"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="51"><highlight class="normal"></highlight></codeline>
@@ -230,11 +230,11 @@
 <codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>memset(mock_pins,<sp/>0,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(mock_pins));</highlight></codeline>
 <codeline lineno="56"><highlight class="normal"></highlight></codeline>
 <codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="hal__gpio__mock_8c_1a6c502f45f8e5d1ffdd08bb59e3db4c6f" kindref="member">MAX_MOCK_PINS</ref>;<sp/>i++)<sp/>{</highlight></codeline>
-<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mock_pins[i].<ref refid="structgpio__pin__t_1afd74d71f1c12d761565460f8d2505455" kindref="member">mode</ref><sp/>=<sp/><ref refid="hal__gpio__types_8h_1a491a2cbfb4e94f2afcc0d5bdef2dc454ac92b3c171080b52d9fc1136973f12316" kindref="member">HAL_GPIO_MODE_INPUT</ref>;</highlight></codeline>
-<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mock_pins[i].<ref refid="structgpio__pin__t_1a6705b76fd25a98ac26fd8948ad4bd81d" kindref="member">pull</ref><sp/>=<sp/><ref refid="hal__gpio__types_8h_1a15988813fd44aa06a2300421601952f8ab2ca5b052ffc2989ed4dde11af77bb18" kindref="member">HAL_GPIO_NO_PULL</ref>;</highlight></codeline>
-<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mock_pins[i].<ref refid="structgpio__pin__t_1a38ef2d80b92197e5ed3482c02bf3b0d7" kindref="member">irq_enabled</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mock_pins[i].<ref refid="structgpio__pin__t_1a9bc4607df40693bcce13a1f926f9d149" kindref="member">cb</ref><sp/>=<sp/>NULL;</highlight></codeline>
-<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mock_pins[i].<ref refid="structgpio__pin__t_1af39c05e286fd81cc76d20d9574cee2f0" kindref="member">ctx</ref><sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mock_pins[i].mode<sp/>=<sp/><ref refid="hal__gpio__types_8h_1a491a2cbfb4e94f2afcc0d5bdef2dc454ac92b3c171080b52d9fc1136973f12316" kindref="member">HAL_GPIO_MODE_INPUT</ref>;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mock_pins[i].pull<sp/>=<sp/><ref refid="hal__gpio__types_8h_1a15988813fd44aa06a2300421601952f8ab2ca5b052ffc2989ed4dde11af77bb18" kindref="member">HAL_GPIO_NO_PULL</ref>;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mock_pins[i].irq_enabled<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mock_pins[i].cb<sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mock_pins[i].ctx<sp/>=<sp/>NULL;</highlight></codeline>
 <codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="64"><highlight class="normal"></highlight></codeline>
 <codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>mock_initialized<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
@@ -249,21 +249,21 @@
 <codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;MOCK:<sp/>Setting<sp/>pin<sp/>%d<sp/>to<sp/>mode<sp/>%d\n&quot;</highlight><highlight class="normal">,<sp/>pin,<sp/>mode);</highlight></codeline>
 <codeline lineno="75"><highlight class="normal"></highlight></codeline>
 <codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mock_pins[pin].irq_enabled)<sp/>{</highlight></codeline>
-<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mock_pins[pin].<ref refid="structgpio__pin__t_1a38ef2d80b92197e5ed3482c02bf3b0d7" kindref="member">irq_enabled</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mock_pins[pin].irq_enabled<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;MOCK:<sp/>Releasing<sp/>IRQ<sp/>for<sp/>pin<sp/>%d\n&quot;</highlight><highlight class="normal">,<sp/>pin);</highlight></codeline>
 <codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="80"><highlight class="normal"></highlight></codeline>
-<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>mock_pins[pin].<ref refid="structgpio__pin__t_1afd74d71f1c12d761565460f8d2505455" kindref="member">mode</ref><sp/>=<sp/>mode;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>mock_pins[pin].mode<sp/>=<sp/>mode;</highlight></codeline>
 <codeline lineno="82"><highlight class="normal"></highlight></codeline>
 <codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>enable<sp/>IRQ<sp/>for<sp/>interrupt<sp/>modes</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mode<sp/>==<sp/><ref refid="hal__gpio__types_8h_1a491a2cbfb4e94f2afcc0d5bdef2dc454af3af97df6c73afe5eebedbb367ea818c" kindref="member">HAL_GPIO_MODE_IT_RISING</ref><sp/>||<sp/>mode<sp/>==<sp/><ref refid="hal__gpio__types_8h_1a491a2cbfb4e94f2afcc0d5bdef2dc454a5eccae4129103435adb03ac582fd9b2a" kindref="member">HAL_GPIO_MODE_IT_FALLING</ref><sp/>||</highlight></codeline>
 <codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mode<sp/>==<sp/><ref refid="hal__gpio__types_8h_1a491a2cbfb4e94f2afcc0d5bdef2dc454a0f111a426e12c897c211fd4d6864ddbf" kindref="member">HAL_GPIO_MODE_IT_RISING_FALLING</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mock_pins[pin].<ref refid="structgpio__pin__t_1a38ef2d80b92197e5ed3482c02bf3b0d7" kindref="member">irq_enabled</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mock_pins[pin].irq_enabled<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;MOCK:<sp/>IRQ<sp/>enabled<sp/>for<sp/>pin<sp/>%d\n&quot;</highlight><highlight class="normal">,<sp/>pin);</highlight></codeline>
 <codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="89"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="90"><highlight class="normal"></highlight></codeline>
-<codeline lineno="91"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__gpio__api_1ga9add8d838aee6a869270f6e5c731d481" kindref="member">hal_gpio_register_callback</ref>(uint8_t<sp/>pin,<sp/><ref refid="group__gpio__types_1gaa6522fb9760184b5f293ad42375be160" kindref="member">gpio_callback_t</ref><sp/>callback,</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__gpio__api_1ga9add8d838aee6a869270f6e5c731d481" kindref="member">hal_gpio_register_callback</ref>(uint8_t<sp/>pin,<sp/><ref refid="group__gpio__types_1ga86c651af6b0225a44a7fc6db3da4fa1f" kindref="member">gpio_callback_t</ref><sp/>callback,</highlight></codeline>
 <codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*ctx)<sp/>{</highlight></codeline>
 <codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(pin<sp/>&gt;=<sp/><ref refid="hal__gpio__mock_8c_1a6c502f45f8e5d1ffdd08bb59e3db4c6f" kindref="member">MAX_MOCK_PINS</ref><sp/>||<sp/>!mock_initialized)<sp/>{</highlight></codeline>
 <codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;MOCK<sp/>ERROR:<sp/>Pin<sp/>%d<sp/>out<sp/>of<sp/>bounds<sp/>or<sp/>not<sp/>initialized\n&quot;</highlight><highlight class="normal">,<sp/>pin);</highlight></codeline>
@@ -271,8 +271,8 @@
 <codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="97"><highlight class="normal"></highlight></codeline>
 <codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;MOCK:<sp/>Registering<sp/>callback<sp/>for<sp/>Pin<sp/>%d\n&quot;</highlight><highlight class="normal">,<sp/>pin);</highlight></codeline>
-<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>mock_pins[pin].<ref refid="structgpio__pin__t_1a9bc4607df40693bcce13a1f926f9d149" kindref="member">cb</ref><sp/>=<sp/>callback;</highlight></codeline>
-<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>mock_pins[pin].<ref refid="structgpio__pin__t_1af39c05e286fd81cc76d20d9574cee2f0" kindref="member">ctx</ref><sp/>=<sp/>ctx;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>mock_pins[pin].cb<sp/>=<sp/>callback;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>mock_pins[pin].ctx<sp/>=<sp/>ctx;</highlight></codeline>
 <codeline lineno="101"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="102"><highlight class="normal"></highlight></codeline>
 <codeline lineno="103"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__gpio__api_1gaa314f8a9a4b7b51a49361b942b7d2c3b" kindref="member">hal_gpio_write</ref>(uint8_t<sp/>pin,<sp/><ref refid="hal__gpio__types_8h_1a2ff5468d5ab752db6fa1fb95363392a6" kindref="member">gpio_state_t</ref><sp/>state)<sp/>{</highlight></codeline>
@@ -284,8 +284,8 @@
 <codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mock_pins[pin].mode<sp/>==<sp/><ref refid="hal__gpio__types_8h_1a491a2cbfb4e94f2afcc0d5bdef2dc454a0821a986a273a297128783bfd274ffdb" kindref="member">HAL_GPIO_MODE_OUTPUT</ref>)<sp/>{</highlight></codeline>
 <codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;MOCK:<sp/>Writing<sp/>%d<sp/>to<sp/>pin<sp/>%d\n&quot;</highlight><highlight class="normal">,<sp/>state,<sp/>pin);</highlight></codeline>
 <codeline lineno="111"><highlight class="normal"></highlight></codeline>
-<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="hal__gpio__types_8h_1a2ff5468d5ab752db6fa1fb95363392a6" kindref="member">gpio_state_t</ref><sp/>old_state<sp/>=<sp/>mock_pins[pin].<ref refid="structgpio__pin__t_1af116e65f0d8b9684d6a62f6e1553dc5d" kindref="member">state</ref>;</highlight></codeline>
-<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mock_pins[pin].<ref refid="structgpio__pin__t_1af116e65f0d8b9684d6a62f6e1553dc5d" kindref="member">state</ref><sp/>=<sp/>state;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="hal__gpio__types_8h_1a2ff5468d5ab752db6fa1fb95363392a6" kindref="member">gpio_state_t</ref><sp/>old_state<sp/>=<sp/>mock_pins[pin].state;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mock_pins[pin].state<sp/>=<sp/>state;</highlight></codeline>
 <codeline lineno="114"><highlight class="normal"></highlight></codeline>
 <codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>check_and_fire_interrupt(pin,<sp/>old_state,<sp/>state);</highlight></codeline>
 <codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
@@ -301,7 +301,7 @@
 <codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="hal__gpio__types_8h_1a2ff5468d5ab752db6fa1fb95363392a6aadd0ec66d8b220c7c3c13866d54c5ef9" kindref="member">HAL_GPIO_STATE_LOW</ref>;</highlight></codeline>
 <codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="128"><highlight class="normal"></highlight></codeline>
-<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>mock_pins[pin].<ref refid="structgpio__pin__t_1af116e65f0d8b9684d6a62f6e1553dc5d" kindref="member">state</ref>;</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>mock_pins[pin].state;</highlight></codeline>
 <codeline lineno="130"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="131"><highlight class="normal"></highlight></codeline>
 <codeline lineno="132"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__gpio__api_1ga8d567a689867d0c1be8f447cca081242" kindref="member">hal_gpio_toggle</ref>(uint8_t<sp/>pin)<sp/>{</highlight></codeline>
@@ -310,7 +310,7 @@
 <codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="136"><highlight class="normal"></highlight></codeline>
 <codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mock_pins[pin].mode<sp/>==<sp/><ref refid="hal__gpio__types_8h_1a491a2cbfb4e94f2afcc0d5bdef2dc454a0821a986a273a297128783bfd274ffdb" kindref="member">HAL_GPIO_MODE_OUTPUT</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="hal__gpio__types_8h_1a2ff5468d5ab752db6fa1fb95363392a6" kindref="member">gpio_state_t</ref><sp/>new_state<sp/>=<sp/>(mock_pins[pin].<ref refid="structgpio__pin__t_1af116e65f0d8b9684d6a62f6e1553dc5d" kindref="member">state</ref><sp/>==<sp/><ref refid="hal__gpio__types_8h_1a2ff5468d5ab752db6fa1fb95363392a6aadd0ec66d8b220c7c3c13866d54c5ef9" kindref="member">HAL_GPIO_STATE_LOW</ref>)</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="hal__gpio__types_8h_1a2ff5468d5ab752db6fa1fb95363392a6" kindref="member">gpio_state_t</ref><sp/>new_state<sp/>=<sp/>(mock_pins[pin].state<sp/>==<sp/><ref refid="hal__gpio__types_8h_1a2ff5468d5ab752db6fa1fb95363392a6aadd0ec66d8b220c7c3c13866d54c5ef9" kindref="member">HAL_GPIO_STATE_LOW</ref>)</highlight></codeline>
 <codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>?<sp/><ref refid="hal__gpio__types_8h_1a2ff5468d5ab752db6fa1fb95363392a6affc092bc9a8100f9f19da09884087ee5" kindref="member">HAL_GPIO_STATE_HIGH</ref></highlight></codeline>
 <codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="hal__gpio__types_8h_1a2ff5468d5ab752db6fa1fb95363392a6aadd0ec66d8b220c7c3c13866d54c5ef9" kindref="member">HAL_GPIO_STATE_LOW</ref>;</highlight></codeline>
 <codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__gpio__api_1gaa314f8a9a4b7b51a49361b942b7d2c3b" kindref="member">hal_gpio_write</ref>(pin,<sp/>new_state);</highlight></codeline>
@@ -325,8 +325,8 @@
 <codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="151"><highlight class="normal"></highlight></codeline>
 <codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;MOCK<sp/>TEST:<sp/>Forcing<sp/>pin<sp/>%d<sp/>to<sp/>state<sp/>%d\n&quot;</highlight><highlight class="normal">,<sp/>pin,<sp/>state);</highlight></codeline>
-<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hal__gpio__types_8h_1a2ff5468d5ab752db6fa1fb95363392a6" kindref="member">gpio_state_t</ref><sp/>old_state<sp/>=<sp/>mock_pins[pin].<ref refid="structgpio__pin__t_1af116e65f0d8b9684d6a62f6e1553dc5d" kindref="member">state</ref>;</highlight></codeline>
-<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/>mock_pins[pin].<ref refid="structgpio__pin__t_1af116e65f0d8b9684d6a62f6e1553dc5d" kindref="member">state</ref><sp/>=<sp/>state;</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hal__gpio__types_8h_1a2ff5468d5ab752db6fa1fb95363392a6" kindref="member">gpio_state_t</ref><sp/>old_state<sp/>=<sp/>mock_pins[pin].state;</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/>mock_pins[pin].state<sp/>=<sp/>state;</highlight></codeline>
 <codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/>check_and_fire_interrupt(pin,<sp/>old_state,<sp/>state);</highlight></codeline>
 <codeline lineno="156"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="157"><highlight class="normal"></highlight></codeline>

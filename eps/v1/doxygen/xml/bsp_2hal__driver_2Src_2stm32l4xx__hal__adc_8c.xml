@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
   <compounddef id="bsp_2hal__driver_2Src_2stm32l4xx__hal__adc_8c" kind="file" language="C++">
     <compoundname>stm32l4xx_hal_adc.c</compoundname>
     <includes local="yes">stm32l4xx_hal.h</includes>
@@ -291,28 +291,35 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 
    When the compilation flag USE_HAL_ADC_REGISTER_CALLBACKS is set to 0 or
    not defined, the callback registration feature is not available and all callbacks
-   are set to the corresponding weak functions.</verbatim> </para>
+   are set to the corresponding weak functions.
+</verbatim> </para>
     </detaileddescription>
     <programlisting>
 <codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="293"><highlight class="normal"></highlight></codeline>
 <codeline lineno="294"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Includes<sp/>------------------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="295"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;stm32l4xx_hal.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="296"><highlight class="normal"></highlight></codeline>
+<codeline lineno="300"><highlight class="normal"></highlight></codeline>
+<codeline lineno="305"><highlight class="normal"></highlight></codeline>
 <codeline lineno="306"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>HAL_ADC_MODULE_ENABLED</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="307"><highlight class="normal"></highlight></codeline>
 <codeline lineno="308"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>typedef<sp/>-----------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="309"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>define<sp/>------------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="310"><highlight class="normal"></highlight></codeline>
+<codeline lineno="314"><highlight class="normal"></highlight></codeline>
 <codeline lineno="315"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ADC_CFGR_FIELDS_1<sp/>(ADC_CFGR_RES<sp/><sp/><sp/><sp/>|<sp/>ADC_CFGR_ALIGN<sp/><sp/><sp/>|\</highlight></codeline>
 <codeline lineno="316"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ADC_CFGR_CONT<sp/><sp/><sp/>|<sp/>ADC_CFGR_OVRMOD<sp/><sp/>|\</highlight></codeline>
 <codeline lineno="317"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ADC_CFGR_DISCEN<sp/>|<sp/>ADC_CFGR_DISCNUM<sp/>|\</highlight></codeline>
-<codeline lineno="318"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ADC_CFGR_EXTEN<sp/><sp/>|<sp/>ADC_CFGR_EXTSEL)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="318"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ADC_CFGR_EXTEN<sp/><sp/>|<sp/>ADC_CFGR_EXTSEL)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="320"><highlight class="normal"></highlight></codeline>
 <codeline lineno="321"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Timeout<sp/>values<sp/>for<sp/>ADC<sp/>operations<sp/>(enable<sp/>settling<sp/>time,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="322"><highlight class="normal"></highlight><highlight class="comment">/*<sp/><sp/><sp/>disable<sp/>settling<sp/>time,<sp/>...).<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="323"><highlight class="normal"></highlight><highlight class="comment">/*<sp/><sp/><sp/>Values<sp/>defined<sp/>to<sp/>be<sp/>higher<sp/>than<sp/>worst<sp/>cases:<sp/>low<sp/>clock<sp/>frequency,<sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="324"><highlight class="normal"></highlight><highlight class="comment">/*<sp/><sp/><sp/>maximum<sp/>prescalers.<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="325"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ADC_ENABLE_TIMEOUT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(2UL)<sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="326"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ADC_DISABLE_TIMEOUT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(2UL)<sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="325"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ADC_ENABLE_TIMEOUT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(2UL)<sp/><sp/><sp/><sp/></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="326"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ADC_DISABLE_TIMEOUT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(2UL)<sp/><sp/><sp/><sp/></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="327"><highlight class="normal"></highlight></codeline>
 <codeline lineno="328"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Timeout<sp/>to<sp/>wait<sp/>for<sp/>current<sp/>conversion<sp/>on<sp/>going<sp/>to<sp/>be<sp/>completed.<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="329"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Timeout<sp/>fixed<sp/>to<sp/>longest<sp/>ADC<sp/>conversion<sp/>possible,<sp/>for<sp/>1<sp/>channel:<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="330"><highlight class="normal"></highlight><highlight class="comment">/*<sp/><sp/><sp/>-<sp/>maximum<sp/>sampling<sp/>time<sp/>(640.5<sp/>adc_clk)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
@@ -321,12 +328,17 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="333"><highlight class="normal"></highlight><highlight class="comment">/*<sp/><sp/><sp/>-<sp/>ADC<sp/>oversampling<sp/>ratio<sp/>256<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="334"><highlight class="normal"></highlight><highlight class="comment">/*<sp/><sp/><sp/>Calculation:<sp/>653<sp/>*<sp/>4096<sp/>*<sp/>256<sp/>CPU<sp/>clock<sp/>cycles<sp/>max<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="335"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Unit:<sp/>cycles<sp/>of<sp/>CPU<sp/>clock.<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="336"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ADC_CONVERSION_TIME_MAX_CPU_CYCLES<sp/>(653UL<sp/>*<sp/>4096UL<sp/>*<sp/>256UL)<sp/><sp/></highlight></codeline>
+<codeline lineno="336"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ADC_CONVERSION_TIME_MAX_CPU_CYCLES<sp/>(653UL<sp/>*<sp/>4096UL<sp/>*<sp/>256UL)<sp/><sp/></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="337"><highlight class="normal"></highlight></codeline>
+<codeline lineno="338"><highlight class="normal"></highlight></codeline>
+<codeline lineno="342"><highlight class="normal"></highlight></codeline>
 <codeline lineno="343"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>macro<sp/>-------------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="344"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>variables<sp/>---------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="345"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Private<sp/>function<sp/>prototypes<sp/>-----------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="346"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Exported<sp/>functions<sp/>--------------------------------------------------------*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="347"><highlight class="normal"></highlight></codeline>
+<codeline lineno="351"><highlight class="normal"></highlight></codeline>
+<codeline lineno="365"><highlight class="normal"></highlight></codeline>
 <codeline lineno="394"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/><ref refid="group__ADC__Exported__Functions__Group1_1ga33ddb73d4880bd425aaa43c5c52bb13a" kindref="member">HAL_ADC_Init</ref>(<ref refid="structADC__HandleTypeDef" kindref="compound">ADC_HandleTypeDef</ref><sp/>*hadc)</highlight></codeline>
 <codeline lineno="395"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="396"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/>tmp_hal_status<sp/>=<sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>;</highlight></codeline>
@@ -826,7 +838,7 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="920"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="921"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="922"><highlight class="normal"></highlight></codeline>
-<codeline lineno="923"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>(USE_HAL_ADC_REGISTER_CALLBACKS<sp/>==<sp/>1)</highlight></codeline>
+<codeline lineno="923"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>(USE_HAL_ADC_REGISTER_CALLBACKS<sp/>==<sp/>1)</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="947"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/>HAL_ADC_RegisterCallback(<ref refid="structADC__HandleTypeDef" kindref="compound">ADC_HandleTypeDef</ref><sp/>*hadc,<sp/>HAL_ADC_CallbackIDTypeDef<sp/>CallbackID,</highlight></codeline>
 <codeline lineno="948"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pADC_CallbackTypeDef<sp/>pCallback)</highlight></codeline>
 <codeline lineno="949"><highlight class="normal">{</highlight></codeline>
@@ -1026,6 +1038,8 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="1165"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1166"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>USE_HAL_ADC_REGISTER_CALLBACKS<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1167"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1171"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1193"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1203"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/><ref refid="group__ADC__Exported__Functions__Group2_1ga193666e3bde978627c9ee1e2073c69c0" kindref="member">HAL_ADC_Start</ref>(<ref refid="structADC__HandleTypeDef" kindref="compound">ADC_HandleTypeDef</ref><sp/>*hadc)</highlight></codeline>
 <codeline lineno="1204"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="1205"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/>tmp_hal_status;</highlight></codeline>
@@ -2331,6 +2345,8 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="2662"><highlight class="comment"><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2663"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="2664"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2668"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2683"><highlight class="normal"></highlight></codeline>
 <codeline lineno="2701"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/><ref refid="group__ADC__Exported__Functions__Group3_1ga96f4317420984bec9226f7d93cb36f1b" kindref="member">HAL_ADC_ConfigChannel</ref>(<ref refid="structADC__HandleTypeDef" kindref="compound">ADC_HandleTypeDef</ref><sp/>*hadc,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structADC__ChannelConfTypeDef" kindref="compound">ADC_ChannelConfTypeDef</ref><sp/>*pConfig)</highlight></codeline>
 <codeline lineno="2702"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="2703"><highlight class="normal"><sp/><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/>tmp_hal_status<sp/>=<sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>;</highlight></codeline>
@@ -2807,6 +2823,8 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="3190"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="3191"><highlight class="normal"></highlight></codeline>
 <codeline lineno="3192"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3196"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3213"><highlight class="normal"></highlight></codeline>
 <codeline lineno="3224"><highlight class="normal">uint32_t<sp/><ref refid="group__ADC__Exported__Functions__Group4_1ga4acb6c0bbdcbee01c5b6ab844e60168f" kindref="member">HAL_ADC_GetState</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structADC__HandleTypeDef" kindref="compound">ADC_HandleTypeDef</ref><sp/>*hadc)</highlight></codeline>
 <codeline lineno="3225"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="3226"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>the<sp/>parameters<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
@@ -2824,6 +2842,9 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="3243"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>hadc-&gt;<ref refid="structADC__HandleTypeDef_1a576634bdfdae8c61203a232876d2ba72" kindref="member">ErrorCode</ref>;</highlight></codeline>
 <codeline lineno="3244"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="3245"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3249"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3253"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3257"><highlight class="normal"></highlight></codeline>
 <codeline lineno="3268"><highlight class="normal"><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478f" kindref="member">HAL_StatusTypeDef</ref><sp/><ref refid="group__ADC__Private__Functions_1ga8cf59124f493ce4a972b2bab34bc0c7a" kindref="member">ADC_ConversionStop</ref>(<ref refid="structADC__HandleTypeDef" kindref="compound">ADC_HandleTypeDef</ref><sp/>*hadc,<sp/>uint32_t<sp/>ConversionGroup)</highlight></codeline>
 <codeline lineno="3269"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="3270"><highlight class="normal"><sp/><sp/>uint32_t<sp/>tickstart;</highlight></codeline>
@@ -3092,10 +3113,10 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="3547"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="bootstrap_2Drivers_2STM32L4xx__HAL__Driver_2Inc_2stm32l4xx__hal__def_8h_1a63c0679d1cb8b8c684fbb0632743478fa6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>;</highlight></codeline>
 <codeline lineno="3548"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="3549"><highlight class="normal"></highlight></codeline>
-<codeline lineno="3555"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__ADC__Private__Functions_1ga055840e53820295bac4f4f0998ffcfb0" kindref="member">ADC_DMAConvCplt</ref>(<ref refid="struct____DMA__HandleTypeDef" kindref="compound">DMA_HandleTypeDef</ref><sp/>*hdma)</highlight></codeline>
+<codeline lineno="3555"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__ADC__Private__Functions_1ga055840e53820295bac4f4f0998ffcfb0" kindref="member">ADC_DMAConvCplt</ref>(<ref refid="group__DMA__Exported__Types_1ga41b754a906b86bce54dc79938970138b" kindref="member">DMA_HandleTypeDef</ref><sp/>*hdma)</highlight></codeline>
 <codeline lineno="3556"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="3557"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Retrieve<sp/>ADC<sp/>handle<sp/>corresponding<sp/>to<sp/>current<sp/>DMA<sp/>handle<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="3558"><highlight class="normal"><sp/><sp/><ref refid="structADC__HandleTypeDef" kindref="compound">ADC_HandleTypeDef</ref><sp/>*hadc<sp/>=<sp/>(<ref refid="structADC__HandleTypeDef" kindref="compound">ADC_HandleTypeDef</ref><sp/>*)((<ref refid="struct____DMA__HandleTypeDef" kindref="compound">DMA_HandleTypeDef</ref><sp/>*)hdma)-&gt;Parent;</highlight></codeline>
+<codeline lineno="3558"><highlight class="normal"><sp/><sp/><ref refid="structADC__HandleTypeDef" kindref="compound">ADC_HandleTypeDef</ref><sp/>*hadc<sp/>=<sp/>(<ref refid="structADC__HandleTypeDef" kindref="compound">ADC_HandleTypeDef</ref><sp/>*)((<ref refid="group__DMA__Exported__Types_1ga41b754a906b86bce54dc79938970138b" kindref="member">DMA_HandleTypeDef</ref><sp/>*)hdma)-&gt;Parent;</highlight></codeline>
 <codeline lineno="3559"><highlight class="normal"></highlight></codeline>
 <codeline lineno="3560"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Update<sp/>state<sp/>machine<sp/>on<sp/>conversion<sp/>status<sp/>if<sp/>not<sp/>in<sp/>error<sp/>state<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="3561"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((hadc-&gt;<ref refid="structADC__HandleTypeDef_1abd63d2ae2064ef230986a43ae48f3df8" kindref="member">State</ref><sp/>&amp;<sp/>(<ref refid="group__ADC__States_1ga65b592627f1f9277f4b89bfc33a9e641" kindref="member">HAL_ADC_STATE_ERROR_INTERNAL</ref><sp/>|<sp/><ref refid="group__ADC__States_1ga5a1b4881d17e72aa0823797958221172" kindref="member">HAL_ADC_STATE_ERROR_DMA</ref>))<sp/>==<sp/>0UL)</highlight></codeline>
@@ -3165,10 +3186,10 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="3625"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="3626"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="3627"><highlight class="normal"></highlight></codeline>
-<codeline lineno="3633"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__ADC__Private__Functions_1ga27abcd16a928caf2b6c719ea67c12b25" kindref="member">ADC_DMAHalfConvCplt</ref>(<ref refid="struct____DMA__HandleTypeDef" kindref="compound">DMA_HandleTypeDef</ref><sp/>*hdma)</highlight></codeline>
+<codeline lineno="3633"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__ADC__Private__Functions_1ga27abcd16a928caf2b6c719ea67c12b25" kindref="member">ADC_DMAHalfConvCplt</ref>(<ref refid="group__DMA__Exported__Types_1ga41b754a906b86bce54dc79938970138b" kindref="member">DMA_HandleTypeDef</ref><sp/>*hdma)</highlight></codeline>
 <codeline lineno="3634"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="3635"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Retrieve<sp/>ADC<sp/>handle<sp/>corresponding<sp/>to<sp/>current<sp/>DMA<sp/>handle<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="3636"><highlight class="normal"><sp/><sp/><ref refid="structADC__HandleTypeDef" kindref="compound">ADC_HandleTypeDef</ref><sp/>*hadc<sp/>=<sp/>(<ref refid="structADC__HandleTypeDef" kindref="compound">ADC_HandleTypeDef</ref><sp/>*)((<ref refid="struct____DMA__HandleTypeDef" kindref="compound">DMA_HandleTypeDef</ref><sp/>*)hdma)-&gt;Parent;</highlight></codeline>
+<codeline lineno="3636"><highlight class="normal"><sp/><sp/><ref refid="structADC__HandleTypeDef" kindref="compound">ADC_HandleTypeDef</ref><sp/>*hadc<sp/>=<sp/>(<ref refid="structADC__HandleTypeDef" kindref="compound">ADC_HandleTypeDef</ref><sp/>*)((<ref refid="group__DMA__Exported__Types_1ga41b754a906b86bce54dc79938970138b" kindref="member">DMA_HandleTypeDef</ref><sp/>*)hdma)-&gt;Parent;</highlight></codeline>
 <codeline lineno="3637"><highlight class="normal"></highlight></codeline>
 <codeline lineno="3638"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Half<sp/>conversion<sp/>callback<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="3639"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>(USE_HAL_ADC_REGISTER_CALLBACKS<sp/>==<sp/>1)</highlight><highlight class="normal"></highlight></codeline>
@@ -3178,10 +3199,10 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="3643"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>USE_HAL_ADC_REGISTER_CALLBACKS<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="3644"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="3645"><highlight class="normal"></highlight></codeline>
-<codeline lineno="3651"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__ADC__Private__Functions_1gaede41b9e917d64ad31fbbb8ae9fab79c" kindref="member">ADC_DMAError</ref>(<ref refid="struct____DMA__HandleTypeDef" kindref="compound">DMA_HandleTypeDef</ref><sp/>*hdma)</highlight></codeline>
+<codeline lineno="3651"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__ADC__Private__Functions_1gaede41b9e917d64ad31fbbb8ae9fab79c" kindref="member">ADC_DMAError</ref>(<ref refid="group__DMA__Exported__Types_1ga41b754a906b86bce54dc79938970138b" kindref="member">DMA_HandleTypeDef</ref><sp/>*hdma)</highlight></codeline>
 <codeline lineno="3652"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="3653"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Retrieve<sp/>ADC<sp/>handle<sp/>corresponding<sp/>to<sp/>current<sp/>DMA<sp/>handle<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="3654"><highlight class="normal"><sp/><sp/><ref refid="structADC__HandleTypeDef" kindref="compound">ADC_HandleTypeDef</ref><sp/>*hadc<sp/>=<sp/>(<ref refid="structADC__HandleTypeDef" kindref="compound">ADC_HandleTypeDef</ref><sp/>*)((<ref refid="struct____DMA__HandleTypeDef" kindref="compound">DMA_HandleTypeDef</ref><sp/>*)hdma)-&gt;Parent;</highlight></codeline>
+<codeline lineno="3654"><highlight class="normal"><sp/><sp/><ref refid="structADC__HandleTypeDef" kindref="compound">ADC_HandleTypeDef</ref><sp/>*hadc<sp/>=<sp/>(<ref refid="structADC__HandleTypeDef" kindref="compound">ADC_HandleTypeDef</ref><sp/>*)((<ref refid="group__DMA__Exported__Types_1ga41b754a906b86bce54dc79938970138b" kindref="member">DMA_HandleTypeDef</ref><sp/>*)hdma)-&gt;Parent;</highlight></codeline>
 <codeline lineno="3655"><highlight class="normal"></highlight></codeline>
 <codeline lineno="3656"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Set<sp/>ADC<sp/>state<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="3657"><highlight class="normal"><sp/><sp/><ref refid="group__Exported__macros_1ga26474f43799fbade9cf300e21dd3a91a" kindref="member">SET_BIT</ref>(hadc-&gt;<ref refid="structADC__HandleTypeDef_1abd63d2ae2064ef230986a43ae48f3df8" kindref="member">State</ref>,<sp/><ref refid="group__ADC__States_1ga5a1b4881d17e72aa0823797958221172" kindref="member">HAL_ADC_STATE_ERROR_DMA</ref>);</highlight></codeline>
@@ -3197,7 +3218,9 @@ Copyright (c) 2017 STMicroelectronics. All rights reserved.</para>
 <codeline lineno="3667"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>USE_HAL_ADC_REGISTER_CALLBACKS<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="3668"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="3669"><highlight class="normal"></highlight></codeline>
-<codeline lineno="3674"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>HAL_ADC_MODULE_ENABLED<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="3673"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3674"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>HAL_ADC_MODULE_ENABLED<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3678"><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="/home/runner/work/cubesat/cubesat/eps/v1/firmware/bsp/hal_driver/Src/stm32l4xx_hal_adc.c"/>
   </compounddef>
