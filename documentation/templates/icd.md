@@ -19,7 +19,6 @@
 | Subsystem | Approver | Date |
 | :---- | :---- | :---- |
 | | | |
-| | | |
 
 ## 2. Scope
 
@@ -102,7 +101,7 @@
 
 ## 8. Traceability
 
-**Requirements this ICD satisfies** (reference kickoff doc section(s)):
+**Requirements this ICD satisfies**:
 
 
-**Subsystems whose kickoff docs reference this ICD:**
+**Subsystems whose info docs reference this ICD:**
